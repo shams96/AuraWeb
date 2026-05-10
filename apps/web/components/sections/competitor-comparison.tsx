@@ -1,6 +1,8 @@
 import { CheckCircle2, XCircle, Minus } from 'lucide-react'
 
-const ROWS = [
+type CellValue = boolean | 'partial'
+
+const ROWS: Array<{ feature: string; iv: CellValue; lamer: CellValue; ab: CellValue; loreal: CellValue }> = [
   { feature: 'Clinical RCT Data Published', iv: true, lamer: false, ab: true, loreal: false },
   { feature: 'Named Active Concentrations', iv: true, lamer: false, ab: true, loreal: false },
   { feature: 'Proprietary Senomorphic Peptide', iv: true, lamer: false, ab: false, loreal: false },
@@ -14,8 +16,6 @@ const ROWS = [
   { feature: 'Tiered Skin Age System', iv: true, lamer: false, ab: false, loreal: false },
   { feature: 'B2B / Clinical Partner Portal', iv: true, lamer: false, ab: true, loreal: false },
 ]
-
-type CellValue = boolean | 'partial'
 
 function Cell({ value, highlight }: { value: CellValue; highlight?: boolean }) {
   if (value === true) {

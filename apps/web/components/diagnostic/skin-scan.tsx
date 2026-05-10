@@ -22,22 +22,29 @@ export function SkinScan() {
     { label: 'Barrier Function', value: 'Optimal', icon: <Shield className="w-3 h-3" /> }
   ]
 
+  // Attach stream to video element once both are ready — fixes race condition
+  // where stream resolves before React re-renders the <video> element
+  useEffect(() => {
+    if (stream && videoRef.current && !videoRef.current.srcObject) {
+      videoRef.current.srcObject = stream
+    }
+  }, [stream, state])
+
   const startScan = async () => {
-    console.log("Initiating Scan...")
     setState('initializing')
     setAnalysisLogs(["[SYSTEM] Initiating Bio-Metric Link..."])
-    
+
     try {
       if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
         throw new Error("Camera API not supported in this environment")
       }
-      
-      const mediaStream = await navigator.mediaDevices.getUserMedia({ video: true })
+
+      const mediaStream = await navigator.mediaDevices.getUserMedia({
+        video: { facingMode: 'user', width: { ideal: 1280 }, height: { ideal: 720 } },
+      })
       setStream(mediaStream)
-      if (videoRef.current) {
-        videoRef.current.srcObject = mediaStream
-      }
-      
+      // videoRef may not be in DOM yet — useEffect above handles attachment
+
       setTimeout(() => {
         setState('aligning')
         setAnalysisLogs(prev => [...prev, "[HARDWARE] Sensors Synchronized. Please align face."])
@@ -46,8 +53,7 @@ export function SkinScan() {
       console.error("Camera access failed:", err)
       setAnalysisLogs(prev => [...prev, `[ERROR] Optical Sensor Failure: ${err instanceof Error ? err.message : 'Unknown Error'}`])
       setAnalysisLogs(prev => [...prev, "[SYSTEM] Switching to AI-Synthesized Manual Mode..."])
-      
-      // Fallback: Proceed to analysis after a delay even if camera fails
+
       setTimeout(() => {
         setState('analyzing')
       }, 3000)

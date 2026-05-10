@@ -40,6 +40,8 @@
     "@radix-ui/react-toast": "^1.2.5",
     "@stripe/react-stripe-js": "^3.1.1",
     "@stripe/stripe-js": "^5.4.0",
+    "@types/bcryptjs": "^2.4.6",
+    "bcryptjs": "^2.4.3",
     "lucide-react": "^0.483.0",
     "meilisearch": "^0.41.0",
     "next": "14.2.24",
@@ -56,21 +58,21 @@
     "zod": "^3.24.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.50.0",
+    "@testing-library/jest-dom": "^6.0.0",
+    "@testing-library/react": "^16.0.0",
     "@types/node": "^22.13.4",
     "@types/react": "^18.3.17",
     "@types/react-dom": "^18.3.5",
     "autoprefixer": "^10.4.20",
     "eslint": "^8.57.0",
     "eslint-config-next": "14.2.24",
+    "jsdom": "^26.0.0",
     "postcss": "^8.5.1",
     "prettier": "^3.5.0",
     "prisma": "^6.3.0",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.7.3",
-    "vitest": "^3.0.0",
-    "@testing-library/react": "^16.0.0",
-    "@testing-library/jest-dom": "^6.0.0",
-    "@playwright/test": "^1.50.0",
-    "jsdom": "^26.0.0"
+    "vitest": "^3.0.0"
   }
 }

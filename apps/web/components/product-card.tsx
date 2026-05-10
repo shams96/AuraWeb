@@ -41,7 +41,7 @@ export function ProductCard({ product }: ProductCardProps) {
     addItem({
       name: product.name,
       price: product.price,
-      currency: 'EUR',
+      currency: 'USD',
       quantity: 1,
       image: product.image,
       sku: product.id,
@@ -55,7 +55,7 @@ export function ProductCard({ product }: ProductCardProps) {
     addItem({
       name: product.name,
       price: Math.round(product.price * 0.8),
-      currency: 'EUR',
+      currency: 'USD',
       quantity: 1,
       image: product.image,
       sku: `${product.id}-sub`,
@@ -65,7 +65,7 @@ export function ProductCard({ product }: ProductCardProps) {
   }
 
   return (
-    <div className="product-card group bg-iv-deep-green/10 rounded-2xl border border-iv-gold/10 overflow-hidden hover:border-iv-gold/30 transition-all duration-500 shadow-2xl relative">
+    <div className="product-card iv-hover-lift group bg-iv-deep-green/10 rounded-2xl border border-iv-gold/10 overflow-hidden hover:border-iv-gold/30 transition-all duration-500 shadow-2xl relative" data-reveal="iv-scale-in">
       <div className="absolute inset-0 bg-gradient-to-br from-iv-gold/[0.03] to-transparent pointer-events-none" />
       
       {/* Product Image */}

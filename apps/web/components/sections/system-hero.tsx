@@ -46,12 +46,16 @@ export function SystemHero() {
         <div className="max-w-xl lg:max-w-2xl py-24">
 
           {/* Provenance badge */}
-          <div style={{
-            display: 'inline-flex', alignItems: 'center', gap: 10,
-            border: '1px solid rgba(145,56,50,0.18)', borderRadius: 100,
-            padding: '6px 18px', marginBottom: 36,
-            background: 'rgba(255,255,255,0.60)', backdropFilter: 'blur(12px)',
-          }}>
+          <div
+            data-reveal="iv-reveal-fade"
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: 10,
+              border: '1px solid rgba(145,56,50,0.18)', borderRadius: 100,
+              padding: '6px 18px', marginBottom: 36,
+              background: 'rgba(255,255,255,0.60)', backdropFilter: 'blur(12px)',
+              opacity: 0,
+            }}
+          >
             <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--iv-gold)', display: 'inline-block', flexShrink: 0 }} />
             <span style={{ fontSize: '0.6rem', fontWeight: 700, color: 'var(--iv-gold)', letterSpacing: '0.22em', textTransform: 'uppercase' }}>
               Natural You Srl · Isola del Liri, Italy · Est. 2024
@@ -64,22 +68,25 @@ export function SystemHero() {
             lineHeight: 1.0, letterSpacing: '-0.02em',
             color: 'var(--iv-white)', marginBottom: 28,
           }}>
-            <span style={{ display: 'block', fontSize: 'clamp(3rem, 7vw, 5.5rem)', textTransform: 'uppercase' }}>The Art of</span>
-            <span style={{ display: 'block', fontSize: 'clamp(3rem, 7vw, 5.5rem)', textTransform: 'uppercase', fontStyle: 'italic', color: 'var(--iv-gold)' }}>Longevity</span>
-            <span style={{ display: 'block', fontSize: 'clamp(3rem, 7vw, 5.5rem)', textTransform: 'uppercase' }}>Skincare</span>
+            <span data-reveal="iv-word-in" style={{ display: 'block', fontSize: 'clamp(3rem, 7vw, 5.5rem)', textTransform: 'uppercase', opacity: 0, animationDelay: '0.1s' }}>The Art of</span>
+            <span data-reveal="iv-word-in" style={{ display: 'block', fontSize: 'clamp(3rem, 7vw, 5.5rem)', textTransform: 'uppercase', fontStyle: 'italic', color: 'var(--iv-gold)', opacity: 0, animationDelay: '0.22s' }}>Longevity</span>
+            <span data-reveal="iv-word-in" style={{ display: 'block', fontSize: 'clamp(3rem, 7vw, 5.5rem)', textTransform: 'uppercase', opacity: 0, animationDelay: '0.34s' }}>Skincare</span>
           </h1>
 
           {/* Descriptor */}
-          <p style={{
-            fontSize: '1.05rem', color: 'var(--iv-cream)', fontWeight: 300,
-            lineHeight: 1.75, maxWidth: 440, marginBottom: 40, letterSpacing: '0.01em',
-            opacity: 0.80,
-          }}>
+          <p
+            data-reveal="iv-reveal-up"
+            style={{
+              fontSize: '1.05rem', color: 'var(--iv-cream)', fontWeight: 300,
+              lineHeight: 1.75, maxWidth: 440, marginBottom: 40, letterSpacing: '0.01em',
+              opacity: 0, animationDelay: '0.45s',
+            }}
+          >
             Metabolically aligned. Clinically proven. The world's first 4-tier system tuned to your skin's biological age — manufactured at pharmaceutical grade in Italy.
           </p>
 
           {/* CTAs */}
-          <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginBottom: 56 }}>
+          <div data-reveal="iv-reveal-up" style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginBottom: 56, opacity: 0, animationDelay: '0.55s' }}>
             <button
               className="btn-luxury"
               style={{ padding: '16px 36px' }}
@@ -109,7 +116,7 @@ export function SystemHero() {
           </div>
 
           {/* Social proof bar */}
-          <div style={{ display: 'flex', gap: 32, flexWrap: 'wrap' }}>
+          <div data-reveal="iv-reveal-up iv-stagger" style={{ display: 'flex', gap: 32, flexWrap: 'wrap', opacity: 0, animationDelay: '0.65s' }}>
             {[
               { value: '4.8★', label: '2,450+ Reviews' },
               { value: '97%',  label: 'See Results in 4 Wks' },

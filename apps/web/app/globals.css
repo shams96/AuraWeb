@@ -394,3 +394,259 @@
   background: rgba(145, 56, 50, 0.15);
   color: var(--iv-white);
 }
+
+/* ============================================================
+   2026/27 MICRO-INTERACTIONS & MOTION DESIGN
+   ============================================================ */
+
+/* ── Global smooth transitions ────────────────────────────── */
+*, *::before, *::after {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+a, button, [role="button"] {
+  transition: color 0.18s, background-color 0.18s, border-color 0.18s,
+              box-shadow 0.18s, transform 0.18s, opacity 0.18s;
+}
+
+/* ── Scroll-reveal: sections animate in on scroll ─────────── */
+@keyframes iv-reveal-up {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes iv-reveal-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes iv-reveal-left {
+  from { opacity: 0; transform: translateX(-28px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes iv-reveal-right {
+  from { opacity: 0; transform: translateX(28px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes iv-scale-in {
+  from { opacity: 0; transform: scale(0.94); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.iv-reveal-up    { animation: iv-reveal-up    0.65s ease both; }
+.iv-reveal-fade  { animation: iv-reveal-fade  0.55s ease both; }
+.iv-reveal-left  { animation: iv-reveal-left  0.60s ease both; }
+.iv-reveal-right { animation: iv-reveal-right 0.60s ease both; }
+.iv-scale-in     { animation: iv-scale-in     0.50s ease both; }
+
+/* Stagger delays for lists / grids */
+.iv-stagger > *:nth-child(1)  { animation-delay: 0.05s; }
+.iv-stagger > *:nth-child(2)  { animation-delay: 0.12s; }
+.iv-stagger > *:nth-child(3)  { animation-delay: 0.19s; }
+.iv-stagger > *:nth-child(4)  { animation-delay: 0.26s; }
+.iv-stagger > *:nth-child(5)  { animation-delay: 0.33s; }
+.iv-stagger > *:nth-child(6)  { animation-delay: 0.40s; }
+
+/* ── Hover lift — universal card elevation ────────────────── */
+.iv-hover-lift {
+  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.28s ease;
+}
+.iv-hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 60px rgba(60, 30, 20, 0.14);
+}
+
+/* ── Glow pulse on accent elements ───────────────────────── */
+@keyframes iv-glow-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(145, 56, 50, 0); }
+  50%       { box-shadow: 0 0 24px 4px rgba(145, 56, 50, 0.22); }
+}
+.iv-glow-pulse { animation: iv-glow-pulse 2.4s ease-in-out infinite; }
+
+/* ── Shimmer loading skeleton ─────────────────────────────── */
+@keyframes iv-skeleton {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.iv-skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--iv-deep-green) 25%,
+    rgba(145, 56, 50, 0.07) 50%,
+    var(--iv-deep-green) 75%
+  );
+  background-size: 200% 100%;
+  animation: iv-skeleton 1.6s ease-in-out infinite;
+  border-radius: 6px;
+}
+
+/* ── Button micro-interactions ────────────────────────────── */
+.btn-luxury {
+  position: relative;
+  overflow: hidden;
+}
+.btn-luxury::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.btn-luxury:hover::after { opacity: 1; }
+.btn-luxury:active { transform: scale(0.97) translateY(0) !important; }
+
+/* ── Glassmorphism cards ──────────────────────────────────── */
+.iv-glass {
+  background: rgba(253, 250, 245, 0.72);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(145, 56, 50, 0.12);
+  box-shadow: 0 8px 32px rgba(60, 30, 20, 0.08);
+}
+.iv-dark .iv-glass {
+  background: rgba(6, 12, 9, 0.65);
+  border-color: rgba(184, 151, 47, 0.12);
+}
+
+/* ── Floating label inputs ────────────────────────────────── */
+.iv-field {
+  position: relative;
+}
+.iv-field input:focus + label,
+.iv-field input:not(:placeholder-shown) + label {
+  transform: translateY(-22px) scale(0.78);
+  color: var(--iv-gold);
+  letter-spacing: 0.14em;
+}
+.iv-field label {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.2s, color 0.2s, letter-spacing 0.2s;
+  pointer-events: none;
+  color: var(--iv-text-muted);
+  font-size: 0.85rem;
+  transform-origin: left top;
+}
+
+/* ── Link underline draw effect ───────────────────────────── */
+.iv-link-draw {
+  position: relative;
+  display: inline-block;
+}
+.iv-link-draw::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--iv-gold);
+  transition: width 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.iv-link-draw:hover::after { width: 100%; }
+
+/* ── Number counter animation ─────────────────────────────── */
+@keyframes iv-count-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.iv-count-up { animation: iv-count-up 0.5s ease both; }
+
+/* ── Kinetic hero text — stagger per word ─────────────────── */
+@keyframes iv-word-in {
+  from { opacity: 0; transform: translateY(20px) skewY(3deg); }
+  to   { opacity: 1; transform: translateY(0) skewY(0); }
+}
+.iv-word-in { animation: iv-word-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+/* ── Progress bar fill animation ─────────────────────────── */
+@keyframes iv-bar-fill {
+  from { width: 0; }
+}
+.iv-bar-fill { animation: iv-bar-fill 1.2s cubic-bezier(0.4, 0, 0.2, 1) both; }
+
+/* ── Spin‑in icon entrance ─────────────────────────────── */
+@keyframes iv-spin-in {
+  from { opacity: 0; transform: rotate(-15deg) scale(0.8); }
+  to   { opacity: 1; transform: rotate(0) scale(1); }
+}
+.iv-spin-in { animation: iv-spin-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+
+/* ── Focus ring ───────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--iv-gold);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ── Page transition (Next.js router changes) ─────────────── */
+.page-enter  { opacity: 0; transform: translateY(8px); }
+.page-active { opacity: 1; transform: translateY(0); transition: opacity 0.35s, transform 0.35s; }
+
+/* ── Smooth image reveal on load ──────────────────────────── */
+img {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+img[loading="lazy"] {
+  opacity: 0;
+}
+img[loading="lazy"].loaded {
+  opacity: 1;
+}
+
+/* ── Tooltip pop ──────────────────────────────────────────── */
+@keyframes iv-tooltip-pop {
+  from { opacity: 0; transform: translateY(4px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.iv-tooltip { animation: iv-tooltip-pop 0.18s ease both; }
+
+/* ── Gradient text utility ────────────────────────────────── */
+.iv-gradient-text {
+  background: linear-gradient(135deg, var(--iv-gold) 0%, var(--iv-champagne-gold) 60%, var(--iv-gold-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Luxury divider ───────────────────────────────────────── */
+.iv-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(145, 56, 50, 0.25), transparent);
+  border: none;
+  margin: 3rem 0;
+}
+
+/* ── Notification dot pulse ───────────────────────────────── */
+@keyframes iv-dot-ping {
+  0%        { transform: scale(1); opacity: 1; }
+  75%, 100% { transform: scale(2.2); opacity: 0; }
+}
+.iv-dot-ping::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--iv-gold);
+  animation: iv-dot-ping 1.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* ── Product image zoom on card hover ─────────────────────── */
+.product-card .product-image {
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+.product-card:hover .product-image img {
+  transform: scale(1.06);
+}
+
+/* ── Reduce motion for accessibility ──────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

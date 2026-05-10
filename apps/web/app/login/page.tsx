@@ -1,82 +1,213 @@
-import 'react-hook-form'
+'use client'
 
-export default function LoginPage() {
+import { Suspense, useState, useTransition } from 'react'
+import Link from 'next/link'
+import { useRouter, useSearchParams } from 'next/navigation'
+import { signIn } from 'next-auth/react'
+import { Eye, EyeOff, ArrowRight, Loader2 } from 'lucide-react'
+
+function LoginForm() {
+  const router = useRouter()
+  const searchParams = useSearchParams()
+  const callbackUrl = searchParams.get('callbackUrl') || '/'
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
+  const [error, setError] = useState('')
+  const [isPending, startTransition] = useTransition()
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    setError('')
+
+    startTransition(async () => {
+      const result = await signIn('credentials', {
+        email,
+        password,
+        redirect: false,
+      })
+
+      if (result?.error) {
+        setError('Invalid email or password. Please try again.')
+      } else {
+        router.push(callbackUrl)
+        router.refresh()
+      }
+    })
+  }
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
-        <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Sign in to your account
-          </h2>
-          <p className="mt-2 text-center text-sm text-gray-600">
-            Or{' '}
-            <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
-              start your 30-day free trial
-            </a>
-          </p>
+    <div className="min-h-screen flex" style={{ background: 'var(--iv-black)' }}>
+      {/* Left decorative panel */}
+      <div
+        className="hidden lg:flex lg:w-1/2 flex-col items-center justify-center relative overflow-hidden"
+        style={{ background: 'linear-gradient(160deg, var(--iv-formal-garden) 0%, var(--iv-deep-green) 100%)' }}
+      >
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 70% 30%, rgba(250,214,201,0.18) 0%, transparent 60%)' }} />
+        <div className="relative z-10 text-center px-12 space-y-8">
+          <Link href="/" className="inline-flex items-center gap-3">
+            <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.6rem', fontWeight: 700, color: '#FDFAF5', letterSpacing: '0.1em' }}>ISOLA VITALE</span>
+            <span style={{ width: 1, height: 20, background: 'rgba(250,214,201,0.35)', display: 'inline-block' }} />
+            <span style={{ fontSize: '0.55rem', fontWeight: 700, color: '#FAD6C9', letterSpacing: '0.22em', textTransform: 'uppercase' }}>Milano</span>
+          </Link>
+          <blockquote style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.4rem', fontStyle: 'italic', color: '#FDFAF5', lineHeight: 1.5, maxWidth: 340 }}>
+            "Science engineered for your biological age."
+          </blockquote>
+          <div style={{ display: 'flex', gap: 24, justifyContent: 'center' }}>
+            {[{ v: '4.8★', l: '2,450+ Reviews' }, { v: '97%', l: 'See Results' }].map(({ v, l }) => (
+              <div key={l} className="text-center">
+                <div style={{ fontSize: '1.4rem', fontWeight: 800, color: '#FAD6C9', fontFamily: "'Playfair Display', serif" }}>{v}</div>
+                <div style={{ fontSize: '0.55rem', color: 'rgba(253,250,245,0.6)', letterSpacing: '0.14em', textTransform: 'uppercase', marginTop: 4 }}>{l}</div>
+              </div>
+            ))}
+          </div>
         </div>
-        <form className="mt-8 space-y-6">
-          <div className="rounded-md shadow-sm -space-y-px">
-            <div>
-              <label htmlFor="email-address" className="sr-only">
-                Email address
+      </div>
+
+      {/* Right form panel */}
+      <div className="flex-1 flex flex-col items-center justify-center px-6 py-16">
+        {/* Mobile logo */}
+        <Link href="/" className="lg:hidden mb-10">
+          <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.3rem', fontWeight: 700, color: 'var(--iv-white)', letterSpacing: '0.1em' }}>ISOLA VITALE</span>
+        </Link>
+
+        <div className="w-full max-w-md space-y-8">
+          <div className="space-y-2">
+            <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: '2rem', fontWeight: 700, color: 'var(--iv-white)', letterSpacing: '-0.01em' }}>
+              Welcome back
+            </h1>
+            <p style={{ fontSize: '0.875rem', color: 'var(--iv-text-muted)' }}>
+              Don&apos;t have an account?{' '}
+              <Link href="/register" style={{ color: 'var(--iv-gold)', fontWeight: 600, textDecoration: 'none' }}>
+                Create one free
+              </Link>
+            </p>
+          </div>
+
+          {error && (
+            <div
+              style={{
+                padding: '12px 16px', borderRadius: 8,
+                background: 'rgba(145,56,50,0.08)', border: '1px solid rgba(145,56,50,0.25)',
+                fontSize: '0.8rem', color: 'var(--iv-gold)', fontWeight: 500,
+              }}
+            >
+              {error}
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit} className="space-y-5">
+            <div className="space-y-1.5">
+              <label
+                htmlFor="email"
+                style={{ display: 'block', fontSize: '0.7rem', fontWeight: 700, color: 'var(--iv-text-muted)', letterSpacing: '0.12em', textTransform: 'uppercase' }}
+              >
+                Email Address
               </label>
               <input
-                id="email-address"
-                name="email"
+                id="email"
                 type="email"
                 autoComplete="email"
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Email address"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                placeholder="you@example.com"
+                style={{
+                  display: 'block', width: '100%', padding: '12px 16px',
+                  background: 'var(--iv-deep-green)', border: '1px solid rgba(145,56,50,0.18)',
+                  borderRadius: 8, fontSize: '0.9rem', color: 'var(--iv-white)',
+                  outline: 'none', transition: 'border-color 0.2s',
+                  boxSizing: 'border-box',
+                }}
+                onFocus={e => (e.target.style.borderColor = 'var(--iv-gold)')}
+                onBlur={e => (e.target.style.borderColor = 'rgba(145,56,50,0.18)')}
               />
             </div>
-            <div>
-              <label htmlFor="password" className="sr-only">
-                Password
-              </label>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                autoComplete="current-password"
-                required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Password"
-              />
-            </div>
-          </div>
 
-          <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <input
-                id="remember-me"
-                name="remember-me"
-                type="checkbox"
-                className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-              />
-              <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
-                Remember me
-              </label>
+            <div className="space-y-1.5">
+              <div className="flex justify-between items-center">
+                <label
+                  htmlFor="password"
+                  style={{ display: 'block', fontSize: '0.7rem', fontWeight: 700, color: 'var(--iv-text-muted)', letterSpacing: '0.12em', textTransform: 'uppercase' }}
+                >
+                  Password
+                </label>
+                <a
+                  href="#"
+                  style={{ fontSize: '0.72rem', color: 'var(--iv-gold)', textDecoration: 'none', fontWeight: 500 }}
+                >
+                  Forgot password?
+                </a>
+              </div>
+              <div style={{ position: 'relative' }}>
+                <input
+                  id="password"
+                  type={showPassword ? 'text' : 'password'}
+                  autoComplete="current-password"
+                  required
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
+                  placeholder="••••••••"
+                  style={{
+                    display: 'block', width: '100%', padding: '12px 44px 12px 16px',
+                    background: 'var(--iv-deep-green)', border: '1px solid rgba(145,56,50,0.18)',
+                    borderRadius: 8, fontSize: '0.9rem', color: 'var(--iv-white)',
+                    outline: 'none', transition: 'border-color 0.2s',
+                    boxSizing: 'border-box',
+                  }}
+                  onFocus={e => (e.target.style.borderColor = 'var(--iv-gold)')}
+                  onBlur={e => (e.target.style.borderColor = 'rgba(145,56,50,0.18)')}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(v => !v)}
+                  style={{ position: 'absolute', right: 12, top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', cursor: 'pointer', color: 'var(--iv-text-muted)', padding: 0 }}
+                >
+                  {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+                </button>
+              </div>
             </div>
 
-            <div className="text-sm">
-              <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
-                Forgot your password?
-              </a>
-            </div>
-          </div>
-
-          <div>
             <button
               type="submit"
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              disabled={isPending}
+              style={{
+                width: '100%', padding: '14px 24px',
+                background: isPending ? 'rgba(145,56,50,0.5)' : 'var(--iv-gold)',
+                color: 'var(--iv-black)', border: 'none', borderRadius: 8,
+                fontSize: '0.72rem', fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase',
+                cursor: isPending ? 'not-allowed' : 'pointer',
+                display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+                transition: 'all 0.2s',
+              }}
             >
-              Sign in
+              {isPending ? (
+                <><Loader2 size={15} className="animate-spin" /> Signing in…</>
+              ) : (
+                <>Sign In <ArrowRight size={15} /></>
+              )}
             </button>
+          </form>
+
+          <div style={{ textAlign: 'center', paddingTop: 8 }}>
+            <Link
+              href="/professional"
+              style={{ fontSize: '0.72rem', color: 'var(--iv-text-muted)', textDecoration: 'none', borderBottom: '1px solid rgba(145,56,50,0.25)', paddingBottom: 2 }}
+            >
+              Professional / B2B login →
+            </Link>
           </div>
-        </form>
+        </div>
       </div>
     </div>
+  )
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<div style={{ minHeight: '100vh', background: 'var(--iv-black)' }} />}>
+      <LoginForm />
+    </Suspense>
   )
 }

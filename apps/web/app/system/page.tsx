@@ -1,4 +1,3 @@
-'use client'
 
 import type { Metadata } from 'next'
 import { Shield, Zap, Sparkles, Activity } from 'lucide-react'

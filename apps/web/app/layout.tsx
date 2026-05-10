@@ -8,6 +8,7 @@ import { WishlistProvider } from '@/lib/wishlist-context'
 import { AuthProvider } from '@/lib/auth-context'
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
+import { ScrollRevealProvider } from '@/components/layout/scroll-reveal-provider'
 import Script from 'next/script'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -104,6 +105,7 @@ export default function RootLayout({
                     <Header />
                     <main className="flex-1">{children}</main>
                     <Footer />
+                    <ScrollRevealProvider />
                   </div>
                   <Toaster />
                 </AuthProvider>

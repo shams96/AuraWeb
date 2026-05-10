@@ -20,8 +20,13 @@ const authOptions: NextAuthOptions = {
 
         try {
           // Delegate auth to the API service
-          const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'
-          const res = await fetch(`${apiUrl}/api/auth/verify`, {
+          // Use local verify endpoint first, fall back to external API
+          const baseUrl = process.env.NEXTAUTH_URL || 'http://localhost:3000'
+          const apiUrl = process.env.NEXT_PUBLIC_API_URL
+          const verifyUrl = apiUrl
+            ? `${apiUrl}/api/auth/verify`
+            : `${baseUrl}/api/auth/verify`
+          const res = await fetch(verifyUrl, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

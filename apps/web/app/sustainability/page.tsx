@@ -1,4 +1,3 @@
-'use client'
 
 import type { Metadata } from 'next'
 import { Leaf, Recycle, Wind, Droplets } from 'lucide-react'
