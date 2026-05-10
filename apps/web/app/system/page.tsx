@@ -1,6 +1,16 @@
 'use client'
 
+import type { Metadata } from 'next'
 import { Shield, Zap, Sparkles, Activity } from 'lucide-react'
+
+export const metadata: Metadata = {
+  title: 'The System — 4-Tier Age Protocol',
+  description: 'The world\'s first 4-tier skincare system aligned to skin metabolism. Genesis (13-19), Foundation (20-29), Regeneration (30-49), Longevity (50+). Precision skincare for every biological stage.',
+  openGraph: {
+    title: 'The System | Isola Vitale',
+    description: 'Four tiers. One lifetime of optimal skin metabolism.',
+  },
+}
 
 export default function SystemPage() {
   const tiers = [

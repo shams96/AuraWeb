@@ -1,6 +1,16 @@
 'use client'
 
+import type { Metadata } from 'next'
 import { Leaf, Recycle, Wind, Droplets } from 'lucide-react'
+
+export const metadata: Metadata = {
+  title: 'Sustainability',
+  description: 'Our commitment to the planet: refillable packaging, carbon-neutral manufacturing at Natural You Srl, cruelty-free formulations, and responsible ingredient sourcing.',
+  openGraph: {
+    title: 'Sustainability | Isola Vitale',
+    description: 'Luxury without compromise. Our environmental commitments explained.',
+  },
+}
 
 export default function SustainabilityPage() {
   const pillars = [

@@ -29,10 +29,6 @@ interface CheckoutFormData {
   state: string
   zipCode: string
   country: string
-  cardNumber: string
-  expiryDate: string
-  cvv: string
-  cardName: string
 }
 
 export default function CheckoutPage() {
@@ -52,10 +48,6 @@ export default function CheckoutPage() {
     state: '',
     zipCode: '',
     country: 'US',
-    cardNumber: '',
-    expiryDate: '',
-    cvv: '',
-    cardName: ''
   })
 
   // Calculate totals
@@ -89,16 +81,6 @@ export default function CheckoutPage() {
     
     if (!formData.address || !formData.city || !formData.state || !formData.zipCode) {
       setError('Please fill in all shipping address fields')
-      return false
-    }
-    
-    if (!formData.cardNumber || !formData.cardName) {
-      setError('Please enter card details')
-      return false
-    }
-    
-    if (!formData.expiryDate || !formData.cvv) {
-      setError('Please enter card expiration and CVV')
       return false
     }
     
@@ -325,59 +307,19 @@ export default function CheckoutPage() {
                   </div>
                 </div>
                 
-                {/* Payment Information */}
+                {/* Payment Information — Stripe Elements */}
                 <div className="mb-8">
                   <h2 className="text-lg font-semibold text-gray-900 mb-4">Payment Information</h2>
-                  <div className="space-y-4">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Name on Card *
-                      </label>
-                      <input
-                        type="text"
-                        value={formData.cardName}
-                        onChange={(e) => handleInputChange('cardName', e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                        placeholder="John Doe"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Card Number *
-                      </label>
-                      <input
-                        type="text"
-                        value={formData.cardNumber}
-                        onChange={(e) => handleInputChange('cardNumber', e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                        placeholder="1234 5678 9012 3456"
-                      />
-                    </div>
-                    <div className="grid grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">
-                          Expiration Date *
-                        </label>
-                        <input
-                          type="text"
-                          value={formData.expiryDate}
-                          onChange={(e) => handleInputChange('expiryDate', e.target.value)}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                          placeholder="MM/YY"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">
-                          CVV *
-                        </label>
-                        <input
-                          type="text"
-                          value={formData.cvv}
-                          onChange={(e) => handleInputChange('cvv', e.target.value)}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                          placeholder="123"
-                        />
-                      </div>
+                  <div className="rounded-xl border border-gray-200 bg-gray-50 p-6 flex flex-col items-center justify-center gap-3 text-center min-h-[120px]">
+                    <Shield className="w-6 h-6 text-gray-400" />
+                    <p className="text-sm font-medium text-gray-700">Secure payment via Stripe</p>
+                    <p className="text-xs text-gray-500">
+                      Stripe Elements will be embedded here. Card data is tokenized directly by Stripe — never touches our servers.
+                    </p>
+                    <div className="flex items-center gap-2 mt-1">
+                      {['Visa', 'Mastercard', 'Amex', 'Apple Pay'].map(m => (
+                        <span key={m} className="text-[10px] font-bold text-gray-400 border border-gray-200 rounded px-2 py-0.5 bg-white">{m}</span>
+                      ))}
                     </div>
                   </div>
                 </div>

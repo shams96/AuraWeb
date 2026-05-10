@@ -1,5 +1,15 @@
+import type { Metadata } from 'next'
 import { Button } from '@aurabiosphere/ui'
 import { MapPin, Award, Heart, Beaker } from 'lucide-react'
+
+export const metadata: Metadata = {
+  title: 'About Isola Vitale',
+  description: 'Born at the intersection of clinical science and Italian luxury. Isola Vitale is the world\'s first 4-tier, metabolically-aligned skincare system, formulated at Natural You Srl, Isola del Liri.',
+  openGraph: {
+    title: 'About Isola Vitale — The House',
+    description: 'The story behind the world\'s first bio-adaptive, age-tiered skincare protocol.',
+  },
+}
 
 export default function AboutPage() {
   return (

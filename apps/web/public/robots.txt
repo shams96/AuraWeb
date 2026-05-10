@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+Disallow: /api/
+Disallow: /checkout
+Disallow: /login
+Disallow: /register
+Disallow: /wishlist
+Disallow: /success
+
+Sitemap: https://isolavitale.com/sitemap.xml

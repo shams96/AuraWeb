@@ -1,6 +1,11 @@
 'use client'
 
+import type { Metadata } from 'next'
 
+export const metadata: Metadata = {
+  title: 'FAQ',
+  description: 'Answers to the most common questions about Isola Vitale\'s bio-adaptive formulations, 4-tier system, shipping, returns, and clinical protocols.',
+}
 
 export default function FAQPage() {
   const faqs = [

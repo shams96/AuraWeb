@@ -1,8 +1,17 @@
+import type { Metadata } from 'next'
 import { ProductCard } from '@/components/product-card'
 import { FilterSidebar } from '@/components/shop/filter-sidebar'
 import { SortDropdown } from '@/components/shop/sort-dropdown'
-
 import { ALL_PRODUCTS } from '@/lib/products'
+
+export const metadata: Metadata = {
+  title: 'Shop All Formulations',
+  description: 'Discover Isola Vitale\'s complete collection of clinical-grade, bio-adaptive skincare formulations. Serums, creams, cleansers and age-specific protocols engineered for metabolic precision.',
+  openGraph: {
+    title: 'Shop All Formulations | Isola Vitale',
+    description: 'Clinical-grade bio-adaptive skincare. Tier-based protocols for every stage of skin metabolism.',
+  },
+}
 
 
 export default function ShopPage({
