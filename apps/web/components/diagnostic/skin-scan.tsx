@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { Button } from '@aurabiosphere/ui'
 import { Camera, Shield, Zap, Sparkles, Activity, RefreshCw, Eye, User, CheckCircle2, AlertCircle, ScanLine, Info, TrendingUp, Droplets, Target } from 'lucide-react'
 
-type ScanState = 'idle' | 'initializing' | 'aligning' | 'counting' | 'capturing' | 'analyzing' | 'finalizing' | 'complete'
+type ScanState = 'idle' | 'initializing' | 'aligning' | 'counting' | 'capturing' | 'analyzing' | 'finalizing' | 'complete' | 'camera_denied'
 
 export function SkinScan() {
   const [state, setState] = useState<ScanState>('idle')
@@ -51,12 +51,7 @@ export function SkinScan() {
       }, 1500)
     } catch (err) {
       console.error("Camera access failed:", err)
-      setAnalysisLogs(prev => [...prev, `[ERROR] Optical Sensor Failure: ${err instanceof Error ? err.message : 'Unknown Error'}`])
-      setAnalysisLogs(prev => [...prev, "[SYSTEM] Switching to AI-Synthesized Manual Mode..."])
-
-      setTimeout(() => {
-        setState('analyzing')
-      }, 3000)
+      setState('camera_denied')
     }
   }
 
@@ -157,11 +152,50 @@ export function SkinScan() {
                     Ensure even lighting and a neutral expression. Our AI will analyze 2.4 million data points to calibrate your metabolic protocol.
                   </p>
                 </div>
-                <button 
+                <button
                   onClick={startScan}
                   className="bg-iv-gold hover:bg-iv-gold-light text-iv-black font-black text-[11px] uppercase tracking-[0.4em] px-16 py-8 rounded-none shadow-2xl transition-all cursor-pointer active:scale-95"
                 >
                   Initiate Bioscan
+                </button>
+              </div>
+            ) : state === 'camera_denied' ? (
+              <div className="absolute inset-0 flex flex-col items-center justify-center p-12 text-center space-y-10">
+                <div className="relative">
+                  <div className="absolute -inset-8 bg-red-900/10 rounded-full blur-2xl" />
+                  <div className="w-32 h-32 border border-red-500/30 rounded-full flex items-center justify-center bg-iv-black/60 relative z-10">
+                    <div className="relative">
+                      <Camera className="w-12 h-12 text-red-400/60" />
+                      <div className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center">
+                        <span className="text-white text-[10px] font-black">✕</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  <h3 className="text-2xl font-bold text-iv-white uppercase tracking-tighter">Camera Access Required</h3>
+                  <p className="text-iv-cream/50 text-sm font-light leading-relaxed max-w-xs">
+                    The Bio-Adaptive Scan requires your camera to capture real skin data. No images are stored or transmitted.
+                  </p>
+                </div>
+                <div className="bg-iv-black/60 border border-iv-gold/10 rounded-2xl p-6 text-left space-y-3 max-w-xs w-full">
+                  <p className="text-[9px] font-black text-iv-gold uppercase tracking-[0.3em] mb-3">To enable your camera:</p>
+                  {[
+                    'Click the camera icon in your browser address bar',
+                    'Select "Allow" for camera access',
+                    'Refresh the page if prompted',
+                  ].map((step, i) => (
+                    <div key={i} className="flex items-start gap-3">
+                      <span className="text-iv-gold text-[10px] font-black mt-0.5 flex-shrink-0">{i + 1}.</span>
+                      <span className="text-iv-cream/50 text-[11px] leading-relaxed">{step}</span>
+                    </div>
+                  ))}
+                </div>
+                <button
+                  onClick={() => { setState('idle'); setAnalysisLogs([]); setDetectedAreas([]); setProgress(0); setCountdown(5) }}
+                  className="border border-iv-gold/30 text-iv-gold hover:bg-iv-gold/5 text-[10px] font-black uppercase tracking-[0.4em] px-12 py-5 rounded-none transition-all cursor-pointer"
+                >
+                  Try Again
                 </button>
               </div>
             ) : (
@@ -256,8 +290,19 @@ export function SkinScan() {
             )}
           </div>
           {/* Right Column: Console & Results */}
-          <div className={`${state === 'complete' ? 'lg:col-span-7' : 'lg:col-span-5'} flex flex-col gap-8 h-full transition-all duration-1000`}>
-            {state !== 'complete' ? (
+          <div className={`${state === 'complete' ? 'lg:col-span-7' : 'lg:col-span-5'} ${state === 'camera_denied' ? 'hidden lg:block' : ''} flex flex-col gap-8 h-full transition-all duration-1000`}>
+            {state === 'camera_denied' ? (
+              /* Camera denied — show instructions on desktop, left panel handles mobile */
+              <div className="bg-iv-black/40 border border-iv-gold/10 p-8 rounded-[32px] flex-1 min-h-[400px] flex flex-col items-center justify-center text-center space-y-6">
+                <AlertCircle className="w-10 h-10 text-iv-gold/30" />
+                <div className="space-y-2">
+                  <h4 className="text-sm font-bold text-iv-white uppercase tracking-widest">Permission Denied</h4>
+                  <p className="text-iv-cream/40 text-xs font-light leading-relaxed max-w-xs">
+                    Your browser blocked camera access. Grant permission and tap "Try Again" to start the real scan. No data is stored.
+                  </p>
+                </div>
+              </div>
+            ) : state !== 'complete' ? (
               /* Log Console - Only visible during scan */
               <div className="bg-iv-black/40 border border-iv-gold/10 p-8 rounded-[32px] font-mono relative overflow-hidden flex-1 min-h-[400px] flex flex-col">
                 <div className="flex items-center justify-between mb-8">
@@ -265,14 +310,6 @@ export function SkinScan() {
                     <div className="w-2 h-2 rounded-full bg-iv-gold animate-pulse" />
                     <h3 className="text-[10px] font-black text-iv-gold uppercase tracking-[0.4em]">Bioscan Telemetry</h3>
                   </div>
-                  {state !== 'idle' && (
-                    <button 
-                      onClick={() => setState('analyzing')}
-                      className="text-[9px] font-black text-iv-gold/40 hover:text-iv-gold uppercase tracking-widest border border-iv-gold/20 px-3 py-1 rounded-full transition-all"
-                    >
-                      Bypass Camera
-                    </button>
-                  )}
                 </div>
                 <div className="space-y-3 text-[10px] overflow-y-auto flex-1 scrollbar-hide">
                   {analysisLogs.map((log, i) => (
