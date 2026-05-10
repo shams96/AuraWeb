@@ -57,7 +57,7 @@ export function ResultsTimeline({ timeline }: ResultsTimelineProps) {
 
                     {/* Left slot */}
                     <div className={`${isLeft ? 'md:pr-10 md:text-right' : 'md:order-3 md:pl-10'}`}>
-                      {(isLeft || true) && (
+                      {isLeft && (
                         <div
                           className={`rounded-2xl p-7 shadow-lg border transition-all duration-300 hover:shadow-xl ${isLeft ? 'ml-auto' : ''}`}
                           style={{

@@ -199,22 +199,40 @@ export default function HomePage() {
       <ResultsTimeline
         timeline={[
           {
-            period: 'Week 1',
-            title: 'Immediate Relief',
-            description: 'Skin feels calmer and less reactive to environmental triggers.',
-            icon: '🌟'
+            period: 'Days 1 – 3',
+            title: 'Immediate Sensory Response',
+            description: 'Humectant complex draws moisture into the stratum corneum within 24–48 hours. Redness and reactivity visibly calm. Skin feels immediately more comfortable.',
+            icon: '💧'
           },
           {
-            period: 'Week 4',
-            title: 'Barrier Strength',
-            description: 'Skin barrier function improves, reducing transepidermal water loss.',
+            period: 'Week 2',
+            title: 'Barrier Reinforcement',
+            description: 'Bifida Ferment Lysate and Ectoin begin restoring microbiome balance. Transepidermal water loss (TEWL) measurably decreases. Skin holds moisture more efficiently between applications.',
             icon: '🛡️'
           },
           {
+            period: 'Week 4',
+            title: 'First Full Skin Cycle',
+            description: 'One complete epidermal turnover cycle (~28 days) achieved. Surface texture is visibly smoother. Pore appearance refined. Hydration normalises across all skin types.',
+            icon: '🔄'
+          },
+          {
             period: 'Week 8',
-            title: 'Resilient Skin',
-            description: 'Skin becomes more resilient to stress and maintains healthy balance.',
+            title: 'Visible Tone Correction',
+            description: 'GLP-1 Protection Complex and antioxidant actives produce measurable tone improvement after two complete turnover cycles. Dark spots begin fading. Radiance markedly increased.',
             icon: '✨'
+          },
+          {
+            period: 'Week 12',
+            title: 'Peptide-Driven Structural Change',
+            description: 'OS-01 Senomorphic Peptides show first clinical results at the three-month mark. Collagen synthesis stimulated by L-Ornithine produces a measurable early improvement in skin firmness and bounce.',
+            icon: '📈'
+          },
+          {
+            period: 'Week 24',
+            title: 'Cellular Transformation',
+            description: 'Comprehensive Bio-Adaptive results achieved. NMN-supported cellular energy restores dermal metabolism. Senescence reduction measurable. Volume and firmness improvements are clinically significant.',
+            icon: '🌟'
           }
         ]}
       />
