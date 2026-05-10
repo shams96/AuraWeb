@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Beaker, Shield, Zap, Sparkles, Activity, Globe, CheckCircle2 } from 'lucide-react'
+import { CompetitorComparison } from '@/components/sections/competitor-comparison'
 
 export const metadata: Metadata = {
   title: 'Ingredients & Science',
@@ -230,6 +231,8 @@ export default function IngredientsPage() {
           </div>
         </div>
       </section>
+
+      <CompetitorComparison />
     </div>
   )
 }

@@ -19,6 +19,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: '/journal', priority: 0.6, changeFrequency: 'weekly' as const },
     { url: '/contact', priority: 0.6, changeFrequency: 'yearly' as const },
     { url: '/professional', priority: 0.7, changeFrequency: 'monthly' as const },
+    { url: '/loyalty', priority: 0.7, changeFrequency: 'monthly' as const },
+    { url: '/clinical-results', priority: 0.8, changeFrequency: 'monthly' as const },
     { url: '/sustainability', priority: 0.5, changeFrequency: 'monthly' as const },
     { url: '/faq', priority: 0.5, changeFrequency: 'monthly' as const },
     { url: '/careers', priority: 0.4, changeFrequency: 'monthly' as const },

@@ -1,5 +1,7 @@
 import { Button } from '@aurabiosphere/ui'
 import { Beaker, Shield, Zap, Sparkles, Activity, Globe } from 'lucide-react'
+import { CompetitorComparison } from '@/components/sections/competitor-comparison'
+import Link from 'next/link'
 
 export default function SciencePage() {
   const breakthroughs = [
@@ -108,9 +110,14 @@ export default function SciencePage() {
               <p className="text-iv-cream/60 leading-relaxed font-light text-lg">
                 Our partnership with <strong className="text-iv-white">Natural You Srl</strong> in Isola del Liri, Italy, grants Isola Vitale exclusive access to pharmaceutical-grade raw materials and proprietary encapsulation technologies. Each formulation undergoes rigorous pH validation and stability testing to ensure 100% regulatory compliance.
               </p>
-              <Button size="lg" className="bg-iv-gold hover:bg-iv-gold-light text-iv-black rounded-none px-12 py-8 text-xs font-black uppercase tracking-[0.2em] shadow-xl hover:shadow-iv-gold/20 transition-all">
-                View INCI Dossier
-              </Button>
+              <div className="flex flex-wrap gap-4">
+                <Button size="lg" className="bg-iv-gold hover:bg-iv-gold-light text-iv-black rounded-none px-12 py-8 text-xs font-black uppercase tracking-[0.2em] shadow-xl hover:shadow-iv-gold/20 transition-all">
+                  View INCI Dossier
+                </Button>
+                <Link href="/clinical-results" className="inline-flex items-center justify-center border border-iv-gold/30 text-iv-gold text-xs font-black uppercase tracking-[0.2em] px-10 py-4 hover:border-iv-gold transition-colors">
+                  Clinical Results →
+                </Link>
+              </div>
             </div>
             <div className="flex-1 rounded-2xl overflow-hidden shadow-2xl aspect-video bg-iv-black border border-iv-gold/10 relative group">
               <div className="absolute inset-0 bg-iv-gold/5 group-hover:bg-transparent transition-all duration-1000"></div>
@@ -121,6 +128,7 @@ export default function SciencePage() {
           </div>
         </div>
       </section>
+      <CompetitorComparison />
     </div>
   )
 }

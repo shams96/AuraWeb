@@ -22,10 +22,12 @@ export function Header() {
   const navigation = [
     { name: 'Shop All', href: '/shop' },
     { name: 'The Science', href: '/science' },
+    { name: 'Results', href: '/clinical-results' },
     { name: 'The System', href: '/system' },
     { name: 'Ingredients', href: '/ingredients' },
     { name: 'Routines', href: '/routines' },
     { name: 'Journal', href: '/journal' },
+    { name: 'iv Circle', href: '/loyalty' },
     { name: 'About', href: '/about' },
   ]
   
@@ -98,7 +100,7 @@ export function Header() {
 
           {/* Right side icons */}
           <div className="flex items-center" style={{ gap: '1rem' }}>
-            <Link href="/login" className="professional-portal-badge hidden md:inline-flex">
+            <Link href="/professional" className="professional-portal-badge hidden md:inline-flex">
               Professional Portal
             </Link>
             {/* Search */}
