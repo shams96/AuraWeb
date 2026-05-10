@@ -148,25 +148,40 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-iv-gold flex flex-col md:flex-row justify-between items-center gap-8" style={{ borderColor: 'rgba(184, 151, 47, 0.1)' }}>
-          <p className="text-[10px] font-black uppercase tracking-widest text-iv-cream text-opacity-30">
-            &copy; {new Date().getFullYear()} Isola Vitale. A 1HubSolutions LLC Company.
-          </p>
-          <div className="flex flex-wrap justify-center space-x-8">
-            <Link href="/privacy" className="text-[10px] font-black uppercase tracking-widest text-iv-cream text-opacity-30 hover:text-iv-gold transition-colors">
+        {/* Country / Currency selector — La Mer style */}
+        <div className="mt-10 pt-8 border-t flex flex-col sm:flex-row items-center justify-between gap-4" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
+          <div className="flex items-center gap-3">
+            <span style={{ fontSize: '1.2rem' }}>🇺🇸</span>
+            <div>
+              <p className="text-[9px] font-black uppercase tracking-[0.2em]" style={{ color: 'rgba(250,247,240,0.35)' }}>Shipping to</p>
+              <p className="text-[11px] font-bold" style={{ color: 'rgba(250,247,240,0.70)' }}>United States · USD ($)</p>
+            </div>
+            <select
+              style={{ background: 'transparent', border: '1px solid rgba(255,255,255,0.12)', color: 'rgba(250,247,240,0.5)', fontSize: '0.6rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '4px 8px', borderRadius: 4, cursor: 'pointer' }}
+              defaultValue="US"
+            >
+              <option value="US">United States (USD)</option>
+              <option value="GB">United Kingdom (GBP)</option>
+              <option value="EU">European Union (EUR)</option>
+              <option value="CA">Canada (CAD)</option>
+              <option value="AU">Australia (AUD)</option>
+              <option value="JP">Japan (JPY)</option>
+              <option value="AE">UAE (AED)</option>
+            </select>
+          </div>
+          <div className="flex flex-wrap justify-center gap-6">
+            <Link href="/privacy" className="text-[10px] font-black uppercase tracking-widest hover:text-iv-gold transition-colors" style={{ color: 'rgba(250,247,240,0.30)' }}>
               Privacy
             </Link>
-            <Link href="/terms" className="text-[10px] font-black uppercase tracking-widest text-iv-cream text-opacity-30 hover:text-iv-gold transition-colors">
+            <Link href="/terms" className="text-[10px] font-black uppercase tracking-widest hover:text-iv-gold transition-colors" style={{ color: 'rgba(250,247,240,0.30)' }}>
               Terms
             </Link>
-            <Link href="/accessibility" className="text-[10px] font-black uppercase tracking-widest text-iv-cream text-opacity-30 hover:text-iv-gold transition-colors">
+            <Link href="/accessibility" className="text-[10px] font-black uppercase tracking-widest hover:text-iv-gold transition-colors" style={{ color: 'rgba(250,247,240,0.30)' }}>
               Accessibility
             </Link>
           </div>
-          <p className="text-[10px] font-black uppercase tracking-widest text-iv-gold text-opacity-40 flex items-center">
-            <Heart className="h-3 w-3 mr-2" />
-            Designed for Metabolic Longevity
+          <p className="text-[10px] font-black uppercase tracking-widest" style={{ color: 'rgba(250,247,240,0.25)' }}>
+            &copy; {new Date().getFullYear()} Isola Vitale · 1HubSolutions LLC · Allen, TX
           </p>
         </div>
       </div>

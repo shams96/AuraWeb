@@ -1,72 +1,111 @@
 'use client'
 
-import { useState } from 'react'
 import Image from 'next/image'
-import { Button } from '@aurabiosphere/ui'
+import Link from 'next/link'
 
 export function SystemHero() {
   return (
-    <section className="relative min-h-[80vh] flex items-center overflow-hidden bg-iv-black text-iv-white py-12 md:py-20">
-      <div className="absolute inset-0 z-0">
+    <section className="relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #FDFAF5 0%, #F4EAE2 40%, #FAD6C9 100%)', minHeight: '92vh', display: 'flex', alignItems: 'center' }}>
+
+      {/* Peach Dust wash — top right atmospheric bloom */}
+      <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '55%', height: '80%', background: 'radial-gradient(ellipse at top right, rgba(250,214,201,0.55) 0%, transparent 70%)', pointerEvents: 'none' }} />
+      {/* Formal Garden deep shadow — bottom left */}
+      <div style={{ position: 'absolute', bottom: '-8%', left: '-4%', width: '45%', height: '60%', background: 'radial-gradient(ellipse at bottom left, rgba(31,81,41,0.08) 0%, transparent 70%)', pointerEvents: 'none' }} />
+
+      {/* Product image — right side */}
+      <div className="absolute right-0 top-0 bottom-0 w-1/2 hidden lg:block pointer-events-none">
         <Image
           src="/images/products/isola_collection.png"
-          alt="Isola Vitale System"
+          alt="Isola Vitale Hero Collection"
           fill
-          className="object-cover object-center opacity-30 grayscale hover:grayscale-0 transition-all duration-[3000ms]"
+          className="object-cover object-center"
+          style={{ opacity: 0.88, mixBlendMode: 'multiply' }}
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-iv-black via-iv-black/90 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-iv-black via-transparent to-transparent" />
+        {/* Soft gradient fade to left */}
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, #FDFAF5 0%, transparent 30%)' }} />
       </div>
-      
-      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl space-y-8">
-          <div className="inline-flex flex-wrap items-center gap-4 border border-iv-gold/30 rounded-full px-8 py-3 text-[10px] font-black uppercase tracking-[0.3em] bg-iv-black/60 backdrop-blur-xl">
-            <span className="text-iv-gold">IV-PKG-RFQ-001</span>
-            <span className="text-iv-gold/30">•</span>
-            <span className="text-iv-cream/80 italic">2026 Hero SKU Launch Phase</span>
-            <span className="text-iv-gold/30">•</span>
-            <span className="text-iv-cream/60">Isola del Liri, Italy</span>
+
+      {/* Content */}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-xl lg:max-w-2xl py-24">
+
+          {/* Provenance badge */}
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, border: '1px solid rgba(145,56,50,0.18)', borderRadius: 100, padding: '6px 18px', marginBottom: 36, background: 'rgba(255,255,255,0.70)', backdropFilter: 'blur(12px)' }}>
+            <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#913832', display: 'inline-block', flexShrink: 0 }} />
+            <span style={{ fontSize: '0.6rem', fontWeight: 700, color: '#913832', letterSpacing: '0.22em', textTransform: 'uppercase' }}>Natural You Srl · Isola del Liri, Italy · Est. 2024</span>
           </div>
-          
-          <h1 className="text-4xl md:text-6xl font-bold leading-[0.9] tracking-tighter uppercase">
-            Metabolic <br />
-            <span className="text-iv-gold italic serif lowercase">precision</span> <br />
-            <span className="text-iv-white/90">Authority</span>
+
+          {/* Headline */}
+          <h1 style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, lineHeight: 1.0, letterSpacing: '-0.02em', color: '#1A1614', marginBottom: 28 }}>
+            <span style={{ display: 'block', fontSize: 'clamp(3rem, 7vw, 5.5rem)', textTransform: 'uppercase' }}>The Art of</span>
+            <span style={{ display: 'block', fontSize: 'clamp(3rem, 7vw, 5.5rem)', textTransform: 'uppercase', fontStyle: 'italic', color: '#913832' }}>Longevity</span>
+            <span style={{ display: 'block', fontSize: 'clamp(3rem, 7vw, 5.5rem)', textTransform: 'uppercase' }}>Skincare</span>
           </h1>
-          
-          <p className="text-base md:text-lg text-iv-cream/70 max-w-2xl leading-relaxed font-extralight tracking-tight">
-            The world's first 4-tier metabolically-aligned system. Bridging ancient botanical wisdom with 2026 pharmaceutical breakthroughs.
+
+          {/* Descriptor */}
+          <p style={{ fontSize: '1.05rem', color: '#7A5C4E', fontWeight: 300, lineHeight: 1.75, maxWidth: 440, marginBottom: 40, letterSpacing: '0.01em' }}>
+            Metabolically aligned. Clinically proven. The world's first 4-tier system tuned to your skin's biological age — manufactured at pharmaceutical grade in Italy.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-6 pt-4">
-            <button 
-              className="bg-iv-gold hover:bg-iv-gold-light text-iv-black text-[10px] font-black px-12 py-8 rounded-none tracking-[0.3em] uppercase shadow-[0_20px_50px_rgba(184,151,47,0.3)] hover:shadow-iv-gold/40 transition-all duration-500 cursor-pointer active:scale-95"
-              onClick={() => {
-                const element = document.getElementById('skin-scan')
-                element?.scrollIntoView({ behavior: 'smooth' })
-              }}
+          {/* CTAs */}
+          <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginBottom: 56 }}>
+            <button
+              style={{ background: '#913832', color: '#FFFFFF', fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', padding: '16px 36px', border: 'none', cursor: 'pointer', transition: 'all 0.3s ease', boxShadow: '0 12px 40px rgba(145,56,50,0.28)' }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#6E2724'; (e.currentTarget as HTMLElement).style.boxShadow = '0 16px 50px rgba(145,56,50,0.36)'; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = '#913832'; (e.currentTarget as HTMLElement).style.boxShadow = '0 12px 40px rgba(145,56,50,0.28)'; }}
+              onClick={() => document.getElementById('skin-scan')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              Diagnostic Access
+              Find My System
             </button>
-            <Button 
-              size="lg" 
-              variant="outline"
-              className="border-iv-gold/20 text-iv-gold hover:bg-iv-gold/10 text-[10px] font-black px-12 py-8 rounded-none tracking-[0.3em] uppercase transition-all duration-500 backdrop-blur-sm"
-              onClick={() => window.location.href = '/shop/best-sellers'}
+            <Link
+              href="/shop"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', color: '#1A1614', padding: '16px 28px', border: '1px solid rgba(26,22,20,0.20)', transition: 'all 0.2s ease' }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = '#913832'; (e.currentTarget as HTMLElement).style.color = '#913832'; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(26,22,20,0.20)'; (e.currentTarget as HTMLElement).style.color = '#1A1614'; }}
             >
-              View Hero SKUs
-            </Button>
+              Shop Collection <span style={{ fontSize: '1rem' }}>→</span>
+            </Link>
+          </div>
+
+          {/* Social proof bar */}
+          <div style={{ display: 'flex', gap: 32, flexWrap: 'wrap' }}>
+            {[
+              { value: '4.8★', label: '2,450+ Reviews' },
+              { value: '97%', label: 'See Results in 4 Wks' },
+              { value: '18', label: 'SKUs Certified' },
+            ].map(({ value, label }) => (
+              <div key={label}>
+                <div style={{ fontSize: '1.3rem', fontWeight: 800, color: '#913832', fontFamily: "'Playfair Display', serif", lineHeight: 1 }}>{value}</div>
+                <div style={{ fontSize: '0.6rem', fontWeight: 600, color: '#7A5C4E', letterSpacing: '0.14em', textTransform: 'uppercase', marginTop: 4 }}>{label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
-      
-      {/* Visual Accents */}
-      <div className="absolute bottom-12 right-12 hidden lg:block">
-        <div className="flex flex-col items-end space-y-4">
-          <div className="w-px h-32 bg-gradient-to-b from-transparent to-iv-gold/40" />
-          <p className="text-[10px] font-black text-iv-gold/40 uppercase tracking-[0.5em] [writing-mode:vertical-lr]">Milano Heritage</p>
-        </div>
+
+      {/* Product colour swatches — bottom accent */}
+      <div style={{ position: 'absolute', bottom: 32, left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: 8, alignItems: 'center', zIndex: 10 }}>
+        {[
+          { color: '#913832', label: 'Day' },
+          { color: '#1F5129', label: 'Night' },
+          { color: '#FAD6C9', label: 'Serum', border: true },
+          { color: '#005A5B', label: 'Men' },
+        ].map(({ color, label, border }) => (
+          <div key={label} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}>
+            <div style={{ width: 20, height: 20, borderRadius: '50%', background: color, border: border ? '2px solid rgba(145,56,50,0.3)' : 'none', boxShadow: '0 2px 8px rgba(0,0,0,0.12)' }} />
+            <span style={{ fontSize: '0.5rem', fontWeight: 700, color: 'rgba(61,43,32,0.5)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{label}</span>
+          </div>
+        ))}
+        <div style={{ width: 60, height: 1, background: 'rgba(145,56,50,0.2)', marginLeft: 4 }} />
+        <span style={{ fontSize: '0.55rem', fontWeight: 700, color: 'rgba(145,56,50,0.5)', letterSpacing: '0.16em', textTransform: 'uppercase' }}>2026 Collection</span>
+      </div>
+
+      {/* Vertical Milano mark */}
+      <div style={{ position: 'absolute', right: 28, top: '50%', transform: 'translateY(-50%)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12, zIndex: 10 }} className="hidden lg:flex">
+        <div style={{ width: 1, height: 80, background: 'linear-gradient(to bottom, transparent, rgba(145,56,50,0.35))' }} />
+        <span style={{ fontSize: '0.5rem', fontWeight: 700, color: 'rgba(145,56,50,0.45)', letterSpacing: '0.3em', textTransform: 'uppercase', writingMode: 'vertical-lr' }}>Milano Heritage</span>
+        <div style={{ width: 1, height: 80, background: 'linear-gradient(to top, transparent, rgba(145,56,50,0.35))' }} />
       </div>
     </section>
   )

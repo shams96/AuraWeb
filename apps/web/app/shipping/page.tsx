@@ -3,7 +3,7 @@
 export default function ShippingPage() {
   const regions = [
     { name: 'North America', delivery: '3 - 5 Business Days', cost: 'Complimentary for Acquisitions > $150' },
-    { name: 'Europe (EMEA)', delivery: '2 - 4 Business Days', cost: 'Complimentary for Acquisitions > €140' },
+    { name: 'Europe (EMEA)', delivery: '2 - 4 Business Days', cost: 'Complimentary for Acquisitions > $140' },
     { name: 'Rest of World', delivery: '5 - 10 Business Days', cost: 'Calculated at Secure Transmission' }
   ]
 

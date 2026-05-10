@@ -336,7 +336,7 @@ export default function CheckoutPage() {
                       Processing...
                     </>
                   ) : (
-                    `Complete Order - €${total.toFixed(2)}`
+                    `Complete Order - $${total.toFixed(2)}`
                   )}
                 </Button>
               </div>
@@ -361,11 +361,11 @@ export default function CheckoutPage() {
                           </span>
                         )}
                         <p className="text-sm text-gray-600">
-                          €{item.price.toFixed(2)} x {item.quantity}
+                          ${item.price.toFixed(2)} x {item.quantity}
                         </p>
                       </div>
                       <div className="font-medium text-gray-900">
-                        €{(item.price * item.quantity).toFixed(2)}
+                        ${(item.price * item.quantity).toFixed(2)}
                       </div>
                     </div>
                   ))}
@@ -374,21 +374,21 @@ export default function CheckoutPage() {
                 <div className="border-t border-gray-200 pt-4 space-y-2">
                   <div className="flex justify-between text-sm">
                     <span className="text-gray-600">Subtotal</span>
-                    <span className="font-medium">€{subtotal.toFixed(2)}</span>
+                    <span className="font-medium">${subtotal.toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between text-sm">
                     <span className="text-gray-600">Shipping</span>
                     <span className="font-medium">
-                      {shipping === 0 ? 'FREE' : `€${shipping.toFixed(2)}`}
+                      {shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}`}
                     </span>
                   </div>
                   <div className="flex justify-between text-sm">
                     <span className="text-gray-600">Tax</span>
-                    <span className="font-medium">€{tax.toFixed(2)}</span>
+                    <span className="font-medium">${tax.toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between text-lg font-semibold pt-2 border-t border-gray-200">
                     <span>Total</span>
-                    <span>€{total.toFixed(2)}</span>
+                    <span>${total.toFixed(2)}</span>
                   </div>
                 </div>
                 

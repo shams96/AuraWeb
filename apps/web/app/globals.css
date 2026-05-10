@@ -5,51 +5,74 @@
 @tailwind utilities;
 
 /* ============================================================
-   ISOLA VITALE — LUXURY DESIGN SYSTEM
-   Deep Emerald / Obsidian / Champagne Gold
+   ISOLA VITALE — LUXURY LIGHT DESIGN SYSTEM 2026
+   Palette: Ivory · Red Ochre · Peach Dust · Formal Garden · Deep Peacock
    ============================================================ */
 
 @layer base {
   :root {
-    --background: 158 30% 5%;
-    --foreground: 50 20% 95%;
-    --card: 158 25% 8%;
-    --card-foreground: 50 20% 95%;
-    --popover: 158 25% 6%;
-    --popover-foreground: 50 20% 95%;
-    --primary: 43 65% 55%;
-    --primary-foreground: 158 30% 5%;
-    --secondary: 158 20% 12%;
-    --secondary-foreground: 50 20% 90%;
-    --muted: 158 20% 12%;
-    --muted-foreground: 50 10% 60%;
-    --accent: 158 40% 20%;
-    --accent-foreground: 50 20% 95%;
+    /* shadcn/radix tokens — warm light mode */
+    --background: 40 60% 98%;
+    --foreground: 20 15% 12%;
+    --card: 36 40% 96%;
+    --card-foreground: 20 15% 12%;
+    --popover: 36 40% 97%;
+    --popover-foreground: 20 15% 12%;
+    --primary: 4 48% 38%;          /* Red Ochre */
+    --primary-foreground: 40 60% 98%;
+    --secondary: 145 43% 21%;      /* Formal Garden */
+    --secondary-foreground: 40 60% 98%;
+    --muted: 30 20% 92%;
+    --muted-foreground: 20 10% 45%;
+    --accent: 181 100% 18%;        /* Deep Peacock */
+    --accent-foreground: 40 60% 98%;
     --destructive: 0 62% 50%;
     --destructive-foreground: 0 0% 100%;
-    --border: 158 20% 18%;
-    --input: 158 20% 12%;
-    --ring: 43 65% 55%;
+    --border: 30 20% 87%;
+    --input: 30 20% 93%;
+    --ring: 4 48% 38%;
     --radius: 0.5rem;
 
-    /* Brand tokens */
+    /* ── DARK SECTION TOKENS (explicitly dark pages/hero blocks) ── */
     --iv-black: #060C09;
     --iv-deep-green: #0D2B20;
     --iv-green: #1A4A35;
     --iv-light-green: #2D6B4F;
-    --iv-gold: #B8972F;
-    --iv-gold-light: #D4B450;
-    --iv-champagne: #F5E6C0;
+
+    /* ── BRAND PALETTE 2026 ── */
+    --iv-ivory: #FDFAF5;           /* primary page background */
+    --iv-blush: #FBF3EE;           /* alternate section bg */
+    --iv-parchment: #F4EAE2;       /* card background */
+    --iv-peach: #FAD6C9;           /* Peach Dust decorative */
+    --iv-ochre: #913832;           /* Red Ochre — primary CTA */
+    --iv-ochre-dark: #6E2724;      /* pressed Red Ochre */
+    --iv-ochre-light: #C05040;     /* hover Red Ochre */
+    --iv-garden: #1F5129;          /* Formal Garden — dark drama sections */
+    --iv-teal: #005A5B;            /* Deep Peacock — secondary accent */
+
+    /* ── TYPOGRAPHY ── */
+    --iv-charcoal: #1A1614;        /* warm near-black, headings */
+    --iv-text: #3D2B20;            /* warm brown, body copy */
+    --iv-text-muted: #7A5C4E;      /* muted warm, subtitles */
+    --iv-border: rgba(145, 56, 50, 0.12);
+
+    /* ── KEPT FOR DARK-SECTION TEXT ── */
     --iv-cream: #FAF7F0;
     --iv-white: #FFFFFF;
 
-    /* 2026 HERO SKU Palette */
-    --iv-red-ochre: #9A3B26;
-    --iv-cloud-dancer: #F0EEE9;
-    --iv-deep-emerald: #004B49;
-    --iv-smoky-charcoal: #363636;
-    --iv-peach-dust: #F3C8B6;
+    /* ── GOLD TRIM (kept as luxury accent detail) ── */
+    --iv-gold: #B8972F;
+    --iv-gold-light: #D4B450;
+    --iv-champagne: #F5E6C0;
     --iv-champagne-gold: #D4B483;
+
+    /* ── PRODUCT SKU COLORS ── */
+    --iv-red-ochre: #913832;
+    --iv-formal-garden: #1F5129;
+    --iv-peach-dust: #FAD6C9;
+    --iv-deep-peacock: #005A5B;
+    --iv-cloud-dancer: #F0EEE9;
+    --iv-smoky-charcoal: #363636;
   }
 }
 
@@ -59,13 +82,11 @@
     box-sizing: border-box;
   }
 
-  html {
-    scroll-behavior: smooth;
-  }
+  html { scroll-behavior: smooth; }
 
   body {
-    background-color: var(--iv-black);
-    color: var(--iv-cream);
+    background-color: var(--iv-ivory);
+    color: var(--iv-text);
     font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
     font-synthesis: none;
@@ -79,173 +100,160 @@
     font-family: 'Playfair Display', ui-serif, Georgia, serif;
     font-weight: 600;
     line-height: 1.2;
-    color: var(--iv-white);
+    color: var(--iv-charcoal);
   }
 
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  img {
-    max-width: 100%;
-    height: auto;
-  }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; height: auto; }
 }
 
 /* ============================================================
-   HEADER — LUXURY NAVIGATION
+   HEADER — IVORY LUXURY NAVIGATION (La Mer / Sisley style)
    ============================================================ */
 @layer components {
   header {
-    background-color: rgba(6, 12, 9, 0.97) !important;
-    border-bottom: 1px solid rgba(184, 151, 47, 0.2) !important;
+    background-color: rgba(253, 250, 245, 0.97) !important;
+    border-bottom: 1px solid rgba(145, 56, 50, 0.12) !important;
     backdrop-filter: blur(20px) !important;
     -webkit-backdrop-filter: blur(20px) !important;
   }
 
-  header .logo-text {
-    font-family: 'Playfair Display', serif;
-    color: var(--iv-white) !important;
-    font-size: 1.4rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
   header nav a {
-    color: rgba(245, 230, 192, 0.75) !important;
-    font-size: 0.8rem;
+    color: var(--iv-charcoal) !important;
+    font-size: 0.75rem;
     font-weight: 500;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     transition: color 0.2s ease;
+    opacity: 0.75;
   }
 
   header nav a:hover {
-    color: var(--iv-gold-light) !important;
+    color: var(--iv-ochre) !important;
+    opacity: 1;
   }
 
-  /* Force text-primary to be white in header */
   header .text-primary,
   header [class*="text-primary"] {
-    color: var(--iv-white) !important;
+    color: var(--iv-charcoal) !important;
   }
 
-  /* Force foreground colors */
   header .text-foreground,
   header [class*="text-foreground"] {
-    color: rgba(245, 230, 192, 0.75) !important;
+    color: var(--iv-charcoal) !important;
+    opacity: 0.75;
+  }
+
+  /* Professional portal badge — Red Ochre */
+  .professional-portal-badge {
+    background-color: rgba(145, 56, 50, 0.08);
+    border: 1px solid rgba(145, 56, 50, 0.25);
+    color: var(--iv-ochre);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 100px;
+    transition: all 0.2s ease;
+  }
+
+  .professional-portal-badge:hover {
+    background-color: var(--iv-ochre);
+    color: var(--iv-white);
+    border-color: var(--iv-ochre);
   }
 }
 
 /* ============================================================
-   MAIN CONTENT AREAS
+   MAIN CONTENT — LIGHT LUXURY
    ============================================================ */
 @layer components {
   main {
-    background-color: var(--iv-black);
-    color: var(--iv-cream);
+    background-color: var(--iv-ivory);
+    color: var(--iv-text);
     min-height: 100vh;
   }
 
-  /* Fix sections that use bg-white to use dark theme */
-  section.bg-white {
-    background-color: var(--iv-deep-green) !important;
-    color: var(--iv-cream) !important;
-  }
+  /* Light backgrounds stay light */
+  .bg-white { background-color: var(--iv-ivory) !important; color: var(--iv-text) !important; }
+  .bg-gray-50 { background-color: var(--iv-blush) !important; color: var(--iv-text) !important; }
+  .bg-gray-100 { background-color: var(--iv-parchment) !important; color: var(--iv-text) !important; }
+  .bg-slate-50 { background-color: var(--iv-blush) !important; color: var(--iv-text) !important; }
 
-  section.bg-slate-50,
-  .bg-slate-50 {
-    background-color: var(--iv-deep-green) !important;
-    color: var(--iv-cream) !important;
-  }
-
-  /* Light gray backgrounds become slightly lighter dark */
-  .bg-gray-50 {
-    background-color: rgba(13, 43, 32, 0.6) !important;
-  }
-
-  /* Cards / Product cards */
-  .bg-white {
-    background-color: var(--iv-deep-green) !important;
-    color: var(--iv-cream) !important;
-    border-color: rgba(184, 151, 47, 0.15) !important;
-  }
-
-  /* Text color fixes */
-  .text-gray-900,
-  .text-gray-800,
-  .text-gray-700 {
-    color: var(--iv-white) !important;
-  }
-
-  .text-gray-600,
-  .text-gray-500 {
-    color: rgba(245, 230, 192, 0.65) !important;
-  }
-
-  .text-gray-400 {
-    color: rgba(245, 230, 192, 0.45) !important;
-  }
+  /* Text colour fixes */
+  .text-gray-900, .text-gray-800, .text-gray-700 { color: var(--iv-charcoal) !important; }
+  .text-gray-600, .text-gray-500 { color: var(--iv-text-muted) !important; }
+  .text-gray-400 { color: rgba(122, 92, 78, 0.6) !important; }
+  .text-black { color: var(--iv-charcoal) !important; }
 
   /* Border fixes */
-  .border-gray-100,
-  .border-gray-200 {
-    border-color: rgba(184, 151, 47, 0.15) !important;
+  .border-gray-100, .border-gray-200, .border-gray-300 {
+    border-color: rgba(145, 56, 50, 0.1) !important;
   }
 
-  /* Emerald accents — keep as designed */
-  .bg-emerald-950 { background-color: #021a0f !important; }
-  .bg-emerald-900 { background-color: #0D2B20 !important; }
-  .bg-emerald-50  { background-color: rgba(52, 211, 153, 0.08) !important; }
-  .text-emerald-700 { color: #4ade80 !important; }
-  .text-emerald-600 { color: #6ee7b7 !important; }
-  .text-emerald-400 { color: #86efac !important; }
-  .text-emerald-900 { color: #bbf7d0 !important; }
-  .text-emerald-800 { color: #d1fae5 !important; }
-  .border-emerald-100 { border-color: rgba(52, 211, 153, 0.15) !important; }
+  /* Shadows — warm, soft luxury */
+  .shadow-sm  { box-shadow: 0 1px 4px rgba(60, 30, 20, 0.08) !important; }
+  .shadow-md  { box-shadow: 0 4px 16px rgba(60, 30, 20, 0.10) !important; }
+  .shadow-lg  { box-shadow: 0 8px 30px rgba(60, 30, 20, 0.12) !important; }
+  .shadow-xl  { box-shadow: 0 16px 48px rgba(60, 30, 20, 0.14) !important; }
+  .shadow-2xl { box-shadow: 0 24px 64px rgba(60, 30, 20, 0.16) !important; }
 
-  /* Gold elements */
-  .text-gold { color: var(--iv-gold) !important; }
-
-  /* Product card specific */
+  /* Product cards — light parchment */
   .product-card {
-    background: var(--iv-deep-green);
-    border: 1px solid rgba(184, 151, 47, 0.15);
+    background: var(--iv-ivory);
+    border: 1px solid rgba(145, 56, 50, 0.10);
     border-radius: 12px;
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   }
 
   .product-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-    border-color: rgba(184, 151, 47, 0.35);
+    box-shadow: 0 20px 60px rgba(60, 30, 20, 0.14);
+    border-color: rgba(145, 56, 50, 0.30);
   }
 
-  /* Professional Portal badge */
-  .professional-portal-badge {
-    background-color: rgba(184, 151, 47, 0.12);
-    border: 1px solid rgba(184, 151, 47, 0.3);
-    color: var(--iv-gold-light);
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 4px 12px;
-    border-radius: 100px;
-    transition: all 0.2s ease;
+  /* Input fields — light luxury */
+  input[type="email"],
+  input[type="text"],
+  input[type="password"],
+  select,
+  textarea {
+    background-color: var(--iv-white);
+    border: 1px solid rgba(145, 56, 50, 0.18);
+    color: var(--iv-charcoal);
+    border-radius: 8px;
   }
 
-  .professional-portal-badge:hover {
-    background-color: rgba(184, 151, 47, 0.22);
-    border-color: var(--iv-gold);
-    color: var(--iv-gold);
+  input::placeholder { color: var(--iv-text-muted); opacity: 0.5; }
+
+  input:focus {
+    outline: none;
+    border-color: var(--iv-ochre) !important;
+    box-shadow: 0 0 0 2px rgba(145, 56, 50, 0.10);
   }
 
-  /* Buttons */
+  /* Tables */
+  table { color: var(--iv-text); }
+  thead tr { border-bottom: 1px solid rgba(145, 56, 50, 0.15) !important; }
+  tbody tr:hover { background-color: rgba(145, 56, 50, 0.03) !important; }
+
+  /* Emerald/green accents — remap to brand teal/garden */
+  .bg-emerald-950 { background-color: var(--iv-garden) !important; }
+  .bg-emerald-900 { background-color: var(--iv-teal) !important; }
+  .bg-emerald-50  { background-color: rgba(0, 90, 91, 0.06) !important; }
+  .text-emerald-700 { color: var(--iv-teal) !important; }
+  .text-emerald-600 { color: var(--iv-teal) !important; }
+  .text-emerald-400 { color: #1F8A8B !important; }
+  .border-emerald-100 { border-color: rgba(0, 90, 91, 0.15) !important; }
+
+  /* Gold trim — kept as secondary detail */
+  .text-gold { color: var(--iv-gold) !important; }
+
+  /* CTA / Luxury button */
   .btn-luxury {
-    background: linear-gradient(135deg, var(--iv-gold) 0%, var(--iv-gold-light) 100%);
-    color: var(--iv-black);
+    background: var(--iv-ochre);
+    color: var(--iv-white);
     font-weight: 700;
     font-size: 0.8rem;
     letter-spacing: 0.12em;
@@ -258,129 +266,59 @@
   }
 
   .btn-luxury:hover {
-    box-shadow: 0 8px 30px rgba(184, 151, 47, 0.35);
+    background: var(--iv-ochre-light);
+    box-shadow: 0 8px 30px rgba(145, 56, 50, 0.30);
     transform: translateY(-1px);
   }
 
-  /* Table styling for ingredients */
-  table {
-    color: var(--iv-cream);
-  }
-
-  thead tr {
-    border-bottom: 1px solid rgba(184, 151, 47, 0.3) !important;
-  }
-
-  tbody tr:hover {
-    background-color: rgba(13, 43, 32, 0.5) !important;
-  }
-
-  /* Input fields */
-  input[type="email"],
-  input[type="text"],
-  input[type="password"],
-  select,
-  textarea {
-    background-color: rgba(13, 43, 32, 0.6);
-    border: 1px solid rgba(184, 151, 47, 0.2);
-    color: var(--iv-cream);
-    border-radius: 8px;
-  }
-
-  input::placeholder {
-    color: rgba(245, 230, 192, 0.35);
-  }
-
-  input:focus {
-    outline: none;
-    border-color: var(--iv-gold) !important;
-    box-shadow: 0 0 0 2px rgba(184, 151, 47, 0.15);
-  }
-
-  /* ============================================================
-   HOMEPAGE SECTION COMPONENTS — Force dark theme on all sections
-   ============================================================ */
-
-  /* All sections with light backgrounds */
-  section.bg-white,
-  section.bg-gray-50,
-  section.bg-gray-100,
-  section[class*="py-"].bg-white,
-  [class*="py-20"].bg-white,
-  [class*="py-16"].bg-white {
-    background-color: var(--iv-black) !important;
+  /* Dark drama sections (intentionally dark — preserve as-is) */
+  .iv-dark-section {
+    background-color: var(--iv-garden) !important;
     color: var(--iv-cream) !important;
   }
 
-  /* All card-like bg-white divs inside sections */
+  /* Cards inside forms (checkout etc.) */
   section .bg-white,
-  main .bg-white,
-  #root .bg-white {
-    background-color: var(--iv-deep-green) !important;
-    color: var(--iv-cream) !important;
-    border-color: rgba(184,151,47,0.15) !important;
+  main .bg-white {
+    background-color: var(--iv-white) !important;
+    color: var(--iv-text) !important;
+    border-color: rgba(145, 56, 50, 0.10) !important;
   }
 
-  /* White background sections within page body */
-  .bg-gray-50,
-  .bg-gray-100,
-  .bg-slate-50,
-  .bg-slate-100 {
-    background-color: #0a1f16 !important;
-    color: var(--iv-cream) !important;
-  }
-
-  /* Text colour fixes — ensure nothing is invisible */
-  .text-gray-900, .text-gray-800, .text-gray-700,
-  .text-black { color: var(--iv-white) !important; }
-
-  .text-gray-600, .text-gray-500 { color: rgba(245,230,192,0.7) !important; }
-  .text-gray-400 { color: rgba(245,230,192,0.45) !important; }
-
-  /* Border fixes */
-  .border-gray-100, .border-gray-200, .border-gray-300 {
-    border-color: rgba(184,151,47,0.15) !important;
-  }
-
-  /* Shadow overrides — use dark glow instead of white-box shadows */
-  .shadow-lg, .shadow-xl, .shadow-2xl, .shadow-md, .shadow-sm {
-    box-shadow: 0 4px 24px rgba(0,0,0,0.35) !important;
-  }
-
-  /* FAQ, newsletter, how-it-works specific cards */
-  [class*="rounded"].bg-white,
-  [class*="rounded-xl"].bg-white,
-  [class*="rounded-2xl"].bg-white {
-    background-color: rgba(13,43,32,0.8) !important;
-    border: 1px solid rgba(184,151,47,0.12) !important;
-  }
-
-  /* Timeline white dots — keep them as a gold ring */
-  .border-emerald-500.bg-white {
-    background-color: var(--iv-gold) !important;
-    border-color: var(--iv-deep-green) !important;
-  }
-
-  /* Problem-solution and education blocks */
+  /* Problem-solution cards */
   .problem-solution-card,
   [class*="border-gray-100"].rounded-2xl {
-    background-color: rgba(13,43,32,0.85) !important;
-    color: var(--iv-cream) !important;
+    background-color: var(--iv-parchment) !important;
+    color: var(--iv-text) !important;
+    border-color: rgba(145, 56, 50, 0.10) !important;
+  }
+
+  /* Subscription badge */
+  .text-emerald-700.bg-emerald-50 {
+    background-color: rgba(31, 81, 41, 0.08) !important;
+    color: var(--iv-garden) !important;
   }
 }
 
 /* ============================================================
-   FOOTER
+   FOOTER — FORMAL GARDEN (deep, luxurious)
    ============================================================ */
 @layer components {
   footer {
-    background-color: var(--iv-black) !important;
-    border-top: 1px solid rgba(184, 151, 47, 0.2) !important;
-    color: rgba(245, 230, 192, 0.65);
+    background-color: var(--iv-garden) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: rgba(250, 247, 240, 0.70);
   }
 
-  footer a:hover {
-    color: var(--iv-gold-light) !important;
+  footer h1, footer h2, footer h3, footer h4, footer h5, footer h6 {
+    color: var(--iv-cream) !important;
+  }
+
+  footer a:hover { color: var(--iv-peach) !important; }
+
+  footer .text-gray-900, footer .text-gray-800,
+  footer .text-gray-700, footer .text-gray-600 {
+    color: rgba(250, 247, 240, 0.70) !important;
   }
 }
 
@@ -389,16 +327,16 @@
    ============================================================ */
 @layer utilities {
   .text-balance { text-wrap: balance; }
-  .text-pretty { text-wrap: pretty; }
+  .text-pretty  { text-wrap: pretty; }
 
-  .animate-gold-shimmer {
-    background-image: linear-gradient(90deg, transparent, rgba(184, 151, 47, 0.15), transparent);
+  .animate-ochre-shimmer {
+    background-image: linear-gradient(90deg, transparent, rgba(145, 56, 50, 0.10), transparent);
     background-size: 200% 100%;
     animation: shimmer 2s infinite;
   }
 
   @keyframes shimmer {
-    0% { background-position: -200% 0; }
+    0%   { background-position: -200% 0; }
     100% { background-position: 200% 0; }
   }
 
@@ -408,25 +346,25 @@
 
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 }
 
 /* ============================================================
-   SCROLLBAR — LUXURY DARK
+   SCROLLBAR — WARM LUXURY
    ============================================================ */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: var(--iv-black); }
+::-webkit-scrollbar-track { background: var(--iv-blush); }
 ::-webkit-scrollbar-thumb {
-  background: rgba(184, 151, 47, 0.3);
+  background: rgba(145, 56, 50, 0.25);
   border-radius: 6px;
 }
-::-webkit-scrollbar-thumb:hover { background: var(--iv-gold); }
+::-webkit-scrollbar-thumb:hover { background: var(--iv-ochre); }
 
 /* ============================================================
    SELECTION
    ============================================================ */
 ::selection {
-  background: rgba(184, 151, 47, 0.25);
-  color: var(--iv-white);
+  background: rgba(145, 56, 50, 0.18);
+  color: var(--iv-charcoal);
 }

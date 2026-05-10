@@ -87,7 +87,7 @@ export function CartDrawer() {
                         </button>
                       </div>
                       <div className="font-semibold text-gray-900">
-                        €{(item.price * item.quantity).toFixed(2)}
+                        ${(item.price * item.quantity).toFixed(2)}
                       </div>
                     </div>
                   </div>
@@ -101,7 +101,7 @@ export function CartDrawer() {
           <div className="border-t border-gray-100 p-6 bg-gray-50">
             <div className="flex justify-between text-base font-medium text-gray-900 mb-4">
               <p>Subtotal</p>
-              <p>€{subtotal.toFixed(2)}</p>
+              <p>${subtotal.toFixed(2)}</p>
             </div>
             <p className="text-xs text-gray-500 mb-6">
               Shipping and taxes calculated at checkout.
