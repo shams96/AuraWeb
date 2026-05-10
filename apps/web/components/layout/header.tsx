@@ -40,11 +40,6 @@ export function Header() {
   
   const [isTierDropdownOpen, setIsTierDropdownOpen] = useState(false)
 
-  const OCHRE = '#913832'
-  const OCHRE_HOVER = '#C05040'
-  const NAV_COLOR = 'rgba(26,22,20,0.65)'
-  const NAV_HOVER = OCHRE
-
   return (
     <header style={{ position: 'sticky', top: 0, zIndex: 50, width: '100%', backgroundColor: 'rgba(253,250,245,0.97)', borderBottom: '1px solid rgba(145,56,50,0.12)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)' }}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -52,9 +47,9 @@ export function Header() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center gap-2.5">
-              <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.25rem', fontWeight: 600, color: '#1A1614', letterSpacing: '0.08em' }}>ISOLA VITALE</span>
-              <span style={{ width: 1, height: 16, backgroundColor: 'rgba(145,56,50,0.3)', display: 'inline-block' }} />
-              <span style={{ fontSize: '0.55rem', fontWeight: 700, color: 'rgba(145,56,50,0.7)', letterSpacing: '0.22em', textTransform: 'uppercase' }}>Milano</span>
+              <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.25rem', fontWeight: 600, color: 'var(--iv-white)', letterSpacing: '0.08em' }}>ISOLA VITALE</span>
+              <span style={{ width: 1, height: 16, backgroundColor: 'rgba(145,56,50,0.28)', display: 'inline-block' }} />
+              <span style={{ fontSize: '0.55rem', fontWeight: 700, color: 'var(--iv-gold)', letterSpacing: '0.22em', textTransform: 'uppercase', opacity: 0.70 }}>Milano</span>
             </Link>
           </div>
 
@@ -66,20 +61,20 @@ export function Header() {
               onMouseEnter={() => setIsTierDropdownOpen(true)}
               onMouseLeave={() => setIsTierDropdownOpen(false)}
             >
-              <button style={{ fontSize: '0.7rem', fontWeight: 600, color: NAV_COLOR, letterSpacing: '0.12em', textTransform: 'uppercase', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 4 }}>
+              <button style={{ fontSize: '0.7rem', fontWeight: 600, color: 'var(--iv-cream)', letterSpacing: '0.12em', textTransform: 'uppercase', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 4, opacity: 0.70 }}>
                 Shop by Age
                 <svg style={{ width: 10, height: 10, transition: 'transform 0.2s', transform: isTierDropdownOpen ? 'rotate(180deg)' : 'none' }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
               </button>
               {isTierDropdownOpen && (
                 <div style={{ position: 'absolute', top: '100%', left: 0, paddingTop: 8, minWidth: 210, zIndex: 100 }}>
-                  <div style={{ backgroundColor: '#FDFAF5', border: '1px solid rgba(145,56,50,0.15)', borderRadius: 10, overflow: 'hidden', boxShadow: '0 20px 60px rgba(60,30,20,0.14)' }}>
+                  <div style={{ backgroundColor: 'var(--iv-black)', border: '1px solid rgba(145,56,50,0.15)', borderRadius: 10, overflow: 'hidden', boxShadow: '0 20px 60px rgba(60,30,20,0.14)' }}>
                     {tiers.map((tier) => (
                       <Link
                         key={tier.name}
                         href={tier.href}
-                        style={{ display: 'block', padding: '10px 18px', fontSize: '0.78rem', color: '#3D2B20', letterSpacing: '0.04em', transition: 'all 0.15s ease' }}
-                        onMouseEnter={e => { (e.target as HTMLElement).style.backgroundColor = 'rgba(145,56,50,0.06)'; (e.target as HTMLElement).style.color = OCHRE; }}
-                        onMouseLeave={e => { (e.target as HTMLElement).style.backgroundColor = 'transparent'; (e.target as HTMLElement).style.color = '#3D2B20'; }}
+                        style={{ display: 'block', padding: '10px 18px', fontSize: '0.78rem', color: 'var(--iv-cream)', letterSpacing: '0.04em', transition: 'all 0.15s ease' }}
+                        onMouseEnter={e => { (e.target as HTMLElement).style.backgroundColor = 'rgba(145,56,50,0.06)'; (e.target as HTMLElement).style.color = 'var(--iv-gold)'; }}
+                        onMouseLeave={e => { (e.target as HTMLElement).style.backgroundColor = 'transparent'; (e.target as HTMLElement).style.color = 'var(--iv-cream)'; }}
                         onClick={() => setIsTierDropdownOpen(false)}
                       >
                         {tier.name}
@@ -94,9 +89,9 @@ export function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                style={{ fontSize: '0.7rem', fontWeight: 600, color: NAV_COLOR, letterSpacing: '0.12em', textTransform: 'uppercase', transition: 'color 0.2s ease' }}
-                onMouseEnter={e => { (e.target as HTMLElement).style.color = NAV_HOVER; }}
-                onMouseLeave={e => { (e.target as HTMLElement).style.color = NAV_COLOR; }}
+                style={{ fontSize: '0.7rem', fontWeight: 600, color: 'var(--iv-cream)', letterSpacing: '0.12em', textTransform: 'uppercase', transition: 'color 0.2s ease', opacity: 0.70 }}
+                onMouseEnter={e => { (e.target as HTMLElement).style.color = 'var(--iv-gold)'; (e.target as HTMLElement).style.opacity = '1'; }}
+                onMouseLeave={e => { (e.target as HTMLElement).style.color = 'var(--iv-cream)'; (e.target as HTMLElement).style.opacity = '0.70'; }}
               >
                 {item.name}
               </Link>
@@ -180,14 +175,14 @@ export function Header() {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="md:hidden">
-            <div style={{ backgroundColor: '#FDFAF5', borderBottom: '1px solid rgba(145,56,50,0.12)', padding: '12px 16px' }}>
+            <div style={{ backgroundColor: 'var(--iv-black)', borderBottom: '1px solid rgba(145,56,50,0.12)', padding: '12px 16px' }}>
               <div style={{ paddingBottom: 8, borderBottom: '1px solid rgba(145,56,50,0.10)', marginBottom: 8 }}>
-                <span style={{ display: 'block', padding: '4px 8px', fontSize: '0.6rem', fontWeight: 700, color: 'rgba(145,56,50,0.6)', textTransform: 'uppercase', letterSpacing: '0.16em' }}>Shop by Age</span>
+                <span style={{ display: 'block', padding: '4px 8px', fontSize: '0.6rem', fontWeight: 700, color: 'var(--iv-gold)', textTransform: 'uppercase', letterSpacing: '0.16em', opacity: 0.65 }}>Shop by Age</span>
                 {tiers.map((tier) => (
                   <Link
                     key={tier.name}
                     href={tier.href}
-                    style={{ display: 'block', padding: '8px 12px', fontSize: '0.82rem', color: '#3D2B20', letterSpacing: '0.04em' }}
+                    style={{ display: 'block', padding: '8px 12px', fontSize: '0.82rem', color: 'var(--iv-cream)', letterSpacing: '0.04em' }}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {tier.name}
@@ -198,14 +193,14 @@ export function Header() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  style={{ display: 'block', padding: '10px 12px', fontSize: '0.82rem', color: '#3D2B20', letterSpacing: '0.05em', borderRadius: 6 }}
+                  style={{ display: 'block', padding: '10px 12px', fontSize: '0.82rem', color: 'var(--iv-cream)', letterSpacing: '0.05em', borderRadius: 6 }}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
                 </Link>
               ))}
               <div style={{ marginTop: 12, paddingTop: 12, borderTop: '1px solid rgba(145,56,50,0.10)' }}>
-                <Link href="/professional" style={{ display: 'block', padding: '10px 12px', fontSize: '0.78rem', fontWeight: 700, color: '#913832', letterSpacing: '0.1em', textTransform: 'uppercase' }} onClick={() => setIsMenuOpen(false)}>
+                <Link href="/professional" style={{ display: 'block', padding: '10px 12px', fontSize: '0.78rem', fontWeight: 700, color: 'var(--iv-gold)', letterSpacing: '0.1em', textTransform: 'uppercase' }} onClick={() => setIsMenuOpen(false)}>
                   Professional Portal →
                 </Link>
               </div>

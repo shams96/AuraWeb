@@ -5,26 +5,28 @@
 @tailwind utilities;
 
 /* ============================================================
-   ISOLA VITALE — LUXURY LIGHT DESIGN SYSTEM 2026
-   Palette: Ivory · Red Ochre · Peach Dust · Formal Garden · Deep Peacock
+   ISOLA VITALE — GLOBAL DESIGN TOKEN SYSTEM
+   To change the theme: edit only the values in :root below.
+   Classes like bg-iv-black / text-iv-white resolve to whatever
+   the token points at — no page edits ever required.
    ============================================================ */
 
 @layer base {
   :root {
-    /* shadcn/radix tokens — warm light mode */
+    /* ── shadcn/radix HSL tokens ──────────────────────────────── */
     --background: 40 60% 98%;
     --foreground: 20 15% 12%;
     --card: 36 40% 96%;
     --card-foreground: 20 15% 12%;
     --popover: 36 40% 97%;
     --popover-foreground: 20 15% 12%;
-    --primary: 4 48% 38%;          /* Red Ochre */
+    --primary: 4 48% 38%;
     --primary-foreground: 40 60% 98%;
-    --secondary: 145 43% 21%;      /* Formal Garden */
+    --secondary: 145 43% 21%;
     --secondary-foreground: 40 60% 98%;
     --muted: 30 20% 92%;
     --muted-foreground: 20 10% 45%;
-    --accent: 181 100% 18%;        /* Deep Peacock */
+    --accent: 181 100% 18%;
     --accent-foreground: 40 60% 98%;
     --destructive: 0 62% 50%;
     --destructive-foreground: 0 0% 100%;
@@ -33,60 +35,83 @@
     --ring: 4 48% 38%;
     --radius: 0.5rem;
 
-    /* ── DARK SECTION TOKENS (explicitly dark pages/hero blocks) ── */
-    --iv-black: #060C09;
-    --iv-deep-green: #0D2B20;
-    --iv-green: #1A4A35;
+    /* ══════════════════════════════════════════════════════════
+       LIGHT LUXURY PALETTE — 2026
+       Edit these values to retheme every page simultaneously.
+       ══════════════════════════════════════════════════════════ */
+
+    /* Core surface tokens (used by bg-iv-* classes) */
+    --iv-black:       #FDFAF5;   /* page background — warm ivory          */
+    --iv-deep-green:  #F4EAE2;   /* alternate section bg — warm parchment */
+    --iv-green:       #EDE8E0;   /* card surface                          */
+    --iv-light-green: #E5DDD5;   /* card surface variant                  */
+
+    /* Core text tokens (used by text-iv-* classes) */
+    --iv-white:       #1A1614;   /* primary headings — warm charcoal      */
+    --iv-cream:       #3D2B20;   /* body text — warm espresso             */
+
+    /* Accent tokens (used by text-iv-gold / border-iv-gold) */
+    --iv-gold:        #913832;   /* Red Ochre — primary CTA & accent      */
+    --iv-gold-light:  #B04843;   /* Red Ochre hover                       */
+    --iv-champagne:   #FAD6C9;   /* Peach Dust — decorative warm          */
+    --iv-champagne-gold: #D4B483;/* warm trim gold                        */
+
+    /* ── Product SKU palette (always fixed, never remapped) ──── */
+    --iv-red-ochre:       #913832;
+    --iv-formal-garden:   #1F5129;
+    --iv-peach-dust:      #FAD6C9;
+    --iv-deep-peacock:    #005A5B;
+    --iv-cloud-dancer:    #F0EEE9;
+    --iv-smoky-charcoal:  #363636;
+
+    /* ── Semantic aliases (used in new components) ────────────── */
+    --iv-ivory:       #FDFAF5;
+    --iv-blush:       #FBF3EE;
+    --iv-parchment:   #F4EAE2;
+    --iv-peach:       #FAD6C9;
+    --iv-ochre:       #913832;
+    --iv-ochre-dark:  #6E2724;
+    --iv-ochre-light: #C05040;
+    --iv-garden:      #1F5129;
+    --iv-teal:        #005A5B;
+    --iv-charcoal:    #1A1614;
+    --iv-text:        #3D2B20;
+    --iv-text-muted:  #7A5C4E;
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     .iv-dark — opt-in dark section override.
+     Add class="iv-dark" to any section/div that must stay dark.
+     All iv-* classes inside resolve back to the dark palette.
+     ═══════════════════════════════════════════════════════════ */
+  .iv-dark {
+    --iv-black:       #060C09;
+    --iv-deep-green:  #0D2B20;
+    --iv-green:       #1A4A35;
     --iv-light-green: #2D6B4F;
-
-    /* ── BRAND PALETTE 2026 ── */
-    --iv-ivory: #FDFAF5;           /* primary page background */
-    --iv-blush: #FBF3EE;           /* alternate section bg */
-    --iv-parchment: #F4EAE2;       /* card background */
-    --iv-peach: #FAD6C9;           /* Peach Dust decorative */
-    --iv-ochre: #913832;           /* Red Ochre — primary CTA */
-    --iv-ochre-dark: #6E2724;      /* pressed Red Ochre */
-    --iv-ochre-light: #C05040;     /* hover Red Ochre */
-    --iv-garden: #1F5129;          /* Formal Garden — dark drama sections */
-    --iv-teal: #005A5B;            /* Deep Peacock — secondary accent */
-
-    /* ── TYPOGRAPHY ── */
-    --iv-charcoal: #1A1614;        /* warm near-black, headings */
-    --iv-text: #3D2B20;            /* warm brown, body copy */
-    --iv-text-muted: #7A5C4E;      /* muted warm, subtitles */
-    --iv-border: rgba(145, 56, 50, 0.12);
-
-    /* ── KEPT FOR DARK-SECTION TEXT ── */
-    --iv-cream: #FAF7F0;
-    --iv-white: #FFFFFF;
-
-    /* ── GOLD TRIM (kept as luxury accent detail) ── */
-    --iv-gold: #B8972F;
-    --iv-gold-light: #D4B450;
-    --iv-champagne: #F5E6C0;
+    --iv-white:       #FFFFFF;
+    --iv-cream:       #FAF7F0;
+    --iv-gold:        #B8972F;
+    --iv-gold-light:  #D4B450;
+    --iv-champagne:   #F5E6C0;
     --iv-champagne-gold: #D4B483;
-
-    /* ── PRODUCT SKU COLORS ── */
-    --iv-red-ochre: #913832;
-    --iv-formal-garden: #1F5129;
-    --iv-peach-dust: #FAD6C9;
-    --iv-deep-peacock: #005A5B;
-    --iv-cloud-dancer: #F0EEE9;
-    --iv-smoky-charcoal: #363636;
+    --background: 158 30% 5%;
+    --foreground: 50 20% 95%;
+    --border: 158 20% 18%;
   }
 }
 
+/* ============================================================
+   BASE STYLES
+   ============================================================ */
 @layer base {
-  * {
-    border-color: hsl(var(--border));
-    box-sizing: border-box;
-  }
+  * { border-color: hsl(var(--border)); box-sizing: border-box; }
 
   html { scroll-behavior: smooth; }
 
   body {
-    background-color: var(--iv-ivory);
-    color: var(--iv-text);
+    background-color: var(--iv-black); /* resolves to ivory in light theme */
+    color: var(--iv-cream);            /* resolves to espresso in light theme */
     font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
     font-synthesis: none;
@@ -100,7 +125,13 @@
     font-family: 'Playfair Display', ui-serif, Georgia, serif;
     font-weight: 600;
     line-height: 1.2;
-    color: var(--iv-charcoal);
+    color: var(--iv-white); /* charcoal in light theme, white in .iv-dark */
+  }
+
+  /* Inside .iv-dark sections, restore proper contrast */
+  .iv-dark h1, .iv-dark h2, .iv-dark h3,
+  .iv-dark h4, .iv-dark h5, .iv-dark h6 {
+    color: var(--iv-white);
   }
 
   a { color: inherit; text-decoration: none; }
@@ -108,24 +139,24 @@
 }
 
 /* ============================================================
-   HEADER — IVORY LUXURY NAVIGATION (La Mer / Sisley style)
+   HEADER — IVORY LUXURY (La Mer / Sisley style)
    ============================================================ */
 @layer components {
   header {
     background-color: rgba(253, 250, 245, 0.97) !important;
     border-bottom: 1px solid rgba(145, 56, 50, 0.12) !important;
-    backdrop-filter: blur(20px) !important;
-    -webkit-backdrop-filter: blur(20px) !important;
+    backdrop-filter: blur(24px) !important;
+    -webkit-backdrop-filter: blur(24px) !important;
   }
 
   header nav a {
     color: var(--iv-charcoal) !important;
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
+    opacity: 0.70;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    transition: color 0.2s ease;
-    opacity: 0.75;
+    transition: color 0.2s ease, opacity 0.2s ease;
   }
 
   header nav a:hover {
@@ -133,21 +164,13 @@
     opacity: 1;
   }
 
-  header .text-primary,
-  header [class*="text-primary"] {
-    color: var(--iv-charcoal) !important;
-  }
+  header .text-primary, header [class*="text-primary"] { color: var(--iv-charcoal) !important; }
+  header .text-foreground, header [class*="text-foreground"] { color: var(--iv-charcoal) !important; opacity: 0.70; }
 
-  header .text-foreground,
-  header [class*="text-foreground"] {
-    color: var(--iv-charcoal) !important;
-    opacity: 0.75;
-  }
-
-  /* Professional portal badge — Red Ochre */
+  /* Professional Portal badge */
   .professional-portal-badge {
-    background-color: rgba(145, 56, 50, 0.08);
-    border: 1px solid rgba(145, 56, 50, 0.25);
+    background-color: rgba(145, 56, 50, 0.07);
+    border: 1px solid rgba(145, 56, 50, 0.22);
     color: var(--iv-ochre);
     font-size: 0.65rem;
     font-weight: 700;
@@ -160,7 +183,7 @@
 
   .professional-portal-badge:hover {
     background-color: var(--iv-ochre);
-    color: var(--iv-white);
+    color: #FFFFFF;
     border-color: var(--iv-ochre);
   }
 }
@@ -170,75 +193,84 @@
    ============================================================ */
 @layer components {
   main {
-    background-color: var(--iv-ivory);
-    color: var(--iv-text);
+    background-color: var(--iv-black); /* = ivory */
+    color: var(--iv-cream);            /* = warm espresso */
     min-height: 100vh;
   }
 
-  /* Light backgrounds stay light */
-  .bg-white { background-color: var(--iv-ivory) !important; color: var(--iv-text) !important; }
-  .bg-gray-50 { background-color: var(--iv-blush) !important; color: var(--iv-text) !important; }
-  .bg-gray-100 { background-color: var(--iv-parchment) !important; color: var(--iv-text) !important; }
-  .bg-slate-50 { background-color: var(--iv-blush) !important; color: var(--iv-text) !important; }
+  /* Utility overrides — generic Tailwind utility classes
+     Remap to match luxury light palette */
+  .bg-white         { background-color: var(--iv-black) !important; color: var(--iv-cream) !important; }
+  .bg-gray-50       { background-color: var(--iv-deep-green) !important; }
+  .bg-gray-100      { background-color: var(--iv-green) !important; }
+  .bg-slate-50      { background-color: var(--iv-deep-green) !important; }
 
-  /* Text colour fixes */
-  .text-gray-900, .text-gray-800, .text-gray-700 { color: var(--iv-charcoal) !important; }
-  .text-gray-600, .text-gray-500 { color: var(--iv-text-muted) !important; }
-  .text-gray-400 { color: rgba(122, 92, 78, 0.6) !important; }
-  .text-black { color: var(--iv-charcoal) !important; }
+  .text-gray-900, .text-gray-800, .text-gray-700, .text-black { color: var(--iv-white) !important; }
+  .text-gray-600, .text-gray-500 { color: var(--iv-cream) !important; opacity: 0.75; }
+  .text-gray-400    { color: var(--iv-cream) !important; opacity: 0.45; }
 
-  /* Border fixes */
   .border-gray-100, .border-gray-200, .border-gray-300 {
-    border-color: rgba(145, 56, 50, 0.1) !important;
+    border-color: rgba(145, 56, 50, 0.10) !important;
   }
 
-  /* Shadows — warm, soft luxury */
-  .shadow-sm  { box-shadow: 0 1px 4px rgba(60, 30, 20, 0.08) !important; }
+  /* Shadows — warm luxury */
+  .shadow-sm  { box-shadow: 0 1px 4px  rgba(60, 30, 20, 0.08) !important; }
   .shadow-md  { box-shadow: 0 4px 16px rgba(60, 30, 20, 0.10) !important; }
   .shadow-lg  { box-shadow: 0 8px 30px rgba(60, 30, 20, 0.12) !important; }
   .shadow-xl  { box-shadow: 0 16px 48px rgba(60, 30, 20, 0.14) !important; }
   .shadow-2xl { box-shadow: 0 24px 64px rgba(60, 30, 20, 0.16) !important; }
 
-  /* Product cards — light parchment */
+  /* Product card */
   .product-card {
-    background: var(--iv-ivory);
+    background: var(--iv-black);
     border: 1px solid rgba(145, 56, 50, 0.10);
     border-radius: 12px;
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   }
-
   .product-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 20px 60px rgba(60, 30, 20, 0.14);
-    border-color: rgba(145, 56, 50, 0.30);
+    border-color: rgba(145, 56, 50, 0.28);
   }
 
-  /* Input fields — light luxury */
+  /* Forms — light */
   input[type="email"],
   input[type="text"],
   input[type="password"],
   select,
   textarea {
-    background-color: var(--iv-white);
+    background-color: #FFFFFF;
     border: 1px solid rgba(145, 56, 50, 0.18);
-    color: var(--iv-charcoal);
+    color: var(--iv-white);
     border-radius: 8px;
   }
-
-  input::placeholder { color: var(--iv-text-muted); opacity: 0.5; }
-
+  input::placeholder { color: var(--iv-text-muted); opacity: 0.55; }
   input:focus {
     outline: none;
     border-color: var(--iv-ochre) !important;
     box-shadow: 0 0 0 2px rgba(145, 56, 50, 0.10);
   }
 
-  /* Tables */
-  table { color: var(--iv-text); }
-  thead tr { border-bottom: 1px solid rgba(145, 56, 50, 0.15) !important; }
-  tbody tr:hover { background-color: rgba(145, 56, 50, 0.03) !important; }
+  /* Inside .iv-dark, forms go dark */
+  .iv-dark input[type="email"],
+  .iv-dark input[type="text"],
+  .iv-dark input[type="password"],
+  .iv-dark select,
+  .iv-dark textarea {
+    background-color: rgba(13, 43, 32, 0.6);
+    border-color: rgba(184, 151, 47, 0.2);
+    color: var(--iv-cream);
+  }
+  .iv-dark input::placeholder { color: rgba(245, 230, 192, 0.35); }
 
-  /* Emerald/green accents — remap to brand teal/garden */
+  /* Tables */
+  table { color: var(--iv-cream); }
+  thead tr  { border-bottom: 1px solid rgba(145, 56, 50, 0.15) !important; }
+  tbody tr:hover { background-color: rgba(145, 56, 50, 0.03) !important; }
+  .iv-dark thead tr  { border-bottom-color: rgba(184, 151, 47, 0.30) !important; }
+  .iv-dark tbody tr:hover { background-color: rgba(13, 43, 32, 0.5) !important; }
+
+  /* Emerald utilities — remap to brand teal */
   .bg-emerald-950 { background-color: var(--iv-garden) !important; }
   .bg-emerald-900 { background-color: var(--iv-teal) !important; }
   .bg-emerald-50  { background-color: rgba(0, 90, 91, 0.06) !important; }
@@ -247,13 +279,20 @@
   .text-emerald-400 { color: #1F8A8B !important; }
   .border-emerald-100 { border-color: rgba(0, 90, 91, 0.15) !important; }
 
-  /* Gold trim — kept as secondary detail */
-  .text-gold { color: var(--iv-gold) !important; }
+  /* .iv-dark cards (white-bg cards inside dark sections) */
+  .iv-dark section .bg-white,
+  .iv-dark main .bg-white,
+  .iv-dark .bg-white {
+    background-color: rgba(13, 43, 32, 0.8) !important;
+    border-color: rgba(184, 151, 47, 0.12) !important;
+    color: var(--iv-cream) !important;
+  }
+  .iv-dark .bg-gray-50 { background-color: rgba(13, 43, 32, 0.6) !important; }
 
-  /* CTA / Luxury button */
+  /* CTA button */
   .btn-luxury {
-    background: var(--iv-ochre);
-    color: var(--iv-white);
+    background: var(--iv-gold);   /* Red Ochre */
+    color: #FFFFFF;
     font-weight: 700;
     font-size: 0.8rem;
     letter-spacing: 0.12em;
@@ -264,32 +303,17 @@
     transition: all 0.3s ease;
     cursor: pointer;
   }
-
   .btn-luxury:hover {
-    background: var(--iv-ochre-light);
+    background: var(--iv-gold-light);
     box-shadow: 0 8px 30px rgba(145, 56, 50, 0.30);
     transform: translateY(-1px);
-  }
-
-  /* Dark drama sections (intentionally dark — preserve as-is) */
-  .iv-dark-section {
-    background-color: var(--iv-garden) !important;
-    color: var(--iv-cream) !important;
-  }
-
-  /* Cards inside forms (checkout etc.) */
-  section .bg-white,
-  main .bg-white {
-    background-color: var(--iv-white) !important;
-    color: var(--iv-text) !important;
-    border-color: rgba(145, 56, 50, 0.10) !important;
   }
 
   /* Problem-solution cards */
   .problem-solution-card,
   [class*="border-gray-100"].rounded-2xl {
-    background-color: var(--iv-parchment) !important;
-    color: var(--iv-text) !important;
+    background-color: var(--iv-deep-green) !important;
+    color: var(--iv-cream) !important;
     border-color: rgba(145, 56, 50, 0.10) !important;
   }
 
@@ -301,24 +325,33 @@
 }
 
 /* ============================================================
-   FOOTER — FORMAL GARDEN (deep, luxurious)
+   FOOTER — FORMAL GARDEN DARK (permanent dark, correct contrast)
    ============================================================ */
 @layer components {
   footer {
-    background-color: var(--iv-garden) !important;
+    background-color: var(--iv-formal-garden) !important; /* always Formal Garden */
     border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
-    color: rgba(250, 247, 240, 0.70);
+    color: rgba(250, 247, 240, 0.65);
   }
 
-  footer h1, footer h2, footer h3, footer h4, footer h5, footer h6 {
-    color: var(--iv-cream) !important;
+  footer h1, footer h2, footer h3,
+  footer h4, footer h5, footer h6 {
+    color: #FAF7F0 !important; /* always cream — footer is always dark */
   }
 
   footer a:hover { color: var(--iv-peach) !important; }
 
+  footer .text-iv-white { color: #FAF7F0 !important; }
+  footer .text-iv-cream { color: rgba(250, 247, 240, 0.65) !important; }
+  footer .text-iv-gold  { color: #B8972F !important; } /* gold stays gold in footer */
+
   footer .text-gray-900, footer .text-gray-800,
   footer .text-gray-700, footer .text-gray-600 {
-    color: rgba(250, 247, 240, 0.70) !important;
+    color: rgba(250, 247, 240, 0.65) !important;
+  }
+
+  footer svg, footer .h-4, footer .h-3 {
+    color: rgba(184, 151, 47, 0.60);
   }
 }
 
@@ -329,21 +362,17 @@
   .text-balance { text-wrap: balance; }
   .text-pretty  { text-wrap: pretty; }
 
-  .animate-ochre-shimmer {
-    background-image: linear-gradient(90deg, transparent, rgba(145, 56, 50, 0.10), transparent);
+  .animate-shimmer {
+    background-image: linear-gradient(90deg, transparent, rgba(145, 56, 50, 0.08), transparent);
     background-size: 200% 100%;
     animation: shimmer 2s infinite;
   }
-
   @keyframes shimmer {
     0%   { background-position: -200% 0; }
     100% { background-position: 200% 0; }
   }
 
-  .fade-up {
-    animation: fadeUp 0.6s ease forwards;
-  }
-
+  .fade-up { animation: fadeUp 0.6s ease forwards; }
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(16px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -354,17 +383,14 @@
    SCROLLBAR — WARM LUXURY
    ============================================================ */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: var(--iv-blush); }
-::-webkit-scrollbar-thumb {
-  background: rgba(145, 56, 50, 0.25);
-  border-radius: 6px;
-}
+::-webkit-scrollbar-track { background: var(--iv-deep-green); }
+::-webkit-scrollbar-thumb { background: rgba(145, 56, 50, 0.22); border-radius: 6px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--iv-ochre); }
 
 /* ============================================================
    SELECTION
    ============================================================ */
 ::selection {
-  background: rgba(145, 56, 50, 0.18);
-  color: var(--iv-charcoal);
+  background: rgba(145, 56, 50, 0.15);
+  color: var(--iv-white);
 }
