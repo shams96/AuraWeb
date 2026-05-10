@@ -37,7 +37,7 @@ export const HERO_SKUS: Product[] = [
   {
     id: 'terra-radiance-cream',
     name: 'Terra Radiance Cream',
-    price: 145,
+    price: 245,
     tier: 'best-seller',
     collection: 'The Daily Collection',
     volume: '50 ml',
@@ -56,7 +56,7 @@ export const HERO_SKUS: Product[] = [
   {
     id: 'gentle-cellular-cleanser',
     name: 'Gentle Cellular Cleanser',
-    price: 65,
+    price: 85,
     tier: 'best-seller',
     collection: 'The Daily Collection',
     volume: '150 ml',
@@ -74,7 +74,7 @@ export const HERO_SKUS: Product[] = [
   {
     id: 'eye-contour-complex',
     name: 'Eye Contour Complex',
-    price: 95,
+    price: 195,
     tier: 'best-seller',
     collection: 'The Daily Collection',
     volume: '15 ml',
@@ -92,7 +92,7 @@ export const HERO_SKUS: Product[] = [
   {
     id: 'obsidian-vitale-cream',
     name: 'Obsidian Vitale Cream',
-    price: 185,
+    price: 295,
     tier: 'best-seller',
     collection: 'Cellular Chronos Collection',
     volume: '50 ml',
@@ -111,7 +111,7 @@ export const HERO_SKUS: Product[] = [
   {
     id: 'chrono-lift-serum',
     name: 'Chrono-Lift Serum',
-    price: 155,
+    price: 345,
     tier: 'best-seller',
     collection: 'Cellular Chronos Collection',
     volume: '30 ml',
@@ -131,26 +131,26 @@ export const HERO_SKUS: Product[] = [
 export const ALL_PRODUCTS: Product[] = [
   ...HERO_SKUS,
   // CLINICAL A-SERIES
-  { id: '1a', name: '1A Clinical Peptide Essence', price: 295, tier: 'clinical', image: '/images/products/isola_serum.png', badge: 'OS-01 + GLP-1', rating: 5.0, reviewCount: 210, tags: ['Treatment', 'B2B'], description: 'Professional grade cellular essence.', isBestSeller: true },
-  { id: '2a', name: '2A Clinical Barrier Cream', price: 250, tier: 'clinical', image: '/images/products/isola_collection.png', badge: 'DWAT + Bifida', rating: 4.9, reviewCount: 185, tags: ['Cream', 'B2B'], description: 'Professional grade barrier restoration.', category: 'Bundles' },
-  { id: '3a', name: '3A Clinical SPF 50+ Sunscreen', price: 185, tier: 'clinical', image: '/images/products/isola_collection.png', badge: 'Ectoin Shield', rating: 4.8, reviewCount: 142, tags: ['SPF', 'B2B'], description: 'Professional grade UV protection.' },
-  { id: '4a', name: '4A Clinical Night Repair', price: 280, tier: 'clinical', image: '/images/products/isola_collection.png', badge: 'L-Ornithine + NMN', rating: 5.0, reviewCount: 295, tags: ['Treatment', 'B2B'], description: 'Professional grade night repair.', category: 'Bundles' },
-  { id: '5a', name: '5A Clinical Hydrating Mist', price: 125, tier: 'clinical', image: '/images/products/isola_collection.png', badge: 'Ectoin + Bifida', rating: 4.8, reviewCount: 110, tags: ['Toner', 'B2B'], description: 'Professional grade hydration.' },
-  { id: '6a', name: '6A Clinical Gentle Cleanser', price: 95, tier: 'clinical', image: '/images/products/isola_collection.png', badge: 'Microbiome Safe', rating: 4.9, reviewCount: 310, tags: ['Cleanser', 'B2B'], description: 'Professional grade gentle cleansing.' },
-  { id: '7a', name: '7A Clinical Eye Treatment', price: 195, tier: 'clinical', image: '/images/products/isola_collection.png', badge: '5 Breakthroughs', rating: 5.0, reviewCount: 180, tags: ['Treatment', 'B2B'], description: 'Professional grade eye rejuvenation.' },
+  { id: '1a', name: '1A Clinical Peptide Essence', price: 390, tier: 'clinical', image: '/images/products/isola_serum.png', badge: 'OS-01 + GLP-1', rating: 5.0, reviewCount: 210, tags: ['Treatment', 'B2B'], description: 'Professional grade cellular essence.', isBestSeller: true },
+  { id: '2a', name: '2A Clinical Barrier Cream', price: 310, tier: 'clinical', image: '/images/products/isola_collection.png', badge: 'DWAT + Bifida', rating: 4.9, reviewCount: 185, tags: ['Cream', 'B2B'], description: 'Professional grade barrier restoration.', category: 'Bundles' },
+  { id: '3a', name: '3A Clinical SPF 50+ Sunscreen', price: 195, tier: 'clinical', image: '/images/products/isola_collection.png', badge: 'Ectoin Shield', rating: 4.8, reviewCount: 142, tags: ['SPF', 'B2B'], description: 'Professional grade UV protection.' },
+  { id: '4a', name: '4A Clinical Night Repair', price: 345, tier: 'clinical', image: '/images/products/isola_collection.png', badge: 'L-Ornithine + NMN', rating: 5.0, reviewCount: 295, tags: ['Treatment', 'B2B'], description: 'Professional grade night repair.', category: 'Bundles' },
+  { id: '5a', name: '5A Clinical Hydrating Mist', price: 145, tier: 'clinical', image: '/images/products/isola_collection.png', badge: 'Ectoin + Bifida', rating: 4.8, reviewCount: 110, tags: ['Toner', 'B2B'], description: 'Professional grade hydration.' },
+  { id: '6a', name: '6A Clinical Gentle Cleanser', price: 110, tier: 'clinical', image: '/images/products/isola_collection.png', badge: 'Microbiome Safe', rating: 4.9, reviewCount: 310, tags: ['Cleanser', 'B2B'], description: 'Professional grade gentle cleansing.' },
+  { id: '7a', name: '7A Clinical Eye Treatment', price: 245, tier: 'clinical', image: '/images/products/isola_collection.png', badge: '5 Breakthroughs', rating: 5.0, reviewCount: 180, tags: ['Treatment', 'B2B'], description: 'Professional grade eye rejuvenation.' },
 
   // CONSUMER B-SERIES
-  { id: '1b', name: '1B Consumer Peptide Essence', price: 130, tier: 'consumer', image: '/images/products/isola_serum.png', badge: 'Daily Renewal', rating: 4.8, reviewCount: 420, tags: ['Treatment'], description: 'Advanced consumer grade essence.', isNew: true },
-  { id: '2b', name: '2B Consumer Barrier Cream', price: 110, tier: 'consumer', image: '/images/products/isola_collection.png', badge: 'Daily Support', rating: 4.7, reviewCount: 380, tags: ['Cream'], description: 'Advanced consumer grade support.' },
-  { id: '3b', name: '3B Consumer SPF 30+ Sunscreen', price: 85, tier: 'consumer', image: '/images/products/isola_collection.png', badge: 'UV Shield', rating: 4.6, reviewCount: 512, tags: ['SPF'], description: 'Advanced consumer grade UV shield.' },
-  { id: '4b', name: '4B Consumer Night Repair', price: 145, tier: 'consumer', image: '/images/products/isola_collection.png', badge: 'Overnight Support', rating: 4.8, reviewCount: 320, tags: ['Treatment'], description: 'Advanced consumer grade night repair.' },
-  { id: '5b', name: '5B Consumer Hydrating Mist', price: 65, tier: 'consumer', image: '/images/products/isola_collection.png', badge: 'Hydration', rating: 4.9, reviewCount: 290, tags: ['Toner'], description: 'Advanced consumer grade hydration.' },
-  { id: '6b', name: '6B Consumer Gentle Cleanser', price: 45, tier: 'consumer', image: '/images/products/isola_collection.png', badge: 'Best Seller', rating: 4.8, reviewCount: 890, tags: ['Cleanser'], description: 'Advanced consumer grade cleansing.', isBestSeller: true },
-  { id: '7b', name: '7B Consumer Eye Treatment', price: 95, tier: 'consumer', image: '/images/products/isola_collection.png', badge: 'Eye Protection', rating: 4.7, reviewCount: 410, tags: ['Treatment'], description: 'Advanced consumer grade eye protection.' },
+  { id: '1b', name: '1B Consumer Peptide Essence', price: 175, tier: 'consumer', image: '/images/products/isola_serum.png', badge: 'Daily Renewal', rating: 4.8, reviewCount: 420, tags: ['Treatment'], description: 'Advanced consumer grade essence.', isNew: true },
+  { id: '2b', name: '2B Consumer Barrier Cream', price: 145, tier: 'consumer', image: '/images/products/isola_collection.png', badge: 'Daily Support', rating: 4.7, reviewCount: 380, tags: ['Cream'], description: 'Advanced consumer grade support.' },
+  { id: '3b', name: '3B Consumer SPF 30+ Sunscreen', price: 95, tier: 'consumer', image: '/images/products/isola_collection.png', badge: 'UV Shield', rating: 4.6, reviewCount: 512, tags: ['SPF'], description: 'Advanced consumer grade UV shield.' },
+  { id: '4b', name: '4B Consumer Night Repair', price: 195, tier: 'consumer', image: '/images/products/isola_collection.png', badge: 'Overnight Support', rating: 4.8, reviewCount: 320, tags: ['Treatment'], description: 'Advanced consumer grade night repair.' },
+  { id: '5b', name: '5B Consumer Hydrating Mist', price: 75, tier: 'consumer', image: '/images/products/isola_collection.png', badge: 'Hydration', rating: 4.9, reviewCount: 290, tags: ['Toner'], description: 'Advanced consumer grade hydration.' },
+  { id: '6b', name: '6B Consumer Gentle Cleanser', price: 68, tier: 'consumer', image: '/images/products/isola_collection.png', badge: 'Best Seller', rating: 4.8, reviewCount: 890, tags: ['Cleanser'], description: 'Advanced consumer grade cleansing.', isBestSeller: true },
+  { id: '7b', name: '7B Consumer Eye Treatment', price: 145, tier: 'consumer', image: '/images/products/isola_collection.png', badge: 'Eye Protection', rating: 4.7, reviewCount: 410, tags: ['Treatment'], description: 'Advanced consumer grade eye protection.' },
 
   // 4-TIER AGE-SPECIFIC SYSTEM
-  { id: 't1-01', name: 'T1-01 Adolescent Protection Gel', price: 45, tier: 't1', image: '/images/products/isola_collection.png', badge: 'Bifida 0.30%', rating: 4.8, reviewCount: 120, tags: ['Cleanser'], description: 'Metabolically aligned for Tier 1.', isNew: true },
-  { id: 't2-02', name: 'T2-02 Young Adult Gel', price: 60, tier: 't2', image: '/images/products/isola_collection.png', badge: 'GLP-1 Protection', rating: 4.7, reviewCount: 340, tags: ['Serum'], description: 'Metabolically aligned for Tier 2.' },
-  { id: 't3-03', name: 'T3-03 Mature Intervention Gel', price: 95, tier: 't3', image: '/images/products/isola_collection.png', badge: 'OS-01 + DWAT', rating: 4.9, reviewCount: 630, tags: ['Treatment'], description: 'Metabolically aligned for Tier 3.' },
-  { id: 't4-04', name: 'T4-04 Advanced Renewal Gel', price: 130, tier: 't4', image: '/images/products/isola_collection.png', badge: 'Maximum Potency', rating: 4.9, reviewCount: 840, tags: ['Treatment'], description: 'Metabolically aligned for Tier 4.' },
+  { id: 't1-01', name: 'T1-01 Adolescent Protection Gel', price: 75, tier: 't1', image: '/images/products/isola_collection.png', badge: 'Bifida 0.30%', rating: 4.8, reviewCount: 120, tags: ['Cleanser'], description: 'Metabolically aligned for Tier 1.', isNew: true },
+  { id: 't2-02', name: 'T2-02 Young Adult Gel', price: 110, tier: 't2', image: '/images/products/isola_collection.png', badge: 'GLP-1 Protection', rating: 4.7, reviewCount: 340, tags: ['Serum'], description: 'Metabolically aligned for Tier 2.' },
+  { id: 't3-03', name: 'T3-03 Mature Intervention Gel', price: 165, tier: 't3', image: '/images/products/isola_collection.png', badge: 'OS-01 + DWAT', rating: 4.9, reviewCount: 630, tags: ['Treatment'], description: 'Metabolically aligned for Tier 3.' },
+  { id: 't4-04', name: 'T4-04 Advanced Renewal Gel', price: 225, tier: 't4', image: '/images/products/isola_collection.png', badge: 'Maximum Potency', rating: 4.9, reviewCount: 840, tags: ['Treatment'], description: 'Metabolically aligned for Tier 4.' },
 ]

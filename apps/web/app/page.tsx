@@ -19,7 +19,7 @@ export default function HomePage() {
     name: 'Isola Vitale Illuminating C-Serum',
     tagline: 'A concentrated, bio-adaptive elixir for profound luminosity',
     description: 'A concentrated, bio-adaptive elixir that intelligently responds to your skin\'s unique stress markers. Formulated with our proprietary botanical blend, it delivers a potent dose of luminosity while fortifying the skin\'s natural barrier.',
-    price: 185,
+    price: 295,
     currency: 'USD',
     image: '/images/products/isola_serum.png',
     videoUrl: '',
@@ -225,8 +225,8 @@ export default function HomePage() {
           ...product,
           sku: 'BAS-001',
           variants: [
-            { id: '30ml', name: '30ml Bottle', price: 89 },
-            { id: '50ml', name: '50ml Bottle', price: 129 }
+            { id: '30ml', name: '30ml Bottle', price: 195, compareAtPrice: 215 },
+            { id: '50ml', name: '50ml Bottle', price: 295, compareAtPrice: 325 }
           ]
         }}
         buyBullets={buyBullets}

@@ -31,7 +31,7 @@ export function BuyBox({ product, selectedVariant: initialVariant, buyBullets }:
   const [selectedBreakIndex, setSelectedBreakIndex] = useState(0)
 
   const currentVariant = product.variants.find(v => v.id === selectedVariantId) || product.variants[0]
-  const basePrice = purchaseType === 'subscribe' ? currentVariant.price * 0.85 : currentVariant.price
+  const basePrice = purchaseType === 'subscribe' ? currentVariant.price * 0.80 : currentVariant.price
 
   const quantityBreaks = [
     { quantity: 1, price: basePrice, label: '1 jar', perUnit: basePrice },
@@ -116,7 +116,7 @@ export function BuyBox({ product, selectedVariant: initialVariant, buyBullets }:
                       : 'text-iv-cream/60 hover:text-iv-white'
                   }`}
                 >
-                  Subscribe & Save (15%)
+                  Subscribe & Save (20%)
                 </button>
               </div>
             </div>
@@ -217,7 +217,7 @@ export function BuyBox({ product, selectedVariant: initialVariant, buyBullets }:
             <div className="mb-6 p-4 rounded-xl bg-iv-black/40 border border-iv-gold/10 flex items-center justify-between">
               <div className="text-xs text-iv-cream/50 uppercase tracking-widest font-bold">
                 {effectiveQty} × {currentVariant.name}
-                {purchaseType === 'subscribe' && <span className="ml-2 text-iv-gold">(–15%)</span>}
+                {purchaseType === 'subscribe' && <span className="ml-2 text-iv-gold">(–20%)</span>}
               </div>
               <div className="text-xl font-bold text-iv-white">{formatPrice(totalPrice)}</div>
             </div>
