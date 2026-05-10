@@ -1,0 +1,126 @@
+import { Button } from '@aurabiosphere/ui'
+import { Beaker, Shield, Zap, Sparkles, Activity, Globe } from 'lucide-react'
+
+export default function SciencePage() {
+  const breakthroughs = [
+    {
+      name: 'OS-01 Senomorphic Peptide',
+      concentration: '0.30%',
+      icon: <Zap className="w-6 h-6 text-emerald-500" />,
+      description: 'The first clinical peptide designed to target the primary cause of aging: cellular senescence. By eliminating "zombie cells," it rejuvenates the cellular ecosystem.',
+      benefit: '70% increase in skin barrier strength and structural integrity.'
+    },
+    {
+      name: 'DWAT Restoration Science',
+      concentration: '0.75%',
+      icon: <Activity className="w-6 h-6 text-emerald-500" />,
+      description: 'Dermal White Adipose Tissue (DWAT) technology restores lost facial volume by stimulating healthy adipocyte function and collagen remodeling.',
+      benefit: 'Natural facial volume restoration without invasive procedures.'
+    },
+    {
+      name: 'GLP-1 Protection Technology',
+      concentration: '1.25%',
+      icon: <Shield className="w-6 h-6 text-emerald-500" />,
+      description: 'Engineered to prevent the "facial deflation" effect associated with rapid metabolic changes. A critical preventive shield for the modern consumer.',
+      benefit: 'Maintains skin elasticity and prevent sagging during metabolic shifts.'
+    },
+    {
+      name: 'L-Ornithine Volume Enhancement',
+      concentration: '1.50%',
+      icon: <Sparkles className="w-6 h-6 text-emerald-500" />,
+      description: 'An encapsulated amino acid that mimics the effects of lipofilling, specifically targeting deep-set wrinkles in mature skin.',
+      benefit: 'Clinically validated 37.6% reduction in deep wrinkle depth.'
+    },
+    {
+      name: 'Bifida Ferment Lysate',
+      concentration: '0.50%',
+      icon: <Beaker className="w-6 h-6 text-emerald-500" />,
+      description: 'A clinical-grade postbiotic that repairs DNA damage and reinforces the skin microbiome against inflammatory triggers.',
+      benefit: '30% faster reduction in skin inflammation and redness.'
+    },
+    {
+      name: 'Ectoin Environmental Shield',
+      concentration: '1.00%',
+      icon: <Globe className="w-6 h-6 text-emerald-500" />,
+      description: 'An extremolyte molecule that forms a hydration shell around cells, protecting them from total urban pollution and UV stress.',
+      benefit: '18% improvement in transepidermal water loss (TEWL).'
+    }
+  ]
+
+  return (
+    <div className="min-h-screen bg-iv-black">
+      {/* Hero Section */}
+      <section className="bg-iv-black text-iv-white py-24 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10 bg-[url('/images/science-bg.png')] bg-cover bg-center pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-iv-black/80 to-iv-black pointer-events-none" />
+        <div className="container mx-auto px-4 max-w-5xl relative z-10 text-center">
+          <div className="inline-block border border-iv-gold/20 rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-10 bg-iv-black/40 backdrop-blur-md">
+            18-Month Technology Lead
+          </div>
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tighter uppercase tracking-widest leading-none">The Science of <br /><span className="text-iv-gold italic serif">Longevity</span></h1>
+          <p className="text-lg text-iv-cream/70 max-w-3xl mx-auto leading-relaxed font-light">
+            Formulated in partnership with <strong className="text-iv-white">Natural You Srl</strong>, Isola del Liri, our 18 enhanced formulations represent the pinnacle of Italian biotechnological innovation. We don't just treat skin; we optimize its cellular metabolism.
+          </p>
+        </div>
+      </section>
+
+      {/* Breakthroughs Grid */}
+      <section className="py-24 bg-iv-black">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="text-center mb-20">
+            <h2 className="text-xs font-black text-iv-gold mb-4 uppercase tracking-[0.4em]">Proprietary Technologies</h2>
+            <p className="text-3xl font-bold text-iv-white tracking-tighter italic font-serif">
+              "Every formulation is a clinical precision instrument."
+            </p>
+            <p className="text-[10px] font-black uppercase tracking-widest text-iv-cream/40 mt-4">— Dr. S. Islam</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {breakthroughs.map((tech) => (
+              <div key={tech.name} className="bg-iv-deep-green/20 p-10 rounded-2xl border border-iv-gold/10 hover:border-iv-gold/30 transition-all group backdrop-blur-sm shadow-2xl">
+                <div className="mb-8 p-4 bg-iv-black/40 rounded-lg inline-block border border-iv-gold/10 group-hover:scale-110 transition-transform">{tech.icon}</div>
+                <div className="flex justify-between items-start mb-6">
+                  <h3 className="text-lg font-bold text-iv-white uppercase tracking-widest leading-tight">{tech.name}</h3>
+                  <span className="bg-iv-gold/10 text-iv-gold text-[10px] font-black px-3 py-1 rounded-full border border-iv-gold/20 uppercase tracking-widest">
+                    {tech.concentration}
+                  </span>
+                </div>
+                <p className="text-iv-cream/60 mb-8 text-sm leading-relaxed font-light">
+                  {tech.description}
+                </p>
+                <div className="pt-6 border-t border-iv-white/5">
+                  <p className="text-[10px] font-black text-iv-cream/30 uppercase tracking-widest mb-2">Clinical Result</p>
+                  <p className="text-iv-gold font-bold text-sm">{tech.benefit}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Laboratory Heritage */}
+      <section className="py-32 bg-iv-deep-green/10 border-t border-iv-white/5 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-iv-gold/[0.03] rounded-full blur-3xl pointer-events-none"></div>
+        <div className="container mx-auto px-4 max-w-5xl relative z-10">
+          <div className="flex flex-col md:flex-row items-center gap-20">
+            <div className="flex-1 space-y-8">
+              <h2 className="text-4xl font-bold text-iv-white tracking-tighter uppercase tracking-[0.1em]">Italian Laboratory Precision</h2>
+              <p className="text-iv-cream/60 leading-relaxed font-light text-lg">
+                Our partnership with <strong className="text-iv-white">Natural You Srl</strong> in Isola del Liri, Italy, grants Isola Vitale exclusive access to pharmaceutical-grade raw materials and proprietary encapsulation technologies. Each formulation undergoes rigorous pH validation and stability testing to ensure 100% regulatory compliance.
+              </p>
+              <Button size="lg" className="bg-iv-gold hover:bg-iv-gold-light text-iv-black rounded-none px-12 py-8 text-xs font-black uppercase tracking-[0.2em] shadow-xl hover:shadow-iv-gold/20 transition-all">
+                View INCI Dossier
+              </Button>
+            </div>
+            <div className="flex-1 rounded-2xl overflow-hidden shadow-2xl aspect-video bg-iv-black border border-iv-gold/10 relative group">
+              <div className="absolute inset-0 bg-iv-gold/5 group-hover:bg-transparent transition-all duration-1000"></div>
+              <div className="w-full h-full flex items-center justify-center text-iv-gold/20 italic font-serif text-sm">
+                Natural You Srl Laboratory, Italy
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  )
+}

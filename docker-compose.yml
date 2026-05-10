@@ -1,0 +1,104 @@
+version: '3.8'
+
+services:
+  # Database
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: aurabiosphere
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    networks:
+      - aurabiosphere
+
+  # Redis for caching
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - aurabiosphere
+
+  # Meilisearch for search
+  meilisearch:
+    image: getmeili/meilisearch:v1.3
+    environment:
+      MEILI_MASTER_KEY: masterKey123
+      MEILI_ENV: development
+    ports:
+      - "7700:7700"
+    volumes:
+      - meilisearch_data:/meili_data
+    networks:
+      - aurabiosphere
+
+  # API Service
+  api:
+    build:
+      context: ./apps/api
+      dockerfile: Dockerfile
+    environment:
+      DATABASE_URL: postgresql://postgres:password@postgres:5432/aurabiosphere
+      NEXTAUTH_URL: http://localhost:3000
+      NEXTAUTH_SECRET: your-secret-key-here
+      STRIPE_SECRET_KEY: sk_test_your_stripe_secret
+      STRIPE_PUBLISHABLE_KEY: pk_test_your_stripe_publishable
+      STRIPE_WEBHOOK_SECRET: whsec_your_webhook_secret
+      RESEND_API_KEY: your_resend_api_key
+      MEILISEARCH_URL: http://meilisearch:7700
+      MEILISEARCH_MASTER_KEY: masterKey123
+      REDIS_URL: redis://redis:6379
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+      - redis
+      - meilisearch
+    volumes:
+      - ./apps/api:/app
+      - /app/node_modules
+    networks:
+      - aurabiosphere
+
+  # Web Service (Frontend)
+  web:
+    build:
+      context: ./apps/web
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3000"
+    depends_on:
+      - api
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:3000
+    networks:
+      - aurabiosphere
+
+  # Admin Dashboard
+  admin:
+    build:
+      context: ./apps/admin
+      dockerfile: Dockerfile
+    ports:
+      - "3002:3000"
+    depends_on:
+      - api
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:3000
+    networks:
+      - aurabiosphere
+
+volumes:
+  postgres_data:
+  redis_data:
+  meilisearch_data:
+
+networks:
+  aurabiosphere:
+    driver: bridge

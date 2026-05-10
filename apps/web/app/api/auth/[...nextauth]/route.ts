@@ -1,0 +1,70 @@
+import NextAuth from 'next-auth'
+import { NextAuthOptions } from 'next-auth'
+import CredentialsProvider from 'next-auth/providers/credentials'
+
+// Minimal NextAuth config for the web frontend.
+// Authentication state is stored client-side via JWT session.
+// Actual user verification happens via the API service.
+const authOptions: NextAuthOptions = {
+  providers: [
+    CredentialsProvider({
+      name: 'credentials',
+      credentials: {
+        email: { label: 'Email', type: 'email' },
+        password: { label: 'Password', type: 'password' },
+      },
+      async authorize(credentials) {
+        if (!credentials?.email || !credentials?.password) {
+          return null
+        }
+
+        try {
+          // Delegate auth to the API service
+          const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'
+          const res = await fetch(`${apiUrl}/api/auth/verify`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              email: credentials.email,
+              password: credentials.password,
+            }),
+          })
+
+          if (!res.ok) return null
+
+          const user = await res.json()
+          return user
+        } catch {
+          // If API not available, allow null (unauthenticated browsing)
+          return null
+        }
+      },
+    }),
+  ],
+  session: {
+    strategy: 'jwt',
+  },
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id
+        token.role = (user as any).role as string
+      }
+      return token
+    },
+    async session({ session, token }) {
+      if (token && session.user) {
+        ;(session.user as any).id = token.id as string
+        ;(session.user as any).role = token.role as string
+      }
+      return session
+    },
+  },
+  pages: {
+    signIn: '/login',
+  },
+  secret: process.env.NEXTAUTH_SECRET || 'dev-secret-please-change-in-production',
+}
+
+const handler = NextAuth(authOptions)
+export { handler as GET, handler as POST }

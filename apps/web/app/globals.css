@@ -1,0 +1,432 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   ISOLA VITALE — LUXURY DESIGN SYSTEM
+   Deep Emerald / Obsidian / Champagne Gold
+   ============================================================ */
+
+@layer base {
+  :root {
+    --background: 158 30% 5%;
+    --foreground: 50 20% 95%;
+    --card: 158 25% 8%;
+    --card-foreground: 50 20% 95%;
+    --popover: 158 25% 6%;
+    --popover-foreground: 50 20% 95%;
+    --primary: 43 65% 55%;
+    --primary-foreground: 158 30% 5%;
+    --secondary: 158 20% 12%;
+    --secondary-foreground: 50 20% 90%;
+    --muted: 158 20% 12%;
+    --muted-foreground: 50 10% 60%;
+    --accent: 158 40% 20%;
+    --accent-foreground: 50 20% 95%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 158 20% 18%;
+    --input: 158 20% 12%;
+    --ring: 43 65% 55%;
+    --radius: 0.5rem;
+
+    /* Brand tokens */
+    --iv-black: #060C09;
+    --iv-deep-green: #0D2B20;
+    --iv-green: #1A4A35;
+    --iv-light-green: #2D6B4F;
+    --iv-gold: #B8972F;
+    --iv-gold-light: #D4B450;
+    --iv-champagne: #F5E6C0;
+    --iv-cream: #FAF7F0;
+    --iv-white: #FFFFFF;
+
+    /* 2026 HERO SKU Palette */
+    --iv-red-ochre: #9A3B26;
+    --iv-cloud-dancer: #F0EEE9;
+    --iv-deep-emerald: #004B49;
+    --iv-smoky-charcoal: #363636;
+    --iv-peach-dust: #F3C8B6;
+    --iv-champagne-gold: #D4B483;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--iv-black);
+    color: var(--iv-cream);
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', ui-serif, Georgia, serif;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--iv-white);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* ============================================================
+   HEADER — LUXURY NAVIGATION
+   ============================================================ */
+@layer components {
+  header {
+    background-color: rgba(6, 12, 9, 0.97) !important;
+    border-bottom: 1px solid rgba(184, 151, 47, 0.2) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+  }
+
+  header .logo-text {
+    font-family: 'Playfair Display', serif;
+    color: var(--iv-white) !important;
+    font-size: 1.4rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  header nav a {
+    color: rgba(245, 230, 192, 0.75) !important;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+  }
+
+  header nav a:hover {
+    color: var(--iv-gold-light) !important;
+  }
+
+  /* Force text-primary to be white in header */
+  header .text-primary,
+  header [class*="text-primary"] {
+    color: var(--iv-white) !important;
+  }
+
+  /* Force foreground colors */
+  header .text-foreground,
+  header [class*="text-foreground"] {
+    color: rgba(245, 230, 192, 0.75) !important;
+  }
+}
+
+/* ============================================================
+   MAIN CONTENT AREAS
+   ============================================================ */
+@layer components {
+  main {
+    background-color: var(--iv-black);
+    color: var(--iv-cream);
+    min-height: 100vh;
+  }
+
+  /* Fix sections that use bg-white to use dark theme */
+  section.bg-white {
+    background-color: var(--iv-deep-green) !important;
+    color: var(--iv-cream) !important;
+  }
+
+  section.bg-slate-50,
+  .bg-slate-50 {
+    background-color: var(--iv-deep-green) !important;
+    color: var(--iv-cream) !important;
+  }
+
+  /* Light gray backgrounds become slightly lighter dark */
+  .bg-gray-50 {
+    background-color: rgba(13, 43, 32, 0.6) !important;
+  }
+
+  /* Cards / Product cards */
+  .bg-white {
+    background-color: var(--iv-deep-green) !important;
+    color: var(--iv-cream) !important;
+    border-color: rgba(184, 151, 47, 0.15) !important;
+  }
+
+  /* Text color fixes */
+  .text-gray-900,
+  .text-gray-800,
+  .text-gray-700 {
+    color: var(--iv-white) !important;
+  }
+
+  .text-gray-600,
+  .text-gray-500 {
+    color: rgba(245, 230, 192, 0.65) !important;
+  }
+
+  .text-gray-400 {
+    color: rgba(245, 230, 192, 0.45) !important;
+  }
+
+  /* Border fixes */
+  .border-gray-100,
+  .border-gray-200 {
+    border-color: rgba(184, 151, 47, 0.15) !important;
+  }
+
+  /* Emerald accents — keep as designed */
+  .bg-emerald-950 { background-color: #021a0f !important; }
+  .bg-emerald-900 { background-color: #0D2B20 !important; }
+  .bg-emerald-50  { background-color: rgba(52, 211, 153, 0.08) !important; }
+  .text-emerald-700 { color: #4ade80 !important; }
+  .text-emerald-600 { color: #6ee7b7 !important; }
+  .text-emerald-400 { color: #86efac !important; }
+  .text-emerald-900 { color: #bbf7d0 !important; }
+  .text-emerald-800 { color: #d1fae5 !important; }
+  .border-emerald-100 { border-color: rgba(52, 211, 153, 0.15) !important; }
+
+  /* Gold elements */
+  .text-gold { color: var(--iv-gold) !important; }
+
+  /* Product card specific */
+  .product-card {
+    background: var(--iv-deep-green);
+    border: 1px solid rgba(184, 151, 47, 0.15);
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+
+  .product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    border-color: rgba(184, 151, 47, 0.35);
+  }
+
+  /* Professional Portal badge */
+  .professional-portal-badge {
+    background-color: rgba(184, 151, 47, 0.12);
+    border: 1px solid rgba(184, 151, 47, 0.3);
+    color: var(--iv-gold-light);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 100px;
+    transition: all 0.2s ease;
+  }
+
+  .professional-portal-badge:hover {
+    background-color: rgba(184, 151, 47, 0.22);
+    border-color: var(--iv-gold);
+    color: var(--iv-gold);
+  }
+
+  /* Buttons */
+  .btn-luxury {
+    background: linear-gradient(135deg, var(--iv-gold) 0%, var(--iv-gold-light) 100%);
+    color: var(--iv-black);
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 12px 32px;
+    border: none;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .btn-luxury:hover {
+    box-shadow: 0 8px 30px rgba(184, 151, 47, 0.35);
+    transform: translateY(-1px);
+  }
+
+  /* Table styling for ingredients */
+  table {
+    color: var(--iv-cream);
+  }
+
+  thead tr {
+    border-bottom: 1px solid rgba(184, 151, 47, 0.3) !important;
+  }
+
+  tbody tr:hover {
+    background-color: rgba(13, 43, 32, 0.5) !important;
+  }
+
+  /* Input fields */
+  input[type="email"],
+  input[type="text"],
+  input[type="password"],
+  select,
+  textarea {
+    background-color: rgba(13, 43, 32, 0.6);
+    border: 1px solid rgba(184, 151, 47, 0.2);
+    color: var(--iv-cream);
+    border-radius: 8px;
+  }
+
+  input::placeholder {
+    color: rgba(245, 230, 192, 0.35);
+  }
+
+  input:focus {
+    outline: none;
+    border-color: var(--iv-gold) !important;
+    box-shadow: 0 0 0 2px rgba(184, 151, 47, 0.15);
+  }
+
+  /* ============================================================
+   HOMEPAGE SECTION COMPONENTS — Force dark theme on all sections
+   ============================================================ */
+
+  /* All sections with light backgrounds */
+  section.bg-white,
+  section.bg-gray-50,
+  section.bg-gray-100,
+  section[class*="py-"].bg-white,
+  [class*="py-20"].bg-white,
+  [class*="py-16"].bg-white {
+    background-color: var(--iv-black) !important;
+    color: var(--iv-cream) !important;
+  }
+
+  /* All card-like bg-white divs inside sections */
+  section .bg-white,
+  main .bg-white,
+  #root .bg-white {
+    background-color: var(--iv-deep-green) !important;
+    color: var(--iv-cream) !important;
+    border-color: rgba(184,151,47,0.15) !important;
+  }
+
+  /* White background sections within page body */
+  .bg-gray-50,
+  .bg-gray-100,
+  .bg-slate-50,
+  .bg-slate-100 {
+    background-color: #0a1f16 !important;
+    color: var(--iv-cream) !important;
+  }
+
+  /* Text colour fixes — ensure nothing is invisible */
+  .text-gray-900, .text-gray-800, .text-gray-700,
+  .text-black { color: var(--iv-white) !important; }
+
+  .text-gray-600, .text-gray-500 { color: rgba(245,230,192,0.7) !important; }
+  .text-gray-400 { color: rgba(245,230,192,0.45) !important; }
+
+  /* Border fixes */
+  .border-gray-100, .border-gray-200, .border-gray-300 {
+    border-color: rgba(184,151,47,0.15) !important;
+  }
+
+  /* Shadow overrides — use dark glow instead of white-box shadows */
+  .shadow-lg, .shadow-xl, .shadow-2xl, .shadow-md, .shadow-sm {
+    box-shadow: 0 4px 24px rgba(0,0,0,0.35) !important;
+  }
+
+  /* FAQ, newsletter, how-it-works specific cards */
+  [class*="rounded"].bg-white,
+  [class*="rounded-xl"].bg-white,
+  [class*="rounded-2xl"].bg-white {
+    background-color: rgba(13,43,32,0.8) !important;
+    border: 1px solid rgba(184,151,47,0.12) !important;
+  }
+
+  /* Timeline white dots — keep them as a gold ring */
+  .border-emerald-500.bg-white {
+    background-color: var(--iv-gold) !important;
+    border-color: var(--iv-deep-green) !important;
+  }
+
+  /* Problem-solution and education blocks */
+  .problem-solution-card,
+  [class*="border-gray-100"].rounded-2xl {
+    background-color: rgba(13,43,32,0.85) !important;
+    color: var(--iv-cream) !important;
+  }
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+@layer components {
+  footer {
+    background-color: var(--iv-black) !important;
+    border-top: 1px solid rgba(184, 151, 47, 0.2) !important;
+    color: rgba(245, 230, 192, 0.65);
+  }
+
+  footer a:hover {
+    color: var(--iv-gold-light) !important;
+  }
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+
+  .animate-gold-shimmer {
+    background-image: linear-gradient(90deg, transparent, rgba(184, 151, 47, 0.15), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .fade-up {
+    animation: fadeUp 0.6s ease forwards;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+/* ============================================================
+   SCROLLBAR — LUXURY DARK
+   ============================================================ */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--iv-black); }
+::-webkit-scrollbar-thumb {
+  background: rgba(184, 151, 47, 0.3);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--iv-gold); }
+
+/* ============================================================
+   SELECTION
+   ============================================================ */
+::selection {
+  background: rgba(184, 151, 47, 0.25);
+  color: var(--iv-white);
+}

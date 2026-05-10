@@ -1,0 +1,43 @@
+{
+  "name": "Aura",
+  "version": "1.0.0",
+  "description": "Luxury cosmetics storefront - AuraBiosphere",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm -r run dev",
+    "build": "pnpm -r run build",
+    "test": "pnpm -r run test",
+    "lint": "pnpm -r run lint",
+    "type-check": "pnpm -r run type-check",
+    "db:migrate": "cd apps/api && pnpm prisma migrate dev",
+    "db:seed": "cd apps/api && pnpm prisma db seed",
+    "db:studio": "cd apps/api && pnpm prisma studio",
+    "clean": "rm -rf node_modules && rm -rf apps/*/node_modules && rm -rf packages/*/node_modules",
+    "format": "prettier --write ."
+  },
+  "keywords": [
+    "luxury",
+    "cosmetics",
+    "skincare",
+    "ecommerce",
+    "nextjs"
+  ],
+  "author": "AuraBiosphere",
+  "license": "ISC",
+  "packageManager": "pnpm@10.18.2",
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.5",
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.50.0",
+    "@vitest/ui": "^3.0.0",
+    "playwright": "^1.50.0",
+    "prisma": "^6.3.0",
+    "@prisma/client": "^6.3.0",
+    "prettier": "^3.5.0",
+    "vitest": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=8.0.0"
+  }
+}
