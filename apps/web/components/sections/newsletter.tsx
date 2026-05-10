@@ -1,6 +1,28 @@
+'use client'
+
+import { useState } from 'react'
 import { Mail, Check, Star, Shield } from 'lucide-react'
 
 export function Newsletter() {
+  const [email, setEmail] = useState('')
+  const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setError('Please enter a valid email address.')
+      return
+    }
+    setLoading(true)
+    setError('')
+    // Simulate API call — wire up to actual endpoint when ready
+    await new Promise(r => setTimeout(r, 800))
+    setLoading(false)
+    setSubmitted(true)
+  }
+
   return (
     <section className="py-20 bg-iv-black relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-full bg-iv-gold/[0.02] pointer-events-none"></div>
@@ -12,26 +34,48 @@ export function Newsletter() {
               Join the Isola Vitale Society
             </h2>
             <p className="text-xl text-iv-cream/70 leading-relaxed max-w-2xl mx-auto">
-              Subscribe for exclusive access to advanced formulations, 
+              Subscribe for exclusive access to advanced formulations,
               private events, and the latest in metabolic skincare science.
             </p>
           </div>
 
           {/* Newsletter Form */}
           <div className="bg-iv-deep-green/30 rounded-2xl shadow-2xl p-10 max-w-2xl mx-auto border border-iv-gold/10 backdrop-blur-md">
-            <div className="flex flex-col md:flex-row gap-4">
-              <input
-                type="email"
-                placeholder="Your email address"
-                className="flex-1 px-6 py-4 bg-iv-black border border-iv-gold/20 rounded-md focus:outline-none focus:border-iv-gold text-iv-white placeholder-iv-white/20 transition-all font-medium"
-                required
-              />
-              <button className="bg-iv-gold hover:bg-iv-gold-light text-iv-black px-10 py-4 rounded-md font-bold transition-all flex items-center justify-center space-x-3 uppercase tracking-widest text-xs shadow-lg hover:shadow-iv-gold/20">
-                <Mail className="w-4 h-4" />
-                <span>Join Now</span>
-              </button>
-            </div>
-            
+            {submitted ? (
+              <div className="flex flex-col items-center space-y-4 py-6">
+                <div className="w-14 h-14 rounded-full bg-iv-gold/10 border border-iv-gold/30 flex items-center justify-center">
+                  <Check className="w-7 h-7 text-iv-gold" />
+                </div>
+                <p className="text-iv-white font-bold text-lg uppercase tracking-widest">Welcome to the Society</p>
+                <p className="text-iv-cream/50 text-sm">You&apos;ll receive your first dispatch shortly.</p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} noValidate>
+                <div className="flex flex-col md:flex-row gap-4">
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={e => { setEmail(e.target.value); setError('') }}
+                    placeholder="Your email address"
+                    className="flex-1 px-6 py-4 bg-iv-black border border-iv-gold/20 rounded-md focus:outline-none focus:border-iv-gold text-iv-white placeholder-iv-white/20 transition-all font-medium"
+                    required
+                    disabled={loading}
+                  />
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="bg-iv-gold hover:bg-iv-gold-light disabled:opacity-60 text-iv-black px-10 py-4 rounded-md font-bold transition-all flex items-center justify-center space-x-3 uppercase tracking-widest text-xs shadow-lg hover:shadow-iv-gold/20"
+                  >
+                    <Mail className="w-4 h-4" />
+                    <span>{loading ? 'Joining…' : 'Join Now'}</span>
+                  </button>
+                </div>
+                {error && (
+                  <p className="mt-3 text-red-400 text-xs font-medium">{error}</p>
+                )}
+              </form>
+            )}
+
             {/* Benefits */}
             <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="flex items-center justify-center space-x-3">

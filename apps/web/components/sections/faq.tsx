@@ -1,4 +1,6 @@
-import { ReactNode } from 'react'
+'use client'
+
+import { useState } from 'react'
 
 interface FAQItem {
   question: string
@@ -10,6 +12,12 @@ interface FAQSectionProps {
 }
 
 export function FAQSection({ faqs }: FAQSectionProps) {
+  const [openIndex, setOpenIndex] = useState<number | null>(null)
+
+  function toggle(index: number) {
+    setOpenIndex(prev => (prev === index ? null : index))
+  }
+
   return (
     <section className="py-16 bg-iv-black">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -21,23 +29,42 @@ export function FAQSection({ faqs }: FAQSectionProps) {
             Everything you need to know about Bio-Adaptive Serum
           </p>
         </div>
-        
+
         <div className="space-y-4">
-          {faqs.map((faq, index) => (
-            <div key={index} className="bg-iv-deep-green/30 rounded-xl shadow-2xl overflow-hidden border border-iv-gold/10 backdrop-blur-sm">
-              <div className="p-6">
-                <h3 className="text-lg font-semibold text-iv-white mb-3 flex items-start">
-                  <span className="flex-shrink-0 w-8 h-8 bg-iv-gold/20 text-iv-gold border border-iv-gold/40 rounded-full flex items-center justify-center mr-4 text-xs font-bold shadow-inner">
-                    {index + 1}
+          {faqs.map((faq, index) => {
+            const isOpen = openIndex === index
+            return (
+              <div
+                key={index}
+                className="bg-iv-deep-green/30 rounded-xl shadow-2xl overflow-hidden border border-iv-gold/10 backdrop-blur-sm transition-all duration-300"
+              >
+                <button
+                  className="w-full p-6 text-left flex items-center justify-between group focus:outline-none"
+                  onClick={() => toggle(index)}
+                  aria-expanded={isOpen}
+                >
+                  <h3 className="text-lg font-semibold text-iv-white flex items-start">
+                    <span className="flex-shrink-0 w-8 h-8 bg-iv-gold/20 text-iv-gold border border-iv-gold/40 rounded-full flex items-center justify-center mr-4 text-xs font-bold shadow-inner">
+                      {index + 1}
+                    </span>
+                    <span className="mt-0.5">{faq.question}</span>
+                  </h3>
+                  <span className={`ml-4 flex-shrink-0 text-iv-gold transition-transform duration-300 ${isOpen ? 'rotate-45' : ''}`}>
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                    </svg>
                   </span>
-                  <span>{faq.question}</span>
-                </h3>
-                <p className="text-iv-cream/60 ml-12 leading-relaxed text-sm">{faq.answer}</p>
+                </button>
+                {isOpen && (
+                  <div className="px-6 pb-6">
+                    <p className="text-iv-cream/60 ml-12 leading-relaxed text-sm">{faq.answer}</p>
+                  </div>
+                )}
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
-        
+
         <div className="mt-12 text-center">
           <div className="inline-flex items-center bg-iv-gold/5 text-iv-gold/80 px-8 py-4 rounded-full border border-iv-gold/20 shadow-lg">
             <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -46,7 +73,7 @@ export function FAQSection({ faqs }: FAQSectionProps) {
             <span className="text-sm font-bold uppercase tracking-widest">Still have questions? Our skincare experts are here to help</span>
           </div>
         </div>
-        
+
         {/* Additional Help Section */}
         <div className="mt-16 grid md:grid-cols-3 gap-6">
           <div className="bg-iv-deep-green/20 p-8 rounded-xl border border-iv-gold/10 text-center hover:border-iv-gold/40 transition-colors group">
@@ -61,7 +88,7 @@ export function FAQSection({ faqs }: FAQSectionProps) {
               support@isolavitale.it
             </a>
           </div>
-          
+
           <div className="bg-iv-deep-green/20 p-8 rounded-xl border border-iv-gold/10 text-center hover:border-iv-gold/40 transition-colors group">
             <div className="w-14 h-14 bg-iv-gold/10 rounded-full flex items-center justify-center mx-auto mb-6 border border-iv-gold/20 group-hover:bg-iv-gold group-hover:text-iv-black transition-all">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -74,7 +101,7 @@ export function FAQSection({ faqs }: FAQSectionProps) {
               Start Chat
             </button>
           </div>
-          
+
           <div className="bg-iv-deep-green/20 p-8 rounded-xl border border-iv-gold/10 text-center hover:border-iv-gold/40 transition-colors group">
             <div className="w-14 h-14 bg-iv-gold/10 rounded-full flex items-center justify-center mx-auto mb-6 border border-iv-gold/20 group-hover:bg-iv-gold group-hover:text-iv-black transition-all">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

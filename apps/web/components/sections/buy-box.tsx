@@ -1,4 +1,7 @@
-import { Check, CreditCard, Truck, Shield, AlertCircle } from 'lucide-react'
+'use client'
+
+import { useState } from 'react'
+import { Check, CreditCard, Truck, Shield } from 'lucide-react'
 import { Button } from '@aurabiosphere/ui'
 
 interface BuyBoxProps {
@@ -19,20 +22,51 @@ interface BuyBoxProps {
   buyBullets: string[]
 }
 
-export function BuyBox({ product, selectedVariant, buyBullets }: BuyBoxProps) {
-  // Find the selected variant
-  const currentVariant = product.variants.find(v => v.id === selectedVariant) || product.variants[0]
-  
-  // Calculate quantity breaks based on the selected variant
+export function BuyBox({ product, selectedVariant: initialVariant, buyBullets }: BuyBoxProps) {
+  const [selectedVariantId, setSelectedVariantId] = useState(
+    initialVariant ?? product.variants[0]?.id ?? ''
+  )
+  const [purchaseType, setPurchaseType] = useState<'one-time' | 'subscribe'>('one-time')
+  const [customQty, setCustomQty] = useState(1)
+  const [selectedBreakIndex, setSelectedBreakIndex] = useState(0)
+
+  const currentVariant = product.variants.find(v => v.id === selectedVariantId) || product.variants[0]
+  const basePrice = purchaseType === 'subscribe' ? currentVariant.price * 0.85 : currentVariant.price
+
   const quantityBreaks = [
-    { quantity: 1, price: currentVariant.price, label: '1 jar', perUnit: currentVariant.price, currency: product.currency },
-    { quantity: 2, price: currentVariant.price * 1.8, label: '2 jars', perUnit: (currentVariant.price * 1.8) / 2, currency: product.currency },
-    { quantity: 3, price: currentVariant.price * 2.4, label: '3 jars', perUnit: (currentVariant.price * 2.4) / 3, currency: product.currency },
+    { quantity: 1, price: basePrice, label: '1 jar', perUnit: basePrice },
+    { quantity: 2, price: basePrice * 1.8, label: '2 jars', perUnit: (basePrice * 1.8) / 2 },
+    { quantity: 3, price: basePrice * 2.4, label: '3 jars', perUnit: (basePrice * 2.4) / 3 },
   ]
 
-  const bestValueIndex = quantityBreaks.reduce((bestIndex, current, index, array) => 
+  const bestValueIndex = quantityBreaks.reduce((bestIndex, current, index, array) =>
     current.perUnit < array[bestIndex].perUnit ? index : bestIndex, 0
   )
+
+  const formatPrice = (price: number) =>
+    `${product.currency === 'USD' ? '$' : ''}${price.toFixed(2)}`
+
+  const activeBreak = quantityBreaks[selectedBreakIndex]
+  const effectiveQty = selectedBreakIndex === -1 ? customQty : activeBreak.quantity
+  const totalPrice = selectedBreakIndex === -1
+    ? basePrice * customQty
+    : activeBreak.price
+
+  function handleDecrement() {
+    setSelectedBreakIndex(-1)
+    setCustomQty(q => Math.max(1, q - 1))
+  }
+
+  function handleIncrement() {
+    setSelectedBreakIndex(-1)
+    setCustomQty(q => Math.min(10, q + 1))
+  }
+
+  function handleQtyInput(e: React.ChangeEvent<HTMLInputElement>) {
+    const val = Math.min(10, Math.max(1, parseInt(e.target.value) || 1))
+    setCustomQty(val)
+    setSelectedBreakIndex(-1)
+  }
 
   return (
     <section id="buy-box" className="py-12 bg-iv-black">
@@ -64,10 +98,24 @@ export function BuyBox({ product, selectedVariant, buyBullets }: BuyBoxProps) {
             {/* Purchase Type Toggle */}
             <div className="flex justify-center mb-8">
               <div className="inline-flex rounded-lg border border-iv-gold/20 bg-iv-black p-1">
-                <button className="px-4 py-2 text-sm font-bold uppercase tracking-widest rounded-md bg-iv-gold text-iv-black shadow-lg">
+                <button
+                  onClick={() => setPurchaseType('one-time')}
+                  className={`px-4 py-2 text-sm font-bold uppercase tracking-widest rounded-md transition-all ${
+                    purchaseType === 'one-time'
+                      ? 'bg-iv-gold text-iv-black shadow-lg'
+                      : 'text-iv-cream/60 hover:text-iv-white'
+                  }`}
+                >
                   One-Time
                 </button>
-                <button className="px-4 py-2 text-sm font-bold uppercase tracking-widest rounded-md text-iv-cream/60 hover:text-iv-white transition-colors">
+                <button
+                  onClick={() => setPurchaseType('subscribe')}
+                  className={`px-4 py-2 text-sm font-bold uppercase tracking-widest rounded-md transition-all ${
+                    purchaseType === 'subscribe'
+                      ? 'bg-iv-gold text-iv-black shadow-lg'
+                      : 'text-iv-cream/60 hover:text-iv-white'
+                  }`}
+                >
                   Subscribe & Save (15%)
                 </button>
               </div>
@@ -75,18 +123,19 @@ export function BuyBox({ product, selectedVariant, buyBullets }: BuyBoxProps) {
 
             {/* Quantity Breaks */}
             <div className="mb-8">
-              <h3 className="text-lg font-bold text-iv-white mb-6 text-center uppercase tracking-widest text-xs">
+              <h3 className="text-xs font-bold text-iv-white mb-6 text-center uppercase tracking-widest">
                 Choose Your Quantity
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {quantityBreaks.map((breakItem, index) => (
-                  <div
+                  <button
                     key={index}
-                    className={`relative p-6 rounded-xl border transition-all duration-300 cursor-pointer ${
-                      index === 0
-                        ? 'border-iv-gold bg-iv-gold/5 shadow-[0_0_20px_rgba(184,151,47,0.1)]'
+                    onClick={() => { setSelectedBreakIndex(index); setCustomQty(breakItem.quantity) }}
+                    className={`relative p-6 rounded-xl border transition-all duration-300 text-left ${
+                      selectedBreakIndex === index
+                        ? 'border-iv-gold bg-iv-gold/10 shadow-[0_0_20px_rgba(184,151,47,0.15)]'
                         : 'border-iv-white/10 hover:border-iv-gold/40'
-                    } ${index === bestValueIndex ? 'border-iv-gold/60' : ''}`}
+                    }`}
                   >
                     {index === bestValueIndex && (
                       <div className="absolute -top-2 left-1/2 transform -translate-x-1/2">
@@ -97,35 +146,45 @@ export function BuyBox({ product, selectedVariant, buyBullets }: BuyBoxProps) {
                     )}
                     <div className="text-center">
                       <div className="text-2xl font-bold text-iv-white">
-                        {breakItem.currency === 'USD' ? '$' : ''}{breakItem.price}
+                        {formatPrice(breakItem.price)}
                       </div>
                       <div className="text-sm text-iv-cream/70 mt-1">
                         {breakItem.label}
                       </div>
                       <div className="text-xs text-iv-cream/40 mt-2 font-mono">
-                        {breakItem.currency === 'USD' ? '$' : ''}{breakItem.perUnit.toFixed(2)}/jar
+                        {formatPrice(breakItem.perUnit)}/jar
                       </div>
                     </div>
-                  </div>
+                  </button>
                 ))}
               </div>
-              
+
               {/* Custom Quantity Input */}
               <div className="mt-8 flex items-center justify-center space-x-6">
                 <span className="text-xs font-bold uppercase tracking-widest text-iv-cream/60">Custom Quantity</span>
                 <div className="flex items-center space-x-3">
-                  <button className="w-10 h-10 rounded-full border border-iv-gold/20 flex items-center justify-center bg-iv-black hover:border-iv-gold transition-colors">
+                  <button
+                    onClick={handleDecrement}
+                    className="w-10 h-10 rounded-full border border-iv-gold/20 flex items-center justify-center bg-iv-black hover:border-iv-gold transition-colors"
+                    aria-label="Decrease quantity"
+                  >
                     <span className="text-iv-gold text-xl leading-none">-</span>
                   </button>
                   <input
                     type="number"
                     min="1"
                     max="10"
-                    defaultValue="1"
+                    value={selectedBreakIndex === -1 ? customQty : quantityBreaks[selectedBreakIndex].quantity}
+                    onChange={handleQtyInput}
+                    onFocus={() => setSelectedBreakIndex(-1)}
                     className="w-16 h-10 text-center border border-iv-gold/20 rounded-lg bg-iv-black text-iv-white font-bold"
                     aria-label="Quantity"
                   />
-                  <button className="w-10 h-10 rounded-full border border-iv-gold/20 flex items-center justify-center bg-iv-black hover:border-iv-gold transition-colors">
+                  <button
+                    onClick={handleIncrement}
+                    className="w-10 h-10 rounded-full border border-iv-gold/20 flex items-center justify-center bg-iv-black hover:border-iv-gold transition-colors"
+                    aria-label="Increase quantity"
+                  >
                     <span className="text-iv-gold text-xl leading-none">+</span>
                   </button>
                 </div>
@@ -134,23 +193,33 @@ export function BuyBox({ product, selectedVariant, buyBullets }: BuyBoxProps) {
 
             {/* Variant Selector */}
             <div className="mb-10">
-              <h3 className="text-lg font-bold text-iv-white mb-6 text-center uppercase tracking-widest text-xs">
+              <h3 className="text-xs font-bold text-iv-white mb-6 text-center uppercase tracking-widest">
                 Select Variant
               </h3>
               <div className="flex justify-center space-x-4">
                 {product.variants.map((variant) => (
-                  <div
+                  <button
                     key={variant.id}
+                    onClick={() => setSelectedVariantId(variant.id)}
                     className={`px-8 py-3 rounded-lg border cursor-pointer transition-all ${
-                      selectedVariant === variant.id
-                        ? 'border-iv-gold bg-iv-gold/5 text-iv-white font-bold'
+                      selectedVariantId === variant.id
+                        ? 'border-iv-gold bg-iv-gold/10 text-iv-white font-bold'
                         : 'border-iv-white/10 text-iv-cream/60 hover:border-iv-gold/40'
                     }`}
                   >
                     {variant.name}
-                  </div>
+                  </button>
                 ))}
               </div>
+            </div>
+
+            {/* Order Summary */}
+            <div className="mb-6 p-4 rounded-xl bg-iv-black/40 border border-iv-gold/10 flex items-center justify-between">
+              <div className="text-xs text-iv-cream/50 uppercase tracking-widest font-bold">
+                {effectiveQty} × {currentVariant.name}
+                {purchaseType === 'subscribe' && <span className="ml-2 text-iv-gold">(–15%)</span>}
+              </div>
+              <div className="text-xl font-bold text-iv-white">{formatPrice(totalPrice)}</div>
             </div>
 
             {/* Add to Cart Button */}
@@ -158,19 +227,18 @@ export function BuyBox({ product, selectedVariant, buyBullets }: BuyBoxProps) {
               <Button
                 size="lg"
                 className="w-full py-6 text-lg font-bold uppercase tracking-widest bg-iv-gold text-iv-black hover:bg-iv-gold-light shadow-xl hover:shadow-iv-gold/20 border-none rounded-md"
-                disabled
               >
                 <div className="flex items-center justify-center space-x-3">
-                  <span>Add to Cart</span>
+                  <span>Add to Cart — {formatPrice(totalPrice)}</span>
                 </div>
               </Button>
-              
+
               <div className="flex justify-center space-x-4 mt-6">
-                <Button variant="outline" size="lg" className="flex-1 border-iv-white/10 text-iv-cream/60 bg-iv-black hover:border-iv-gold hover:text-iv-gold" disabled>
+                <Button variant="outline" size="lg" className="flex-1 border-iv-white/10 text-iv-cream/60 bg-iv-black hover:border-iv-gold hover:text-iv-gold">
                   <CreditCard className="w-4 h-4 mr-2" />
                   PayPal
                 </Button>
-                <Button variant="outline" size="lg" className="flex-1 border-iv-white/10 text-iv-cream/60 bg-iv-black hover:border-iv-gold hover:text-iv-gold" disabled>
+                <Button variant="outline" size="lg" className="flex-1 border-iv-white/10 text-iv-cream/60 bg-iv-black hover:border-iv-gold hover:text-iv-gold">
                   <Truck className="w-4 h-4 mr-2" />
                   Shop Pay
                 </Button>
