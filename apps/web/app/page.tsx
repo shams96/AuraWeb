@@ -1,5 +1,5 @@
 import { SystemHero } from '@/components/sections/system-hero'
-import { SkinScan } from '@/components/diagnostic/skin-scan'
+import { SkinConsultation } from '@/components/diagnostic/skin-consultation'
 import { ProblemSolution } from '@/components/sections/problem-solution'
 import { ProblemEducationBlock } from '@/components/sections/problem-education'
 import { HowItWorks } from '@/components/sections/how-it-works'
@@ -100,7 +100,7 @@ export default function HomePage() {
   return (
     <main>
       <SystemHero />
-      <SkinScan />
+      <SkinConsultation />
       <ProblemSolution
         title="The Skin Sensitivity Crisis"
         description="Millions struggle with sensitive, reactive skin that flares up at the slightest trigger. Traditional solutions often make things worse."
