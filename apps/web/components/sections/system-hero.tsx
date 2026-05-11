@@ -5,9 +5,8 @@ import Link from 'next/link'
 
 export function SystemHero() {
   return (
-    <section className="relative overflow-hidden" style={{
+    <section className="iv-hero relative overflow-hidden" style={{
       background: 'linear-gradient(135deg, var(--iv-black) 0%, var(--iv-deep-green) 45%, var(--iv-champagne) 100%)',
-      minHeight: '92vh',
       display: 'flex',
       alignItems: 'center',
     }}>
@@ -43,7 +42,8 @@ export function SystemHero() {
 
       {/* Content */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-xl lg:max-w-2xl py-24">
+        {/* py uses clamp so it scales with viewport height, never pushing buttons off-screen */}
+        <div className="max-w-xl lg:max-w-2xl" style={{ padding: 'clamp(1.5rem, 8vh, 5rem) 0' }}>
 
           {/* Provenance badge */}
           <div
@@ -51,7 +51,7 @@ export function SystemHero() {
             style={{
               display: 'inline-flex', alignItems: 'center', gap: 10,
               border: '1px solid rgba(145,56,50,0.18)', borderRadius: 100,
-              padding: '6px 18px', marginBottom: 36,
+              padding: '6px 18px', marginBottom: 'clamp(1rem, 3vh, 2.25rem)',
               background: 'rgba(255,255,255,0.60)', backdropFilter: 'blur(12px)',
               opacity: 0,
             }}
@@ -62,23 +62,23 @@ export function SystemHero() {
             </span>
           </div>
 
-          {/* Headline */}
+          {/* Headline — font size uses min(vw,vh) so it never overflows on short screens */}
           <h1 style={{
             fontFamily: "'Playfair Display', serif", fontWeight: 700,
             lineHeight: 1.0, letterSpacing: '-0.02em',
-            color: 'var(--iv-white)', marginBottom: 28,
+            color: 'var(--iv-white)', marginBottom: 'clamp(0.75rem, 2vh, 1.75rem)',
           }}>
-            <span data-reveal="iv-word-in" style={{ display: 'block', fontSize: 'clamp(3rem, 7vw, 5.5rem)', textTransform: 'uppercase', opacity: 0, animationDelay: '0.1s' }}>The Art of</span>
-            <span data-reveal="iv-word-in" style={{ display: 'block', fontSize: 'clamp(3rem, 7vw, 5.5rem)', textTransform: 'uppercase', fontStyle: 'italic', color: 'var(--iv-gold)', opacity: 0, animationDelay: '0.22s' }}>Longevity</span>
-            <span data-reveal="iv-word-in" style={{ display: 'block', fontSize: 'clamp(3rem, 7vw, 5.5rem)', textTransform: 'uppercase', opacity: 0, animationDelay: '0.34s' }}>Skincare</span>
+            <span data-reveal="iv-word-in" style={{ display: 'block', fontSize: 'clamp(2.25rem, min(7vw, 11vh), 5.5rem)', textTransform: 'uppercase', opacity: 0, animationDelay: '0.1s' }}>The Art of</span>
+            <span data-reveal="iv-word-in" style={{ display: 'block', fontSize: 'clamp(2.25rem, min(7vw, 11vh), 5.5rem)', textTransform: 'uppercase', fontStyle: 'italic', color: 'var(--iv-gold)', opacity: 0, animationDelay: '0.22s' }}>Longevity</span>
+            <span data-reveal="iv-word-in" style={{ display: 'block', fontSize: 'clamp(2.25rem, min(7vw, 11vh), 5.5rem)', textTransform: 'uppercase', opacity: 0, animationDelay: '0.34s' }}>Skincare</span>
           </h1>
 
           {/* Descriptor */}
           <p
             data-reveal="iv-reveal-up"
             style={{
-              fontSize: '1.05rem', color: 'var(--iv-cream)', fontWeight: 300,
-              lineHeight: 1.75, maxWidth: 440, marginBottom: 40, letterSpacing: '0.01em',
+              fontSize: 'clamp(0.9rem, 1.3vw, 1.05rem)', color: 'var(--iv-cream)', fontWeight: 300,
+              lineHeight: 1.75, maxWidth: 440, marginBottom: 'clamp(1rem, 3.5vh, 2.5rem)', letterSpacing: '0.01em',
               opacity: 0, animationDelay: '0.45s',
             }}
           >
@@ -86,7 +86,7 @@ export function SystemHero() {
           </p>
 
           {/* CTAs */}
-          <div data-reveal="iv-reveal-up" style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginBottom: 56, opacity: 0, animationDelay: '0.55s' }}>
+          <div data-reveal="iv-reveal-up" style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginBottom: 'clamp(1.5rem, 5vh, 3.5rem)', opacity: 0, animationDelay: '0.55s' }}>
             <button
               className="btn-luxury"
               style={{ padding: '16px 36px' }}

@@ -651,6 +651,19 @@ img[loading="lazy"].loaded {
   }
 }
 
+/* ── Hero viewport height — fluid, device-adaptive ──────────
+   Industry standard 2023+:
+   · svh  = small viewport height (excludes browser chrome — Safari ≥15.4)
+   · dvh  = dynamic viewport height (live-updates as chrome shows/hides)
+   · vh   = fallback for older browsers
+   min-height lets content expand on small screens rather than clip.
+   ─────────────────────────────────────────────────────────── */
+.iv-hero {
+  min-height: 100vh;    /* legacy fallback */
+  min-height: 100svh;   /* excludes mobile browser bars */
+  min-height: 100dvh;   /* updates as chrome appears/disappears */
+}
+
 /* ============================================================
    FLUID TYPOGRAPHY SCALE — 2026/27
    Use these classes on headings for responsive scaling without
