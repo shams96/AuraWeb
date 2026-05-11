@@ -151,9 +151,9 @@ export default function HomePage() {
           }
         ]}
         timeline={[
-          { week: 'Week 4', result: 'First full skin cycle complete — texture smoother, hydration normalised' },
-          { week: 'Week 8', result: 'Measurable tone improvement — 97% report smoother skin (n=2,450)' },
-          { week: 'Week 12', result: 'Peptide-driven structural results — firmness and volume visibly improved' }
+          { week: '48 Hours', result: 'Skin feels measurably different — humectant complex hydrates, redness calms, barrier begins responding' },
+          { week: 'Week 4', result: 'First full skin cycle complete — 97% report smoother skin and normalised hydration (n=2,450)' },
+          { week: 'Week 12', result: 'Peptide-driven structural change — clinically significant firmness, volume and tone improvement' }
         ]}
       />
       <BentoFeatures />

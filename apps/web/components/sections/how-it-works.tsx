@@ -60,33 +60,65 @@ export function HowItWorks({ steps, timeline }: HowItWorksProps) {
           <div className="absolute inset-0 bg-iv-gold/[0.02] rounded-[40px] blur-3xl pointer-events-none" />
           <div className="relative bg-iv-black/40 border border-iv-gold/10 rounded-[40px] p-10 md:p-16 backdrop-blur-xl">
             <div className="flex flex-col md:flex-row justify-between items-center mb-16 gap-8">
-              <h3 className="text-3xl font-bold text-iv-white uppercase tracking-tighter italic serif">Results Timeline</h3>
+              <div>
+                <h3 className="text-3xl font-bold text-iv-white uppercase tracking-tighter italic serif mb-2">Results Timeline</h3>
+                <p className="text-sm text-iv-cream/40 font-light">First noticeable difference within 48 hours.</p>
+              </div>
               <div className="flex items-center gap-3 bg-iv-gold/10 px-6 py-2 rounded-full border border-iv-gold/20">
                 <Clock className="w-4 h-4 text-iv-gold" />
-                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-iv-gold">Standard Verification Window</span>
+                <span className="text-[11px] font-black uppercase tracking-[0.2em] text-iv-gold">48-Hour TTW Guarantee</span>
               </div>
             </div>
-            
+
             <div className="grid md:grid-cols-3 gap-8">
-              {timeline.map((item, index) => (
-                <div key={index} className="relative group">
-                  <div className="bg-iv-deep-green/10 border border-iv-white/5 rounded-3xl p-8 hover:bg-iv-deep-green/20 transition-all duration-500">
-                    <div className="flex items-center justify-between mb-6">
-                      <span className="text-[10px] font-black text-iv-gold uppercase tracking-[0.4em]">{item.week}</span>
-                      <CheckCircle2 className="w-5 h-5 text-iv-gold opacity-20 group-hover:opacity-100 transition-opacity" />
-                    </div>
-                    <p className="text-iv-white font-bold text-lg leading-tight mb-4 tracking-tight">{item.result}</p>
-                    <div className="h-1 w-full bg-iv-white/5 rounded-full overflow-hidden">
-                      <div className="h-full bg-iv-gold opacity-40 transition-all duration-1000" style={{ width: `${(index + 1) * 33}%` }} />
+              {timeline.map((item, index) => {
+                const isWow = index === 0
+                return (
+                  <div key={index} className="relative group">
+                    <div
+                      className="border rounded-3xl p-8 transition-all duration-500"
+                      style={{
+                        background: isWow ? 'linear-gradient(135deg, rgba(145,56,50,0.14) 0%, var(--iv-deep-green)/10% 100%)' : 'rgba(15,36,25,0.10)',
+                        borderColor: isWow ? 'rgba(145,56,50,0.40)' : 'rgba(255,255,255,0.05)',
+                      }}
+                      onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = isWow ? 'linear-gradient(135deg, rgba(145,56,50,0.20) 0%, rgba(15,36,25,0.20) 100%)' : 'rgba(15,36,25,0.20)'}
+                      onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = isWow ? 'linear-gradient(135deg, rgba(145,56,50,0.14) 0%, rgba(15,36,25,0.10) 100%)' : 'rgba(15,36,25,0.10)'}
+                    >
+                      <div className="flex items-center justify-between mb-6">
+                        <div>
+                          <span
+                            className="text-[11px] font-black uppercase tracking-[0.4em]"
+                            style={{ color: 'var(--iv-gold)' }}
+                          >
+                            {item.week}
+                          </span>
+                          {isWow && (
+                            <span
+                              className="ml-3 text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full"
+                              style={{ background: 'rgba(145,56,50,0.15)', color: 'var(--iv-gold)', border: '1px solid rgba(145,56,50,0.30)' }}
+                            >
+                              TTW
+                            </span>
+                          )}
+                        </div>
+                        <CheckCircle2 className="w-5 h-5 text-iv-gold opacity-20 group-hover:opacity-100 transition-opacity" />
+                      </div>
+                      <p className="text-iv-white font-bold text-lg leading-tight mb-4 tracking-tight">{item.result}</p>
+                      <div className="h-1 w-full bg-iv-white/5 rounded-full overflow-hidden">
+                        <div
+                          className="h-full bg-iv-gold transition-all duration-1000"
+                          style={{ width: `${isWow ? 18 : (index + 1) * 33}%`, opacity: isWow ? 0.7 : 0.4 }}
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                )
+              })}
             </div>
-            
+
             <div className="mt-16 text-center">
-              <p className="text-[9px] font-black uppercase tracking-[0.4em] text-iv-cream/30">
-                Clinical assessment required for final protocol validation.
+              <p className="text-[11px] font-black uppercase tracking-[0.35em] text-iv-cream/30">
+                TTW = Time To Wow — first perceptible sensory improvement. Structural results from Week 4.
               </p>
             </div>
           </div>

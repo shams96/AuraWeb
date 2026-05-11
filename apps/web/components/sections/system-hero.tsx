@@ -118,9 +118,9 @@ export function SystemHero() {
           {/* Social proof bar */}
           <div data-reveal="iv-reveal-up iv-stagger" style={{ display: 'flex', gap: 32, flexWrap: 'wrap', opacity: 0, animationDelay: '0.65s' }}>
             {[
+              { value: '48hrs', label: 'Time To Wow' },
+              { value: '97%',  label: 'Smoother Skin at Wk 4' },
               { value: '4.8★', label: '2,450+ Reviews' },
-              { value: '97%',  label: 'Smoother Skin in 4 Wks' },
-              { value: '18',   label: 'Formulations' },
             ].map(({ value, label }) => (
               <div key={label}>
                 <div style={{ fontSize: '1.3rem', fontWeight: 800, color: 'var(--iv-gold)', fontFamily: "'Playfair Display', serif", lineHeight: 1 }}>{value}</div>
