@@ -3,6 +3,8 @@ import { SkinConsultation } from '@/components/diagnostic/skin-consultation'
 import { ProblemSolution } from '@/components/sections/problem-solution'
 import { ProblemEducationBlock } from '@/components/sections/problem-education'
 import { HowItWorks } from '@/components/sections/how-it-works'
+import { BentoFeatures } from '@/components/sections/bento-features'
+import { IngredientScroll } from '@/components/sections/ingredient-scroll'
 import { ScienceIngredients } from '@/components/sections/science-ingredients'
 import { ResultsTimeline } from '@/components/sections/results-timeline'
 import { Testimonials } from '@/components/sections/testimonials'
@@ -154,6 +156,8 @@ export default function HomePage() {
           { week: 'Week 12', result: 'Peptide-driven structural results — firmness and volume visibly improved' }
         ]}
       />
+      <BentoFeatures />
+      <IngredientScroll />
       <ScienceIngredients
         keyIngredients={[
           {

@@ -714,6 +714,101 @@ img[loading="lazy"].loaded {
 .text-\[9px\]  { font-size: 11px !important; }
 .text-\[10px\] { font-size: 11px !important; }
 
+/* ============================================================
+   CSS SCROLL-DRIVEN ANIMATIONS — 2026/27
+   Progressive enhancement via @supports — older browsers fall
+   back to the IntersectionObserver-based iv-reveal classes.
+   Supported: Chrome 115+, Firefox 110+, Safari 18+ (partial).
+   ============================================================ */
+@supports (animation-timeline: scroll()) {
+
+  /* ── Scroll progress bar (tied to root scroll position) ── */
+  .iv-scroll-progress {
+    transform-origin: left center;
+    animation: iv-progress-grow linear forwards;
+    animation-timeline: scroll(root block);
+  }
+  @keyframes iv-progress-grow {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+  }
+
+  /* ── Section heading reveal as it scrolls into view ──── */
+  .iv-scroll-reveal {
+    animation: iv-scroll-up linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 35%;
+  }
+  @keyframes iv-scroll-up {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Card entrance on scroll ───────────────────────── */
+  .iv-scroll-card {
+    animation: iv-scroll-card-in linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 40%;
+  }
+  @keyframes iv-scroll-card-in {
+    from { opacity: 0; transform: translateY(20px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  /* ── Editorial blur-to-clear text reveal ──────────── */
+  .iv-scroll-text {
+    animation: iv-scroll-unblur linear both;
+    animation-timeline: view();
+    animation-range: entry 5% entry 45%;
+  }
+  @keyframes iv-scroll-unblur {
+    from { opacity: 0.12; filter: blur(8px); }
+    to   { opacity: 1;    filter: blur(0); }
+  }
+
+  /* ── Hero product image parallax ──────────────────── */
+  .iv-parallax {
+    animation: iv-parallax-drift linear both;
+    animation-timeline: scroll(root block);
+    animation-range: 0vh 70vh;
+  }
+  @keyframes iv-parallax-drift {
+    from { transform: translateY(0); }
+    to   { transform: translateY(18%); }
+  }
+
+  /* ── Counter stat entrance ─────────────────────────── */
+  .iv-scroll-stat {
+    animation: iv-scroll-stat-pop linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 30%;
+  }
+  @keyframes iv-scroll-stat-pop {
+    from { opacity: 0; transform: scale(0.88) translateY(12px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+  }
+}
+
+/* ── Horizontal snap-scroll container ─────────────────────────
+   CSS-native horizontal carousel. No JS required.
+   Industry pattern: La Mer, Chanel, Augustinus Bader 2026.
+   ─────────────────────────────────────────────────────────── */
+.iv-hscroll {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;          /* Firefox */
+  gap: 1.5rem;
+  padding-bottom: 0.5rem;
+}
+.iv-hscroll::-webkit-scrollbar { display: none; }
+
+.iv-hscroll-item {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+}
+
 /* ── Noise/grain texture overlay (luxury brand standard 2026) ─
    Add class="iv-noise" + position:relative to any dark section.
    ─────────────────────────────────────────────────────────── */
