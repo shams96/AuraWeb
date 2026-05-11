@@ -55,7 +55,7 @@ export default function IngredientsPage() {
           <div className="mb-20 text-center">
             <h2 className="text-xs font-black text-iv-gold mb-4 uppercase tracking-[0.4em]">The Breakthrough 6</h2>
             <p className="text-2xl font-bold text-iv-white tracking-tighter italic font-serif">
-              Proprietary technologies granting a 12-18 month lead.
+              Six proprietary actives. Four independent clinical trials. One system.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">

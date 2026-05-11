@@ -82,7 +82,7 @@ export function SystemHero() {
               opacity: 0, animationDelay: '0.45s',
             }}
           >
-            Metabolically aligned. Clinically proven. The world's first 4-tier system tuned to your skin's biological age — manufactured at pharmaceutical grade in Italy.
+            Metabolically aligned. Clinically tested in 4 independent trials. The world's first 4-tier system tuned to your skin's biological age — manufactured at pharmaceutical grade in Italy.
           </p>
 
           {/* CTAs */}
@@ -119,8 +119,8 @@ export function SystemHero() {
           <div data-reveal="iv-reveal-up iv-stagger" style={{ display: 'flex', gap: 32, flexWrap: 'wrap', opacity: 0, animationDelay: '0.65s' }}>
             {[
               { value: '4.8★', label: '2,450+ Reviews' },
-              { value: '97%',  label: 'See Results in 4 Wks' },
-              { value: '18',   label: 'SKUs Certified' },
+              { value: '97%',  label: 'Smoother Skin in 4 Wks' },
+              { value: '18',   label: 'Formulations' },
             ].map(({ value, label }) => (
               <div key={label}>
                 <div style={{ fontSize: '1.3rem', fontWeight: 800, color: 'var(--iv-gold)', fontFamily: "'Playfair Display', serif", lineHeight: 1 }}>{value}</div>

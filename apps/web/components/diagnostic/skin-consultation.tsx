@@ -206,7 +206,7 @@ const PROTOCOLS: Record<Tier, Protocol> = {
       { name: 'Terra Radiance Cream',      role: 'Overnight barrier nourishment',    price: '£245' },
     ],
     ingredients: [
-      'Bifida Ferment Lysate 0.30% (Microbiome balance)',
+      'Bifida Ferment Lysate 0.50% (Microbiome balance)',
       'Ectoin (Environmental stress shield)',
       'Niacinamide 4% (Pore refinement)',
       'SPF 30+ UV filters',
