@@ -49,10 +49,10 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
             <div className="inline-block border border-iv-gold/20 rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-6 bg-iv-black/40 backdrop-blur-md text-iv-gold">
               Verified Results
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-iv-white mb-6 uppercase tracking-widest">
+            <h2 className="iv-type-h2 font-bold text-iv-white mb-6 uppercase tracking-widest">
               Real People. Real Results.
             </h2>
-            <p className="text-xl text-iv-cream/70 max-w-3xl mx-auto leading-relaxed">
+            <p className="iv-type-lead text-iv-cream/70 max-w-3xl mx-auto leading-relaxed">
               Every review is tied to a confirmed purchase. Every result is documented.
             </p>
           </div>

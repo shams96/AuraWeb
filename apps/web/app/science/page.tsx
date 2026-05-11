@@ -59,7 +59,7 @@ export default function SciencePage() {
           <div className="inline-block border border-iv-gold/20 rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-10 bg-iv-black/40 backdrop-blur-md">
             4 Independent Clinical Trials
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tighter uppercase tracking-widest leading-none">The Science of <br /><span className="text-iv-gold italic serif">Longevity</span></h1>
+          <h1 className="iv-type-display font-bold mb-6 tracking-tighter uppercase leading-none">The Science of <br /><span className="text-iv-gold italic serif">Longevity</span></h1>
           <p className="text-lg text-iv-cream/70 max-w-3xl mx-auto leading-relaxed font-light">
             Formulated in partnership with <strong className="text-iv-white">Natural You Srl</strong>, Isola del Liri, our 18 enhanced formulations represent the pinnacle of Italian biotechnological innovation. We don't just treat skin; we optimize its cellular metabolism.
           </p>
@@ -106,7 +106,7 @@ export default function SciencePage() {
         <div className="container mx-auto px-4 max-w-5xl relative z-10">
           <div className="flex flex-col md:flex-row items-center gap-20">
             <div className="flex-1 space-y-8">
-              <h2 className="text-4xl font-bold text-iv-white tracking-tighter uppercase tracking-[0.1em]">Italian Laboratory Precision</h2>
+              <h2 className="iv-type-h2 font-bold text-iv-white tracking-tighter uppercase">Italian Laboratory Precision</h2>
               <p className="text-iv-cream/60 leading-relaxed font-light text-lg">
                 Our partnership with <strong className="text-iv-white">Natural You Srl</strong> in Isola del Liri, Italy, grants Isola Vitale exclusive access to pharmaceutical-grade raw materials and proprietary encapsulation technologies. Each formulation undergoes rigorous pH validation and stability testing to ensure 100% regulatory compliance.
               </p>

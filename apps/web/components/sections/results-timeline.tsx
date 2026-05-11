@@ -26,7 +26,7 @@ export function ResultsTimeline({ timeline }: ResultsTimelineProps) {
             >
               Clinical Timeline
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-iv-white mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+            <h2 className="iv-type-h2 font-bold text-iv-white mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
               See Real <span className="italic" style={{ color: 'var(--iv-gold)' }}>Results</span>
             </h2>
             <p className="text-iv-cream/55 max-w-xl mx-auto leading-relaxed font-light">

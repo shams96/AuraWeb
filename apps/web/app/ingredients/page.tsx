@@ -42,7 +42,7 @@ export default function IngredientsPage() {
           <div className="inline-block border border-iv-gold/20 rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-8 bg-iv-black/40 backdrop-blur-md">
             The Dossier
           </div>
-          <h1 className="text-6xl md:text-8xl font-bold mb-8 tracking-tighter uppercase tracking-widest leading-none">The <span className="text-iv-gold italic serif">Ingredients</span></h1>
+          <h1 className="iv-type-display font-bold mb-8 tracking-tighter uppercase leading-none">The <span className="text-iv-gold italic serif">Ingredients</span></h1>
           <p className="text-xl text-iv-cream/70 leading-relaxed font-light">
             Uncompromising transparency. Discover the clinical-grade actives and proprietary breakthroughs that power the Isola Vitale system.
           </p>
@@ -80,7 +80,7 @@ export default function IngredientsPage() {
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="text-center mb-20">
             <h2 className="text-xs font-black text-iv-gold mb-4 uppercase tracking-[0.4em]">Master Inventory</h2>
-            <h3 className="text-4xl font-bold text-iv-white tracking-tighter uppercase tracking-[0.1em]">Comprehensive INCI Directory</h3>
+            <h3 className="iv-type-h2 font-bold text-iv-white tracking-tighter uppercase">Comprehensive INCI Directory</h3>
           </div>
           <div className="overflow-x-auto border border-iv-white/5 rounded-2xl bg-iv-deep-green/5 backdrop-blur-md">
             <table className="w-full border-collapse">
@@ -121,7 +121,7 @@ export default function IngredientsPage() {
             <div className="inline-block border border-iv-gold/20 rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-6 bg-iv-black/40 backdrop-blur-md text-iv-gold">
               Third-Party Verified
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-iv-white tracking-tighter uppercase">
+            <h2 className="iv-type-h2 font-bold text-iv-white tracking-tighter uppercase">
               Certifications & <span className="text-iv-gold italic serif">Standards</span>
             </h2>
             <p className="text-iv-cream/50 mt-6 max-w-2xl mx-auto font-light text-lg leading-relaxed">

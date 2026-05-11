@@ -650,3 +650,74 @@ img[loading="lazy"].loaded {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ============================================================
+   FLUID TYPOGRAPHY SCALE — 2026/27
+   Use these classes on headings for responsive scaling without
+   media-query breakpoints. Minimum sizes prevent mobile overflow.
+   ============================================================ */
+@layer utilities {
+  /* Display / Hero — page-level titles */
+  .iv-type-display {
+    font-size: clamp(2.25rem, 6vw, 5rem);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+  }
+
+  /* Section h2 headings */
+  .iv-type-h2 {
+    font-size: clamp(1.75rem, 4vw, 3.5rem);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  /* Card / subsection h3 headings */
+  .iv-type-h3 {
+    font-size: clamp(1.125rem, 2.2vw, 1.75rem);
+    line-height: 1.25;
+  }
+
+  /* Lead body copy */
+  .iv-type-lead {
+    font-size: clamp(1rem, 1.4vw, 1.25rem);
+    line-height: 1.65;
+  }
+
+  /* Brand label / badge — minimum 11px enforced */
+  .iv-type-label {
+    font-size: clamp(0.6875rem, 0.9vw, 0.75rem);
+    font-weight: 900;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+}
+
+/* ── Minimum readable font-size enforcement ─────────────────
+   Tailwind text-[9px] and text-[10px] produce sub-11px text
+   which is below readability thresholds on mobile devices.
+   These overrides lift them to 11px without touching every file.
+   ─────────────────────────────────────────────────────────── */
+.text-\[9px\]  { font-size: 11px !important; }
+.text-\[10px\] { font-size: 11px !important; }
+
+/* ── Noise/grain texture overlay (luxury brand standard 2026) ─
+   Add class="iv-noise" + position:relative to any dark section.
+   ─────────────────────────────────────────────────────────── */
+.iv-noise {
+  position: relative;
+  isolation: isolate;
+}
+.iv-noise::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  background-repeat: repeat;
+}
+.iv-noise > * { position: relative; z-index: 1; }

@@ -47,7 +47,7 @@ export default function ShopPage({
         
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           <div className="inline-block border border-iv-gold/20 rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-8 bg-iv-black/40 backdrop-blur-md text-iv-gold"> Acquisition Portal </div>
-          <h1 className="text-5xl md:text-7xl font-bold mb-8 tracking-tighter uppercase tracking-widest leading-none text-iv-white">
+          <h1 className="iv-type-display font-bold mb-8 tracking-tighter uppercase leading-none text-iv-white">
             {getTitle().split(' ').slice(0, -1).join(' ')} <span className="text-iv-gold italic serif">{getTitle().split(' ').pop()}</span>
           </h1>
           <p className="text-xl text-iv-cream/60 max-w-2xl leading-relaxed font-light font-serif italic">

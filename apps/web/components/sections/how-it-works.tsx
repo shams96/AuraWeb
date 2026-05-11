@@ -22,10 +22,10 @@ export function HowItWorks({ steps, timeline }: HowItWorksProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">
           <div className="inline-block border border-iv-gold/20 rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-6 bg-iv-black/40 backdrop-blur-md text-iv-gold"> Engineering </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-iv-white mb-6 tracking-tighter uppercase">
+          <h2 className="iv-type-h2 font-bold text-iv-white mb-6 tracking-tighter uppercase">
             Bio-Adaptive <span className="text-iv-gold italic serif lowercase">Dynamics</span>
           </h2>
-          <p className="text-lg text-iv-cream/50 max-w-2xl mx-auto font-light leading-relaxed">
+          <p className="iv-type-lead text-iv-cream/50 max-w-2xl mx-auto font-light leading-relaxed">
             Our system operates in three distinct phases to ensure continuous metabolic synchronization with your skin environment.
           </p>
         </div>

@@ -47,10 +47,10 @@ export function CompetitorComparison() {
           <div className="inline-block border border-iv-gold/20 rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-6 bg-iv-black/40 backdrop-blur-md text-iv-gold">
             Transparency Index
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-iv-white tracking-tighter uppercase mb-6">
+          <h2 className="iv-type-h2 font-bold text-iv-white tracking-tighter uppercase mb-6">
             How We Compare
           </h2>
-          <p className="text-iv-cream/50 max-w-2xl mx-auto font-light text-lg leading-relaxed">
+          <p className="iv-type-lead text-iv-cream/50 max-w-2xl mx-auto font-light leading-relaxed">
             Side by side with the brands that set the standard. Transparency is not a marketing claim — it is a verifiable fact.
           </p>
         </div>

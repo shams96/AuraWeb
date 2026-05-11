@@ -21,8 +21,8 @@ export default function AboutPage() {
           <div className="inline-block border border-iv-gold/20 rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-12 bg-iv-black/40 backdrop-blur-md">
             Since 2024
           </div>
-          <h1 className="text-6xl md:text-8xl font-bold mb-8 tracking-tighter italic serif text-iv-gold">Isola Vitale</h1>
-          <h2 className="text-2xl md:text-3xl font-light text-iv-cream/70 mb-12 leading-relaxed">
+          <h1 className="iv-type-display font-bold mb-8 tracking-tighter italic serif text-iv-gold">Isola Vitale</h1>
+          <h2 className="iv-type-h3 font-light text-iv-cream/70 mb-12 leading-relaxed">
             The Vital Island: A New Paradigm in <br /><span className="text-iv-white font-bold italic">Metabolic Longevity</span>.
           </h2>
           <div className="w-24 h-px bg-iv-gold/30 mx-auto" />
@@ -35,7 +35,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
             <div className="space-y-8">
               <span className="text-iv-gold font-black uppercase tracking-[0.3em] text-[10px] block">Our Origin</span>
-              <h2 className="text-5xl font-bold text-iv-white tracking-tighter leading-none">Born in <br />Isola del Liri</h2>
+              <h2 className="iv-type-h2 font-bold text-iv-white tracking-tighter leading-none">Born in <br />Isola del Liri</h2>
               <p className="text-iv-cream/60 text-lg leading-relaxed font-light">
                 Isola Vitale was founded in the heart of Italy, in the historic town of <strong className="text-iv-white">Isola del Liri</strong>. Surrounded by cascading waterfalls and a heritage of industrial precision, we partnered with <strong className="text-iv-white">Natural You Srl</strong> to bridge the gap between ancient botanical wisdom and cutting-edge pharmaceutical science.
               </p>
