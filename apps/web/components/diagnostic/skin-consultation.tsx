@@ -36,41 +36,41 @@ interface SkinProfile {
 // ─── Question data ────────────────────────────────────────────────────────────
 
 const Q1 = {
-  heading: 'What would you most like your skin to feel like?',
-  sub: 'This anchors the entire protocol direction.',
+  heading: 'What does your ideal skin look and feel like?',
+  sub: 'Your answer shapes the entire direction of your protocol.',
   options: [
-    { label: 'Deeply hydrated and plump',       sub: 'Restore moisture and barrier strength',  value: 'hydration' },
-    { label: 'Clear, balanced, pore-refined',   sub: 'Reduce oiliness and congestion',         value: 'clarity'   },
-    { label: 'Bright, even and luminous',        sub: 'Correct tone and reveal radiance',       value: 'radiance'  },
-    { label: 'Firm, lifted and age-defying',     sub: 'Restore volume and structural lift',     value: 'firming'   },
+    { label: 'Deeply hydrated and plump',     sub: 'Restored moisture, softness and barrier strength', value: 'hydration' },
+    { label: 'Clear, balanced and refined',   sub: 'Reduced oiliness, congestion and visible pores',   value: 'clarity'   },
+    { label: 'Bright, even and luminous',     sub: 'Corrected tone, faded spots and natural radiance', value: 'radiance'  },
+    { label: 'Firm, lifted and age-defying',  sub: 'Restored volume, definition and structural lift',  value: 'firming'   },
   ],
 }
 
 const Q2 = {
-  heading: 'One hour after cleansing — nothing applied — your skin feels…',
-  sub: 'Choose the description closest to your natural skin state.',
+  heading: 'An hour after cleansing — nothing applied — how does your skin feel?',
+  sub: 'Select the option closest to your natural skin state.',
   options: [
-    { label: 'Tight, rough or flaky',       sub: 'Even after moisturising',                doScore: 0  },
-    { label: 'Comfortable and balanced',    sub: 'Rarely too dry or too oily',             doScore: 4  },
-    { label: 'Oily T-zone, dry cheeks',     sub: 'Combination pattern',                    doScore: 7  },
-    { label: 'Shiny and oily all over',     sub: 'Visible pores, prone to congestion',     doScore: 10 },
+    { label: 'Tight, rough or flaky',      sub: 'Dry even after moisturising',              doScore: 0  },
+    { label: 'Comfortable and balanced',   sub: 'Neither too dry nor too oily',             doScore: 4  },
+    { label: 'Oily across the T-zone',     sub: 'Combination — shiny centre, drier cheeks', doScore: 7  },
+    { label: 'Oily all over',              sub: 'Visibly shiny, pores enlarged',             doScore: 10 },
   ],
 }
 
 const Q3 = {
-  heading: 'How does your skin react to new products or environmental stressors?',
-  sub: 'Wind, cold, heat, unfamiliar ingredients.',
+  heading: 'How does your skin respond to new products or changes in your environment?',
+  sub: 'Consider reactions to wind, cold, heat or unfamiliar ingredients.',
   options: [
-    { label: 'Handles most things without reaction',    sub: 'Very rarely an issue',                        srScore: 0  },
-    { label: 'Occasional mild reactions',               sub: 'Sometimes redness or tightness',              srScore: 3  },
-    { label: 'Frequently red, stinging or irritated',   sub: 'Reacts to many products or climates',         srScore: 7  },
-    { label: 'I have a diagnosed skin condition',        sub: 'Rosacea, eczema, psoriasis or contact allergy', srScore: 10 },
+    { label: 'Rarely reacts — very resilient',           sub: 'Handles most things without issue',          srScore: 0  },
+    { label: 'Occasionally mildly reactive',             sub: 'Sometimes redness or tightness',             srScore: 3  },
+    { label: 'Frequently red, stinging or irritated',    sub: 'Reacts to many products and climates',       srScore: 7  },
+    { label: 'I have a diagnosed skin condition',         sub: 'Rosacea, eczema, psoriasis or contact allergy', srScore: 10 },
   ],
 }
 
 const Q4 = {
-  heading: 'Which concerns do you most want to address?',
-  sub: 'Select all that apply — we use these to prioritise your actives.',
+  heading: 'Which skin concerns would you most like to address?',
+  sub: 'Select all that apply — we use these to tailor your active ingredients.',
   options: [
     'Dryness and dehydration',
     'Breakouts or excess oil',
@@ -78,25 +78,25 @@ const Q4 = {
     'Dark spots or uneven tone',
     'Fine lines or wrinkles',
     'Loss of firmness',
-    'Dullness — lack of radiance',
-    'Visible pores',
+    'Dullness and lack of radiance',
+    'Enlarged pores',
   ],
 }
 
 const Q5 = {
-  heading: 'When you look in the mirror, your skin\'s aging pattern is…',
-  sub: 'This is the single most important driver of your tier placement.',
+  heading: 'How would you describe the visible signs of ageing on your skin right now?',
+  sub: 'Be honest — this is the most important question in your protocol match.',
   options: [
-    { label: 'Youthful and firm',                       sub: 'No visible signs of aging yet',           wScore: 0  },
-    { label: 'Very earliest fine lines appearing',       sub: 'Just starting to notice',                 wScore: 3  },
-    { label: 'Fine lines and mild loss of firmness',     sub: 'Visible but subtle',                      wScore: 6  },
-    { label: 'Significant aging I want to address',      sub: 'Deeper lines and volume loss',            wScore: 10 },
+    { label: 'Youthful and firm',                     sub: 'No visible signs of ageing yet',            wScore: 0  },
+    { label: 'Very early fine lines beginning',        sub: 'Just starting to notice',                   wScore: 3  },
+    { label: 'Fine lines and mild loss of firmness',   sub: 'Visible but not yet pronounced',            wScore: 6  },
+    { label: 'Established lines and volume loss',      sub: 'Deeper lines, sagging or hollowing',        wScore: 10 },
   ],
 }
 
 const Q6 = {
-  heading: 'Your age range?',
-  sub: 'Skin metabolism shifts fundamentally across each decade.',
+  heading: 'Which age range applies to you?',
+  sub: 'Skin metabolism shifts fundamentally with each decade.',
   options: [
     { label: 'Under 28',  ageModifier: 0 },
     { label: '28 – 38',   ageModifier: 2 },
@@ -107,24 +107,24 @@ const Q6 = {
 }
 
 const Q7 = {
-  heading: 'Which of these apply to your daily life?',
-  sub: 'These factors alter your skin biology more than most people realise. Select all that apply — or skip if none.',
+  heading: 'Do any of these factors apply to your daily life?',
+  sub: 'Lifestyle affects skin biology more than most people realise. Select all that apply, or skip if none.',
   options: [
-    { label: 'High daily stress levels',                      srDelta: 1,  wDelta: 1             },
-    { label: 'Less than 7 hours sleep most nights',                        wDelta: 1             },
-    { label: 'Urban environment (pollution / air quality)',    srDelta: 1,  doDelta: -1           },
-    { label: 'High daily sun exposure outdoors',                            pDelta: 2             },
-    { label: 'Hormonal changes (pregnancy, menopause, HRT)',  srDelta: 1,  pDelta: 1             },
+    { label: 'High or chronic stress',                            srDelta: 1,  wDelta: 1             },
+    { label: 'Fewer than 7 hours of sleep most nights',                        wDelta: 1             },
+    { label: 'Urban environment with high pollution',             srDelta: 1,  doDelta: -1           },
+    { label: 'Regular or prolonged sun exposure',                              pDelta: 2             },
+    { label: 'Hormonal changes (pregnancy, menopause or HRT)',    srDelta: 1,  pDelta: 1             },
   ],
 }
 
 const Q8 = {
-  heading: 'How many steps do you want in your daily ritual?',
-  sub: 'This shapes which products we include in your protocol.',
+  heading: 'How involved would you like your daily skincare routine to be?',
+  sub: 'We will tailor your protocol to suit your lifestyle.',
   options: [
-    { label: 'Minimal',     sub: '2–3 steps, effortless',   value: 'minimal'  },
-    { label: 'Balanced',    sub: '4–5 steps, intentional',  value: 'balanced' },
-    { label: 'Full ritual', sub: '6+ steps, immersive',     value: 'full'     },
+    { label: 'Minimal',      sub: '2–3 steps — fast and effortless',   value: 'minimal'  },
+    { label: 'Balanced',     sub: '4–5 steps — intentional and clear',  value: 'balanced' },
+    { label: 'Full ritual',  sub: '6+ steps — immersive and complete',  value: 'full'     },
   ],
 }
 
