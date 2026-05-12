@@ -1,3 +1,5 @@
+'use client'
+
 import { CheckCircle2, ArrowRight, Zap, Shield, Sparkles, Clock } from 'lucide-react'
 
 interface Step {
