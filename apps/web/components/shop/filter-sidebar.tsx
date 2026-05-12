@@ -2,62 +2,96 @@
 
 import { useRouter, useSearchParams, usePathname } from 'next/navigation'
 
+const COLLECTIONS = [
+  { label: 'Laboratory Series', value: 'laboratory', desc: 'Clinical / Professional' },
+  { label: 'Daily Protocol',    value: 'daily',      desc: 'Maintenance & Prevention' },
+  { label: 'Chronos Collection',value: 'chronos',    desc: 'Age-Defying / Longevity' },
+]
+
+const FORMATS = [
+  { label: 'Jar Cream',   value: 'jar' },
+  { label: 'Pump Bottle', value: 'pump' },
+  { label: 'Dropper',     value: 'dropper' },
+  { label: 'Mist / Spray',value: 'mist' },
+  { label: 'Eye Pump',    value: 'eye-pump' },
+]
+
 export function FilterSidebar() {
-  const router = useRouter()
-  const pathname = usePathname()
+  const router     = useRouter()
+  const pathname   = usePathname()
   const searchParams = useSearchParams()
 
-  const categories = [
-    { label: 'T1 Teen (13-19)', value: 't1' },
-    { label: 'T2 Twenties (20-29)', value: 't2' },
-    { label: 'T3 Thirties+ (30-49)', value: 't3' },
-    { label: 'T4 Mature+ (50+)', value: 't4' },
-  ]
-  
-  const formats = ['Serum', 'Cleanser', 'Cream', 'SPF', 'Treatment']
-  
-  const currentTier = searchParams.get('tier') || ''
+  const currentCollection = searchParams.get('collection') || ''
+  const currentFormat     = searchParams.get('format') || ''
 
-  const handleTierChange = (value: string) => {
+  function setParam(key: string, value: string, current: string) {
     const params = new URLSearchParams(searchParams.toString())
-    if (currentTier === value) {
-      params.delete('tier')
+    if (current === value) {
+      params.delete(key)
     } else {
-      params.set('tier', value)
+      params.set(key, value)
     }
     router.push(`${pathname}?${params.toString()}`, { scroll: false })
   }
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-10">
+      {/* Collection filter */}
       <div>
-        <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-4">Age Tier System</h3>
-        <div className="space-y-2">
-          {categories.map((category) => (
-            <label key={category.value} className="flex items-center gap-2 text-sm text-gray-600 hover:text-emerald-600 cursor-pointer">
-              <input 
-                type="checkbox" 
-                checked={currentTier === category.value}
-                onChange={() => handleTierChange(category.value)}
-                className="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500" 
-              />
-              {category.label}
-            </label>
-          ))}
+        <h3 className="text-[10px] font-black text-iv-gold uppercase tracking-[0.3em] mb-5">Collection</h3>
+        <div className="space-y-3">
+          {COLLECTIONS.map(({ label, value, desc }) => {
+            const active = currentCollection === value
+            return (
+              <button
+                key={value}
+                onClick={() => setParam('collection', value, currentCollection)}
+                className={`w-full text-left px-4 py-3 rounded-xl border transition-all duration-200 ${
+                  active
+                    ? 'border-iv-gold/40 bg-iv-gold/10 text-iv-white'
+                    : 'border-iv-white/5 hover:border-iv-gold/20 text-iv-cream/50'
+                }`}
+              >
+                <p className="text-xs font-bold uppercase tracking-wider leading-tight">{label}</p>
+                <p className="text-[10px] text-iv-cream/30 mt-0.5 font-light">{desc}</p>
+              </button>
+            )
+          })}
         </div>
       </div>
 
+      {/* Format filter */}
       <div>
-        <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-4">Format</h3>
+        <h3 className="text-[10px] font-black text-iv-gold uppercase tracking-[0.3em] mb-5">Format</h3>
         <div className="space-y-2">
-          {formats.map((format) => (
-            <label key={format} className="flex items-center gap-2 text-sm text-gray-600 hover:text-emerald-600 cursor-pointer">
-              <input type="checkbox" className="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500" />
-              {format}
-            </label>
-          ))}
+          {FORMATS.map(({ label, value }) => {
+            const active = currentFormat === value
+            return (
+              <button
+                key={value}
+                onClick={() => setParam('format', value, currentFormat)}
+                className={`w-full text-left px-4 py-2.5 rounded-lg border text-xs font-medium transition-all duration-200 ${
+                  active
+                    ? 'border-iv-gold/40 bg-iv-gold/8 text-iv-gold'
+                    : 'border-iv-white/5 hover:border-iv-white/10 text-iv-cream/40'
+                }`}
+              >
+                {label}
+              </button>
+            )
+          })}
         </div>
       </div>
+
+      {/* Clear filters */}
+      {(currentCollection || currentFormat) && (
+        <button
+          onClick={() => router.push(pathname, { scroll: false })}
+          className="w-full text-center text-[10px] font-black uppercase tracking-widest text-iv-cream/30 hover:text-iv-gold transition-colors py-2"
+        >
+          Clear Filters
+        </button>
+      )}
     </div>
   )
 }
