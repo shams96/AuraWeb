@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Check, CreditCard, Truck, Shield } from 'lucide-react'
+import { Check, CreditCard, Truck, Shield, Loader2 } from 'lucide-react'
 import { Button } from '@aurabiosphere/ui'
 
 interface BuyBoxProps {
@@ -29,6 +29,39 @@ export function BuyBox({ product, selectedVariant: initialVariant, buyBullets }:
   const [purchaseType, setPurchaseType] = useState<'one-time' | 'subscribe'>('one-time')
   const [customQty, setCustomQty] = useState(1)
   const [selectedBreakIndex, setSelectedBreakIndex] = useState(0)
+  const [checkoutLoading, setCheckoutLoading] = useState(false)
+  const [checkoutError, setCheckoutError] = useState('')
+
+  async function handleCheckout() {
+    setCheckoutLoading(true)
+    setCheckoutError('')
+    try {
+      const res = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          items: [{
+            id:        product.id,
+            name:      `${product.name}${currentVariant ? ` — ${currentVariant.name}` : ''}`,
+            price:     totalPrice / effectiveQty,
+            quantity:  effectiveQty,
+            variantId: selectedVariantId,
+          }],
+          currency: product.currency === 'USD' ? 'usd' : 'gbp',
+        }),
+      })
+      const data = await res.json()
+      if (data.url) {
+        window.location.href = data.url
+      } else {
+        setCheckoutError(data.error ?? 'Checkout unavailable. Please try again.')
+      }
+    } catch {
+      setCheckoutError('Network error. Please check your connection.')
+    } finally {
+      setCheckoutLoading(false)
+    }
+  }
 
   const currentVariant = product.variants.find(v => v.id === selectedVariantId) || product.variants[0]
   const basePrice = purchaseType === 'subscribe' ? currentVariant.price * 0.80 : currentVariant.price
@@ -222,25 +255,30 @@ export function BuyBox({ product, selectedVariant: initialVariant, buyBullets }:
               <div className="text-xl font-bold text-iv-white">{formatPrice(totalPrice)}</div>
             </div>
 
-            {/* Add to Cart Button */}
+            {/* Checkout Button */}
             <div className="mb-10">
               <Button
                 size="lg"
-                className="w-full py-6 text-lg font-bold uppercase tracking-widest bg-iv-gold text-iv-black hover:bg-iv-gold-light shadow-xl hover:shadow-iv-gold/20 border-none rounded-md"
+                disabled={checkoutLoading}
+                onClick={handleCheckout}
+                className="w-full py-6 text-lg font-bold uppercase tracking-widest bg-iv-gold text-iv-black hover:bg-iv-gold-light shadow-xl hover:shadow-iv-gold/20 border-none rounded-md disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 <div className="flex items-center justify-center space-x-3">
-                  <span>Add to Cart — {formatPrice(totalPrice)}</span>
+                  {checkoutLoading
+                    ? <><Loader2 className="w-5 h-5 animate-spin" /><span>Preparing Checkout…</span></>
+                    : <span>Checkout — {formatPrice(totalPrice)}</span>
+                  }
                 </div>
               </Button>
 
+              {checkoutError && (
+                <p className="text-red-400 text-xs text-center mt-3 font-medium">{checkoutError}</p>
+              )}
+
               <div className="flex justify-center space-x-4 mt-6">
-                <Button variant="outline" size="lg" className="flex-1 border-iv-white/10 text-iv-cream/60 bg-iv-black hover:border-iv-gold hover:text-iv-gold">
+                <Button variant="outline" size="lg" onClick={handleCheckout} className="flex-1 border-iv-white/10 text-iv-cream/60 bg-iv-black hover:border-iv-gold hover:text-iv-gold">
                   <CreditCard className="w-4 h-4 mr-2" />
-                  PayPal
-                </Button>
-                <Button variant="outline" size="lg" className="flex-1 border-iv-white/10 text-iv-cream/60 bg-iv-black hover:border-iv-gold hover:text-iv-gold">
-                  <Truck className="w-4 h-4 mr-2" />
-                  Shop Pay
+                  Card / Apple Pay
                 </Button>
               </div>
             </div>
