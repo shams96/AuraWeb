@@ -33,10 +33,10 @@ async function getAnalytics() {
     for (let i = 6; i >= 0; i--) {
       const d = new Date(today)
       d.setDate(d.getDate() - i)
-      dailyRevenue[d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })] = 0
+      dailyRevenue[d.toLocaleDateString('en-US', { day: 'numeric', month: 'short' })] = 0
     }
     for (const order of recentRevenue) {
-      const key = new Date(order.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })
+      const key = new Date(order.createdAt).toLocaleDateString('en-US', { day: 'numeric', month: 'short' })
       if (key in dailyRevenue) dailyRevenue[key] += Number(order.total)
     }
 
@@ -72,10 +72,10 @@ export default async function AdminAnalyticsPage() {
   const maxDaily = Math.max(...Object.values(dailyRevenue), 1)
 
   const KPI = [
-    { label: 'Total Revenue',    value: `£${revenue.toLocaleString('en-GB', { minimumFractionDigits: 2 })}`, icon: TrendingUp },
+    { label: 'Total Revenue',    value: `$${revenue.toLocaleString('en-US', { minimumFractionDigits: 2 })}`, icon: TrendingUp },
     { label: 'Total Orders',     value: totalOrders.toString(),                                               icon: ShoppingBag },
     { label: 'Customers',        value: totalCustomers.toString(),                                            icon: Users },
-    { label: 'Avg. Order Value', value: `£${aov.toLocaleString('en-GB', { minimumFractionDigits: 2 })}`,    icon: BarChart3 },
+    { label: 'Avg. Order Value', value: `$${aov.toLocaleString('en-US', { minimumFractionDigits: 2 })}`,    icon: BarChart3 },
   ]
 
   return (
@@ -107,7 +107,7 @@ export default async function AdminAnalyticsPage() {
             {Object.entries(dailyRevenue).map(([day, val]) => (
               <div key={day} className="flex-1 flex flex-col items-center gap-2">
                 <p className="text-[10px] text-iv-cream/50 font-semibold">
-                  {val > 0 ? `£${val.toFixed(0)}` : ''}
+                  {val > 0 ? `$${val.toFixed(0)}` : ''}
                 </p>
                 <div
                   className="w-full rounded-t-lg transition-all"

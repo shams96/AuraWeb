@@ -123,7 +123,7 @@ export default function AdminProductsPage() {
                   <p className="text-xs text-iv-cream/30 mt-0.5">{p.slug}</p>
                 </div>
                 <p className="text-xs text-iv-cream/50 font-mono">{p.sku}</p>
-                <p className="text-sm text-right font-semibold text-iv-white">£{Number(p.price).toFixed(2)}</p>
+                <p className="text-sm text-right font-semibold text-iv-white">${Number(p.price).toFixed(2)}</p>
                 <p className="text-sm text-right text-iv-cream/60">{p.quantity}</p>
                 <div className="flex justify-center">
                   <span
@@ -188,7 +188,7 @@ export default function AdminProductsPage() {
 
               <div className="grid grid-cols-3 gap-4">
                 <div>
-                  <label className="block text-[10px] font-black uppercase tracking-widest text-iv-cream/40 mb-1.5">Price (£)</label>
+                  <label className="block text-[10px] font-black uppercase tracking-widest text-iv-cream/40 mb-1.5">Price ($)</label>
                   <input
                     type="number" step="0.01" min="0"
                     value={form.price ?? 0}

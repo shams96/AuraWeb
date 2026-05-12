@@ -97,12 +97,12 @@ export default function AccountOrdersPage() {
                   <div>
                     <p className="text-xs font-mono font-semibold text-iv-cream/60">{order.orderNumber}</p>
                     <p className="text-xs text-iv-cream/30 mt-0.5 font-light">
-                      {new Date(order.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
+                      {new Date(order.createdAt).toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' })}
                     </p>
                   </div>
                   <div className="flex items-center gap-4">
                     <p className="text-sm font-bold text-iv-white">
-                      £{Number(order.total).toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+                      ${Number(order.total).toLocaleString('en-US', { minimumFractionDigits: 2 })}
                     </p>
                     <span
                       className="text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full"
@@ -118,7 +118,7 @@ export default function AccountOrdersPage() {
                   {(order.items as OrderItem[]).map((item, i) => (
                     <div key={i} className="flex items-center justify-between">
                       <p className="text-sm text-iv-cream/70">{item.name} <span className="text-iv-cream/30">×{item.quantity}</span></p>
-                      <p className="text-sm text-iv-cream/50">£{Number(item.price).toFixed(2)}</p>
+                      <p className="text-sm text-iv-cream/50">${Number(item.price).toFixed(2)}</p>
                     </div>
                   ))}
                 </div>

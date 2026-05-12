@@ -33,7 +33,7 @@ export async function POST(req: NextRequest) {
 
       const orderNumber = generateOrderNumber()
       const total       = (session.amount_total ?? 0) / 100
-      const currency    = (session.currency ?? 'gbp').toUpperCase()
+      const currency    = (session.currency ?? 'usd').toUpperCase()
 
       /* Persist order to DB */
       const order = await prisma.order.create({
@@ -78,7 +78,7 @@ export async function POST(req: NextRequest) {
               price:    Number(i.price),
             })),
             total,
-            currency: currency === 'GBP' ? '£' : '$',
+            currency: '$',
           }),
         })
       }

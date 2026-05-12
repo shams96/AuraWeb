@@ -12,7 +12,7 @@ const TIERS = [
     bg: 'bg-amber-600/5',
     icon: <Star className="w-6 h-6 text-amber-600" />,
     perks: [
-      'Earn 1 point per £1 spent',
+      'Earn 1 point per $1 spent',
       'Early access to new launches',
       'Birthday double-point day',
       'Member-only Journal content',
@@ -27,7 +27,7 @@ const TIERS = [
     icon: <Crown className="w-6 h-6 text-iv-gold" />,
     highlight: true,
     perks: [
-      'Earn 1.5 points per £1 spent',
+      'Earn 1.5 points per $1 spent',
       'Complimentary deluxe samples with every order',
       'Free express shipping on all orders',
       'Quarterly Skin Intelligence Report',
@@ -43,7 +43,7 @@ const TIERS = [
     bg: 'bg-iv-white/5',
     icon: <Zap className="w-6 h-6 text-iv-white" />,
     perks: [
-      'Earn 2 points per £1 spent',
+      'Earn 2 points per $1 spent',
       'Dedicated Skin Concierge (WhatsApp)',
       'Complimentary 30-min virtual skin consultation',
       'Invitation to Lab Days at Natural You Srl',
@@ -58,11 +58,11 @@ const HOW_IT_WORKS = [
   { step: '01', title: 'Create Account', body: 'Register for free. Your point balance starts immediately on your first order.' },
   { step: '02', title: 'Earn Points', body: 'Every purchase, review, and referral earns points. Subscriptions earn 25% bonus points automatically.' },
   { step: '03', title: 'Unlock Tiers', body: 'Progress through Bronze → Gold → Obsidian as your balance grows. Tier benefits activate instantly.' },
-  { step: '04', title: 'Redeem Rewards', body: 'Use points at checkout — 100 points = £1.00 off. Or save for exclusive milestone gifts.' },
+  { step: '04', title: 'Redeem Rewards', body: 'Use points at checkout — 100 points = $1.00 off. Or save for exclusive milestone gifts.' },
 ]
 
 const EARN_ACTIONS = [
-  { action: 'Purchase', points: '1–2 pts / £1', note: 'Based on your tier' },
+  { action: 'Purchase', points: '1–2 pts / $1', note: 'Based on your tier' },
   { action: 'Write a Verified Review', points: '50 pts', note: 'With photo: +25 pts' },
   { action: 'Refer a Friend', points: '200 pts', note: 'After their first purchase' },
   { action: 'Subscribe to Routine', points: '+25% bonus', note: 'On every subscription order' },
@@ -182,7 +182,7 @@ export default function LoyaltyPage() {
               </tbody>
             </table>
           </div>
-          <p className="text-center text-xs text-iv-cream/30 mt-6 font-light">100 points = £1.00 at checkout. Minimum redemption: 200 points.</p>
+          <p className="text-center text-xs text-iv-cream/30 mt-6 font-light">100 points = $1.00 at checkout. Minimum redemption: 200 points.</p>
         </div>
       </section>
 

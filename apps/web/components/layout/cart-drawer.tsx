@@ -24,7 +24,7 @@ export function CartDrawer() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          currency: 'gbp',
+          currency: 'usd',
           items: state.items.map(item => ({
             id:       item.sku ?? item.id,
             name:     item.name,
@@ -166,7 +166,7 @@ export function CartDrawer() {
 
                       {/* Price */}
                       <p className="text-sm font-bold" style={{ color: GOLD }}>
-                        £{(item.price * item.quantity).toFixed(2)}
+                        ${(item.price * item.quantity).toFixed(2)}
                       </p>
                     </div>
                   </div>
@@ -195,7 +195,7 @@ export function CartDrawer() {
             {/* Subtotal */}
             <div className="flex items-baseline justify-between mb-1">
               <span className="text-xs uppercase tracking-widest font-black text-iv-cream/40">Subtotal</span>
-              <span className="text-xl font-bold text-iv-white">£{subtotal.toFixed(2)}</span>
+              <span className="text-xl font-bold text-iv-white">${subtotal.toFixed(2)}</span>
             </div>
             {hasSubItems && (
               <p className="text-[10px] text-iv-cream/30 font-light mb-4">

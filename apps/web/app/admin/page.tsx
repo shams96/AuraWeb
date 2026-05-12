@@ -63,7 +63,7 @@ export default async function AdminDashboardPage() {
   const session = await getServerSession(authOptions)
 
   const KPI = [
-    { label: 'Total Revenue',   value: `£${stats.totalRevenue.toLocaleString('en-GB', { minimumFractionDigits: 2 })}`, icon: TrendingUp, note: 'All paid orders' },
+    { label: 'Total Revenue',   value: `$${stats.totalRevenue.toLocaleString('en-US', { minimumFractionDigits: 2 })}`, icon: TrendingUp, note: 'All paid orders' },
     { label: 'Total Orders',    value: stats.totalOrders.toString(),   icon: ShoppingBag, note: 'All time' },
     { label: 'Orders Today',    value: stats.todayOrders.toString(),   icon: Clock,       note: 'Since midnight' },
     { label: 'Pending Orders',  value: stats.pendingOrders.toString(), icon: Package,     note: 'Awaiting action' },
@@ -126,10 +126,10 @@ export default async function AdminDashboardPage() {
                 </div>
                 <div className="text-right">
                   <p className="text-sm font-semibold text-iv-white">
-                    £{Number(order.total).toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+                    ${Number(order.total).toLocaleString('en-US', { minimumFractionDigits: 2 })}
                   </p>
                   <p className="text-xs text-iv-cream/30 mt-0.5">
-                    {new Date(order.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })}
+                    {new Date(order.createdAt).toLocaleDateString('en-US', { day: 'numeric', month: 'short' })}
                   </p>
                 </div>
                 <span

@@ -14,7 +14,7 @@ export interface CheckoutItem {
 
 export async function POST(req: NextRequest) {
   try {
-    const { items, currency = 'gbp' }: { items: CheckoutItem[]; currency?: string } = await req.json()
+    const { items, currency = 'usd' }: { items: CheckoutItem[]; currency?: string } = await req.json()
 
     if (!items?.length) {
       return NextResponse.json({ error: 'Cart is empty' }, { status: 400 })

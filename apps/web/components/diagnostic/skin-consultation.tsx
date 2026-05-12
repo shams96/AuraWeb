@@ -200,13 +200,13 @@ const PROTOCOLS: Record<Tier, Protocol> = {
     description:
       'Your skin shows excellent baseline vitality. The Foundation Protocol\'s mission is protection: fortifying your microbiome, establishing a consistent daily ritual, and preventing the environmental damage that accumulates invisibly in your twenties before it ever becomes visible.',
     am: [
-      { id: 'gentle-cellular-cleanser', name: 'Gentle Cellular Cleanser',   role: 'Microbiome-safe morning cleanse', price: '£85',  priceNum: 85,  image: IMG.serum },
-      { id: '5b',                        name: '5B Consumer Hydrating Mist', role: 'Prep and first hydration layer',  price: '£75',  priceNum: 75,  image: IMG.col  },
-      { id: '3b',                        name: '3B Consumer SPF 30+',         role: 'Broad-spectrum UV protection',    price: '£95',  priceNum: 95,  image: IMG.col  },
+      { id: 'gentle-cellular-cleanser', name: 'Gentle Cellular Cleanser',   role: 'Microbiome-safe morning cleanse', price: '$85',  priceNum: 85,  image: IMG.serum },
+      { id: '5b',                        name: '5B Consumer Hydrating Mist', role: 'Prep and first hydration layer',  price: '$75',  priceNum: 75,  image: IMG.col  },
+      { id: '3b',                        name: '3B Consumer SPF 30+',         role: 'Broad-spectrum UV protection',    price: '$95',  priceNum: 95,  image: IMG.col  },
     ],
     pm: [
-      { id: 'gentle-cellular-cleanser', name: 'Gentle Cellular Cleanser', role: 'Evening metabolic waste removal', price: '£85',  priceNum: 85,  image: IMG.serum },
-      { id: 'terra-radiance-cream',      name: 'Terra Radiance Cream',      role: 'Overnight barrier nourishment',   price: '£245', priceNum: 245, image: IMG.col  },
+      { id: 'gentle-cellular-cleanser', name: 'Gentle Cellular Cleanser', role: 'Evening metabolic waste removal', price: '$85',  priceNum: 85,  image: IMG.serum },
+      { id: 'terra-radiance-cream',      name: 'Terra Radiance Cream',      role: 'Overnight barrier nourishment',   price: '$245', priceNum: 245, image: IMG.col  },
     ],
     ingredients: [
       'Bifida Ferment Lysate 0.50% (Microbiome balance)',
@@ -222,14 +222,14 @@ const PROTOCOLS: Record<Tier, Protocol> = {
     description:
       'Your skin carries early signs of environmental and lifestyle wear. The Correction Protocol introduces clinically active compounds to intercept these changes before they become established — restoring radiance, reinforcing your barrier, and correcting tone while the window for easy reversal is still open.',
     am: [
-      { id: 'gentle-cellular-cleanser', name: 'Gentle Cellular Cleanser',    role: 'pH-balanced morning cleanse',  price: '£85',  priceNum: 85,  image: IMG.serum },
-      { id: '1b',                        name: '1B Consumer Peptide Essence', role: 'Daily cellular renewal serum', price: '£175', priceNum: 175, image: IMG.serum },
-      { id: '3b',                        name: '3B Consumer SPF 30+',          role: 'Broad-spectrum UV defence',    price: '£95',  priceNum: 95,  image: IMG.col  },
+      { id: 'gentle-cellular-cleanser', name: 'Gentle Cellular Cleanser',    role: 'pH-balanced morning cleanse',  price: '$85',  priceNum: 85,  image: IMG.serum },
+      { id: '1b',                        name: '1B Consumer Peptide Essence', role: 'Daily cellular renewal serum', price: '$175', priceNum: 175, image: IMG.serum },
+      { id: '3b',                        name: '3B Consumer SPF 30+',          role: 'Broad-spectrum UV defence',    price: '$95',  priceNum: 95,  image: IMG.col  },
     ],
     pm: [
-      { id: 'gentle-cellular-cleanser', name: 'Gentle Cellular Cleanser', role: 'Deep evening cleanse',            price: '£85',  priceNum: 85,  image: IMG.serum },
-      { id: 't2-02',                    name: 'T2-02 Young Adult Gel',      role: 'Metabolically aligned treatment', price: '£110', priceNum: 110, image: IMG.col  },
-      { id: '4b',                       name: '4B Consumer Night Repair',   role: 'Overnight cellular recovery',    price: '£195', priceNum: 195, image: IMG.col  },
+      { id: 'gentle-cellular-cleanser', name: 'Gentle Cellular Cleanser', role: 'Deep evening cleanse',            price: '$85',  priceNum: 85,  image: IMG.serum },
+      { id: 't2-02',                    name: 'T2-02 Young Adult Gel',      role: 'Metabolically aligned treatment', price: '$110', priceNum: 110, image: IMG.col  },
+      { id: '4b',                       name: '4B Consumer Night Repair',   role: 'Overnight cellular recovery',    price: '$195', priceNum: 195, image: IMG.col  },
     ],
     ingredients: [
       'GLP-1 Skin Protection Complex (Metabolic alignment)',
@@ -245,14 +245,14 @@ const PROTOCOLS: Record<Tier, Protocol> = {
     description:
       'Your skin requires active regeneration at the cellular level. The Regeneration Protocol deploys OS-01 Senomorphic Peptides — shown to reduce zombie-cell accumulation by 30% — combined with L-Ornithine to restore dermal volume and firmness lost to time and cumulative stress. This is targeted biological intervention, not surface treatment.',
     am: [
-      { id: 'gentle-cellular-cleanser', name: 'Gentle Cellular Cleanser', role: 'Microbiome-preserving cleanse',       price: '£85',  priceNum: 85,  image: IMG.serum },
-      { id: 'chrono-lift-serum',         name: 'Chrono-Lift Serum',         role: 'Targeted volume and structural lift', price: '£345', priceNum: 345, image: '/images/products/obsidian_cream.png' },
-      { id: '3a',                         name: '3A Clinical SPF 50+',        role: 'Ectoin-boosted UV defence',          price: '£195', priceNum: 195, image: IMG.col  },
+      { id: 'gentle-cellular-cleanser', name: 'Gentle Cellular Cleanser', role: 'Microbiome-preserving cleanse',       price: '$85',  priceNum: 85,  image: IMG.serum },
+      { id: 'chrono-lift-serum',         name: 'Chrono-Lift Serum',         role: 'Targeted volume and structural lift', price: '$345', priceNum: 345, image: '/images/products/obsidian_cream.png' },
+      { id: '3a',                         name: '3A Clinical SPF 50+',        role: 'Ectoin-boosted UV defence',          price: '$195', priceNum: 195, image: IMG.col  },
     ],
     pm: [
-      { id: 'gentle-cellular-cleanser', name: 'Gentle Cellular Cleanser',      role: 'Evening cellular reset',        price: '£85',  priceNum: 85,  image: IMG.serum },
-      { id: 't3-03',                    name: 'T3-03 Mature Intervention Gel', role: 'OS-01 + DWAT night treatment',  price: '£165', priceNum: 165, image: IMG.col  },
-      { id: 'obsidian-vitale-cream',     name: 'Obsidian Vitale Cream',         role: 'Age-defying night restoration', price: '£295', priceNum: 295, image: '/images/products/obsidian_cream.png' },
+      { id: 'gentle-cellular-cleanser', name: 'Gentle Cellular Cleanser',      role: 'Evening cellular reset',        price: '$85',  priceNum: 85,  image: IMG.serum },
+      { id: 't3-03',                    name: 'T3-03 Mature Intervention Gel', role: 'OS-01 + DWAT night treatment',  price: '$165', priceNum: 165, image: IMG.col  },
+      { id: 'obsidian-vitale-cream',     name: 'Obsidian Vitale Cream',         role: 'Age-defying night restoration', price: '$295', priceNum: 295, image: '/images/products/obsidian_cream.png' },
     ],
     ingredients: [
       'OS-01 Senomorphic Peptides (Senescence reduction −30%)',
@@ -268,14 +268,14 @@ const PROTOCOLS: Record<Tier, Protocol> = {
     description:
       'Your skin calls for our most intensive intervention. The Longevity Protocol deploys clinical-grade NMN, GLP-1 complex, and OS-01 together in a comprehensive AM/PM system engineered to visibly transform skin at the metabolic level. This is the same formulation tier used in professional clinical settings — without the clinic appointment.',
     am: [
-      { id: 'gentle-cellular-cleanser', name: 'Gentle Cellular Cleanser',    role: 'Microbiome-safe clinical cleanse',  price: '£85',  priceNum: 85,  image: IMG.serum },
-      { id: '1a',                        name: '1A Clinical Peptide Essence', role: 'OS-01 + GLP-1 cellular activation', price: '£390', priceNum: 390, image: IMG.serum },
-      { id: '3a',                         name: '3A Clinical SPF 50+',         role: 'Maximum UV protection with Ectoin', price: '£195', priceNum: 195, image: IMG.col  },
+      { id: 'gentle-cellular-cleanser', name: 'Gentle Cellular Cleanser',    role: 'Microbiome-safe clinical cleanse',  price: '$85',  priceNum: 85,  image: IMG.serum },
+      { id: '1a',                        name: '1A Clinical Peptide Essence', role: 'OS-01 + GLP-1 cellular activation', price: '$390', priceNum: 390, image: IMG.serum },
+      { id: '3a',                         name: '3A Clinical SPF 50+',         role: 'Maximum UV protection with Ectoin', price: '$195', priceNum: 195, image: IMG.col  },
     ],
     pm: [
-      { id: '6a',                    name: '6A Clinical Gentle Cleanser', role: 'Pharmaceutical-grade deep cleanse',   price: '£110', priceNum: 110, image: IMG.col  },
-      { id: '4a',                    name: '4A Clinical Night Repair',     role: 'L-Ornithine + NMN overnight renewal', price: '£345', priceNum: 345, image: IMG.col  },
-      { id: 'obsidian-vitale-cream', name: 'Obsidian Vitale Cream',        role: 'Intensive cellular restoration',      price: '£295', priceNum: 295, image: '/images/products/obsidian_cream.png' },
+      { id: '6a',                    name: '6A Clinical Gentle Cleanser', role: 'Pharmaceutical-grade deep cleanse',   price: '$110', priceNum: 110, image: IMG.col  },
+      { id: '4a',                    name: '4A Clinical Night Repair',     role: 'L-Ornithine + NMN overnight renewal', price: '$345', priceNum: 345, image: IMG.col  },
+      { id: 'obsidian-vitale-cream', name: 'Obsidian Vitale Cream',        role: 'Intensive cellular restoration',      price: '$295', priceNum: 295, image: '/images/products/obsidian_cream.png' },
     ],
     ingredients: [
       'OS-01 Senomorphic Peptides (Maximum senescence reversal)',
@@ -523,7 +523,7 @@ export function SkinConsultation() {
         addItem({
           name:           p.name,
           price:          subscribe ? Math.round(p.priceNum * 0.80) : p.priceNum,
-          currency:       'GBP',
+          currency:       'USD',
           quantity:       1,
           sku:            p.id,
           image:          p.image,
@@ -602,10 +602,10 @@ export function SkinConsultation() {
                     </div>
                     <div className="text-right flex-shrink-0">
                       <div className="text-sm font-bold" style={{ color: 'var(--iv-gold)' }}>
-                        £{finalPrice}
+                        ${finalPrice}
                       </div>
                       {subscribe && (
-                        <div className="text-xs text-iv-cream/30 line-through font-light">£{p.priceNum}</div>
+                        <div className="text-xs text-iv-cream/30 line-through font-light">${p.priceNum}</div>
                       )}
                     </div>
                   </div>
@@ -647,17 +647,17 @@ export function SkinConsultation() {
                     {subscribe ? 'Full retail value' : 'Protocol total'}
                   </p>
                   {subscribe && (
-                    <p className="text-base text-iv-cream/25 line-through font-light">£{retailTotal}</p>
+                    <p className="text-base text-iv-cream/25 line-through font-light">${retailTotal}</p>
                   )}
                   <p className="text-3xl font-bold text-iv-white">
-                    £{displayTotal}
+                    ${displayTotal}
                     <span className="text-sm font-light text-iv-cream/40 ml-2">
                       {subscribe ? '/month' : 'one-time'}
                     </span>
                   </p>
                   {subscribe && (
                     <p className="text-xs font-black mt-1" style={{ color: 'var(--iv-gold)' }}>
-                      You save £{saving} — cancel anytime
+                      You save ${saving} — cancel anytime
                     </p>
                   )}
                 </div>

@@ -47,7 +47,7 @@ export function BuyBox({ product, selectedVariant: initialVariant, buyBullets }:
             quantity:  effectiveQty,
             variantId: selectedVariantId,
           }],
-          currency: product.currency === 'USD' ? 'usd' : 'gbp',
+          currency: 'usd',
         }),
       })
       const data = await res.json()
@@ -77,7 +77,7 @@ export function BuyBox({ product, selectedVariant: initialVariant, buyBullets }:
   )
 
   const formatPrice = (price: number) =>
-    `${product.currency === 'USD' ? '$' : ''}${price.toFixed(2)}`
+    `$${price.toFixed(2)}`
 
   const activeBreak = quantityBreaks[selectedBreakIndex]
   const effectiveQty = selectedBreakIndex === -1 ? customQty : activeBreak.quantity

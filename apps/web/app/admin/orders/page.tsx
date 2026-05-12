@@ -100,10 +100,10 @@ export default function AdminOrdersPage() {
                   </p>
                 </div>
                 <p className="text-sm text-right font-semibold text-iv-white">
-                  £{Number(o.total).toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+                  ${Number(o.total).toLocaleString('en-US', { minimumFractionDigits: 2 })}
                 </p>
                 <p className="text-xs text-right text-iv-cream/40">
-                  {new Date(o.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })}
+                  {new Date(o.createdAt).toLocaleDateString('en-US', { day: 'numeric', month: 'short' })}
                 </p>
                 <div className="flex justify-center">
                   {updating === o.id ? (
