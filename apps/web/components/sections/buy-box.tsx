@@ -50,14 +50,27 @@ export function BuyBox({ product, selectedVariant: initialVariant, buyBullets }:
           currency: 'usd',
         }),
       })
-      const data = await res.json()
+
+      // Guard against non-JSON responses (e.g. HTML 500 pages)
+      const contentType = res.headers.get('content-type') ?? ''
+      if (!contentType.includes('application/json')) {
+        setCheckoutError('Checkout is temporarily unavailable. Please try again.')
+        return
+      }
+
+      const data: { url?: string; error?: string } = await res.json()
       if (data.url) {
         window.location.href = data.url
       } else {
-        setCheckoutError(data.error ?? 'Checkout unavailable. Please try again.')
+        const msg = data.error ?? ''
+        setCheckoutError(
+          msg && !msg.startsWith('Unexpected')
+            ? msg
+            : 'Checkout is temporarily unavailable. Please try again.'
+        )
       }
     } catch {
-      setCheckoutError('Network error. Please check your connection.')
+      setCheckoutError('Checkout is temporarily unavailable. Please try again.')
     } finally {
       setCheckoutLoading(false)
     }

@@ -34,11 +34,25 @@ export function CartDrawer() {
           })),
         }),
       })
-      const data = await r.json()
-      if (!r.ok || !data.url) throw new Error(data.error ?? 'Checkout failed')
+
+      // Guard against non-JSON responses (e.g. HTML 500 pages)
+      const contentType = r.headers.get('content-type') ?? ''
+      if (!contentType.includes('application/json')) {
+        throw new Error('service_unavailable')
+      }
+
+      const data: { url?: string; error?: string } = await r.json()
+      if (!r.ok || !data.url) {
+        throw new Error(data.error ?? 'service_unavailable')
+      }
       window.location.href = data.url
     } catch (err) {
-      setCheckoutError(err instanceof Error ? err.message : 'Checkout failed. Try again.')
+      const msg = err instanceof Error ? err.message : ''
+      setCheckoutError(
+        msg && msg !== 'service_unavailable' && !msg.startsWith('Unexpected')
+          ? msg
+          : 'Checkout is temporarily unavailable. Please try again or contact support.'
+      )
       setCheckingOut(false)
     }
   }

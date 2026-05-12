@@ -53,7 +53,13 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ url: stripeSession.url })
   } catch (err: unknown) {
     console.error('[checkout]', err)
-    const message = err instanceof Error ? err.message : 'Checkout failed'
+    const raw = err instanceof Error ? err.message : 'Checkout failed'
+    // Never leak internal error details to the client
+    const message = raw.includes('STRIPE_SECRET_KEY') || raw.includes('not configured')
+      ? 'Payment processing is not yet configured. Please contact support.'
+      : raw.startsWith('No such') || raw.includes('Invalid API Key')
+        ? 'Payment service error. Please try again or contact support.'
+        : 'Checkout failed. Please try again.'
     return NextResponse.json({ error: message }, { status: 500 })
   }
 }
