@@ -17,10 +17,22 @@ export function Newsletter() {
     }
     setLoading(true)
     setError('')
-    // Simulate API call — wire up to actual endpoint when ready
-    await new Promise(r => setTimeout(r, 800))
-    setLoading(false)
-    setSubmitted(true)
+    try {
+      const r = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      })
+      if (!r.ok) {
+        const d = await r.json()
+        throw new Error(d.error ?? 'Subscription failed')
+      }
+      setSubmitted(true)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Something went wrong. Try again.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (

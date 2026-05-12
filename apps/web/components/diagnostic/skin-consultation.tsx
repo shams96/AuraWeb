@@ -378,6 +378,9 @@ export function SkinConsultation() {
     // Final question — compute and show result
     const p = computeProfile(answers)
     setProfile(p)
+    try {
+      localStorage.setItem('iv_skin_profile', JSON.stringify({ ...p, savedAt: new Date().toISOString() }))
+    } catch {}
     setPhase('analyzing')
     setTimeout(() => setPhase('result'), 2400)
   }
