@@ -44,6 +44,7 @@ export function ProductCard({ product }: ProductCardProps) {
     addItem({
       name: product.name,
       price: product.price,
+      basePrice: product.price,
       currency: 'USD',
       quantity: 1,
       image: product.image,
@@ -58,6 +59,7 @@ export function ProductCard({ product }: ProductCardProps) {
     addItem({
       name: product.name,
       price: Math.round(product.price * 0.8),
+      basePrice: product.price,
       currency: 'USD',
       quantity: 1,
       image: product.image,

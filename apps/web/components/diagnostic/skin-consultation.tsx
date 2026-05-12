@@ -523,6 +523,7 @@ export function SkinConsultation() {
         addItem({
           name:           p.name,
           price:          subscribe ? Math.round(p.priceNum * 0.80) : p.priceNum,
+          basePrice:      p.priceNum,
           currency:       'USD',
           quantity:       1,
           sku:            p.id,

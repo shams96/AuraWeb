@@ -259,10 +259,11 @@ export function ProductPageClient({ productId }: ProductPageClientProps) {
     addItem({
       name: `${product.name} - ${variant.name}`,
       price: variant.price,
+      basePrice: variant.price,
       currency: product.currency,
       quantity,
       image: product.image,
-      sku: variant.id
+      sku: variant.id,
     })
   }
 
