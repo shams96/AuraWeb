@@ -107,7 +107,8 @@
 @layer base {
   * { border-color: hsl(var(--border)); box-sizing: border-box; }
 
-  html { scroll-behavior: smooth; }
+  /* smooth only for anchor-link jumps, not programmatic scroll */
+  html { scroll-behavior: auto; }
 
   body {
     background-color: var(--iv-black); /* resolves to ivory in light theme */
@@ -399,14 +400,11 @@
    2026/27 MICRO-INTERACTIONS & MOTION DESIGN
    ============================================================ */
 
-/* ── Global smooth transitions ────────────────────────────── */
-*, *::before, *::after {
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
+/* ── Interactive-only transitions (not *, which causes scroll jank) ── */
 a, button, [role="button"] {
-  transition: color 0.18s, background-color 0.18s, border-color 0.18s,
-              box-shadow 0.18s, transform 0.18s, opacity 0.18s;
+  transition: color 0.18s ease, background-color 0.18s ease,
+              border-color 0.18s ease, box-shadow 0.18s ease,
+              transform 0.18s ease, opacity 0.18s ease;
 }
 
 /* ── Scroll-reveal: sections animate in on scroll ─────────── */
