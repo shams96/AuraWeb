@@ -1,8 +1,9 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import Link from 'next/link'
-import { ArrowRight, ChevronRight, CheckCircle2 } from 'lucide-react'
+import { ArrowRight, ChevronRight, CheckCircle2, ShoppingBag, Loader2, RefreshCcw } from 'lucide-react'
+import { useCart } from '@/lib/cart-context'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -177,7 +178,7 @@ function computeProfile(a: Answers): SkinProfile {
 
 // ─── Protocol definitions ─────────────────────────────────────────────────────
 
-interface ProductRec { name: string; role: string; price: string }
+interface ProductRec { id: string; name: string; role: string; price: string; priceNum: number; image?: string }
 
 interface Protocol {
   name: string
@@ -189,6 +190,8 @@ interface Protocol {
   tierSlug: string
 }
 
+const IMG = { serum: '/images/products/isola_serum.png', col: '/images/products/isola_collection.png' }
+
 const PROTOCOLS: Record<Tier, Protocol> = {
   t1: {
     name: 'Tier I — Foundation Protocol',
@@ -197,13 +200,13 @@ const PROTOCOLS: Record<Tier, Protocol> = {
     description:
       'Your skin shows excellent baseline vitality. The Foundation Protocol\'s mission is protection: fortifying your microbiome, establishing a consistent daily ritual, and preventing the environmental damage that accumulates invisibly in your twenties before it ever becomes visible.',
     am: [
-      { name: 'Gentle Cellular Cleanser',  role: 'Microbiome-safe morning cleanse',  price: '£85'  },
-      { name: '5B Consumer Hydrating Mist', role: 'Prep and first hydration layer',  price: '£75'  },
-      { name: '3B Consumer SPF 30+',        role: 'Broad-spectrum UV protection',     price: '£95'  },
+      { id: 'gentle-cellular-cleanser', name: 'Gentle Cellular Cleanser',   role: 'Microbiome-safe morning cleanse', price: '£85',  priceNum: 85,  image: IMG.serum },
+      { id: '5b',                        name: '5B Consumer Hydrating Mist', role: 'Prep and first hydration layer',  price: '£75',  priceNum: 75,  image: IMG.col  },
+      { id: '3b',                        name: '3B Consumer SPF 30+',         role: 'Broad-spectrum UV protection',    price: '£95',  priceNum: 95,  image: IMG.col  },
     ],
     pm: [
-      { name: 'Gentle Cellular Cleanser',  role: 'Evening metabolic waste removal',  price: '£85'  },
-      { name: 'Terra Radiance Cream',      role: 'Overnight barrier nourishment',    price: '£245' },
+      { id: 'gentle-cellular-cleanser', name: 'Gentle Cellular Cleanser', role: 'Evening metabolic waste removal', price: '£85',  priceNum: 85,  image: IMG.serum },
+      { id: 'terra-radiance-cream',      name: 'Terra Radiance Cream',      role: 'Overnight barrier nourishment',   price: '£245', priceNum: 245, image: IMG.col  },
     ],
     ingredients: [
       'Bifida Ferment Lysate 0.50% (Microbiome balance)',
@@ -219,14 +222,14 @@ const PROTOCOLS: Record<Tier, Protocol> = {
     description:
       'Your skin carries early signs of environmental and lifestyle wear. The Correction Protocol introduces clinically active compounds to intercept these changes before they become established — restoring radiance, reinforcing your barrier, and correcting tone while the window for easy reversal is still open.',
     am: [
-      { name: 'Gentle Cellular Cleanser',     role: 'pH-balanced morning cleanse',       price: '£85'  },
-      { name: '1B Consumer Peptide Essence',  role: 'Daily cellular renewal serum',      price: '£175' },
-      { name: '3B Consumer SPF 30+',          role: 'Broad-spectrum UV defence',          price: '£95'  },
+      { id: 'gentle-cellular-cleanser', name: 'Gentle Cellular Cleanser',    role: 'pH-balanced morning cleanse',  price: '£85',  priceNum: 85,  image: IMG.serum },
+      { id: '1b',                        name: '1B Consumer Peptide Essence', role: 'Daily cellular renewal serum', price: '£175', priceNum: 175, image: IMG.serum },
+      { id: '3b',                        name: '3B Consumer SPF 30+',          role: 'Broad-spectrum UV defence',    price: '£95',  priceNum: 95,  image: IMG.col  },
     ],
     pm: [
-      { name: 'Gentle Cellular Cleanser',   role: 'Deep evening cleanse',              price: '£85'  },
-      { name: 'T2-02 Young Adult Gel',       role: 'Metabolically aligned treatment',   price: '£110' },
-      { name: '4B Consumer Night Repair',    role: 'Overnight cellular recovery',       price: '£195' },
+      { id: 'gentle-cellular-cleanser', name: 'Gentle Cellular Cleanser', role: 'Deep evening cleanse',            price: '£85',  priceNum: 85,  image: IMG.serum },
+      { id: 't2-02',                    name: 'T2-02 Young Adult Gel',      role: 'Metabolically aligned treatment', price: '£110', priceNum: 110, image: IMG.col  },
+      { id: '4b',                       name: '4B Consumer Night Repair',   role: 'Overnight cellular recovery',    price: '£195', priceNum: 195, image: IMG.col  },
     ],
     ingredients: [
       'GLP-1 Skin Protection Complex (Metabolic alignment)',
@@ -242,14 +245,14 @@ const PROTOCOLS: Record<Tier, Protocol> = {
     description:
       'Your skin requires active regeneration at the cellular level. The Regeneration Protocol deploys OS-01 Senomorphic Peptides — shown to reduce zombie-cell accumulation by 30% — combined with L-Ornithine to restore dermal volume and firmness lost to time and cumulative stress. This is targeted biological intervention, not surface treatment.',
     am: [
-      { name: 'Gentle Cellular Cleanser',  role: 'Microbiome-preserving cleanse',      price: '£85'  },
-      { name: 'Chrono-Lift Serum',         role: 'Targeted volume and structural lift', price: '£345' },
-      { name: '3A Clinical SPF 50+',        role: 'Ectoin-boosted UV defence',          price: '£195' },
+      { id: 'gentle-cellular-cleanser', name: 'Gentle Cellular Cleanser', role: 'Microbiome-preserving cleanse',       price: '£85',  priceNum: 85,  image: IMG.serum },
+      { id: 'chrono-lift-serum',         name: 'Chrono-Lift Serum',         role: 'Targeted volume and structural lift', price: '£345', priceNum: 345, image: '/images/products/obsidian_cream.png' },
+      { id: '3a',                         name: '3A Clinical SPF 50+',        role: 'Ectoin-boosted UV defence',          price: '£195', priceNum: 195, image: IMG.col  },
     ],
     pm: [
-      { name: 'Gentle Cellular Cleanser',       role: 'Evening cellular reset',         price: '£85'  },
-      { name: 'T3-03 Mature Intervention Gel',  role: 'OS-01 + DWAT night treatment',   price: '£165' },
-      { name: 'Obsidian Vitale Cream',           role: 'Age-defying night restoration',  price: '£295' },
+      { id: 'gentle-cellular-cleanser', name: 'Gentle Cellular Cleanser',      role: 'Evening cellular reset',        price: '£85',  priceNum: 85,  image: IMG.serum },
+      { id: 't3-03',                    name: 'T3-03 Mature Intervention Gel', role: 'OS-01 + DWAT night treatment',  price: '£165', priceNum: 165, image: IMG.col  },
+      { id: 'obsidian-vitale-cream',     name: 'Obsidian Vitale Cream',         role: 'Age-defying night restoration', price: '£295', priceNum: 295, image: '/images/products/obsidian_cream.png' },
     ],
     ingredients: [
       'OS-01 Senomorphic Peptides (Senescence reduction −30%)',
@@ -265,14 +268,14 @@ const PROTOCOLS: Record<Tier, Protocol> = {
     description:
       'Your skin calls for our most intensive intervention. The Longevity Protocol deploys clinical-grade NMN, GLP-1 complex, and OS-01 together in a comprehensive AM/PM system engineered to visibly transform skin at the metabolic level. This is the same formulation tier used in professional clinical settings — without the clinic appointment.',
     am: [
-      { name: 'Gentle Cellular Cleanser',      role: 'Microbiome-safe clinical cleanse',     price: '£85'  },
-      { name: '1A Clinical Peptide Essence',   role: 'OS-01 + GLP-1 cellular activation',    price: '£390' },
-      { name: '3A Clinical SPF 50+',            role: 'Maximum UV protection with Ectoin',    price: '£195' },
+      { id: 'gentle-cellular-cleanser', name: 'Gentle Cellular Cleanser',    role: 'Microbiome-safe clinical cleanse',  price: '£85',  priceNum: 85,  image: IMG.serum },
+      { id: '1a',                        name: '1A Clinical Peptide Essence', role: 'OS-01 + GLP-1 cellular activation', price: '£390', priceNum: 390, image: IMG.serum },
+      { id: '3a',                         name: '3A Clinical SPF 50+',         role: 'Maximum UV protection with Ectoin', price: '£195', priceNum: 195, image: IMG.col  },
     ],
     pm: [
-      { name: '6A Clinical Gentle Cleanser',  role: 'Pharmaceutical-grade deep cleanse',   price: '£110' },
-      { name: '4A Clinical Night Repair',      role: 'L-Ornithine + NMN overnight renewal', price: '£345' },
-      { name: 'Obsidian Vitale Cream',          role: 'Intensive cellular restoration',      price: '£295' },
+      { id: '6a',                    name: '6A Clinical Gentle Cleanser', role: 'Pharmaceutical-grade deep cleanse',   price: '£110', priceNum: 110, image: IMG.col  },
+      { id: '4a',                    name: '4A Clinical Night Repair',     role: 'L-Ornithine + NMN overnight renewal', price: '£345', priceNum: 345, image: IMG.col  },
+      { id: 'obsidian-vitale-cream', name: 'Obsidian Vitale Cream',        role: 'Intensive cellular restoration',      price: '£295', priceNum: 295, image: '/images/products/obsidian_cream.png' },
     ],
     ingredients: [
       'OS-01 Senomorphic Peptides (Maximum senescence reversal)',
@@ -314,6 +317,7 @@ function questionMeta(qIdx: number): { heading: string; sub: string; multi: bool
 // ─── Main component ───────────────────────────────────────────────────────────
 
 export function SkinConsultation() {
+  const { addItem, setCartOpen } = useCart()
   const [phase, setPhase] = useState<'intro' | 'quiz' | 'analyzing' | 'result'>('intro')
   const [qIdx, setQIdx] = useState(0)
   const [answers, setAnswers] = useState<Answers>({
@@ -321,6 +325,10 @@ export function SkinConsultation() {
     q5: null, q6: null, q7: [],  q8: null,
   })
   const [profile, setProfile] = useState<SkinProfile | null>(null)
+  const [subscribe, setSubscribe] = useState(true)
+  const [adding, setAdding] = useState(false)
+  const [added, setAdded] = useState(false)
+  const sessionId = useRef(crypto.randomUUID())
 
   // Selection helpers
   function isSelected(value: string): boolean {
@@ -378,9 +386,26 @@ export function SkinConsultation() {
     // Final question — compute and show result
     const p = computeProfile(answers)
     setProfile(p)
+    const proto = PROTOCOLS[p.tier]
+    const recs = [...proto.am, ...proto.pm]
+      .filter((v, i, a) => a.findIndex(x => x.id === v.id) === i)
+      .map(({ id, name, priceNum }) => ({ id, name, price: priceNum }))
     try {
-      localStorage.setItem('iv_skin_profile', JSON.stringify({ ...p, savedAt: new Date().toISOString() }))
+      const saved = { ...p, sessionId: sessionId.current, savedAt: new Date().toISOString() }
+      localStorage.setItem('iv_skin_profile', JSON.stringify(saved))
     } catch {}
+    fetch('/api/consultation', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        sessionId: sessionId.current,
+        tier: p.tier,
+        baumannLabel: p.baumannLabel,
+        scores: { doScore: p.doScore, srScore: p.srScore, wScore: p.wScore, pScore: p.pScore },
+        answers,
+        recommendedProducts: recs,
+      }),
+    }).catch(() => {})
     setPhase('analyzing')
     setTimeout(() => setPhase('result'), 2400)
   }
@@ -482,11 +507,45 @@ export function SkinConsultation() {
     const proto = PROTOCOLS[profile.tier]
     const tierNum = profile.tier.replace('t', '')
 
+    // Deduplicated product list (cleanser appears in both AM and PM — add once)
+    const allProducts = [...proto.am, ...proto.pm].filter(
+      (v, i, a) => a.findIndex(x => x.id === v.id) === i
+    )
+
+    const retailTotal   = allProducts.reduce((s, p) => s + p.priceNum, 0)
+    const subTotal      = Math.round(retailTotal * 0.80)
+    const displayTotal  = subscribe ? subTotal : retailTotal
+    const saving        = retailTotal - subTotal
+
+    const handleStartProtocol = async () => {
+      setAdding(true)
+      allProducts.forEach(p => {
+        addItem({
+          name:           p.name,
+          price:          subscribe ? Math.round(p.priceNum * 0.80) : p.priceNum,
+          currency:       'GBP',
+          quantity:       1,
+          sku:            p.id,
+          image:          p.image,
+          isSubscription: subscribe,
+        })
+      })
+      // Mark as added-to-cart in server record
+      fetch('/api/consultation', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sessionId: sessionId.current, addedToCart: true }),
+      }).catch(() => {})
+      setAdding(false)
+      setAdded(true)
+      setTimeout(() => setCartOpen(true), 120)
+    }
+
     const metricCards = [
-      { label: 'Hydration Profile',    value: profile.hydration.charAt(0).toUpperCase() + profile.hydration.slice(1) },
-      { label: 'Skin Reactivity',      value: profile.sensitivity.charAt(0).toUpperCase() + profile.sensitivity.slice(1) },
-      { label: 'Pigmentation Risk',    value: profile.pScore >= 6 ? 'Elevated' : profile.pScore >= 3 ? 'Moderate' : 'Low' },
-      { label: 'Protocol Tier',        value: `Tier ${tierNum} of IV` },
+      { label: 'Hydration',         value: profile.hydration.charAt(0).toUpperCase() + profile.hydration.slice(1) },
+      { label: 'Reactivity',        value: profile.sensitivity.charAt(0).toUpperCase() + profile.sensitivity.slice(1) },
+      { label: 'Pigmentation Risk', value: profile.pScore >= 6 ? 'Elevated' : profile.pScore >= 3 ? 'Moderate' : 'Low' },
+      { label: 'Protocol Tier',     value: `Tier ${tierNum} of IV` },
     ]
 
     return (
@@ -494,7 +553,7 @@ export function SkinConsultation() {
         <div className="container mx-auto px-4 max-w-5xl">
 
           {/* Header */}
-          <div className="text-center mb-14">
+          <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 rounded-full px-5 py-2 mb-6 text-[10px] font-black uppercase tracking-[0.3em]"
               style={{ color: 'var(--iv-gold)', border: '1px solid rgba(145,56,50,0.22)', background: 'rgba(145,56,50,0.06)' }}>
               <CheckCircle2 size={12} /> Protocol Matched
@@ -512,16 +571,147 @@ export function SkinConsultation() {
             </div>
           </div>
 
-          {/* Rationale + metrics */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-7 mb-8">
+          {/* ── Protocol Kit + CTA (main purchase block) ── */}
+          <div className="rounded-3xl overflow-hidden mb-8"
+            style={{ border: '1px solid rgba(145,56,50,0.28)', background: 'var(--iv-deep-green)' }}>
 
+            {/* Kit header */}
+            <div className="px-8 pt-8 pb-6 border-b" style={{ borderColor: 'rgba(145,56,50,0.14)' }}>
+              <p className="text-[10px] font-black uppercase tracking-[0.3em] mb-1" style={{ color: 'var(--iv-gold)' }}>
+                Your Complete Protocol Kit
+              </p>
+              <p className="text-iv-cream/50 text-sm font-light">
+                {allProducts.length} formulations · Full AM + PM ritual · Matched to your skin biology
+              </p>
+            </div>
+
+            {/* Product list */}
+            <div className="px-8 py-6 space-y-3">
+              {allProducts.map(p => {
+                const finalPrice = subscribe ? Math.round(p.priceNum * 0.80) : p.priceNum
+                return (
+                  <div key={p.id} className="flex items-center gap-4 rounded-xl p-4"
+                    style={{ background: 'rgba(0,0,0,0.18)', border: '1px solid rgba(145,56,50,0.08)' }}>
+                    <div className="w-10 h-10 rounded-xl flex-shrink-0 overflow-hidden"
+                      style={{ background: 'rgba(145,56,50,0.10)' }}>
+                      {p.image && <img src={p.image} alt={p.name} className="w-full h-full object-cover" />}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="text-sm font-semibold text-iv-white">{p.name}</div>
+                      <div className="text-xs text-iv-cream/35 font-light mt-0.5">{p.role}</div>
+                    </div>
+                    <div className="text-right flex-shrink-0">
+                      <div className="text-sm font-bold" style={{ color: 'var(--iv-gold)' }}>
+                        £{finalPrice}
+                      </div>
+                      {subscribe && (
+                        <div className="text-xs text-iv-cream/30 line-through font-light">£{p.priceNum}</div>
+                      )}
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+
+            {/* Subscription toggle + pricing */}
+            <div className="px-8 pb-8">
+              {/* Toggle */}
+              <div className="rounded-2xl p-1 flex mb-6"
+                style={{ background: 'rgba(0,0,0,0.30)', border: '1px solid rgba(145,56,50,0.18)' }}>
+                <button
+                  onClick={() => setSubscribe(true)}
+                  className="flex-1 py-3 rounded-xl text-xs font-black uppercase tracking-widest transition-all"
+                  style={{
+                    background: subscribe ? 'var(--iv-gold)' : 'transparent',
+                    color:      subscribe ? 'var(--iv-white)' : 'rgba(253,250,245,0.35)',
+                  }}
+                >
+                  Subscribe &amp; Save 20%
+                </button>
+                <button
+                  onClick={() => setSubscribe(false)}
+                  className="flex-1 py-3 rounded-xl text-xs font-black uppercase tracking-widest transition-all"
+                  style={{
+                    background: !subscribe ? 'rgba(145,56,50,0.20)' : 'transparent',
+                    color:      !subscribe ? 'var(--iv-cream)' : 'rgba(253,250,245,0.35)',
+                  }}
+                >
+                  One-Time Purchase
+                </button>
+              </div>
+
+              {/* Price anchor */}
+              <div className="flex items-end justify-between mb-6">
+                <div>
+                  <p className="text-xs text-iv-cream/35 font-light mb-1">
+                    {subscribe ? 'Full retail value' : 'Protocol total'}
+                  </p>
+                  {subscribe && (
+                    <p className="text-base text-iv-cream/25 line-through font-light">£{retailTotal}</p>
+                  )}
+                  <p className="text-3xl font-bold text-iv-white">
+                    £{displayTotal}
+                    <span className="text-sm font-light text-iv-cream/40 ml-2">
+                      {subscribe ? '/month' : 'one-time'}
+                    </span>
+                  </p>
+                  {subscribe && (
+                    <p className="text-xs font-black mt-1" style={{ color: 'var(--iv-gold)' }}>
+                      You save £{saving} — cancel anytime
+                    </p>
+                  )}
+                </div>
+                <div className="text-right">
+                  <div className="flex flex-col gap-1.5 text-[10px] text-iv-cream/40 font-light text-right">
+                    <span>✓ 48-hr Time To Wow</span>
+                    <span>✓ 30-day returns</span>
+                    <span>✓ Free tracked delivery</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Primary CTA */}
+              <button
+                onClick={handleStartProtocol}
+                disabled={adding || added}
+                className="w-full flex items-center justify-center gap-3 rounded-2xl transition-all"
+                style={{
+                  padding: '18px 32px',
+                  background: added ? 'rgba(74,222,128,0.15)' : 'var(--iv-gold)',
+                  color: added ? '#4ade80' : 'var(--iv-white)',
+                  border: added ? '1px solid rgba(74,222,128,0.30)' : 'none',
+                  fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.18em', textTransform: 'uppercase',
+                }}
+              >
+                {adding ? (
+                  <><Loader2 size={16} className="animate-spin" /> Adding to Cart…</>
+                ) : added ? (
+                  <><CheckCircle2 size={16} /> Protocol Added — View Cart</>
+                ) : (
+                  <><ShoppingBag size={16} /> Start My Protocol</>
+                )}
+              </button>
+              {added && (
+                <button
+                  onClick={() => setCartOpen(true)}
+                  className="w-full mt-3 text-xs font-black uppercase tracking-widest py-3 rounded-xl transition-colors"
+                  style={{ color: 'var(--iv-gold)', border: '1px solid rgba(145,56,50,0.25)' }}
+                >
+                  Review Cart &amp; Checkout →
+                </button>
+              )}
+            </div>
+          </div>
+
+          {/* ── Clinical Rationale + Metrics ── */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-7 mb-8">
             <div className="lg:col-span-2 rounded-3xl p-8"
               style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(145,56,50,0.14)' }}>
               <p className="text-[10px] font-black uppercase tracking-[0.3em] mb-4" style={{ color: 'var(--iv-gold)' }}>
-                Clinical Rationale
+                Why This Protocol
               </p>
               <p className="text-iv-cream/75 leading-relaxed text-[0.93rem] font-light mb-7">{proto.description}</p>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-3">
                 {metricCards.map(({ label, value }) => (
                   <div key={label} className="rounded-xl p-4"
                     style={{ background: 'rgba(0,0,0,0.22)', border: '1px solid rgba(145,56,50,0.10)' }}>
@@ -535,12 +725,12 @@ export function SkinConsultation() {
             <div className="rounded-3xl p-8"
               style={{ background: 'rgba(145,56,50,0.05)', border: '1px solid rgba(145,56,50,0.18)' }}>
               <p className="text-[10px] font-black uppercase tracking-[0.3em] mb-6" style={{ color: 'var(--iv-gold)' }}>
-                Key Actives in Your Protocol
+                Key Actives
               </p>
               <div className="space-y-4">
                 {proto.ingredients.map((ing, i) => (
                   <div key={i} className="flex items-start gap-3">
-                    <div className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style={{ background: 'var(--iv-gold)' }} />
+                    <div className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0" style={{ background: 'var(--iv-gold)' }} />
                     <span className="text-[0.82rem] text-iv-cream/70 font-light leading-snug">{ing}</span>
                   </div>
                 ))}
@@ -563,12 +753,12 @@ export function SkinConsultation() {
             </div>
           </div>
 
-          {/* AM + PM routines */}
+          {/* ── AM/PM routine detail ── */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-7 mb-10">
             {([
-              { label: 'Morning Ritual', icon: '☀️', steps: proto.am },
-              { label: 'Evening Ritual', icon: '🌙', steps: proto.pm },
-            ] as const).map(({ label, icon, steps }) => (
+              { label: 'Morning Ritual', icon: '☀', steps: proto.am },
+              { label: 'Evening Ritual', icon: '☽', steps: proto.pm },
+            ]).map(({ label, icon, steps }) => (
               <div key={label} className="rounded-3xl p-8"
                 style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(145,56,50,0.14)' }}>
                 <p className="text-[10px] font-black uppercase tracking-[0.3em] mb-6 flex items-center gap-2"
@@ -578,7 +768,7 @@ export function SkinConsultation() {
                 <div className="space-y-3">
                   {steps.map((product, i) => (
                     <div key={i} className="flex items-center gap-4 rounded-xl p-4" style={{ background: 'rgba(0,0,0,0.20)' }}>
-                      <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-black"
+                      <div className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-black"
                         style={{ background: 'rgba(145,56,50,0.15)', color: 'var(--iv-gold)' }}>
                         {i + 1}
                       </div>
@@ -596,26 +786,17 @@ export function SkinConsultation() {
             ))}
           </div>
 
-          {/* CTA */}
-          <div className="text-center space-y-5">
-            <Link
-              href={`/shop?tier=${profile.tier}`}
-              className="btn-luxury"
-              style={{ padding: '18px 52px', display: 'inline-flex', alignItems: 'center', gap: 10 }}
+          {/* Retake */}
+          <div className="text-center">
+            <button
+              onClick={restart}
+              className="inline-flex items-center gap-2 text-[10px] uppercase tracking-widest font-black transition-colors"
+              style={{ color: 'rgba(253,250,245,0.25)' }}
+              onMouseEnter={e => (e.currentTarget.style.color = 'rgba(253,250,245,0.55)')}
+              onMouseLeave={e => (e.currentTarget.style.color = 'rgba(253,250,245,0.25)')}
             >
-              Shop Your Protocol <ArrowRight size={14} />
-            </Link>
-            <div>
-              <button
-                onClick={restart}
-                className="text-[10px] uppercase tracking-widest font-black transition-colors"
-                style={{ color: 'rgba(253,250,245,0.25)' }}
-                onMouseEnter={e => (e.currentTarget.style.color = 'rgba(253,250,245,0.55)')}
-                onMouseLeave={e => (e.currentTarget.style.color = 'rgba(253,250,245,0.25)')}
-              >
-                Retake consultation
-              </button>
-            </div>
+              <RefreshCcw size={12} /> Retake consultation
+            </button>
           </div>
 
         </div>
