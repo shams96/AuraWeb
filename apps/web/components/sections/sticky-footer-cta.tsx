@@ -51,7 +51,7 @@ export function StickyFooterCTA({ product, selectedVariant, onAddToCart, offerTe
           <div className="flex items-center gap-6">
             <div className="w-12 h-12 rounded-lg border border-iv-gold/20 flex-shrink-0 bg-iv-deep-green/30 flex items-center justify-center relative overflow-hidden group">
               <div className="absolute inset-0 bg-iv-gold/5 group-hover:bg-iv-gold/10 transition-colors" />
-              <span className="text-xl text-iv-gold relative z-10 font-serif italic">iv</span>
+              <span className="text-xl text-iv-gold relative z-10 iv-serif italic">iv</span>
             </div>
             <div>
               <p className="text-[10px] font-black text-iv-gold uppercase tracking-[0.2em] mb-1">Acquiring Now</p>

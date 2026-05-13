@@ -668,6 +668,12 @@ img[loading="lazy"].loaded {
    media-query breakpoints. Minimum sizes prevent mobile overflow.
    ============================================================ */
 @layer utilities {
+  /* Luxury serif — Cormorant Garamond for all editorial / italic text.
+     Use this instead of Tailwind's font-serif (which falls back to Georgia/Times). */
+  .iv-serif {
+    font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  }
+
   /* Display / Hero — page-level titles */
   .iv-type-display {
     font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;

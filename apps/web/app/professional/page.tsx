@@ -139,7 +139,7 @@ export default function ProfessionalPage() {
             <Lock className="w-3 h-3" />
             Professional Portal
           </div>
-          <h1 className="text-6xl md:text-8xl font-bold mb-8 tracking-tighter uppercase leading-none">
+          <h1 className="iv-type-display font-semibold mb-8 uppercase">
             Partner <span className="text-iv-gold italic serif">With Us</span>
           </h1>
           <p className="text-xl text-iv-cream/70 max-w-3xl leading-relaxed font-light mb-12">
@@ -315,7 +315,7 @@ export default function ProfessionalPage() {
                 <div className="flex gap-1 mb-4">
                   {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 text-iv-gold fill-current" />)}
                 </div>
-                <blockquote className="text-iv-cream/70 italic font-serif text-lg leading-relaxed mb-6">
+                <blockquote className="text-iv-cream/70 italic iv-serif text-lg leading-relaxed mb-6">
                   "Isola Vitale has transformed our clinic's retail performance. The clinical documentation gave our dermatologists confidence, and our clients see measurable results within 6 weeks."
                 </blockquote>
                 <p className="text-xs font-black text-iv-white uppercase tracking-widest">Dr. K. Marchetti</p>

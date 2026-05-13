@@ -90,8 +90,8 @@ export default function LoyaltyPage() {
           <div className="inline-block border border-iv-gold/20 rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-8 bg-iv-black/40 backdrop-blur-md text-iv-gold">
             The Loyalty Programme
           </div>
-          <h1 className="text-6xl md:text-8xl font-bold mb-8 tracking-tighter uppercase leading-none">
-            The <span className="text-iv-gold italic font-serif">iv Circle</span>
+          <h1 className="iv-type-display font-semibold mb-8 uppercase">
+            The <span className="text-iv-gold italic iv-serif">iv Circle</span>
           </h1>
           <p className="text-xl text-iv-cream/70 leading-relaxed font-light max-w-2xl mx-auto">
             Every purchase, review, and referral builds toward exclusive privileges — from Obsidian concierge access to Lab Days at our Natural You Srl facility in Isola del Liri.
@@ -104,7 +104,7 @@ export default function LoyaltyPage() {
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center mb-20">
             <h2 className="text-xs font-black text-iv-gold uppercase tracking-[0.4em] mb-4">Three Tiers of Privilege</h2>
-            <p className="text-2xl font-bold text-iv-white tracking-tighter italic font-serif">Progress unlocks access no purchase can buy.</p>
+            <p className="iv-type-h3 font-semibold text-iv-white italic iv-serif">Progress unlocks access no purchase can buy.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {TIERS.map((tier) => (
@@ -141,7 +141,7 @@ export default function LoyaltyPage() {
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="text-center mb-20">
             <h2 className="text-xs font-black text-iv-gold uppercase tracking-[0.4em] mb-4">How It Works</h2>
-            <h3 className="text-4xl font-bold text-iv-white tracking-tighter uppercase">Four Simple Steps</h3>
+            <h3 className="iv-type-h2 font-semibold text-iv-white uppercase tracking-tight">Four Simple Steps</h3>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {HOW_IT_WORKS.map(({ step, title, body }) => (
@@ -160,7 +160,7 @@ export default function LoyaltyPage() {
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-16">
             <h2 className="text-xs font-black text-iv-gold uppercase tracking-[0.4em] mb-4">Earning Points</h2>
-            <h3 className="text-4xl font-bold text-iv-white tracking-tighter uppercase">Every Interaction Counts</h3>
+            <h3 className="iv-type-h2 font-semibold text-iv-white uppercase tracking-tight">Every Interaction Counts</h3>
           </div>
           <div className="border border-iv-white/5 rounded-2xl overflow-hidden bg-iv-black/40 backdrop-blur-md">
             <table className="w-full border-collapse">
@@ -191,7 +191,7 @@ export default function LoyaltyPage() {
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="text-center mb-16">
             <h2 className="text-xs font-black text-iv-gold uppercase tracking-[0.4em] mb-4">Milestone Gifts</h2>
-            <h3 className="text-4xl font-bold text-iv-white tracking-tighter uppercase">Unlock as You Grow</h3>
+            <h3 className="iv-type-h2 font-semibold text-iv-white uppercase tracking-tight">Unlock as You Grow</h3>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {[

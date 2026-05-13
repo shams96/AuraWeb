@@ -58,7 +58,7 @@ export default function ShopPage({
             {titleHead && <span>{titleHead} </span>}
             <span className="text-iv-gold italic serif">{titleTail}</span>
           </h1>
-          <p className="text-xl text-iv-cream/60 max-w-2xl leading-relaxed font-light font-serif italic">
+          <p className="text-xl text-iv-cream/60 max-w-2xl leading-relaxed font-light iv-serif italic">
             Three collections. Eighteen formulations. All engineered for metabolic precision.
           </p>
 

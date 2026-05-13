@@ -60,7 +60,7 @@ export function ProductHero({ product }: ProductHeroProps) {
               
               <div className="flex items-center gap-4">
                 <div className="h-px flex-1 bg-iv-gold/20"></div>
-                <p className="text-xl md:text-2xl text-iv-cream/80 font-serif italic tracking-wide">
+                <p className="text-xl md:text-2xl text-iv-cream/80 iv-serif italic tracking-wide">
                   {product.tagline}
                 </p>
                 <div className="h-px flex-1 bg-iv-gold/20"></div>

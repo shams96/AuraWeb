@@ -71,7 +71,7 @@ export default function SciencePage() {
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-20">
             <h2 className="text-xs font-black text-iv-gold mb-4 uppercase tracking-[0.4em]">Proprietary Technologies</h2>
-            <p className="text-3xl font-bold text-iv-white tracking-tighter italic font-serif">
+            <p className="text-3xl font-bold text-iv-white tracking-tighter italic iv-serif">
               "Every formulation is a clinical precision instrument."
             </p>
             <p className="text-[10px] font-black uppercase tracking-widest text-iv-cream/40 mt-4">— Dr. S. Islam</p>
@@ -121,7 +121,7 @@ export default function SciencePage() {
             </div>
             <div className="flex-1 rounded-2xl overflow-hidden shadow-2xl aspect-video bg-iv-black border border-iv-gold/10 relative group">
               <div className="absolute inset-0 bg-iv-gold/5 group-hover:bg-transparent transition-all duration-1000"></div>
-              <div className="w-full h-full flex items-center justify-center text-iv-gold/20 italic font-serif text-sm">
+              <div className="w-full h-full flex items-center justify-center text-iv-gold/20 italic iv-serif text-sm">
                 Natural You Srl Laboratory, Italy
               </div>
             </div>

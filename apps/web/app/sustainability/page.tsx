@@ -77,7 +77,7 @@ export default function SustainabilityPage() {
       {/* Statement */}
       <section className="py-32 container mx-auto px-4 max-w-5xl text-center">
         <h3 className="text-[10px] font-black text-iv-gold uppercase tracking-[0.4em] mb-12">Our Commitment</h3>
-        <p className="text-3xl md:text-5xl text-iv-cream/80 italic font-serif leading-[1.2] tracking-tight mb-16">
+        <p className="text-3xl md:text-5xl text-iv-cream/80 italic iv-serif leading-[1.2] tracking-tight mb-16">
           "By 2027, 100% of our retail catalog will transition to the refillable cartridge system, eliminating 24 tons of virgin plastic from the luxury skincare cycle."
         </p>
         <div className="w-24 h-px bg-iv-gold/30 mx-auto" />

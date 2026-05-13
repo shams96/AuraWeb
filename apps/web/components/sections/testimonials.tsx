@@ -122,7 +122,7 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
                         <Star key={i} className="w-4 h-4 text-iv-gold fill-current" />
                       ))}
                     </div>
-                    <blockquote className="text-iv-cream/80 leading-relaxed italic font-serif text-xl mb-8">
+                    <blockquote className="text-iv-cream/80 leading-relaxed italic iv-serif text-xl mb-8">
                       &ldquo;{testimonials[activeIndex]?.content}&rdquo;
                     </blockquote>
                   </div>

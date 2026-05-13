@@ -90,7 +90,7 @@ export default function SystemPage() {
                       ))}
                     </div>
                   </div>
-                  <div className="hidden lg:block text-iv-gold/10 text-[10rem] font-bold absolute right-12 top-1/2 -translate-y-1/2 select-none font-serif italic">
+                  <div className="hidden lg:block text-iv-gold/10 text-[10rem] font-bold absolute right-12 top-1/2 -translate-y-1/2 select-none iv-serif italic">
                     0{idx + 1}
                   </div>
                 </div>
@@ -103,7 +103,7 @@ export default function SystemPage() {
       {/* Progression Section */}
       <section className="py-32 container mx-auto px-4 max-w-5xl text-center">
         <h3 className="text-[10px] font-black text-iv-gold uppercase tracking-[0.4em] mb-12">The Principle of Progression</h3>
-        <p className="text-3xl md:text-5xl text-iv-cream/80 italic font-serif leading-[1.2] tracking-tight mb-16">
+        <p className="text-3xl md:text-5xl text-iv-cream/80 italic iv-serif leading-[1.2] tracking-tight mb-16">
           "Effective skincare is not about maximum potency; it is about optimal alignment. We treat the skin as a maturing metabolic engine, moving from protection to precision renewal."
         </p>
         <div className="w-24 h-px bg-iv-gold/30 mx-auto" />

@@ -86,8 +86,8 @@ export default function ClinicalResultsPage() {
           <div className="inline-block border border-iv-gold/20 rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-8 bg-iv-black/40 backdrop-blur-md text-iv-gold">
             Evidence Dossier
           </div>
-          <h1 className="text-6xl md:text-8xl font-bold mb-8 tracking-tighter uppercase leading-none">
-            Clinical <span className="text-iv-gold italic font-serif">Results</span>
+          <h1 className="iv-type-display font-semibold mb-8 uppercase">
+            Clinical <span className="text-iv-gold italic iv-serif">Results</span>
           </h1>
           <p className="text-xl text-iv-cream/70 leading-relaxed font-light max-w-2xl mx-auto">
             Every efficacy claim on this website is backed by a study. Every study is third-party verified. Every number is a real number.
@@ -116,7 +116,7 @@ export default function ClinicalResultsPage() {
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center mb-20">
             <h2 className="text-xs font-black text-iv-gold uppercase tracking-[0.4em] mb-4">Randomised Controlled Trials</h2>
-            <h3 className="text-4xl font-bold text-iv-white tracking-tighter uppercase">Independent Efficacy Data</h3>
+            <h3 className="iv-type-h2 font-semibold text-iv-white uppercase tracking-tight">Independent Efficacy Data</h3>
           </div>
 
           <div className="space-y-12">

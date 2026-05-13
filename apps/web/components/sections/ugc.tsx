@@ -51,7 +51,7 @@ export function UGCSection({ testimonials }: UGCSectionProps) {
                   </div>
                 </div>
                 
-                <blockquote className="text-iv-cream/80 mb-8 italic leading-relaxed text-lg font-serif">
+                <blockquote className="text-iv-cream/80 mb-8 italic leading-relaxed text-lg iv-serif">
                   "{testimonial.content}"
                 </blockquote>
                 

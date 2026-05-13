@@ -43,7 +43,7 @@ export default function AboutPage() {
                 Our name translates to "Vital Island," representing our philosophy that the skin is its own self-sustaining ecosystem. We don't just provide topical solutions; we provide the metabolic signals needed for the skin to heal itself from within.
               </p>
             </div>
-            <div className="bg-iv-deep-green/20 border border-iv-gold/10 rounded-3xl aspect-[4/5] flex items-center justify-center text-iv-gold/20 italic font-serif text-sm backdrop-blur-md relative overflow-hidden">
+            <div className="bg-iv-deep-green/20 border border-iv-gold/10 rounded-3xl aspect-[4/5] flex items-center justify-center text-iv-gold/20 italic iv-serif text-sm backdrop-blur-md relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-iv-gold/5 to-transparent"></div>
               [Image: The Cascata Grande, Isola del Liri]
             </div>
@@ -90,7 +90,7 @@ export default function AboutPage() {
         <div className="container mx-auto px-4 max-w-4xl text-center">
           <div className="w-12 h-px bg-iv-gold/40 mx-auto mb-16"></div>
           <h2 className="text-xs font-black text-iv-gold mb-10 uppercase tracking-[0.4em]">Our Mission</h2>
-          <p className="text-3xl md:text-5xl text-iv-cream/80 italic font-serif leading-[1.2] tracking-tight">
+          <p className="text-3xl md:text-5xl text-iv-cream/80 italic iv-serif leading-[1.2] tracking-tight">
             "To eradicate cellular senescence and redefine what it means to age with vitality. We believe the future of luxury is not in the bottle, but in the biology."
           </p>
           <div className="mt-16 flex items-center justify-center space-x-4">

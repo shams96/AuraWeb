@@ -54,7 +54,7 @@ export default function IngredientsPage() {
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="mb-20 text-center">
             <h2 className="text-xs font-black text-iv-gold mb-4 uppercase tracking-[0.4em]">The Breakthrough 6</h2>
-            <p className="text-2xl font-bold text-iv-white tracking-tighter italic font-serif">
+            <p className="text-2xl font-bold text-iv-white tracking-tighter italic iv-serif">
               Six proprietary actives. Four independent clinical trials. One system.
             </p>
           </div>
