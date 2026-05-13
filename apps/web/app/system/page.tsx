@@ -3,52 +3,48 @@ import type { Metadata } from 'next'
 import { Shield, Zap, Sparkles, Activity } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'The System — 4-Tier Age Protocol',
-  description: 'The world\'s first 4-tier skincare system aligned to skin metabolism. Genesis (13-19), Foundation (20-29), Regeneration (30-49), Longevity (50+). Precision skincare for every biological stage.',
+  title: 'The System — Precision Biological Protocols',
+  description: 'Four protocols engineered to match your skin\'s biological stage. Preservation · Refinement · Restoration · Longevity. Assigned by skin analysis, not by birthdate.',
   openGraph: {
     title: 'The System | Isola Vitale',
-    description: 'Four tiers. One lifetime of optimal skin metabolism.',
+    description: 'Four protocols. One lifetime of precision skin metabolism.',
   },
 }
 
 export default function SystemPage() {
   const tiers = [
     {
-      id: 'genesis',
-      name: 'Tier 1: Genesis',
-      age: '13 - 19',
-      focus: 'Microbiome Homeostasis & Protection',
-      description: 'Adolescent skin requires protection from emerging environmental stress and inflammatory triggers. Genesis focuses on stabilizing the skin barrier and optimizing microbiome balance.',
+      id: 'preservation',
+      name: 'Preservation Protocol',
+      focus: 'Barrier Integrity & Microbiome Defence',
+      description: 'The Preservation Protocol\'s mission is protection. It fortifies the microbiome barrier, establishes the daily metabolic ritual, and intercepts the environmental damage that accumulates invisibly — before it ever becomes visible on the surface.',
       tech: ['Bifida 0.30%', 'Ectoin Shield', 'Microbiome Defense'],
-      icon: <Shield className="w-8 h-8 text-iv-gold" />
+      icon: <Shield className="w-8 h-8 text-iv-gold" />,
     },
     {
-      id: 'foundation',
-      name: 'Tier 2: Foundation',
-      age: '20 - 29',
-      focus: 'Metabolic Support & Prevention',
-      description: 'Foundation targets the first signs of cellular slowing. By introducing GLP-1 protective complexes, we prevent early volume loss and maintain long-term structural integrity.',
+      id: 'refinement',
+      name: 'Refinement Protocol',
+      focus: 'Metabolic Support & Early Intervention',
+      description: 'The Refinement Protocol introduces clinically active compounds at the precise moment when cellular turnover begins to slow. GLP-1 protective complexes prevent early volume loss and maintain long-term structural integrity while the intervention window is widest.',
       tech: ['GLP-1 Protection', 'Bio-Adaptive Elixirs', 'Oxidative Shield'],
-      icon: <Zap className="w-8 h-8 text-iv-gold" />
+      icon: <Zap className="w-8 h-8 text-iv-gold" />,
     },
     {
-      id: 'regeneration',
-      name: 'Tier 3: Regeneration',
-      age: '30 - 49',
-      focus: 'Cellular Restoration & DWAT',
-      description: 'Regeneration is our intervention tier. We utilize DWAT Restoration Science to address volume deflation and OS-01 peptides to clear senescent "zombie" cells.',
+      id: 'restoration',
+      name: 'Restoration Protocol',
+      focus: 'Cellular Restoration & Structural Renewal',
+      description: 'The Restoration Protocol is active biological intervention. DWAT Restoration Science addresses volume deflation at the cellular source. OS-01 Senomorphic Peptides clear senescent cells shown to impair the skin\'s regenerative signalling — restoring what cumulative biology has diminished.',
       tech: ['DWAT Restoration', 'OS-01 Peptides', 'NMN Support'],
-      icon: <Activity className="w-8 h-8 text-iv-gold" />
+      icon: <Activity className="w-8 h-8 text-iv-gold" />,
     },
     {
       id: 'longevity',
-      name: 'Tier 4: Longevity',
-      age: '50+',
-      focus: 'Advanced Mature Structural Renewal',
-      description: 'Longevity is the pinnacle of our system. It delivers maximum potency L-Ornithine and peptide complexes to mimic lipofilling and target deep-set chronological wrinkles.',
+      name: 'Longevity Protocol',
+      focus: 'Maximum-Potency Cellular Longevity',
+      description: 'The Longevity Protocol is the pinnacle of the Isola Vitale system. Maximum-potency L-Ornithine and peptide complexes mimic the structural effect of lipofilling, targeting deep-set chronological loss at the dermal matrix level. Clinical-grade results. No clinic appointment required.',
       tech: ['L-Ornithine 1.50%', 'Deep Collagen Remodeling', 'Intensive Lipid Support'],
-      icon: <Sparkles className="w-8 h-8 text-iv-gold" />
-    }
+      icon: <Sparkles className="w-8 h-8 text-iv-gold" />,
+    },
   ]
 
   return (
@@ -58,11 +54,11 @@ export default function SystemPage() {
         <div className="absolute inset-0 bg-iv-gold/[0.02] pointer-events-none" />
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           <div className="inline-block border border-iv-gold/20 rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-8 bg-iv-black/40 backdrop-blur-md">
-            The World's First 4-Tier Protocol
+            Precision Biological Protocols
           </div>
           <h1 className="iv-type-display font-semibold mb-8 uppercase text-iv-white">The <em className="text-iv-gold not-italic" style={{ fontStyle: 'italic', fontFamily: "'Cormorant Garamond', Georgia, serif" }}>System</em></h1>
           <p className="text-xl text-iv-cream/70 max-w-3xl mx-auto leading-relaxed font-light">
-            Formulation potency matched to cellular biology. Four tiers. One lifetime of precision skincare.
+            Formulation potency matched to cellular biology. Your protocol is assigned by skin analysis — not by birthdate.
           </p>
         </div>
       </section>

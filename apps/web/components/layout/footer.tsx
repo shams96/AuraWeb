@@ -41,11 +41,12 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-16">
           {/* Brand */}
           <div className="lg:col-span-2 space-y-8">
-            <div className="flex items-center">
+            <div className="space-y-1">
+              <p className="text-[9px] font-black uppercase tracking-[0.28em]" style={{ color: 'rgba(145,56,50,0.55)' }}>A Shanill House Formulation</p>
               <span className="iv-type-h2 font-semibold text-iv-white uppercase tracking-tight">Isola <span className="text-iv-gold italic">Vitale</span></span>
             </div>
             <p className="text-iv-cream text-opacity-60 leading-relaxed font-light text-sm max-w-sm">
-              The Italian Scientific Authority in Age-Appropriate Perfection. Bridging the gap between ancient botanical wisdom and 2026 pharmaceutical breakthroughs.
+              The Italian Scientific Authority in Biological Skin Precision. Bridging the gap between botanical heritage and pharmaceutical-grade metabolic science.
             </p>
             <div className="flex space-x-6">
               {socialLinks.map((social) => (
@@ -181,7 +182,7 @@ export function Footer() {
             </Link>
           </div>
           <p className="text-[10px] font-black uppercase tracking-widest" style={{ color: 'rgba(250,247,240,0.25)' }}>
-            &copy; {new Date().getFullYear()} Isola Vitale · 1HubSolutions LLC · Allen, TX
+            &copy; {new Date().getFullYear()} Shanill House · Isola Vitale · Allen, TX
           </p>
         </div>
       </div>

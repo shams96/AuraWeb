@@ -194,11 +194,11 @@ const IMG = { serum: '/images/products/isola_serum.png', col: '/images/products/
 
 const PROTOCOLS: Record<Tier, Protocol> = {
   t1: {
-    name: 'Tier I — Foundation Protocol',
-    tagline: 'Prevention & daily resilience',
+    name: 'Preservation Protocol',
+    tagline: 'Barrier integrity & daily resilience',
     tierSlug: 't1',
     description:
-      'Your skin shows excellent baseline vitality. The Foundation Protocol\'s mission is protection: fortifying your microbiome, establishing a consistent daily ritual, and preventing the environmental damage that accumulates invisibly in your twenties before it ever becomes visible.',
+      'Your skin shows excellent baseline vitality. The Preservation Protocol\'s mission is protection: fortifying your microbiome, establishing a consistent daily ritual, and intercepting the environmental damage that accumulates invisibly — before it ever reaches the surface.',
     am: [
       { id: 'gentle-cellular-cleanser', name: 'Gentle Cellular Cleanser',   role: 'Microbiome-safe morning cleanse', price: '$95',  priceNum: 95,  image: IMG.serum },
       { id: '5b',                        name: '5B Consumer Hydrating Mist', role: 'Prep and first hydration layer',  price: '$95',  priceNum: 95,  image: IMG.col  },
@@ -216,11 +216,11 @@ const PROTOCOLS: Record<Tier, Protocol> = {
     ],
   },
   t2: {
-    name: 'Tier II — Correction Protocol',
-    tagline: 'Early intervention & active correction',
+    name: 'Refinement Protocol',
+    tagline: 'Metabolic support & active correction',
     tierSlug: 't2',
     description:
-      'Your skin carries early signs of environmental and lifestyle wear. The Correction Protocol introduces clinically active compounds to intercept these changes before they become established — restoring radiance, reinforcing your barrier, and correcting tone while the window for easy reversal is still open.',
+      'Your skin shows early signs of environmental and lifestyle wear. The Refinement Protocol introduces clinically active compounds to intercept these changes before they become established — restoring radiance, reinforcing barrier integrity, and correcting tone while the biological window for reversal is still wide open.',
     am: [
       { id: 'gentle-cellular-cleanser', name: 'Gentle Cellular Cleanser',    role: 'pH-balanced morning cleanse',  price: '$95',  priceNum: 95,  image: IMG.serum },
       { id: '1b',                        name: '1B Consumer Peptide Essence', role: 'Daily cellular renewal serum', price: '$175', priceNum: 175, image: IMG.serum },
@@ -239,8 +239,8 @@ const PROTOCOLS: Record<Tier, Protocol> = {
     ],
   },
   t3: {
-    name: 'Tier III — Regeneration Protocol',
-    tagline: 'Deep regeneration & structural renewal',
+    name: 'Restoration Protocol',
+    tagline: 'Deep cellular restoration & structural renewal',
     tierSlug: 't3',
     description:
       'Your skin requires active regeneration at the cellular level. The Regeneration Protocol deploys OS-01 Senomorphic Peptides — shown to reduce zombie-cell accumulation by 30% — combined with L-Ornithine to restore dermal volume and firmness lost to time and cumulative stress. This is targeted biological intervention, not surface treatment.',
@@ -262,7 +262,7 @@ const PROTOCOLS: Record<Tier, Protocol> = {
     ],
   },
   t4: {
-    name: 'Tier IV — Longevity Protocol',
+    name: 'Longevity Protocol',
     tagline: 'Maximum-potency cellular longevity',
     tierSlug: 't4',
     description:

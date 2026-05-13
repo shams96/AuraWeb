@@ -78,16 +78,16 @@ export function BentoFeatures() {
             <div>
               <p className="text-[11px] font-black uppercase tracking-[0.3em] mb-3" style={{ color: 'var(--iv-gold)' }}>4-Tier Protocol</p>
               <h3 className="iv-type-h3 font-bold text-iv-white mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>
-                Matched to your skin's biological age
+                Matched to your skin's biological stage
               </h3>
               <p className="text-sm text-iv-cream/50 font-light leading-relaxed">
-                T1 Foundation → T2 Correction → T3 Regeneration → T4 Longevity. No generic one-size routine.
+                Preservation · Refinement · Restoration · Longevity. Assigned by skin analysis, not birthdate.
               </p>
             </div>
             <div className="flex gap-2 mt-6">
-              {['T1', 'T2', 'T3', 'T4'].map((tier) => (
-                <div key={tier} className="flex-1 rounded-xl p-3 text-center" style={{ background: `${GOLD}0.08)`, border: `1px solid ${GOLD}0.14)` }}>
-                  <div className="text-[11px] font-black text-iv-gold uppercase tracking-widest">{tier}</div>
+              {['Pres.', 'Ref.', 'Rest.', 'Long.'].map((label) => (
+                <div key={label} className="flex-1 rounded-xl p-3 text-center" style={{ background: `${GOLD}0.08)`, border: `1px solid ${GOLD}0.14)` }}>
+                  <div className="text-[10px] font-black text-iv-gold uppercase tracking-widest">{label}</div>
                 </div>
               ))}
             </div>
