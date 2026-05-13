@@ -129,7 +129,7 @@ export function SkinScan() {
           <div className="inline-block border border-iv-gold/20 rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-8 bg-iv-black/40 backdrop-blur-md">
             Advanced Dermal Analytics v4.2
           </div>
-          <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tighter uppercase tracking-widest leading-none text-iv-white">Bio-Adaptive <span className="text-iv-gold italic serif">Scan</span></h2>
+          <h2 className="iv-type-display font-semibold mb-8 uppercase text-iv-white">Bio-Adaptive <span className="text-iv-gold italic">Scan</span></h2>
           <p className="text-lg text-iv-cream/60 max-w-2xl mx-auto leading-relaxed font-light">
             An expert-level metabolic assessment. Align your face for a high-fidelity diagnostic capture.
           </p>
@@ -147,7 +147,7 @@ export function SkinScan() {
                   </div>
                 </div>
                 <div className="space-y-4">
-                  <h3 className="text-3xl font-bold text-iv-white uppercase tracking-tighter italic serif">Step 1: Calibration</h3>
+                  <h3 className="text-3xl font-bold text-iv-white uppercase tracking-tighter italic">Step 1: Calibration</h3>
                   <p className="text-iv-cream/40 text-sm font-light leading-relaxed max-w-sm">
                     Ensure even lighting and a neutral expression. Our AI will analyze 2.4 million data points to calibrate your metabolic protocol.
                   </p>
@@ -279,7 +279,7 @@ export function SkinScan() {
                           <CheckCircle2 className="w-12 h-12 text-iv-black" />
                         </div>
                         <div className="space-y-2">
-                          <h3 className="text-2xl font-bold text-iv-white uppercase tracking-tighter italic serif">Validated</h3>
+                          <h3 className="text-2xl font-bold text-iv-white uppercase tracking-tighter italic">Validated</h3>
                           <p className="text-iv-gold text-[10px] font-black uppercase tracking-[0.5em]">Analysis Finalized</p>
                         </div>
                       </div>
@@ -325,7 +325,7 @@ export function SkinScan() {
               <div className="space-y-8 animate-in fade-in slide-in-from-right duration-1000">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                   <div className="space-y-1">
-                    <h3 className="text-3xl font-bold text-iv-white uppercase tracking-tighter italic serif">Diagnostic Report</h3>
+                    <h3 className="text-3xl font-bold text-iv-white uppercase tracking-tighter italic">Diagnostic Report</h3>
                     <p className="text-iv-gold text-[10px] font-black uppercase tracking-[0.4em]">Protocol Tier III: Regeneration</p>
                   </div>
                   <div className="bg-iv-gold/5 border border-iv-gold/20 px-4 py-2 rounded-full">

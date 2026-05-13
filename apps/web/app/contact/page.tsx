@@ -66,8 +66,8 @@ export default function ContactPage() {
           <div className="inline-block border border-iv-gold/20 rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-8 bg-iv-black/40 backdrop-blur-md">
             Concierge Services
           </div>
-          <h1 className="text-6xl md:text-8xl font-bold mb-8 tracking-tighter uppercase tracking-widest leading-none">
-            Contact <span className="text-iv-gold italic serif">The House</span>
+          <h1 className="iv-type-display font-semibold mb-8 uppercase">
+            Contact <span className="text-iv-gold italic">The House</span>
           </h1>
           <p className="text-xl text-iv-cream/70 max-w-3xl leading-relaxed font-light">
             Whether you are a retail client or a B2B clinical partner, our concierge team is available to assist with metabolic consultations, acquisition inquiries, and professional onboarding.
@@ -80,7 +80,7 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
             {/* Contact Form */}
             <div className="bg-iv-deep-green/10 p-12 rounded-3xl border border-iv-gold/10 backdrop-blur-sm relative overflow-hidden">
-              <h2 className="text-3xl font-bold text-iv-white mb-8 tracking-tighter uppercase tracking-widest italic serif">
+              <h2 className="text-3xl font-bold text-iv-white mb-8 uppercase tracking-tight italic">
                 Inquiry Form
               </h2>
 
@@ -164,7 +164,7 @@ export default function ContactPage() {
             {/* Contact Info */}
             <div className="space-y-16">
               <div>
-                <h2 className="text-3xl font-bold text-iv-white mb-10 tracking-tighter uppercase tracking-widest italic serif">Direct Channels</h2>
+                <h2 className="text-3xl font-bold text-iv-white mb-10 uppercase tracking-tight italic">Direct Channels</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="p-8 bg-iv-black border border-iv-white/5 rounded-2xl group hover:border-iv-gold/20 transition-all">
                     <Mail className="w-6 h-6 text-iv-gold mb-6 opacity-40 group-hover:opacity-100 transition-opacity" />
@@ -180,7 +180,7 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <h2 className="text-3xl font-bold text-iv-white mb-10 tracking-tighter uppercase tracking-widest italic serif">Global Presence</h2>
+                <h2 className="text-3xl font-bold text-iv-white mb-10 uppercase tracking-tight italic">Global Presence</h2>
                 <div className="space-y-8">
                   <div className="flex gap-6 items-start">
                     <div className="w-12 h-12 rounded-xl bg-iv-deep-green/20 border border-iv-gold/10 flex items-center justify-center flex-shrink-0">

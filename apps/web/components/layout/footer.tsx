@@ -42,7 +42,7 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2 space-y-8">
             <div className="flex items-center">
-              <span className="text-3xl font-bold tracking-tighter text-iv-white uppercase tracking-widest">Isola <span className="text-iv-gold italic serif">Vitale</span></span>
+              <span className="iv-type-h2 font-semibold text-iv-white uppercase tracking-tight">Isola <span className="text-iv-gold italic">Vitale</span></span>
             </div>
             <p className="text-iv-cream text-opacity-60 leading-relaxed font-light text-sm max-w-sm">
               The Italian Scientific Authority in Age-Appropriate Perfection. Bridging the gap between ancient botanical wisdom and 2026 pharmaceutical breakthroughs.

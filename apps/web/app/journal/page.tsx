@@ -39,7 +39,7 @@ export default function JournalPage() {
           <div className="inline-block border border-iv-gold/20 rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-8 bg-iv-black/40 backdrop-blur-md">
             Scientific Intelligence
           </div>
-          <h1 className="text-6xl md:text-8xl font-bold mb-8 tracking-tighter uppercase tracking-widest leading-none">The <span className="text-iv-gold italic serif">Journal</span></h1>
+          <h1 className="iv-type-display font-semibold mb-8 uppercase">The <span className="text-iv-gold italic">Journal</span></h1>
           <p className="text-xl text-iv-cream/70 max-w-3xl leading-relaxed font-light">
             Insights from the intersection of cellular biology, Italian heritage, and clinical performance. 
           </p>
@@ -88,7 +88,7 @@ export default function JournalPage() {
       <section className="py-32 bg-iv-deep-green/30 border-y border-iv-gold/10 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-iv-gold/[0.03] rounded-full blur-3xl -mr-48 -mt-48" />
         <div className="container mx-auto px-4 max-w-2xl text-center relative z-10">
-          <h2 className="text-4xl font-bold mb-6 tracking-tighter uppercase tracking-widest text-iv-white">Clinical Updates</h2>
+          <h2 className="iv-type-h2 font-semibold mb-6 uppercase tracking-tight text-iv-white">Clinical Updates</h2>
           <p className="text-iv-cream/60 mb-12 text-sm leading-relaxed font-light">Join our B2B professional network for the latest peer-reviewed dossiers and early access to Clinical A-Series enhancements.</p>
           <div className="flex flex-col sm:flex-row gap-4">
             <input 

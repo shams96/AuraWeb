@@ -27,7 +27,7 @@ export default function CareersPage() {
       <section className="bg-iv-deep-green/20 border-b border-iv-gold/10 pt-32 pb-20 relative overflow-hidden">
         <div className="container mx-auto px-4 max-w-7xl relative z-10 text-center">
           <div className="inline-block border border-iv-gold/20 rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-8 bg-iv-black/40 backdrop-blur-md text-iv-gold"> Join The House </div>
-          <h1 className="text-6xl md:text-8xl font-bold mb-8 tracking-tighter uppercase tracking-widest leading-none text-iv-white">The <span className="text-iv-gold italic serif">Aspiration</span></h1>
+          <h1 className="iv-type-display font-semibold mb-8 uppercase text-iv-white">The <span className="text-iv-gold italic">Aspiration</span></h1>
           <p className="text-xl text-iv-cream/70 max-w-3xl mx-auto leading-relaxed font-light">
             We are building the future of metabolic longevity. Join a global team of scientists, designers, and visionaries dedicated to redefining the luxury skincare cycle.
           </p>
@@ -62,11 +62,11 @@ export default function CareersPage() {
 
         {/* Job List */}
         <div className="max-w-4xl mx-auto space-y-8">
-           <h2 className="text-3xl font-bold text-iv-white mb-12 tracking-tighter uppercase tracking-widest italic serif text-center">Open Positions</h2>
+           <h2 className="text-3xl font-bold text-iv-white mb-12 uppercase tracking-tight italic text-center">Open Positions</h2>
            {openings.map((job, idx) => (
              <div key={idx} className="group bg-iv-deep-green/10 border border-iv-white/5 p-8 flex flex-col md:flex-row justify-between items-center hover:border-iv-gold/30 transition-all rounded-2xl">
                 <div className="text-center md:text-left mb-6 md:mb-0">
-                  <h3 className="text-xl font-bold text-iv-white mb-2 italic serif">{job.title}</h3>
+                  <h3 className="text-xl font-bold text-iv-white mb-2 italic">{job.title}</h3>
                   <p className="text-[10px] font-black text-iv-gold uppercase tracking-widest">{job.location} · {job.type}</p>
                 </div>
                 <button className="flex items-center gap-2 text-[10px] font-black text-iv-white uppercase tracking-[0.2em] group-hover:text-iv-gold transition-colors">

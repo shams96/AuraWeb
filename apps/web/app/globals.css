@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -670,9 +670,11 @@ img[loading="lazy"].loaded {
 @layer utilities {
   /* Display / Hero — page-level titles */
   .iv-type-display {
-    font-size: clamp(2.25rem, 6vw, 5rem);
-    line-height: 1.08;
-    letter-spacing: -0.02em;
+    font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
   }
 
   /* Section h2 headings */

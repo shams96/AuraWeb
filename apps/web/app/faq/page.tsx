@@ -49,7 +49,7 @@ export default function FAQPage() {
           <div className="inline-block border border-iv-gold/20 rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-6 bg-iv-black/40 backdrop-blur-md">
             Information Center
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tighter uppercase tracking-widest leading-none">Frequently <span className="text-iv-gold italic serif">Asked</span></h1>
+          <h1 className="iv-type-display font-semibold mb-6 uppercase">Frequently <span className="text-iv-gold italic">Asked</span></h1>
           <p className="text-lg text-iv-cream/70 max-w-2xl leading-relaxed font-light">
             Everything you need to know about our metabolic technology, acquisition process, and the 2026 Hero SKU launch.
           </p>
@@ -65,7 +65,7 @@ export default function FAQPage() {
                 <div className="space-y-4">
                   {category.items.map((item, i) => (
                     <div key={i} className="bg-iv-deep-green/10 border border-iv-white/5 p-8 rounded-2xl hover:border-iv-gold/20 transition-all group">
-                      <h3 className="text-lg font-bold text-iv-white mb-4 tracking-tight group-hover:text-iv-gold transition-colors italic serif">{item.q}</h3>
+                      <h3 className="text-lg font-bold text-iv-white mb-4 tracking-tight group-hover:text-iv-gold transition-colors italic">{item.q}</h3>
                       <p className="text-iv-cream/60 text-sm font-light leading-relaxed">{item.a}</p>
                     </div>
                   ))}

@@ -60,9 +60,9 @@ export default function SystemPage() {
           <div className="inline-block border border-iv-gold/20 rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-8 bg-iv-black/40 backdrop-blur-md">
             The World's First 4-Tier Protocol
           </div>
-          <h1 className="text-6xl md:text-8xl font-bold mb-8 tracking-tighter uppercase tracking-widest leading-none">The <span className="text-iv-gold italic serif">System</span></h1>
+          <h1 className="iv-type-display font-semibold mb-8 uppercase text-iv-white">The <em className="text-iv-gold not-italic" style={{ fontStyle: 'italic', fontFamily: "'Cormorant Garamond', Georgia, serif" }}>System</em></h1>
           <p className="text-xl text-iv-cream/70 max-w-3xl mx-auto leading-relaxed font-light">
-            Aligning formulation potency with cellular age. Our tiered approach ensures your skin receives exactly what its metabolism requires at every stage of life.
+            Formulation potency matched to cellular biology. Four tiers. One lifetime of precision skincare.
           </p>
         </div>
       </section>
@@ -80,7 +80,7 @@ export default function SystemPage() {
                   </div>
                   <div className="flex-1 space-y-8">
                     <div className="flex flex-wrap items-center gap-6">
-                      <h2 className="text-4xl md:text-5xl font-bold text-iv-white uppercase tracking-tighter italic serif">{tier.name}</h2>
+                      <h2 className="iv-type-h2 font-semibold text-iv-white uppercase tracking-tight">{tier.name}</h2>
                     </div>
                     <p className="text-iv-gold font-black uppercase tracking-[0.3em] text-[10px]">{tier.focus}</p>
                     <p className="text-iv-cream/60 text-lg leading-relaxed font-light max-w-3xl">

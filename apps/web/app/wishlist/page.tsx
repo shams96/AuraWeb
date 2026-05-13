@@ -23,7 +23,7 @@ export default function WishlistPage() {
           <div className="inline-block border border-iv-gold/20 rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-8 bg-iv-black/40 backdrop-blur-md">
             Your Private Collection
           </div>
-          <h1 className="text-6xl md:text-8xl font-bold mb-8 tracking-tighter uppercase tracking-widest leading-none">The <span className="text-iv-gold italic serif">Wishlist</span></h1>
+          <h1 className="iv-type-display font-semibold mb-8 uppercase">The <span className="text-iv-gold italic">Wishlist</span></h1>
           <p className="text-xl text-iv-cream/70 max-w-3xl leading-relaxed font-light">
             Formulations curated for your metabolic profile. Ready for acquisition whenever you are.
           </p>

@@ -27,7 +27,7 @@ export default function PressPage() {
       <section className="bg-iv-deep-green/20 border-b border-iv-gold/10 pt-32 pb-20 relative overflow-hidden">
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           <div className="inline-block border border-iv-gold/20 rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-8 bg-iv-black/40 backdrop-blur-md text-iv-gold"> Media Room </div>
-          <h1 className="text-6xl md:text-8xl font-bold mb-8 tracking-tighter uppercase tracking-widest leading-none text-iv-white">Press & <span className="text-iv-gold italic serif">Authority</span></h1>
+          <h1 className="iv-type-display font-semibold mb-8 uppercase text-iv-white">Press & <span className="text-iv-gold italic">Authority</span></h1>
           <p className="text-xl text-iv-cream/70 max-w-3xl leading-relaxed font-light"> Global recognition for our breakthroughs in metabolic longevity and Italian luxury heritage. </p>
         </div>
       </section>
@@ -50,7 +50,7 @@ export default function PressPage() {
 
            {/* Media Assets */}
            <div className="bg-iv-deep-green/10 p-12 rounded-3xl border border-iv-gold/10 backdrop-blur-sm relative overflow-hidden">
-             <h2 className="text-3xl font-bold text-iv-white mb-8 tracking-tighter uppercase tracking-widest italic serif">Media Inquiries</h2>
+             <h2 className="text-3xl font-bold text-iv-white mb-8 uppercase tracking-tight italic">Media Inquiries</h2>
              <p className="text-iv-cream/60 mb-10 text-sm leading-relaxed font-light">
                For interview requests with founder Shams Islam, high-resolution product assets, or laboratory backgrounders from Natural You Srl, please contact our media relations department.
              </p>

@@ -20,25 +20,14 @@ export function Header() {
   const wishlistCount = wishlistItems.length
 
   const navigation = [
-    { name: 'Shop All', href: '/shop' },
-    { name: 'The Science', href: '/science' },
-    { name: 'Results', href: '/clinical-results' },
+    { name: 'Shop',       href: '/shop' },
     { name: 'The System', href: '/system' },
-    { name: 'Ingredients', href: '/ingredients' },
-    { name: 'Routines', href: '/routines' },
-    { name: 'Journal', href: '/journal' },
-    { name: 'iv Circle', href: '/loyalty' },
-    { name: 'About', href: '/about' },
+    { name: 'Science',    href: '/science' },
+    { name: 'Results',    href: '/clinical-results' },
+    { name: 'Protocols',  href: '/routines' },
+    { name: 'Journal',    href: '/journal' },
+    { name: 'iv Circle',  href: '/loyalty' },
   ]
-  
-  const tiers = [
-    { name: 'T1 Teen (13-19)', href: '/shop?tier=t1' },
-    { name: 'T2 Twenties (20-29)', href: '/shop?tier=t2' },
-    { name: 'T3 Thirties+ (30-49)', href: '/shop?tier=t3' },
-    { name: 'T4 Mature+ (50+)', href: '/shop?tier=t4' },
-  ]
-  
-  const [isTierDropdownOpen, setIsTierDropdownOpen] = useState(false)
 
   return (
     <header style={{ position: 'sticky', top: 0, zIndex: 50, width: '100%', backgroundColor: 'rgba(253,250,245,0.97)', borderBottom: '1px solid rgba(145,56,50,0.12)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)' }}>
@@ -55,36 +44,6 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center" style={{ gap: '1.75rem', marginLeft: '2rem' }}>
-            {/* Tiers Dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => setIsTierDropdownOpen(true)}
-              onMouseLeave={() => setIsTierDropdownOpen(false)}
-            >
-              <button style={{ fontSize: '0.7rem', fontWeight: 600, color: 'var(--iv-cream)', letterSpacing: '0.12em', textTransform: 'uppercase', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 4, opacity: 0.70 }}>
-                Shop by Age
-                <svg style={{ width: 10, height: 10, transition: 'transform 0.2s', transform: isTierDropdownOpen ? 'rotate(180deg)' : 'none' }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
-              </button>
-              {isTierDropdownOpen && (
-                <div style={{ position: 'absolute', top: '100%', left: 0, paddingTop: 8, minWidth: 210, zIndex: 100 }}>
-                  <div style={{ backgroundColor: 'var(--iv-black)', border: '1px solid rgba(145,56,50,0.15)', borderRadius: 10, overflow: 'hidden', boxShadow: '0 20px 60px rgba(60,30,20,0.14)' }}>
-                    {tiers.map((tier) => (
-                      <Link
-                        key={tier.name}
-                        href={tier.href}
-                        style={{ display: 'block', padding: '10px 18px', fontSize: '0.78rem', color: 'var(--iv-cream)', letterSpacing: '0.04em', transition: 'all 0.15s ease' }}
-                        onMouseEnter={e => { (e.target as HTMLElement).style.backgroundColor = 'rgba(145,56,50,0.06)'; (e.target as HTMLElement).style.color = 'var(--iv-gold)'; }}
-                        onMouseLeave={e => { (e.target as HTMLElement).style.backgroundColor = 'transparent'; (e.target as HTMLElement).style.color = 'var(--iv-cream)'; }}
-                        onClick={() => setIsTierDropdownOpen(false)}
-                      >
-                        {tier.name}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-
             {navigation.map((item) => (
               <Link
                 key={item.name}
@@ -176,19 +135,6 @@ export function Header() {
         {isMenuOpen && (
           <div className="md:hidden">
             <div style={{ backgroundColor: 'var(--iv-black)', borderBottom: '1px solid rgba(145,56,50,0.12)', padding: '12px 16px' }}>
-              <div style={{ paddingBottom: 8, borderBottom: '1px solid rgba(145,56,50,0.10)', marginBottom: 8 }}>
-                <span style={{ display: 'block', padding: '4px 8px', fontSize: '0.6rem', fontWeight: 700, color: 'var(--iv-gold)', textTransform: 'uppercase', letterSpacing: '0.16em', opacity: 0.65 }}>Shop by Age</span>
-                {tiers.map((tier) => (
-                  <Link
-                    key={tier.name}
-                    href={tier.href}
-                    style={{ display: 'block', padding: '8px 12px', fontSize: '0.82rem', color: 'var(--iv-cream)', letterSpacing: '0.04em' }}
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {tier.name}
-                  </Link>
-                ))}
-              </div>
               {navigation.map((item) => (
                 <Link
                   key={item.name}

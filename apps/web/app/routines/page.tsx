@@ -7,11 +7,11 @@ export default function RoutinesPage() {
       <section className="bg-iv-black text-iv-white py-32 border-b border-iv-white/5">
         <div className="container mx-auto px-4 max-w-4xl text-center">
           <div className="inline-block border border-iv-gold/20 rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-8 bg-iv-black/40 backdrop-blur-md">
-            The Methodology
+            Application Guide
           </div>
-          <h1 className="text-6xl md:text-8xl font-bold mb-8 tracking-tighter uppercase tracking-widest leading-none">The <span className="text-iv-gold italic serif">Protocols</span></h1>
+          <h1 className="iv-type-display font-semibold mb-8 text-iv-white">The <em className="text-iv-gold" style={{ fontStyle: 'italic', fontFamily: "'Cormorant Garamond', Georgia, serif" }}>Protocols</em></h1>
           <p className="text-xl text-iv-cream/70 leading-relaxed font-light">
-            Metabolic skincare requires precision. Follow our laboratory-validated protocols to maximize the efficacy of your Genesis-Longevity system and Clinical series.
+            Laboratory-validated application sequences engineered to maximise the efficacy of your Isola Vitale system.
           </p>
         </div>
       </section>
@@ -29,7 +29,7 @@ export default function RoutinesPage() {
                   <Sun className="w-6 h-6 text-iv-gold" />
                 </div>
                 <div>
-                  <h2 className="text-3xl font-bold text-iv-white tracking-tighter uppercase tracking-widest">Morning</h2>
+                  <h2 className="iv-type-h2 font-semibold text-iv-white uppercase tracking-tight">Morning</h2>
                   <p className="text-[10px] font-black text-iv-gold uppercase tracking-[0.3em]">Protect & Shield</p>
                 </div>
               </div>
@@ -66,7 +66,7 @@ export default function RoutinesPage() {
                   <Moon className="w-6 h-6 text-iv-gold" />
                 </div>
                 <div>
-                  <h2 className="text-3xl font-bold text-iv-white tracking-tighter uppercase tracking-widest">Evening</h2>
+                  <h2 className="iv-type-h2 font-semibold text-iv-white uppercase tracking-tight">Evening</h2>
                   <p className="text-[10px] font-black text-iv-gold uppercase tracking-[0.3em]">Repair & Restore</p>
                 </div>
               </div>
@@ -103,7 +103,7 @@ export default function RoutinesPage() {
                   <CheckCircle2 className="w-6 h-6 text-iv-gold/60" />
                 </div>
                 <div>
-                  <h2 className="text-3xl font-bold text-iv-white tracking-tighter uppercase tracking-widest">Sensitive</h2>
+                  <h2 className="iv-type-h2 font-semibold text-iv-white uppercase tracking-tight">Sensitive</h2>
                   <p className="text-[10px] font-black text-iv-gold/60 uppercase tracking-[0.3em]">Calm & Fortify</p>
                 </div>
               </div>
@@ -130,7 +130,7 @@ export default function RoutinesPage() {
                   <CheckCircle2 className="w-6 h-6 text-iv-gold/60" />
                 </div>
                 <div>
-                  <h2 className="text-3xl font-bold text-iv-white tracking-tighter uppercase tracking-widest">Reactive</h2>
+                  <h2 className="iv-type-h2 font-semibold text-iv-white uppercase tracking-tight">Reactive</h2>
                   <p className="text-[10px] font-black text-iv-gold/60 uppercase tracking-[0.3em]">Clarify & Balance</p>
                 </div>
               </div>

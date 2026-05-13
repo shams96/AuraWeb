@@ -11,7 +11,7 @@ export default function BestSellersPage() {
           <div className="inline-block border border-iv-gold/20 rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-8 bg-iv-black/40 backdrop-blur-md">
             The Pinnacle of Performance
           </div>
-          <h1 className="text-6xl md:text-8xl font-bold mb-8 tracking-tighter uppercase tracking-widest leading-none">Best <span className="text-iv-gold italic serif">Sellers</span></h1>
+          <h1 className="iv-type-display font-semibold mb-8 uppercase">Best <span className="text-iv-gold italic">Sellers</span></h1>
           <p className="text-xl text-iv-cream/70 max-w-3xl leading-relaxed font-light">
             Discover our initial launch phase Hero SKUs. These five essential formulations represent the core of the Isola Vitale system—engineered for metabolic precision and luxury performance.
           </p>

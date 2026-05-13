@@ -42,7 +42,7 @@ export default function SustainabilityPage() {
           <div className="inline-block border border-iv-gold/20 rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-8 bg-iv-black/40 backdrop-blur-md">
             The Circular Authority
           </div>
-          <h1 className="text-6xl md:text-8xl font-bold mb-8 tracking-tighter uppercase tracking-widest leading-none">Vital <span className="text-iv-gold italic serif">Ecology</span></h1>
+          <h1 className="iv-type-display font-semibold mb-8 uppercase">Vital <span className="text-iv-gold italic">Ecology</span></h1>
           <p className="text-xl text-iv-cream/70 max-w-3xl mx-auto leading-relaxed font-light">
             Luxury is not a license for waste. We believe in the longevity of the planet as much as the longevity of the skin.
           </p>
@@ -59,7 +59,7 @@ export default function SustainabilityPage() {
                 <div className="mb-10 p-4 bg-iv-black/40 rounded-xl inline-block border border-iv-gold/10 group-hover:scale-110 transition-transform">
                   {pillar.icon}
                 </div>
-                <h2 className="text-2xl font-bold text-iv-white mb-6 tracking-tighter uppercase tracking-widest italic serif leading-tight">
+                <h2 className="text-2xl font-bold text-iv-white mb-6 uppercase tracking-tight italic leading-tight">
                   {pillar.name}
                 </h2>
                 <p className="text-iv-cream/60 mb-10 text-sm leading-relaxed font-light">
