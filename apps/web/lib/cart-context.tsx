@@ -24,6 +24,7 @@ type CartAction =
   | { type: 'REMOVE_ITEM'; payload: string }
   | { type: 'UPDATE_QUANTITY'; payload: { id: string; quantity: number } }
   | { type: 'TOGGLE_SUBSCRIPTION'; payload: string }
+  | { type: 'SET_ALL_SUBSCRIPTION'; payload: boolean }
   | { type: 'CLEAR_CART' }
   | { type: 'TOGGLE_CART' }
   | { type: 'SET_CART_OPEN'; payload: boolean }
@@ -75,6 +76,18 @@ function cartReducer(state: CartState, action: CartAction): CartState {
       }
     }
 
+    case 'SET_ALL_SUBSCRIPTION': {
+      const sub = action.payload
+      return {
+        ...state,
+        items: state.items.map(i => ({
+          ...i,
+          isSubscription: sub,
+          price: sub ? Math.round(i.basePrice * (1 - SUB_DISCOUNT)) : i.basePrice,
+        })),
+      }
+    }
+
     case 'CLEAR_CART':
       return { ...state, items: [] }
 
@@ -95,6 +108,7 @@ interface CartContextType {
   removeItem: (id: string) => void
   updateQuantity: (id: string, quantity: number) => void
   toggleSubscription: (id: string) => void
+  setAllSubscription: (sub: boolean) => void
   clearCart: () => void
   toggleCart: () => void
   setCartOpen: (open: boolean) => void
@@ -124,6 +138,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       removeItem:          (id)           => dispatch({ type: 'REMOVE_ITEM',          payload: id }),
       updateQuantity:      (id, quantity) => dispatch({ type: 'UPDATE_QUANTITY',      payload: { id, quantity } }),
       toggleSubscription:  (id)           => dispatch({ type: 'TOGGLE_SUBSCRIPTION',  payload: id }),
+      setAllSubscription:  (sub)          => dispatch({ type: 'SET_ALL_SUBSCRIPTION', payload: sub }),
       clearCart:           ()             => dispatch({ type: 'CLEAR_CART' }),
       toggleCart:          ()             => dispatch({ type: 'TOGGLE_CART' }),
       setCartOpen:         (open)         => dispatch({ type: 'SET_CART_OPEN',         payload: open }),

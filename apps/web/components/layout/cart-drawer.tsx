@@ -5,63 +5,57 @@ import { useCart } from '@/lib/cart-context'
 import {
   X, Minus, Plus, Loader2, ArrowRight,
   RefreshCcw, ShieldCheck, Award, FlaskConical,
-  Gift, Truck, Star,
+  Truck, ChevronRight,
 } from 'lucide-react'
 import Link from 'next/link'
 
-// ─── Constants ────────────────────────────────────────────────────────────────
-const FREE_SHIPPING_THRESHOLD = 200
-const SUB_LABEL = 'Subscribe & Save 20%'
+// ─── Config ───────────────────────────────────────────────────────────────────
+const FREE_SHIPPING = 200
+const SUB_PCT       = 20      // displayed discount %
+const SUPPORT_TEL   = '+12147143597'
+const SUPPORT_LABEL = '1-214-714-3597'
 
-// ─── Cross-sell map: cartItemId → suggestion ─────────────────────────────────
+// ─── Cross-sell map ───────────────────────────────────────────────────────────
 const CROSS_SELL: Record<string, { id: string; name: string; price: number; role: string; image: string }> = {
-  'gentle-cellular-cleanser': { id: 'terra-radiance-cream',  name: 'Terra Radiance Cream',    price: 245, role: 'Pairs as your moisture step',       image: '/images/products/terra_radiance.png' },
-  'terra-radiance-cream':     { id: 'gentle-cellular-cleanser', name: 'Gentle Cellular Cleanser', price: 95, role: 'Complete with a cleanser',         image: '/images/products/gentle_cleanser.png' },
-  'obsidian-vitale-cream':    { id: 'chrono-lift-serum',     name: 'Chrono-Lift Serum',        price: 345, role: 'Layer beneath for maximum lift',    image: '/images/products/chrono_lift.png' },
-  'chrono-lift-serum':        { id: 'obsidian-vitale-cream', name: 'Obsidian Vitale Cream',     price: 295, role: 'Seal with age-defying cream',       image: '/images/products/obsidian_cream.png' },
-  '1b':                       { id: 'gentle-cellular-cleanser', name: 'Gentle Cellular Cleanser', price: 95, role: 'Start your routine clean',         image: '/images/products/gentle_cleanser.png' },
-  't3-03':                    { id: 'obsidian-vitale-cream', name: 'Obsidian Vitale Cream',     price: 295, role: 'Intensive night complement',        image: '/images/products/obsidian_cream.png' },
-  't4-04':                    { id: 'chrono-lift-serum',     name: 'Chrono-Lift Serum',        price: 345, role: 'Targeted lift for maximum potency', image: '/images/products/chrono_lift.png' },
+  'gentle-cellular-cleanser': { id: 'terra-radiance-cream',     name: 'Terra Radiance Cream',     price: 245, role: 'Pairs as your moisture step',       image: '/images/products/terra_radiance.png' },
+  'terra-radiance-cream':     { id: 'gentle-cellular-cleanser', name: 'Gentle Cellular Cleanser', price: 95,  role: 'Complete with a cleanser first',    image: '/images/products/gentle_cleanser.png' },
+  'obsidian-vitale-cream':    { id: 'chrono-lift-serum',        name: 'Chrono-Lift Serum',        price: 345, role: 'Layer beneath for structural lift', image: '/images/products/chrono_lift.png' },
+  'chrono-lift-serum':        { id: 'obsidian-vitale-cream',    name: 'Obsidian Vitale Cream',    price: 295, role: 'Seal with age-defying cream',       image: '/images/products/obsidian_cream.png' },
+  '1b':                       { id: 'gentle-cellular-cleanser', name: 'Gentle Cellular Cleanser', price: 95,  role: 'Start your routine clean',          image: '/images/products/gentle_cleanser.png' },
+  't3-03':                    { id: 'obsidian-vitale-cream',    name: 'Obsidian Vitale Cream',    price: 295, role: 'Intensive night complement',         image: '/images/products/obsidian_cream.png' },
+  't4-04':                    { id: 'chrono-lift-serum',        name: 'Chrono-Lift Serum',        price: 345, role: 'Targeted lift for max potency',     image: '/images/products/chrono_lift.png' },
 }
 
-// Welcome kit gifts unlocked with any subscription
-const WELCOME_GIFTS = [
-  { icon: '🧴', label: 'Signature Ritual Applicator' },
-  { icon: '🎁', label: 'Deluxe Travel Pouch' },
-  { icon: '✨', label: '3× Hero Sample Set' },
-  { icon: '📋', label: 'Skin Intelligence Card' },
+// Welcome kit items — real product thumbnails
+const WELCOME_KIT = [
+  { label: 'Signature Applicator',  image: '/images/products/isola_serum.png' },
+  { label: 'Deluxe Travel Pouch',   image: '/images/products/isola_collection.png' },
+  { label: '3× Hero Sample Set',    image: '/images/products/gentle_cleanser.png' },
+  { label: 'Skin Intelligence Card', image: '/images/products/terra_radiance.png' },
 ]
 
-// ─── Sub-components ───────────────────────────────────────────────────────────
-
+// ─── Shipping bar ─────────────────────────────────────────────────────────────
 function ShippingBar({ subtotal }: { subtotal: number }) {
-  const pct     = Math.min(100, (subtotal / FREE_SHIPPING_THRESHOLD) * 100)
-  const remaining = FREE_SHIPPING_THRESHOLD - subtotal
-  const unlocked  = subtotal >= FREE_SHIPPING_THRESHOLD
-
+  const pct       = Math.min(100, (subtotal / FREE_SHIPPING) * 100)
+  const remaining = FREE_SHIPPING - subtotal
+  const unlocked  = subtotal >= FREE_SHIPPING
   return (
-    <div className="px-5 py-3 bg-[#F7F4EF] border-b border-[#EDE8E0]">
-      <div className="flex items-center justify-between mb-1.5">
+    <div className="px-5 py-3 border-b border-[#EDE8E0]" style={{ background: '#F7F4EF' }}>
+      <div className="flex items-center justify-between mb-2">
         <div className="flex items-center gap-1.5">
-          <Truck size={12} className={unlocked ? 'text-[#2A6B3A]' : 'text-[#913832]'} />
-          <span className="text-[11px] font-bold tracking-wide text-[#1A1614]">
-            {unlocked
-              ? '🎉 Free shipping unlocked!'
-              : `Add $${remaining.toFixed(0)} more for FREE shipping`}
+          <Truck size={11} className={unlocked ? 'text-[#2A6B3A]' : 'text-[#913832]'} />
+          <span className="text-[11px] font-bold text-[#1A1614]">
+            {unlocked ? '🎉 Free shipping unlocked!' : `Add $${remaining.toFixed(0)} for FREE shipping`}
           </span>
         </div>
-        <span className="text-[10px] font-black text-[#913832] uppercase tracking-widest">
-          ${FREE_SHIPPING_THRESHOLD}
-        </span>
+        <span className="text-[10px] font-black text-[#913832]">${FREE_SHIPPING}</span>
       </div>
       <div className="h-1.5 rounded-full bg-[#E8E2D9] overflow-hidden">
         <div
-          className="h-full rounded-full transition-all duration-500"
+          className="h-full rounded-full transition-all duration-700"
           style={{
             width: `${pct}%`,
-            background: unlocked
-              ? 'linear-gradient(90deg, #2A6B3A, #4CAF72)'
-              : 'linear-gradient(90deg, #913832, #C9685F)',
+            background: unlocked ? 'linear-gradient(90deg,#2A6B3A,#4CAF72)' : 'linear-gradient(90deg,#913832,#C9685F)',
           }}
         />
       </div>
@@ -69,188 +63,186 @@ function ShippingBar({ subtotal }: { subtotal: number }) {
   )
 }
 
-function CartItemRow({
+// ─── Global subscribe toggle (IM8-style — one toggle for whole cart) ──────────
+function SubscribeToggle({
+  allSubscribed,
+  onSwitch,
+  subTotal,
+  retailTotal,
+  dailyCost,
+}: {
+  allSubscribed: boolean
+  onSwitch: (v: boolean) => void
+  subTotal: number
+  retailTotal: number
+  dailyCost: string
+}) {
+  return (
+    <div className="mx-4 mt-4 rounded-2xl overflow-hidden border-2" style={{ borderColor: allSubscribed ? '#913832' : '#EDE8E0' }}>
+      {/* Toggle pills */}
+      <div className="flex">
+        <button
+          onClick={() => onSwitch(false)}
+          className={`flex-1 py-3 text-[11px] font-black uppercase tracking-wider transition-all ${
+            !allSubscribed ? 'bg-[#1A1614] text-white' : 'bg-white text-[#888]'
+          }`}
+        >
+          One-Time
+        </button>
+        <button
+          onClick={() => onSwitch(true)}
+          className={`flex-1 py-3 text-[11px] font-black uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 ${
+            allSubscribed ? 'bg-[#913832] text-white' : 'bg-white text-[#888]'
+          }`}
+        >
+          <RefreshCcw size={10} />
+          Subscribe &amp; Save {SUB_PCT}%
+        </button>
+      </div>
+
+      {/* Pricing comparison panel */}
+      {allSubscribed ? (
+        <div className="bg-[#FDF5F4] px-4 py-3 space-y-1.5">
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] text-[#888]">Retail value</span>
+            <span className="text-[11px] text-[#888] line-through">${retailTotal.toFixed(2)}</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <span className="text-[11px] font-black text-[#913832]">Your subscribe price</span>
+            <span className="text-[15px] font-black text-[#913832]">${subTotal.toFixed(2)}<span className="text-[10px] font-normal text-[#888] ml-1">/mo</span></span>
+          </div>
+          <div className="flex items-center justify-between pt-1 border-t border-[#F0E8E5]">
+            <span className="text-[10px] text-[#555]">That's just</span>
+            <span className="text-[13px] font-black text-[#2A6B3A]">${dailyCost} / day</span>
+          </div>
+          <p className="text-[9px] text-[#AAA] pt-0.5">Cancel anytime · Ships every 30 days · Free returns</p>
+        </div>
+      ) : (
+        <div className="bg-[#F7F4EF] px-4 py-2.5">
+          <p className="text-[10px] text-[#888] text-center">
+            Switch to Subscribe &amp; Save <span className="font-black text-[#913832]">${(retailTotal - Math.round(retailTotal * 0.8)).toFixed(2)}</span> on your order
+          </p>
+        </div>
+      )}
+    </div>
+  )
+}
+
+// ─── Individual cart item (simplified — no per-item toggle, global controls it) ─
+function CartItem({
   item,
   onRemove,
-  onQtyChange,
-  onToggleSub,
+  onQty,
 }: {
   item: ReturnType<typeof useCart>['state']['items'][number]
   onRemove: () => void
-  onQtyChange: (q: number) => void
-  onToggleSub: () => void
+  onQty: (q: number) => void
 }) {
-  const oneTimePrice = item.basePrice
-  const subPrice     = Math.round(item.basePrice * 0.8)
-  const saving       = (oneTimePrice - subPrice) * item.quantity
-  const perDay       = (item.price / 30).toFixed(2)
-
+  const perDay = (item.price / 30).toFixed(2)
   return (
-    <div className="bg-white rounded-2xl border border-[#EDE8E0] overflow-hidden shadow-sm">
-      {/* Item header */}
-      <div className="flex gap-3 p-4">
-        {/* Thumbnail */}
-        <div className="w-[72px] h-[72px] rounded-xl overflow-hidden flex-shrink-0 bg-[#F7F4EF]">
-          <img
-            src={item.image ?? '/images/products/isola_collection.png'}
-            alt={item.name}
-            className="w-full h-full object-cover"
-          />
+    <div className="flex gap-3 bg-white rounded-2xl p-3.5 border border-[#EDE8E0] shadow-sm">
+      {/* Thumb */}
+      <div className="w-[68px] h-[68px] rounded-xl overflow-hidden flex-shrink-0 bg-[#F7F4EF]">
+        <img
+          src={item.image ?? '/images/products/isola_collection.png'}
+          alt={item.name}
+          className="w-full h-full object-cover"
+        />
+      </div>
+
+      {/* Info */}
+      <div className="flex-1 min-w-0">
+        <div className="flex items-start justify-between gap-1">
+          <p className="text-[12px] font-semibold text-[#1A1614] leading-snug line-clamp-2">{item.name}</p>
+          <button onClick={onRemove} className="text-[#BDBDBD] hover:text-[#913832] p-0.5 flex-shrink-0" aria-label="Remove">
+            <X size={12} />
+          </button>
         </div>
 
-        {/* Info */}
-        <div className="flex-1 min-w-0">
-          <div className="flex items-start justify-between gap-2">
-            <p className="text-[13px] font-semibold text-[#1A1614] leading-snug">{item.name}</p>
+        {item.isSubscription && (
+          <div className="flex items-center gap-1 mt-0.5">
+            <RefreshCcw size={8} className="text-[#913832]" />
+            <span className="text-[9px] font-bold text-[#913832] uppercase tracking-wider">Monthly</span>
+          </div>
+        )}
+
+        <div className="flex items-center justify-between mt-2">
+          {/* Qty */}
+          <div className="flex items-center rounded-lg border border-[#EDE8E0] overflow-hidden">
             <button
-              onClick={onRemove}
-              className="text-[#BDBDBD] hover:text-[#913832] transition-colors flex-shrink-0 p-0.5"
-              aria-label="Remove"
+              onClick={() => onQty(Math.max(0, item.quantity - 1))}
+              className="px-2 py-1.5 text-[#888] hover:bg-[#F7F4EF] transition-colors"
             >
-              <X size={13} />
+              <Minus size={10} />
+            </button>
+            <span className="px-2.5 text-xs font-bold text-[#1A1614]">{item.quantity}</span>
+            <button
+              onClick={() => onQty(item.quantity + 1)}
+              className="px-2 py-1.5 text-[#888] hover:bg-[#F7F4EF] transition-colors"
+            >
+              <Plus size={10} />
             </button>
           </div>
 
-          {/* Price row */}
-          <div className="flex items-baseline gap-2 mt-1">
-            <span className="text-base font-bold text-[#1A1614]">${item.price}</span>
+          {/* Price */}
+          <div className="text-right">
+            <p className="text-sm font-black text-[#1A1614]">${(item.price * item.quantity).toFixed(2)}</p>
             {item.isSubscription && (
-              <span className="text-xs text-[#888] line-through">${oneTimePrice}</span>
-            )}
-            <span className="text-[10px] text-[#888] font-light">· ${perDay}/day</span>
-          </div>
-
-          {/* Qty control */}
-          <div className="flex items-center gap-3 mt-2.5">
-            <div className="flex items-center rounded-lg border border-[#EDE8E0] overflow-hidden">
-              <button
-                className="px-2.5 py-1.5 text-[#888] hover:text-[#1A1614] hover:bg-[#F7F4EF] transition-all"
-                onClick={() => onQtyChange(Math.max(0, item.quantity - 1))}
-                aria-label="Decrease"
-              >
-                <Minus size={11} />
-              </button>
-              <span className="px-3 text-xs font-bold text-[#1A1614]">{item.quantity}</span>
-              <button
-                className="px-2.5 py-1.5 text-[#888] hover:text-[#1A1614] hover:bg-[#F7F4EF] transition-all"
-                onClick={() => onQtyChange(item.quantity + 1)}
-                aria-label="Increase"
-              >
-                <Plus size={11} />
-              </button>
-            </div>
-            <span className="text-xs font-bold text-[#1A1614]">
-              ${(item.price * item.quantity).toFixed(2)}
-            </span>
-          </div>
-        </div>
-      </div>
-
-      {/* Subscription toggle */}
-      <div
-        className="mx-3 mb-3 rounded-xl overflow-hidden border"
-        style={{ borderColor: item.isSubscription ? '#913832' : '#EDE8E0' }}
-      >
-        <div className="flex">
-          {/* One-time */}
-          <button
-            onClick={() => item.isSubscription && onToggleSub()}
-            className={`flex-1 py-2.5 text-[11px] font-bold uppercase tracking-wider transition-all ${
-              !item.isSubscription
-                ? 'bg-[#1A1614] text-white'
-                : 'bg-white text-[#888] hover:bg-[#F7F4EF]'
-            }`}
-          >
-            One-Time
-          </button>
-          {/* Subscribe */}
-          <button
-            onClick={() => !item.isSubscription && onToggleSub()}
-            className={`flex-1 py-2.5 text-[11px] font-bold uppercase tracking-wider transition-all ${
-              item.isSubscription
-                ? 'bg-[#913832] text-white'
-                : 'bg-white text-[#888] hover:bg-[#F7F4EF]'
-            }`}
-          >
-            <RefreshCcw size={9} className="inline mr-1" />
-            Subscribe – Save 20%
-          </button>
-        </div>
-        {item.isSubscription && (
-          <div className="bg-[#FDF5F4] px-3 py-1.5 flex items-center justify-between">
-            <span className="text-[10px] text-[#913832] font-medium">
-              Cancel anytime · Ships monthly
-            </span>
-            {saving > 0 && (
-              <span className="text-[10px] font-black text-[#2A6B3A] bg-[#EAF5EC] px-2 py-0.5 rounded-full">
-                You save ${saving.toFixed(2)}
-              </span>
+              <p className="text-[9px] text-[#2A6B3A] font-bold">${perDay}/day</p>
             )}
           </div>
-        )}
+        </div>
       </div>
     </div>
   )
 }
 
-function CrossSellBlock({
-  suggestion,
-  onAdd,
-}: {
-  suggestion: typeof CROSS_SELL[string]
-  onAdd: () => void
-}) {
-  const subPrice = Math.round(suggestion.price * 0.8)
+// ─── Cross-sell block ─────────────────────────────────────────────────────────
+function CrossSell({ s, onAdd }: { s: typeof CROSS_SELL[string]; onAdd: () => void }) {
   return (
-    <div className="rounded-2xl border border-[#EDE8E0] bg-[#FFFDF9] p-4">
-      <p className="text-[10px] font-black uppercase tracking-[0.25em] text-[#913832] mb-3">
-        Complete Your Ritual
-      </p>
+    <div className="rounded-2xl border border-[#EDE8E0] bg-[#FFFDF9] p-3.5">
+      <p className="text-[9px] font-black uppercase tracking-[0.3em] text-[#913832] mb-2.5">Complete Your Ritual</p>
       <div className="flex gap-3 items-center">
-        <div className="w-14 h-14 rounded-xl overflow-hidden flex-shrink-0 bg-[#F7F4EF]">
-          <img src={suggestion.image} alt={suggestion.name} className="w-full h-full object-cover" />
+        <div className="w-12 h-12 rounded-xl overflow-hidden flex-shrink-0 bg-[#F7F4EF]">
+          <img src={s.image} alt={s.name} className="w-full h-full object-cover" />
         </div>
         <div className="flex-1 min-w-0">
-          <p className="text-xs font-semibold text-[#1A1614] leading-snug">{suggestion.name}</p>
-          <p className="text-[10px] text-[#888] mt-0.5">{suggestion.role}</p>
-          <div className="flex items-baseline gap-1.5 mt-1">
-            <span className="text-sm font-bold text-[#1A1614]">${suggestion.price}</span>
-            <span className="text-[10px] text-[#888]">or</span>
-            <span className="text-xs font-bold text-[#913832]">${subPrice} / mo</span>
-            <span className="text-[9px] font-black text-white bg-[#2A6B3A] px-1.5 py-0.5 rounded-full ml-1">
-              –20%
-            </span>
-          </div>
+          <p className="text-[12px] font-semibold text-[#1A1614] leading-snug">{s.name}</p>
+          <p className="text-[10px] text-[#888] mt-0.5">{s.role}</p>
+          <p className="text-xs font-black text-[#1A1614] mt-1">
+            ${s.price} <span className="text-[10px] text-[#888] font-normal">or</span>{' '}
+            <span className="text-[#913832]">${Math.round(s.price * 0.8)}/mo</span>
+          </p>
         </div>
         <button
           onClick={onAdd}
-          className="flex-shrink-0 w-8 h-8 rounded-full bg-[#913832] text-white flex items-center justify-center hover:bg-[#7A2F2B] transition-colors shadow-sm"
-          aria-label="Add to cart"
+          className="w-9 h-9 rounded-full flex items-center justify-center text-white flex-shrink-0 shadow"
+          style={{ background: '#913832' }}
+          aria-label="Add"
         >
-          <Plus size={14} />
+          <Plus size={15} />
         </button>
       </div>
     </div>
   )
 }
 
-function WelcomeKitBanner() {
+// ─── Welcome kit (real product images) ───────────────────────────────────────
+function WelcomeKit() {
   return (
-    <div className="rounded-2xl border border-[#913832]/30 bg-gradient-to-br from-[#FDF5F4] to-[#FFFDF9] p-4">
-      <div className="flex items-center gap-2 mb-3">
-        <Gift size={14} className="text-[#913832]" />
-        <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[#913832]">
-          Subscription Welcome Kit
-        </p>
-        <span className="ml-auto text-[9px] font-black text-white bg-[#913832] px-2 py-0.5 rounded-full">
-          FREE
-        </span>
+    <div className="rounded-2xl overflow-hidden border border-[#913832]/25" style={{ background: 'linear-gradient(135deg,#FDF5F4 0%,#FFFDF9 100%)' }}>
+      <div className="flex items-center gap-2 px-4 pt-3 pb-2.5 border-b border-[#F0E8E5]">
+        <span className="text-base">🎁</span>
+        <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[#913832] flex-1">Subscription Welcome Kit</p>
+        <span className="text-[9px] font-black text-white bg-[#913832] px-2.5 py-0.5 rounded-full">FREE</span>
       </div>
-      <div className="grid grid-cols-2 gap-2">
-        {WELCOME_GIFTS.map(g => (
-          <div key={g.label} className="flex items-center gap-2">
-            <span className="text-base leading-none">{g.icon}</span>
-            <span className="text-[10px] text-[#555] leading-tight">{g.label}</span>
+      <div className="grid grid-cols-4 gap-2 p-3">
+        {WELCOME_KIT.map(g => (
+          <div key={g.label} className="flex flex-col items-center gap-1.5">
+            <div className="w-full aspect-square rounded-xl overflow-hidden bg-[#F7F4EF] border border-[#EDE8E0]">
+              <img src={g.image} alt={g.label} className="w-full h-full object-cover" />
+            </div>
+            <p className="text-[8px] text-[#666] text-center leading-tight">{g.label}</p>
           </div>
         ))}
       </div>
@@ -258,61 +250,77 @@ function WelcomeKitBanner() {
   )
 }
 
-function EmptyState({ onClose }: { onClose: () => void }) {
-  const STARTER_STACK = [
-    { name: 'Gentle Cellular Cleanser', price: 95, image: '/images/products/gentle_cleanser.png', id: 'gentle-cellular-cleanser' },
-    { name: 'Terra Radiance Cream',     price: 245, image: '/images/products/terra_radiance.png', id: 'terra-radiance-cream' },
-  ]
+// ─── Clinician endorsement (IM8 FrontrowMD equivalent) ───────────────────────
+function ClinicianBlock() {
+  return (
+    <div className="rounded-2xl border border-[#EDE8E0] bg-white p-4">
+      <div className="flex gap-3 items-start">
+        {/* Avatar */}
+        <div className="w-11 h-11 rounded-full overflow-hidden flex-shrink-0 bg-[#F7F4EF] border-2 border-[#913832]/20 flex items-center justify-center">
+          <Award size={18} className="text-[#913832]/60" />
+        </div>
+        <div className="flex-1 min-w-0">
+          <p className="text-[11px] font-black text-[#1A1614]">Dr. Elena Vitali, MD</p>
+          <p className="text-[9px] text-[#888] mb-1.5">Board-Certified Dermatologist · Rome</p>
+          <p className="text-[10px] text-[#555] leading-relaxed italic">
+            "The OS-01 and GLP-1 pathway targeting in these formulations represents the most clinically rigorous non-prescription protocol I've reviewed."
+          </p>
+        </div>
+      </div>
+      <div className="flex items-center gap-1.5 mt-2.5 pt-2.5 border-t border-[#EDE8E0]">
+        <div className="flex">
+          {[...Array(5)].map((_, i) => (
+            <span key={i} className="text-[#913832] text-[10px]">★</span>
+          ))}
+        </div>
+        <span className="text-[9px] text-[#888]">Clinician-recommended protocol</span>
+      </div>
+    </div>
+  )
+}
+
+// ─── Empty state ──────────────────────────────────────────────────────────────
+function EmptyState() {
   const { addItem, setCartOpen } = useCart()
+  const STACK = [
+    { id: 'gentle-cellular-cleanser', name: 'Gentle Cellular Cleanser', price: 95,  image: '/images/products/gentle_cleanser.png' },
+    { id: 'terra-radiance-cream',     name: 'Terra Radiance Cream',     price: 245, image: '/images/products/terra_radiance.png' },
+  ]
+  const retailTotal = STACK.reduce((s, p) => s + p.price, 0)
+  const subTotal    = Math.round(STACK.reduce((s, p) => s + p.price * 0.8, 0))
 
   function addStack() {
-    STARTER_STACK.forEach(p =>
-      addItem({ name: p.name, price: p.price, basePrice: p.price, currency: 'USD', quantity: 1, image: p.image, sku: p.id })
-    )
+    STACK.forEach(p => addItem({ name: p.name, price: p.price, basePrice: p.price, currency: 'USD', quantity: 1, image: p.image, sku: p.id }))
   }
 
   return (
-    <div className="flex-1 flex flex-col items-center justify-center px-6 py-10 text-center">
-      {/* Icon */}
-      <div className="w-16 h-16 rounded-full bg-[#F7F4EF] flex items-center justify-center mb-5">
-        <Star size={22} className="text-[#913832]/60" />
-      </div>
-      <p className="text-base font-bold text-[#1A1614] mb-1">Your cart is empty</p>
-      <p className="text-xs text-[#888] mb-8 font-light leading-relaxed max-w-xs">
-        Start your skin-health journey with our science-backed protocols.
-      </p>
+    <div className="flex-1 flex flex-col px-5 py-8">
+      <p className="text-sm font-black text-[#1A1614] mb-1">Your cart is empty</p>
+      <p className="text-xs text-[#888] mb-6 font-light">Begin your skin-health protocol.</p>
 
-      {/* Starter Stack suggestion */}
-      <div className="w-full rounded-2xl border border-[#EDE8E0] bg-white p-4 text-left mb-4 shadow-sm">
-        <p className="text-[10px] font-black uppercase tracking-[0.25em] text-[#913832] mb-3">
-          The Isola Vitale Starter Stack
-        </p>
-        <div className="space-y-3 mb-4">
-          {STARTER_STACK.map(p => (
-            <div key={p.id} className="flex items-center gap-3">
+      {/* Starter stack */}
+      <div className="rounded-2xl border border-[#EDE8E0] bg-white overflow-hidden shadow-sm mb-5">
+        <div className="px-4 py-3 border-b border-[#EDE8E0]">
+          <p className="text-[9px] font-black uppercase tracking-[0.3em] text-[#913832]">The Starter Stack</p>
+        </div>
+        <div className="divide-y divide-[#EDE8E0]">
+          {STACK.map(p => (
+            <div key={p.id} className="flex items-center gap-3 px-4 py-3">
               <div className="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 bg-[#F7F4EF]">
                 <img src={p.image} alt={p.name} className="w-full h-full object-cover" />
               </div>
-              <div className="flex-1">
-                <p className="text-xs font-semibold text-[#1A1614]">{p.name}</p>
-              </div>
-              <span className="text-xs font-bold text-[#1A1614]">${p.price}</span>
+              <p className="flex-1 text-xs font-semibold text-[#1A1614]">{p.name}</p>
+              <span className="text-xs font-black text-[#1A1614]">${p.price}</span>
             </div>
           ))}
         </div>
-        <div className="flex items-center justify-between border-t border-[#EDE8E0] pt-3">
+        <div className="px-4 py-3 bg-[#F7F4EF] flex items-center justify-between">
           <div>
-            <p className="text-xs text-[#888]">Bundle total</p>
-            <p className="text-sm font-bold text-[#1A1614]">
-              ${STARTER_STACK.reduce((s, p) => s + p.price, 0)}
-              <span className="text-[10px] font-normal text-[#888] ml-1">
-                or ${Math.round(STARTER_STACK.reduce((s, p) => s + p.price * 0.8, 0))}/mo
-              </span>
-            </p>
+            <p className="text-[10px] text-[#888]">Retail ${retailTotal} · Subscribe <span className="font-black text-[#913832]">${subTotal}/mo</span></p>
           </div>
           <button
             onClick={addStack}
-            className="px-5 py-2.5 rounded-xl text-[11px] font-black uppercase tracking-widest text-white transition-colors"
+            className="px-4 py-2 rounded-xl text-[11px] font-black uppercase tracking-wider text-white"
             style={{ background: '#913832' }}
           >
             Add Stack
@@ -322,62 +330,62 @@ function EmptyState({ onClose }: { onClose: () => void }) {
 
       <Link
         href="/shop"
-        onClick={() => { onClose(); setCartOpen(false) }}
-        className="text-[11px] font-bold uppercase tracking-widest text-[#913832] hover:underline flex items-center gap-1"
+        onClick={() => setCartOpen(false)}
+        className="flex items-center justify-center gap-1.5 text-[11px] font-bold text-[#913832] uppercase tracking-wider hover:underline"
       >
-        Browse All Collections <ArrowRight size={11} />
+        Browse All Collections <ChevronRight size={12} />
       </Link>
     </div>
   )
 }
 
-// ─── Main component ───────────────────────────────────────────────────────────
+// ─── Main cart drawer ─────────────────────────────────────────────────────────
 export function CartDrawer() {
-  const { state, updateQuantity, removeItem, toggleSubscription, addItem, setCartOpen } = useCart()
+  const { state, updateQuantity, removeItem, setAllSubscription, addItem, setCartOpen } = useCart()
   const [checkingOut,   setCheckingOut]   = useState(false)
   const [checkoutError, setCheckoutError] = useState('')
 
   if (!state.isOpen) return null
 
-  const items     = state.items
-  const subtotal  = items.reduce((s, i) => s + i.price * i.quantity, 0)
-  const itemCount = items.reduce((s, i) => s + i.quantity, 0)
-  const hasSub    = items.some(i => i.isSubscription)
+  const items      = state.items
+  const itemCount  = items.reduce((s, i) => s + i.quantity, 0)
+  const subtotal   = items.reduce((s, i) => s + i.price * i.quantity, 0)
+  const retailTotal = items.reduce((s, i) => s + i.basePrice * i.quantity, 0)
+  const allSubscribed = items.length > 0 && items.every(i => i.isSubscription)
+  const totalSavings  = retailTotal - subtotal
+  const dailyCost     = (subtotal / 30).toFixed(2)
 
-  // Determine cross-sell: find first cart item that has a cross-sell not already in cart
-  const cartIds = new Set(items.map(i => i.id))
+  // Cross-sell: first cartItem with a suggestion not already in cart
+  const cartIds   = new Set(items.map(i => i.sku ?? i.id))
   const crossSell = (() => {
     for (const item of items) {
-      const s = CROSS_SELL[item.id]
+      const key = item.sku ?? item.id
+      const s   = CROSS_SELL[key]
       if (s && !cartIds.has(s.id)) return s
     }
     return null
   })()
-
-  // Savings vs all one-time
-  const oneTimeTotal = items.reduce((s, i) => s + i.basePrice * i.quantity, 0)
-  const totalSavings = oneTimeTotal - subtotal
 
   async function handleCheckout() {
     setCheckingOut(true)
     setCheckoutError('')
     try {
       const r = await fetch('/api/checkout', {
-        method: 'POST',
+        method:  'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           currency: 'usd',
-          items: items.map(item => ({
-            id:       item.sku ?? item.id,
-            name:     item.name,
-            price:    item.price,
-            quantity: item.quantity,
-            image:    item.image,
+          items: items.map(i => ({
+            id:       i.sku ?? i.id,
+            name:     i.name,
+            price:    i.price,
+            quantity: i.quantity,
+            image:    i.image,
           })),
         }),
       })
-      const contentType = r.headers.get('content-type') ?? ''
-      if (!contentType.includes('application/json')) throw new Error('service_unavailable')
+      const ct = r.headers.get('content-type') ?? ''
+      if (!ct.includes('application/json')) throw new Error('service_unavailable')
       const data: { url?: string; error?: string } = await r.json()
       if (!r.ok || !data.url) throw new Error(data.error ?? 'service_unavailable')
       window.location.href = data.url
@@ -395,106 +403,130 @@ export function CartDrawer() {
   return (
     <>
       {/* Backdrop */}
-      <div
-        className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm"
-        onClick={() => setCartOpen(false)}
-      />
+      <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm" onClick={() => setCartOpen(false)} />
 
       {/* Drawer */}
-      <div className="fixed inset-y-0 right-0 z-50 w-full max-w-[420px] flex flex-col bg-[#FAF8F5] shadow-2xl">
+      <div className="fixed inset-y-0 right-0 z-50 w-full max-w-[420px] flex flex-col shadow-2xl" style={{ background: '#FAF8F5' }}>
 
-        {/* ── Header ── */}
+        {/* Header */}
         <div className="flex items-center justify-between px-5 py-4 bg-white border-b border-[#EDE8E0]">
           <div className="flex items-center gap-2.5">
-            <span className="text-sm font-black uppercase tracking-[0.25em] text-[#1A1614]">
-              YOUR CART
-            </span>
+            <span className="text-sm font-black uppercase tracking-[0.25em] text-[#1A1614]">Your Cart</span>
             {itemCount > 0 && (
-              <span className="w-5 h-5 rounded-full bg-[#913832] text-white text-[10px] font-black flex items-center justify-center">
+              <span className="w-5 h-5 rounded-full text-[10px] font-black text-white flex items-center justify-center" style={{ background: '#913832' }}>
                 {itemCount}
               </span>
             )}
           </div>
           <button
             onClick={() => setCartOpen(false)}
-            className="w-8 h-8 rounded-full bg-[#F7F4EF] flex items-center justify-center text-[#888] hover:text-[#1A1614] transition-colors"
+            className="w-8 h-8 rounded-full bg-[#F7F4EF] flex items-center justify-center text-[#888] hover:text-[#1A1614]"
           >
             <X size={15} />
           </button>
         </div>
 
-        {/* ── Shipping bar ── */}
+        {/* Shipping bar */}
         {items.length > 0 && <ShippingBar subtotal={subtotal} />}
 
-        {/* ── Scrollable body ── */}
+        {/* Scrollable body */}
         <div className="flex-1 overflow-y-auto">
           {items.length === 0 ? (
-            <EmptyState onClose={() => setCartOpen(false)} />
+            <EmptyState />
           ) : (
-            <div className="p-4 space-y-3">
+            <div className="pb-4">
 
-              {/* Cart items */}
-              {items.map(item => (
-                <CartItemRow
-                  key={item.id}
-                  item={item}
-                  onRemove={() => removeItem(item.id)}
-                  onQtyChange={q => updateQuantity(item.id, q)}
-                  onToggleSub={() => toggleSubscription(item.id)}
-                />
-              ))}
+              {/* ── Global subscription toggle (IM8 pattern) ── */}
+              <SubscribeToggle
+                allSubscribed={allSubscribed}
+                onSwitch={setAllSubscription}
+                subTotal={subtotal}
+                retailTotal={retailTotal}
+                dailyCost={dailyCost}
+              />
 
-              {/* Add more */}
-              <Link
-                href="/shop"
-                onClick={() => setCartOpen(false)}
-                className="flex items-center justify-center gap-2 rounded-2xl py-3 text-[11px] font-black uppercase tracking-widest transition-all border-2 border-dashed border-[#EDE8E0] text-[#BDBDBD] hover:border-[#913832]/40 hover:text-[#913832]"
-              >
-                <Plus size={11} /> Add More Products
-              </Link>
+              {/* ── Cart items ── */}
+              <div className="px-4 pt-4 space-y-3">
+                {items.map(item => (
+                  <CartItem
+                    key={item.id}
+                    item={item}
+                    onRemove={() => removeItem(item.id)}
+                    onQty={q => updateQuantity(item.id, q)}
+                  />
+                ))}
 
-              {/* Cross-sell */}
+                {/* Add more */}
+                <Link
+                  href="/shop"
+                  onClick={() => setCartOpen(false)}
+                  className="flex items-center justify-center gap-2 rounded-2xl py-3 text-[11px] font-black uppercase tracking-widest border-2 border-dashed border-[#EDE8E0] text-[#BDBDBD] hover:border-[#913832]/40 hover:text-[#913832] transition-colors"
+                >
+                  <Plus size={11} /> Add More
+                </Link>
+              </div>
+
+              {/* ── Cross-sell ── */}
               {crossSell && (
-                <CrossSellBlock
-                  suggestion={crossSell}
-                  onAdd={() =>
-                    addItem({
-                      name:          crossSell.name,
-                      price:         crossSell.price,
-                      basePrice:     crossSell.price,
-                      currency:      'USD',
-                      quantity:      1,
-                      image:         crossSell.image,
-                      sku:           crossSell.id,
-                      isSubscription: false,
-                    })
-                  }
-                />
+                <div className="px-4 pt-3">
+                  <CrossSell
+                    s={crossSell}
+                    onAdd={() =>
+                      addItem({
+                        name:           crossSell.name,
+                        price:          allSubscribed ? Math.round(crossSell.price * 0.8) : crossSell.price,
+                        basePrice:      crossSell.price,
+                        currency:       'USD',
+                        quantity:       1,
+                        image:          crossSell.image,
+                        sku:            crossSell.id,
+                        isSubscription: allSubscribed,
+                      })
+                    }
+                  />
+                </div>
               )}
 
-              {/* Welcome Kit */}
-              {hasSub && <WelcomeKitBanner />}
+              {/* ── Welcome kit (subscription active) ── */}
+              {allSubscribed && (
+                <div className="px-4 pt-3">
+                  <WelcomeKit />
+                </div>
+              )}
+
+              {/* ── Clinician endorsement ── */}
+              <div className="px-4 pt-3">
+                <ClinicianBlock />
+              </div>
             </div>
           )}
         </div>
 
-        {/* ── Sticky Footer ── */}
+        {/* ── Sticky footer ── */}
         {items.length > 0 && (
-          <div className="bg-white border-t border-[#EDE8E0] px-5 pt-4 pb-5">
+          <div className="bg-white border-t border-[#EDE8E0] px-5 pt-4 pb-6">
 
-            {/* Savings summary */}
+            {/* Savings row */}
             {totalSavings > 0 && (
-              <div className="flex items-center justify-between mb-3 bg-[#EAF5EC] rounded-xl px-4 py-2.5">
-                <span className="text-xs font-semibold text-[#2A6B3A]">Total savings</span>
+              <div className="flex items-center justify-between mb-3 rounded-xl px-4 py-2.5" style={{ background: '#EAF5EC' }}>
+                <span className="text-xs font-semibold text-[#2A6B3A]">Subscription savings</span>
                 <span className="text-sm font-black text-[#2A6B3A]">–${totalSavings.toFixed(2)}</span>
               </div>
             )}
 
-            {/* Subtotal row */}
-            <div className="flex items-baseline justify-between mb-1">
+            {/* Subtotal */}
+            <div className="flex items-baseline justify-between mb-0.5">
               <span className="text-[11px] font-bold uppercase tracking-widest text-[#888]">Subtotal</span>
-              <span className="text-xl font-black text-[#1A1614]">${subtotal.toFixed(2)}</span>
+              <div className="text-right">
+                {totalSavings > 0 && (
+                  <span className="text-xs text-[#BDBDBD] line-through mr-2">${retailTotal.toFixed(2)}</span>
+                )}
+                <span className="text-xl font-black text-[#1A1614]">${subtotal.toFixed(2)}</span>
+              </div>
             </div>
+            {allSubscribed && (
+              <p className="text-[10px] text-[#2A6B3A] font-bold mb-1">Just ${dailyCost} per day</p>
+            )}
             <p className="text-[10px] text-[#BDBDBD] mb-4">Shipping &amp; taxes calculated at checkout</p>
 
             {/* Error */}
@@ -503,48 +535,43 @@ export function CartDrawer() {
                 <p className="text-xs text-red-600 mb-1">{checkoutError}</p>
                 <p className="text-[11px] text-red-500 font-semibold">
                   Need help?{' '}
-                  <a href="tel:+12147143597" className="underline font-black">
-                    Call us: 1-214-714-3597
-                  </a>
+                  <a href={`tel:${SUPPORT_TEL}`} className="underline font-black">{SUPPORT_LABEL}</a>
                 </p>
               </div>
             )}
 
-            {/* Checkout button */}
+            {/* Checkout CTA */}
             <button
               onClick={handleCheckout}
               disabled={checkingOut}
-              className="w-full flex items-center justify-center gap-2 rounded-2xl py-4 text-[11px] font-black uppercase tracking-[0.2em] disabled:opacity-60 transition-opacity mb-4 shadow-lg"
+              className="w-full flex items-center justify-center gap-2 rounded-2xl py-4 text-[12px] font-black uppercase tracking-[0.2em] disabled:opacity-60 mb-3 shadow-lg"
               style={{ background: '#913832', color: '#fff' }}
             >
-              {checkingOut ? (
-                <><Loader2 size={14} className="animate-spin" /> Preparing Checkout…</>
-              ) : (
-                <>Checkout — ${subtotal.toFixed(2)} <ArrowRight size={13} /></>
-              )}
+              {checkingOut
+                ? <><Loader2 size={14} className="animate-spin" /> Preparing…</>
+                : <>Checkout — ${subtotal.toFixed(2)} <ArrowRight size={13} /></>}
             </button>
 
-            {/* Expert badge */}
-            <p className="text-center text-[10px] text-[#888] mb-3">
-              <Award size={10} className="inline mr-1 text-[#913832]" />
-              Dermatologist Approved · Expert Formulated
-            </p>
-
-            {/* Trust badges */}
-            <div className="flex items-center justify-around">
+            {/* Trust row */}
+            <div className="flex items-center justify-around pt-1">
               <div className="flex flex-col items-center gap-1">
-                <ShieldCheck size={16} className="text-[#913832]" />
-                <span className="text-[9px] text-[#888] text-center leading-tight font-medium">90-Day<br/>Guarantee</span>
+                <ShieldCheck size={15} className="text-[#913832]" />
+                <span className="text-[8px] text-[#AAA] text-center leading-tight font-semibold">90-Day<br/>Guarantee</span>
               </div>
-              <div className="w-px h-8 bg-[#EDE8E0]" />
+              <div className="w-px h-7 bg-[#EDE8E0]" />
               <div className="flex flex-col items-center gap-1">
-                <Award size={16} className="text-[#913832]" />
-                <span className="text-[9px] text-[#888] text-center leading-tight font-medium">Dermatologist<br/>Tested</span>
+                <Award size={15} className="text-[#913832]" />
+                <span className="text-[8px] text-[#AAA] text-center leading-tight font-semibold">Derm<br/>Tested</span>
               </div>
-              <div className="w-px h-8 bg-[#EDE8E0]" />
+              <div className="w-px h-7 bg-[#EDE8E0]" />
               <div className="flex flex-col items-center gap-1">
-                <FlaskConical size={16} className="text-[#913832]" />
-                <span className="text-[9px] text-[#888] text-center leading-tight font-medium">Science<br/>Backed</span>
+                <FlaskConical size={15} className="text-[#913832]" />
+                <span className="text-[8px] text-[#AAA] text-center leading-tight font-semibold">Science<br/>Backed</span>
+              </div>
+              <div className="w-px h-7 bg-[#EDE8E0]" />
+              <div className="flex flex-col items-center gap-1">
+                <RefreshCcw size={15} className="text-[#913832]" />
+                <span className="text-[8px] text-[#AAA] text-center leading-tight font-semibold">Cancel<br/>Anytime</span>
               </div>
             </div>
           </div>
