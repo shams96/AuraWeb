@@ -499,8 +499,14 @@ export function CartDrawer() {
 
             {/* Error */}
             {checkoutError && (
-              <div className="mb-3 px-4 py-3 rounded-xl text-xs text-red-600 bg-red-50 border border-red-100">
-                {checkoutError}
+              <div className="mb-3 px-4 py-3 rounded-xl bg-red-50 border border-red-100">
+                <p className="text-xs text-red-600 mb-1">{checkoutError}</p>
+                <p className="text-[11px] text-red-500 font-semibold">
+                  Need help?{' '}
+                  <a href="tel:+12147143597" className="underline font-black">
+                    Call us: 1-214-714-3597
+                  </a>
+                </p>
               </div>
             )}
 

@@ -285,7 +285,15 @@ export function BuyBox({ product, selectedVariant: initialVariant, buyBullets }:
               </Button>
 
               {checkoutError && (
-                <p className="text-red-400 text-xs text-center mt-3 font-medium">{checkoutError}</p>
+                <div className="mt-3 text-center">
+                  <p className="text-red-400 text-xs font-medium mb-1">{checkoutError}</p>
+                  <p className="text-xs text-iv-cream/50">
+                    Need help?{' '}
+                    <a href="tel:+12147143597" className="text-iv-gold underline font-bold">
+                      1-214-714-3597
+                    </a>
+                  </p>
+                </div>
               )}
 
               <div className="flex justify-center space-x-4 mt-6">
