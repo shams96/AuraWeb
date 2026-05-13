@@ -66,7 +66,7 @@ export default function AdminOrdersPage() {
     <div>
       <div className="mb-8">
         <p className="text-[11px] font-black uppercase tracking-[0.3em] mb-1" style={{ color: 'var(--iv-gold)' }}>Fulfilment</p>
-        <h1 className="text-2xl font-bold text-iv-white" style={{ fontFamily: "'Playfair Display', serif" }}>
+        <h1 className="text-2xl font-bold text-iv-white" style={{ fontFamily: 'var(--iv-font-serif)' }}>
           Orders <span className="text-lg text-iv-cream/40 font-light ml-2">({total})</span>
         </h1>
       </div>

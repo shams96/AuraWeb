@@ -431,7 +431,7 @@ export function SkinConsultation() {
             Bio-Adaptive Skin Consultation
           </div>
 
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-iv-white" style={{ fontFamily: "'Playfair Display', serif" }}>
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-iv-white" style={{ fontFamily: 'var(--iv-font-serif)' }}>
             Your Skin,{' '}
             <span className="italic" style={{ color: 'var(--iv-gold)' }}>Decoded</span>
           </h2>
@@ -448,7 +448,7 @@ export function SkinConsultation() {
             ].map(({ stat, label, note }) => (
               <div key={label} className="rounded-2xl p-7 text-center"
                 style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(145,56,50,0.14)' }}>
-                <div className="text-3xl font-bold mb-1" style={{ color: 'var(--iv-gold)', fontFamily: "'Playfair Display', serif" }}>{stat}</div>
+                <div className="text-3xl font-bold mb-1" style={{ color: 'var(--iv-gold)', fontFamily: 'var(--iv-font-serif)' }}>{stat}</div>
                 <div className="text-xs font-black text-iv-white uppercase tracking-widest mb-1">{label}</div>
                 <div className="text-[10px] text-iv-cream/35 font-light">{note}</div>
               </div>
@@ -478,7 +478,7 @@ export function SkinConsultation() {
         <div className="container mx-auto px-4 max-w-lg text-center">
           <div className="w-16 h-16 rounded-full mx-auto mb-10 animate-spin"
             style={{ border: '2px solid rgba(145,56,50,0.12)', borderTopColor: 'var(--iv-gold)' }} />
-          <h3 className="text-2xl font-bold text-iv-white mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>
+          <h3 className="text-2xl font-bold text-iv-white mb-3" style={{ fontFamily: 'var(--iv-font-serif)' }}>
             Compiling Your Skin Profile
           </h3>
           <p className="text-iv-cream/35 text-sm mb-10 font-light">
@@ -559,7 +559,7 @@ export function SkinConsultation() {
               style={{ color: 'var(--iv-gold)', border: '1px solid rgba(145,56,50,0.22)', background: 'rgba(145,56,50,0.06)' }}>
               <CheckCircle2 size={12} /> Protocol Matched
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-iv-white mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>
+            <h2 className="text-3xl md:text-5xl font-bold text-iv-white mb-3" style={{ fontFamily: 'var(--iv-font-serif)' }}>
               {proto.name}
             </h2>
             <p className="text-[11px] font-black uppercase tracking-[0.3em] mb-5" style={{ color: 'var(--iv-gold)' }}>
@@ -833,7 +833,7 @@ export function SkinConsultation() {
         {/* Question */}
         <div className="mb-10">
           <h2 className="text-2xl md:text-3xl font-bold text-iv-white mb-3 leading-snug"
-            style={{ fontFamily: "'Playfair Display', serif" }}>
+            style={{ fontFamily: 'var(--iv-font-serif)' }}>
             {meta.heading}
           </h2>
           <p className="text-iv-cream/40 text-sm font-light">{meta.sub}</p>

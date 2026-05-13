@@ -27,7 +27,7 @@ export default function CheckoutSuccessPage({
           Payment Confirmed
         </div>
 
-        <h1 className="iv-type-h2 font-bold text-iv-white mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+        <h1 className="iv-type-h2 font-bold text-iv-white mb-4" style={{ fontFamily: 'var(--iv-font-serif)' }}>
           Your Protocol is on its Way
         </h1>
 

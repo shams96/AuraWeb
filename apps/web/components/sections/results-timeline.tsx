@@ -26,7 +26,7 @@ export function ResultsTimeline({ timeline }: ResultsTimelineProps) {
             >
               Clinical Timeline
             </div>
-            <h2 className="iv-type-h2 font-bold text-iv-white mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+            <h2 className="iv-type-h2 font-bold text-iv-white mb-4" style={{ fontFamily: 'var(--iv-font-serif)' }}>
               See Real <span className="italic" style={{ color: 'var(--iv-gold)' }}>Results</span>
             </h2>
             <p className="text-iv-cream/55 max-w-xl mx-auto leading-relaxed font-light">
@@ -78,7 +78,7 @@ export function ResultsTimeline({ timeline }: ResultsTimelineProps) {
                             </div>
                             <div className="text-right flex-1">
                               <p className="text-[9px] font-black uppercase tracking-[0.25em] mb-0.5" style={{ color: 'var(--iv-gold)' }}>{item.period}</p>
-                              <h3 className="text-base font-bold text-iv-white leading-tight" style={{ fontFamily: "'Playfair Display', serif" }}>{item.title}</h3>
+                              <h3 className="text-base font-bold text-iv-white leading-tight" style={{ fontFamily: 'var(--iv-font-serif)' }}>{item.title}</h3>
                             </div>
                           </div>
                           <p className="text-xs text-iv-cream/55 leading-relaxed font-light text-right">{item.description}</p>
@@ -117,7 +117,7 @@ export function ResultsTimeline({ timeline }: ResultsTimelineProps) {
                             </div>
                             <div>
                               <p className="text-[9px] font-black uppercase tracking-[0.25em] mb-0.5" style={{ color: 'var(--iv-gold)' }}>{item.period}</p>
-                              <h3 className="text-base font-bold text-iv-white leading-tight" style={{ fontFamily: "'Playfair Display', serif" }}>{item.title}</h3>
+                              <h3 className="text-base font-bold text-iv-white leading-tight" style={{ fontFamily: 'var(--iv-font-serif)' }}>{item.title}</h3>
                             </div>
                           </div>
                           <p className="text-xs text-iv-cream/55 leading-relaxed font-light">{item.description}</p>
@@ -165,7 +165,7 @@ export function ResultsTimeline({ timeline }: ResultsTimelineProps) {
                         <span className="text-lg leading-none flex-shrink-0">{item.icon}</span>
                         <div>
                           <p className="text-[9px] font-black uppercase tracking-[0.22em]" style={{ color: 'var(--iv-gold)' }}>{item.period}</p>
-                          <h3 className="text-sm font-bold text-iv-white leading-snug" style={{ fontFamily: "'Playfair Display', serif" }}>{item.title}</h3>
+                          <h3 className="text-sm font-bold text-iv-white leading-snug" style={{ fontFamily: 'var(--iv-font-serif)' }}>{item.title}</h3>
                         </div>
                       </div>
                       <p className="text-xs text-iv-cream/55 leading-relaxed font-light">{item.description}</p>
@@ -186,7 +186,7 @@ export function ResultsTimeline({ timeline }: ResultsTimelineProps) {
                 border: '1px solid rgba(145,56,50,0.18)',
               }}
             >
-              <h3 className="text-xl font-bold mb-2 text-iv-white" style={{ fontFamily: "'Playfair Display', serif" }}>
+              <h3 className="text-xl font-bold mb-2 text-iv-white" style={{ fontFamily: 'var(--iv-font-serif)' }}>
                 Ready for Transformed Skin?
               </h3>
               <p className="text-xs mb-7 font-light leading-relaxed" style={{ color: 'rgba(253,250,245,0.55)' }}>

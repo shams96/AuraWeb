@@ -93,7 +93,7 @@ export default function RegisterPage() {
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 30% 70%, rgba(250,214,201,0.22) 0%, transparent 60%)' }} />
         <div className="relative z-10 text-center px-12 space-y-10">
           <Link href="/" className="inline-flex items-center gap-3">
-            <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.6rem', fontWeight: 700, color: '#FDFAF5', letterSpacing: '0.1em' }}>ISOLA VITALE</span>
+            <span style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.6rem', fontWeight: 700, color: '#FDFAF5', letterSpacing: '0.1em' }}>ISOLA VITALE</span>
           </Link>
           <div className="space-y-6">
             {[
@@ -115,12 +115,12 @@ export default function RegisterPage() {
       <div className="flex-1 flex flex-col items-center justify-center px-6 py-16 overflow-y-auto">
         {/* Mobile logo */}
         <Link href="/" className="lg:hidden mb-10">
-          <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.3rem', fontWeight: 700, color: 'var(--iv-white)', letterSpacing: '0.1em' }}>ISOLA VITALE</span>
+          <span style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.3rem', fontWeight: 700, color: 'var(--iv-white)', letterSpacing: '0.1em' }}>ISOLA VITALE</span>
         </Link>
 
         <div className="w-full max-w-md space-y-7">
           <div className="space-y-2">
-            <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.8rem', fontWeight: 700, color: 'var(--iv-white)', letterSpacing: '-0.01em' }}>
+            <h1 style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.8rem', fontWeight: 700, color: 'var(--iv-white)', letterSpacing: '-0.01em' }}>
               Create your account
             </h1>
             <p style={{ fontSize: '0.875rem', color: 'var(--iv-text-muted)' }}>

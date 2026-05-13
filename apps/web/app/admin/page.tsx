@@ -73,7 +73,7 @@ export default async function AdminDashboardPage() {
     <div>
       <div className="mb-8">
         <p className="text-[11px] font-black uppercase tracking-[0.3em] mb-2" style={{ color: 'var(--iv-gold)' }}>Overview</p>
-        <h1 className="text-3xl font-bold text-iv-white" style={{ fontFamily: "'Playfair Display', serif" }}>
+        <h1 className="text-3xl font-bold text-iv-white" style={{ fontFamily: 'var(--iv-font-serif)' }}>
           Welcome back{session?.user?.name ? `, ${session.user.name.split(' ')[0]}` : ''}
         </h1>
       </div>

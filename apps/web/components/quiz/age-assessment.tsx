@@ -55,7 +55,7 @@ export function AgeAssessment() {
           </div>
           <h2 className="iv-type-h2 font-semibold mb-6 text-iv-white uppercase tracking-tight">
             Your Prescribed Protocol:<br />
-            <em className="text-iv-gold" style={{ fontStyle: 'italic', fontFamily: "'Cormorant Garamond', Georgia, serif" }}>{name}</em>
+            <em className="text-iv-gold" style={{ fontStyle: 'italic', fontFamily: 'var(--iv-font-serif)' }}>{name}</em>
           </h2>
           <p className="text-lg text-iv-cream/70 mb-10 leading-relaxed font-light">
             Based on your skin profile, your biology calls for the {name}. We have calibrated clinical-grade concentrations precisely for your cellular requirements.

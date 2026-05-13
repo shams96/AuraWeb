@@ -37,7 +37,7 @@ export function BentoFeatures() {
           >
             <span
               className="absolute right-6 md:right-12 bottom-0 font-black leading-none select-none pointer-events-none"
-              style={{ fontSize: 'clamp(5rem, 18vw, 13rem)', color: `${GOLD}0.06)`, fontFamily: "'Playfair Display', serif" }}
+              style={{ fontSize: 'clamp(5rem, 18vw, 13rem)', color: `${GOLD}0.06)`, fontFamily: 'var(--iv-font-serif)' }}
               aria-hidden
             >4</span>
 
@@ -45,7 +45,7 @@ export function BentoFeatures() {
               <p className="text-[11px] font-black uppercase tracking-[0.3em] mb-4" style={{ color: 'var(--iv-gold)' }}>
                 Clinical Evidence
               </p>
-              <h3 className="iv-type-h3 font-bold text-iv-white leading-tight mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>
+              <h3 className="iv-type-h3 font-bold text-iv-white leading-tight mb-3" style={{ fontFamily: 'var(--iv-font-serif)' }}>
                 4 Independent RCTs. Zero marketing claims.
               </h3>
               <p className="text-sm text-iv-cream/50 font-light max-w-lg leading-relaxed">
@@ -77,7 +77,7 @@ export function BentoFeatures() {
           >
             <div>
               <p className="text-[11px] font-black uppercase tracking-[0.3em] mb-3" style={{ color: 'var(--iv-gold)' }}>4-Tier Protocol</p>
-              <h3 className="iv-type-h3 font-bold text-iv-white mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>
+              <h3 className="iv-type-h3 font-bold text-iv-white mb-3" style={{ fontFamily: 'var(--iv-font-serif)' }}>
                 Matched to your skin's biological stage
               </h3>
               <p className="text-sm text-iv-cream/50 font-light leading-relaxed">
@@ -100,7 +100,7 @@ export function BentoFeatures() {
           >
             <div>
               <p className="text-[11px] font-black uppercase tracking-[0.3em] mb-3 text-white/60">Start Here</p>
-              <h3 className="iv-type-h3 font-bold text-white mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
+              <h3 className="iv-type-h3 font-bold text-white mb-2" style={{ fontFamily: 'var(--iv-font-serif)' }}>
                 Find your protocol in 2 minutes
               </h3>
               <p className="text-sm text-white/70 font-light leading-relaxed">
@@ -130,7 +130,7 @@ export function BentoFeatures() {
           >
             <div>
               <p className="text-[11px] font-black uppercase tracking-[0.3em] mb-3" style={{ color: 'var(--iv-gold)' }}>Manufacturing</p>
-              <h3 className="text-lg font-bold text-iv-white mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
+              <h3 className="text-lg font-bold text-iv-white mb-2" style={{ fontFamily: 'var(--iv-font-serif)' }}>
                 Natural You Srl — Isola del Liri
               </h3>
               <p className="text-sm text-iv-cream/50 font-light leading-relaxed">
@@ -160,7 +160,7 @@ export function BentoFeatures() {
                   animationDelay: `${i * 0.08}s`,
                 }}
               >
-                <div className="font-black text-iv-gold mb-1" style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', fontFamily: "'Playfair Display', serif" }}>
+                <div className="font-black text-iv-gold mb-1" style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', fontFamily: 'var(--iv-font-serif)' }}>
                   {stat.value}
                 </div>
                 <div className="text-[11px] font-bold text-iv-white uppercase tracking-widest mb-1">{stat.label}</div>

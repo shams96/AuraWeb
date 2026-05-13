@@ -85,7 +85,7 @@ export default function AdminProductsPage() {
       <div className="flex items-center justify-between mb-8">
         <div>
           <p className="text-[11px] font-black uppercase tracking-[0.3em] mb-1" style={{ color: 'var(--iv-gold)' }}>Catalogue</p>
-          <h1 className="text-2xl font-bold text-iv-white" style={{ fontFamily: "'Playfair Display', serif" }}>Products</h1>
+          <h1 className="text-2xl font-bold text-iv-white" style={{ fontFamily: 'var(--iv-font-serif)' }}>Products</h1>
         </div>
         <button
           onClick={openAdd}

@@ -77,6 +77,10 @@
     --iv-charcoal:    #1A1614;
     --iv-text:        #3D2B20;
     --iv-text-muted:  #7A5C4E;
+
+    /* ── Typography — single source of truth ─────────────────── */
+    --iv-font-serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+    --iv-font-body:  'Inter', ui-sans-serif, system-ui, sans-serif;
   }
 
   /* ═══════════════════════════════════════════════════════════
@@ -113,7 +117,7 @@
   body {
     background-color: var(--iv-black); /* resolves to ivory in light theme */
     color: var(--iv-cream);            /* resolves to espresso in light theme */
-    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    font-family: var(--iv-font-body);
     font-feature-settings: "rlig" 1, "calt" 1;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
@@ -122,8 +126,14 @@
     line-height: 1.6;
   }
 
+  /* All headings, italic/editorial elements, and blockquotes use the luxury
+     serif. Change --iv-font-serif in :root above to restyle the entire site. */
+  h1, h2, h3, h4, h5, h6,
+  em, i, blockquote, cite, q {
+    font-family: var(--iv-font-serif);
+  }
+
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', ui-serif, Georgia, serif;
     font-weight: 600;
     line-height: 1.2;
     color: var(--iv-white); /* charcoal in light theme, white in .iv-dark */
@@ -668,15 +678,16 @@ img[loading="lazy"].loaded {
    media-query breakpoints. Minimum sizes prevent mobile overflow.
    ============================================================ */
 @layer utilities {
-  /* Luxury serif — Cormorant Garamond for all editorial / italic text.
-     Use this instead of Tailwind's font-serif (which falls back to Georgia/Times). */
+  /* Explicit serif class for non-semantic elements (decorative numbers, spans, divs).
+     Headings and em/i/blockquote are handled by the global base rule above — you
+     do not need this class on h1–h6 or italic elements. */
   .iv-serif {
-    font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+    font-family: var(--iv-font-serif);
   }
 
   /* Display / Hero — page-level titles */
   .iv-type-display {
-    font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+    font-family: var(--iv-font-serif);
     font-size: clamp(3rem, 7vw, 6rem);
     font-weight: 500;
     line-height: 1.05;

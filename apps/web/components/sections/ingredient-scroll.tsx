@@ -174,7 +174,7 @@ export function IngredientScroll() {
                   <p className="text-[11px] font-black uppercase tracking-[0.22em] mb-2" style={{ color: 'var(--iv-gold)' }}>
                     {ing.focus}
                   </p>
-                  <h3 className="text-base font-bold text-iv-white leading-snug" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  <h3 className="text-base font-bold text-iv-white leading-snug" style={{ fontFamily: 'var(--iv-font-serif)' }}>
                     {ing.name}
                   </h3>
                 </div>

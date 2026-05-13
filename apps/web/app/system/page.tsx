@@ -56,7 +56,7 @@ export default function SystemPage() {
           <div className="inline-block border border-iv-gold/20 rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-8 bg-iv-black/40 backdrop-blur-md">
             Precision Biological Protocols
           </div>
-          <h1 className="iv-type-display font-semibold mb-8 uppercase text-iv-white">The <em className="text-iv-gold not-italic" style={{ fontStyle: 'italic', fontFamily: "'Cormorant Garamond', Georgia, serif" }}>System</em></h1>
+          <h1 className="iv-type-display font-semibold mb-8 uppercase text-iv-white">The <em className="text-iv-gold not-italic" style={{ fontStyle: 'italic', fontFamily: 'var(--iv-font-serif)' }}>System</em></h1>
           <p className="text-xl text-iv-cream/70 max-w-3xl mx-auto leading-relaxed font-light">
             Formulation potency matched to cellular biology. Your protocol is assigned by skin analysis — not by birthdate.
           </p>

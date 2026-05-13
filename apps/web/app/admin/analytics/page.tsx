@@ -82,7 +82,7 @@ export default async function AdminAnalyticsPage() {
     <div>
       <div className="mb-8">
         <p className="text-[11px] font-black uppercase tracking-[0.3em] mb-1" style={{ color: 'var(--iv-gold)' }}>Insights</p>
-        <h1 className="text-2xl font-bold text-iv-white" style={{ fontFamily: "'Playfair Display', serif" }}>Analytics</h1>
+        <h1 className="text-2xl font-bold text-iv-white" style={{ fontFamily: 'var(--iv-font-serif)' }}>Analytics</h1>
       </div>
 
       {/* KPI row */}

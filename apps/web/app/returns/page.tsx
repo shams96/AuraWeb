@@ -52,7 +52,7 @@ export default function ReturnsPage() {
           >
             <Check className="w-10 h-10" style={{ color: '#4ade80' }} />
           </div>
-          <h1 className="text-3xl font-bold text-iv-white mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+          <h1 className="text-3xl font-bold text-iv-white mb-4" style={{ fontFamily: 'var(--iv-font-serif)' }}>
             Return Request Submitted
           </h1>
           <p className="text-iv-cream/50 font-light leading-relaxed mb-10 max-w-sm mx-auto">
@@ -85,7 +85,7 @@ export default function ReturnsPage() {
           >
             Satisfaction
           </div>
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-iv-white" style={{ fontFamily: "'Playfair Display', serif" }}>
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-iv-white" style={{ fontFamily: 'var(--iv-font-serif)' }}>
             Returns &amp; <span style={{ color: 'var(--iv-gold)' }}>Policy</span>
           </h1>
           <p className="text-xl text-iv-cream/60 max-w-2xl leading-relaxed font-light">

@@ -64,7 +64,7 @@ export function SystemHero() {
 
           {/* Headline — font size uses min(vw,vh) so it never overflows on short screens */}
           <h1 style={{
-            fontFamily: "'Playfair Display', serif", fontWeight: 700,
+            fontFamily: 'var(--iv-font-serif)', fontWeight: 700,
             lineHeight: 1.0, letterSpacing: '-0.02em',
             color: 'var(--iv-white)', marginBottom: 'clamp(0.75rem, 2vh, 1.75rem)',
           }}>
@@ -123,7 +123,7 @@ export function SystemHero() {
               { value: '4.8★', label: '2,450+ Reviews' },
             ].map(({ value, label }) => (
               <div key={label}>
-                <div style={{ fontSize: '1.3rem', fontWeight: 800, color: 'var(--iv-gold)', fontFamily: "'Playfair Display', serif", lineHeight: 1 }}>{value}</div>
+                <div style={{ fontSize: '1.3rem', fontWeight: 800, color: 'var(--iv-gold)', fontFamily: 'var(--iv-font-serif)', lineHeight: 1 }}>{value}</div>
                 <div style={{ fontSize: '0.6rem', fontWeight: 600, color: 'var(--iv-cream)', letterSpacing: '0.14em', textTransform: 'uppercase', marginTop: 4, opacity: 0.70 }}>{label}</div>
               </div>
             ))}

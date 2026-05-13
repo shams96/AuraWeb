@@ -40,7 +40,7 @@ export default function AdminCampaignsPage() {
     <div>
       <div className="mb-8">
         <p className="text-[11px] font-black uppercase tracking-[0.3em] mb-1" style={{ color: 'var(--iv-gold)' }}>Marketing</p>
-        <h1 className="text-2xl font-bold text-iv-white" style={{ fontFamily: "'Playfair Display', serif" }}>Campaigns</h1>
+        <h1 className="text-2xl font-bold text-iv-white" style={{ fontFamily: 'var(--iv-font-serif)' }}>Campaigns</h1>
       </div>
 
       <div className="grid md:grid-cols-[280px_1fr] gap-8">

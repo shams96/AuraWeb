@@ -9,7 +9,7 @@ export default function RoutinesPage() {
           <div className="inline-block border border-iv-gold/20 rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-8 bg-iv-black/40 backdrop-blur-md">
             Application Guide
           </div>
-          <h1 className="iv-type-display font-semibold mb-8 text-iv-white">The <em className="text-iv-gold" style={{ fontStyle: 'italic', fontFamily: "'Cormorant Garamond', Georgia, serif" }}>Protocols</em></h1>
+          <h1 className="iv-type-display font-semibold mb-8 text-iv-white">The <em className="text-iv-gold" style={{ fontStyle: 'italic', fontFamily: 'var(--iv-font-serif)' }}>Protocols</em></h1>
           <p className="text-xl text-iv-cream/70 leading-relaxed font-light">
             Laboratory-validated application sequences engineered to maximise the efficacy of your Isola Vitale system.
           </p>

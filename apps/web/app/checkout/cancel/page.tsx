@@ -16,7 +16,7 @@ export default function CheckoutCancelPage() {
           <XCircle className="w-10 h-10" style={{ color: 'var(--iv-gold)', opacity: 0.6 }} />
         </div>
 
-        <h1 className="iv-type-h2 font-bold text-iv-white mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+        <h1 className="iv-type-h2 font-bold text-iv-white mb-4" style={{ fontFamily: 'var(--iv-font-serif)' }}>
           Checkout Cancelled
         </h1>
         <p className="text-iv-cream/50 font-light leading-relaxed mb-10 max-w-sm mx-auto">

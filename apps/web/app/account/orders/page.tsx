@@ -59,7 +59,7 @@ export default function AccountOrdersPage() {
         {/* Header */}
         <div className="mb-10">
           <p className="text-[11px] font-black uppercase tracking-[0.3em] mb-2" style={{ color: 'var(--iv-gold)' }}>Account</p>
-          <h1 className="text-3xl font-bold text-iv-white" style={{ fontFamily: "'Playfair Display', serif" }}>
+          <h1 className="text-3xl font-bold text-iv-white" style={{ fontFamily: 'var(--iv-font-serif)' }}>
             Your Orders
           </h1>
           {session?.user?.name && (

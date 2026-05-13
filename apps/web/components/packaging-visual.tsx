@@ -18,7 +18,7 @@ function IVMonogram({ x, y, color }: { x: number; y: number; color: string }) {
       dominantBaseline="middle"
       fontSize="11"
       fontWeight="700"
-      fontFamily="'Playfair Display', Georgia, serif"
+      fontFamily="var(--iv-font-serif)"
       letterSpacing="2"
       fill={color}
       opacity="0.55"

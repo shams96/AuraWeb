@@ -47,17 +47,17 @@ function LoginForm() {
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 70% 30%, rgba(250,214,201,0.18) 0%, transparent 60%)' }} />
         <div className="relative z-10 text-center px-12 space-y-8">
           <Link href="/" className="inline-flex items-center gap-3">
-            <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.6rem', fontWeight: 700, color: '#FDFAF5', letterSpacing: '0.1em' }}>ISOLA VITALE</span>
+            <span style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.6rem', fontWeight: 700, color: '#FDFAF5', letterSpacing: '0.1em' }}>ISOLA VITALE</span>
             <span style={{ width: 1, height: 20, background: 'rgba(250,214,201,0.35)', display: 'inline-block' }} />
             <span style={{ fontSize: '0.55rem', fontWeight: 700, color: '#FAD6C9', letterSpacing: '0.22em', textTransform: 'uppercase' }}>Milano</span>
           </Link>
-          <blockquote style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.4rem', fontStyle: 'italic', color: '#FDFAF5', lineHeight: 1.5, maxWidth: 340 }}>
+          <blockquote style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.4rem', fontStyle: 'italic', color: '#FDFAF5', lineHeight: 1.5, maxWidth: 340 }}>
             "Science engineered for your biological age."
           </blockquote>
           <div style={{ display: 'flex', gap: 24, justifyContent: 'center' }}>
             {[{ v: '4.8★', l: '2,450+ Reviews' }, { v: '97%', l: 'See Results' }].map(({ v, l }) => (
               <div key={l} className="text-center">
-                <div style={{ fontSize: '1.4rem', fontWeight: 800, color: '#FAD6C9', fontFamily: "'Playfair Display', serif" }}>{v}</div>
+                <div style={{ fontSize: '1.4rem', fontWeight: 800, color: '#FAD6C9', fontFamily: 'var(--iv-font-serif)' }}>{v}</div>
                 <div style={{ fontSize: '0.55rem', color: 'rgba(253,250,245,0.6)', letterSpacing: '0.14em', textTransform: 'uppercase', marginTop: 4 }}>{l}</div>
               </div>
             ))}
@@ -69,12 +69,12 @@ function LoginForm() {
       <div className="flex-1 flex flex-col items-center justify-center px-6 py-16">
         {/* Mobile logo */}
         <Link href="/" className="lg:hidden mb-10">
-          <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.3rem', fontWeight: 700, color: 'var(--iv-white)', letterSpacing: '0.1em' }}>ISOLA VITALE</span>
+          <span style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.3rem', fontWeight: 700, color: 'var(--iv-white)', letterSpacing: '0.1em' }}>ISOLA VITALE</span>
         </Link>
 
         <div className="w-full max-w-md space-y-8">
           <div className="space-y-2">
-            <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: '2rem', fontWeight: 700, color: 'var(--iv-white)', letterSpacing: '-0.01em' }}>
+            <h1 style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '2rem', fontWeight: 700, color: 'var(--iv-white)', letterSpacing: '-0.01em' }}>
               Welcome back
             </h1>
             <p style={{ fontSize: '0.875rem', color: 'var(--iv-text-muted)' }}>
