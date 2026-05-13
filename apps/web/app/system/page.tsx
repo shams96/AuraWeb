@@ -81,7 +81,6 @@ export default function SystemPage() {
                   <div className="flex-1 space-y-8">
                     <div className="flex flex-wrap items-center gap-6">
                       <h2 className="text-4xl md:text-5xl font-bold text-iv-white uppercase tracking-tighter italic serif">{tier.name}</h2>
-                      <span className="bg-iv-gold text-iv-black text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest">{tier.age} ANNI</span>
                     </div>
                     <p className="text-iv-gold font-black uppercase tracking-[0.3em] text-[10px]">{tier.focus}</p>
                     <p className="text-iv-cream/60 text-lg leading-relaxed font-light max-w-3xl">

@@ -85,10 +85,9 @@ export function BentoFeatures() {
               </p>
             </div>
             <div className="flex gap-2 mt-6">
-              {[['T1', '< 28'], ['T2', '28–38'], ['T3', '39–49'], ['T4', '50+']].map(([tier, age]) => (
+              {['T1', 'T2', 'T3', 'T4'].map((tier) => (
                 <div key={tier} className="flex-1 rounded-xl p-3 text-center" style={{ background: `${GOLD}0.08)`, border: `1px solid ${GOLD}0.14)` }}>
                   <div className="text-[11px] font-black text-iv-gold uppercase tracking-widest">{tier}</div>
-                  <div className="text-xs text-iv-cream/40 mt-1">{age}</div>
                 </div>
               ))}
             </div>
