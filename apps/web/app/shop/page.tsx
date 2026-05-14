@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { ProductCard } from '@/components/product-card'
 import { FilterSidebar } from '@/components/shop/filter-sidebar'
 import { SortDropdown } from '@/components/shop/sort-dropdown'
-import { ALL_PRODUCTS } from '@/lib/products'
+import { getProducts } from '@/lib/product-store'
 
 export const metadata: Metadata = {
   title: 'Shop All Formulations',
@@ -28,7 +28,9 @@ export default function ShopPage({
   const collFilter   = typeof searchParams.collection === 'string' ? searchParams.collection : null
   const formatFilter = typeof searchParams.format     === 'string' ? searchParams.format     : null
 
-  const products = ALL_PRODUCTS.filter(p => {
+  const allProducts = getProducts()
+
+  const products = allProducts.filter(p => {
     const matchesTier   = !tierFilter   || p.tier       === tierFilter
     const matchesColl   = !collFilter   || p.collection === collFilter
     const matchesFormat = !formatFilter || p.format     === formatFilter
@@ -93,7 +95,7 @@ export default function ShopPage({
           <div className="flex-1">
             <div className="flex flex-col md:flex-row justify-between items-center mb-16 gap-6">
               <p className="text-[10px] font-black text-iv-cream/40 uppercase tracking-[0.2em]">
-                Showing <span className="text-iv-gold">{products.length}</span> of <span className="text-iv-gold">{ALL_PRODUCTS.length}</span> formulations
+                Showing <span className="text-iv-gold">{products.length}</span> of <span className="text-iv-gold">{allProducts.length}</span> formulations
               </p>
               <SortDropdown />
             </div>
