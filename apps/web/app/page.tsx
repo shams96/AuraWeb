@@ -3,6 +3,7 @@ import { SkinConsultation } from '@/components/diagnostic/skin-consultation'
 import { ProblemSolution } from '@/components/sections/problem-solution'
 import { ProblemEducationBlock } from '@/components/sections/problem-education'
 import { HowItWorks } from '@/components/sections/how-it-works'
+import { BrandVideo } from '@/components/sections/brand-video'
 import { BentoFeatures } from '@/components/sections/bento-features'
 import { IngredientScroll } from '@/components/sections/ingredient-scroll'
 import { ScienceIngredients } from '@/components/sections/science-ingredients'
@@ -157,6 +158,7 @@ export default function HomePage() {
         ]}
       />
       <BentoFeatures />
+      <BrandVideo />
       <IngredientScroll />
       <ScienceIngredients
         keyIngredients={[
