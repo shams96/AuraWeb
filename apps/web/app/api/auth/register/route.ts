@@ -1,9 +1,46 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createUser, findUserByEmail } from '@/lib/user-store'
+import fs from 'fs'
+import path from 'path'
+import bcrypt from 'bcryptjs'
+import { randomUUID } from 'crypto'
+
+interface User {
+  id: string
+  email: string
+  name: string
+  passwordHash: string
+  role: string
+  accountType: string
+  createdAt: string
+}
+
+function getStorePath() {
+  return path.join(process.cwd(), 'data', 'users.json')
+}
+
+function loadUsers(): User[] {
+  const p = getStorePath()
+  if (!fs.existsSync(p)) return []
+  try {
+    const raw = fs.readFileSync(p, 'utf-8')
+    const parsed = JSON.parse(raw)
+    return Array.isArray(parsed) ? parsed : (parsed.users ?? [])
+  } catch {
+    return []
+  }
+}
+
+function saveUsers(users: User[]): void {
+  const p = getStorePath()
+  const dir = path.dirname(p)
+  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true })
+  fs.writeFileSync(p, JSON.stringify({ users }, null, 2))
+}
 
 export async function POST(req: NextRequest) {
   try {
-    const { email, name, password, accountType = 'personal' } = await req.json()
+    const body = await req.json()
+    const { email, name, password, accountType = 'personal' } = body
 
     if (!email?.trim() || !name?.trim() || !password) {
       return NextResponse.json({ error: 'Name, email and password are required.' }, { status: 400 })
@@ -11,21 +48,36 @@ export async function POST(req: NextRequest) {
     if (password.length < 8) {
       return NextResponse.json({ error: 'Password must be at least 8 characters.' }, { status: 400 })
     }
-    if (findUserByEmail(email)) {
+
+    const users = loadUsers()
+    const emailLower = email.toLowerCase().trim()
+
+    if (users.find(u => u.email.toLowerCase() === emailLower)) {
       return NextResponse.json({ error: 'An account with this email already exists.' }, { status: 409 })
     }
 
-    const user = createUser({ name, email, password, accountType })
+    const passwordHash = await bcrypt.hash(password, 12)
+    const newUser: User = {
+      id: randomUUID(),
+      email: emailLower,
+      name: name.trim(),
+      passwordHash,
+      role: accountType === 'business' ? 'PROFESSIONAL' : 'CUSTOMER',
+      accountType,
+      createdAt: new Date().toISOString(),
+    }
+
+    users.push(newUser)
+    saveUsers(users)
+
+    console.log(`[register] created user: ${emailLower}`)
 
     return NextResponse.json(
-      { id: user.id, email: user.email, name: user.name, role: user.role },
-      { status: 201 },
+      { id: newUser.id, email: newUser.email, name: newUser.name, role: newUser.role },
+      { status: 201 }
     )
-  } catch (err) {
-    const msg = err instanceof Error ? err.message : ''
-    if (msg === 'EMAIL_EXISTS') {
-      return NextResponse.json({ error: 'An account with this email already exists.' }, { status: 409 })
-    }
+  } catch (e) {
+    console.error('[register] error:', e)
     return NextResponse.json({ error: 'Registration failed. Please try again.' }, { status: 500 })
   }
 }

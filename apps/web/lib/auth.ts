@@ -1,6 +1,33 @@
 import { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
-import { findUserByEmail, verifyPassword, ensureAdminUser } from '@/lib/user-store'
+import fs from 'fs'
+import path from 'path'
+import bcrypt from 'bcryptjs'
+
+interface User {
+  id: string
+  email: string
+  name: string
+  passwordHash: string
+  role: string
+}
+
+function getUsersFilePath() {
+  return path.join(process.cwd(), 'data', 'users.json')
+}
+
+function loadUsers(): User[] {
+  try {
+    const p = getUsersFilePath()
+    if (!fs.existsSync(p)) return []
+    const raw = fs.readFileSync(p, 'utf-8')
+    const parsed = JSON.parse(raw)
+    return Array.isArray(parsed) ? parsed : (parsed.users ?? [])
+  } catch (e) {
+    console.error('[auth] loadUsers error:', e)
+    return []
+  }
+}
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -11,18 +38,36 @@ export const authOptions: NextAuthOptions = {
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password) return null
+        if (!credentials?.email || !credentials?.password) {
+          console.error('[auth] authorize: missing credentials')
+          return null
+        }
 
-        // Guarantee admin account exists on every auth attempt (no-op if already present)
-        ensureAdminUser()
+        try {
+          const users = loadUsers()
+          console.log(`[auth] authorize: found ${users.length} users, looking for ${credentials.email}`)
 
-        const user = findUserByEmail(credentials.email)
-        if (!user) return null
+          const user = users.find(
+            u => u.email.toLowerCase() === credentials.email.toLowerCase()
+          )
 
-        const valid = await verifyPassword(user, credentials.password)
-        if (!valid) return null
+          if (!user) {
+            console.error(`[auth] authorize: no user found for ${credentials.email}`)
+            return null
+          }
 
-        return { id: user.id, email: user.email, name: user.name, role: user.role }
+          const valid = await bcrypt.compare(credentials.password, user.passwordHash)
+          if (!valid) {
+            console.error(`[auth] authorize: wrong password for ${credentials.email}`)
+            return null
+          }
+
+          console.log(`[auth] authorize: success for ${credentials.email}`)
+          return { id: user.id, email: user.email, name: user.name, role: user.role }
+        } catch (e) {
+          console.error('[auth] authorize exception:', e)
+          return null
+        }
       },
     }),
   ],
