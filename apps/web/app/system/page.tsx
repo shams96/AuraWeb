@@ -3,11 +3,11 @@ import type { Metadata } from 'next'
 import { Shield, Zap, Sparkles, Activity } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'The System — Precision Biological Protocols',
-  description: 'Four protocols engineered to match your skin\'s biological stage. Preservation · Refinement · Restoration · Longevity. Assigned by skin analysis, not by birthdate.',
+  title: 'The Ritual — Four Formulations. One Living Philosophy.',
+  description: 'Isola Vitale\'s four rituals are not defined by age — they are defined by what your skin needs now. Preservation · Refinement · Restoration · Longevity. Beauty as a way of life.',
   openGraph: {
-    title: 'The System | Isola Vitale',
-    description: 'Four protocols. One lifetime of precision skin metabolism.',
+    title: 'The Ritual | Isola Vitale',
+    description: 'Four formulations born from the Italian philosophy that beauty is a way of life, not a clinical outcome.',
   },
 }
 
@@ -54,11 +54,11 @@ export default function SystemPage() {
         <div className="absolute inset-0 bg-iv-gold/[0.02] pointer-events-none" />
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           <div className="inline-block border border-iv-gold/20 rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-8 bg-iv-black/40 backdrop-blur-md">
-            Precision Biological Protocols
+            The Living Philosophy
           </div>
-          <h1 className="iv-type-display font-semibold mb-8 uppercase text-iv-white">The <em className="text-iv-gold not-italic" style={{ fontStyle: 'italic', fontFamily: 'var(--iv-font-serif)' }}>System</em></h1>
+          <h1 className="iv-type-display font-semibold mb-8 uppercase text-iv-white">The <em className="text-iv-gold not-italic" style={{ fontStyle: 'italic', fontFamily: 'var(--iv-font-serif)' }}>Ritual</em></h1>
           <p className="text-xl text-iv-cream/70 max-w-3xl mx-auto leading-relaxed font-light">
-            Formulation potency matched to cellular biology. Your protocol is assigned by skin analysis — not by birthdate.
+            In Isola del Liri, they have always understood something the modern world forgot — that beauty is not corrected. It is cultivated. Four rituals. One philosophy. Yours begins now.
           </p>
         </div>
       </section>

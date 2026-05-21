@@ -19,7 +19,7 @@ export function BentoFeatures() {
             Why Isola Vitale
           </div>
           <h2 className="iv-type-h2 font-bold text-iv-white tracking-tighter">
-            A System, Not a <span className="italic text-iv-gold">Product</span>
+            A Ritual, Not a <span className="italic text-iv-gold">Routine</span>
           </h2>
         </div>
 
@@ -99,12 +99,12 @@ export function BentoFeatures() {
             style={{ background: 'var(--iv-gold)', minHeight: 240 }}
           >
             <div>
-              <p className="text-[11px] font-black uppercase tracking-[0.3em] mb-3 text-white/60">Start Here</p>
+              <p className="text-[11px] font-black uppercase tracking-[0.3em] mb-3 text-white/60">Begin Here</p>
               <h3 className="iv-type-h3 font-bold text-white mb-2" style={{ fontFamily: 'var(--iv-font-serif)' }}>
-                Find your protocol in 2 minutes
+                Discover your ritual in 2 minutes
               </h3>
               <p className="text-sm text-white/70 font-light leading-relaxed">
-                8 Baumann-validated questions. Instant tier assignment with full AM + PM routine.
+                8 questions. Your personal formulation matched to your skin's biology — with a complete morning and evening ritual.
               </p>
             </div>
             <Link
@@ -115,7 +115,7 @@ export function BentoFeatures() {
                 document.getElementById('skin-scan')?.scrollIntoView({ behavior: 'smooth' })
               }}
             >
-              Take the consultation <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              Begin your ritual <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
 

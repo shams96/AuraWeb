@@ -58,19 +58,19 @@ export function SystemHero() {
           >
             <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--iv-gold)', display: 'inline-block', flexShrink: 0 }} />
             <span style={{ fontSize: '0.6rem', fontWeight: 700, color: 'var(--iv-gold)', letterSpacing: '0.22em', textTransform: 'uppercase' }}>
-              Natural You Srl · Isola del Liri, Italy · Est. 2024
+              Isola del Liri, Italy · Est. 2024
             </span>
           </div>
 
-          {/* Headline — font size uses min(vw,vh) so it never overflows on short screens */}
+          {/* Headline */}
           <h1 style={{
             fontFamily: 'var(--iv-font-serif)', fontWeight: 700,
             lineHeight: 1.0, letterSpacing: '-0.02em',
             color: 'var(--iv-white)', marginBottom: 'clamp(0.75rem, 2vh, 1.75rem)',
           }}>
-            <span data-reveal="iv-word-in" style={{ display: 'block', fontSize: 'clamp(2.25rem, min(7vw, 11vh), 5.5rem)', textTransform: 'uppercase', opacity: 0, animationDelay: '0.1s' }}>The Art of</span>
-            <span data-reveal="iv-word-in" style={{ display: 'block', fontSize: 'clamp(2.25rem, min(7vw, 11vh), 5.5rem)', textTransform: 'uppercase', fontStyle: 'italic', color: 'var(--iv-gold)', opacity: 0, animationDelay: '0.22s' }}>Longevity</span>
-            <span data-reveal="iv-word-in" style={{ display: 'block', fontSize: 'clamp(2.25rem, min(7vw, 11vh), 5.5rem)', textTransform: 'uppercase', opacity: 0, animationDelay: '0.34s' }}>Skincare</span>
+            <span data-reveal="iv-word-in" style={{ display: 'block', fontSize: 'clamp(2.25rem, min(7vw, 11vh), 5.5rem)', textTransform: 'uppercase', opacity: 0, animationDelay: '0.1s' }}>The Italian Art</span>
+            <span data-reveal="iv-word-in" style={{ display: 'block', fontSize: 'clamp(2.25rem, min(7vw, 11vh), 5.5rem)', textTransform: 'uppercase', fontStyle: 'italic', color: 'var(--iv-gold)', opacity: 0, animationDelay: '0.22s' }}>of Radiant</span>
+            <span data-reveal="iv-word-in" style={{ display: 'block', fontSize: 'clamp(2.25rem, min(7vw, 11vh), 5.5rem)', textTransform: 'uppercase', opacity: 0, animationDelay: '0.34s' }}>Living</span>
           </h1>
 
           {/* Descriptor */}
@@ -78,11 +78,11 @@ export function SystemHero() {
             data-reveal="iv-reveal-up"
             style={{
               fontSize: 'clamp(0.9rem, 1.3vw, 1.05rem)', color: 'var(--iv-cream)', fontWeight: 300,
-              lineHeight: 1.75, maxWidth: 440, marginBottom: 'clamp(1rem, 3.5vh, 2.5rem)', letterSpacing: '0.01em',
+              lineHeight: 1.75, maxWidth: 460, marginBottom: 'clamp(1rem, 3.5vh, 2.5rem)', letterSpacing: '0.01em',
               opacity: 0, animationDelay: '0.45s',
             }}
           >
-            Metabolically aligned. Clinically tested in 4 independent trials. The world's first 4-tier system tuned to your skin's biological age — manufactured at pharmaceutical grade in Italy.
+            In parts of Italy, vitality was never treated as a trend. It was woven into daily life — through ritual, beauty, nourishment, and the art of living slowly. Isola Vitale was born from that philosophy.
           </p>
 
           {/* CTAs */}
@@ -92,7 +92,7 @@ export function SystemHero() {
               style={{ padding: '16px 36px' }}
               onClick={() => document.getElementById('skin-scan')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              Find My System
+              Begin Your Ritual
             </button>
             <Link
               href="/shop"
@@ -155,7 +155,7 @@ export function SystemHero() {
       {/* Vertical Milano mark */}
       <div style={{ position: 'absolute', right: 28, top: '50%', transform: 'translateY(-50%)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12, zIndex: 10 }} className="hidden lg:flex">
         <div style={{ width: 1, height: 80, background: 'linear-gradient(to bottom, transparent, rgba(145,56,50,0.30))' }} />
-        <span style={{ fontSize: '0.5rem', fontWeight: 700, color: 'var(--iv-gold)', letterSpacing: '0.3em', textTransform: 'uppercase', writingMode: 'vertical-lr', opacity: 0.50 }}>Milano Heritage</span>
+        <span style={{ fontSize: '0.5rem', fontWeight: 700, color: 'var(--iv-gold)', letterSpacing: '0.3em', textTransform: 'uppercase', writingMode: 'vertical-lr', opacity: 0.50 }}>Isola del Liri</span>
         <div style={{ width: 1, height: 80, background: 'linear-gradient(to top, transparent, rgba(145,56,50,0.30))' }} />
       </div>
     </section>
