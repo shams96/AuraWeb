@@ -54,11 +54,11 @@ export default function SystemPage() {
         <div className="absolute inset-0 bg-iv-gold/[0.02] pointer-events-none" />
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           <div className="inline-block border border-iv-gold/20 rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-8 bg-iv-black/40 backdrop-blur-md">
-            The Living Philosophy
+            La Bella Figura
           </div>
           <h1 className="iv-type-display font-semibold mb-8 uppercase text-iv-white">The <em className="text-iv-gold not-italic" style={{ fontStyle: 'italic', fontFamily: 'var(--iv-font-serif)' }}>Ritual</em></h1>
           <p className="text-xl text-iv-cream/70 max-w-3xl mx-auto leading-relaxed font-light">
-            In Isola del Liri, they have always understood something the modern world forgot — that beauty is not corrected. It is cultivated. Four rituals. One philosophy. Yours begins now.
+            Italy has always known something the modern world forgot — beauty is not corrected. It is cultivated. Four formulations. One Italian philosophy. The practice of living beautifully in your skin.
           </p>
         </div>
       </section>

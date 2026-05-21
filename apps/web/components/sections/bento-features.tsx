@@ -16,7 +16,7 @@ export function BentoFeatures() {
             className="inline-block rounded-full px-6 py-2 text-[11px] font-black uppercase tracking-[0.3em] mb-5"
             style={{ color: 'var(--iv-gold)', border: `1px solid ${GOLD}0.20)`, background: `${GOLD}0.05)` }}
           >
-            Why Isola Vitale
+            La Bella Figura
           </div>
           <h2 className="iv-type-h2 font-bold text-iv-white tracking-tighter">
             A Ritual, Not a <span className="italic text-iv-gold">Routine</span>

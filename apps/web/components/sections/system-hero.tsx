@@ -58,7 +58,7 @@ export function SystemHero() {
           >
             <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--iv-gold)', display: 'inline-block', flexShrink: 0 }} />
             <span style={{ fontSize: '0.6rem', fontWeight: 700, color: 'var(--iv-gold)', letterSpacing: '0.22em', textTransform: 'uppercase' }}>
-              Isola del Liri, Italy · Est. 2024
+              La Bella Figura · Isola del Liri, Italy
             </span>
           </div>
 
@@ -68,9 +68,9 @@ export function SystemHero() {
             lineHeight: 1.0, letterSpacing: '-0.02em',
             color: 'var(--iv-white)', marginBottom: 'clamp(0.75rem, 2vh, 1.75rem)',
           }}>
-            <span data-reveal="iv-word-in" style={{ display: 'block', fontSize: 'clamp(2.25rem, min(7vw, 11vh), 5.5rem)', textTransform: 'uppercase', opacity: 0, animationDelay: '0.1s' }}>The Italian Art</span>
-            <span data-reveal="iv-word-in" style={{ display: 'block', fontSize: 'clamp(2.25rem, min(7vw, 11vh), 5.5rem)', textTransform: 'uppercase', fontStyle: 'italic', color: 'var(--iv-gold)', opacity: 0, animationDelay: '0.22s' }}>of Radiant</span>
-            <span data-reveal="iv-word-in" style={{ display: 'block', fontSize: 'clamp(2.25rem, min(7vw, 11vh), 5.5rem)', textTransform: 'uppercase', opacity: 0, animationDelay: '0.34s' }}>Living</span>
+            <span data-reveal="iv-word-in" style={{ display: 'block', fontSize: 'clamp(2.25rem, min(7vw, 11vh), 5.5rem)', textTransform: 'uppercase', opacity: 0, animationDelay: '0.1s' }}>In Italy,</span>
+            <span data-reveal="iv-word-in" style={{ display: 'block', fontSize: 'clamp(2.25rem, min(7vw, 11vh), 5.5rem)', textTransform: 'uppercase', fontStyle: 'italic', color: 'var(--iv-gold)', opacity: 0, animationDelay: '0.22s' }}>beauty is</span>
+            <span data-reveal="iv-word-in" style={{ display: 'block', fontSize: 'clamp(2.25rem, min(7vw, 11vh), 5.5rem)', textTransform: 'uppercase', opacity: 0, animationDelay: '0.34s' }}>a way of life</span>
           </h1>
 
           {/* Descriptor */}
@@ -82,7 +82,7 @@ export function SystemHero() {
               opacity: 0, animationDelay: '0.45s',
             }}
           >
-            In parts of Italy, vitality was never treated as a trend. It was woven into daily life — through ritual, beauty, nourishment, and the art of living slowly. Isola Vitale was born from that philosophy.
+            La Bella Figura — Italy's unwritten code of living beautifully. Not a goal to reach. A practice to inhabit. Formulated at Isola del Liri, where Italian precision and centuries of craft converge.
           </p>
 
           {/* CTAs */}
@@ -118,8 +118,8 @@ export function SystemHero() {
           {/* Social proof bar */}
           <div data-reveal="iv-reveal-up iv-stagger" style={{ display: 'flex', gap: 32, flexWrap: 'wrap', opacity: 0, animationDelay: '0.65s' }}>
             {[
-              { value: '48hrs', label: 'Time To Wow' },
-              { value: '97%',  label: 'Smoother Skin at Wk 4' },
+              { value: '48hrs', label: 'Felt on First Use' },
+              { value: '97%',  label: 'Visibly Transformed' },
               { value: '4.8★', label: '2,450+ Reviews' },
             ].map(({ value, label }) => (
               <div key={label}>

@@ -45,7 +45,7 @@ export function Footer() {
               <span className="iv-type-h2 font-semibold text-iv-white uppercase tracking-tight">Isola <span className="text-iv-gold italic">Vitale</span></span>
             </div>
             <p className="text-iv-cream text-opacity-60 leading-relaxed font-light text-sm max-w-sm">
-              The Italian art of radiant living. Skincare as ritual, not routine — crafted in Isola del Liri, where beauty has always been a way of life.
+              La Bella Figura — the Italian practice of living beautifully. Not a routine. A philosophy. Formulated at Isola del Liri, Italy.
             </p>
             <div className="flex space-x-6">
               {socialLinks.map((social) => (
