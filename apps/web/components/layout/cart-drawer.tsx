@@ -391,11 +391,12 @@ export function CartDrawer() {
         body: JSON.stringify({
           currency: 'usd',
           items: items.map(i => ({
-            id:       i.sku ?? i.id,
-            name:     i.name,
-            price:    i.price,
-            quantity: i.quantity,
-            image:    i.image,
+            id:             i.sku ?? i.id,
+            name:           i.name,
+            price:          i.price,
+            quantity:       i.quantity,
+            image:          i.image,
+            isSubscription: i.isSubscription ?? false,
           })),
         }),
       })

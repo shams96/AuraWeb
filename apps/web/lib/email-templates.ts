@@ -23,22 +23,32 @@ export function orderConfirmationEmail(data: {
   items: OrderItem[]
   total: number
   currency: string
+  isSubscription?: boolean
 }) {
   const rows = data.items.map(i =>
     `<tr><td>${i.name}</td><td style="text-align:right">×${i.quantity}</td><td style="text-align:right">${data.currency}${(i.price * i.quantity).toFixed(2)}</td></tr>`
   ).join('')
 
+  const heading = data.isSubscription ? 'Your ritual membership is confirmed' : 'Your ritual is on its way'
+  const subNote = data.isSubscription
+    ? `<p class="muted" style="border-left:2px solid #913832;padding-left:16px;margin:16px 0;">
+        Your ritual membership is now active. Your formulation ships every 30 days — arriving before you run out.
+        Manage or cancel anytime at <a href="${process.env.NEXTAUTH_URL}/account/subscription" style="color:#913832">your account</a>.
+      </p>`
+    : ''
+
   return base(`
     <div class="logo">Isola Vitale</div>
-    <h2 style="font-size:24px;margin:0 0 8px">Order Confirmed</h2>
-    <p class="muted">Thank you, ${data.customerName}. Your order <strong class="gold">#${data.orderNumber}</strong> has been received and is being prepared at our Natural You Srl facility in Isola del Liri, Italy.</p>
+    <h2 style="font-size:24px;margin:0 0 8px">${heading}</h2>
+    <p class="muted">Thank you, ${data.customerName}. Order <strong class="gold">#${data.orderNumber}</strong> is being prepared at Natural You Srl, Isola del Liri, Italy.</p>
+    ${subNote}
     <div class="divider"></div>
     <table><tbody>${rows}</tbody>
       <tfoot><tr><td colspan="2" style="font-weight:700;padding-top:16px">Total</td>
       <td style="text-align:right" class="total">${data.currency}${data.total.toFixed(2)}</td></tr></tfoot>
     </table>
     <div class="divider"></div>
-    <p class="muted">Your 48-hour Time To Wow experience begins the moment your protocol arrives. Expect delivery within 3–5 working days.</p>
+    <p class="muted">Your 48-hour Time To Wow experience begins the moment your formulation arrives. Expect delivery within 3–5 working days.</p>
     <a class="btn" href="${process.env.NEXTAUTH_URL}/account/orders">View Order</a>
     <p class="muted" style="margin-top:32px">Questions? Reply to this email or visit <a href="${process.env.NEXTAUTH_URL}/contact" style="color:#913832">isolavitale.com/contact</a></p>
   `)

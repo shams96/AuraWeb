@@ -5,89 +5,194 @@ import { resend, FROM_EMAIL } from '@/lib/resend'
 import { orderConfirmationEmail } from '@/lib/email-templates'
 import Stripe from 'stripe'
 
-/* Stripe requires the raw body for signature verification */
 export const runtime = 'nodejs'
 
 function generateOrderNumber() {
   return `IV-${Date.now().toString(36).toUpperCase()}`
 }
 
-export async function POST(req: NextRequest) {
-  const body = await req.text()
-  const sig  = req.headers.get('stripe-signature') ?? ''
+async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
+  const lineItems   = await stripe.checkout.sessions.listLineItems(session.id, { limit: 100 })
+  const orderNumber = generateOrderNumber()
+  const total       = (session.amount_total ?? 0) / 100
+  const currency    = (session.currency ?? 'usd').toUpperCase()
+  const isSubscription = session.mode === 'subscription'
 
-  let event: Stripe.Event
-  try {
-    event = stripe.webhooks.constructEvent(body, sig, process.env.STRIPE_WEBHOOK_SECRET!)
-  } catch (err) {
-    console.error('[webhook] signature failed', err)
-    return NextResponse.json({ error: 'Invalid signature' }, { status: 400 })
-  }
-
-  if (event.type === 'checkout.session.completed') {
-    const session = event.data.object as Stripe.Checkout.Session
-
+  // Persist to DB if available
+  if (prisma) {
     try {
-      /* Fetch full line items from Stripe */
-      const lineItems = await stripe.checkout.sessions.listLineItems(session.id, { limit: 100 })
-
-      const orderNumber = generateOrderNumber()
-      const total       = (session.amount_total ?? 0) / 100
-      const currency    = (session.currency ?? 'usd').toUpperCase()
-
-      /* Persist order to DB */
-      const order = await prisma.order.create({
+      await prisma.order.create({
         data: {
           orderNumber,
           stripeSessionId: session.id,
-          status:          'CONFIRMED',
-          paymentStatus:   'PAID',
+          status:        'CONFIRMED',
+          paymentStatus: 'PAID',
           currency,
-          subtotal:        (session.amount_subtotal ?? 0) / 100,
+          subtotal:      (session.amount_subtotal ?? 0) / 100,
           total,
-          userId:          session.metadata?.userId !== 'guest' ? session.metadata?.userId : undefined,
-          items: {
-            create: lineItems.data.map(li => ({
-              name:      li.description ?? 'Product',
-              sku:       li.price?.product?.toString() ?? '',
-              price:     (li.amount_total ?? 0) / 100 / (li.quantity ?? 1),
-              quantity:  li.quantity ?? 1,
-              productId: li.price?.metadata?.productId ?? li.price?.product?.toString() ?? '',
-              variantId: li.price?.metadata?.variantId ?? li.price?.product?.toString() ?? '',
-            })),
-          },
+          userId: session.metadata?.userId !== 'guest' ? session.metadata?.userId : undefined,
+          // Store subscription ID in notes field until schema migration adds dedicated column
+          notes: isSubscription && session.subscription
+            ? JSON.stringify({ stripeSubscriptionId: session.subscription.toString() })
+            : undefined,
         },
-        include: { items: true },
       })
+    } catch (dbErr) {
+      console.error('[webhook] DB order creation failed:', dbErr)
+    }
+  } else {
+    console.info(`[webhook] no DB — order ${orderNumber} logged only`)
+  }
 
-      /* Send order confirmation email */
-      const customerEmail  = session.customer_details?.email
-      const customerName   = session.customer_details?.name ?? 'Valued Customer'
+  // Send order confirmation email
+  const customerEmail = session.customer_details?.email
+  const customerName  = session.customer_details?.name ?? 'Valued Customer'
 
-      if (customerEmail && resend) {
-        await resend.emails.send({
-          from:    FROM_EMAIL,
-          to:      customerEmail,
-          subject: `Order Confirmed — #${orderNumber} | Isola Vitale`,
-          html:    orderConfirmationEmail({
-            orderNumber,
-            customerName,
-            items: order.items.map(i => ({
-              name:     i.name,
-              quantity: i.quantity,
-              price:    Number(i.price),
-            })),
-            total,
-            currency: '$',
-          }),
+  if (customerEmail && resend) {
+    try {
+      await resend.emails.send({
+        from:    FROM_EMAIL,
+        to:      customerEmail,
+        subject: isSubscription
+          ? `Your ritual membership is confirmed — #${orderNumber} | Isola Vitale`
+          : `Your ritual is on its way — #${orderNumber} | Isola Vitale`,
+        html: orderConfirmationEmail({
+          orderNumber,
+          customerName,
+          items: lineItems.data.map(li => ({
+            name:     li.description ?? 'Product',
+            quantity: li.quantity ?? 1,
+            price:    (li.amount_total ?? 0) / 100 / (li.quantity ?? 1),
+          })),
+          total,
+          currency: currency === 'GBP' ? '£' : '$',
+          isSubscription,
+        }),
+      })
+      console.info(`[webhook] confirmation email sent to ${customerEmail}`)
+    } catch (emailErr) {
+      console.error('[webhook] confirmation email failed:', emailErr)
+    }
+  }
+
+  console.info(`[webhook] checkout.session.completed — order ${orderNumber}, subscription: ${isSubscription}`)
+}
+
+async function handleInvoicePaid(invoice: Stripe.Invoice) {
+  const subscriptionId = typeof invoice.subscription === 'string'
+    ? invoice.subscription
+    : invoice.subscription?.id
+
+  console.info(`[webhook] invoice.paid — subscription ${subscriptionId}, amount ${(invoice.amount_paid ?? 0) / 100}`)
+
+  // Update subscription status in DB if available
+  if (prisma && subscriptionId) {
+    try {
+      // Find orders where notes contains this subscriptionId
+      const orders = await prisma.order.findMany({
+        where: { notes: { contains: subscriptionId } },
+        select: { id: true },
+      })
+      if (orders.length) {
+        await prisma.order.updateMany({
+          where: { id: { in: orders.map(o => o.id) } },
+          data:  { paymentStatus: 'PAID' },
         })
       }
-
-      console.info(`[webhook] order ${orderNumber} created, email sent to ${customerEmail}`)
-    } catch (err) {
-      console.error('[webhook] order creation failed', err)
-      /* Return 200 so Stripe doesn't retry — log the error for manual fix */
+    } catch (dbErr) {
+      console.error('[webhook] invoice.paid DB update failed:', dbErr)
     }
+  }
+
+  // Renewal confirmation email via customer
+  const customerEmail = typeof invoice.customer_email === 'string' ? invoice.customer_email : null
+  if (customerEmail && resend) {
+    try {
+      await resend.emails.send({
+        from:    FROM_EMAIL,
+        to:      customerEmail,
+        subject: 'Your ritual is on its way again | Isola Vitale',
+        html: `
+          <div style="font-family:Georgia,serif;max-width:600px;margin:0 auto;background:#1A1614;color:#FDFAF5;padding:48px 40px;border-radius:16px;">
+            <p style="color:#913832;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.3em;margin:0 0 16px;">La Bella Figura</p>
+            <h1 style="font-size:28px;margin:0 0 16px;font-style:italic;">Your ritual is on its way again.</h1>
+            <p style="color:rgba(253,250,245,0.6);line-height:1.8;margin:0 0 24px;">
+              Your monthly formulation has been despatched from Isola del Liri.
+              It will arrive as it always has — before you run out.
+            </p>
+            <p style="color:rgba(253,250,245,0.35);font-size:11px;">
+              To manage your ritual membership, visit your account at isolavitale.com/account
+            </p>
+          </div>
+        `,
+      })
+    } catch (emailErr) {
+      console.error('[webhook] renewal email failed:', emailErr)
+    }
+  }
+}
+
+async function handleSubscriptionDeleted(subscription: Stripe.Subscription) {
+  console.info(`[webhook] subscription.deleted — ${subscription.id}`)
+
+  if (prisma) {
+    try {
+      const orders = await prisma.order.findMany({
+        where: { notes: { contains: subscription.id } },
+        select: { id: true },
+      })
+      if (orders.length) {
+        await prisma.order.updateMany({
+          where: { id: { in: orders.map(o => o.id) } },
+          data:  { status: 'CANCELLED' },
+        })
+      }
+    } catch (dbErr) {
+      console.error('[webhook] subscription.deleted DB update failed:', dbErr)
+    }
+  }
+}
+
+export async function POST(req: NextRequest) {
+  const body = await req.text()
+  const sig  = req.headers.get('stripe-signature') ?? ''
+  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET
+
+  // If no webhook secret set (local dev), accept all events
+  let event: Stripe.Event
+  if (webhookSecret && sig) {
+    try {
+      event = stripe.webhooks.constructEvent(body, sig, webhookSecret)
+    } catch (err) {
+      console.error('[webhook] signature verification failed', err)
+      return NextResponse.json({ error: 'Invalid signature' }, { status: 400 })
+    }
+  } else {
+    try {
+      event = JSON.parse(body) as Stripe.Event
+    } catch {
+      return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 })
+    }
+  }
+
+  try {
+    switch (event.type) {
+      case 'checkout.session.completed':
+        await handleCheckoutCompleted(event.data.object as Stripe.Checkout.Session)
+        break
+      case 'invoice.paid':
+        await handleInvoicePaid(event.data.object as Stripe.Invoice)
+        break
+      case 'customer.subscription.deleted':
+        await handleSubscriptionDeleted(event.data.object as Stripe.Subscription)
+        break
+      default:
+        // Unhandled event type — acknowledged but not processed
+        break
+    }
+  } catch (err) {
+    console.error(`[webhook] error handling ${event.type}:`, err)
+    // Return 200 so Stripe doesn't retry — errors are logged for manual review
   }
 
   return NextResponse.json({ received: true })

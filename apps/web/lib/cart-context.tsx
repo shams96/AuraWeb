@@ -1,6 +1,8 @@
 'use client'
 
-import React, { createContext, useContext, useReducer, ReactNode } from 'react'
+import React, { createContext, useContext, useReducer, ReactNode, useEffect } from 'react'
+
+const CART_STORAGE_KEY = 'iv_cart'
 
 export interface CartItem {
   id: string
@@ -30,6 +32,16 @@ type CartAction =
   | { type: 'SET_CART_OPEN'; payload: boolean }
 
 const SUB_DISCOUNT = 0.20   // 20 % off for subscriptions
+
+function loadCartFromStorage(): CartItem[] {
+  if (typeof window === 'undefined') return []
+  try {
+    const raw = sessionStorage.getItem(CART_STORAGE_KEY)
+    return raw ? (JSON.parse(raw) as CartItem[]) : []
+  } catch {
+    return []
+  }
+}
 
 const initialState: CartState = { items: [], isOpen: false }
 
@@ -118,6 +130,21 @@ const CartContext = createContext<CartContextType | undefined>(undefined)
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(cartReducer, initialState)
+
+  // Rehydrate from sessionStorage on mount
+  useEffect(() => {
+    const saved = loadCartFromStorage()
+    if (saved.length) {
+      saved.forEach(item => dispatch({ type: 'ADD_ITEM', payload: item }))
+    }
+  }, [])
+
+  // Persist items to sessionStorage on every change
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem(CART_STORAGE_KEY, JSON.stringify(state.items))
+    }
+  }, [state.items])
 
   const addItem = (item: Omit<CartItem, 'id'>) => {
     const base = item.basePrice ?? item.price
