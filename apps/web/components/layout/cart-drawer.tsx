@@ -63,7 +63,7 @@ function ShippingBar({ subtotal }: { subtotal: number }) {
   )
 }
 
-// ─── Global subscribe toggle (IM8-style — one toggle for whole cart) ──────────
+// ─── Global subscribe toggle (subscription-first — IM8 pattern) ──────────────
 function SubscribeToggle({
   allSubscribed,
   onSwitch,
@@ -77,18 +77,13 @@ function SubscribeToggle({
   retailTotal: number
   dailyCost: string
 }) {
+  const penalty = retailTotal - subTotal  // how much more you pay without subscribing
+  const annualSavings = penalty * 12
+
   return (
-    <div className="mx-4 mt-4 rounded-2xl overflow-hidden border-2" style={{ borderColor: allSubscribed ? '#913832' : '#EDE8E0' }}>
-      {/* Toggle pills */}
+    <div className="mx-4 mt-4 rounded-2xl overflow-hidden border-2" style={{ borderColor: allSubscribed ? '#913832' : '#C0392B' }}>
+      {/* Toggle pills — Subscribe first (featured), One-Time second (penalty) */}
       <div className="flex">
-        <button
-          onClick={() => onSwitch(false)}
-          className={`flex-1 py-3 text-[11px] font-black uppercase tracking-wider transition-all ${
-            !allSubscribed ? 'bg-[#1A1614] text-white' : 'bg-white text-[#888]'
-          }`}
-        >
-          One-Time
-        </button>
         <button
           onClick={() => onSwitch(true)}
           className={`flex-1 py-3 text-[11px] font-black uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 ${
@@ -98,13 +93,21 @@ function SubscribeToggle({
           <RefreshCcw size={10} />
           Subscribe &amp; Save {SUB_PCT}%
         </button>
+        <button
+          onClick={() => onSwitch(false)}
+          className={`flex-1 py-3 text-[11px] font-black uppercase tracking-wider transition-all ${
+            !allSubscribed ? 'bg-[#1A1614] text-white' : 'bg-white text-[#888]'
+          }`}
+        >
+          One-Time
+        </button>
       </div>
 
       {/* Pricing comparison panel */}
       {allSubscribed ? (
         <div className="bg-[#FDF5F4] px-4 py-3 space-y-1.5">
           <div className="flex items-center justify-between">
-            <span className="text-[10px] text-[#888]">Retail value</span>
+            <span className="text-[10px] text-[#888]">Without subscription</span>
             <span className="text-[11px] text-[#888] line-through">${retailTotal.toFixed(2)}</span>
           </div>
           <div className="flex items-center justify-between">
@@ -112,16 +115,35 @@ function SubscribeToggle({
             <span className="text-[15px] font-black text-[#913832]">${subTotal.toFixed(2)}<span className="text-[10px] font-normal text-[#888] ml-1">/mo</span></span>
           </div>
           <div className="flex items-center justify-between pt-1 border-t border-[#F0E8E5]">
+            <span className="text-[10px] text-[#2A6B3A] font-bold">Annual saving</span>
+            <span className="text-[13px] font-black text-[#2A6B3A]">${annualSavings.toFixed(0)}/year</span>
+          </div>
+          <div className="flex items-center justify-between">
             <span className="text-[10px] text-[#555]">That's just</span>
-            <span className="text-[13px] font-black text-[#2A6B3A]">${dailyCost} / day</span>
+            <span className="text-[12px] font-black text-[#2A6B3A]">${dailyCost} / day</span>
           </div>
           <p className="text-[9px] text-[#AAA] pt-0.5">Cancel anytime · Ships every 30 days · Free returns</p>
         </div>
       ) : (
-        <div className="bg-[#F7F4EF] px-4 py-2.5">
-          <p className="text-[10px] text-[#888] text-center">
-            Switch to Subscribe &amp; Save <span className="font-black text-[#913832]">${(retailTotal - Math.round(retailTotal * 0.8)).toFixed(2)}</span> on your order
-          </p>
+        <div className="px-4 py-3 space-y-1" style={{ background: '#FFF5F4' }}>
+          <div className="flex items-center gap-2 mb-1">
+            <span className="text-[10px] font-black uppercase tracking-wider text-[#C0392B]">⚠ One-time penalty</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] text-[#888]">You're paying</span>
+            <span className="text-[14px] font-black text-[#C0392B]">+${penalty.toFixed(2)} more</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] text-[#888]">vs. subscribers who pay</span>
+            <span className="text-[12px] font-black text-[#913832]">${subTotal.toFixed(2)}/mo</span>
+          </div>
+          <button
+            onClick={() => onSwitch(true)}
+            className="w-full mt-2 py-2 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] text-white transition-all"
+            style={{ background: '#913832' }}
+          >
+            Switch &amp; Save ${penalty.toFixed(2)} Now
+          </button>
         </div>
       )}
     </div>

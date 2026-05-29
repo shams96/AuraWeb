@@ -26,7 +26,7 @@ export function BuyBox({ product, selectedVariant: initialVariant, buyBullets }:
   const [selectedVariantId, setSelectedVariantId] = useState(
     initialVariant ?? product.variants[0]?.id ?? ''
   )
-  const [purchaseType, setPurchaseType] = useState<'one-time' | 'subscribe'>('one-time')
+  const [purchaseType, setPurchaseType] = useState<'one-time' | 'subscribe'>('subscribe')
   const [customQty, setCustomQty] = useState(1)
   const [selectedBreakIndex, setSelectedBreakIndex] = useState(0)
   const [checkoutLoading, setCheckoutLoading] = useState(false)
@@ -141,30 +141,63 @@ export function BuyBox({ product, selectedVariant: initialVariant, buyBullets }:
               </div>
             </div>
 
-            {/* Purchase Type Toggle */}
-            <div className="flex justify-center mb-8">
-              <div className="inline-flex rounded-lg border border-iv-gold/20 bg-iv-black p-1">
-                <button
-                  onClick={() => setPurchaseType('one-time')}
-                  className={`px-4 py-2 text-sm font-bold uppercase tracking-widest rounded-md transition-all ${
-                    purchaseType === 'one-time'
-                      ? 'bg-iv-gold text-iv-black shadow-lg'
-                      : 'text-iv-cream/60 hover:text-iv-white'
-                  }`}
-                >
-                  One-Time
-                </button>
+            {/* Purchase Type Toggle — subscription first */}
+            <div className="mb-6">
+              <div className="flex rounded-xl border border-iv-gold/20 bg-iv-black overflow-hidden">
+                {/* Subscribe — featured/default */}
                 <button
                   onClick={() => setPurchaseType('subscribe')}
-                  className={`px-4 py-2 text-sm font-bold uppercase tracking-widest rounded-md transition-all ${
+                  className={`flex-1 px-4 py-3 text-sm font-bold uppercase tracking-widest transition-all flex flex-col items-center gap-0.5 ${
                     purchaseType === 'subscribe'
                       ? 'bg-iv-gold text-iv-black shadow-lg'
                       : 'text-iv-cream/60 hover:text-iv-white'
                   }`}
                 >
-                  Subscribe & Save (20%)
+                  <span>Subscribe &amp; Save</span>
+                  <span className={`text-[10px] font-black ${purchaseType === 'subscribe' ? 'text-iv-black/70' : 'text-iv-gold/60'}`}>
+                    Save {formatPrice(currentVariant.price * 0.20)}/order
+                  </span>
+                </button>
+                {/* One-time — secondary with penalty label */}
+                <button
+                  onClick={() => setPurchaseType('one-time')}
+                  className={`flex-1 px-4 py-3 text-sm font-bold uppercase tracking-widest transition-all flex flex-col items-center gap-0.5 ${
+                    purchaseType === 'one-time'
+                      ? 'bg-iv-black text-white shadow-inner'
+                      : 'text-iv-cream/40 hover:text-iv-white'
+                  }`}
+                >
+                  <span>One-Time</span>
+                  <span className={`text-[10px] font-black ${purchaseType === 'one-time' ? 'text-red-400' : 'text-red-400/50'}`}>
+                    +{formatPrice(currentVariant.price * 0.20)} vs subscribers
+                  </span>
                 </button>
               </div>
+
+              {/* Penalty banner when one-time is selected */}
+              {purchaseType === 'one-time' && (
+                <div className="mt-3 rounded-xl border border-red-500/30 px-4 py-3" style={{ background: 'rgba(192,57,43,0.08)' }}>
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="text-[10px] font-black uppercase tracking-wider text-red-400">⚠ You're paying more</span>
+                    <span className="text-sm font-black text-red-400">+{formatPrice(currentVariant.price * 0.20)} this order</span>
+                  </div>
+                  <p className="text-[10px] text-iv-cream/40">
+                    Subscribers pay {formatPrice(currentVariant.price * 0.80)}/mo · Save {formatPrice(currentVariant.price * 0.20 * 12)} a year.{' '}
+                    <button onClick={() => setPurchaseType('subscribe')} className="text-iv-gold underline font-bold">Switch &amp; save now.</button>
+                  </p>
+                </div>
+              )}
+
+              {/* Savings confirmation when subscribed */}
+              {purchaseType === 'subscribe' && (
+                <div className="mt-3 rounded-xl border border-green-600/20 px-4 py-3" style={{ background: 'rgba(42,107,58,0.12)' }}>
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] font-black uppercase tracking-wider text-green-400">Subscription savings</span>
+                    <span className="text-sm font-black text-green-400">{formatPrice(currentVariant.price * 0.20 * 12)}/year</span>
+                  </div>
+                  <p className="text-[10px] text-iv-cream/40 mt-0.5">Cancel anytime · Ships every 30 days · Free returns</p>
+                </div>
+              )}
             </div>
 
             {/* Quantity Breaks */}
@@ -260,12 +293,21 @@ export function BuyBox({ product, selectedVariant: initialVariant, buyBullets }:
             </div>
 
             {/* Order Summary */}
-            <div className="mb-6 p-4 rounded-xl bg-iv-black/40 border border-iv-gold/10 flex items-center justify-between">
-              <div className="text-xs text-iv-cream/50 uppercase tracking-widest font-bold">
-                {effectiveQty} × {currentVariant.name}
-                {purchaseType === 'subscribe' && <span className="ml-2 text-iv-gold">(–20%)</span>}
+            <div className="mb-6 p-4 rounded-xl bg-iv-black/40 border border-iv-gold/10">
+              <div className="flex items-center justify-between">
+                <div className="text-xs text-iv-cream/50 uppercase tracking-widest font-bold">
+                  {effectiveQty} × {currentVariant.name}
+                </div>
+                <div className="text-right">
+                  {purchaseType === 'subscribe' && (
+                    <div className="text-[10px] text-iv-cream/30 line-through">{formatPrice(currentVariant.price * effectiveQty)}</div>
+                  )}
+                  <div className="text-xl font-bold text-iv-white">{formatPrice(totalPrice)}</div>
+                  {purchaseType === 'subscribe' && (
+                    <div className="text-[10px] font-black text-green-400">–{formatPrice(currentVariant.price * 0.20 * effectiveQty)} saved</div>
+                  )}
+                </div>
               </div>
-              <div className="text-xl font-bold text-iv-white">{formatPrice(totalPrice)}</div>
             </div>
 
             {/* Checkout Button */}

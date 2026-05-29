@@ -121,12 +121,16 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   const addItem = (item: Omit<CartItem, 'id'>) => {
     const base = item.basePrice ?? item.price
+    // Default to subscribed unless caller explicitly passes isSubscription: false
+    const isSub = item.isSubscription !== false
     dispatch({
       type: 'ADD_ITEM',
       payload: {
         ...item,
         id: item.sku || item.name,
         basePrice: base,
+        isSubscription: isSub,
+        price: isSub ? Math.round(base * (1 - SUB_DISCOUNT)) : base,
       },
     })
   }
