@@ -81,7 +81,7 @@ function SubscribeToggle({
   const annualSavings = penalty * 12
 
   return (
-    <div className="mx-4 mt-4 rounded-2xl overflow-hidden border-2" style={{ borderColor: allSubscribed ? '#913832' : '#C0392B' }}>
+    <div className="mx-4 mt-4 rounded-2xl overflow-hidden border-2" style={{ borderColor: allSubscribed ? '#913832' : '#EDE8E0' }}>
       {/* Toggle pills — Subscribe first (featured), One-Time second (penalty) */}
       <div className="flex">
         <button
@@ -107,11 +107,11 @@ function SubscribeToggle({
       {allSubscribed ? (
         <div className="bg-[#FDF5F4] px-4 py-3 space-y-1.5">
           <div className="flex items-center justify-between">
-            <span className="text-[10px] text-[#888]">Without subscription</span>
+            <span className="text-[10px] text-[#888]">Without ritual membership</span>
             <span className="text-[11px] text-[#888] line-through">${retailTotal.toFixed(2)}</span>
           </div>
           <div className="flex items-center justify-between">
-            <span className="text-[11px] font-black text-[#913832]">Your subscribe price</span>
+            <span className="text-[11px] font-black text-[#913832]">Your ritual price</span>
             <span className="text-[15px] font-black text-[#913832]">${subTotal.toFixed(2)}<span className="text-[10px] font-normal text-[#888] ml-1">/mo</span></span>
           </div>
           <div className="flex items-center justify-between pt-1 border-t border-[#F0E8E5]">
@@ -125,25 +125,18 @@ function SubscribeToggle({
           <p className="text-[9px] text-[#AAA] pt-0.5">Cancel anytime · Ships every 30 days · Free returns</p>
         </div>
       ) : (
-        <div className="px-4 py-3 space-y-1" style={{ background: '#FFF5F4' }}>
-          <div className="flex items-center gap-2 mb-1">
-            <span className="text-[10px] font-black uppercase tracking-wider text-[#C0392B]">⚠ One-time penalty</span>
-          </div>
-          <div className="flex items-center justify-between">
-            <span className="text-[10px] text-[#888]">You're paying</span>
-            <span className="text-[14px] font-black text-[#C0392B]">+${penalty.toFixed(2)} more</span>
-          </div>
-          <div className="flex items-center justify-between">
-            <span className="text-[10px] text-[#888]">vs. subscribers who pay</span>
-            <span className="text-[12px] font-black text-[#913832]">${subTotal.toFixed(2)}/mo</span>
-          </div>
+        <div className="px-4 py-3 space-y-2" style={{ background: '#F7F4EF' }}>
+          <p className="text-[11px] text-[#555] leading-relaxed font-light italic">
+            Ritual members receive this for <span className="font-black text-[#913832] not-italic">${penalty.toFixed(2)} less</span> each month — and their formulation arrives before they run out.
+          </p>
           <button
             onClick={() => onSwitch(true)}
-            className="w-full mt-2 py-2 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] text-white transition-all"
+            className="w-full py-2 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] text-white transition-all"
             style={{ background: '#913832' }}
           >
-            Switch &amp; Save ${penalty.toFixed(2)} Now
+            Begin your monthly ritual
           </button>
+          <p className="text-[9px] text-[#AAA] text-center">Cancel anytime · No commitment</p>
         </div>
       )}
     </div>

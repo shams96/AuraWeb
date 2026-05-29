@@ -141,7 +141,7 @@ export function BuyBox({ product, selectedVariant: initialVariant, buyBullets }:
               </div>
             </div>
 
-            {/* Purchase Type Toggle — subscription first */}
+            {/* Purchase Type Toggle — subscription first (Langer: invite, never punish) */}
             <div className="mb-6">
               <div className="flex rounded-xl border border-iv-gold/20 bg-iv-black overflow-hidden">
                 {/* Subscribe — featured/default */}
@@ -153,12 +153,12 @@ export function BuyBox({ product, selectedVariant: initialVariant, buyBullets }:
                       : 'text-iv-cream/60 hover:text-iv-white'
                   }`}
                 >
-                  <span>Subscribe &amp; Save</span>
+                  <span>Monthly Ritual</span>
                   <span className={`text-[10px] font-black ${purchaseType === 'subscribe' ? 'text-iv-black/70' : 'text-iv-gold/60'}`}>
-                    Save {formatPrice(currentVariant.price * 0.20)}/order
+                    Save {formatPrice(currentVariant.price * 0.20)} per order
                   </span>
                 </button>
-                {/* One-time — secondary with penalty label */}
+                {/* One-time — secondary, no shame language */}
                 <button
                   onClick={() => setPurchaseType('one-time')}
                   className={`flex-1 px-4 py-3 text-sm font-bold uppercase tracking-widest transition-all flex flex-col items-center gap-0.5 ${
@@ -168,34 +168,37 @@ export function BuyBox({ product, selectedVariant: initialVariant, buyBullets }:
                   }`}
                 >
                   <span>One-Time</span>
-                  <span className={`text-[10px] font-black ${purchaseType === 'one-time' ? 'text-red-400' : 'text-red-400/50'}`}>
-                    +{formatPrice(currentVariant.price * 0.20)} vs subscribers
+                  <span className={`text-[10px] font-normal ${purchaseType === 'one-time' ? 'text-iv-cream/50' : 'text-iv-cream/20'}`}>
+                    Full price, once
                   </span>
                 </button>
               </div>
 
-              {/* Penalty banner when one-time is selected */}
+              {/* Invitation when one-time is selected — no shame, no red */}
               {purchaseType === 'one-time' && (
-                <div className="mt-3 rounded-xl border border-red-500/30 px-4 py-3" style={{ background: 'rgba(192,57,43,0.08)' }}>
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="text-[10px] font-black uppercase tracking-wider text-red-400">⚠ You're paying more</span>
-                    <span className="text-sm font-black text-red-400">+{formatPrice(currentVariant.price * 0.20)} this order</span>
-                  </div>
-                  <p className="text-[10px] text-iv-cream/40">
-                    Subscribers pay {formatPrice(currentVariant.price * 0.80)}/mo · Save {formatPrice(currentVariant.price * 0.20 * 12)} a year.{' '}
-                    <button onClick={() => setPurchaseType('subscribe')} className="text-iv-gold underline font-bold">Switch &amp; save now.</button>
+                <div className="mt-3 rounded-xl border border-iv-gold/10 px-4 py-3 bg-iv-deep-green/30">
+                  <p className="text-[11px] text-iv-cream/60 leading-relaxed font-light italic">
+                    Ritual members receive this formulation for{' '}
+                    <span className="text-iv-gold font-black not-italic">{formatPrice(currentVariant.price * 0.20)} less</span>{' '}
+                    each month — and it arrives before they run out.
                   </p>
+                  <button
+                    onClick={() => setPurchaseType('subscribe')}
+                    className="mt-2 text-[10px] font-black uppercase tracking-[0.2em] text-iv-gold hover:underline"
+                  >
+                    Begin your monthly ritual →
+                  </button>
                 </div>
               )}
 
-              {/* Savings confirmation when subscribed */}
+              {/* Confirmation when subscribed */}
               {purchaseType === 'subscribe' && (
-                <div className="mt-3 rounded-xl border border-green-600/20 px-4 py-3" style={{ background: 'rgba(42,107,58,0.12)' }}>
-                  <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-black uppercase tracking-wider text-green-400">Subscription savings</span>
-                    <span className="text-sm font-black text-green-400">{formatPrice(currentVariant.price * 0.20 * 12)}/year</span>
+                <div className="mt-3 rounded-xl border border-iv-gold/15 px-4 py-3 bg-iv-deep-green/30">
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="text-[10px] font-black uppercase tracking-wider text-iv-gold">Ritual membership</span>
+                    <span className="text-sm font-black text-iv-gold">{formatPrice(currentVariant.price * 0.20 * 12)} saved / year</span>
                   </div>
-                  <p className="text-[10px] text-iv-cream/40 mt-0.5">Cancel anytime · Ships every 30 days · Free returns</p>
+                  <p className="text-[10px] text-iv-cream/40">Cancel anytime · Ships every 30 days · Free returns</p>
                 </div>
               )}
             </div>

@@ -64,7 +64,7 @@ export async function POST(req: NextRequest) {
       const customerEmail  = session.customer_details?.email
       const customerName   = session.customer_details?.name ?? 'Valued Customer'
 
-      if (customerEmail) {
+      if (customerEmail && resend) {
         await resend.emails.send({
           from:    FROM_EMAIL,
           to:      customerEmail,
