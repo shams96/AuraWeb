@@ -12,15 +12,18 @@ datasource db {
 
 // User Management
 model User {
-  id        String  @id @default(cuid())
-  email     String  @unique
-  name      String
-  firstName String?
-  lastName  String?
-  phone     String?
-  avatar    String?
-  role      Role    @default(CUSTOMER)
-  verified  Boolean @default(false)
+  id           String  @id @default(cuid())
+  email        String  @unique
+  name         String
+  firstName    String?
+  lastName     String?
+  phone        String?
+  avatar       String?
+  role         Role    @default(CUSTOMER)
+  verified     Boolean @default(false)
+  passwordHash String?
+  accountType  String  @default("personal")
+  loyaltyPoints Int    @default(0)
 
   // Auth
   accounts      Account[]
@@ -755,6 +758,7 @@ model AuditLog {
 // Enums
 enum Role {
   CUSTOMER
+  PROFESSIONAL
   ADMIN
   OWNER
   SUPPORT

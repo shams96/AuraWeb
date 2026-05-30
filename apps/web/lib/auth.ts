@@ -4,7 +4,7 @@ import fs from 'fs'
 import path from 'path'
 import bcrypt from 'bcryptjs'
 
-interface User {
+interface JsonUser {
   id: string
   email: string
   name: string
@@ -12,21 +12,46 @@ interface User {
   role: string
 }
 
-function getUsersFilePath() {
-  return path.join(process.cwd(), 'data', 'users.json')
-}
-
-function loadUsers(): User[] {
+function loadJsonUsers(): JsonUser[] {
   try {
-    const p = getUsersFilePath()
+    const p = path.join(process.cwd(), 'data', 'users.json')
     if (!fs.existsSync(p)) return []
-    const raw = fs.readFileSync(p, 'utf-8')
+    const raw    = fs.readFileSync(p, 'utf-8')
     const parsed = JSON.parse(raw)
     return Array.isArray(parsed) ? parsed : (parsed.users ?? [])
   } catch (e) {
-    console.error('[auth] loadUsers error:', e)
+    console.error('[auth] loadJsonUsers error:', e)
     return []
   }
+}
+
+async function findAndVerifyUser(email: string, password: string): Promise<{ id: string; email: string; name: string; role: string } | null> {
+  const emailLower = email.toLowerCase()
+
+  // Try Prisma first (when DATABASE_URL is set in production)
+  try {
+    const { prisma } = await import('@/lib/prisma')
+    if (prisma) {
+      const user = await prisma.user.findUnique({ where: { email: emailLower } })
+      if (user?.passwordHash) {
+        const valid = await bcrypt.compare(password, user.passwordHash)
+        if (!valid) return null
+        return { id: user.id, email: user.email, name: user.name, role: user.role }
+      }
+    }
+  } catch {
+    // Prisma not available — fall through to JSON
+  }
+
+  // Fallback: JSON file store (dev)
+  const users = loadJsonUsers()
+  const user  = users.find(u => u.email.toLowerCase() === emailLower)
+  if (!user) return null
+
+  const valid = await bcrypt.compare(password, user.passwordHash)
+  if (!valid) return null
+
+  return { id: user.id, email: user.email, name: user.name, role: user.role }
 }
 
 export const authOptions: NextAuthOptions = {
@@ -38,32 +63,13 @@ export const authOptions: NextAuthOptions = {
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password) {
-          console.error('[auth] authorize: missing credentials')
-          return null
-        }
+        if (!credentials?.email || !credentials?.password) return null
 
         try {
-          const users = loadUsers()
-          console.log(`[auth] authorize: found ${users.length} users, looking for ${credentials.email}`)
-
-          const user = users.find(
-            u => u.email.toLowerCase() === credentials.email.toLowerCase()
-          )
-
-          if (!user) {
-            console.error(`[auth] authorize: no user found for ${credentials.email}`)
-            return null
-          }
-
-          const valid = await bcrypt.compare(credentials.password, user.passwordHash)
-          if (!valid) {
-            console.error(`[auth] authorize: wrong password for ${credentials.email}`)
-            return null
-          }
-
-          console.log(`[auth] authorize: success for ${credentials.email}`)
-          return { id: user.id, email: user.email, name: user.name, role: user.role }
+          const user = await findAndVerifyUser(credentials.email, credentials.password)
+          if (user) console.log(`[auth] authorize: success for ${credentials.email}`)
+          else      console.error(`[auth] authorize: failed for ${credentials.email}`)
+          return user
         } catch (e) {
           console.error('[auth] authorize exception:', e)
           return null
