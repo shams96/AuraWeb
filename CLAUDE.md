@@ -455,14 +455,104 @@ Work is sequenced by dependency and impact. No phase starts until the previous i
 
 ---
 
+### PHASE 10 — Customer Referral Program (iv Ambassador)
+
+**Goal:** Transform existing customers into brand ambassadors through a structured incentive system.
+
+**Eligibility:** All registered users who have (a) made a purchase AND (b) submitted a 5-star review OR shared on social media.
+
+**Reward mechanics:**
+- Referrer receives 10% discount on their next purchase when a referee converts
+- Referee gets a welcome discount on first purchase (to be determined — suggest 10%)
+- Points also credited to iv Circle loyalty balance
+
+**User journey:**
+
+*Referrer path:*
+1. Eligible user visits `/account/referrals` → sees unique referral link + share buttons
+2. Shares link (copy, Twitter/X, WhatsApp)
+3. Tracks referrals: pending (clicked), converted (purchased), rewarded (discount applied)
+4. On conversion: email notification + discount code applied automatically to account
+5. At checkout: discount surfaced as "Ambassador reward — 10% off this order"
+
+*Referee path:*
+1. Clicks referral link → lands on homepage with `?ref=[code]` param
+2. Cookie set (`iv_ref`, 30-day expiry) for attribution
+3. Signs up → referral code stored on user record
+4. Makes first purchase → conversion triggers referrer reward
+
+**Technical architecture:**
+
+*Database additions (Phase 9 Prisma migration):*
+```
+model Referral {
+  id          String   @id @default(cuid())
+  referrerId  String                         // User who shared
+  refereeId   String?                        // User who converted (null until signup)
+  code        String   @unique               // 8-char alphanumeric
+  status      ReferralStatus @default(PENDING) // PENDING | CONVERTED | REWARDED
+  rewardCode  String?                        // Stripe promo code issued on conversion
+  createdAt   DateTime @default(now())
+  convertedAt DateTime?
+  expiresAt   DateTime                       // 90 days from creation
+}
+```
+
+*New API routes:*
+- `GET /api/referral/link` — returns or creates referral code for authenticated user
+- `POST /api/referral/track` — called on signup when `?ref=` param present; stores attribution
+- `POST /api/referral/convert` — called from webhook on first purchase; issues reward
+
+*Link generation:* `crypto.randomBytes(4).toString('hex')` → 8-char code, stored in DB
+
+*Attribution:* `?ref=[code]` → middleware sets `iv_ref` cookie (30 days) → on registration, API reads cookie and stores referral record
+
+*Reward issuance:* Stripe promo code created via API (`stripe.promotionCodes.create`) with 10% off, customer-specific, one-time use
+
+**UI components needed:**
+- `/account/referrals` page — link display, share buttons, stats table (clicks, conversions, rewards earned)
+- Checkout: "Ambassador reward applied — −10%" line in order summary
+- Email: "Someone just used your referral link" + "Your reward is ready" notifications
+
+**Fraud prevention:**
+- Self-referral blocked: referee email cannot match referrer email
+- Same-device block: if referee IP matches referrer session within 10 min, flag for review
+- One reward per unique referee conversion (not per order)
+- Discount codes are single-use and customer-specific in Stripe
+
+**Edge cases:**
+- Referee returns/refunds order → reward code issued but not yet used: code revoked
+- Referral link expires after 90 days → new link auto-generated on next visit
+- Referrer account deleted → orphaned referrals archived, not rewarded
+
+**Acceptance criteria:**
+- Unique referral link generated per eligible user
+- Cookie-based attribution survives page refresh and browser navigation
+- Referrer notified by email on conversion
+- 10% Stripe promo code applied automatically, visible at checkout
+- Self-referral and duplicate conversion blocked
+
+**Status: POSTPONED — implement after Phases 1–9 complete.**
+
+---
+
 ## Current Sprint — Active Work
 
-**Phase 0 is approved for immediate execution.**
-Phases 1–8 require approval before starting.
+Phases 0–2 complete. Currently executing Phase 3.
 
-Phase 0 tasks:
-- [ ] Fix cart-drawer.tsx: remove penalty language, replace with Langer-compliant invitation
-- [ ] Fix buy-box.tsx: remove penalty language, replace with Langer-compliant invitation
+| Phase | Status |
+|---|---|
+| Phase 0 — Langer copy fix | ✅ Complete |
+| Phase 1 — Stripe subscription | ✅ Complete |
+| Phase 2 — Checkout redesign | ✅ Complete |
+| Phase 3 — B2B login + gating | 🔄 In progress |
+| Phase 4 — Shop compliance | ⏳ Queued |
+| Phase 5 — Account dashboard | ⏳ Queued |
+| Phase 6 — Email flows | ⏳ Queued |
+| Phase 7 — iv Circle loyalty | ⏳ Queued |
+| Phase 8 — Forgot password | ⏳ Queued |
+| Phase 9 — Production DB | ⏳ Queued |
+| Phase 10 — Referral program | ⏳ Postponed |
 
 ---
 
