@@ -3,6 +3,8 @@ import fs from 'fs'
 import path from 'path'
 import bcrypt from 'bcryptjs'
 import { randomUUID } from 'crypto'
+import { resend, FROM_EMAIL } from '@/lib/resend'
+import { accountWelcomeEmail } from '@/lib/email-templates'
 
 interface User {
   id: string
@@ -71,6 +73,19 @@ export async function POST(req: NextRequest) {
     saveUsers(users)
 
     console.log(`[register] created user: ${emailLower}`)
+
+    // Send welcome email (non-blocking — failure doesn't affect registration)
+    if (resend) {
+      const aType = accountType === 'business' ? 'business' : 'personal'
+      resend.emails.send({
+        from:    FROM_EMAIL,
+        to:      emailLower,
+        subject: accountType === 'business'
+          ? 'Your Isola Vitale professional application | Welcome'
+          : 'Welcome to Isola Vitale — your ritual awaits',
+        html: accountWelcomeEmail({ name: name.trim(), accountType: aType }),
+      }).catch(err => console.error('[register] welcome email failed:', err))
+    }
 
     return NextResponse.json(
       { id: newUser.id, email: newUser.email, name: newUser.name, role: newUser.role },

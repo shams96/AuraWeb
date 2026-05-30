@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { stripe } from '@/lib/stripe'
 import { prisma } from '@/lib/prisma'
 import { resend, FROM_EMAIL } from '@/lib/resend'
-import { orderConfirmationEmail } from '@/lib/email-templates'
+import { orderConfirmationEmail, subscriptionReminderEmail } from '@/lib/email-templates'
 import Stripe from 'stripe'
 
 export const runtime = 'nodejs'
@@ -132,6 +132,31 @@ async function handleInvoicePaid(invoice: Stripe.Invoice) {
   }
 }
 
+async function handleInvoiceUpcoming(invoice: Stripe.Invoice) {
+  const customerEmail = typeof invoice.customer_email === 'string' ? invoice.customer_email : null
+  if (!customerEmail || !resend) return
+
+  const renewalDate = invoice.period_end
+    ? new Date(invoice.period_end * 1000).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
+    : 'soon'
+
+  const total    = (invoice.amount_due ?? 0) / 100
+  const currency = (invoice.currency ?? 'usd').toUpperCase() === 'GBP' ? '£' : '$'
+  const name     = (invoice.customer_name as string | null) ?? 'Valued Customer'
+
+  try {
+    await resend.emails.send({
+      from:    FROM_EMAIL,
+      to:      customerEmail,
+      subject: `Your ritual renews in 3 days | Isola Vitale`,
+      html: subscriptionReminderEmail({ customerName: name, renewalDate, total, currency }),
+    })
+    console.info(`[webhook] renewal reminder sent to ${customerEmail}`)
+  } catch (err) {
+    console.error('[webhook] renewal reminder email failed:', err)
+  }
+}
+
 async function handleSubscriptionDeleted(subscription: Stripe.Subscription) {
   console.info(`[webhook] subscription.deleted — ${subscription.id}`)
 
@@ -182,6 +207,9 @@ export async function POST(req: NextRequest) {
         break
       case 'invoice.paid':
         await handleInvoicePaid(event.data.object as Stripe.Invoice)
+        break
+      case 'invoice.upcoming':
+        await handleInvoiceUpcoming(event.data.object as Stripe.Invoice)
         break
       case 'customer.subscription.deleted':
         await handleSubscriptionDeleted(event.data.object as Stripe.Subscription)

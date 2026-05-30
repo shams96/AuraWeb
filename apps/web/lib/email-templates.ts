@@ -80,3 +80,69 @@ export function newsletterWelcomeEmail(data: { email: string }) {
     <a class="btn" href="${process.env.NEXTAUTH_URL}/shop">Discover Your Protocol</a>
   `)
 }
+
+export function accountWelcomeEmail(data: { name: string; accountType: 'personal' | 'business' }) {
+  const firstName = data.name.split(' ')[0]
+  const isPro = data.accountType === 'business'
+
+  const heading = isPro
+    ? `Your professional access is confirmed, ${firstName}.`
+    : `Welcome to Isola Vitale, ${firstName}.`
+
+  const body = isPro
+    ? `Your professional account has been created. Once our team verifies your practice details (within 5 business days), you'll have full access to the Clinical A-Series, wholesale pricing, and IRB study data.`
+    : `Your account is ready. Discover your protocol, build your ritual, and let science do the quiet work.`
+
+  const ctaHref = isPro
+    ? `${process.env.NEXTAUTH_URL}/professional`
+    : `${process.env.NEXTAUTH_URL}/shop`
+
+  const ctaLabel = isPro ? 'Visit Your Professional Portal' : 'Discover Your Protocol'
+
+  return base(`
+    <div class="logo">Isola Vitale</div>
+    <h2 style="font-size:24px;margin:0 0 8px;font-style:italic">${heading}</h2>
+    <p class="muted" style="margin:0 0 24px">${body}</p>
+    <div class="divider"></div>
+    ${isPro ? `
+    <p class="muted" style="font-size:12px;border-left:2px solid #913832;padding-left:14px;margin-bottom:24px">
+      In the meantime, you can explore consumer formulations and prepare your first order.
+      Clinical A-Series access will be unlocked once your application is approved.
+    </p>` : `
+    <p class="muted" style="font-size:12px;margin-bottom:24px">
+      Born in Isola del Liri, Lazio, Italy. Formulated by Natural You Srl.
+      Science that whispers — never shouts.
+    </p>`}
+    <a class="btn" href="${ctaHref}">${ctaLabel}</a>
+    <p class="muted" style="margin-top:32px;font-size:12px">
+      Questions? Our concierge team is available at
+      <a href="mailto:shams@1hubsolutions.com" style="color:#913832">shams@1hubsolutions.com</a>
+    </p>
+  `)
+}
+
+export function subscriptionReminderEmail(data: {
+  customerName: string
+  renewalDate: string
+  total: number
+  currency: string
+}) {
+  const firstName = data.customerName.split(' ')[0]
+  return base(`
+    <div class="logo">Isola Vitale</div>
+    <h2 style="font-size:24px;margin:0 0 8px;font-style:italic">Your ritual renews in 3 days.</h2>
+    <p class="muted">
+      ${firstName}, your monthly formulation will be despatched on <strong class="gold">${data.renewalDate}</strong>
+      and charged at <strong>${data.currency}${data.total.toFixed(2)}</strong>.
+      It will arrive — as always — before you run out.
+    </p>
+    <div class="divider"></div>
+    <p class="muted" style="font-size:12px">
+      Need to update your delivery address or payment method? Visit your account before the renewal date.
+    </p>
+    <a class="btn" href="${process.env.NEXTAUTH_URL}/account/subscription">Manage Your Ritual</a>
+    <p class="muted" style="margin-top:32px;font-size:12px">
+      To cancel, visit your account at any time — no penalties, no questions.
+    </p>
+  `)
+}
