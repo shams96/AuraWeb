@@ -1,16 +1,18 @@
 'use client'
 
-import { useState } from 'react'
-import { Crown, Star, Zap, Gift, Truck, Shield, CheckCircle2, ChevronDown } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { useSession } from 'next-auth/react'
+import { Crown, Star, Zap, Gift, CheckCircle2, ChevronDown } from 'lucide-react'
 
 const TIERS = [
   {
-    name: 'iv Bronze',
+    name: 'iv Acqua',
+    label: 'Acqua',
     threshold: '0 – 499 pts',
-    color: 'text-amber-600',
-    border: 'border-amber-600/30',
-    bg: 'bg-amber-600/5',
-    icon: <Star className="w-6 h-6 text-amber-600" />,
+    color: 'text-sky-400',
+    border: 'border-sky-400/30',
+    bg: 'bg-sky-400/5',
+    icon: <Star className="w-6 h-6 text-sky-400" />,
     perks: [
       'Earn 1 point per $1 spent',
       'Early access to new launches',
@@ -19,7 +21,8 @@ const TIERS = [
     ],
   },
   {
-    name: 'iv Gold',
+    name: 'iv Verde',
+    label: 'Verde',
     threshold: '500 – 1,999 pts',
     color: 'text-iv-gold',
     border: 'border-iv-gold/50',
@@ -36,19 +39,20 @@ const TIERS = [
     ],
   },
   {
-    name: 'iv Obsidian',
+    name: 'iv Oro',
+    label: 'Oro',
     threshold: '2,000+ pts',
-    color: 'text-iv-white',
-    border: 'border-iv-white/30',
-    bg: 'bg-iv-white/5',
-    icon: <Zap className="w-6 h-6 text-iv-white" />,
+    color: 'text-iv-champagne',
+    border: 'border-iv-champagne/30',
+    bg: 'bg-iv-champagne/5',
+    icon: <Zap className="w-6 h-6 text-iv-champagne" />,
     perks: [
       'Earn 2 points per $1 spent',
       'Dedicated Skin Concierge (WhatsApp)',
       'Complimentary 30-min virtual skin consultation',
       'Invitation to Lab Days at Natural You Srl',
       'First access to unreleased formulas',
-      'Annual curated Obsidian Welcome Box',
+      'Annual curated Oro Welcome Box',
       'Co-creation input on new products',
     ],
   },
@@ -72,11 +76,22 @@ const EARN_ACTIONS = [
 ]
 
 export default function LoyaltyPage() {
-  const [openFaq, setOpenFaq] = useState<number | null>(null)
+  const { data: session } = useSession()
+  const [openFaq,     setOpenFaq]     = useState<number | null>(null)
+  const [points,      setPoints]      = useState<number | null>(null)
+  const [currentTier, setCurrentTier] = useState<string | null>(null)
+
+  useEffect(() => {
+    if (!session) return
+    fetch('/api/account/loyalty')
+      .then(r => r.ok ? r.json() : null)
+      .then(d => { if (d) { setPoints(d.points); setCurrentTier(d.tier) } })
+      .catch(() => {})
+  }, [session])
 
   const faqs = [
-    { q: 'Do points expire?', a: 'Points remain active as long as you make at least one purchase every 18 months. iv Obsidian members never have points expire.' },
-    { q: 'Can I gift my points to someone else?', a: 'iv Gold and Obsidian members can transfer up to 500 points per calendar year to another Isola Vitale account.' },
+    { q: 'Do points expire?', a: 'Points remain active as long as you make at least one purchase every 18 months. iv Oro members never have points expire.' },
+    { q: 'Can I gift my points to someone else?', a: 'iv Verde and Oro members can transfer up to 500 points per calendar year to another Isola Vitale account.' },
     { q: 'What happens if I drop a tier?', a: 'Tier status is reviewed annually. If your points fall below the threshold, you retain your current tier benefits for a 90-day grace period.' },
     { q: 'How do subscription orders work with points?', a: 'Active subscriptions automatically earn 25% bonus points on every renewal order, in addition to your base tier rate.' },
   ]
@@ -93,9 +108,32 @@ export default function LoyaltyPage() {
           <h1 className="iv-type-display font-semibold mb-8 uppercase">
             The <span className="text-iv-gold italic iv-serif">iv Circle</span>
           </h1>
-          <p className="text-xl text-iv-cream/70 leading-relaxed font-light max-w-2xl mx-auto">
-            Every purchase, review, and referral builds toward exclusive privileges — from Obsidian concierge access to Lab Days at our Natural You Srl facility in Isola del Liri.
+          <p className="text-xl text-iv-cream/70 leading-relaxed font-light max-w-2xl mx-auto mb-12">
+            Every purchase, review, and referral builds toward exclusive privileges — from Oro concierge access to Lab Days at our Natural You Srl facility in Isola del Liri.
           </p>
+
+          {session && points !== null && (
+            <div className="inline-flex flex-col items-center gap-3 border border-iv-gold/20 rounded-2xl px-10 py-6 bg-iv-black/40 backdrop-blur-md">
+              <p className="text-[10px] font-black uppercase tracking-[0.3em] text-iv-gold">Your iv Circle Balance</p>
+              <p className="text-4xl font-black text-iv-white">{points.toLocaleString()} <span className="text-iv-gold text-2xl">pts</span></p>
+              <p className="text-xs text-iv-cream/40 uppercase tracking-widest font-bold">iv {currentTier} · {
+                currentTier === 'Acqua' ? `${500 - points} pts to Verde` :
+                currentTier === 'Verde' ? `${2000 - points} pts to Oro` :
+                'Highest Tier'
+              }</p>
+            </div>
+          )}
+
+          {!session && (
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="/register" className="inline-flex items-center justify-center gap-2 bg-iv-gold text-iv-black text-xs font-black uppercase tracking-widest px-8 py-3.5 rounded-full hover:bg-iv-gold/90 transition-colors">
+                Join iv Circle
+              </a>
+              <a href="/login" className="inline-flex items-center justify-center gap-2 border border-iv-gold/30 text-iv-gold text-xs font-black uppercase tracking-widest px-8 py-3.5 rounded-full hover:border-iv-gold transition-colors">
+                Sign In
+              </a>
+            </div>
+          )}
         </div>
       </section>
 
@@ -197,7 +235,7 @@ export default function LoyaltyPage() {
             {[
               { pts: '500 pts', gift: 'Deluxe Discovery Set', desc: '4 × 5ml hero actives' },
               { pts: '1,000 pts', gift: 'Full-Size Product', desc: 'Your choice from T1–T2' },
-              { pts: '2,000 pts', gift: 'Obsidian Welcome Box', desc: 'Curated 6-piece ritual kit' },
+              { pts: '2,000 pts', gift: 'Oro Welcome Box', desc: 'Curated 6-piece ritual kit' },
               { pts: '5,000 pts', gift: 'Lab Day Invitation', desc: 'Isola del Liri, Italy' },
             ].map(({ pts, gift, desc }) => (
               <div key={pts} className="bg-iv-deep-green/10 border border-iv-gold/10 rounded-2xl p-8 text-center hover:border-iv-gold/30 transition-all">

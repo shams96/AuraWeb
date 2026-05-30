@@ -3,6 +3,7 @@ import { stripe } from '@/lib/stripe'
 import { prisma } from '@/lib/prisma'
 import { resend, FROM_EMAIL } from '@/lib/resend'
 import { orderConfirmationEmail, subscriptionReminderEmail } from '@/lib/email-templates'
+import { addLoyaltyPoints } from '@/lib/user-store'
 import Stripe from 'stripe'
 
 export const runtime = 'nodejs'
@@ -72,6 +73,18 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
       console.info(`[webhook] confirmation email sent to ${customerEmail}`)
     } catch (emailErr) {
       console.error('[webhook] confirmation email failed:', emailErr)
+    }
+  }
+
+  // Accrue loyalty points: 1 pt per $1 spent (subscriptions +25% bonus)
+  if (customerEmail) {
+    try {
+      const basePoints    = Math.floor(total)
+      const earnedPoints  = isSubscription ? Math.floor(basePoints * 1.25) : basePoints
+      addLoyaltyPoints(customerEmail, earnedPoints)
+      console.info(`[webhook] loyalty: +${earnedPoints} pts to ${customerEmail}`)
+    } catch (ptErr) {
+      console.error('[webhook] loyalty points accrual failed:', ptErr)
     }
   }
 

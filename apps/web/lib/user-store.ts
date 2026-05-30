@@ -16,6 +16,7 @@ export interface StoredUser {
   role: 'CUSTOMER' | 'PROFESSIONAL' | 'ADMIN' | 'OWNER'
   accountType: 'personal' | 'business'
   createdAt: string
+  loyaltyPoints?: number
 }
 
 const STORE = path.join(process.cwd(), 'data', 'users.json')
@@ -77,6 +78,14 @@ export function createUser(data: {
 
 export async function verifyPassword(user: StoredUser, password: string): Promise<boolean> {
   return bcrypt.compare(password, user.passwordHash)
+}
+
+export function addLoyaltyPoints(email: string, points: number): void {
+  const users = read()
+  const idx = users.findIndex(u => u.email.toLowerCase() === email.toLowerCase())
+  if (idx === -1) return
+  users[idx] = { ...users[idx], loyaltyPoints: (users[idx].loyaltyPoints ?? 0) + points }
+  write(users)
 }
 
 /** Ensure a default admin account exists. Called at auth startup. */
