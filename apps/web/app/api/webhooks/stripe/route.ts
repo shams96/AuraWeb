@@ -76,6 +76,23 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
     }
   }
 
+  // Trigger referral conversion for first-time purchasers (fire-and-forget)
+  if (customerEmail) {
+    try {
+      const baseUrl = process.env.NEXTAUTH_URL ?? 'http://localhost:3000'
+      fetch(`${baseUrl}/api/referral/convert`, {
+        method:  'POST',
+        headers: {
+          'Content-Type':     'application/json',
+          'x-internal-secret': process.env.NEXTAUTH_SECRET ?? '',
+        },
+        body: JSON.stringify({ refereeEmail: customerEmail }),
+      }).catch(e => console.error('[webhook] referral convert fetch failed:', e))
+    } catch (refErr) {
+      console.error('[webhook] referral convert failed:', refErr)
+    }
+  }
+
   // Accrue loyalty points: 1 pt per $1 spent (subscriptions +25% bonus)
   if (customerEmail) {
     try {

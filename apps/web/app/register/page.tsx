@@ -66,10 +66,22 @@ export default function RegisterPage() {
         return
       }
 
-      // 2. Show success state
+      // 2. Track referral if cookie present (fire-and-forget)
+      try {
+        const ivRef = document.cookie.split(';').map(c => c.trim()).find(c => c.startsWith('iv_ref='))?.split('=')[1]
+        if (ivRef) {
+          fetch('/api/referral/track', {
+            method:  'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body:    JSON.stringify({ code: ivRef, refereeEmail: email }),
+          }).catch(() => {})
+        }
+      } catch { /* cookie read failed — non-critical */ }
+
+      // 3. Show success state
       setSuccess(true)
 
-      // 3. Auto sign-in
+      // 4. Auto sign-in
       const result = await signIn('credentials', { email, password, redirect: false })
 
       if (result?.ok) {

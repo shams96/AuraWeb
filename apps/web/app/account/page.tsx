@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import {
   RefreshCcw, ShoppingBag, Star, LogOut,
-  ChevronRight, User, FlaskConical,
+  ChevronRight, User, FlaskConical, Gift,
 } from 'lucide-react'
 
 const C = {
@@ -24,6 +24,7 @@ const NAV_ITEMS = [
   { label: 'My Orders',         href: '/account/orders',       icon: ShoppingBag, desc: 'View your order history'              },
   { label: 'Ritual Membership', href: '/account/subscription',  icon: RefreshCcw,  desc: 'Manage your monthly ritual'          },
   { label: 'iv Circle',         href: '/loyalty',               icon: Star,        desc: 'Your loyalty points and rewards'     },
+  { label: 'iv Ambassador',     href: '/account/referrals',     icon: Gift,        desc: 'Invite friends, earn rewards'        },
   { label: 'Profile',           href: '/account/profile',       icon: User,        desc: 'Email, password, preferences'        },
 ]
 

@@ -146,3 +146,30 @@ export function subscriptionReminderEmail(data: {
     </p>
   `)
 }
+
+export function referralRewardEmail(data: {
+  referrerName: string
+  rewardCode: string
+  refereeEmail: string
+}) {
+  const maskedEmail = data.refereeEmail.replace(/(.{2}).*(@.*)/, '$1…$2')
+  return base(`
+    <div class="logo">Isola Vitale</div>
+    <h2 style="font-size:24px;margin:0 0 8px;font-style:italic">Your invitation worked, ${data.referrerName}.</h2>
+    <p class="muted" style="margin:0 0 24px">
+      Someone you invited (<strong class="gold">${maskedEmail}</strong>) has just completed their first ritual order.
+      Your Ambassador reward is ready.
+    </p>
+    <div class="divider"></div>
+    <div style="background:#F4EAE2;border-radius:12px;padding:20px 24px;margin:24px 0;text-align:center">
+      <p style="font-size:11px;font-weight:900;letter-spacing:0.25em;text-transform:uppercase;color:#913832;margin:0 0 8px">Your 10% Discount Code</p>
+      <p style="font-size:28px;font-weight:900;color:#1A1614;letter-spacing:0.1em;margin:0;font-family:monospace">${data.rewardCode}</p>
+      <p class="muted" style="font-size:12px;margin:8px 0 0">Single use · apply at checkout</p>
+    </div>
+    <a class="btn" href="${process.env.NEXTAUTH_URL}/account/referrals">View Your Rewards</a>
+    <p class="muted" style="margin-top:24px;font-size:12px">
+      Thank you for sharing Isola Vitale with someone who matters to you.
+      Every great ritual deserves a great beginning.
+    </p>
+  `)
+}
