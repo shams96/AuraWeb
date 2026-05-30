@@ -2,413 +2,369 @@
 
 import { useState, useEffect } from 'react'
 import { useCart } from '@/lib/cart-context'
+import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
-import { Header } from '@/components/layout/header'
-import { Footer } from '@/components/layout/footer'
-import { Button } from '@aurabiosphere/ui'
-import { ArrowLeft, CreditCard, Truck, Shield, Loader2 } from 'lucide-react'
-import { ErrorBoundary } from '@/components/error-boundary'
+import Link from 'next/link'
+import {
+  ArrowLeft, Shield, Loader2, RefreshCcw,
+  ShieldCheck, Award, FlaskConical, RotateCcw, Truck,
+} from 'lucide-react'
 
-interface CheckoutItem {
-  id: string
-  name: string
-  price: number
-  currency: string
-  quantity: number
-  image?: string
-  sku: string
+// Light-theme palette — matches /login and /register
+const C = {
+  page:      '#FDFAF5',   // warm ivory
+  parchment: '#F4EAE2',   // warm parchment — card bg
+  card:      '#EDE8E0',   // card surface
+  charcoal:  '#1A1614',   // primary text
+  espresso:  '#3D2B20',   // body text
+  muted:     '#7A5C4E',   // muted text
+  gold:      '#913832',   // brand accent / CTA
+  goldLight: '#B04843',   // hover
+  border:    'rgba(145,56,50,0.14)',
+  borderFocus:'rgba(145,56,50,0.5)',
 }
 
-interface CheckoutFormData {
-  email: string
-  firstName: string
-  lastName: string
-  address: string
-  apartment?: string
-  city: string
-  state: string
-  zipCode: string
-  country: string
+const INPUT: React.CSSProperties = {
+  display: 'block', width: '100%', padding: '12px 0',
+  background: 'transparent',
+  border: 'none', borderBottom: `1px solid ${C.border}`,
+  fontSize: '0.875rem', color: C.charcoal,
+  outline: 'none', transition: 'border-color 0.2s',
+  boxSizing: 'border-box',
+}
+
+const LABEL: React.CSSProperties = {
+  display: 'block',
+  fontSize: '0.625rem', fontWeight: 900, letterSpacing: '0.25em',
+  textTransform: 'uppercase', color: C.muted, marginBottom: 4,
 }
 
 export default function CheckoutPage() {
   const { state, clearCart } = useCart()
-  const router = useRouter()
-  const [loading, setLoading] = useState(false)
-  const [processing, setProcessing] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-  const [success, setSuccess] = useState(false)
-  const [formData, setFormData] = useState<CheckoutFormData>({
-    email: '',
-    firstName: '',
-    lastName: '',
-    address: '',
-    apartment: '',
-    city: '',
-    state: '',
-    zipCode: '',
-    country: 'US',
-  })
+  const { data: session }    = useSession()
+  const router               = useRouter()
 
-  // Calculate totals
-  const subtotal = state.items.reduce((sum, item) => sum + (item.price * item.quantity), 0)
-  const shipping = subtotal >= 50 ? 0 : 9.99
-  const tax = subtotal * 0.08 // 8% tax
-  const total = subtotal + shipping + tax
+  const [processing, setProcessing] = useState(false)
+  const [error, setError]           = useState('')
+  const [email, setEmail]           = useState('')
+  const [name, setName]             = useState('')
+  const [guestMode, setGuestMode]   = useState(true)
 
   useEffect(() => {
-    // Check if cart is empty
-    if (state.items.length === 0) {
-      router.push('/')
+    if (session?.user) {
+      if (session.user.email) setEmail(session.user.email)
+      if (session.user.name)  setName(session.user.name)
+      setGuestMode(false)
     }
+  }, [session])
+
+  useEffect(() => {
+    if (state.items.length === 0) router.replace('/shop')
   }, [state.items, router])
 
-  const handleInputChange = (field: keyof CheckoutFormData, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }))
-    setError(null)
-  }
+  const items         = state.items
+  const subtotal      = items.reduce((s, i) => s + i.price * i.quantity, 0)
+  const retailTotal   = items.reduce((s, i) => s + i.basePrice * i.quantity, 0)
+  const savings       = retailTotal - subtotal
+  const shipping      = subtotal >= 200 ? 0 : 12.99
+  const total         = subtotal + shipping
+  const allSubscribed = items.length > 0 && items.every(i => i.isSubscription)
+  const annualSavings = savings * 12
 
-  const validateForm = (): boolean => {
-    if (!formData.email || !formData.email.includes('@')) {
-      setError('Please enter a valid email address')
-      return false
+  async function handleComplete() {
+    if (!email || !email.includes('@')) {
+      setError('Please enter a valid email address so we can reach you.')
+      return
     }
-    
-    if (!formData.firstName || !formData.lastName) {
-      setError('Please enter your full name')
-      return false
+    if (!name.trim()) {
+      setError('Please enter your name.')
+      return
     }
-    
-    if (!formData.address || !formData.city || !formData.state || !formData.zipCode) {
-      setError('Please fill in all shipping address fields')
-      return false
-    }
-    
-    return true
-  }
-
-  const handleCheckout = async () => {
-    if (!validateForm()) return
-    
     setProcessing(true)
-    setError(null)
-    
+    setError('')
     try {
-      // Prepare checkout items
-      const checkoutItems = state.items.map(item => ({
-        productId: item.id.split(' - ')[0], // Extract product ID from name
-        variantId: item.id, // Use SKU as variant ID
-        quantity: item.quantity
-      }))
-      
-      // Call checkout API
-      const response = await fetch('/api/checkout', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+      const res = await fetch('/api/checkout', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          items: checkoutItems,
-          shippingAddress: {
-            firstName: formData.firstName,
-            lastName: formData.lastName,
-            address1: formData.address,
-            address2: formData.apartment || '',
-            city: formData.city,
-            state: formData.state,
-            zipCode: formData.zipCode,
-            country: formData.country
-          },
-          billingAddress: {
-            firstName: formData.firstName,
-            lastName: formData.lastName,
-            address1: formData.address,
-            address2: formData.apartment || '',
-            city: formData.city,
-            state: formData.state,
-            zipCode: formData.zipCode,
-            country: formData.country
-          }
+          currency: 'usd',
+          items: items.map(i => ({
+            id:             i.sku ?? i.id,
+            name:           i.name,
+            price:          i.price,
+            quantity:       i.quantity,
+            image:          i.image,
+            isSubscription: i.isSubscription ?? false,
+          })),
         }),
       })
-      
-      if (!response.ok) {
-        throw new Error('Checkout failed')
-      }
-      
-      const { sessionId, url } = await response.json()
-      
-      // Redirect to Stripe Checkout
-      window.location.href = url
-      
+      const data: { url?: string; error?: string } = await res.json()
+      if (!res.ok || !data.url) throw new Error(data.error ?? 'checkout_failed')
+      clearCart()
+      window.location.href = data.url
     } catch (err) {
-      console.error('Error processing checkout:', err)
-      setError('There was an error processing your order. Please try again.')
-    } finally {
+      const msg = err instanceof Error ? err.message : ''
+      setError(
+        msg && msg !== 'checkout_failed'
+          ? msg
+          : 'We couldn\'t process your order. Please try again or call +1 214-714-3597.'
+      )
       setProcessing(false)
     }
   }
 
-  if (success) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="text-center max-w-md">
-          <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <Shield className="w-8 h-8 text-green-600" />
-          </div>
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Order Confirmed!</h1>
-          <p className="text-gray-600 mb-6">
-            Thank you for your order. You will receive a confirmation email shortly with your order details.
-          </p>
-          <Button onClick={() => router.push('/')}>
-            Continue Shopping
-          </Button>
-        </div>
-      </div>
-    )
-  }
+  if (items.length === 0) return null
 
   return (
-    <ErrorBoundary>
-      <div className="min-h-screen bg-gray-50">
-        <Header />
-        
-        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Checkout Form */}
-            <div className="lg:col-span-2">
-              <div className="bg-white rounded-lg shadow-sm p-6">
-                <div className="flex items-center mb-6">
-                  <button
-                    onClick={() => router.back()}
-                    className="flex items-center text-gray-600 hover:text-gray-900 mr-4"
-                  >
-                    <ArrowLeft className="w-5 h-5 mr-1" />
-                    Back
-                  </button>
-                  <h1 className="text-2xl font-bold text-gray-900">Checkout</h1>
+    <div style={{ minHeight: '100vh', background: C.page }}>
+
+      {/* Minimal nav bar */}
+      <div style={{ borderBottom: `1px solid ${C.border}`, padding: '18px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: C.page }}>
+        <Link href="/shop" style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.65rem', fontWeight: 900, letterSpacing: '0.2em', textTransform: 'uppercase', color: C.muted, textDecoration: 'none' }}>
+          <ArrowLeft size={12} /> Back to Collections
+        </Link>
+        <span style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.1rem', fontWeight: 700, color: C.charcoal, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+          Isola <em style={{ color: C.gold }}>Vitale</em>
+        </span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: '0.6rem', fontWeight: 700, color: C.muted, letterSpacing: '0.15em', textTransform: 'uppercase' }}>
+          <Shield size={11} style={{ color: C.gold }} /> Secure
+        </div>
+      </div>
+
+      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '48px 24px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 48 }} className="checkout-grid">
+          <style>{`@media(min-width:1024px){.checkout-grid{grid-template-columns:3fr 2fr!important}}`}</style>
+
+          {/* ── LEFT: Form ──────────────────────────────────────────── */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 40 }}>
+
+            {/* Heading */}
+            <div>
+              <p style={{ fontSize: '0.6rem', fontWeight: 900, letterSpacing: '0.35em', textTransform: 'uppercase', color: C.gold, marginBottom: 8 }}>La Bella Figura</p>
+              <h1 style={{ fontFamily: 'var(--iv-font-serif)', fontSize: 'clamp(1.8rem,4vw,2.6rem)', fontWeight: 600, color: C.charcoal, fontStyle: 'italic', margin: 0 }}>
+                Complete Your Ritual
+              </h1>
+            </div>
+
+            {/* Ritual membership badge */}
+            {allSubscribed && (
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, borderRadius: 16, border: `1px solid ${C.border}`, padding: '14px 20px', background: C.parchment }}>
+                <RefreshCcw size={15} style={{ color: C.gold, flexShrink: 0 }} />
+                <div>
+                  <p style={{ fontSize: '0.65rem', fontWeight: 900, letterSpacing: '0.25em', textTransform: 'uppercase', color: C.gold, margin: '0 0 2px' }}>Ritual Membership Active</p>
+                  <p style={{ fontSize: '0.65rem', color: C.muted, margin: 0, fontWeight: 400 }}>
+                    Ships every 30 days · Cancel anytime · You save ${annualSavings.toFixed(0)}/year
+                  </p>
                 </div>
-                
-                {error && (
-                  <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-                    <p className="text-red-800">{error}</p>
-                  </div>
+              </div>
+            )}
+
+            {/* Error */}
+            {error && (
+              <div style={{ borderRadius: 12, border: `1px solid ${C.border}`, padding: '14px 18px', background: C.parchment }}>
+                <p style={{ fontSize: '0.8rem', color: C.espresso, margin: 0 }}>{error}</p>
+              </div>
+            )}
+
+            {/* Contact section */}
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24 }}>
+                <h2 style={{ fontSize: '0.65rem', fontWeight: 900, letterSpacing: '0.3em', textTransform: 'uppercase', color: C.charcoal, margin: 0 }}>Contact</h2>
+                {guestMode && (
+                  <Link href="/login?redirect=/checkout" style={{ fontSize: '0.6rem', fontWeight: 900, letterSpacing: '0.2em', textTransform: 'uppercase', color: C.gold, textDecoration: 'none' }}>
+                    Sign in →
+                  </Link>
                 )}
-                
-                {/* Contact Information */}
-                <div className="mb-8">
-                  <h2 className="text-lg font-semibold text-gray-900 mb-4">Contact Information</h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Email Address *
-                      </label>
-                      <input
-                        type="email"
-                        value={formData.email}
-                        onChange={(e) => handleInputChange('email', e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                        placeholder="your@email.com"
-                      />
-                    </div>
-                  </div>
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+                <div>
+                  <label style={LABEL}>We will reach you at</label>
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={e => { setEmail(e.target.value); setError('') }}
+                    placeholder="your@email.com"
+                    style={INPUT}
+                    autoComplete="email"
+                    onFocus={e => (e.currentTarget.style.borderBottomColor = C.borderFocus)}
+                    onBlur={e => (e.currentTarget.style.borderBottomColor = C.border)}
+                  />
                 </div>
-                
-                {/* Shipping Address */}
-                <div className="mb-8">
-                  <h2 className="text-lg font-semibold text-gray-900 mb-4">Shipping Address</h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        First Name *
-                      </label>
-                      <input
-                        type="text"
-                        value={formData.firstName}
-                        onChange={(e) => handleInputChange('firstName', e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                        placeholder="John"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Last Name *
-                      </label>
-                      <input
-                        type="text"
-                        value={formData.lastName}
-                        onChange={(e) => handleInputChange('lastName', e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                        placeholder="Doe"
-                      />
-                    </div>
-                  </div>
-                  <div className="mt-4">
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Address *
-                    </label>
-                    <input
-                      type="text"
-                      value={formData.address}
-                      onChange={(e) => handleInputChange('address', e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                      placeholder="123 Main St"
-                    />
-                  </div>
-                  <div className="mt-4">
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Apartment, suite, etc. (optional)
-                    </label>
-                    <input
-                      type="text"
-                      value={formData.apartment}
-                      onChange={(e) => handleInputChange('apartment', e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                      placeholder="Apt 4B"
-                    />
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        City *
-                      </label>
-                      <input
-                        type="text"
-                        value={formData.city}
-                        onChange={(e) => handleInputChange('city', e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                        placeholder="New York"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        State *
-                      </label>
-                      <input
-                        type="text"
-                        value={formData.state}
-                        onChange={(e) => handleInputChange('state', e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                        placeholder="NY"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        ZIP Code *
-                      </label>
-                      <input
-                        type="text"
-                        value={formData.zipCode}
-                        onChange={(e) => handleInputChange('zipCode', e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                        placeholder="10001"
-                      />
-                    </div>
-                  </div>
+                <div>
+                  <label style={LABEL}>Your name</label>
+                  <input
+                    type="text"
+                    value={name}
+                    onChange={e => { setName(e.target.value); setError('') }}
+                    placeholder="First and last name"
+                    style={INPUT}
+                    autoComplete="name"
+                    onFocus={e => (e.currentTarget.style.borderBottomColor = C.borderFocus)}
+                    onBlur={e => (e.currentTarget.style.borderBottomColor = C.border)}
+                  />
                 </div>
-                
-                {/* Payment Information — Stripe Elements */}
-                <div className="mb-8">
-                  <h2 className="text-lg font-semibold text-gray-900 mb-4">Payment Information</h2>
-                  <div className="rounded-xl border border-gray-200 bg-gray-50 p-6 flex flex-col items-center justify-center gap-3 text-center min-h-[120px]">
-                    <Shield className="w-6 h-6 text-gray-400" />
-                    <p className="text-sm font-medium text-gray-700">Secure payment via Stripe</p>
-                    <p className="text-xs text-gray-500">
-                      Stripe Elements will be embedded here. Card data is tokenized directly by Stripe — never touches our servers.
-                    </p>
-                    <div className="flex items-center gap-2 mt-1">
-                      {['Visa', 'Mastercard', 'Amex', 'Apple Pay'].map(m => (
-                        <span key={m} className="text-[10px] font-bold text-gray-400 border border-gray-200 rounded px-2 py-0.5 bg-white">{m}</span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-                
-                <Button
-                  size="lg"
-                  className="w-full py-4 text-lg"
-                  onClick={handleCheckout}
-                  disabled={processing || state.items.length === 0}
-                >
-                  {processing ? (
-                    <>
-                      <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                      Processing...
-                    </>
-                  ) : (
-                    `Complete Order - $${total.toFixed(2)}`
-                  )}
-                </Button>
+                {guestMode && (
+                  <p style={{ fontSize: '0.65rem', color: C.muted, fontWeight: 300, margin: 0 }}>
+                    Continuing without an account — you can save your details after your first order.
+                  </p>
+                )}
               </div>
             </div>
-            
-            {/* Order Summary */}
+
+            {/* Delivery note */}
             <div>
-              <div className="bg-white rounded-lg shadow-sm p-6 sticky top-8">
-                <h2 className="text-lg font-semibold text-gray-900 mb-4">Order Summary</h2>
-                
-                <div className="space-y-4 mb-6">
-                  {state.items.map((item) => (
-                    <div key={item.id} className="flex items-center space-x-4">
-                      <div className="w-16 h-16 bg-gray-200 rounded-lg overflow-hidden flex-shrink-0 relative">
-                        <img src={item.image || '/images/products/isola_collection.png'} alt={item.name} className="w-full h-full object-cover" />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="font-medium text-gray-900">{item.name}</h3>
-                        {item.isSubscription && (
-                          <span className="inline-flex items-center gap-1 text-[10px] font-medium text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded mt-1 mb-1">
-                            <span>🔄</span> Renews Every 30 Days
-                          </span>
-                        )}
-                        <p className="text-sm text-gray-600">
-                          ${item.price.toFixed(2)} x {item.quantity}
-                        </p>
-                      </div>
-                      <div className="font-medium text-gray-900">
-                        ${(item.price * item.quantity).toFixed(2)}
-                      </div>
-                    </div>
+              <h2 style={{ fontSize: '0.65rem', fontWeight: 900, letterSpacing: '0.3em', textTransform: 'uppercase', color: C.charcoal, margin: '0 0 10px' }}>Where your ritual will arrive</h2>
+              <p style={{ fontSize: '0.7rem', color: C.muted, margin: 0, fontWeight: 300, lineHeight: 1.7 }}>
+                Delivery address and shipping method are collected on the next step via Stripe's secure checkout — shipped worldwide from Isola del Liri, Italy.
+              </p>
+            </div>
+
+            {/* Payment note */}
+            <div>
+              <h2 style={{ fontSize: '0.65rem', fontWeight: 900, letterSpacing: '0.3em', textTransform: 'uppercase', color: C.charcoal, margin: '0 0 14px' }}>Payment</h2>
+              <div style={{ borderRadius: 14, border: `1px solid ${C.border}`, padding: '18px 20px', background: C.parchment }}>
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
+                  <ShieldCheck size={15} style={{ color: C.gold, flexShrink: 0, marginTop: 2 }} />
+                  <p style={{ fontSize: '0.7rem', color: C.espresso, margin: 0, lineHeight: 1.7, fontWeight: 300 }}>
+                    Your payment details are tokenised by Stripe and never touch our servers.
+                  </p>
+                </div>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 12 }}>
+                  {['Visa', 'Mastercard', 'Amex', 'Apple Pay', 'Google Pay'].map(m => (
+                    <span key={m} style={{ fontSize: '0.55rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: C.muted, border: `1px solid ${C.border}`, borderRadius: 4, padding: '2px 7px', background: C.page }}>
+                      {m}
+                    </span>
                   ))}
                 </div>
-                
-                <div className="border-t border-gray-200 pt-4 space-y-2">
-                  <div className="flex justify-between text-sm">
-                    <span className="text-gray-600">Subtotal</span>
-                    <span className="font-medium">${subtotal.toFixed(2)}</span>
+              </div>
+            </div>
+
+            {/* CTA */}
+            <button
+              onClick={handleComplete}
+              disabled={processing}
+              style={{
+                width: '100%', padding: '18px 24px',
+                background: processing ? C.muted : C.gold,
+                color: '#FDFAF5', border: 'none', borderRadius: 16,
+                fontSize: '0.7rem', fontWeight: 900, letterSpacing: '0.25em',
+                textTransform: 'uppercase', cursor: processing ? 'not-allowed' : 'pointer',
+                display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
+                transition: 'background 0.2s', boxShadow: '0 8px 32px rgba(145,56,50,0.22)',
+              }}
+              onMouseEnter={e => { if (!processing) e.currentTarget.style.background = C.goldLight }}
+              onMouseLeave={e => { if (!processing) e.currentTarget.style.background = C.gold }}
+            >
+              {processing
+                ? <><Loader2 size={14} className="animate-spin" /> Preparing your ritual…</>
+                : <>Complete My Ritual — ${total.toFixed(2)}</>
+              }
+            </button>
+
+            {/* Trust strip */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 12, paddingTop: 8 }}>
+              {[
+                { icon: ShieldCheck, label: '90-Day\nGuarantee' },
+                { icon: RotateCcw,   label: 'Free\nReturns' },
+                { icon: FlaskConical, label: 'EU GMP\nCertified' },
+                { icon: Truck,        label: 'Free Shipping\n£200+' },
+              ].map(({ icon: Icon, label }) => (
+                <div key={label} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, textAlign: 'center' }}>
+                  <Icon size={14} style={{ color: C.gold, opacity: 0.7 }} />
+                  <span style={{ fontSize: '0.55rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: C.muted, lineHeight: 1.4, whiteSpace: 'pre-line' }}>{label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* ── RIGHT: Order summary (sticky) ──────────────────────── */}
+          <div>
+            <div style={{ position: 'sticky', top: 32, borderRadius: 24, border: `1px solid ${C.border}`, background: C.parchment, overflow: 'hidden' }}>
+
+              {/* Header */}
+              <div style={{ padding: '20px 24px', borderBottom: `1px solid ${C.border}` }}>
+                <p style={{ fontSize: '0.6rem', fontWeight: 900, letterSpacing: '0.35em', textTransform: 'uppercase', color: C.gold, margin: 0 }}>Your Order</p>
+              </div>
+
+              {/* Items */}
+              <div style={{ padding: '20px 24px', display: 'flex', flexDirection: 'column', gap: 16 }}>
+                {items.map(item => (
+                  <div key={item.id} style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
+                    <div style={{ width: 52, height: 52, borderRadius: 12, overflow: 'hidden', flexShrink: 0, background: C.card, border: `1px solid ${C.border}` }}>
+                      <img
+                        src={item.image ?? '/images/products/isola_collection.png'}
+                        alt={item.name}
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                      />
+                    </div>
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <p style={{ fontSize: '0.8rem', fontWeight: 600, color: C.charcoal, margin: '0 0 2px', lineHeight: 1.3 }}>{item.name}</p>
+                      {item.isSubscription && (
+                        <p style={{ fontSize: '0.6rem', fontWeight: 700, color: C.gold, textTransform: 'uppercase', letterSpacing: '0.1em', margin: '0 0 2px' }}>Monthly ritual</p>
+                      )}
+                      <p style={{ fontSize: '0.7rem', color: C.muted, margin: 0 }}>× {item.quantity}</p>
+                    </div>
+                    <div style={{ textAlign: 'right', flexShrink: 0 }}>
+                      {item.isSubscription && item.price < item.basePrice && (
+                        <p style={{ fontSize: '0.6rem', color: C.muted, textDecoration: 'line-through', margin: '0 0 2px' }}>
+                          ${(item.basePrice * item.quantity).toFixed(2)}
+                        </p>
+                      )}
+                      <p style={{ fontSize: '0.875rem', fontWeight: 800, color: C.charcoal, margin: 0 }}>
+                        ${(item.price * item.quantity).toFixed(2)}
+                      </p>
+                    </div>
                   </div>
-                  <div className="flex justify-between text-sm">
-                    <span className="text-gray-600">Shipping</span>
-                    <span className="font-medium">
-                      {shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}`}
-                    </span>
+                ))}
+              </div>
+
+              {/* Totals */}
+              <div style={{ padding: '16px 24px 24px', borderTop: `1px solid ${C.border}`, display: 'flex', flexDirection: 'column', gap: 10 }}>
+                {savings > 0 && (
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderRadius: 10, padding: '8px 14px', background: 'rgba(145,56,50,0.07)', border: `1px solid ${C.border}` }}>
+                    <span style={{ fontSize: '0.6rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.2em', color: C.gold }}>Ritual savings</span>
+                    <span style={{ fontSize: '0.85rem', fontWeight: 800, color: C.gold }}>−${savings.toFixed(2)}</span>
                   </div>
-                  <div className="flex justify-between text-sm">
-                    <span className="text-gray-600">Tax</span>
-                    <span className="font-medium">${tax.toFixed(2)}</span>
-                  </div>
-                  <div className="flex justify-between text-lg font-semibold pt-2 border-t border-gray-200">
-                    <span>Total</span>
-                    <span>${total.toFixed(2)}</span>
+                )}
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.7rem', color: C.muted }}>
+                  <span>Subtotal</span><span>${subtotal.toFixed(2)}</span>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.7rem', color: C.muted }}>
+                  <span>Shipping</span><span>{shipping === 0 ? 'Free' : `$${shipping.toFixed(2)}`}</span>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', paddingTop: 10, borderTop: `1px solid ${C.border}` }}>
+                  <span style={{ fontSize: '0.65rem', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.2em', color: C.charcoal }}>Total</span>
+                  <div style={{ textAlign: 'right' }}>
+                    <span style={{ fontSize: '1.4rem', fontWeight: 800, color: C.charcoal }}>${total.toFixed(2)}</span>
+                    {allSubscribed && <p style={{ fontSize: '0.6rem', color: C.gold, fontWeight: 700, margin: '2px 0 0', textTransform: 'uppercase', letterSpacing: '0.15em' }}>/month</p>}
                   </div>
                 </div>
-                
-                <div className="mt-6 pt-6 border-t border-gray-200">
-                  <div className="flex items-center space-x-2 text-sm text-gray-600 mb-2">
-                    <Shield className="w-4 h-4 text-green-500" />
-                    <span>Secure checkout powered by Stripe</span>
+                {allSubscribed && annualSavings > 0 && (
+                  <p style={{ fontSize: '0.65rem', color: C.muted, textAlign: 'center', fontStyle: 'italic', marginTop: 4 }}>
+                    You save ${annualSavings.toFixed(0)} over the year with your ritual membership.
+                  </p>
+                )}
+              </div>
+
+              {/* Clinician endorsement */}
+              <div style={{ padding: '16px 24px 20px', borderTop: `1px solid ${C.border}` }}>
+                <div style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
+                  <div style={{ width: 34, height: 34, borderRadius: '50%', background: C.card, border: `1px solid ${C.border}`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <Award size={13} style={{ color: C.gold }} />
                   </div>
-                  <div className="flex items-center space-x-2 text-sm text-gray-600">
-                    <Truck className="w-4 h-4 text-blue-500" />
-                    <span>Free shipping on orders over $50</span>
+                  <div>
+                    <p style={{ fontSize: '0.65rem', fontWeight: 800, color: C.charcoal, margin: '0 0 3px' }}>Dr. Elena Vitali, MD</p>
+                    <p style={{ fontSize: '0.6rem', color: C.muted, fontStyle: 'italic', lineHeight: 1.5, margin: 0 }}>
+                      "The most clinically rigorous non-prescription protocol I have reviewed."
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </main>
-        
-        <Footer />
+
+        </div>
       </div>
-    </ErrorBoundary>
+    </div>
   )
 }
