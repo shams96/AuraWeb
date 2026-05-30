@@ -1,7 +1,7 @@
 # CLAUDE.md — Isola Vitale / AuraWeb
 # Engineering Master Document — Single Source of Truth
 
-Last updated: 2026-05-29. Keep this file current after every significant change.
+Last updated: 2026-05-30. Keep this file current after every significant change.
 
 ---
 
@@ -165,7 +165,7 @@ Work is sequenced by dependency and impact. No phase starts until the previous i
 
 ---
 
-### PHASE 0 — Immediate Corrections (fixes errors introduced in prior session)
+### PHASE 0 — Immediate Corrections ✅ COMPLETE
 
 **Goal:** Restore Langer compliance to cart drawer and buy box. Zero new features.
 
@@ -192,7 +192,7 @@ Work is sequenced by dependency and impact. No phase starts until the previous i
 
 ---
 
-### PHASE 1 — Subscription Infrastructure (blocks revenue)
+### PHASE 1 — Subscription Infrastructure ✅ COMPLETE
 
 **Goal:** Wire subscription pricing end-to-end through Stripe. Currently the UX shows subscriptions but the API only supports one-time payments.
 
@@ -226,7 +226,7 @@ Work is sequenced by dependency and impact. No phase starts until the previous i
 
 ---
 
-### PHASE 2 — Checkout Page Redesign (Langer compliance + IM8 pattern)
+### PHASE 2 — Checkout Page Redesign ✅ COMPLETE
 
 **Goal:** Replace the generic checkout page with a luxury-grade, on-brand experience. Currently scores 35/100 on Langer compliance.
 
@@ -264,7 +264,7 @@ Work is sequenced by dependency and impact. No phase starts until the previous i
 
 ---
 
-### PHASE 3 — B2B Professional Login + Product Gating
+### PHASE 3 — B2B Professional Login + Product Gating ✅ COMPLETE
 
 **Goal:** Separate the consumer and professional authentication flows completely. Gate clinical A-Series products behind role check.
 
@@ -300,7 +300,7 @@ Work is sequenced by dependency and impact. No phase starts until the previous i
 
 ---
 
-### PHASE 4 — Shop Page Langer Compliance
+### PHASE 4 — Shop Page Langer Compliance ✅ COMPLETE
 
 **Goal:** Elevate the shop page from utilitarian product grid to a luxury brand moment.
 
@@ -329,7 +329,7 @@ Work is sequenced by dependency and impact. No phase starts until the previous i
 
 ---
 
-### PHASE 5 — Account Dashboard
+### PHASE 5 — Account Dashboard ✅ COMPLETE
 
 **Goal:** Build the logged-in account experience. Currently placeholder or missing.
 
@@ -351,7 +351,7 @@ Work is sequenced by dependency and impact. No phase starts until the previous i
 
 ---
 
-### PHASE 6 — Email Flows via Resend
+### PHASE 6 — Email Flows via Resend ✅ COMPLETE
 
 **Goal:** Transactional emails that maintain brand voice. Currently no emails are sent.
 
@@ -388,7 +388,7 @@ Work is sequenced by dependency and impact. No phase starts until the previous i
 
 ---
 
-### PHASE 7 — iv Circle Loyalty Program
+### PHASE 7 — iv Circle Loyalty Program ✅ COMPLETE
 
 **Goal:** Build the loyalty mechanics referenced in navigation and registration benefits.
 
@@ -414,7 +414,7 @@ Work is sequenced by dependency and impact. No phase starts until the previous i
 
 ---
 
-### PHASE 8 — Forgot Password Flow
+### PHASE 8 — Forgot Password Flow ✅ COMPLETE
 
 **Goal:** `/forgot-password` currently returns 404. Linked from login page.
 
@@ -439,7 +439,7 @@ Work is sequenced by dependency and impact. No phase starts until the previous i
 
 ---
 
-### PHASE 9 — Production Infrastructure
+### PHASE 9 — Production Infrastructure ✅ COMPLETE
 
 **Goal:** Replace dev JSON stores with production-grade persistence.
 
@@ -536,22 +536,22 @@ model Referral {
 
 ---
 
-## Current Sprint — Active Work
+## Current Sprint — Status
 
-Phases 0–2 complete. Currently executing Phase 3.
+All phases 0–9 complete. Awaiting go-live env var configuration (Stripe live keys, NEXTAUTH_URL, RESEND_API_KEY, DATABASE_URL).
 
 | Phase | Status |
 |---|---|
 | Phase 0 — Langer copy fix | ✅ Complete |
 | Phase 1 — Stripe subscription | ✅ Complete |
 | Phase 2 — Checkout redesign | ✅ Complete |
-| Phase 3 — B2B login + gating | 🔄 In progress |
-| Phase 4 — Shop compliance | ⏳ Queued |
-| Phase 5 — Account dashboard | ⏳ Queued |
-| Phase 6 — Email flows | ⏳ Queued |
-| Phase 7 — iv Circle loyalty | ⏳ Queued |
-| Phase 8 — Forgot password | ⏳ Queued |
-| Phase 9 — Production DB | ⏳ Queued |
+| Phase 3 — B2B login + gating | ✅ Complete |
+| Phase 4 — Shop compliance | ✅ Complete |
+| Phase 5 — Account dashboard | ✅ Complete |
+| Phase 6 — Email flows | ✅ Complete |
+| Phase 7 — iv Circle loyalty | ✅ Complete |
+| Phase 8 — Forgot password | ✅ Complete |
+| Phase 9 — Production DB | ✅ Complete |
 | Phase 10 — Referral program | ⏳ Postponed |
 
 ---
@@ -751,23 +751,27 @@ Example: "We couldn't process your order. Our concierge team is available at [ph
 - [x] All brand pages — about, science, clinical-results, routines, system/ritual
 - [x] Subscription-first default — items added to cart default to isSubscription: true
 
-### 🔴 BLOCKS LAUNCH
+### ✅ CODE COMPLETE — All phases shipped
 
-- [ ] **Phase 0** — Fix penalty language in cart-drawer + buy-box (Langer violation)
-- [ ] **Phase 1** — Stripe subscription mode (`mode: 'subscription'` with Price IDs)
-- [ ] **Phase 1** — Stripe webhook complete (order confirmation, subscription events)
-- [ ] **Phase 2** — Checkout page redesign (currently 35/100 Langer compliance, must reach 85+)
-- [ ] **Phase 3** — B2B Professional login page (`/login/professional`)
-- [ ] **Phase 3** — B2B product gating (clinical A-Series hidden from CUSTOMER role)
-- [ ] **Phase 8** — Forgot password page (`/forgot-password` — currently 404, linked from login)
+All pages built and verified clean. Remaining items are env-var configuration only.
 
-### 🟡 BEFORE LAUNCH
+### 🔴 ENV VARS REQUIRED FOR GO-LIVE
 
-- [ ] **Phase 4** — Shop page Langer compliance (hero section, brand copy, filter labels)
-- [ ] **Phase 5** — Account dashboard (subscription status, order history, loyalty points)
-- [ ] **Phase 6** — Email flows via Resend (welcome, order confirmation, renewal)
-- [ ] NEXTAUTH_URL set to production domain
-- [ ] Stripe keys switched from test to live
+- [ ] `NEXTAUTH_URL` — set to production domain (e.g. `https://isolavitale.com`)
+- [ ] `NEXTAUTH_SECRET` — rotate to a strong random secret
+- [ ] `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` — switch to Stripe live key
+- [ ] `STRIPE_SECRET_KEY` — switch to Stripe live key
+- [ ] `STRIPE_WEBHOOK_SECRET` — register production webhook in Stripe dashboard
+- [ ] `RESEND_API_KEY` — add from resend.com (welcome/order/renewal emails)
+- [ ] `DATABASE_URL` — PostgreSQL connection string (activates Prisma; JSON fallback works without it)
+
+### 🟡 POST-LAUNCH (optional enhancements)
+
+- [ ] Skin consultation results saved to user profile
+- [ ] B2B Net-30 invoicing (Stripe Invoice mode)
+- [ ] Analytics dashboard
+- [ ] Press / journal CMS
+- [ ] **Phase 10** — Referral program (fully documented in roadmap, postponed)
 
 ### 🟢 POST-LAUNCH
 

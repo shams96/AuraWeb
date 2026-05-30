@@ -1,34 +1,52 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { XCircle } from 'lucide-react'
+import { ArrowLeft } from 'lucide-react'
 
-export const metadata: Metadata = { title: 'Checkout Cancelled' }
+export const metadata: Metadata = { title: 'Checkout Cancelled — Isola Vitale' }
+
+const C = {
+  page:      '#FDFAF5',
+  parchment: '#F4EAE2',
+  charcoal:  '#1A1614',
+  muted:     '#7A5C4E',
+  gold:      '#913832',
+  border:    'rgba(145,56,50,0.14)',
+}
 
 export default function CheckoutCancelPage() {
   return (
-    <div className="min-h-screen bg-iv-black flex items-center justify-center px-4">
-      <div className="max-w-lg w-full text-center py-24">
+    <div style={{ minHeight: '100vh', background: C.page, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px' }}>
+      <div style={{ width: '100%', maxWidth: 460, textAlign: 'center', padding: '48px 0' }}>
 
-        <div
-          className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-8"
-          style={{ background: 'rgba(145,56,50,0.06)', border: '1px solid rgba(145,56,50,0.18)' }}
-        >
-          <XCircle className="w-10 h-10" style={{ color: 'var(--iv-gold)', opacity: 0.6 }} />
+        {/* Icon */}
+        <div style={{ width: 64, height: 64, borderRadius: '50%', background: 'rgba(145,56,50,0.06)', border: `1px solid ${C.border}`, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 28px' }}>
+          <ArrowLeft size={24} style={{ color: C.gold, opacity: 0.7 }} />
         </div>
 
-        <h1 className="iv-type-h2 font-bold text-iv-white mb-4" style={{ fontFamily: 'var(--iv-font-serif)' }}>
-          Checkout Cancelled
-        </h1>
-        <p className="text-iv-cream/50 font-light leading-relaxed mb-10 max-w-sm mx-auto">
-          No charge was made. Your cart is still saved — return whenever you're ready.
+        <p style={{ fontSize: '0.6rem', fontWeight: 900, letterSpacing: '0.35em', textTransform: 'uppercase', color: C.gold, marginBottom: 16 }}>
+          No charge was made
         </p>
 
-        <div className="flex gap-4 justify-center flex-wrap">
-          <Link href="/shop" className="btn-luxury" style={{ padding: '13px 30px', display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: '0.7rem', letterSpacing: '0.18em' }}>
+        <h1 style={{ fontFamily: 'var(--iv-font-serif)', fontSize: 'clamp(1.5rem, 3.5vw, 2rem)', fontStyle: 'italic', fontWeight: 600, color: C.charcoal, margin: '0 0 16px' }}>
+          Your ritual awaits.
+        </h1>
+
+        <p style={{ fontSize: '0.85rem', color: C.muted, lineHeight: 1.8, maxWidth: 360, margin: '0 auto 36px', fontWeight: 300 }}>
+          Your cart is still saved — return whenever you&apos;re ready. Our concierge team is available if you need any assistance before completing your order.
+        </p>
+
+        <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
+          <Link
+            href="/shop"
+            style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '13px 26px', background: C.gold, color: '#FDFAF5', borderRadius: 10, fontSize: '0.65rem', fontWeight: 900, letterSpacing: '0.2em', textTransform: 'uppercase', textDecoration: 'none' }}
+          >
             Return to Shop
           </Link>
-          <Link href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '13px 26px', border: '1px solid rgba(253,250,245,0.18)', color: 'rgba(253,250,245,0.65)', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', borderRadius: 4 }}>
-            Need Help?
+          <Link
+            href="/contact"
+            style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '13px 26px', border: `1px solid ${C.border}`, color: C.muted, borderRadius: 10, fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', textDecoration: 'none' }}
+          >
+            Contact Concierge
           </Link>
         </div>
 
