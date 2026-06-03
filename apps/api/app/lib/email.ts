@@ -44,7 +44,7 @@ export const emailTemplates = {
       <h1>Reset Your Password</h1>
       <p>You requested a password reset for your AuraBiosphere account.</p>
       <p>Click the link below to reset your password:</p>
-      <a href="${env.VERCEL_URL || 'http://localhost:3000'}/reset-password?token=${resetToken}">
+      <a href="${env.VERCEL_URL || 'http://localhost:5000'}/reset-password?token=${resetToken}">
         Reset Password
       </a>
       <p>If you didn't request this, please ignore this email.</p>
@@ -58,7 +58,7 @@ export const emailTemplates = {
       <p>Thank you for joining our community of beauty enthusiasts.</p>
       <p>As a welcome gift, enjoy 15% off your first order with code: WELCOME15</p>
       <p>Start exploring our collection of luxury cosmetics and skincare products.</p>
-      <a href="${env.VERCEL_URL || 'http://localhost:3000'}">Shop Now</a>
+      <a href="${env.VERCEL_URL || 'http://localhost:5000'}">Shop Now</a>
       <p>If you have any questions, our support team is here to help.</p>
     `,
   }),
@@ -82,7 +82,7 @@ export const emailTemplates = {
       <h1>How was your experience with ${product.name}?</h1>
       <p>We hope you're enjoying your purchase of ${product.name}.</p>
       <p>Your feedback helps us improve and helps other customers make informed decisions.</p>
-      <a href="${env.VERCEL_URL || 'http://localhost:3000'}/products/${product.slug}/review">
+      <a href="${env.VERCEL_URL || 'http://localhost:5000'}/products/${product.slug}/review">
         Write a Review
       </a>
       <p>Thank you for being part of the AuraBiosphere community!</p>

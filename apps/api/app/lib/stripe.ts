@@ -67,8 +67,8 @@ export async function createCheckoutSession(
       customer_email: user.email,
       line_items: lineItems,
       mode: 'payment',
-      success_url: `${env.VERCEL_URL || 'http://localhost:3000'}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${env.VERCEL_URL || 'http://localhost:3000'}/cancel`,
+      success_url: `${env.VERCEL_URL || 'http://localhost:5000'}/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${env.VERCEL_URL || 'http://localhost:5000'}/cancel`,
       metadata: {
         userId: user.id,
       },
