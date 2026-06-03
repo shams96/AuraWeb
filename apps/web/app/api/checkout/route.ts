@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
     }
 
     const session  = await getServerSession(authOptions)
-    const baseUrl  = process.env.NEXTAUTH_URL ?? 'http://localhost:3000'
+    const baseUrl  = process.env.NEXTAUTH_URL ?? 'http://localhost:5000'
     const userId   = (session?.user as { id?: string })?.id ?? 'guest'
     const allSubscribed = items.every(i => i.isSubscription)
 

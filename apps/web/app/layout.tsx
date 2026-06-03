@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:5000'),
   openGraph: {
     title: 'Isola Vitale - Luxury Bio-Adaptive Skincare',
     description: 'Experience unparalleled luxury with Isola Vitale\'s bio-adaptive formulations.',

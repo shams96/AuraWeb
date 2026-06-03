@@ -79,7 +79,7 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
   // Trigger referral conversion for first-time purchasers (fire-and-forget)
   if (customerEmail) {
     try {
-      const baseUrl = process.env.NEXTAUTH_URL ?? 'http://localhost:3000'
+      const baseUrl = process.env.NEXTAUTH_URL ?? 'http://localhost:5000'
       fetch(`${baseUrl}/api/referral/convert`, {
         method:  'POST',
         headers: {
