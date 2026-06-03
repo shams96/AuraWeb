@@ -3,29 +3,29 @@ import { Facebook, Instagram, Twitter, Mail, Phone, MapPin, Heart } from 'lucide
 
 export function Footer() {
   const footerLinks = {
-    product: [
-      { name: 'All Products', href: '/shop' },
-      { name: 'Best Sellers', href: '/shop/best-sellers' },
-      { name: 'New Arrivals', href: '/shop/new-arrivals' },
-      { name: 'Bundles', href: '/shop/bundles' },
+    collection: [
+      { name: 'The Collection', href: '/shop' },
+      { name: 'The Vitale Concentrate™', href: '/shop' },
+      { name: 'Preservation Protocol', href: '/shop?tier=t1' },
+      { name: 'Ritual Membership', href: '/account/subscription' },
     ],
-    routines: [
-      { name: 'Morning Routine', href: '/routines/morning' },
-      { name: 'Evening Routine', href: '/routines/evening' },
-      { name: 'Sensitive Skin', href: '/routines/sensitive' },
-      { name: 'Acne-Prone', href: '/routines/acne' },
+    science: [
+      { name: 'The Ritual System', href: '/system' },
+      { name: 'Vitale Resilience Matrix™', href: '/system#vrm' },
+      { name: 'Clinical Results', href: '/clinical-results' },
+      { name: 'The Isola Journal', href: '/journal' },
     ],
-    company: [
-      { name: 'About Us', href: '/about' },
-      { name: 'Sustainability', href: '/sustainability' },
+    house: [
+      { name: 'Our Story', href: '/about' },
+      { name: 'Isola del Liri', href: '/about#origin' },
       { name: 'Press', href: '/press' },
       { name: 'Careers', href: '/careers' },
     ],
-    support: [
-      { name: 'Contact Us', href: '/contact' },
-      { name: 'FAQ', href: '/faq' },
-      { name: 'Shipping', href: '/shipping' },
-      { name: 'Returns', href: '/returns' },
+    concierge: [
+      { name: 'Contact Concierge', href: '/contact' },
+      { name: 'Skin Consultation', href: '/#skin-scan' },
+      { name: 'iv Circle', href: '/loyalty' },
+      { name: 'Professional Access', href: '/login/professional' },
     ],
   }
 
@@ -45,7 +45,7 @@ export function Footer() {
               <span className="iv-type-h2 font-semibold text-iv-white uppercase tracking-tight">Isola <span className="text-iv-gold italic">Vitale</span></span>
             </div>
             <p className="text-iv-cream text-opacity-60 leading-relaxed font-light text-sm max-w-sm">
-              La Bella Figura — the Italian practice of living beautifully. Not a routine. A philosophy. Formulated at Isola del Liri, Italy.
+              The world's first Adaptive Skin Science house. La Bella Figura — the Italian practice of living beautifully — expressed through biological resilience. Formulated at Isola del Liri, Italy.
             </p>
             <div className="flex space-x-6">
               {socialLinks.map((social) => (
@@ -61,16 +61,13 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Product Links */}
+          {/* Collection */}
           <div className="space-y-6">
-            <h3 className="text-[10px] font-black text-iv-white uppercase tracking-[0.2em]">Acquisitions</h3>
+            <h3 className="text-[10px] font-black text-iv-white uppercase tracking-[0.2em]">The Collection</h3>
             <ul className="space-y-4">
-              {footerLinks.product.map((link) => (
+              {footerLinks.collection.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-iv-cream text-opacity-40 hover:text-iv-gold transition-colors text-[11px] font-medium uppercase tracking-widest"
-                  >
+                  <Link href={link.href} className="text-iv-cream text-opacity-40 hover:text-iv-gold transition-colors text-[11px] font-medium uppercase tracking-widest">
                     {link.name}
                   </Link>
                 </li>
@@ -78,16 +75,13 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Protocols Links */}
+          {/* Science */}
           <div className="space-y-6">
-            <h3 className="text-[10px] font-black text-iv-white uppercase tracking-[0.2em]">Protocols</h3>
+            <h3 className="text-[10px] font-black text-iv-white uppercase tracking-[0.2em]">The Science</h3>
             <ul className="space-y-4">
-              {footerLinks.routines.map((link) => (
+              {footerLinks.science.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-iv-cream text-opacity-40 hover:text-iv-gold transition-colors text-[11px] font-medium uppercase tracking-widest"
-                  >
+                  <Link href={link.href} className="text-iv-cream text-opacity-40 hover:text-iv-gold transition-colors text-[11px] font-medium uppercase tracking-widest">
                     {link.name}
                   </Link>
                 </li>
@@ -95,16 +89,13 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Company Links */}
+          {/* The House */}
           <div className="space-y-6">
             <h3 className="text-[10px] font-black text-iv-white uppercase tracking-[0.2em]">The House</h3>
             <ul className="space-y-4">
-              {footerLinks.company.map((link) => (
+              {footerLinks.house.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-iv-cream text-opacity-40 hover:text-iv-gold transition-colors text-[11px] font-medium uppercase tracking-widest"
-                  >
+                  <Link href={link.href} className="text-iv-cream text-opacity-40 hover:text-iv-gold transition-colors text-[11px] font-medium uppercase tracking-widest">
                     {link.name}
                   </Link>
                 </li>
@@ -112,16 +103,13 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Support Links */}
+          {/* Concierge */}
           <div className="space-y-6">
             <h3 className="text-[10px] font-black text-iv-white uppercase tracking-[0.2em]">Concierge</h3>
             <ul className="space-y-4">
-              {footerLinks.support.map((link) => (
+              {footerLinks.concierge.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-iv-cream text-opacity-40 hover:text-iv-gold transition-colors text-[11px] font-medium uppercase tracking-widest"
-                  >
+                  <Link href={link.href} className="text-iv-cream text-opacity-40 hover:text-iv-gold transition-colors text-[11px] font-medium uppercase tracking-widest">
                     {link.name}
                   </Link>
                 </li>

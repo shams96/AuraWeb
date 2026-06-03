@@ -57,41 +57,86 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Four pillars */}
+      {/* Manifesto — The Modern Skin Reality */}
+      <section className="py-28 bg-iv-black border-b border-iv-gold/10">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-start">
+            <div>
+              <span className="text-iv-gold font-black uppercase tracking-[0.3em] text-[10px] block mb-6">The Founding Question</span>
+              <h2 className="iv-type-h2 font-bold text-iv-white tracking-tighter leading-none mb-8">
+                Why does some skin remain<br /><em className="text-iv-gold">vital</em> — and other skin<br />progressively lose its way?
+              </h2>
+              <p className="text-iv-cream/60 text-lg leading-relaxed font-light">
+                Most brands ask: how do we make skin look younger? We asked a different question — and it changed everything.
+              </p>
+            </div>
+            <div className="space-y-6 pt-4">
+              {[
+                { stress: 'Climate control', truth: 'Air conditioning strips more barrier moisture in four hours than natural air removes in a day.' },
+                { stress: 'Blue light exposure', truth: 'Screen-generated blue light now rivals UV radiation as a source of cumulative oxidative burden.' },
+                { stress: 'Chronic cortisol', truth: 'Sustained stress suppresses collagen synthesis and impairs the barrier\'s adaptive response directly.' },
+                { stress: 'Urban pollution', truth: 'Particulate matter smaller than 2.5μm penetrates the stratum corneum and generates free radical cascades.' },
+              ].map(({ stress, truth }) => (
+                <div key={stress} className="border-l-2 pl-5" style={{ borderColor: 'rgba(145,56,50,0.25)' }}>
+                  <p className="text-[11px] font-black uppercase tracking-[0.2em] text-iv-gold mb-1">{stress}</p>
+                  <p className="text-sm text-iv-cream/50 leading-relaxed font-light">{truth}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="mt-20 p-12 rounded-3xl text-center" style={{ background: 'rgba(145,56,50,0.04)', border: '1px solid rgba(145,56,50,0.12)' }}>
+            <p className="text-2xl md:text-3xl text-iv-cream/80 italic iv-serif leading-relaxed max-w-3xl mx-auto">
+              "Skin was not designed for modern life. Resilience is no longer inherited. It must be cultivated."
+            </p>
+            <p className="text-[10px] font-black text-iv-gold uppercase tracking-[0.3em] mt-8">The Vitale Principle™</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Four pillars — now aligned with VRM */}
       <section className="py-24 bg-iv-deep-green/40 text-iv-white border-y border-iv-gold/10 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full bg-iv-black/20 pointer-events-none" />
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           <div className="text-center mb-20">
-            <p className="text-[10px] font-black uppercase tracking-[0.3em] mb-4" style={{ color: 'var(--iv-gold)' }}>The Philosophy in Practice</p>
-            <h2 className="iv-type-h2 font-bold text-iv-white tracking-tighter uppercase">Four Pillars of<br /><em className="text-iv-gold">La Bella Figura</em></h2>
+            <p className="text-[10px] font-black uppercase tracking-[0.3em] mb-4" style={{ color: 'var(--iv-gold)' }}>Adaptive Skin Science™ · The System</p>
+            <h2 className="iv-type-h2 font-bold text-iv-white tracking-tighter uppercase">The Vitale<br /><em className="text-iv-gold">Resilience Matrix™</em></h2>
+            <p className="text-iv-cream/40 text-sm font-light mt-6 max-w-xl mx-auto leading-relaxed">
+              Four biological domains. Every Isola Vitale formulation addresses all four — in sequence, with clinical precision.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
             {[
               {
                 icon: <Beaker className="w-8 h-8 text-iv-gold mx-auto mb-8 group-hover:scale-110 transition-transform" />,
-                title: 'Italian Precision',
-                body: 'Every formulation made at pharmaceutical-grade standards in Isola del Liri. No marketing percentages. No filler.',
+                roman: 'I',
+                title: 'Cellular Energy Reserve™',
+                body: 'Skin cannot repair what it cannot power. Mitochondrial support and ATP production come before any correction.',
               },
               {
                 icon: <Award className="w-8 h-8 text-iv-gold mx-auto mb-8 group-hover:scale-110 transition-transform" />,
-                title: 'Validated by Science',
-                body: 'Four independent clinical trials. Science is our proof — not our pitch.',
+                roman: 'II',
+                title: 'Barrier Intelligence Network™',
+                body: 'Healthy skin adapts to its environment. We rebuild the capacity to respond — not just the surface that shows it.',
               },
               {
                 icon: <MapPin className="w-8 h-8 text-iv-gold mx-auto mb-8 group-hover:scale-110 transition-transform" />,
-                title: 'Made in Italy',
-                body: 'The most trusted provenance in luxury. Formulated where craftsmanship is not a claim — it is a culture.',
+                roman: 'III',
+                title: 'Oxidative Defense Architecture™',
+                body: 'Pollution, UV, and blue light create invisible wear before visible aging. We address this systematically — not as an afterthought.',
               },
               {
                 icon: <Heart className="w-8 h-8 text-iv-gold mx-auto mb-8 group-hover:scale-110 transition-transform" />,
-                title: 'Beauty as Practice',
-                body: 'Designed to be used slowly, intentionally, daily. The opposite of a quick fix. A lifetime ritual.',
+                roman: 'IV',
+                title: 'Structural Vitality Framework™',
+                body: 'The goal is not younger skin. The goal is stronger skin. Beauty is a visible consequence of structural integrity.',
               },
-            ].map(({ icon, title, body }) => (
-              <div key={title} className="p-10 bg-iv-black/40 border border-iv-gold/10 rounded-2xl backdrop-blur-md hover:border-iv-gold/30 transition-all group">
+            ].map(({ icon, roman, title, body }) => (
+              <div key={title} className="p-10 bg-iv-black/40 border border-iv-gold/10 rounded-2xl backdrop-blur-md hover:border-iv-gold/30 transition-all group relative overflow-hidden">
+                <span className="absolute right-3 bottom-2 text-7xl font-black text-iv-gold/5 font-serif select-none">{roman}</span>
                 {icon}
-                <h3 className="font-bold mb-4 uppercase tracking-widest text-xs text-iv-white">{title}</h3>
+                <p className="text-[10px] font-black text-iv-gold uppercase tracking-[0.2em] mb-3">Domain {roman}</p>
+                <h3 className="font-bold mb-4 text-xs text-iv-white leading-tight" style={{ fontFamily: 'var(--iv-font-serif)' }}>{title}</h3>
                 <p className="text-xs text-iv-cream/50 leading-relaxed font-light">{body}</p>
               </div>
             ))}
@@ -99,13 +144,13 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Mission */}
+      {/* Founding belief */}
       <section className="py-32 bg-iv-black">
         <div className="container mx-auto px-4 max-w-4xl text-center">
           <div className="w-12 h-px bg-iv-gold/40 mx-auto mb-16" />
           <h2 className="text-xs font-black text-iv-gold mb-10 uppercase tracking-[0.4em]">The Belief</h2>
           <p className="text-3xl md:text-5xl text-iv-cream/80 italic iv-serif leading-[1.2] tracking-tight">
-            "Wellness should feel beautiful. Beauty should feel effortless. That is La Bella Figura — and it has always been the Italian way."
+            "Vitality is the ultimate luxury. Not youth. Not perfection. Vitality — the living quality of skin that has been cared for, as the Italians always knew it should be."
           </p>
           <div className="mt-16 flex items-center justify-center space-x-4">
             <div className="w-8 h-px bg-iv-white/10" />

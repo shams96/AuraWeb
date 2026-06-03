@@ -2,6 +2,7 @@ import { SystemHero } from '@/components/sections/system-hero'
 import { SkinConsultation } from '@/components/diagnostic/skin-consultation'
 import { ProblemSolution } from '@/components/sections/problem-solution'
 import { ProblemEducationBlock } from '@/components/sections/problem-education'
+import { VitaleResilienceMatrix } from '@/components/sections/vitale-resilience-matrix'
 import { HowItWorks } from '@/components/sections/how-it-works'
 import { BrandVideo } from '@/components/sections/brand-video'
 import { BentoFeatures } from '@/components/sections/bento-features'
@@ -16,51 +17,51 @@ import { Newsletter } from '@/components/sections/newsletter'
 import { StickyFooterCTA } from '@/components/sections/sticky-footer-cta'
 
 export default function HomePage() {
-  // Mock product data
+  // Hero product data
   const product = {
-    id: 'isola-illuminating-c-serum',
-    name: 'Isola Vitale Illuminating C-Serum',
-    tagline: 'A concentrated, bio-adaptive elixir for profound luminosity',
-    description: 'A concentrated, bio-adaptive elixir that intelligently responds to your skin\'s unique stress markers. Formulated with our proprietary botanical blend, it delivers a potent dose of luminosity while fortifying the skin\'s natural barrier.',
+    id: 'isola-vitale-concentrate',
+    name: 'The Vitale Concentrate™',
+    tagline: 'The first serum formulated for the biological reality of modern life',
+    description: 'A precision-concentrated adaptive serum built around the Vitale Resilience Matrix™ — addressing all four domains of skin resilience in a single daily ritual. Formulated at Natural You Srl, Isola del Liri, Italy.',
     price: 295,
     currency: 'USD',
     image: '/images/products/isola_serum.png',
     videoUrl: '',
-    primaryProblem: 'Dullness & Uneven Texture',
-    desiredOutcome: 'Radiant, Fortified Skin',
-    format: 'Serum',
+    primaryProblem: 'Environmental & Biological Stress',
+    desiredOutcome: 'Resilient, Vitally Strong Skin',
+    format: 'Concentrated Serum',
     audience: 'All Skin Types',
-    scienceMechanism: 'Bio-Adaptive Botanical Matrix',
-    useCases: ['Apply 3-4 drops morning and night', 'Gently press into face and neck', 'Brightens Complexion', 'Strengthens Barrier'],
+    scienceMechanism: 'Vitale Resilience Matrix™',
+    useCases: ['Apply 3–4 drops morning and evening', 'Press gently into face and neck', 'Builds cumulative resilience over time', 'Strengthens barrier intelligence'],
     rating: 4.9,
     reviewCount: 1850,
-    badges: ['Dermatologist Tested', 'Bio-Adaptive', 'Cruelty-Free']
+    badges: ['Clinically Trialled', 'EU GMP Certified', 'Cruelty-Free']
   }
 
-  // Mock testimonials
+  // Testimonials
   const testimonials = [
     {
-      name: 'Sarah Johnson',
-      role: 'Marketing Director',
-      content: 'This serum has completely transformed my sensitive skin. No more redness or irritation!',
+      name: 'Valentina R.',
+      role: 'Milan',
+      content: 'My skin has not felt this resilient since my twenties. The texture change after week four was remarkable — everything else I was using finally started working the way it should.',
       image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80',
       beforeImage: 'https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=400&q=80',
       afterImage: 'https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=400&q=80',
       timeframe: '8 weeks'
     },
     {
-      name: 'Michael Chen',
-      role: 'Software Engineer',
-      content: 'Finally found something that works for my reactive skin. Highly recommend!',
+      name: 'James T.',
+      role: 'London',
+      content: 'I travel constantly between time zones. My skin used to show every flight. Now it recovers in a day. I did not expect a skincare product to change that, but it genuinely has.',
       image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80',
       beforeImage: 'https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=400&q=80',
       afterImage: 'https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=400&q=80',
       timeframe: '6 weeks'
     },
     {
-      name: 'Emma Davis',
-      role: 'Teacher',
-      content: 'The results are incredible. My skin feels stronger and looks healthier than ever.',
+      name: 'Isabelle M.',
+      role: 'Paris',
+      content: 'I have used La Mer, I have used Augustinus Bader. This is different. It does not feel like luxury skincare. It feels like your skin simply deciding to be well again.',
       image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&q=80',
       beforeImage: 'https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=400&q=80',
       afterImage: 'https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=400&q=80',
@@ -68,36 +69,36 @@ export default function HomePage() {
     }
   ]
 
-  // Mock FAQs
+  // FAQs
   const faqs = [
     {
-      question: 'How long does it take to see results?',
-      answer: 'Most users see improvements within 2-4 weeks, with optimal results after 8 weeks of consistent use.'
+      question: 'When will I notice a difference?',
+      answer: 'The humectant and barrier complex produces a measurable sensory change within 48 hours — skin feels different before it looks different. Surface texture visibly improves by week four, the first complete epidermal turnover cycle. Structural changes — firmness, resilience, tone — are clinically significant at 12 weeks of consistent morning and evening use.'
     },
     {
-      question: 'Is this product suitable for all skin types?',
-      answer: 'Yes, our Bio-Adaptive Serum is formulated for all skin types, including sensitive skin. The adaptive technology adjusts to your skin\'s needs.'
+      question: 'Is The Vitale Concentrate™ suited to all skin types?',
+      answer: 'Yes. The Vitale Resilience Matrix™ framework addresses the four biological domains that govern skin health regardless of skin type. Formulated without common sensitisers, it is designed for daily use at all biological stages — including sensitive and reactive skin.'
     },
     {
-      question: 'What makes this different from other serums?',
-      answer: 'Our proprietary Bio-Adaptive Technology allows the serum to respond intelligently to your skin\'s changing needs throughout the day.'
+      question: 'What sets this apart from other luxury serums?',
+      answer: 'Most serums target a single concern. The Vitale Concentrate™ is built around a complete four-domain resilience framework — cellular energy, barrier intelligence, oxidative defense, and structural vitality. It does not treat symptoms. It improves the conditions that determine how skin responds to everything else.'
     },
     {
-      question: 'Can I use this with other skincare products?',
-      answer: 'Yes, it works well with most skincare routines. Apply after cleansing and before moisturizer for best results.'
+      question: 'How does it integrate with my current ritual?',
+      answer: 'Apply 3–4 drops morning and evening after cleansing, before any moisturiser or SPF. It layers cleanly under all formulations. Over time, you may find your skin requires less correction from other products — which is the intended outcome.'
     },
     {
-      question: 'What is your return policy?',
-      answer: 'We offer a 30-day satisfaction guarantee. If you\'re not happy with the results, return it for a full refund.'
+      question: 'What is the Isola Vitale guarantee?',
+      answer: 'We offer a 90-day ritual guarantee. If after three months of consistent use you do not experience a measurable improvement in skin resilience and vitality, we will arrange a full refund — no explanation required. We are confident in the science.'
     }
   ]
 
-  // Mock buy bullets
+  // Buy box trust points
   const buyBullets = [
-    '30-day satisfaction guarantee',
-    'Free shipping on orders over $50',
-    'Clinically tested and dermatologist approved',
-    'Cruelty-free and sustainable packaging'
+    '90-day ritual guarantee — return if your skin does not respond',
+    'Complimentary delivery on all orders',
+    '4 independent clinical trials · EU GMP certified',
+    'Cruelty-free · Formulated at Isola del Liri, Italy'
   ]
 
   return (
@@ -105,49 +106,49 @@ export default function HomePage() {
       <SystemHero />
       <SkinConsultation />
       <ProblemSolution
-        title="The Skin Sensitivity Crisis"
-        description="Millions struggle with sensitive, reactive skin that flares up at the slightest trigger. Traditional solutions often make things worse."
+        title="Modern Life Is Asking Too Much of Your Skin"
+        description="Skin evolved over millennia for natural environments. It was never designed for air conditioning, blue light, chronic stress, urban pollution, and transcontinental travel — all in the same week."
         problems={[
-          'Constant redness and irritation',
-          'Overactive immune response to environmental factors',
-          'Weakened skin barrier function',
-          'Difficulty finding compatible products'
+          'Climate-controlled interiors strip barrier moisture continuously',
+          'Blue light and urban pollution accelerate oxidative stress',
+          'Chronic stress disrupts circadian repair cycles',
+          'Conventional skincare addresses symptoms, not resilience'
         ]}
         solution={{
-          title: 'Bio-Adaptive Technology',
-          description: 'Our revolutionary serum adapts to your skin\'s needs in real-time, providing exactly what your skin requires when it needs it most.',
+          title: 'The Vitale Resilience Matrix™',
+          description: 'A four-domain biological framework that addresses the root causes of modern skin stress — not its surface manifestations. The Vitale Concentrate™ is built entirely around this system.',
           benefits: [
-            'Intelligent response to skin stress',
-            'Strengthens natural barrier function',
-            'Reduces inflammation and redness',
-            'Compatible with all skin types'
+            'Rebuilds cellular energy reserves for repair',
+            'Restores barrier intelligence — adaptive, not reactive',
+            'Systematic oxidative defence against environmental burden',
+            'Supports structural vitality from the dermal matrix up'
           ]
         }}
       />
       <ProblemEducationBlock
-        problem="Skin Sensitivity"
+        problem="Skin Resilience"
         context={[
-          'Modern lifestyle factors like pollution, stress, and screen time are increasing skin sensitivity',
-          'Traditional skincare often uses harsh actives that damage the skin barrier',
-          'Over 50% of adults report having sensitive skin at some point',
-          'Skin sensitivity affects quality of life and self-confidence'
+          'The average urban professional spends 90% of their day in climate-controlled environments — the single greatest modern stressor to barrier function',
+          'Blue light exposure from screens now rivals UV in cumulative oxidative burden on skin cells',
+          'Cortisol from chronic stress directly impairs the skin barrier and suppresses collagen synthesis',
+          'Most luxury skincare addresses visible symptoms while leaving the underlying resilience capacity untouched'
         ]}
       />
       <HowItWorks
         steps={[
           {
-            title: 'Consult',
-            description: '8 clinically grounded questions map your Baumann skin profile in under 2 minutes',
+            title: 'Assess',
+            description: '8 clinically grounded questions map your skin\'s biological stage and current resilience capacity in under 2 minutes',
             icon: '🔍'
           },
           {
-            title: 'Match',
-            description: 'Scoring engine assigns your precise tier from four bio-adaptive protocols',
+            title: 'Align',
+            description: 'Your profile is matched to the precise Vitale protocol — built around which domains of the Resilience Matrix need the most support',
             icon: '⚡'
           },
           {
-            title: 'Transform',
-            description: 'Actives work in sequence — barrier first, then correction, then structural renewal',
+            title: 'Adapt',
+            description: 'Actives work in biological sequence — energy and barrier first, then oxidative defence, then structural renewal',
             icon: '🛡️'
           }
         ]}
@@ -157,6 +158,7 @@ export default function HomePage() {
           { week: 'Week 12', result: 'Peptide-driven structural change — clinically significant firmness, volume and tone improvement' }
         ]}
       />
+      <VitaleResilienceMatrix />
       <BentoFeatures />
       <BrandVideo />
       <IngredientScroll />
@@ -258,7 +260,7 @@ export default function HomePage() {
       <Newsletter />
       <StickyFooterCTA
         product={product}
-        offerText="Limited Time: Free Gift"
+        offerText="Begin Your 90-Day Ritual"
       />
     </main>
   )

@@ -78,11 +78,24 @@ export function SystemHero() {
             data-reveal="iv-reveal-up"
             style={{
               fontSize: 'clamp(0.9rem, 1.3vw, 1.05rem)', color: 'var(--iv-cream)', fontWeight: 300,
-              lineHeight: 1.75, maxWidth: 460, marginBottom: 'clamp(1rem, 3.5vh, 2.5rem)', letterSpacing: '0.01em',
+              lineHeight: 1.75, maxWidth: 460, marginBottom: 'clamp(0.5rem, 2vh, 1.25rem)', letterSpacing: '0.01em',
               opacity: 0, animationDelay: '0.45s',
             }}
           >
             La Bella Figura — Italy's unwritten code of living beautifully. Not a goal to reach. A practice to inhabit. Formulated at Isola del Liri, where Italian precision and centuries of craft converge.
+          </p>
+
+          {/* Resilience layer */}
+          <p
+            data-reveal="iv-reveal-up"
+            style={{
+              fontSize: 'clamp(0.78rem, 1.1vw, 0.92rem)', color: 'var(--iv-gold)', fontWeight: 500,
+              lineHeight: 1.7, maxWidth: 440, marginBottom: 'clamp(1rem, 3.5vh, 2.5rem)', letterSpacing: '0.02em',
+              fontStyle: 'italic', opacity: 0, animationDelay: '0.50s',
+              borderLeft: '2px solid rgba(145,56,50,0.35)', paddingLeft: 14,
+            }}
+          >
+            The world's first Adaptive Skin Science house — built for the biological reality of modern life.
           </p>
 
           {/* CTAs */}

@@ -76,18 +76,24 @@ export function BentoFeatures() {
             }}
           >
             <div>
-              <p className="text-[11px] font-black uppercase tracking-[0.3em] mb-3" style={{ color: 'var(--iv-gold)' }}>4-Tier Protocol</p>
+              <p className="text-[11px] font-black uppercase tracking-[0.3em] mb-3" style={{ color: 'var(--iv-gold)' }}>Vitale Resilience Matrix™</p>
               <h3 className="iv-type-h3 font-bold text-iv-white mb-3" style={{ fontFamily: 'var(--iv-font-serif)' }}>
-                Matched to your skin's biological stage
+                Four domains. One system. Matched to your biology — not your birthdate.
               </h3>
               <p className="text-sm text-iv-cream/50 font-light leading-relaxed">
-                Preservation · Refinement · Restoration · Longevity. Assigned by skin analysis, not birthdate.
+                Preservation · Refinement · Restoration · Longevity. Four protocols built around the four domains of adaptive skin science.
               </p>
             </div>
             <div className="flex gap-2 mt-6">
-              {['Pres.', 'Ref.', 'Rest.', 'Long.'].map((label) => (
+              {[
+                { label: 'Preserve', sub: 'Energy · Barrier' },
+                { label: 'Refine', sub: 'Barrier · Defense' },
+                { label: 'Restore', sub: 'Defense · Structure' },
+                { label: 'Sustain', sub: 'Full Matrix' },
+              ].map(({ label, sub }) => (
                 <div key={label} className="flex-1 rounded-xl p-3 text-center" style={{ background: `${GOLD}0.08)`, border: `1px solid ${GOLD}0.14)` }}>
                   <div className="text-[10px] font-black text-iv-gold uppercase tracking-widest">{label}</div>
+                  <div className="text-[9px] text-iv-cream/30 mt-1 font-light">{sub}</div>
                 </div>
               ))}
             </div>
