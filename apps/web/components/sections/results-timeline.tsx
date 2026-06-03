@@ -190,7 +190,7 @@ export function ResultsTimeline({ timeline }: ResultsTimelineProps) {
                 Ready for Transformed Skin?
               </h3>
               <p className="text-xs mb-7 font-light leading-relaxed" style={{ color: 'rgba(253,250,245,0.55)' }}>
-                Join thousands who have experienced the Bio-Adaptive difference.
+                Join thousands who have begun their Vitale Resilience ritual.
               </p>
               <div className="flex justify-center gap-3 flex-wrap">
                 <Link

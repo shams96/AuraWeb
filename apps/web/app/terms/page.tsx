@@ -19,7 +19,7 @@ export default function TermsPage() {
 
           <div className="space-y-6">
             <h2 className="text-2xl font-bold text-iv-white uppercase tracking-widest italic">2. Clinical Disclaimer</h2>
-            <p className="text-iv-cream/60 leading-relaxed font-light"> Our products are intended for cosmetic and anti-aging metabolic support. They do not constitute medical advice. Consult with a qualified professional for chronic dermatological conditions. </p>
+            <p className="text-iv-cream/60 leading-relaxed font-light"> Our products are intended for cosmetic and skin resilience support. They do not constitute medical advice. Consult with a qualified professional for chronic dermatological conditions.</p>
           </div>
 
           <div className="space-y-6">

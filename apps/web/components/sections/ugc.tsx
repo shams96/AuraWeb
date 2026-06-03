@@ -19,11 +19,11 @@ export function UGCSection({ testimonials }: UGCSectionProps) {
     <section className="py-16 bg-iv-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-iv-white mb-4">
-            Real Results, Real People
+          <h2 className="text-3xl md:text-4xl font-bold text-iv-white mb-4" style={{ fontFamily: 'var(--iv-font-serif)', fontStyle: 'italic' }}>
+            The Ritual in Practice
           </h2>
-          <p className="text-lg text-iv-cream/70 max-w-3xl mx-auto">
-            See how Bio-Adaptive Serum has transformed skin for customers like you
+          <p className="text-lg text-iv-cream/70 max-w-3xl mx-auto font-light">
+            How the Vitale Resilience Matrix™ has changed the relationship between real people and their skin
           </p>
         </div>
         

@@ -25,7 +25,7 @@ export default function SystemPage() {
       id: 'refinement',
       name: 'Refinement Protocol',
       focus: 'Barrier Intelligence · Oxidative Defense',
-      description: 'The Refinement Protocol addresses the Adaptation Curve at its critical inflection — when barrier intelligence begins to decline and oxidative stress accumulates faster than the skin can neutralise it. GLP-1 protective complexes support structural integrity while the biological window for intervention remains widest.',
+      description: 'The Refinement Protocol addresses the Adaptation Curve™ at its critical inflection — when barrier intelligence begins to decline and oxidative stress accumulates faster than the skin can neutralise it. GLP-1 protective complexes support structural integrity while the biological window for intervention remains widest.',
       tech: ['GLP-1 Protection', 'Oxidative Defense Complex', 'Barrier Adaptive Support'],
       icon: <Zap className="w-8 h-8 text-iv-gold" />,
     },

@@ -70,7 +70,7 @@ const EARN_ACTIONS = [
   { action: 'Write a Verified Review', points: '50 pts', note: 'With photo: +25 pts' },
   { action: 'Refer a Friend', points: '200 pts', note: 'After their first purchase' },
   { action: 'Subscribe to Routine', points: '+25% bonus', note: 'On every subscription order' },
-  { action: 'Complete Bio-Adaptive Scan', points: '75 pts', note: 'One-time' },
+  { action: 'Complete Vitale Skin Assessment™', points: '75 pts', note: 'One-time' },
   { action: 'Birthday Month Purchase', points: '2× points', note: 'All of your birthday month' },
   { action: 'Share on Social', points: '25 pts', note: 'Per verified share' },
 ]

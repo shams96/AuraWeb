@@ -7,7 +7,7 @@ const ROWS: Array<{ feature: string; iv: CellValue; lamer: CellValue; ab: CellVa
   { feature: 'Named Active Concentrations', iv: true, lamer: false, ab: true, loreal: false },
   { feature: 'Proprietary Senomorphic Peptide', iv: true, lamer: false, ab: false, loreal: false },
   { feature: 'GLP-1 / Ozempic Face Protection', iv: true, lamer: false, ab: false, loreal: false },
-  { feature: 'Bio-Adaptive Personalisation', iv: true, lamer: false, ab: false, loreal: false },
+  { feature: 'Adaptive Skin Science™ Protocol Matching', iv: true, lamer: false, ab: false, loreal: false },
   { feature: 'EU GMP Certified Manufacturing', iv: true, lamer: true, ab: true, loreal: true },
   { feature: 'PETA Cruelty-Free Certified', iv: true, lamer: false, ab: true, loreal: 'partial' },
   { feature: 'Vegan Formulations', iv: true, lamer: false, ab: false, loreal: 'partial' },

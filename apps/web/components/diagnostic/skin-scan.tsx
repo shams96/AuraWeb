@@ -129,7 +129,7 @@ export function SkinScan() {
           <div className="inline-block border border-iv-gold/20 rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-8 bg-iv-black/40 backdrop-blur-md">
             Advanced Dermal Analytics v4.2
           </div>
-          <h2 className="iv-type-display font-semibold mb-8 uppercase text-iv-white">Bio-Adaptive <span className="text-iv-gold italic">Scan</span></h2>
+          <h2 className="iv-type-display font-semibold mb-8 uppercase text-iv-white">Vitale <span className="text-iv-gold italic">Skin Scan</span></h2>
           <p className="text-lg text-iv-cream/60 max-w-2xl mx-auto leading-relaxed font-light">
             An expert-level metabolic assessment. Align your face for a high-fidelity diagnostic capture.
           </p>
@@ -175,7 +175,7 @@ export function SkinScan() {
                 <div className="space-y-3">
                   <h3 className="text-2xl font-bold text-iv-white uppercase tracking-tighter">Camera Access Required</h3>
                   <p className="text-iv-cream/50 text-sm font-light leading-relaxed max-w-xs">
-                    The Bio-Adaptive Scan requires your camera to capture real skin data. No images are stored or transmitted.
+                    The Vitale Skin Scan requires your camera to capture real skin data. No images are stored or transmitted.
                   </p>
                 </div>
                 <div className="bg-iv-black/60 border border-iv-gold/10 rounded-2xl p-6 text-left space-y-3 max-w-xs w-full">

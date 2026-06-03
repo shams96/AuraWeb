@@ -45,7 +45,7 @@ export function Footer() {
               <span className="iv-type-h2 font-semibold text-iv-white uppercase tracking-tight">Isola <span className="text-iv-gold italic">Vitale</span></span>
             </div>
             <p className="text-iv-cream text-opacity-60 leading-relaxed font-light text-sm max-w-sm">
-              The world's first Adaptive Skin Science house. La Bella Figura — the Italian practice of living beautifully — expressed through biological resilience. Formulated at Isola del Liri, Italy.
+              The world's first Adaptive Skin Science™ house. La Bella Figura — the Italian practice of living beautifully — expressed through biological resilience. Formulated at Isola del Liri, Italy.
             </p>
             <div className="flex space-x-6">
               {socialLinks.map((social) => (

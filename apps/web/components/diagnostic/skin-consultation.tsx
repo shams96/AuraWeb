@@ -428,7 +428,7 @@ export function SkinConsultation() {
 
           <div className="inline-block rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-8"
             style={{ color: 'var(--iv-gold)', border: '1px solid rgba(145,56,50,0.20)', background: 'rgba(145,56,50,0.05)' }}>
-            Bio-Adaptive Skin Consultation
+            Vitale Skin Assessment™
           </div>
 
           <h2 className="text-4xl md:text-6xl font-bold mb-6 text-iv-white" style={{ fontFamily: 'var(--iv-font-serif)' }}>
@@ -482,7 +482,7 @@ export function SkinConsultation() {
             Compiling Your Skin Profile
           </h3>
           <p className="text-iv-cream/35 text-sm mb-10 font-light">
-            Mapping your responses to the Bio-Adaptive matrix…
+            Mapping your responses to the Vitale Resilience Matrix™…
           </p>
           <div className="space-y-3 text-left max-w-xs mx-auto">
             {[
@@ -822,7 +822,7 @@ export function SkinConsultation() {
               Question {qIdx + 1} of {TOTAL}
             </span>
             <span className="text-[10px] font-black uppercase tracking-[0.3em]" style={{ color: 'var(--iv-gold)' }}>
-              Bio-Adaptive Consultation
+              Vitale Skin Assessment™
             </span>
           </div>
           <div className="h-[2px] rounded-full overflow-hidden" style={{ background: 'rgba(145,56,50,0.12)' }}>

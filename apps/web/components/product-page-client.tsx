@@ -215,7 +215,7 @@ export function ProductPageClient({ productId }: ProductPageClientProps) {
             desiredOutcome: localProduct.desiredOutcome || 'Metabolic Alignment',
             format: localProduct.format || 'Standard Volume',
             audience: localProduct.audience || 'Research-Driven Consumers',
-            scienceMechanism: localProduct.scienceMechanism || 'Bio-Adaptive Peptides',
+            scienceMechanism: localProduct.scienceMechanism || 'Vitale Resilience Matrix™',
             useCases: localProduct.useCases || ['Morning Protocol', 'Evening Protocol'],
             rating: localProduct.rating,
             reviewCount: localProduct.reviewCount,
@@ -375,9 +375,9 @@ export function ProductPageClient({ productId }: ProductPageClientProps) {
           <ScienceIngredients 
             keyIngredients={[
               {
-                name: 'Bio-Adaptive Complex',
-                description: 'Patented complex that responds to skin signals',
-                benefits: ['Reduces redness', 'Strengthens barrier', 'Improves resilience'],
+                name: 'Vitale Resilience Complex™',
+                description: 'Proprietary complex supporting all four domains of the Vitale Resilience Matrix™ — cellular energy, barrier intelligence, oxidative defence, and structural vitality.',
+                benefits: ['Rebuilds barrier intelligence', 'Oxidative defence', 'Structural vitality'],
                 concentration: '5%'
               },
               {
@@ -400,18 +400,18 @@ export function ProductPageClient({ productId }: ProductPageClientProps) {
           <UGCSection 
             testimonials={[
               {
-                name: 'Sarah M.',
-                role: 'Age 34',
-                content: 'My skin has never been more balanced. The redness is completely gone!',
+                name: 'Valentina R.',
+                role: 'Milan',
+                content: 'My skin has not felt this resilient in years. The texture change after week four was remarkable — everything else I was using finally started working the way it should.',
                 image: '/images/testimonial-sarah.jpg',
                 beforeImage: '/images/before-sarah.jpg',
                 afterImage: '/images/after-sarah.jpg',
                 timeframe: '8 weeks'
               },
               {
-                name: 'James L.',
-                role: 'Age 42',
-                content: 'Finally found something that works with my sensitive skin. No more reactions!',
+                name: 'James T.',
+                role: 'London',
+                content: 'I travel constantly between time zones. My skin used to show every flight. Now it recovers in a day. I did not expect a skincare product to change that.',
                 image: '/images/testimonial-james.jpg',
                 beforeImage: '/images/before-james.jpg',
                 afterImage: '/images/after-james.jpg',
@@ -429,7 +429,7 @@ export function ProductPageClient({ productId }: ProductPageClientProps) {
               },
               {
                 question: 'Is this suitable for all skin types?',
-                answer: 'Yes, our Bio-Adaptive Serum is formulated for all skin types, especially sensitive skin. It adapts to your skin\'s unique needs.'
+                answer: 'Yes. The Vitale Resilience Matrix™ framework addresses the four biological domains that govern skin health regardless of skin type, including sensitive and reactive skin.'
               },
               {
                 question: 'Can I use this with other skincare products?',

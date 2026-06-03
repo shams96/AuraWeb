@@ -5,14 +5,14 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: {
-    default: 'Product | AuraBiosphere',
-    template: '%s | AuraBiosphere'
+    default: 'Formulations | Isola Vitale',
+    template: '%s | Isola Vitale'
   },
-  description: 'Discover premium bio-adaptive skincare solutions tailored to your unique needs.',
-  keywords: ['skincare', 'bio-adaptive', 'luxury beauty', 'clinical skincare'],
-  authors: [{ name: 'AuraBiosphere' }],
-  creator: 'AuraBiosphere',
-  publisher: 'AuraBiosphere',
+  description: 'Isola Vitale formulations — built around the Vitale Resilience Matrix™. Adaptive Skin Science from Isola del Liri, Italy.',
+  keywords: ['Isola Vitale', 'luxury skincare', 'adaptive skin science', 'Vitale Resilience Matrix', 'Italian skincare', 'skin resilience'],
+  authors: [{ name: 'Isola Vitale' }],
+  creator: 'Isola Vitale',
+  publisher: 'Isola Vitale',
   formatDetection: {
     email: false,
     address: false,
@@ -20,16 +20,16 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:5000'),
   openGraph: {
-    title: 'Product | AuraBiosphere',
-    description: 'Discover premium bio-adaptive skincare solutions tailored to your unique needs.',
+    title: 'Formulations | Isola Vitale',
+    description: 'Adaptive Skin Science formulated at Isola del Liri, Italy. The Vitale Resilience Matrix™.',
     url: '/',
-    siteName: 'AuraBiosphere',
+    siteName: 'Isola Vitale',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'AuraBiosphere - Luxury Bio-Adaptive Skincare',
+        alt: 'Isola Vitale — Adaptive Skin Science, Isola del Liri, Italy',
       },
     ],
     locale: 'en_US',
@@ -37,10 +37,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Product | AuraBiosphere',
-    description: 'Discover premium bio-adaptive skincare solutions tailored to your unique needs.',
+    title: 'Formulations | Isola Vitale',
+    description: 'Adaptive Skin Science formulated at Isola del Liri, Italy.',
     images: ['/og-image.jpg'],
-    creator: '@aurabiosphere',
+    creator: '@isolavitale',
   },
   robots: {
     index: true,

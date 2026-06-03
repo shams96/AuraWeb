@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'FAQ',
-  description: 'Answers to the most common questions about Isola Vitale\'s bio-adaptive formulations, 4-tier system, shipping, returns, and clinical protocols.',
+  description: 'Answers to the most common questions about Isola Vitale\'s Vitale Resilience Matrix™, four adaptive protocols, shipping, returns, and the 90-day ritual guarantee.',
 }
 
 export default function FAQPage() {
@@ -34,7 +34,7 @@ export default function FAQPage() {
         },
         {
           q: 'What is the return policy?',
-          a: 'We offer a 30-day clinical satisfaction guarantee. If your metabolic results are not meeting your expectations, please contact our concierge team for a returns authorization.'
+          a: 'We offer a 90-day ritual guarantee. If after three months of consistent use you do not experience a measurable improvement in skin resilience and vitality, our concierge team will arrange a full refund — no explanation required.'
         }
       ]
     }

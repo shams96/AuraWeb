@@ -26,7 +26,7 @@ export function FAQSection({ faqs }: FAQSectionProps) {
             Frequently Asked Questions
           </h2>
           <p className="text-lg text-iv-cream/70">
-            Everything you need to know about Bio-Adaptive Serum
+            Everything you need to know about The Vitale Concentrate™ and the Isola Vitale ritual
           </p>
         </div>
 

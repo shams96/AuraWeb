@@ -17,11 +17,11 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: {
-    default: 'Isola Vitale - High-Performance Luxury Skincare',
+    default: 'Isola Vitale — The Luxury House of Adaptive Skin Science',
     template: '%s | Isola Vitale'
   },
-  description: 'Experience unparalleled luxury with Isola Vitale\'s bio-adaptive formulations. Discover personalized skincare that combines clinical efficacy with profound sensory indulgence.',
-  keywords: ['luxury skincare', 'bio-adaptive', 'Isola Vitale', 'clinical efficacy', 'premium beauty', 'anti-aging', 'skin diagnostics'],
+  description: 'Isola Vitale is the world\'s first Adaptive Skin Science house. Formulated at Isola del Liri, Italy — the Vitale Resilience Matrix™ helps skin maintain vitality and strength in modern life.',
+  keywords: ['luxury skincare', 'adaptive skin science', 'Isola Vitale', 'skin resilience', 'Italian skincare', 'Vitale Resilience Matrix', 'clinical skincare', 'La Bella Figura'],
   authors: [{ name: 'Isola Vitale' }],
   creator: 'Isola Vitale',
   publisher: 'Isola Vitale',
@@ -32,8 +32,8 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:5000'),
   openGraph: {
-    title: 'Isola Vitale - Luxury Bio-Adaptive Skincare',
-    description: 'Experience unparalleled luxury with Isola Vitale\'s bio-adaptive formulations.',
+    title: 'Isola Vitale — Adaptive Skin Science™',
+    description: 'Isola Vitale — adaptive skin science formulated at Isola del Liri, Italy.',
     url: '/',
     siteName: 'Isola Vitale',
     images: [
@@ -49,8 +49,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Isola Vitale - Luxury Bio-Adaptive Skincare',
-    description: 'Experience unparalleled luxury with Isola Vitale\'s bio-adaptive formulations.',
+    title: 'Isola Vitale — Adaptive Skin Science™',
+    description: 'Isola Vitale — adaptive skin science formulated at Isola del Liri, Italy.',
     images: ['/og-image.jpg'],
     creator: '@isolavitale',
   },

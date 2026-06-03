@@ -238,7 +238,7 @@ export default function HomePage() {
           {
             period: 'Week 24',
             title: 'Cellular Transformation',
-            description: 'Comprehensive Bio-Adaptive results achieved. NMN-supported cellular energy restores dermal metabolism. Senescence reduction measurable. Volume and firmness improvements are clinically significant.',
+            description: 'Full Vitale Resilience Matrix™ results achieved. NMN-supported cellular energy restores dermal metabolism. Senescence reduction measurable. Volume and firmness improvements are clinically significant.',
             icon: '🌟'
           }
         ]}
@@ -250,8 +250,8 @@ export default function HomePage() {
           ...product,
           sku: 'BAS-001',
           variants: [
-            { id: '30ml', name: '30ml Bottle', price: 195, compareAtPrice: 215 },
-            { id: '50ml', name: '50ml Bottle', price: 295, compareAtPrice: 325 }
+            { id: '30ml', name: '30 ml — Discovery', price: 195, compareAtPrice: 215 },
+            { id: '50ml', name: '50 ml — Ritual', price: 295, compareAtPrice: 325 }
           ]
         }}
         buyBullets={buyBullets}

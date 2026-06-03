@@ -95,7 +95,7 @@ export function SystemHero() {
               borderLeft: '2px solid rgba(145,56,50,0.35)', paddingLeft: 14,
             }}
           >
-            The world's first Adaptive Skin Science house — built for the biological reality of modern life.
+            The world's first Adaptive Skin Science™ house — built for the biological reality of modern life.
           </p>
 
           {/* CTAs */}

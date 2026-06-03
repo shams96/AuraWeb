@@ -70,7 +70,7 @@ const BENEFITS = [
   {
     icon: <Users className="w-6 h-6 text-iv-gold" />,
     title: 'Training & Certification',
-    desc: 'Complimentary Bio-Adaptive Protocol Certification for your clinical or retail team.',
+    desc: 'Complimentary Vitale Resilience Matrix™ Protocol Certification for your clinical or retail team.',
   },
   {
     icon: <Globe className="w-6 h-6 text-iv-gold" />,
