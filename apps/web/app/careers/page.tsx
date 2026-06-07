@@ -80,7 +80,7 @@ export default function CareersPage() {
       {/* Footer Support CTA */}
       <section className="mt-20 container mx-auto px-4 max-w-4xl text-center">
         <p className="text-iv-cream/30 text-[10px] font-black uppercase tracking-[0.5em]">Spontaneous Application?</p>
-        <p className="text-iv-cream/60 mt-4 text-sm font-light">Send your portfolio to careers@1hubsolutions.com</p>
+        <p className="text-iv-cream/60 mt-4 text-sm font-light">Send your portfolio to careers@isolavitale.com</p>
       </section>
     </div>
   )

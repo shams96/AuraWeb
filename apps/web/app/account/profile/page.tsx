@@ -125,7 +125,7 @@ export default function AccountProfilePage() {
             </div>
             <p style={{ fontSize: '0.7rem', color: C.muted, margin: 0, fontWeight: 300, lineHeight: 1.6 }}>
               To update your name or email address, contact our concierge team at{' '}
-              <a href="mailto:shams@1hubsolutions.com" style={{ color: C.gold, textDecoration: 'none', fontWeight: 600 }}>shams@1hubsolutions.com</a>
+              <a href="mailto:concierge@isolavitale.com" style={{ color: C.gold, textDecoration: 'none', fontWeight: 600 }}>concierge@isolavitale.com</a>
             </p>
           </div>
         </div>

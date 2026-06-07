@@ -41,11 +41,12 @@ export function BuyBox({ product, selectedVariant: initialVariant, buyBullets }:
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           items: [{
-            id:        product.id,
-            name:      `${product.name}${currentVariant ? ` — ${currentVariant.name}` : ''}`,
-            price:     totalPrice / effectiveQty,
-            quantity:  effectiveQty,
-            variantId: selectedVariantId,
+            id:             product.id,
+            name:           `${product.name}${currentVariant ? ` — ${currentVariant.name}` : ''}`,
+            price:          totalPrice / effectiveQty,
+            quantity:       effectiveQty,
+            variantId:      selectedVariantId,
+            isSubscription: purchaseType === 'subscribe',
           }],
           currency: 'usd',
         }),

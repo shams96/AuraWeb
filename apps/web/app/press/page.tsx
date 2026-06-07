@@ -72,7 +72,7 @@ export default function PressPage() {
              </div>
              <div className="mt-12 pt-12 border-t border-iv-white/5">
                 <p className="text-[10px] font-black text-iv-gold uppercase tracking-widest mb-2">Media Contact</p>
-                <p className="text-sm text-iv-white font-bold tracking-tight">press@1hubsolutions.com</p>
+                <p className="text-sm text-iv-white font-bold tracking-tight">press@isolavitale.com</p>
              </div>
            </div>
         </div>

@@ -9,10 +9,10 @@ const TIERS = [
     name: 'iv Acqua',
     label: 'Acqua',
     threshold: '0 – 499 pts',
-    color: 'text-sky-400',
-    border: 'border-sky-400/30',
-    bg: 'bg-sky-400/5',
-    icon: <Star className="w-6 h-6 text-sky-400" />,
+    color: 'text-iv-cream/60',
+    border: 'border-iv-gold/20',
+    bg: 'bg-iv-gold/5',
+    icon: <Star className="w-6 h-6 text-iv-cream/50" />,
     perks: [
       'Earn 1 point per $1 spent',
       'Early access to new launches',
@@ -30,7 +30,7 @@ const TIERS = [
     icon: <Crown className="w-6 h-6 text-iv-gold" />,
     highlight: true,
     perks: [
-      'Earn 1.5 points per $1 spent',
+      'Earn 1 point per $1 spent (2× on subscriptions)',
       'Complimentary deluxe samples with every order',
       'Free express shipping on all orders',
       'Quarterly Skin Intelligence Report',
@@ -60,8 +60,8 @@ const TIERS = [
 
 const HOW_IT_WORKS = [
   { step: '01', title: 'Create Account', body: 'Register for free. Your point balance starts immediately on your first order.' },
-  { step: '02', title: 'Earn Points', body: 'Every purchase, review, and referral earns points. Subscriptions earn 25% bonus points automatically.' },
-  { step: '03', title: 'Unlock Tiers', body: 'Progress through Bronze → Gold → Obsidian as your balance grows. Tier benefits activate instantly.' },
+  { step: '02', title: 'Earn Points', body: 'Every purchase, review, and referral earns points. Subscription orders earn 2× points automatically.' },
+  { step: '03', title: 'Unlock Tiers', body: 'Progress through Acqua → Verde → Oro as your balance grows. Tier benefits activate instantly.' },
   { step: '04', title: 'Redeem Rewards', body: 'Use points at checkout — 100 points = $1.00 off. Or save for exclusive milestone gifts.' },
 ]
 
@@ -69,7 +69,7 @@ const EARN_ACTIONS = [
   { action: 'Purchase', points: '1–2 pts / $1', note: 'Based on your tier' },
   { action: 'Write a Verified Review', points: '50 pts', note: 'With photo: +25 pts' },
   { action: 'Refer a Friend', points: '200 pts', note: 'After their first purchase' },
-  { action: 'Subscribe to Routine', points: '+25% bonus', note: 'On every subscription order' },
+  { action: 'Subscribe to Ritual', points: '2× points', note: 'On every subscription order' },
   { action: 'Complete Vitale Skin Assessment™', points: '75 pts', note: 'One-time' },
   { action: 'Birthday Month Purchase', points: '2× points', note: 'All of your birthday month' },
   { action: 'Share on Social', points: '25 pts', note: 'Per verified share' },
@@ -93,7 +93,7 @@ export default function LoyaltyPage() {
     { q: 'Do points expire?', a: 'Points remain active as long as you make at least one purchase every 18 months. iv Oro members never have points expire.' },
     { q: 'Can I gift my points to someone else?', a: 'iv Verde and Oro members can transfer up to 500 points per calendar year to another Isola Vitale account.' },
     { q: 'What happens if I drop a tier?', a: 'Tier status is reviewed annually. If your points fall below the threshold, you retain your current tier benefits for a 90-day grace period.' },
-    { q: 'How do subscription orders work with points?', a: 'Active subscriptions automatically earn 25% bonus points on every renewal order, in addition to your base tier rate.' },
+    { q: 'How do subscription orders work with points?', a: 'Active subscriptions automatically earn 2× points on every renewal order — double your usual earn rate, for as long as your ritual continues.' },
   ]
 
   return (

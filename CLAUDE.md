@@ -228,39 +228,29 @@ Work is sequenced by dependency and impact. No phase starts until the previous i
 
 ### PHASE 2 — Checkout Page Redesign ✅ COMPLETE
 
-**Goal:** Replace the generic checkout page with a luxury-grade, on-brand experience. Currently scores 35/100 on Langer compliance.
+**Goal:** Replace the generic checkout page with a luxury-grade, on-brand experience.
 
-**File:** `apps/web/app/checkout/page.tsx` — full rewrite
+**File:** `apps/web/app/checkout/page.tsx`
 
-**Design spec:**
-- Background: `bg-iv-black` (dark, not generic gray-50)
+**Design spec (as shipped):**
+- Background: light ivory/parchment (`#FDFAF5`) — brand owner confirmed light theme for all transactional pages. Dark checkout is explicitly rejected.
 - Two-column layout on desktop: form left, order summary right (sticky)
-- Single-column on mobile: summary collapsed accordion at top, form below
+- Single-column on mobile
 
-**Copy spec (Langer-compliant):**
-- Page title: "Complete Your Ritual" (not "Checkout")
-- Email field label: "We will reach you at" (not "Email Address")
-- Shipping section heading: "Where your ritual will arrive" (not "Shipping Address")
-- Subscription badge (if subscribed): "Your monthly ritual — ships every 30 days"
-- Security note: "Your payment details are tokenised by Stripe and never touch our servers"
-- Guest checkout invite: "Continue without an account" with note "You can save your details after your first order"
-- Submit button: "Complete My Ritual — £{total}" (not generic "Place Order")
-
-**Technical spec:**
-- Carry subscription state from cart (check `isSubscription` on items)
-- If subscription: show "Ritual Membership" badge at top of summary
-- Annual saving calculation displayed in summary: "You save £X/year with your ritual membership"
-- Stripe Elements embedded (no redirect to Stripe-hosted page for card)
-- Apple Pay / Google Pay via Stripe Payment Request Button at top ("Express Complete")
+**Copy spec (Langer-compliant, as shipped):**
+- Page title: "Complete Your Ritual"
+- Email field label: "We will reach you at"
+- Shipping section heading: "Where your ritual will arrive"
+- Submit button: "Complete My Ritual — ${total}"
 - Trust strip: "90-Day Guarantee · Free Returns · EU GMP Certified · Cancel Anytime"
-- After success: redirect to `/account/orders` with `?confirmed=true` param
 
-**Acceptance criteria:**
-- Page uses `bg-iv-black` throughout, gold accents, serif headings
-- All form labels use brand voice copy above
-- Subscription state visible in summary
-- Payment completes successfully via Stripe Elements
-- No standard Shopify/generic checkout feel
+**Payment architecture (as shipped):**
+- Stripe Hosted Checkout — redirect to Stripe's page after "Complete My Ritual" is clicked
+- Apple Pay / Google Pay provided natively by Stripe Hosted page — no Payment Request Button needed
+- Success redirect: `/success` page (contains "View My Orders" CTA for authenticated users)
+- This is a deliberate architecture choice: PCI surface is Stripe's, not ours
+
+**Architecture note:** Embedded Stripe Elements (in-page card form) is a future optional enhancement. The hosted redirect is simpler, fully functional, and PCI-minimal. Do not change unless explicitly instructed.
 
 ---
 
@@ -395,7 +385,7 @@ Work is sequenced by dependency and impact. No phase starts until the previous i
 **File:** `apps/web/app/loyalty/page.tsx` — may already exist, verify and build if not
 
 **Spec:**
-- Points: 1 point per £1 spent. Subscription earns 2× points.
+- Points: 1 point per $1 spent. Subscription orders earn 2× points (double the base rate).
 - Tiers: Acqua (0–499), Verde (500–1999), Oro (2000+)
 - Redemption: 100 points = £1 off
 - Earn events: purchase, referral, consultation completion, review submission
@@ -439,11 +429,13 @@ Work is sequenced by dependency and impact. No phase starts until the previous i
 
 ---
 
-### PHASE 9 — Production Infrastructure ✅ COMPLETE
+### PHASE 9 — Production Infrastructure ⚙️ PRISMA WIRED, NOT YET ACTIVE
 
 **Goal:** Replace dev JSON stores with production-grade persistence.
 
-**Not for current sprint — document the migration path only.**
+**Current state:** Prisma client is wired (`lib/prisma.ts`) and the webhook uses it conditionally with a graceful JSON fallback when `DATABASE_URL` is absent. The JSON stores (`data/users.json`, `data/products.json`) remain the live data layer until `DATABASE_URL` is set in production.
+
+**To activate:** Set `DATABASE_URL` in `.env.local` (or production env) → run `npx prisma migrate deploy` → JSON fallbacks will be bypassed automatically.
 
 **Migration path:**
 1. Prisma schema (`prisma/schema.prisma`) — already has User, Order, Product models — activate
@@ -532,13 +524,13 @@ model Referral {
 - 10% Stripe promo code applied automatically, visible at checkout
 - Self-referral and duplicate conversion blocked
 
-**Status: POSTPONED — implement after Phases 1–9 complete.**
+**Status: CODE COMPLETE — not yet in production.** All routes, UI, store, and email templates are built. Not live pending Prisma migration (Phase 9 activation).
 
 ---
 
 ## Current Sprint — Status
 
-All phases 0–9 complete. Awaiting go-live env var configuration (Stripe live keys, NEXTAUTH_URL, RESEND_API_KEY, DATABASE_URL).
+All phases 0–9 code complete. Awaiting go-live env var configuration (Stripe live keys, NEXTAUTH_URL, RESEND_API_KEY, DATABASE_URL).
 
 | Phase | Status |
 |---|---|
@@ -551,8 +543,8 @@ All phases 0–9 complete. Awaiting go-live env var configuration (Stripe live k
 | Phase 6 — Email flows | ✅ Complete |
 | Phase 7 — iv Circle loyalty | ✅ Complete |
 | Phase 8 — Forgot password | ✅ Complete |
-| Phase 9 — Production DB | ✅ Complete |
-| Phase 10 — Referral program | ⏳ Postponed |
+| Phase 9 — Production DB | ⚙️ Prisma wired; inactive without DATABASE_URL; JSON stores are live data layer |
+| Phase 10 — Referral program | ⚙️ Code built; not in production (needs Phase 9 DB) |
 
 ---
 
@@ -665,27 +657,42 @@ Target state (Phase 2):
 
 ## Design System
 
-### Colour tokens (`apps/web/app/globals.css`)
+### Colour system — two-tier light/dark (`apps/web/app/globals.css`)
 
-All colours must use CSS variables — never hardcode hex values.
+**The site is light-first by default.** The `:root` values resolve to the light ivory palette. Brand sections that need dark treatment use the `.iv-dark` class (applied via `data-theme="dark"` or explicit `.iv-dark` wrapper), which overrides tokens back to dark values.
+
+**NEVER hardcode hex values — always use CSS variables.**
+
+#### `:root` values (default — light ivory theme)
 
 ```
---iv-black         #1A1614   Main background (dark theme)
---iv-white         #FDFAF5   Primary text
+--iv-black         #FDFAF5   Page background (warm ivory)
+--iv-white         #1A1614   Headings / primary text (charcoal)
+--iv-cream         #3D2B20   Body text (warm espresso)
+--iv-gold          #913832   Brand accent (the "red-gold") — unchanged
+--iv-deep-green    #F4EAE2   Card/surface backgrounds (warm parchment)
+--iv-champagne     #FAD6C9   Light peach accent
+--iv-deep-peacock  #005A5B   Men's line accent
+--iv-text-muted    #7A5C4E   Muted text (warm taupe)
+```
+
+#### `.iv-dark` override (dark luxury theme — brand/editorial pages)
+
+```
+--iv-black         #1A1614   Dark background
+--iv-white         #FDFAF5   Light text
 --iv-cream         #FAF6EE   Secondary text
---iv-gold          #913832   Brand accent (the "red-gold")
---iv-deep-green    #0F2419   Card/surface backgrounds
+--iv-deep-green    #0F2419   Dark card surfaces
 --iv-formal-garden #1F5129   Mid-tone green
---iv-champagne     #E8D5B0   Light accent
---iv-red-ochre     #913832   (= iv-gold; decorative panels)
---iv-peach-dust    #FAD6C9   Light peach
---iv-deep-peacock  #005F6B   Men's line accent
 --iv-text-muted    rgba(253,250,245,0.45)
-
-Light theme (login, register, checkout):
---iv-black resolves to #FDFAF5 (warm ivory)
---iv-deep-green resolves to #F4EAE2 (warm parchment)
 ```
+
+#### Page-level theme rule
+
+| Page type | Theme | Rationale |
+|---|---|---|
+| Brand/editorial (homepage, about, system, science, shop, journal, loyalty) | `.iv-dark` | Luxury house presence |
+| Transactional (checkout, login, register, account, success, forgot-password) | Default (light ivory) | Brand owner instruction: no dark on transactional pages |
 
 ### Typography
 
@@ -724,7 +731,7 @@ Classes: `iv-reveal-up`, `iv-reveal-fade`, `iv-reveal-left`, `iv-reveal-right`, 
 Use Tailwind for layout. Use inline `style` for `var(--iv-*)` tokens.
 
 ### Currency
-Consumer: GBP (£). B2B/Clinical: USD ($). Use `Intl.NumberFormat`.
+**USD ($) sitewide** — both consumer and B2B/Clinical. Brand owner decision (HQ Allen, Texas). Use `Intl.NumberFormat` for formatting.
 
 ### Error states
 All error messages must maintain brand voice. No generic "Something went wrong."
@@ -788,7 +795,7 @@ All pages built and verified clean. Remaining items are env-var configuration on
 ## Environment Variables (`.env.local`)
 
 ```
-NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_URL=http://localhost:5000
 NEXTAUTH_SECRET=iv-dev-secret-change-in-production
 
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_...
@@ -816,7 +823,7 @@ RESEND_API_KEY=                     # add from resend.com
 | Cart context | `lib/cart-context.tsx` |
 | Checkout page | `app/checkout/page.tsx` |
 | Checkout API | `app/api/checkout/route.ts` |
-| Stripe webhook | `app/api/webhooks/route.ts` |
+| Stripe webhook | `app/api/webhooks/stripe/route.ts` — **URL: `/api/webhooks/stripe`** (register this exact path in Stripe dashboard) |
 | Consumer login | `app/login/page.tsx` |
 | B2B login | `app/login/professional/page.tsx` |
 | Register (consumer) | `app/register/page.tsx` |
@@ -828,7 +835,8 @@ RESEND_API_KEY=                     # add from resend.com
 | Product store | `lib/product-store.ts` |
 | Products seed | `lib/products.ts` |
 | Stripe price map | `lib/stripe-prices.ts` |
-| Email client | `lib/email.ts` |
+| Email client + sender | `lib/resend.ts` (Resend client, FROM_EMAIL = `ritual@isolavitale.com`) |
+| Email templates | `lib/email-templates.ts` (welcome, order confirmation, renewal reminder, referral reward) |
 | Admin products | `app/admin/products/page.tsx` |
 | Admin layout | `app/admin/layout.tsx` |
 | Shop | `app/shop/page.tsx` |

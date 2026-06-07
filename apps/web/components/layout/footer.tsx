@@ -123,11 +123,11 @@ export function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-[10px] font-black uppercase tracking-widest text-iv-cream text-opacity-40">
             <div className="flex items-center space-x-3">
               <Mail className="h-4 w-4" style={{ color: 'rgba(184, 151, 47, 0.6)' }} />
-              <span>shams@1hubsolutions.com</span>
+              <span>concierge@isolavitale.com</span>
             </div>
             <div className="flex items-center space-x-3">
               <Phone className="h-4 w-4" style={{ color: 'rgba(184, 151, 47, 0.6)' }} />
-              <span>+1 (214) 1HubSolutions</span>
+              <span>+1 (214) 714-3597</span>
             </div>
             <div className="flex items-center space-x-3">
               <MapPin className="h-4 w-4" style={{ color: 'rgba(184, 151, 47, 0.6)' }} />

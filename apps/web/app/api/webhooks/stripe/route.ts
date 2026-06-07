@@ -97,7 +97,7 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
   if (customerEmail) {
     try {
       const basePoints    = Math.floor(total)
-      const earnedPoints  = isSubscription ? Math.floor(basePoints * 1.25) : basePoints
+      const earnedPoints  = isSubscription ? basePoints * 2 : basePoints
       addLoyaltyPoints(customerEmail, earnedPoints)
       console.info(`[webhook] loyalty: +${earnedPoints} pts to ${customerEmail}`)
     } catch (ptErr) {

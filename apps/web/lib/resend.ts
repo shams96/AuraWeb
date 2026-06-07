@@ -6,4 +6,4 @@ if (!process.env.RESEND_API_KEY) {
 
 export const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null
 
-export const FROM_EMAIL = 'Isola Vitale <hello@isolavitale.com>'
+export const FROM_EMAIL = 'Isola Vitale <ritual@isolavitale.com>'

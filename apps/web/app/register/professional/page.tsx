@@ -84,7 +84,7 @@ export default function ProfessionalRegisterPage() {
       await signIn('credentials', { email: form.email, password: form.password, redirect: false })
       setTimeout(() => router.push('/professional'), 1800)
     } catch {
-      setError('Something went wrong. Please try again or contact us at shams@1hubsolutions.com.')
+      setError('Something went wrong. Please try again or contact our concierge team at concierge@isolavitale.com.')
     } finally {
       setLoading(false)
     }

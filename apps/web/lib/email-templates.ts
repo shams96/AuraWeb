@@ -116,7 +116,7 @@ export function accountWelcomeEmail(data: { name: string; accountType: 'personal
     <a class="btn" href="${ctaHref}">${ctaLabel}</a>
     <p class="muted" style="margin-top:32px;font-size:12px">
       Questions? Our concierge team is available at
-      <a href="mailto:shams@1hubsolutions.com" style="color:#913832">shams@1hubsolutions.com</a>
+      <a href="mailto:concierge@isolavitale.com" style="color:#913832">concierge@isolavitale.com</a>
     </p>
   `)
 }

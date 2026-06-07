@@ -76,6 +76,9 @@ export default function AccountDashboardPage() {
           <h1 style={{ fontFamily: 'var(--iv-font-serif)', fontSize: 'clamp(1.8rem,4vw,2.4rem)', fontStyle: 'italic', fontWeight: 600, color: C.charcoal, margin: 0 }}>
             Welcome back, {firstName}.
           </h1>
+          <p style={{ fontSize: '0.85rem', color: C.muted, marginTop: 4, fontWeight: 300, fontStyle: 'italic', fontFamily: 'var(--iv-font-serif)' }}>
+            Your ritual awaits.
+          </p>
           <p style={{ fontSize: '0.85rem', color: C.muted, marginTop: 6, fontWeight: 300 }}>
             {user.email}
           </p>
