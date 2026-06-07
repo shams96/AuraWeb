@@ -8,42 +8,42 @@ export default function SciencePage() {
     {
       name: 'OS-01 Senomorphic Peptide',
       concentration: '0.30%',
-      icon: <Zap className="w-6 h-6 text-emerald-500" />,
-      description: 'The first clinical peptide designed to target the primary cause of aging: cellular senescence. By eliminating "zombie cells," it rejuvenates the cellular ecosystem.',
+      icon: <Zap className="w-6 h-6 text-iv-gold" />,
+      description: 'The first clinical peptide designed to target cellular senescence — clearing spent cells from the skin to restore the conditions for resilience and renewal.',
       benefit: 'Up to 70% improvement in skin barrier strength vs placebo — Trial IV-2024-01, 12 wks, n=120.'
     },
     {
       name: 'DWAT Restoration Science',
       concentration: '0.75%',
-      icon: <Activity className="w-6 h-6 text-emerald-500" />,
+      icon: <Activity className="w-6 h-6 text-iv-gold" />,
       description: 'Dermal White Adipose Tissue (DWAT) complex supports healthy adipocyte signalling and collagen remodelling to gradually restore natural facial volume.',
       benefit: 'Progressive facial volume restoration supporting structural collagen remodelling.'
     },
     {
       name: 'GLP-1 Protection Technology',
       concentration: '1.25%',
-      icon: <Shield className="w-6 h-6 text-emerald-500" />,
+      icon: <Shield className="w-6 h-6 text-iv-gold" />,
       description: 'Peptide complex designed to support skin elasticity and structural integrity during periods of metabolic change, helping to maintain firmness and volume.',
       benefit: 'Supports skin elasticity and helps maintain volume during metabolic shifts.'
     },
     {
       name: 'L-Ornithine Volume Enhancement',
       concentration: '1.50%',
-      icon: <Sparkles className="w-6 h-6 text-emerald-500" />,
+      icon: <Sparkles className="w-6 h-6 text-iv-gold" />,
       description: 'An encapsulated amino acid that supports collagen synthesis and dermal density, targeting deep-set wrinkles in mature skin.',
       benefit: '37.6% reduction in nasolabial fold depth vs untreated — Trial IV-2024-02, 8 wks, n=84.'
     },
     {
       name: 'Bifida Ferment Lysate',
       concentration: '0.50%',
-      icon: <Beaker className="w-6 h-6 text-emerald-500" />,
+      icon: <Beaker className="w-6 h-6 text-iv-gold" />,
       description: 'A clinical-grade postbiotic that reinforces the skin microbiome and reduces inflammatory signalling, supporting long-term barrier resilience.',
       benefit: '30% faster redness reduction vs vehicle control — Trial IV-2024-03, 6 wks, n=60.'
     },
     {
       name: 'Ectoin Environmental Shield',
       concentration: '1.00%',
-      icon: <Globe className="w-6 h-6 text-emerald-500" />,
+      icon: <Globe className="w-6 h-6 text-iv-gold" />,
       description: 'An extremolyte from halophilic bacteria that forms a hydration shell around skin cells, protecting them from urban pollution and UV-induced stress.',
       benefit: '18% TEWL reduction and 35% hydration increase vs control — Trial IV-2024-04, 4 wks, n=96.'
     }
@@ -59,9 +59,9 @@ export default function SciencePage() {
           <div className="inline-block border border-iv-gold/20 rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-10 bg-iv-black/40 backdrop-blur-md">
             4 Independent Clinical Trials
           </div>
-          <h1 className="iv-type-display font-bold mb-6 tracking-tighter uppercase leading-none">The Science of <br /><span className="text-iv-gold italic serif">Longevity</span></h1>
+          <h1 className="iv-type-display font-bold mb-6 tracking-tighter uppercase leading-none">The Science of <br /><span className="text-iv-gold italic serif">Resilience</span></h1>
           <p className="text-lg text-iv-cream/70 max-w-3xl mx-auto leading-relaxed font-light">
-            Formulated in partnership with <strong className="text-iv-white">Natural You Srl</strong>, Isola del Liri, our 18 enhanced formulations represent the pinnacle of Italian biotechnological innovation. We don't just treat skin; we optimize its cellular metabolism.
+            Formulated in partnership with <strong className="text-iv-white">Natural You Srl</strong>, Isola del Liri, our 18 formulations are built around a single conviction: skin does not need to be fought — it needs to be restored to its own intelligence.
           </p>
         </div>
       </section>

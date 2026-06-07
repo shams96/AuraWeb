@@ -137,21 +137,21 @@ export default function IngredientsPage() {
                 issuer: 'European Medicines Agency',
                 description: 'All formulations manufactured under EU Good Manufacturing Practice standards at Natural You Srl, Isola del Liri (FR), Italy.',
                 detail: 'Batch documentation available on request',
-                color: 'text-blue-400',
+                color: 'text-iv-gold',
               },
               {
                 badge: 'Cruelty-Free',
                 issuer: 'PETA Beauty Without Bunnies',
                 description: 'No animal testing at any stage of development, ingredient sourcing, or finished product evaluation. PETA certified.',
                 detail: 'Certificate #PETA-2025-IV',
-                color: 'text-green-400',
+                color: 'text-iv-gold',
               },
               {
                 badge: 'Dermatologist Tested',
                 issuer: 'Independent Clinical Assessment',
                 description: 'Every formulation has undergone dermatological tolerance testing on all Fitzpatrick skin types including sensitive skin.',
                 detail: '200+ subjects per product',
-                color: 'text-purple-400',
+                color: 'text-iv-gold',
               },
               {
                 badge: '24-Month Stability',
@@ -165,7 +165,7 @@ export default function IngredientsPage() {
                 issuer: 'The Vegan Society',
                 description: 'No animal-derived ingredients in any formulation. Complete synthetic and plant-derived active matrix.',
                 detail: 'Verified across all 18 SKUs',
-                color: 'text-emerald-400',
+                color: 'text-iv-gold',
               },
               {
                 badge: 'Purity Grade 99.8%',

@@ -23,7 +23,7 @@ export default function JournalPage() {
     {
       id: 'senomorphic-peptides',
       title: 'Senomorphic Peptides: The New Frontier of Longevity Science',
-      excerpt: 'By targeting "zombie cells" that refuse to die but stop functioning, senomorphic peptides like OS-01 are rewriting the rules of aging. Here is the data behind the 70% barrier improvement.',
+      excerpt: 'By targeting senescent cells that have ceased to contribute and begun to impair, senomorphic peptides like OS-01 are rewriting the science of skin resilience. Here is the data behind the 70% barrier improvement.',
       date: 'March 28, 2026',
       author: 'Natural You Srl',
       category: 'Science'

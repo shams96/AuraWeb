@@ -307,7 +307,7 @@ export function BuyBox({ product, selectedVariant: initialVariant, buyBullets }:
                   )}
                   <div className="text-xl font-bold text-iv-white">{formatPrice(totalPrice)}</div>
                   {purchaseType === 'subscribe' && (
-                    <div className="text-[10px] font-black text-green-400">–{formatPrice(currentVariant.price * 0.20 * effectiveQty)} saved</div>
+                    <div className="text-[10px] font-black text-iv-gold">–{formatPrice(currentVariant.price * 0.20 * effectiveQty)} saved</div>
                   )}
                 </div>
               </div>
@@ -331,7 +331,7 @@ export function BuyBox({ product, selectedVariant: initialVariant, buyBullets }:
 
               {checkoutError && (
                 <div className="mt-3 text-center">
-                  <p className="text-red-400 text-xs font-medium mb-1">{checkoutError}</p>
+                  <p className="text-[#913832] text-xs font-medium mb-1">{checkoutError}</p>
                   <p className="text-xs text-iv-cream/50">
                     Need help?{' '}
                     <a href="tel:+12147143597" className="text-iv-gold underline font-bold">
@@ -363,7 +363,7 @@ export function BuyBox({ product, selectedVariant: initialVariant, buyBullets }:
             <div className="flex flex-wrap justify-center gap-8 pt-2">
               <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-widest text-iv-cream/40">
                 <Shield className="w-4 h-4 text-iv-gold/60" />
-                <span>30-Day Guarantee</span>
+                <span>90-Day Guarantee</span>
               </div>
               <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-widest text-iv-cream/40">
                 <Truck className="w-4 h-4 text-iv-gold/60" />
