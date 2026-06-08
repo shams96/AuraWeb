@@ -4,11 +4,12 @@ import { findUserByEmail } from '@/lib/user-store'
 import { resend, FROM_EMAIL } from '@/lib/resend'
 import { referralRewardEmail } from '@/lib/email-templates'
 import Stripe from 'stripe'
+import { randomBytes } from 'crypto'
 
 export async function POST(req: NextRequest) {
   // Internal-only: called from the Stripe webhook handler
   const secret = req.headers.get('x-internal-secret')
-  if (secret !== process.env.NEXTAUTH_SECRET) {
+  if (!process.env.INTERNAL_API_SECRET || secret !== process.env.INTERNAL_API_SECRET) {
     return NextResponse.json({ error: 'Forbidden.' }, { status: 403 })
   }
 
@@ -27,7 +28,7 @@ export async function POST(req: NextRequest) {
     if (alreadyRewarded.length > 0) return NextResponse.json({ ok: true })
 
     // Generate a human-readable reward code
-    const rewardCode = `IVA-${Math.random().toString(36).slice(2, 6).toUpperCase()}-10`
+    const rewardCode = `IVA-${randomBytes(3).toString('hex').toUpperCase()}-10`
 
     // Create Stripe promo code if stripe secret key is available
     if (process.env.STRIPE_SECRET_KEY) {

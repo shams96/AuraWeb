@@ -67,8 +67,8 @@ export const authOptions: NextAuthOptions = {
 
         try {
           const user = await findAndVerifyUser(credentials.email, credentials.password)
-          if (user) console.log(`[auth] authorize: success for ${credentials.email}`)
-          else      console.error(`[auth] authorize: failed for ${credentials.email}`)
+          if (user) console.log('[auth] authorize: success')
+          else      console.error('[auth] authorize: failed — invalid credentials')
           return user
         } catch (e) {
           console.error('[auth] authorize exception:', e)
@@ -95,5 +95,7 @@ export const authOptions: NextAuthOptions = {
     },
   },
   pages: { signIn: '/login' },
-  secret: process.env.NEXTAUTH_SECRET ?? 'iv-dev-secret-change-in-production',
+  secret: process.env.NODE_ENV === 'production' && !process.env.NEXTAUTH_SECRET
+    ? (() => { throw new Error('NEXTAUTH_SECRET must be set in production') })()
+    : (process.env.NEXTAUTH_SECRET ?? 'iv-dev-secret-change-in-production'),
 }

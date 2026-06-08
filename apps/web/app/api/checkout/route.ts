@@ -2,7 +2,10 @@ import { NextRequest, NextResponse } from 'next/server'
 import { stripe } from '@/lib/stripe'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
+import { getProduct } from '@/lib/product-store'
 import Stripe from 'stripe'
+
+const ALLOWED_CURRENCIES = new Set(['usd', 'gbp', 'eur', 'cad', 'aud'])
 
 export interface CheckoutItem {
   id: string
@@ -25,19 +28,33 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Cart is empty' }, { status: 400 })
     }
 
+    // Validate currency
+    const safeCurrency = (typeof currency === 'string' && ALLOWED_CURRENCIES.has(currency.toLowerCase()))
+      ? currency.toLowerCase() : 'usd'
+
+    // Look up server-side prices — reject client-supplied amounts
+    const verifiedItems = items.map(item => {
+      const product = getProduct(item.id)
+      if (!product) throw new Error(`Product not found: ${item.id}`)
+      const serverPrice = item.isSubscription
+        ? Math.round(product.price * 0.80)  // 20% subscription discount
+        : product.price
+      return { ...item, price: serverPrice }
+    })
+
     const session  = await getServerSession(authOptions)
     const baseUrl  = process.env.NEXTAUTH_URL ?? 'http://localhost:5000'
     const userId   = (session?.user as { id?: string })?.id ?? 'guest'
-    const allSubscribed = items.every(i => i.isSubscription)
+    const allSubscribed = verifiedItems.every(i => i.isSubscription)
 
     if (allSubscribed) {
       // Subscription mode — recurring monthly billing
       const stripeSession = await stripe.checkout.sessions.create({
         mode: 'subscription',
         customer_email: session?.user?.email ?? undefined,
-        line_items: items.map(item => ({
+        line_items: verifiedItems.map(item => ({
           price_data: {
-            currency,
+            currency: safeCurrency,
             unit_amount: Math.round(item.price * 100),
             recurring: { interval: 'month' },
             product_data: {
@@ -66,9 +83,9 @@ export async function POST(req: NextRequest) {
       mode: 'payment',
       payment_method_types: ['card'],
       customer_email: session?.user?.email ?? undefined,
-      line_items: items.map(item => ({
+      line_items: verifiedItems.map(item => ({
         price_data: {
-          currency,
+          currency: safeCurrency,
           unit_amount: Math.round(item.price * 100),
           product_data: {
             name: item.name,

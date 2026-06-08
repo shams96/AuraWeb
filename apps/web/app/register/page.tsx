@@ -66,19 +66,7 @@ export default function RegisterPage() {
         return
       }
 
-      // 2. Track referral if cookie present (fire-and-forget)
-      try {
-        const ivRef = document.cookie.split(';').map(c => c.trim()).find(c => c.startsWith('iv_ref='))?.split('=')[1]
-        if (ivRef) {
-          fetch('/api/referral/track', {
-            method:  'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body:    JSON.stringify({ code: ivRef, refereeEmail: email }),
-          }).catch(() => {})
-        }
-      } catch { /* cookie read failed — non-critical */ }
-
-      // 3. Show success state
+      // 2. Show success state
       setSuccess(true)
 
       // 4. Auto sign-in

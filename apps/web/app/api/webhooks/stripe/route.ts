@@ -84,7 +84,7 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
         method:  'POST',
         headers: {
           'Content-Type':     'application/json',
-          'x-internal-secret': process.env.NEXTAUTH_SECRET ?? '',
+          'x-internal-secret': process.env.INTERNAL_API_SECRET ?? '',
         },
         body: JSON.stringify({ refereeEmail: customerEmail }),
       }).catch(e => console.error('[webhook] referral convert fetch failed:', e))
@@ -213,20 +213,25 @@ export async function POST(req: NextRequest) {
   const sig  = req.headers.get('stripe-signature') ?? ''
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET
 
-  // If no webhook secret set (local dev), accept all events
   let event: Stripe.Event
-  if (webhookSecret && sig) {
+
+  if (!webhookSecret) {
+    // Dev fallback: only allow in non-production
+    if (process.env.NODE_ENV === 'production') {
+      console.error('[webhook] STRIPE_WEBHOOK_SECRET not set in production — rejecting request')
+      return NextResponse.json({ error: 'Webhook not configured' }, { status: 500 })
+    }
+    try {
+      event = JSON.parse(body) as Stripe.Event
+    } catch {
+      return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 })
+    }
+  } else {
     try {
       event = stripe.webhooks.constructEvent(body, sig, webhookSecret)
     } catch (err) {
       console.error('[webhook] signature verification failed', err)
       return NextResponse.json({ error: 'Invalid signature' }, { status: 400 })
-    }
-  } else {
-    try {
-      event = JSON.parse(body) as Stripe.Event
-    } catch {
-      return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 })
     }
   }
 

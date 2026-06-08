@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { randomBytes } from 'crypto'
+import { randomBytes, createHash } from 'crypto'
 import fs from 'fs'
 import path from 'path'
 import { findUserByEmail } from '@/lib/user-store'
@@ -43,12 +43,13 @@ export async function POST(req: NextRequest) {
     }
 
     // Generate token (expire in 1 hour)
-    const token    = randomBytes(32).toString('hex')
+    const token     = randomBytes(32).toString('hex')
+    const tokenHash = createHash('sha256').update(token).digest('hex')
     const expiresAt = Date.now() + 60 * 60 * 1000
 
-    // Purge old tokens for this email, add new one
+    // Store only the hash — never the raw token
     const tokens = loadTokens().filter(t => t.email !== emailLower && t.expiresAt > Date.now())
-    tokens.push({ email: emailLower, token, expiresAt })
+    tokens.push({ email: emailLower, token: tokenHash, expiresAt })
     saveTokens(tokens)
 
     const resetUrl = `${process.env.NEXTAUTH_URL}/reset-password?token=${token}`

@@ -8,7 +8,8 @@ export function middleware(req: NextRequest) {
       maxAge:   60 * 60 * 24 * 30, // 30 days
       path:     '/',
       sameSite: 'lax',
-      httpOnly: false, // readable by client JS after registration
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
     })
     return res
   }

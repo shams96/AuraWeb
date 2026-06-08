@@ -43,6 +43,7 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
     const { email, name, password, accountType = 'personal' } = body
+    const ivRef = req.cookies.get('iv_ref')?.value
 
     if (!email?.trim() || !name?.trim() || !password) {
       return NextResponse.json({ error: 'Name, email and password are required.' }, { status: 400 })
@@ -64,7 +65,7 @@ export async function POST(req: NextRequest) {
       email: emailLower,
       name: name.trim(),
       passwordHash,
-      role: accountType === 'business' ? 'PROFESSIONAL' : 'CUSTOMER',
+      role: accountType === 'business' ? 'PENDING_PROFESSIONAL' : 'CUSTOMER',
       accountType,
       createdAt: new Date().toISOString(),
     }
@@ -72,7 +73,17 @@ export async function POST(req: NextRequest) {
     users.push(newUser)
     saveUsers(users)
 
-    console.log(`[register] created user: ${emailLower}`)
+    console.log('[register] user created')
+
+    // Track referral server-side from httpOnly cookie (fire-and-forget)
+    if (ivRef && /^[a-f0-9]{8}$/.test(ivRef)) {
+      const baseUrl = process.env.NEXTAUTH_URL ?? 'http://localhost:5000'
+      fetch(`${baseUrl}/api/referral/track`, {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({ code: ivRef, refereeEmail: emailLower }),
+      }).catch(() => {})
+    }
 
     // Send welcome email (non-blocking — failure doesn't affect registration)
     if (resend) {
