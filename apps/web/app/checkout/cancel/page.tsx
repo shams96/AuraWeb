@@ -23,7 +23,7 @@ export default function CheckoutCancelPage() {
           <ArrowLeft size={24} style={{ color: C.gold, opacity: 0.7 }} />
         </div>
 
-        <p style={{ fontSize: '0.6rem', fontWeight: 900, letterSpacing: '0.35em', textTransform: 'uppercase', color: C.gold, marginBottom: 16 }}>
+        <p style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.35em', textTransform: 'uppercase', color: C.gold, marginBottom: 16 }}>
           No charge was made
         </p>
 
@@ -38,13 +38,13 @@ export default function CheckoutCancelPage() {
         <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
           <Link
             href="/shop"
-            style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '13px 26px', background: C.gold, color: '#FDFAF5', borderRadius: 10, fontSize: '0.65rem', fontWeight: 900, letterSpacing: '0.2em', textTransform: 'uppercase', textDecoration: 'none' }}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '13px 26px', background: C.gold, color: '#FDFAF5', borderRadius: 10, fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.2em', textTransform: 'uppercase', textDecoration: 'none' }}
           >
             Return to Shop
           </Link>
           <Link
             href="/contact"
-            style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '13px 26px', border: `1px solid ${C.border}`, color: C.muted, borderRadius: 10, fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', textDecoration: 'none' }}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '13px 26px', border: `1px solid ${C.border}`, color: C.muted, borderRadius: 10, fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', textDecoration: 'none' }}
           >
             Contact Concierge
           </Link>

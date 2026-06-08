@@ -29,7 +29,7 @@ export default function BestSellersPage() {
                   <span className="text-[10px] font-black uppercase tracking-widest text-iv-gold/60 border border-iv-gold/20 px-3 py-1 rounded-full">
                     {product.collection}
                   </span>
-                  <span className="text-[10px] font-black uppercase tracking-widest text-iv-cream/30 border border-iv-white/5 px-3 py-1 rounded-full">
+                  <span className="text-[10px] font-black uppercase tracking-widest text-iv-cream/65 border border-iv-white/5 px-3 py-1 rounded-full">
                     {product.volume}
                   </span>
                 </div>
@@ -55,19 +55,19 @@ export default function BestSellersPage() {
               <div className="flex flex-wrap gap-4">
                 <div className="flex items-center gap-2">
                   <div className="w-4 h-4 rounded-full bg-iv-deep-emerald shadow-[0_0_10px_rgba(0,75,73,0.5)]" />
-                  <span className="text-[10px] font-black text-iv-cream/40 uppercase tracking-widest">Deep Emerald</span>
+                  <span className="text-[10px] font-black text-iv-cream/65 uppercase tracking-widest">Deep Emerald</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-4 h-4 rounded-full bg-iv-smoky-charcoal shadow-[0_0_10px_rgba(54,54,54,0.5)]" />
-                  <span className="text-[10px] font-black text-iv-cream/40 uppercase tracking-widest">Smoky Charcoal</span>
+                  <span className="text-[10px] font-black text-iv-cream/65 uppercase tracking-widest">Smoky Charcoal</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-4 h-4 rounded-full bg-iv-cloud-dancer shadow-[0_0_10px_rgba(240,238,233,0.5)]" />
-                  <span className="text-[10px] font-black text-iv-cream/40 uppercase tracking-widest">Cloud Dancer</span>
+                  <span className="text-[10px] font-black text-iv-cream/65 uppercase tracking-widest">Cloud Dancer</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-4 h-4 rounded-full bg-iv-peach-dust shadow-[0_0_10px_rgba(243,200,182,0.5)]" />
-                  <span className="text-[10px] font-black text-iv-cream/40 uppercase tracking-widest">Peach Dust</span>
+                  <span className="text-[10px] font-black text-iv-cream/65 uppercase tracking-widest">Peach Dust</span>
                 </div>
               </div>
             </div>

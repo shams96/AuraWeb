@@ -74,7 +74,7 @@ export default function SciencePage() {
             <p className="text-3xl font-bold text-iv-white tracking-tighter italic iv-serif">
               "Every formulation is a clinical precision instrument."
             </p>
-            <p className="text-[10px] font-black uppercase tracking-widest text-iv-cream/40 mt-4">— Dr. S. Islam</p>
+            <p className="text-[10px] font-black uppercase tracking-widest text-iv-cream/70 mt-4">— Dr. S. Islam</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -91,7 +91,7 @@ export default function SciencePage() {
                   {tech.description}
                 </p>
                 <div className="pt-6 border-t border-iv-white/5">
-                  <p className="text-[10px] font-black text-iv-cream/30 uppercase tracking-widest mb-2">Clinical Result</p>
+                  <p className="text-[10px] font-black text-iv-cream/65 uppercase tracking-widest mb-2">Clinical Result</p>
                   <p className="text-iv-gold font-bold text-sm">{tech.benefit}</p>
                 </div>
               </div>

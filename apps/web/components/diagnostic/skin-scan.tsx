@@ -148,7 +148,7 @@ export function SkinScan() {
                 </div>
                 <div className="space-y-4">
                   <h3 className="text-3xl font-bold text-iv-white uppercase tracking-tighter italic">Step 1: Calibration</h3>
-                  <p className="text-iv-cream/40 text-sm font-light leading-relaxed max-w-sm">
+                  <p className="text-iv-cream/65 text-sm font-light leading-relaxed max-w-sm">
                     Ensure even lighting and a neutral expression. Our AI will analyze 2.4 million data points to calibrate your metabolic protocol.
                   </p>
                 </div>
@@ -174,7 +174,7 @@ export function SkinScan() {
                 </div>
                 <div className="space-y-3">
                   <h3 className="text-2xl font-bold text-iv-white uppercase tracking-tighter">Camera Access Required</h3>
-                  <p className="text-iv-cream/50 text-sm font-light leading-relaxed max-w-xs">
+                  <p className="text-iv-cream/65 text-sm font-light leading-relaxed max-w-xs">
                     The Vitale Skin Scan requires your camera to capture real skin data. No images are stored or transmitted.
                   </p>
                 </div>
@@ -187,7 +187,7 @@ export function SkinScan() {
                   ].map((step, i) => (
                     <div key={i} className="flex items-start gap-3">
                       <span className="text-iv-gold text-[10px] font-black mt-0.5 flex-shrink-0">{i + 1}.</span>
-                      <span className="text-iv-cream/50 text-[11px] leading-relaxed">{step}</span>
+                      <span className="text-iv-cream/65 text-[11px] leading-relaxed">{step}</span>
                     </div>
                   ))}
                 </div>
@@ -266,7 +266,7 @@ export function SkinScan() {
                           <div className="h-1.5 w-full bg-iv-white/10 rounded-full overflow-hidden">
                             <div className="h-full bg-iv-gold transition-all duration-300" style={{ width: `${progress}%` }} />
                           </div>
-                          <p className="text-[10px] text-iv-cream/40 uppercase tracking-[0.3em] italic">Synthesizing Dermal Bio-Markers...</p>
+                          <p className="text-[10px] text-iv-cream/65 uppercase tracking-[0.3em] italic">Synthesizing Dermal Bio-Markers...</p>
                         </div>
                       </div>
                     </div>
@@ -297,7 +297,7 @@ export function SkinScan() {
                 <AlertCircle className="w-10 h-10 text-iv-gold/30" />
                 <div className="space-y-2">
                   <h4 className="text-sm font-bold text-iv-white uppercase tracking-widest">Permission Denied</h4>
-                  <p className="text-iv-cream/40 text-xs font-light leading-relaxed max-w-xs">
+                  <p className="text-iv-cream/65 text-xs font-light leading-relaxed max-w-xs">
                     Your browser blocked camera access. Grant permission and tap "Try Again" to start the real scan. No data is stored.
                   </p>
                 </div>
@@ -315,7 +315,7 @@ export function SkinScan() {
                   {analysisLogs.map((log, i) => (
                     <div key={i} className="flex gap-4 animate-in slide-in-from-left duration-500">
                       <span className="text-iv-gold/20">{i + 1}</span>
-                      <span className={i === analysisLogs.length - 1 ? 'text-iv-gold font-bold' : 'text-iv-cream/40'}>{log}</span>
+                      <span className={i === analysisLogs.length - 1 ? 'text-iv-gold font-bold' : 'text-iv-cream/65'}>{log}</span>
                     </div>
                   ))}
                 </div>

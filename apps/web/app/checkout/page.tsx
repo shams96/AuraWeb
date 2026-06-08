@@ -120,13 +120,13 @@ export default function CheckoutPage() {
 
       {/* Minimal nav bar */}
       <div style={{ borderBottom: `1px solid ${C.border}`, padding: '18px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: C.page }}>
-        <Link href="/shop" style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.65rem', fontWeight: 900, letterSpacing: '0.2em', textTransform: 'uppercase', color: C.muted, textDecoration: 'none' }}>
+        <Link href="/shop" style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.2em', textTransform: 'uppercase', color: C.muted, textDecoration: 'none' }}>
           <ArrowLeft size={12} /> Back to Collections
         </Link>
         <span style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.1rem', fontWeight: 700, color: C.charcoal, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
           Isola <em style={{ color: C.gold }}>Vitale</em>
         </span>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: '0.6rem', fontWeight: 700, color: C.muted, letterSpacing: '0.15em', textTransform: 'uppercase' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: '0.75rem', fontWeight: 700, color: C.muted, letterSpacing: '0.15em', textTransform: 'uppercase' }}>
           <Shield size={11} style={{ color: C.gold }} /> Secure
         </div>
       </div>
@@ -140,7 +140,7 @@ export default function CheckoutPage() {
 
             {/* Heading */}
             <div>
-              <p style={{ fontSize: '0.6rem', fontWeight: 900, letterSpacing: '0.35em', textTransform: 'uppercase', color: C.gold, marginBottom: 8 }}>La Bella Figura</p>
+              <p style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.35em', textTransform: 'uppercase', color: C.gold, marginBottom: 8 }}>La Bella Figura</p>
               <h1 style={{ fontFamily: 'var(--iv-font-serif)', fontSize: 'clamp(1.8rem,4vw,2.6rem)', fontWeight: 600, color: C.charcoal, fontStyle: 'italic', margin: 0 }}>
                 Complete Your Ritual
               </h1>
@@ -151,8 +151,8 @@ export default function CheckoutPage() {
               <div style={{ display: 'flex', alignItems: 'center', gap: 12, borderRadius: 16, border: `1px solid ${C.border}`, padding: '14px 20px', background: C.parchment }}>
                 <RefreshCcw size={15} style={{ color: C.gold, flexShrink: 0 }} />
                 <div>
-                  <p style={{ fontSize: '0.65rem', fontWeight: 900, letterSpacing: '0.25em', textTransform: 'uppercase', color: C.gold, margin: '0 0 2px' }}>Ritual Membership Active</p>
-                  <p style={{ fontSize: '0.65rem', color: C.muted, margin: 0, fontWeight: 400 }}>
+                  <p style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.25em', textTransform: 'uppercase', color: C.gold, margin: '0 0 2px' }}>Ritual Membership Active</p>
+                  <p style={{ fontSize: '0.75rem', color: C.muted, margin: 0, fontWeight: 400 }}>
                     Ships every 30 days · Cancel anytime · You save ${annualSavings.toFixed(0)}/year
                   </p>
                 </div>
@@ -171,7 +171,7 @@ export default function CheckoutPage() {
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24 }}>
                 <h2 style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: C.charcoal, margin: 0 }}>Contact</h2>
                 {guestMode && (
-                  <Link href="/login?redirect=/checkout" style={{ fontSize: '0.6rem', fontWeight: 900, letterSpacing: '0.2em', textTransform: 'uppercase', color: C.gold, textDecoration: 'none' }}>
+                  <Link href="/login?redirect=/checkout" style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.2em', textTransform: 'uppercase', color: C.gold, textDecoration: 'none' }}>
                     Sign in →
                   </Link>
                 )}
@@ -204,7 +204,7 @@ export default function CheckoutPage() {
                   />
                 </div>
                 {guestMode && (
-                  <p style={{ fontSize: '0.65rem', color: C.muted, fontWeight: 300, margin: 0 }}>
+                  <p style={{ fontSize: '0.75rem', color: C.muted, fontWeight: 300, margin: 0 }}>
                     Continuing without an account — you can save your details after your first order.
                   </p>
                 )}
@@ -283,7 +283,7 @@ export default function CheckoutPage() {
 
               {/* Header */}
               <div style={{ padding: '20px 24px', borderBottom: `1px solid ${C.border}` }}>
-                <p style={{ fontSize: '0.6rem', fontWeight: 900, letterSpacing: '0.35em', textTransform: 'uppercase', color: C.gold, margin: 0 }}>Your Order</p>
+                <p style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.35em', textTransform: 'uppercase', color: C.gold, margin: 0 }}>Your Order</p>
               </div>
 
               {/* Items */}
@@ -300,13 +300,13 @@ export default function CheckoutPage() {
                     <div style={{ flex: 1, minWidth: 0 }}>
                       <p style={{ fontSize: '0.8rem', fontWeight: 600, color: C.charcoal, margin: '0 0 2px', lineHeight: 1.3 }}>{item.name}</p>
                       {item.isSubscription && (
-                        <p style={{ fontSize: '0.6rem', fontWeight: 700, color: C.gold, textTransform: 'uppercase', letterSpacing: '0.1em', margin: '0 0 2px' }}>Monthly ritual</p>
+                        <p style={{ fontSize: '0.75rem', fontWeight: 700, color: C.gold, textTransform: 'uppercase', letterSpacing: '0.1em', margin: '0 0 2px' }}>Monthly ritual</p>
                       )}
                       <p style={{ fontSize: '0.7rem', color: C.muted, margin: 0 }}>× {item.quantity}</p>
                     </div>
                     <div style={{ textAlign: 'right', flexShrink: 0 }}>
                       {item.isSubscription && item.price < item.basePrice && (
-                        <p style={{ fontSize: '0.6rem', color: C.muted, textDecoration: 'line-through', margin: '0 0 2px' }}>
+                        <p style={{ fontSize: '0.75rem', color: C.muted, textDecoration: 'line-through', margin: '0 0 2px' }}>
                           ${(item.basePrice * item.quantity).toFixed(2)}
                         </p>
                       )}
@@ -322,7 +322,7 @@ export default function CheckoutPage() {
               <div style={{ padding: '16px 24px 24px', borderTop: `1px solid ${C.border}`, display: 'flex', flexDirection: 'column', gap: 10 }}>
                 {savings > 0 && (
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderRadius: 10, padding: '8px 14px', background: 'rgba(145,56,50,0.07)', border: `1px solid ${C.border}` }}>
-                    <span style={{ fontSize: '0.6rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.2em', color: C.gold }}>Ritual savings</span>
+                    <span style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.2em', color: C.gold }}>Ritual savings</span>
                     <span style={{ fontSize: '0.85rem', fontWeight: 800, color: C.gold }}>−${savings.toFixed(2)}</span>
                   </div>
                 )}
@@ -333,14 +333,14 @@ export default function CheckoutPage() {
                   <span>Shipping</span><span>{shipping === 0 ? 'Free' : `$${shipping.toFixed(2)}`}</span>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', paddingTop: 10, borderTop: `1px solid ${C.border}` }}>
-                  <span style={{ fontSize: '0.65rem', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.2em', color: C.charcoal }}>Total</span>
+                  <span style={{ fontSize: '0.75rem', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.2em', color: C.charcoal }}>Total</span>
                   <div style={{ textAlign: 'right' }}>
                     <span style={{ fontSize: '1.4rem', fontWeight: 800, color: C.charcoal }}>${total.toFixed(2)}</span>
-                    {allSubscribed && <p style={{ fontSize: '0.6rem', color: C.gold, fontWeight: 700, margin: '2px 0 0', textTransform: 'uppercase', letterSpacing: '0.15em' }}>/month</p>}
+                    {allSubscribed && <p style={{ fontSize: '0.75rem', color: C.gold, fontWeight: 700, margin: '2px 0 0', textTransform: 'uppercase', letterSpacing: '0.15em' }}>/month</p>}
                   </div>
                 </div>
                 {allSubscribed && annualSavings > 0 && (
-                  <p style={{ fontSize: '0.65rem', color: C.muted, textAlign: 'center', fontStyle: 'italic', marginTop: 4 }}>
+                  <p style={{ fontSize: '0.75rem', color: C.muted, textAlign: 'center', fontStyle: 'italic', marginTop: 4 }}>
                     You save ${annualSavings.toFixed(0)} over the year with your ritual membership.
                   </p>
                 )}
@@ -353,8 +353,8 @@ export default function CheckoutPage() {
                     <Award size={13} style={{ color: C.gold }} />
                   </div>
                   <div>
-                    <p style={{ fontSize: '0.65rem', fontWeight: 800, color: C.charcoal, margin: '0 0 3px' }}>Dr. Elena Vitali, MD</p>
-                    <p style={{ fontSize: '0.6rem', color: C.muted, fontStyle: 'italic', lineHeight: 1.5, margin: 0 }}>
+                    <p style={{ fontSize: '0.75rem', fontWeight: 800, color: C.charcoal, margin: '0 0 3px' }}>Dr. Elena Vitali, MD</p>
+                    <p style={{ fontSize: '0.75rem', color: C.muted, fontStyle: 'italic', lineHeight: 1.5, margin: 0 }}>
                       "The most clinically rigorous non-prescription protocol I have reviewed."
                     </p>
                   </div>

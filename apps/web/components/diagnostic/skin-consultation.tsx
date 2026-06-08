@@ -450,7 +450,7 @@ export function SkinConsultation() {
                 style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(145,56,50,0.14)' }}>
                 <div className="text-3xl font-bold mb-1" style={{ color: 'var(--iv-gold)', fontFamily: 'var(--iv-font-serif)' }}>{stat}</div>
                 <div className="text-xs font-black text-iv-white uppercase tracking-widest mb-1">{label}</div>
-                <div className="text-[10px] text-iv-cream/35 font-light">{note}</div>
+                <div className="text-[10px] text-iv-cream/65 font-light">{note}</div>
               </div>
             ))}
           </div>
@@ -463,7 +463,7 @@ export function SkinConsultation() {
             Begin Consultation <ArrowRight size={14} />
           </button>
 
-          <p className="text-[10px] text-iv-cream/25 mt-5 uppercase tracking-widest font-black">
+          <p className="text-[10px] text-iv-cream/65 mt-5 uppercase tracking-widest font-black">
             Methodology validated by dermatology — Baumann Skin Type Institute
           </p>
         </div>
@@ -481,7 +481,7 @@ export function SkinConsultation() {
           <h3 className="text-2xl font-bold text-iv-white mb-3" style={{ fontFamily: 'var(--iv-font-serif)' }}>
             Compiling Your Skin Profile
           </h3>
-          <p className="text-iv-cream/35 text-sm mb-10 font-light">
+          <p className="text-iv-cream/65 text-sm mb-10 font-light">
             Mapping your responses to the Vitale Resilience Matrix™…
           </p>
           <div className="space-y-3 text-left max-w-xs mx-auto">
@@ -581,7 +581,7 @@ export function SkinConsultation() {
               <p className="text-[10px] font-black uppercase tracking-[0.3em] mb-1" style={{ color: 'var(--iv-gold)' }}>
                 Your Complete Protocol Kit
               </p>
-              <p className="text-iv-cream/50 text-sm font-light">
+              <p className="text-iv-cream/65 text-sm font-light">
                 {allProducts.length} formulations · Full AM + PM ritual · Matched to your skin biology
               </p>
             </div>
@@ -599,14 +599,14 @@ export function SkinConsultation() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="text-sm font-semibold text-iv-white">{p.name}</div>
-                      <div className="text-xs text-iv-cream/35 font-light mt-0.5">{p.role}</div>
+                      <div className="text-xs text-iv-cream/65 font-light mt-0.5">{p.role}</div>
                     </div>
                     <div className="text-right flex-shrink-0">
                       <div className="text-sm font-bold" style={{ color: 'var(--iv-gold)' }}>
                         ${finalPrice}
                       </div>
                       {subscribe && (
-                        <div className="text-xs text-iv-cream/30 line-through font-light">${p.priceNum}</div>
+                        <div className="text-xs text-iv-cream/65 line-through font-light">${p.priceNum}</div>
                       )}
                     </div>
                   </div>
@@ -644,15 +644,15 @@ export function SkinConsultation() {
               {/* Price anchor */}
               <div className="flex items-end justify-between mb-6">
                 <div>
-                  <p className="text-xs text-iv-cream/35 font-light mb-1">
+                  <p className="text-xs text-iv-cream/65 font-light mb-1">
                     {subscribe ? 'Full retail value' : 'Protocol total'}
                   </p>
                   {subscribe && (
-                    <p className="text-base text-iv-cream/25 line-through font-light">${retailTotal}</p>
+                    <p className="text-base text-iv-cream/65 line-through font-light">${retailTotal}</p>
                   )}
                   <p className="text-3xl font-bold text-iv-white">
                     ${displayTotal}
-                    <span className="text-sm font-light text-iv-cream/40 ml-2">
+                    <span className="text-sm font-light text-iv-cream/65 ml-2">
                       {subscribe ? '/month' : 'one-time'}
                     </span>
                   </p>
@@ -663,7 +663,7 @@ export function SkinConsultation() {
                   )}
                 </div>
                 <div className="text-right">
-                  <div className="flex flex-col gap-1.5 text-[10px] text-iv-cream/40 font-light text-right">
+                  <div className="flex flex-col gap-1.5 text-[10px] text-iv-cream/65 font-light text-right">
                     <span>✓ 48-hr Time To Wow</span>
                     <span>✓ 30-day returns</span>
                     <span>✓ Free tracked delivery</span>
@@ -775,7 +775,7 @@ export function SkinConsultation() {
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="text-xs font-bold text-iv-white truncate">{product.name}</div>
-                        <div className="text-[10px] text-iv-cream/35 font-light">{product.role}</div>
+                        <div className="text-[10px] text-iv-cream/65 font-light">{product.role}</div>
                       </div>
                       <div className="text-xs font-bold flex-shrink-0" style={{ color: 'var(--iv-gold)' }}>
                         {product.price}
@@ -836,7 +836,7 @@ export function SkinConsultation() {
             style={{ fontFamily: 'var(--iv-font-serif)' }}>
             {meta.heading}
           </h2>
-          <p className="text-iv-cream/40 text-sm font-light">{meta.sub}</p>
+          <p className="text-iv-cream/65 text-sm font-light">{meta.sub}</p>
         </div>
 
         {/* Options */}
@@ -863,7 +863,7 @@ export function SkinConsultation() {
                   </div>
                   <div>
                     <div className="text-sm font-bold text-iv-white leading-snug">{opt.label}</div>
-                    {opt.sub && <div className="text-[11px] text-iv-cream/35 mt-0.5 font-light">{opt.sub}</div>}
+                    {opt.sub && <div className="text-[11px] text-iv-cream/65 mt-0.5 font-light">{opt.sub}</div>}
                   </div>
                 </div>
               </button>
@@ -902,7 +902,7 @@ export function SkinConsultation() {
 
         {/* Lifestyle skip hint */}
         {qIdx === 6 && (
-          <p className="text-center text-[10px] text-iv-cream/20 mt-5 font-light">
+          <p className="text-center text-[10px] text-iv-cream/65 mt-5 font-light">
             This question is optional — tap Continue to skip.
           </p>
         )}

@@ -79,7 +79,7 @@ export default function AboutPage() {
               ].map(({ stress, truth }) => (
                 <div key={stress} className="border-l-2 pl-5" style={{ borderColor: 'rgba(145,56,50,0.25)' }}>
                   <p className="text-[11px] font-black uppercase tracking-[0.2em] text-iv-gold mb-1">{stress}</p>
-                  <p className="text-sm text-iv-cream/50 leading-relaxed font-light">{truth}</p>
+                  <p className="text-sm text-iv-cream/65 leading-relaxed font-light">{truth}</p>
                 </div>
               ))}
             </div>
@@ -100,7 +100,7 @@ export default function AboutPage() {
           <div className="text-center mb-20">
             <p className="text-[10px] font-black uppercase tracking-[0.3em] mb-4" style={{ color: 'var(--iv-gold)' }}>Adaptive Skin Science™ · The System</p>
             <h2 className="iv-type-h2 font-bold text-iv-white tracking-tighter uppercase">The Vitale<br /><em className="text-iv-gold">Resilience Matrix™</em></h2>
-            <p className="text-iv-cream/40 text-sm font-light mt-6 max-w-xl mx-auto leading-relaxed">
+            <p className="text-iv-cream/65 text-sm font-light mt-6 max-w-xl mx-auto leading-relaxed">
               Four biological domains. Every Isola Vitale formulation addresses all four — in sequence, with clinical precision.
             </p>
           </div>
@@ -137,7 +137,7 @@ export default function AboutPage() {
                 {icon}
                 <p className="text-[10px] font-black text-iv-gold uppercase tracking-[0.2em] mb-3">Domain {roman}</p>
                 <h3 className="font-bold mb-4 text-xs text-iv-white leading-tight" style={{ fontFamily: 'var(--iv-font-serif)' }}>{title}</h3>
-                <p className="text-xs text-iv-cream/50 leading-relaxed font-light">{body}</p>
+                <p className="text-xs text-iv-cream/75 leading-relaxed font-light">{body}</p>
               </div>
             ))}
           </div>

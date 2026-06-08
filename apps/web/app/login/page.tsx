@@ -52,7 +52,7 @@ function LoginForm() {
           <Link href="/" className="inline-flex items-center gap-3">
             <span style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.6rem', fontWeight: 700, color: '#FDFAF5', letterSpacing: '0.1em' }}>ISOLA VITALE</span>
             <span style={{ width: 1, height: 20, background: 'rgba(250,214,201,0.35)', display: 'inline-block' }} />
-            <span style={{ fontSize: '0.55rem', fontWeight: 700, color: '#FAD6C9', letterSpacing: '0.22em', textTransform: 'uppercase' }}>Milano</span>
+            <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#FAD6C9', letterSpacing: '0.22em', textTransform: 'uppercase' }}>Milano</span>
           </Link>
           <blockquote style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.4rem', fontStyle: 'italic', color: '#FDFAF5', lineHeight: 1.5, maxWidth: 340 }}>
             "Precision formulated for your biological stage."

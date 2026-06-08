@@ -49,7 +49,7 @@ export default function ForgotPasswordPage() {
 
         <Link
           href="/login"
-          style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.muted, textDecoration: 'none', marginBottom: 40 }}
+          style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.muted, textDecoration: 'none', marginBottom: 40 }}
         >
           <ArrowLeft size={12} /> Back to sign in
         </Link>
@@ -76,7 +76,7 @@ export default function ForgotPasswordPage() {
         ) : (
           <>
             <div style={{ marginBottom: 32 }}>
-              <p style={{ fontSize: '0.6rem', fontWeight: 900, letterSpacing: '0.35em', textTransform: 'uppercase', color: C.gold, marginBottom: 8 }}>Forgot Password</p>
+              <p style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.35em', textTransform: 'uppercase', color: C.gold, marginBottom: 8 }}>Forgot Password</p>
               <h1 style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.8rem', fontStyle: 'italic', fontWeight: 600, color: C.charcoal, margin: '0 0 10px' }}>
                 Reset your password
               </h1>
@@ -93,7 +93,7 @@ export default function ForgotPasswordPage() {
 
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
               <div>
-                <label style={{ display: 'block', fontSize: '0.6rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: C.muted, marginBottom: 6 }}>
+                <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: C.muted, marginBottom: 6 }}>
                   Email Address
                 </label>
                 <input

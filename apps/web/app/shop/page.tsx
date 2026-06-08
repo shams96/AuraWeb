@@ -96,7 +96,7 @@ export default async function ShopPage({
                 className={`px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${
                   collFilter === key
                     ? 'bg-iv-gold text-iv-black'
-                    : 'border border-iv-gold/20 text-iv-cream/50 hover:border-iv-gold/50 hover:text-iv-cream'
+                    : 'border border-iv-gold/20 text-iv-cream/65 hover:border-iv-gold/50 hover:text-iv-cream'
                 }`}
               >
                 {label}
@@ -141,7 +141,7 @@ export default async function ShopPage({
                 <h3 className="text-2xl font-bold text-iv-white mb-4 uppercase tracking-widest italic serif">
                   No formulations match this selection
                 </h3>
-                <p className="text-iv-cream/40 mb-12 font-light max-w-md mx-auto">
+                <p className="text-iv-cream/65 mb-12 font-light max-w-md mx-auto">
                   Explore all collections or discover your protocol through our skin consultation.
                 </p>
                 <div className="flex items-center justify-center gap-6">
@@ -164,7 +164,7 @@ export default async function ShopPage({
                     <FlaskConical className="w-5 h-5 text-iv-gold" />
                     <div>
                       <p className="text-[10px] font-black uppercase tracking-[0.3em] text-iv-gold">Clinical A-Series</p>
-                      <p className="text-sm text-iv-cream/50 font-light mt-0.5">Available exclusively to verified practitioners</p>
+                      <p className="text-sm text-iv-cream/65 font-light mt-0.5">Available exclusively to verified practitioners</p>
                     </div>
                   </div>
                   <Link
@@ -182,7 +182,7 @@ export default async function ShopPage({
                         <div className="absolute inset-0 backdrop-blur-md z-10 flex items-center justify-center">
                           <div className="text-center">
                             <FlaskConical className="w-6 h-6 text-iv-gold/60 mx-auto mb-2" />
-                            <p className="text-[9px] font-black uppercase tracking-widest text-iv-cream/40">Practitioner Only</p>
+                            <p className="text-[9px] font-black uppercase tracking-widest text-iv-cream/65">Practitioner Only</p>
                           </div>
                         </div>
                         {product.image && (

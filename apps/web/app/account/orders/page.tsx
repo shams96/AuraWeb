@@ -66,17 +66,17 @@ export default function AccountOrdersPage() {
 
       {/* Header */}
       <div style={{ borderBottom: `1px solid ${C.border}`, padding: '20px 24px', display: 'flex', alignItems: 'center', gap: 16, background: C.page }}>
-        <Link href="/account" style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.muted, textDecoration: 'none' }}>
+        <Link href="/account" style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.muted, textDecoration: 'none' }}>
           <ArrowLeft size={12} /> Account
         </Link>
         <span style={{ color: C.border }}>·</span>
-        <span style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.charcoal }}>My Orders</span>
+        <span style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.charcoal }}>My Orders</span>
       </div>
 
       <div style={{ maxWidth: 700, margin: '0 auto', padding: '48px 24px' }}>
 
         <div style={{ marginBottom: 36 }}>
-          <p style={{ fontSize: '0.6rem', fontWeight: 900, letterSpacing: '0.35em', textTransform: 'uppercase', color: C.gold, marginBottom: 8 }}>Order History</p>
+          <p style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.35em', textTransform: 'uppercase', color: C.gold, marginBottom: 8 }}>Order History</p>
           <h1 style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '2rem', fontStyle: 'italic', fontWeight: 600, color: C.charcoal, margin: 0 }}>
             Your rituals
           </h1>
@@ -93,7 +93,7 @@ export default function AccountOrdersPage() {
             </p>
             <Link
               href="/shop"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '12px 24px', background: C.gold, color: '#FDFAF5', borderRadius: 10, fontSize: '0.65rem', fontWeight: 900, letterSpacing: '0.2em', textTransform: 'uppercase', textDecoration: 'none' }}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '12px 24px', background: C.gold, color: '#FDFAF5', borderRadius: 10, fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.2em', textTransform: 'uppercase', textDecoration: 'none' }}
             >
               Discover Your Protocol <ArrowRight size={12} />
             </Link>
@@ -109,7 +109,7 @@ export default function AccountOrdersPage() {
                   <div style={{ padding: '16px 20px', borderBottom: `1px solid ${C.border}`, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                     <div>
                       <p style={{ fontFamily: 'monospace', fontSize: '0.75rem', fontWeight: 700, color: C.charcoal, margin: '0 0 2px' }}>{order.orderNumber}</p>
-                      <p style={{ fontSize: '0.65rem', color: C.muted, margin: 0, fontWeight: 300 }}>
+                      <p style={{ fontSize: '0.75rem', color: C.muted, margin: 0, fontWeight: 300 }}>
                         {new Date(order.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
                       </p>
                     </div>
@@ -117,7 +117,7 @@ export default function AccountOrdersPage() {
                       <p style={{ fontSize: '0.9rem', fontWeight: 800, color: C.charcoal, margin: 0 }}>
                         ${Number(order.total).toLocaleString('en-US', { minimumFractionDigits: 2 })}
                       </p>
-                      <span style={{ fontSize: '0.6rem', fontWeight: 900, letterSpacing: '0.15em', textTransform: 'uppercase', color: st.color, padding: '4px 10px', borderRadius: 99, background: 'rgba(145,56,50,0.06)', border: `1px solid ${C.border}` }}>
+                      <span style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.15em', textTransform: 'uppercase', color: st.color, padding: '4px 10px', borderRadius: 99, background: 'rgba(145,56,50,0.06)', border: `1px solid ${C.border}` }}>
                         {st.label}
                       </span>
                     </div>
@@ -138,9 +138,9 @@ export default function AccountOrdersPage() {
                   {/* Footer */}
                   <div style={{ padding: '10px 20px 14px', display: 'flex', alignItems: 'center' }}>
                     {['PENDING', 'CONFIRMED', 'PROCESSING', 'SHIPPED'].includes(order.status) && (
-                      <p style={{ fontSize: '0.65rem', color: C.muted, margin: 0, fontWeight: 300 }}>Delivery within 3–5 working days</p>
+                      <p style={{ fontSize: '0.75rem', color: C.muted, margin: 0, fontWeight: 300 }}>Delivery within 3–5 working days</p>
                     )}
-                    <Link href="/returns" style={{ marginLeft: 'auto', fontSize: '0.6rem', fontWeight: 900, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.gold, textDecoration: 'none' }}>
+                    <Link href="/returns" style={{ marginLeft: 'auto', fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.gold, textDecoration: 'none' }}>
                       Request Return →
                     </Link>
                   </div>
@@ -151,10 +151,10 @@ export default function AccountOrdersPage() {
         )}
 
         <div style={{ marginTop: 32, paddingTop: 24, borderTop: `1px solid ${C.border}`, display: 'flex', gap: 24 }}>
-          <Link href="/shop" style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.muted, textDecoration: 'none' }}>
+          <Link href="/shop" style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.muted, textDecoration: 'none' }}>
             Continue Shopping
           </Link>
-          <Link href="/returns" style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.muted, textDecoration: 'none', marginLeft: 'auto' }}>
+          <Link href="/returns" style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.muted, textDecoration: 'none', marginLeft: 'auto' }}>
             Returns Policy
           </Link>
         </div>

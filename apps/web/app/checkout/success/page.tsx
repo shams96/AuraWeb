@@ -30,7 +30,7 @@ export default function CheckoutSuccessPage({
         </div>
 
         {/* Badge */}
-        <p style={{ fontSize: '0.6rem', fontWeight: 900, letterSpacing: '0.35em', textTransform: 'uppercase', color: C.gold, marginBottom: 16 }}>
+        <p style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.35em', textTransform: 'uppercase', color: C.gold, marginBottom: 16 }}>
           Ritual Confirmed
         </p>
 
@@ -45,7 +45,7 @@ export default function CheckoutSuccessPage({
 
         {/* What happens next */}
         <div style={{ borderRadius: 16, border: `1px solid ${C.border}`, background: C.parchment, padding: '20px 24px', textAlign: 'left', marginBottom: 32 }}>
-          <p style={{ fontSize: '0.6rem', fontWeight: 900, letterSpacing: '0.3em', textTransform: 'uppercase', color: C.gold, margin: '0 0 16px' }}>
+          <p style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.3em', textTransform: 'uppercase', color: C.gold, margin: '0 0 16px' }}>
             What happens next
           </p>
           {[
@@ -54,7 +54,7 @@ export default function CheckoutSuccessPage({
             ['Day of arrival',   'Your 48-hour Time To Wow begins'],
           ].map(([time, desc]) => (
             <div key={time} style={{ display: 'flex', gap: 16, marginBottom: 12 }}>
-              <span style={{ fontSize: '0.6rem', fontWeight: 900, letterSpacing: '0.1em', textTransform: 'uppercase', color: C.gold, minWidth: 110, marginTop: 2, flexShrink: 0 }}>{time}</span>
+              <span style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.1em', textTransform: 'uppercase', color: C.gold, minWidth: 110, marginTop: 2, flexShrink: 0 }}>{time}</span>
               <span style={{ fontSize: '0.8rem', color: C.muted, fontWeight: 300, lineHeight: 1.6 }}>{desc}</span>
             </div>
           ))}
@@ -64,13 +64,13 @@ export default function CheckoutSuccessPage({
         <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
           <Link
             href="/account/orders"
-            style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '13px 26px', background: C.gold, color: '#FDFAF5', borderRadius: 10, fontSize: '0.65rem', fontWeight: 900, letterSpacing: '0.2em', textTransform: 'uppercase', textDecoration: 'none' }}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '13px 26px', background: C.gold, color: '#FDFAF5', borderRadius: 10, fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.2em', textTransform: 'uppercase', textDecoration: 'none' }}
           >
             View My Orders
           </Link>
           <Link
             href="/shop"
-            style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '13px 26px', border: `1px solid ${C.border}`, color: C.muted, borderRadius: 10, fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', textDecoration: 'none' }}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '13px 26px', border: `1px solid ${C.border}`, color: C.muted, borderRadius: 10, fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', textDecoration: 'none' }}
           >
             Continue Shopping
           </Link>

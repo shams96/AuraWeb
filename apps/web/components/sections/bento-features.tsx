@@ -48,7 +48,7 @@ export function BentoFeatures() {
               <h3 className="iv-type-h3 font-bold text-iv-white leading-tight mb-3" style={{ fontFamily: 'var(--iv-font-serif)' }}>
                 4 Independent RCTs. Zero marketing claims.
               </h3>
-              <p className="text-sm text-iv-cream/50 font-light max-w-lg leading-relaxed">
+              <p className="text-sm text-iv-cream/65 font-light max-w-lg leading-relaxed">
                 Every efficacy statement is attributable to a registered clinical trial with published methodology, sample size, and a control arm.
               </p>
             </div>
@@ -80,7 +80,7 @@ export function BentoFeatures() {
               <h3 className="iv-type-h3 font-bold text-iv-white mb-3" style={{ fontFamily: 'var(--iv-font-serif)' }}>
                 Four domains. One system. Matched to your biology — not your birthdate.
               </h3>
-              <p className="text-sm text-iv-cream/50 font-light leading-relaxed">
+              <p className="text-sm text-iv-cream/65 font-light leading-relaxed">
                 Preservation · Refinement · Restoration · Longevity. Four protocols built around the four domains of adaptive skin science.
               </p>
             </div>
@@ -93,7 +93,7 @@ export function BentoFeatures() {
               ].map(({ label, sub }) => (
                 <div key={label} className="flex-1 rounded-xl p-3 text-center" style={{ background: `${GOLD}0.08)`, border: `1px solid ${GOLD}0.14)` }}>
                   <div className="text-[10px] font-black text-iv-gold uppercase tracking-widest">{label}</div>
-                  <div className="text-[9px] text-iv-cream/30 mt-1 font-light">{sub}</div>
+                  <div className="text-[9px] text-iv-cream/65 mt-1 font-light">{sub}</div>
                 </div>
               ))}
             </div>
@@ -139,13 +139,13 @@ export function BentoFeatures() {
               <h3 className="text-lg font-bold text-iv-white mb-2" style={{ fontFamily: 'var(--iv-font-serif)' }}>
                 Natural You Srl — Isola del Liri
               </h3>
-              <p className="text-sm text-iv-cream/50 font-light leading-relaxed">
+              <p className="text-sm text-iv-cream/65 font-light leading-relaxed">
                 EU GMP certified. ICH Q1A 24-month stability. Every active at declared pharmaceutical-grade concentration.
               </p>
             </div>
             <div className="flex flex-wrap gap-3 mt-5">
               {['EU GMP', 'ISO 17025', '99.8% Purity', 'Vegan'].map(b => (
-                <span key={b} className="text-[11px] font-black uppercase tracking-widest text-iv-cream/40 border-b pb-0.5" style={{ borderColor: `${GOLD}0.25)` }}>{b}</span>
+                <span key={b} className="text-[11px] font-black uppercase tracking-widest text-iv-cream/65 border-b pb-0.5" style={{ borderColor: `${GOLD}0.25)` }}>{b}</span>
               ))}
             </div>
           </div>
@@ -170,7 +170,7 @@ export function BentoFeatures() {
                   {stat.value}
                 </div>
                 <div className="text-[11px] font-bold text-iv-white uppercase tracking-widest mb-1">{stat.label}</div>
-                <div className="text-[11px] text-iv-cream/35 font-light">{stat.sub}</div>
+                <div className="text-[11px] text-iv-cream/65 font-light">{stat.sub}</div>
               </div>
             ))}
           </div>

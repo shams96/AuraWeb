@@ -148,7 +148,7 @@ export default function RegisterPage() {
             ))}
           </div>
           <div style={{ paddingTop: 8, borderTop: '1px solid rgba(253,250,245,0.1)' }}>
-            <p style={{ fontSize: '0.65rem', color: 'rgba(253,250,245,0.35)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
+            <p style={{ fontSize: '0.75rem', color: 'rgba(253,250,245,0.35)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
               A Shanill House Formulation
             </p>
           </div>
@@ -187,13 +187,13 @@ export default function RegisterPage() {
                 }}>
                 <div style={{ color: accountType === value ? 'var(--iv-gold)' : 'var(--iv-text-muted)', marginBottom: 4 }}>{icon}</div>
                 <div style={{ fontSize: '0.82rem', fontWeight: 700, color: 'var(--iv-white)' }}>{label}</div>
-                <div style={{ fontSize: '0.65rem', color: 'var(--iv-text-muted)', marginTop: 2 }}>{desc}</div>
+                <div style={{ fontSize: '0.75rem', color: 'var(--iv-text-muted)', marginTop: 2 }}>{desc}</div>
               </button>
             ))}
           </div>
 
           {error && (
-            <div style={{ padding: '12px 16px', borderRadius: 8, background: 'rgba(248,113,113,0.08)', border: '1px solid rgba(248,113,113,0.25)', fontSize: '0.82rem', color: '#fca5a5', fontWeight: 500 }}>
+            <div style={{ padding: '12px 16px', borderRadius: 8, background: 'rgba(248,113,113,0.08)', border: '1px solid rgba(248,113,113,0.25)', fontSize: '0.82rem', color: '#991B1B', fontWeight: 500 }}>
               {error}
             </div>
           )}
@@ -240,7 +240,7 @@ export default function RegisterPage() {
                   <div style={{ height: 3, borderRadius: 2, background: 'rgba(145,56,50,0.12)', overflow: 'hidden' }}>
                     <div style={{ height: '100%', width: strength.width, background: strength.color, transition: 'all 0.3s' }} />
                   </div>
-                  <p style={{ fontSize: '0.65rem', color: strength.color, marginTop: 4, letterSpacing: '0.08em' }}>{strength.label}</p>
+                  <p style={{ fontSize: '0.75rem', color: strength.color, marginTop: 4, letterSpacing: '0.08em' }}>{strength.label}</p>
                 </div>
               )}
             </div>
@@ -258,7 +258,7 @@ export default function RegisterPage() {
                 onBlur={e  => (e.target.style.borderColor = confirmPassword !== password ? '#f87171' : 'rgba(145,56,50,0.18)')}
               />
               {confirmPassword && confirmPassword !== password && (
-                <p style={{ fontSize: '0.65rem', color: '#fca5a5', marginTop: 4 }}>Passwords don&apos;t match</p>
+                <p style={{ fontSize: '0.75rem', color: '#991B1B', marginTop: 4 }}>Passwords don&apos;t match</p>
               )}
             </div>
 

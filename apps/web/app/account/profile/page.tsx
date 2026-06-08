@@ -25,7 +25,7 @@ const INPUT: React.CSSProperties = {
 }
 
 const LABEL: React.CSSProperties = {
-  display: 'block', fontSize: '0.6rem', fontWeight: 700,
+  display: 'block', fontSize: '0.75rem', fontWeight: 700,
   letterSpacing: '0.2em', textTransform: 'uppercase' as const,
   color: C.muted, marginBottom: 6,
 }
@@ -86,17 +86,17 @@ export default function AccountProfilePage() {
 
       {/* Header */}
       <div style={{ borderBottom: `1px solid ${C.border}`, padding: '20px 24px', display: 'flex', alignItems: 'center', gap: 16, background: C.page }}>
-        <Link href="/account" style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.muted, textDecoration: 'none' }}>
+        <Link href="/account" style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.muted, textDecoration: 'none' }}>
           <ArrowLeft size={12} /> Account
         </Link>
         <span style={{ color: C.border }}>·</span>
-        <span style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.charcoal }}>Profile</span>
+        <span style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.charcoal }}>Profile</span>
       </div>
 
       <div style={{ maxWidth: 640, margin: '0 auto', padding: '48px 24px' }}>
 
         <div style={{ marginBottom: 36 }}>
-          <p style={{ fontSize: '0.6rem', fontWeight: 900, letterSpacing: '0.35em', textTransform: 'uppercase', color: C.gold, marginBottom: 8 }}>Account Profile</p>
+          <p style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.35em', textTransform: 'uppercase', color: C.gold, marginBottom: 8 }}>Account Profile</p>
           <h1 style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '2rem', fontStyle: 'italic', fontWeight: 600, color: C.charcoal, margin: 0 }}>
             {firstName ? `${firstName}'s details` : 'Your details'}
           </h1>
@@ -106,7 +106,7 @@ export default function AccountProfilePage() {
         <div style={{ borderRadius: 18, border: `1px solid ${C.border}`, background: C.parchment, overflow: 'hidden', marginBottom: 20 }}>
           <div style={{ padding: '18px 24px', borderBottom: `1px solid ${C.border}`, display: 'flex', alignItems: 'center', gap: 10 }}>
             <User size={14} style={{ color: C.gold }} />
-            <p style={{ fontSize: '0.65rem', fontWeight: 900, letterSpacing: '0.25em', textTransform: 'uppercase', color: C.gold, margin: 0 }}>Account Details</p>
+            <p style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.25em', textTransform: 'uppercase', color: C.gold, margin: 0 }}>Account Details</p>
           </div>
           <div style={{ padding: '20px 24px', display: 'flex', flexDirection: 'column', gap: 16 }}>
             <div>
@@ -134,7 +134,7 @@ export default function AccountProfilePage() {
         <div style={{ borderRadius: 18, border: `1px solid ${C.border}`, background: C.parchment, overflow: 'hidden' }}>
           <div style={{ padding: '18px 24px', borderBottom: `1px solid ${C.border}`, display: 'flex', alignItems: 'center', gap: 10 }}>
             <Lock size={14} style={{ color: C.gold }} />
-            <p style={{ fontSize: '0.65rem', fontWeight: 900, letterSpacing: '0.25em', textTransform: 'uppercase', color: C.gold, margin: 0 }}>Change Password</p>
+            <p style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.25em', textTransform: 'uppercase', color: C.gold, margin: 0 }}>Change Password</p>
           </div>
           <div style={{ padding: '20px 24px' }}>
 
@@ -193,7 +193,7 @@ export default function AccountProfilePage() {
                 style={{
                   padding: '13px 24px', background: pwLoading ? 'rgba(145,56,50,0.5)' : C.gold,
                   color: '#FDFAF5', border: 'none', borderRadius: 10,
-                  fontSize: '0.65rem', fontWeight: 900, letterSpacing: '0.2em',
+                  fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.2em',
                   textTransform: 'uppercase', cursor: pwLoading ? 'not-allowed' : 'pointer',
                   display: 'flex', alignItems: 'center', gap: 8, alignSelf: 'flex-start',
                 }}

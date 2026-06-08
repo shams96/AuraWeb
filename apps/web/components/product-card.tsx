@@ -136,7 +136,7 @@ export function ProductCard({ product }: ProductCardProps) {
           </span>
           <div className="flex gap-2">
             {product.tags.slice(0, 1).map((tag) => (
-              <span key={tag} className="text-[9px] font-black text-iv-cream/30 uppercase tracking-widest border border-iv-white/5 px-2 py-0.5 rounded-sm">
+              <span key={tag} className="text-[9px] font-black text-iv-cream/65 uppercase tracking-widest border border-iv-white/5 px-2 py-0.5 rounded-sm">
                 {tag}
               </span>
             ))}
@@ -150,7 +150,7 @@ export function ProductCard({ product }: ProductCardProps) {
         </h3>
 
         {product.volume && (
-          <p className="text-[9px] font-black text-iv-cream/30 uppercase tracking-widest mb-4">{product.volume}</p>
+          <p className="text-[9px] font-black text-iv-cream/65 uppercase tracking-widest mb-4">{product.volume}</p>
         )}
 
         <div className="flex items-center gap-3 mb-8">
@@ -162,7 +162,7 @@ export function ProductCard({ product }: ProductCardProps) {
               />
             ))}
           </div>
-          <span className="text-[10px] font-black text-iv-cream/30 uppercase tracking-widest">
+          <span className="text-[10px] font-black text-iv-cream/65 uppercase tracking-widest">
             {product.reviewCount} Verified
           </span>
         </div>
@@ -175,14 +175,14 @@ export function ProductCard({ product }: ProductCardProps) {
           ) : (
             <div className="flex flex-col gap-3">
               <div className="flex justify-between items-center">
-                <span className="text-[10px] font-black text-iv-cream/40 uppercase tracking-widest">
+                <span className="text-[10px] font-black text-iv-cream/65 uppercase tracking-widest">
                   {discountPct > 0 ? (
                     <span className="text-iv-gold">{discountPct}% off</span>
                   ) : 'Acquisition'}
                 </span>
                 <div className="flex items-center gap-2">
                   {product.compareAtPrice && (
-                    <span className="text-sm text-iv-cream/30 line-through">${product.compareAtPrice}</span>
+                    <span className="text-sm text-iv-cream/65 line-through">${product.compareAtPrice}</span>
                   )}
                   <span className="text-lg font-bold text-iv-white tracking-tighter">${product.price}</span>
                 </div>

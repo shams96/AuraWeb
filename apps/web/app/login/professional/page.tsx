@@ -55,7 +55,7 @@ function ProfessionalLoginForm() {
               Isola Vitale
             </span>
             <span style={{ width: 1, height: 16, background: 'rgba(250,214,201,0.3)', display: 'inline-block' }} />
-            <span style={{ fontSize: '0.55rem', fontWeight: 700, color: 'rgba(250,214,201,0.6)', letterSpacing: '0.22em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'rgba(250,214,201,0.6)', letterSpacing: '0.22em', textTransform: 'uppercase' }}>
               Professional
             </span>
           </Link>
@@ -65,7 +65,7 @@ function ProfessionalLoginForm() {
         <div className="relative z-10 px-12 py-16 space-y-10">
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, border: '1px solid rgba(145,56,50,0.30)', borderRadius: 999, padding: '6px 16px', background: 'rgba(145,56,50,0.08)' }}>
             <FlaskConical size={11} style={{ color: '#913832' }} />
-            <span style={{ fontSize: '0.6rem', fontWeight: 900, letterSpacing: '0.3em', textTransform: 'uppercase', color: '#913832' }}>Clinical Portal</span>
+            <span style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.3em', textTransform: 'uppercase', color: '#913832' }}>Clinical Portal</span>
           </div>
 
           <blockquote style={{ fontFamily: 'var(--iv-font-serif)', fontSize: 'clamp(1.5rem,3vw,2.2rem)', fontStyle: 'italic', color: '#FDFAF5', lineHeight: 1.4, maxWidth: 400, margin: 0 }}>
@@ -85,7 +85,7 @@ function ProfessionalLoginForm() {
             ].map(({ v, l }) => (
               <div key={l}>
                 <div style={{ fontSize: '1rem', fontWeight: 800, color: '#FAD6C9', fontFamily: 'var(--iv-font-serif)' }}>{v}</div>
-                <div style={{ fontSize: '0.55rem', color: 'rgba(253,250,245,0.4)', letterSpacing: '0.12em', textTransform: 'uppercase', marginTop: 3 }}>{l}</div>
+                <div style={{ fontSize: '0.75rem', color: 'rgba(253,250,245,0.4)', letterSpacing: '0.12em', textTransform: 'uppercase', marginTop: 3 }}>{l}</div>
               </div>
             ))}
           </div>
@@ -93,7 +93,7 @@ function ProfessionalLoginForm() {
 
         {/* Bottom note */}
         <div className="relative z-10 p-12 pt-0">
-          <p style={{ fontSize: '0.6rem', color: 'rgba(253,250,245,0.2)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
+          <p style={{ fontSize: '0.75rem', color: 'rgba(253,250,245,0.65)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
             Natural You Srl · Isola del Liri, Lazio, Italy
           </p>
         </div>
@@ -111,7 +111,7 @@ function ProfessionalLoginForm() {
           </div>
 
           <div style={{ marginBottom: 36 }}>
-            <p style={{ fontSize: '0.6rem', fontWeight: 900, letterSpacing: '0.35em', textTransform: 'uppercase', color: '#913832', marginBottom: 8 }}>Professional Access</p>
+            <p style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.35em', textTransform: 'uppercase', color: '#913832', marginBottom: 8 }}>Professional Access</p>
             <h1 style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.8rem', fontWeight: 600, color: '#FDFAF5', fontStyle: 'italic', margin: 0 }}>
               Sign in to your practice
             </h1>
@@ -125,7 +125,7 @@ function ProfessionalLoginForm() {
 
           <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
             <div>
-              <label style={{ display: 'block', fontSize: '0.6rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(253,250,245,0.45)', marginBottom: 6 }}>
+              <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(253,250,245,0.75)', marginBottom: 6 }}>
                 Practice Email
               </label>
               <input
@@ -139,7 +139,7 @@ function ProfessionalLoginForm() {
               />
             </div>
             <div>
-              <label style={{ display: 'block', fontSize: '0.6rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(253,250,245,0.45)', marginBottom: 6 }}>
+              <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(253,250,245,0.75)', marginBottom: 6 }}>
                 Password
               </label>
               <div style={{ position: 'relative' }}>
@@ -160,7 +160,7 @@ function ProfessionalLoginForm() {
             </div>
 
             <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-              <Link href="/forgot-password" style={{ fontSize: '0.65rem', color: 'rgba(145,56,50,0.8)', textDecoration: 'none', fontWeight: 600 }}>
+              <Link href="/forgot-password" style={{ fontSize: '0.75rem', color: 'rgba(145,56,50,0.8)', textDecoration: 'none', fontWeight: 600 }}>
                 Forgot password?
               </Link>
             </div>

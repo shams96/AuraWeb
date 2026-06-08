@@ -86,7 +86,7 @@ function ResetPasswordForm() {
   return (
     <>
       <div style={{ marginBottom: 32 }}>
-        <p style={{ fontSize: '0.6rem', fontWeight: 900, letterSpacing: '0.35em', textTransform: 'uppercase', color: C.gold, marginBottom: 8 }}>Password Reset</p>
+        <p style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.35em', textTransform: 'uppercase', color: C.gold, marginBottom: 8 }}>Password Reset</p>
         <h1 style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.8rem', fontStyle: 'italic', fontWeight: 600, color: C.charcoal, margin: '0 0 10px' }}>
           Choose a new password
         </h1>
@@ -103,7 +103,7 @@ function ResetPasswordForm() {
 
       <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
         <div>
-          <label style={{ display: 'block', fontSize: '0.6rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: C.muted, marginBottom: 6 }}>
+          <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: C.muted, marginBottom: 6 }}>
             New Password
           </label>
           <div style={{ position: 'relative' }}>
@@ -134,7 +134,7 @@ function ResetPasswordForm() {
         </div>
 
         <div>
-          <label style={{ display: 'block', fontSize: '0.6rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: C.muted, marginBottom: 6 }}>
+          <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: C.muted, marginBottom: 6 }}>
             Confirm Password
           </label>
           <input
@@ -171,7 +171,7 @@ function ResetPasswordForm() {
         </button>
       </form>
 
-      <p style={{ marginTop: 24, fontSize: '0.65rem', color: C.muted, textAlign: 'center' }}>
+      <p style={{ marginTop: 24, fontSize: '0.75rem', color: C.muted, textAlign: 'center' }}>
         Remembered it?{' '}
         <Link href="/login" style={{ color: C.gold, textDecoration: 'none', fontWeight: 700 }}>Sign in</Link>
       </p>

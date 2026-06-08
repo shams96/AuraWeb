@@ -17,7 +17,7 @@ const SELECT: React.CSSProperties = {
   appearance: 'none', cursor: 'pointer',
 }
 const LABEL: React.CSSProperties = {
-  display: 'block', fontSize: '0.6rem', fontWeight: 700,
+  display: 'block', fontSize: '0.75rem', fontWeight: 700,
   letterSpacing: '0.2em', textTransform: 'uppercase' as const,
   color: 'rgba(253,250,245,0.45)', marginBottom: 6,
 }
@@ -111,7 +111,7 @@ export default function ProfessionalRegisterPage() {
         <div className="relative z-10 px-10 py-12 space-y-8">
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, border: '1px solid rgba(145,56,50,0.28)', borderRadius: 999, padding: '5px 14px', background: 'rgba(145,56,50,0.07)' }}>
             <FlaskConical size={10} style={{ color: '#913832' }} />
-            <span style={{ fontSize: '0.55rem', fontWeight: 900, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#913832' }}>Clinical Access</span>
+            <span style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#913832' }}>Clinical Access</span>
           </div>
           <p style={{ fontFamily: 'var(--iv-font-serif)', fontSize: 'clamp(1.3rem,2.5vw,1.8rem)', fontStyle: 'italic', color: '#FDFAF5', lineHeight: 1.45, margin: 0, maxWidth: 340 }}>
             "The full A-Series range. Wholesale pricing. IRB study data."
@@ -131,13 +131,13 @@ export default function ProfessionalRegisterPage() {
               </div>
             ))}
           </div>
-          <p style={{ fontSize: '0.65rem', color: 'rgba(253,250,245,0.3)', fontStyle: 'italic', margin: 0 }}>
+          <p style={{ fontSize: '0.75rem', color: 'rgba(253,250,245,0.65)', fontStyle: 'italic', margin: 0 }}>
             Applications reviewed within 5 business days.
           </p>
         </div>
 
         <div className="relative z-10 p-10 pt-0">
-          <p style={{ fontSize: '0.55rem', color: 'rgba(253,250,245,0.18)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
+          <p style={{ fontSize: '0.75rem', color: 'rgba(253,250,245,0.65)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
             Natural You Srl · Isola del Liri, Lazio, Italy
           </p>
         </div>
@@ -158,7 +158,7 @@ export default function ProfessionalRegisterPage() {
           ) : (
             <>
               <div style={{ marginBottom: 32 }}>
-                <p style={{ fontSize: '0.6rem', fontWeight: 900, letterSpacing: '0.35em', textTransform: 'uppercase', color: '#913832', marginBottom: 8 }}>Apply for Professional Access</p>
+                <p style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.35em', textTransform: 'uppercase', color: '#913832', marginBottom: 8 }}>Apply for Professional Access</p>
                 <h1 style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.7rem', fontWeight: 600, color: '#FDFAF5', fontStyle: 'italic', margin: 0 }}>
                   Register your practice
                 </h1>
@@ -202,7 +202,7 @@ export default function ProfessionalRegisterPage() {
                 </div>
 
                 <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)', paddingTop: 18, marginTop: 4 }}>
-                  <p style={{ fontSize: '0.6rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(253,250,245,0.3)', marginBottom: 14 }}>Practice Details</p>
+                  <p style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(253,250,245,0.65)', marginBottom: 14 }}>Practice Details</p>
 
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
                     <div>
@@ -257,7 +257,7 @@ export default function ProfessionalRegisterPage() {
                 </button>
               </form>
 
-              <p style={{ marginTop: 24, fontSize: '0.65rem', color: 'rgba(253,250,245,0.3)', textAlign: 'center' }}>
+              <p style={{ marginTop: 24, fontSize: '0.75rem', color: 'rgba(253,250,245,0.65)', textAlign: 'center' }}>
                 Already have an account?{' '}
                 <Link href="/login/professional" style={{ color: '#913832', textDecoration: 'none', fontWeight: 700 }}>Sign in</Link>
               </p>

@@ -59,7 +59,7 @@ export function Newsletter() {
                   <Check className="w-7 h-7 text-iv-gold" />
                 </div>
                 <p className="text-iv-white font-bold text-lg uppercase tracking-widest">Welcome to the Society</p>
-                <p className="text-iv-cream/50 text-sm">You&apos;ll receive your first dispatch shortly.</p>
+                <p className="text-iv-cream/65 text-sm">You&apos;ll receive your first dispatch shortly.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} noValidate>
@@ -92,30 +92,30 @@ export function Newsletter() {
             <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="flex items-center justify-center space-x-3">
                 <Check className="w-4 h-4 text-iv-gold" />
-                <span className="text-[10px] font-black uppercase tracking-widest text-iv-cream/50">Exclusive access</span>
+                <span className="text-[10px] font-black uppercase tracking-widest text-iv-cream/65">Exclusive access</span>
               </div>
               <div className="flex items-center justify-center space-x-3">
                 <Star className="w-4 h-4 text-iv-gold" />
-                <span className="text-[10px] font-black uppercase tracking-widest text-iv-cream/50">Science reports</span>
+                <span className="text-[10px] font-black uppercase tracking-widest text-iv-cream/65">Science reports</span>
               </div>
               <div className="flex items-center justify-center space-x-3">
                 <Check className="w-4 h-4 text-iv-gold" />
-                <span className="text-[10px] font-black uppercase tracking-widest text-iv-cream/50">Early releases</span>
+                <span className="text-[10px] font-black uppercase tracking-widest text-iv-cream/65">Early releases</span>
               </div>
             </div>
           </div>
 
           {/* Trust Badges */}
           <div className="mt-16 flex flex-wrap justify-center gap-10">
-            <div className="flex items-center space-x-3 text-iv-cream/30">
+            <div className="flex items-center space-x-3 text-iv-cream/65">
               <Shield className="w-5 h-5 text-iv-gold/40" />
               <span className="text-[10px] font-black uppercase tracking-[0.2em]">Privacy Secured</span>
             </div>
-            <div className="flex items-center space-x-3 text-iv-cream/30">
+            <div className="flex items-center space-x-3 text-iv-cream/65">
               <Mail className="w-5 h-5 text-iv-gold/40" />
               <span className="text-[10px] font-black uppercase tracking-[0.2em]">Curated Weekly</span>
             </div>
-            <div className="flex items-center space-x-3 text-iv-cream/30">
+            <div className="flex items-center space-x-3 text-iv-cream/65">
               <Star className="w-5 h-5 text-iv-gold/40" />
               <span className="text-[10px] font-black uppercase tracking-[0.2em]">Expert Validated</span>
             </div>

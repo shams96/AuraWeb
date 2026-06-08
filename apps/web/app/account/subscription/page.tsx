@@ -33,17 +33,17 @@ export default function SubscriptionPage() {
 
       {/* Header */}
       <div style={{ borderBottom: `1px solid ${C.border}`, padding: '20px 24px', display: 'flex', alignItems: 'center', gap: 16, background: C.page }}>
-        <Link href="/account" style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.muted, textDecoration: 'none' }}>
+        <Link href="/account" style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.muted, textDecoration: 'none' }}>
           <ArrowLeft size={12} /> Account
         </Link>
         <span style={{ color: C.border }}>·</span>
-        <span style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.charcoal }}>Ritual Membership</span>
+        <span style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.charcoal }}>Ritual Membership</span>
       </div>
 
       <div style={{ maxWidth: 700, margin: '0 auto', padding: '48px 24px' }}>
 
         <div style={{ marginBottom: 36 }}>
-          <p style={{ fontSize: '0.6rem', fontWeight: 900, letterSpacing: '0.35em', textTransform: 'uppercase', color: C.gold, marginBottom: 8 }}>Ritual Membership</p>
+          <p style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.35em', textTransform: 'uppercase', color: C.gold, marginBottom: 8 }}>Ritual Membership</p>
           <h1 style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '2rem', fontStyle: 'italic', fontWeight: 600, color: C.charcoal, margin: 0 }}>
             Your monthly ritual
           </h1>
@@ -53,7 +53,7 @@ export default function SubscriptionPage() {
         <div style={{ borderRadius: 18, border: `1px solid ${C.border}`, background: C.parchment, overflow: 'hidden', marginBottom: 24 }}>
           <div style={{ padding: '20px 24px', borderBottom: `1px solid ${C.border}`, display: 'flex', alignItems: 'center', gap: 12 }}>
             <RefreshCcw size={15} style={{ color: C.gold }} />
-            <p style={{ fontSize: '0.65rem', fontWeight: 900, letterSpacing: '0.25em', textTransform: 'uppercase', color: C.gold, margin: 0 }}>Subscription Status</p>
+            <p style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.25em', textTransform: 'uppercase', color: C.gold, margin: 0 }}>Subscription Status</p>
           </div>
           <div style={{ padding: '20px 24px' }}>
             <p style={{ fontSize: '0.8rem', color: C.espresso, lineHeight: 1.7, margin: 0, fontWeight: 300 }}>
@@ -68,7 +68,7 @@ export default function SubscriptionPage() {
                 display: 'inline-flex', alignItems: 'center', gap: 8, marginTop: 16,
                 padding: '12px 20px', borderRadius: 10,
                 background: C.gold, color: '#FDFAF5',
-                fontSize: '0.65rem', fontWeight: 900, letterSpacing: '0.2em', textTransform: 'uppercase',
+                fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.2em', textTransform: 'uppercase',
                 textDecoration: 'none',
               }}
             >
@@ -85,9 +85,9 @@ export default function SubscriptionPage() {
           ].map(({ icon: Icon, label, value, sub }) => (
             <div key={label} style={{ borderRadius: 14, border: `1px solid ${C.border}`, background: C.parchment, padding: '18px 20px' }}>
               <Icon size={14} style={{ color: C.gold, marginBottom: 10 }} />
-              <p style={{ fontSize: '0.6rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.muted, margin: '0 0 4px' }}>{label}</p>
+              <p style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.muted, margin: '0 0 4px' }}>{label}</p>
               <p style={{ fontSize: '1.1rem', fontWeight: 800, color: C.charcoal, margin: '0 0 3px', fontFamily: 'var(--iv-font-serif)' }}>{value}</p>
-              <p style={{ fontSize: '0.65rem', color: C.muted, margin: 0, fontWeight: 300 }}>{sub}</p>
+              <p style={{ fontSize: '0.75rem', color: C.muted, margin: 0, fontWeight: 300 }}>{sub}</p>
             </div>
           ))}
         </div>
@@ -97,7 +97,7 @@ export default function SubscriptionPage() {
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             <Phone size={14} style={{ color: C.gold, flexShrink: 0 }} />
             <div>
-              <p style={{ fontSize: '0.65rem', fontWeight: 700, color: C.charcoal, margin: '0 0 2px' }}>Need help with your membership?</p>
+              <p style={{ fontSize: '0.75rem', fontWeight: 700, color: C.charcoal, margin: '0 0 2px' }}>Need help with your membership?</p>
               <p style={{ fontSize: '0.7rem', color: C.muted, margin: 0, fontWeight: 300 }}>
                 Our concierge team is available at{' '}
                 <a href="tel:+12147143597" style={{ color: C.gold, textDecoration: 'none', fontWeight: 600 }}>+1 214-714-3597</a>

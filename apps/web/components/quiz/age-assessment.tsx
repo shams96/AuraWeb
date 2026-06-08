@@ -64,7 +64,7 @@ export function AgeAssessment() {
           <div className="bg-iv-deep-green/30 border border-iv-gold/10 rounded-2xl p-10 backdrop-blur-md mb-12 text-left relative overflow-hidden shadow-2xl">
             <div className="absolute top-0 right-0 w-32 h-32 bg-iv-gold/5 rounded-full blur-2xl" />
             <h3 className="text-[10px] font-black text-iv-gold uppercase tracking-[0.3em] mb-4">Your Signature Ritual</h3>
-            <p className="text-iv-cream/50 mb-10 text-sm font-light">A precision-sequenced AM + PM system engineered for peak biological efficacy.</p>
+            <p className="text-iv-cream/65 mb-10 text-sm font-light">A precision-sequenced AM + PM system engineered for peak biological efficacy.</p>
 
             <div className="flex flex-col sm:flex-row gap-6">
               <Button
@@ -85,7 +85,7 @@ export function AgeAssessment() {
             </div>
           </div>
 
-          <button onClick={resetQuiz} className="text-[10px] font-black uppercase tracking-[0.2em] text-iv-cream/30 hover:text-iv-gold transition-all border-b border-iv-white/5 pb-1">
+          <button onClick={resetQuiz} className="text-[10px] font-black uppercase tracking-[0.2em] text-iv-cream/65 hover:text-iv-gold transition-all border-b border-iv-white/5 pb-1">
             Retake Assessment
           </button>
         </div>

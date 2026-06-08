@@ -28,13 +28,13 @@ function Cell({ value, highlight }: { value: CellValue; highlight?: boolean }) {
   if (value === 'partial') {
     return (
       <td className="py-5 px-6 text-center">
-        <Minus className="w-5 h-5 text-iv-cream/30 mx-auto" />
+        <Minus className="w-5 h-5 text-iv-cream/65 mx-auto" />
       </td>
     )
   }
   return (
     <td className="py-5 px-6 text-center">
-      <XCircle className="w-5 h-5 text-iv-cream/15 mx-auto" />
+      <XCircle className="w-5 h-5 text-iv-cream/65 mx-auto" />
     </td>
   )
 }
@@ -50,7 +50,7 @@ export function CompetitorComparison() {
           <h2 className="iv-type-h2 font-bold text-iv-white tracking-tighter uppercase mb-6">
             How We Compare
           </h2>
-          <p className="iv-type-lead text-iv-cream/50 max-w-2xl mx-auto font-light leading-relaxed">
+          <p className="iv-type-lead text-iv-cream/65 max-w-2xl mx-auto font-light leading-relaxed">
             Side by side with the brands that set the standard. Transparency is not a marketing claim — it is a verifiable fact.
           </p>
         </div>
@@ -63,9 +63,9 @@ export function CompetitorComparison() {
                 <th className="py-6 px-6 text-center text-[10px] font-black text-iv-gold uppercase tracking-[0.2em] bg-iv-gold/5 border-l border-iv-gold/10">
                   Isola Vitale
                 </th>
-                <th className="py-6 px-6 text-center text-[10px] font-black text-iv-cream/40 uppercase tracking-[0.2em]">La Mer</th>
-                <th className="py-6 px-6 text-center text-[10px] font-black text-iv-cream/40 uppercase tracking-[0.2em]">Aug. Bader</th>
-                <th className="py-6 px-6 text-center text-[10px] font-black text-iv-cream/40 uppercase tracking-[0.2em]">L'Oréal</th>
+                <th className="py-6 px-6 text-center text-[10px] font-black text-iv-cream/65 uppercase tracking-[0.2em]">La Mer</th>
+                <th className="py-6 px-6 text-center text-[10px] font-black text-iv-cream/65 uppercase tracking-[0.2em]">Aug. Bader</th>
+                <th className="py-6 px-6 text-center text-[10px] font-black text-iv-cream/65 uppercase tracking-[0.2em]">L'Oréal</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-iv-white/5">
@@ -82,7 +82,7 @@ export function CompetitorComparison() {
           </table>
         </div>
 
-        <p className="text-center text-[10px] text-iv-cream/25 mt-6 font-light uppercase tracking-widest">
+        <p className="text-center text-[10px] text-iv-cream/65 mt-6 font-light uppercase tracking-widest">
           Data based on publicly available brand communications as of May 2026. ─ = partial or market-specific.
         </p>
       </div>

@@ -66,7 +66,7 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
                   <Star key={i} className={`w-5 h-5 ${i < 5 ? 'text-iv-gold fill-current' : 'text-iv-gold/20'}`} />
                 ))}
               </div>
-              <p className="text-iv-cream/50 text-sm uppercase tracking-widest font-bold">Based on 2,450+ verified reviews</p>
+              <p className="text-iv-cream/65 text-sm uppercase tracking-widest font-bold">Based on 2,450+ verified reviews</p>
               <div className="flex items-center gap-2 mt-4 justify-center md:justify-start">
                 <CheckCircle className="w-4 h-4 text-iv-gold" />
                 <span className="text-[11px] text-iv-cream/60 font-bold uppercase tracking-widest">Authenticated Purchases Only</span>
@@ -75,14 +75,14 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
             <div className="space-y-3">
               {RATING_BREAKDOWN.map(({ stars, pct }) => (
                 <div key={stars} className="flex items-center gap-3">
-                  <span className="text-xs text-iv-cream/50 w-10 text-right font-bold">{stars}★</span>
+                  <span className="text-xs text-iv-cream/65 w-10 text-right font-bold">{stars}★</span>
                   <div className="flex-1 h-2 bg-iv-white/5 rounded-full overflow-hidden">
                     <div
                       className="h-full bg-iv-gold rounded-full transition-all duration-700"
                       style={{ width: `${pct}%` }}
                     />
                   </div>
-                  <span className="text-xs text-iv-cream/40 w-8 font-mono">{pct}%</span>
+                  <span className="text-xs text-iv-cream/65 w-8 font-mono">{pct}%</span>
                 </div>
               ))}
             </div>
@@ -96,9 +96,9 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
                 <div className="relative min-h-[320px] bg-iv-black flex">
                   <div className="w-1/2 flex flex-col items-center justify-center p-8 border-r border-iv-white/5">
                     <div className="w-20 h-20 rounded-full bg-iv-white/5 border border-iv-white/10 mb-3 flex items-center justify-center">
-                      <span className="text-iv-cream/20 text-xs font-bold uppercase tracking-widest">Before</span>
+                      <span className="text-iv-cream/65 text-xs font-bold uppercase tracking-widest">Before</span>
                     </div>
-                    <span className="text-[10px] font-black uppercase tracking-widest text-iv-cream/30">Baseline</span>
+                    <span className="text-[10px] font-black uppercase tracking-widest text-iv-cream/65">Baseline</span>
                   </div>
                   <div className="w-1/2 flex flex-col items-center justify-center p-8 bg-iv-deep-green/20">
                     <div className="w-20 h-20 rounded-full bg-iv-gold/10 border border-iv-gold/30 mb-3 flex items-center justify-center shadow-[0_0_20px_rgba(184,151,47,0.15)]">
@@ -109,7 +109,7 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
                   <div className="absolute top-4 right-4 bg-iv-gold text-iv-black px-3 py-1 rounded text-[10px] font-black uppercase tracking-tighter">
                     {testimonials[activeIndex]?.timeframe}
                   </div>
-                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[9px] font-black text-iv-cream/20 uppercase tracking-widest">
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[9px] font-black text-iv-cream/65 uppercase tracking-widest">
                     Actual customer — results vary
                   </div>
                 </div>
@@ -135,7 +135,7 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
                       </div>
                       <div>
                         <h4 className="font-bold text-iv-white">{testimonials[activeIndex]?.name}</h4>
-                        <p className="text-xs text-iv-cream/40 uppercase tracking-widest">{testimonials[activeIndex]?.role}</p>
+                        <p className="text-xs text-iv-cream/65 uppercase tracking-widest">{testimonials[activeIndex]?.role}</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
@@ -182,7 +182,7 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
                       <Play className="w-5 h-5 text-iv-gold group-hover:text-iv-black fill-current transition-colors" />
                     </div>
                     <p className="text-xs font-bold text-iv-white uppercase tracking-widest">{v.name}</p>
-                    <p className="text-[10px] text-iv-cream/40 uppercase tracking-widest mt-1">{v.topic}</p>
+                    <p className="text-[10px] text-iv-cream/65 uppercase tracking-widest mt-1">{v.topic}</p>
                   </div>
                   <div className="absolute bottom-3 right-3 bg-iv-gold text-iv-black text-[9px] font-black px-2 py-0.5 rounded uppercase tracking-tight">
                     {v.timeframe}
@@ -198,7 +198,7 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
               <div key={label} className="bg-iv-deep-green/10 border border-iv-gold/10 rounded-2xl p-6 text-center hover:border-iv-gold/30 transition-all">
                 <CheckCircle className="w-6 h-6 text-iv-gold mx-auto mb-3" />
                 <p className="text-xs font-black text-iv-white uppercase tracking-widest mb-2">{label}</p>
-                <p className="text-[10px] text-iv-cream/40 leading-relaxed">{sub}</p>
+                <p className="text-[10px] text-iv-cream/65 leading-relaxed">{sub}</p>
               </div>
             ))}
           </div>
@@ -214,7 +214,7 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
               ].map(({ value, label }) => (
                 <div key={label}>
                   <div className="text-4xl font-black text-iv-gold mb-2">{value}</div>
-                  <div className="text-[10px] font-black text-iv-cream/40 uppercase tracking-widest">{label}</div>
+                  <div className="text-[10px] font-black text-iv-cream/65 uppercase tracking-widest">{label}</div>
                 </div>
               ))}
             </div>

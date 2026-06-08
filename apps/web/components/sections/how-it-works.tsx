@@ -27,7 +27,7 @@ export function HowItWorks({ steps, timeline }: HowItWorksProps) {
           <h2 className="iv-type-h2 font-bold text-iv-white mb-6 tracking-tighter uppercase">
             How the <span className="text-iv-gold italic serif lowercase">Ritual</span> Works
           </h2>
-          <p className="iv-type-lead text-iv-cream/50 max-w-2xl mx-auto font-light leading-relaxed">
+          <p className="iv-type-lead text-iv-cream/65 max-w-2xl mx-auto font-light leading-relaxed">
             Italian beauty was never optimised. It was practised — morning and night, season after season. Three steps that make that practice yours.
           </p>
         </div>
@@ -64,7 +64,7 @@ export function HowItWorks({ steps, timeline }: HowItWorksProps) {
             <div className="flex flex-col md:flex-row justify-between items-center mb-16 gap-8">
               <div>
                 <h3 className="text-3xl font-bold text-iv-white uppercase tracking-tighter italic serif mb-2">Results Timeline</h3>
-                <p className="text-sm text-iv-cream/40 font-light">First noticeable difference within 48 hours.</p>
+                <p className="text-sm text-iv-cream/65 font-light">First noticeable difference within 48 hours.</p>
               </div>
               <div className="flex items-center gap-3 bg-iv-gold/10 px-6 py-2 rounded-full border border-iv-gold/20">
                 <Clock className="w-4 h-4 text-iv-gold" />
@@ -119,7 +119,7 @@ export function HowItWorks({ steps, timeline }: HowItWorksProps) {
             </div>
 
             <div className="mt-16 text-center">
-              <p className="text-[11px] font-black uppercase tracking-[0.35em] text-iv-cream/30">
+              <p className="text-[11px] font-black uppercase tracking-[0.35em] text-iv-cream/65">
                 TTW = Time To Wow — first perceptible sensory improvement. Structural results from Week 4.
               </p>
             </div>

@@ -46,7 +46,7 @@ export function UGCSection({ testimonials }: UGCSectionProps) {
                   </div>
                   <div>
                     <h3 className="font-bold text-iv-white">{testimonial.name}</h3>
-                    <p className="text-xs text-iv-cream/40 uppercase tracking-widest">{testimonial.role}</p>
+                    <p className="text-xs text-iv-cream/65 uppercase tracking-widest">{testimonial.role}</p>
                     <p className="text-xs text-iv-gold font-black mt-1">{testimonial.timeframe}</p>
                   </div>
                 </div>
@@ -57,7 +57,7 @@ export function UGCSection({ testimonials }: UGCSectionProps) {
                 
                 <div className="grid grid-cols-2 gap-6">
                   <div>
-                    <p className="text-[10px] font-black uppercase tracking-tighter text-iv-cream/30 mb-3 ml-1">Baseline</p>
+                    <p className="text-[10px] font-black uppercase tracking-tighter text-iv-cream/65 mb-3 ml-1">Baseline</p>
                     <div className="relative aspect-square rounded-lg overflow-hidden bg-iv-black shadow-inner border border-iv-white/5 group">
                       <img 
                         src={testimonial.beforeImage} 
@@ -103,13 +103,13 @@ export function UGCSection({ testimonials }: UGCSectionProps) {
           <div className="absolute top-0 left-0 w-full h-full bg-iv-gold/[0.02] pointer-events-none"></div>
           <div className="text-center mb-12 relative z-10">
             <h3 className="text-2xl font-bold text-iv-white mb-2 uppercase tracking-[0.2em]">Trusted by Thousands</h3>
-            <p className="text-iv-cream/40 text-sm">Join our global community of skin health advocates</p>
+            <p className="text-iv-cream/65 text-sm">Join our global community of skin health advocates</p>
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center relative z-10">
             <div>
               <div className="text-4xl font-black text-iv-gold mb-2">4.8</div>
-              <div className="text-[10px] font-black text-iv-cream/40 uppercase tracking-widest">Average Rating</div>
+              <div className="text-[10px] font-black text-iv-cream/65 uppercase tracking-widest">Average Rating</div>
               <div className="flex justify-center mt-3 space-x-0.5">
                 {[...Array(5)].map((_, i) => (
                   <svg key={i} className="w-3 h-3 text-iv-gold" fill="currentColor" viewBox="0 0 20 20">
@@ -121,17 +121,17 @@ export function UGCSection({ testimonials }: UGCSectionProps) {
             
             <div>
               <div className="text-4xl font-black text-iv-gold mb-2">2,500+</div>
-              <div className="text-[10px] font-black text-iv-cream/40 uppercase tracking-widest">Global Reviews</div>
+              <div className="text-[10px] font-black text-iv-cream/65 uppercase tracking-widest">Global Reviews</div>
             </div>
             
             <div>
               <div className="text-4xl font-black text-iv-gold mb-2">95%</div>
-              <div className="text-[10px] font-black text-iv-cream/40 uppercase tracking-widest">Member Retention</div>
+              <div className="text-[10px] font-black text-iv-cream/65 uppercase tracking-widest">Member Retention</div>
             </div>
             
             <div>
               <div className="text-4xl font-black text-iv-gold mb-2">50+</div>
-              <div className="text-[10px] font-black text-iv-cream/40 uppercase tracking-widest">Active Markets</div>
+              <div className="text-[10px] font-black text-iv-cream/65 uppercase tracking-widest">Active Markets</div>
             </div>
           </div>
         </div>

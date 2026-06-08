@@ -12,7 +12,7 @@ const TIERS = [
     color: 'text-iv-cream/60',
     border: 'border-iv-gold/20',
     bg: 'bg-iv-gold/5',
-    icon: <Star className="w-6 h-6 text-iv-cream/50" />,
+    icon: <Star className="w-6 h-6 text-iv-cream/65" />,
     perks: [
       'Earn 1 point per $1 spent',
       'Early access to new launches',
@@ -116,7 +116,7 @@ export default function LoyaltyPage() {
             <div className="inline-flex flex-col items-center gap-3 border border-iv-gold/20 rounded-2xl px-10 py-6 bg-iv-black/40 backdrop-blur-md">
               <p className="text-[10px] font-black uppercase tracking-[0.3em] text-iv-gold">Your iv Circle Balance</p>
               <p className="text-4xl font-black text-iv-white">{points.toLocaleString()} <span className="text-iv-gold text-2xl">pts</span></p>
-              <p className="text-xs text-iv-cream/40 uppercase tracking-widest font-bold">iv {currentTier} · {
+              <p className="text-xs text-iv-cream/65 uppercase tracking-widest font-bold">iv {currentTier} · {
                 currentTier === 'Acqua' ? `${500 - points} pts to Verde` :
                 currentTier === 'Verde' ? `${2000 - points} pts to Oro` :
                 'Highest Tier'
@@ -159,7 +159,7 @@ export default function LoyaltyPage() {
                   {tier.icon}
                 </div>
                 <h3 className={`text-2xl font-black uppercase tracking-widest mb-1 ${tier.color}`}>{tier.name}</h3>
-                <p className="text-[10px] font-black text-iv-cream/30 uppercase tracking-widest mb-8">{tier.threshold}</p>
+                <p className="text-[10px] font-black text-iv-cream/65 uppercase tracking-widest mb-8">{tier.threshold}</p>
                 <ul className="space-y-4">
                   {tier.perks.map((perk) => (
                     <li key={perk} className="flex items-start gap-3">
@@ -186,7 +186,7 @@ export default function LoyaltyPage() {
               <div key={step} className="text-center group">
                 <div className="text-5xl font-black text-iv-gold/20 mb-4 group-hover:text-iv-gold/40 transition-colors">{step}</div>
                 <h4 className="text-sm font-black text-iv-white uppercase tracking-widest mb-3">{title}</h4>
-                <p className="text-xs text-iv-cream/50 leading-relaxed font-light">{body}</p>
+                <p className="text-xs text-iv-cream/65 leading-relaxed font-light">{body}</p>
               </div>
             ))}
           </div>
@@ -214,13 +214,13 @@ export default function LoyaltyPage() {
                   <tr key={action} className="hover:bg-iv-gold/[0.03] transition-colors">
                     <td className="py-5 px-8 text-sm font-bold text-iv-gold uppercase tracking-wider">{action}</td>
                     <td className="py-5 px-8 text-sm text-iv-white font-black">{points}</td>
-                    <td className="py-5 px-8 text-xs text-iv-cream/40 italic">{note}</td>
+                    <td className="py-5 px-8 text-xs text-iv-cream/65 italic">{note}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-          <p className="text-center text-xs text-iv-cream/30 mt-6 font-light">100 points = $1.00 at checkout. Minimum redemption: 200 points.</p>
+          <p className="text-center text-xs text-iv-cream/65 mt-6 font-light">100 points = $1.00 at checkout. Minimum redemption: 200 points.</p>
         </div>
       </section>
 
@@ -242,7 +242,7 @@ export default function LoyaltyPage() {
                 <Gift className="w-6 h-6 text-iv-gold mx-auto mb-4" />
                 <div className="text-2xl font-black text-iv-gold mb-2">{pts}</div>
                 <h4 className="text-xs font-black text-iv-white uppercase tracking-widest mb-2">{gift}</h4>
-                <p className="text-[10px] text-iv-cream/40 font-light italic">{desc}</p>
+                <p className="text-[10px] text-iv-cream/65 font-light italic">{desc}</p>
               </div>
             ))}
           </div>

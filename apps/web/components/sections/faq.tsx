@@ -83,7 +83,7 @@ export function FAQSection({ faqs }: FAQSectionProps) {
               </svg>
             </div>
             <h3 className="font-bold text-iv-white mb-2 uppercase tracking-widest text-xs">Email Support</h3>
-            <p className="text-xs text-iv-cream/40 mb-4">Response within 24 hours</p>
+            <p className="text-xs text-iv-cream/65 mb-4">Response within 24 hours</p>
             <a href="mailto:support@isolavitale.it" className="text-iv-gold hover:text-iv-gold-light text-sm font-bold">
               support@isolavitale.it
             </a>
@@ -96,7 +96,7 @@ export function FAQSection({ faqs }: FAQSectionProps) {
               </svg>
             </div>
             <h3 className="font-bold text-iv-white mb-2 uppercase tracking-widest text-xs">Live Chat</h3>
-            <p className="text-xs text-iv-cream/40 mb-4">Chat with our experts</p>
+            <p className="text-xs text-iv-cream/65 mb-4">Chat with our experts</p>
             <button className="text-iv-gold hover:text-iv-gold-light text-sm font-bold uppercase tracking-widest">
               Start Chat
             </button>
@@ -109,7 +109,7 @@ export function FAQSection({ faqs }: FAQSectionProps) {
               </svg>
             </div>
             <h3 className="font-bold text-iv-white mb-2 uppercase tracking-widest text-xs">Phone Support</h3>
-            <p className="text-xs text-iv-cream/40 mb-4">Mon-Fri 9AM-6PM CET</p>
+            <p className="text-xs text-iv-cream/65 mb-4">Mon-Fri 9AM-6PM CET</p>
             <a href="tel:+390776123456" className="text-iv-gold hover:text-iv-gold-light text-sm font-bold">
               +39 0776 123456
             </a>

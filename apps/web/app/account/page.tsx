@@ -60,7 +60,7 @@ export default function AccountDashboardPage() {
         </Link>
         <button
           onClick={() => signOut({ callbackUrl: '/' })}
-          style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.muted }}
+          style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.muted }}
         >
           <LogOut size={13} /> Sign out
         </button>
@@ -70,7 +70,7 @@ export default function AccountDashboardPage() {
 
         {/* Greeting */}
         <div style={{ marginBottom: 40 }}>
-          <p style={{ fontSize: '0.6rem', fontWeight: 900, letterSpacing: '0.35em', textTransform: 'uppercase', color: C.gold, marginBottom: 8 }}>
+          <p style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.35em', textTransform: 'uppercase', color: C.gold, marginBottom: 8 }}>
             {isB2B ? 'Professional Account' : 'Your Account'}
           </p>
           <h1 style={{ fontFamily: 'var(--iv-font-serif)', fontSize: 'clamp(1.8rem,4vw,2.4rem)', fontStyle: 'italic', fontWeight: 600, color: C.charcoal, margin: 0 }}>
@@ -89,8 +89,8 @@ export default function AccountDashboardPage() {
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, borderRadius: 12, border: `1px solid ${C.border}`, padding: '12px 18px', background: C.parchment, marginBottom: 32 }}>
             <FlaskConical size={14} style={{ color: C.gold, flexShrink: 0 }} />
             <div>
-              <p style={{ fontSize: '0.65rem', fontWeight: 900, letterSpacing: '0.2em', textTransform: 'uppercase', color: C.gold, margin: '0 0 2px' }}>Professional Access Active</p>
-              <Link href="/professional" style={{ fontSize: '0.65rem', color: C.muted, textDecoration: 'none', fontWeight: 400 }}>
+              <p style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.2em', textTransform: 'uppercase', color: C.gold, margin: '0 0 2px' }}>Professional Access Active</p>
+              <Link href="/professional" style={{ fontSize: '0.75rem', color: C.muted, textDecoration: 'none', fontWeight: 400 }}>
                 View your professional portal →
               </Link>
             </div>
@@ -135,7 +135,7 @@ export default function AccountDashboardPage() {
             <Link
               key={href}
               href={href}
-              style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.muted, textDecoration: 'none' }}
+              style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.muted, textDecoration: 'none' }}
             >
               {label}
             </Link>

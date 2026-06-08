@@ -34,7 +34,7 @@ export default function SuccessPage() {
         </div>
 
         {/* Badge */}
-        <p style={{ fontSize: '0.6rem', fontWeight: 900, letterSpacing: '0.35em', textTransform: 'uppercase', color: C.gold, marginBottom: 12 }}>
+        <p style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.35em', textTransform: 'uppercase', color: C.gold, marginBottom: 12 }}>
           La Bella Figura
         </p>
 
@@ -48,7 +48,7 @@ export default function SuccessPage() {
 
         {/* Steps */}
         <div style={{ background: C.parch, border: `1px solid ${C.border}`, borderRadius: 16, padding: '32px 28px', marginBottom: 40, textAlign: 'left' }}>
-          <p style={{ fontSize: '0.6rem', fontWeight: 900, letterSpacing: '0.3em', textTransform: 'uppercase', color: C.gold, marginBottom: 20 }}>
+          <p style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.3em', textTransform: 'uppercase', color: C.gold, marginBottom: 20 }}>
             What happens next
           </p>
           {[
@@ -58,7 +58,7 @@ export default function SuccessPage() {
           ].map(({ n, title, body }) => (
             <div key={n} style={{ display: 'flex', gap: 16, marginBottom: 20 }}>
               <div style={{ width: 32, height: 32, borderRadius: '50%', background: `rgba(145,56,50,0.08)`, border: `1px solid ${C.border}`, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <span style={{ fontSize: '0.6rem', fontWeight: 900, color: C.gold }}>{n}</span>
+                <span style={{ fontSize: '0.75rem', fontWeight: 900, color: C.gold }}>{n}</span>
               </div>
               <div>
                 <p style={{ fontSize: '0.82rem', fontWeight: 700, color: C.charcoal, margin: '4px 0 4px' }}>{title}</p>
@@ -72,13 +72,13 @@ export default function SuccessPage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12, alignItems: 'center' }}>
           <Link
             href="/account/orders"
-            style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: C.gold, color: '#fff', fontSize: '0.65rem', fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', padding: '14px 32px', borderRadius: 8, textDecoration: 'none' }}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: C.gold, color: '#fff', fontSize: '0.75rem', fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', padding: '14px 32px', borderRadius: 8, textDecoration: 'none' }}
           >
             View My Orders <ArrowRight size={13} />
           </Link>
           <Link
             href="/shop"
-            style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.muted, textDecoration: 'none' }}
+            style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.muted, textDecoration: 'none' }}
           >
             Continue exploring the collection
           </Link>

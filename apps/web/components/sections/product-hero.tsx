@@ -155,7 +155,7 @@ export function ProductHero({ product }: ProductHeroProps) {
                       </div>
                     </div>
                     <div className="h-px w-full bg-iv-white/10 mb-4" />
-                    <p className="text-[9px] font-black uppercase tracking-[0.3em] text-iv-cream/40 leading-relaxed">
+                    <p className="text-[9px] font-black uppercase tracking-[0.3em] text-iv-cream/65 leading-relaxed">
                       Optimized for Advanced Dermal Volume Restoration & Longevity.
                     </p>
                   </div>

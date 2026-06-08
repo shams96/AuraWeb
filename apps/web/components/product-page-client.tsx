@@ -299,7 +299,7 @@ export function ProductPageClient({ productId }: ProductPageClientProps) {
       <div className="min-h-screen flex items-center justify-center bg-iv-black p-8 text-center">
         <div className="max-w-md">
           <h1 className="text-3xl font-bold text-iv-white mb-6 uppercase tracking-widest italic serif">Product Not Found</h1>
-          <p className="text-iv-cream/40 mb-10 font-light">The formulation you are seeking has either been archived or is undergoing clinical re-stabilization.</p>
+          <p className="text-iv-cream/65 mb-10 font-light">The formulation you are seeking has either been archived or is undergoing clinical re-stabilization.</p>
           <Button 
             className="bg-iv-gold hover:bg-iv-gold-light text-iv-black font-black text-xs uppercase tracking-widest px-12 py-6 rounded-none"
             onClick={() => window.history.back()}

@@ -72,18 +72,18 @@ export default function ReferralsPage() {
 
       {/* Header */}
       <div style={{ borderBottom: `1px solid ${C.border}`, padding: '20px 24px', display: 'flex', alignItems: 'center', gap: 16, background: C.page }}>
-        <Link href="/account" style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.muted, textDecoration: 'none' }}>
+        <Link href="/account" style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.muted, textDecoration: 'none' }}>
           <ArrowLeft size={12} /> Account
         </Link>
         <span style={{ color: C.border }}>·</span>
-        <span style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.charcoal }}>iv Ambassador</span>
+        <span style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.charcoal }}>iv Ambassador</span>
       </div>
 
       <div style={{ maxWidth: 680, margin: '0 auto', padding: '48px 24px' }}>
 
         {/* Title */}
         <div style={{ marginBottom: 36 }}>
-          <p style={{ fontSize: '0.6rem', fontWeight: 900, letterSpacing: '0.35em', textTransform: 'uppercase', color: C.gold, marginBottom: 8 }}>iv Ambassador</p>
+          <p style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.35em', textTransform: 'uppercase', color: C.gold, marginBottom: 8 }}>iv Ambassador</p>
           <h1 style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '2rem', fontStyle: 'italic', fontWeight: 600, color: C.charcoal, margin: '0 0 10px' }}>
             Share your ritual.
           </h1>
@@ -102,7 +102,7 @@ export default function ReferralsPage() {
             <div key={label} style={{ borderRadius: 14, border: `1px solid ${C.border}`, background: C.parchment, padding: '16px 18px', textAlign: 'center' }}>
               <Icon size={14} style={{ color: C.gold, marginBottom: 8 }} />
               <p style={{ fontSize: '1.4rem', fontWeight: 900, color: C.charcoal, margin: '0 0 2px', fontFamily: 'var(--iv-font-serif)' }}>{value}</p>
-              <p style={{ fontSize: '0.6rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.muted, margin: 0 }}>{label}</p>
+              <p style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.muted, margin: 0 }}>{label}</p>
             </div>
           ))}
         </div>
@@ -111,7 +111,7 @@ export default function ReferralsPage() {
         <div style={{ borderRadius: 18, border: `1px solid ${C.border}`, background: C.parchment, overflow: 'hidden', marginBottom: 20 }}>
           <div style={{ padding: '18px 24px', borderBottom: `1px solid ${C.border}`, display: 'flex', alignItems: 'center', gap: 10 }}>
             <Share2 size={14} style={{ color: C.gold }} />
-            <p style={{ fontSize: '0.65rem', fontWeight: 900, letterSpacing: '0.25em', textTransform: 'uppercase', color: C.gold, margin: 0 }}>Your Referral Link</p>
+            <p style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.25em', textTransform: 'uppercase', color: C.gold, margin: 0 }}>Your Referral Link</p>
           </div>
           <div style={{ padding: '20px 24px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
@@ -120,7 +120,7 @@ export default function ReferralsPage() {
               </div>
               <button
                 onClick={copyLink}
-                style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '11px 18px', background: copied ? 'rgba(45,106,79,0.12)' : C.gold, color: copied ? '#2D6A4F' : '#FDFAF5', border: copied ? '1px solid rgba(45,106,79,0.3)' : 'none', borderRadius: 8, fontSize: '0.65rem', fontWeight: 900, letterSpacing: '0.15em', textTransform: 'uppercase', cursor: 'pointer', flexShrink: 0, transition: 'all 0.2s' }}
+                style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '11px 18px', background: copied ? 'rgba(45,106,79,0.12)' : C.gold, color: copied ? '#2D6A4F' : '#FDFAF5', border: copied ? '1px solid rgba(45,106,79,0.3)' : 'none', borderRadius: 8, fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.15em', textTransform: 'uppercase', cursor: 'pointer', flexShrink: 0, transition: 'all 0.2s' }}
               >
                 {copied ? <><CheckCircle2 size={12} /> Copied</> : <><Copy size={12} /> Copy</>}
               </button>
@@ -130,13 +130,13 @@ export default function ReferralsPage() {
             <div style={{ display: 'flex', gap: 10 }}>
               <a
                 href={whatsappUrl} target="_blank" rel="noopener noreferrer"
-                style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, padding: '10px', borderRadius: 8, border: `1px solid ${C.border}`, background: C.card, fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: C.muted, textDecoration: 'none' }}
+                style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, padding: '10px', borderRadius: 8, border: `1px solid ${C.border}`, background: C.card, fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: C.muted, textDecoration: 'none' }}
               >
                 WhatsApp
               </a>
               <a
                 href={twitterUrl} target="_blank" rel="noopener noreferrer"
-                style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, padding: '10px', borderRadius: 8, border: `1px solid ${C.border}`, background: C.card, fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: C.muted, textDecoration: 'none' }}
+                style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, padding: '10px', borderRadius: 8, border: `1px solid ${C.border}`, background: C.card, fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: C.muted, textDecoration: 'none' }}
               >
                 Post on X
               </a>
@@ -149,18 +149,18 @@ export default function ReferralsPage() {
           <div style={{ borderRadius: 18, border: `1px solid ${C.border}`, background: C.parchment, overflow: 'hidden', marginBottom: 20 }}>
             <div style={{ padding: '18px 24px', borderBottom: `1px solid ${C.border}`, display: 'flex', alignItems: 'center', gap: 10 }}>
               <Gift size={14} style={{ color: C.gold }} />
-              <p style={{ fontSize: '0.65rem', fontWeight: 900, letterSpacing: '0.25em', textTransform: 'uppercase', color: C.gold, margin: 0 }}>Your Ambassador Rewards</p>
+              <p style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.25em', textTransform: 'uppercase', color: C.gold, margin: 0 }}>Your Ambassador Rewards</p>
             </div>
             <div style={{ padding: '16px 24px', display: 'flex', flexDirection: 'column', gap: 10 }}>
               {data.stats.rewards.map(code => (
                 <div key={code} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 16px', background: C.card, borderRadius: 10, border: `1px solid ${C.border}` }}>
                   <div>
-                    <p style={{ fontSize: '0.6rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.muted, margin: '0 0 3px' }}>10% off — single use</p>
+                    <p style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.muted, margin: '0 0 3px' }}>10% off — single use</p>
                     <p style={{ fontSize: '1rem', fontWeight: 900, color: C.charcoal, margin: 0, fontFamily: 'monospace', letterSpacing: '0.1em' }}>{code}</p>
                   </div>
                   <button
                     onClick={() => navigator.clipboard.writeText(code)}
-                    style={{ display: 'flex', alignItems: 'center', gap: 5, padding: '8px 14px', background: C.gold, color: '#FDFAF5', border: 'none', borderRadius: 7, fontSize: '0.6rem', fontWeight: 900, letterSpacing: '0.12em', textTransform: 'uppercase', cursor: 'pointer' }}
+                    style={{ display: 'flex', alignItems: 'center', gap: 5, padding: '8px 14px', background: C.gold, color: '#FDFAF5', border: 'none', borderRadius: 7, fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.12em', textTransform: 'uppercase', cursor: 'pointer' }}
                   >
                     <Copy size={11} /> Copy
                   </button>
@@ -177,7 +177,7 @@ export default function ReferralsPage() {
         {data && data.referrals.length > 0 && (
           <div style={{ borderRadius: 18, border: `1px solid ${C.border}`, background: C.parchment, overflow: 'hidden', marginBottom: 20 }}>
             <div style={{ padding: '18px 24px', borderBottom: `1px solid ${C.border}` }}>
-              <p style={{ fontSize: '0.65rem', fontWeight: 900, letterSpacing: '0.25em', textTransform: 'uppercase', color: C.gold, margin: 0 }}>Invitation History</p>
+              <p style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.25em', textTransform: 'uppercase', color: C.gold, margin: 0 }}>Invitation History</p>
             </div>
             <div style={{ padding: '8px 0' }}>
               {data.referrals.map((r, i) => (
@@ -185,7 +185,7 @@ export default function ReferralsPage() {
                   <p style={{ fontSize: '0.8rem', color: C.espresso, margin: 0 }}>
                     {r.refereeEmail ?? <span style={{ color: C.muted, fontStyle: 'italic' }}>Awaiting signup</span>}
                   </p>
-                  <span style={{ fontSize: '0.6rem', fontWeight: 900, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '3px 10px', borderRadius: 99, background: 'rgba(145,56,50,0.06)', border: `1px solid ${C.border}`, color: r.status === 'REWARDED' ? '#2D6A4F' : C.muted }}>
+                  <span style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '3px 10px', borderRadius: 99, background: 'rgba(145,56,50,0.06)', border: `1px solid ${C.border}`, color: r.status === 'REWARDED' ? '#2D6A4F' : C.muted }}>
                     {r.status === 'REWARDED' ? 'Rewarded' : r.status === 'ATTRIBUTED' ? 'Signed up' : 'Invited'}
                   </span>
                 </div>
@@ -196,7 +196,7 @@ export default function ReferralsPage() {
 
         {/* How it works */}
         <div style={{ borderRadius: 18, border: `1px solid ${C.border}`, background: C.parchment, padding: '20px 24px' }}>
-          <p style={{ fontSize: '0.65rem', fontWeight: 900, letterSpacing: '0.25em', textTransform: 'uppercase', color: C.gold, margin: '0 0 16px' }}>How it works</p>
+          <p style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.25em', textTransform: 'uppercase', color: C.gold, margin: '0 0 16px' }}>How it works</p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
             {[
               ['Share your link', 'Copy and send your unique link to anyone you think would love Isola Vitale.'],
@@ -205,7 +205,7 @@ export default function ReferralsPage() {
             ].map(([title, desc], i) => (
               <div key={i} style={{ display: 'flex', gap: 16 }}>
                 <div style={{ width: 22, height: 22, borderRadius: '50%', background: 'rgba(145,56,50,0.08)', border: `1px solid ${C.border}`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 1 }}>
-                  <span style={{ fontSize: '0.6rem', fontWeight: 900, color: C.gold }}>{i + 1}</span>
+                  <span style={{ fontSize: '0.75rem', fontWeight: 900, color: C.gold }}>{i + 1}</span>
                 </div>
                 <div>
                   <p style={{ fontSize: '0.8rem', fontWeight: 700, color: C.charcoal, margin: '0 0 3px' }}>{title}</p>

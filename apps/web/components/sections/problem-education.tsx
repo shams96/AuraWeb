@@ -23,7 +23,7 @@ export function ProblemEducationBlock({ problem, context }: ProblemEducationBloc
           <h2 className="text-4xl md:text-5xl font-bold text-iv-white mb-6 tracking-tighter uppercase">
             The Rise of <span className="text-iv-gold italic serif lowercase">{problem}</span>
           </h2>
-          <p className="text-lg text-iv-cream/50 max-w-2xl mx-auto font-light leading-relaxed">
+          <p className="text-lg text-iv-cream/65 max-w-2xl mx-auto font-light leading-relaxed">
             Metabolic skincare addresses the root causes of dermal degradation triggered by 21st-century environmental stressors.
           </p>
         </div>
@@ -58,7 +58,7 @@ export function ProblemEducationBlock({ problem, context }: ProblemEducationBloc
                     </div>
                     <div>
                       <h4 className="font-bold text-iv-white text-sm uppercase tracking-widest">{s.title}</h4>
-                      <p className="text-xs text-iv-cream/40 leading-relaxed font-light mt-2">{s.desc}</p>
+                      <p className="text-xs text-iv-cream/65 leading-relaxed font-light mt-2">{s.desc}</p>
                     </div>
                   </div>
                 ))}

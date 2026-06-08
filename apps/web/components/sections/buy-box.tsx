@@ -165,11 +165,11 @@ export function BuyBox({ product, selectedVariant: initialVariant, buyBullets }:
                   className={`flex-1 px-4 py-3 text-sm font-bold uppercase tracking-widest transition-all flex flex-col items-center gap-0.5 ${
                     purchaseType === 'one-time'
                       ? 'bg-iv-black text-white shadow-inner'
-                      : 'text-iv-cream/40 hover:text-iv-white'
+                      : 'text-iv-cream/65 hover:text-iv-white'
                   }`}
                 >
                   <span>One-Time</span>
-                  <span className={`text-[10px] font-normal ${purchaseType === 'one-time' ? 'text-iv-cream/50' : 'text-iv-cream/20'}`}>
+                  <span className={`text-[10px] font-normal ${purchaseType === 'one-time' ? 'text-iv-cream/65' : 'text-iv-cream/65'}`}>
                     Full price, once
                   </span>
                 </button>
@@ -199,7 +199,7 @@ export function BuyBox({ product, selectedVariant: initialVariant, buyBullets }:
                     <span className="text-[10px] font-black uppercase tracking-wider text-iv-gold">Ritual membership</span>
                     <span className="text-sm font-black text-iv-gold">{formatPrice(currentVariant.price * 0.20 * 12)} saved / year</span>
                   </div>
-                  <p className="text-[10px] text-iv-cream/40">Cancel anytime · Ships every 30 days · Free returns</p>
+                  <p className="text-[10px] text-iv-cream/65">Cancel anytime · Ships every 30 days · Free returns</p>
                 </div>
               )}
             </div>
@@ -234,7 +234,7 @@ export function BuyBox({ product, selectedVariant: initialVariant, buyBullets }:
                       <div className="text-sm text-iv-cream/70 mt-1">
                         {breakItem.label}
                       </div>
-                      <div className="text-xs text-iv-cream/40 mt-2 font-mono">
+                      <div className="text-xs text-iv-cream/65 mt-2 font-mono">
                         {formatPrice(breakItem.perUnit)}/jar
                       </div>
                     </div>
@@ -299,12 +299,12 @@ export function BuyBox({ product, selectedVariant: initialVariant, buyBullets }:
             {/* Order Summary */}
             <div className="mb-6 p-4 rounded-xl bg-iv-black/40 border border-iv-gold/10">
               <div className="flex items-center justify-between">
-                <div className="text-xs text-iv-cream/50 uppercase tracking-widest font-bold">
+                <div className="text-xs text-iv-cream/65 uppercase tracking-widest font-bold">
                   {effectiveQty} × {currentVariant.name}
                 </div>
                 <div className="text-right">
                   {purchaseType === 'subscribe' && (
-                    <div className="text-[10px] text-iv-cream/30 line-through">{formatPrice(currentVariant.price * effectiveQty)}</div>
+                    <div className="text-[10px] text-iv-cream/65 line-through">{formatPrice(currentVariant.price * effectiveQty)}</div>
                   )}
                   <div className="text-xl font-bold text-iv-white">{formatPrice(totalPrice)}</div>
                   {purchaseType === 'subscribe' && (
@@ -333,7 +333,7 @@ export function BuyBox({ product, selectedVariant: initialVariant, buyBullets }:
               {checkoutError && (
                 <div className="mt-3 text-center">
                   <p className="text-[#913832] text-xs font-medium mb-1">{checkoutError}</p>
-                  <p className="text-xs text-iv-cream/50">
+                  <p className="text-xs text-iv-cream/65">
                     Need help?{' '}
                     <a href="tel:+12147143597" className="text-iv-gold underline font-bold">
                       1-214-714-3597
@@ -362,15 +362,15 @@ export function BuyBox({ product, selectedVariant: initialVariant, buyBullets }:
 
             {/* Trust Badges */}
             <div className="flex flex-wrap justify-center gap-8 pt-2">
-              <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-widest text-iv-cream/40">
+              <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-widest text-iv-cream/65">
                 <Shield className="w-4 h-4 text-iv-gold/60" />
                 <span>90-Day Guarantee</span>
               </div>
-              <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-widest text-iv-cream/40">
+              <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-widest text-iv-cream/65">
                 <Truck className="w-4 h-4 text-iv-gold/60" />
                 <span>Free Shipping</span>
               </div>
-              <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-widest text-iv-cream/40">
+              <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-widest text-iv-cream/65">
                 <Shield className="w-4 h-4 text-iv-gold/60" />
                 <span>Secure Checkout</span>
               </div>

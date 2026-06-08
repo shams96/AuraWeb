@@ -196,7 +196,7 @@ export function ResultsTimeline({ timeline }: ResultsTimelineProps) {
                 <Link
                   href="/shop"
                   className="btn-luxury"
-                  style={{ padding: '13px 30px', display: 'inline-flex', alignItems: 'center', gap: 7, fontSize: '0.68rem', letterSpacing: '0.18em' }}
+                  style={{ padding: '13px 30px', display: 'inline-flex', alignItems: 'center', gap: 7, fontSize: '0.75rem', letterSpacing: '0.18em' }}
                 >
                   Shop Now <ArrowRight size={13} />
                 </Link>
@@ -205,7 +205,7 @@ export function ResultsTimeline({ timeline }: ResultsTimelineProps) {
                   style={{
                     display: 'inline-flex', alignItems: 'center', gap: 7,
                     padding: '13px 26px', border: '1px solid rgba(253,250,245,0.22)',
-                    color: 'rgba(253,250,245,0.70)', fontSize: '0.68rem', fontWeight: 700,
+                    color: 'rgba(253,250,245,0.70)', fontSize: '0.75rem', fontWeight: 700,
                     letterSpacing: '0.14em', textTransform: 'uppercase', borderRadius: 4,
                     transition: 'all 0.2s',
                   }}

@@ -65,7 +65,7 @@ export function StickyFooterCTA({ product, selectedVariant, onAddToCart, offerTe
 
           {/* CTA + Dismiss */}
           <div className="flex items-center gap-4">
-            <p className="hidden md:block text-[10px] font-black text-iv-cream/40 uppercase tracking-widest">{offerText}</p>
+            <p className="hidden md:block text-[10px] font-black text-iv-cream/65 uppercase tracking-widest">{offerText}</p>
             <Button
               size="lg"
               className="bg-iv-gold hover:bg-iv-gold-light text-iv-black font-black text-[10px] uppercase tracking-[0.2em] px-10 py-6 rounded-none shadow-xl transition-all"
@@ -75,7 +75,7 @@ export function StickyFooterCTA({ product, selectedVariant, onAddToCart, offerTe
             </Button>
             <button
               onClick={() => setIsDismissed(true)}
-              className="p-2 text-iv-cream/20 hover:text-iv-gold transition-colors"
+              className="p-2 text-iv-cream/65 hover:text-iv-gold transition-colors"
               aria-label="Dismiss"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>

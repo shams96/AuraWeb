@@ -84,7 +84,7 @@ export function BrandVideo() {
         </div>
 
         {/* Caption */}
-        <p className="text-center text-xs text-iv-cream/30 mt-6 font-light tracking-widest uppercase">
+        <p className="text-center text-xs text-iv-cream/65 mt-6 font-light tracking-widest uppercase">
           Isola Vitale · Milano · Clinical Skincare
         </p>
 

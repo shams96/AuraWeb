@@ -162,7 +162,7 @@ export function SystemHero() {
           </div>
         ))}
         <div style={{ width: 60, height: 1, background: 'rgba(145,56,50,0.20)', marginLeft: 4 }} />
-        <span style={{ fontSize: '0.55rem', fontWeight: 700, color: 'var(--iv-gold)', letterSpacing: '0.16em', textTransform: 'uppercase', opacity: 0.60 }}>2026 Collection</span>
+        <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--iv-gold)', letterSpacing: '0.16em', textTransform: 'uppercase', opacity: 0.85 }}>2026 Collection</span>
       </div>
 
       {/* Vertical Milano mark */}

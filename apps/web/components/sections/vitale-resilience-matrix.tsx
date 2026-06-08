@@ -111,7 +111,7 @@ export function VitaleResilienceMatrix() {
                 }}>
                   <span style={{ fontFamily: 'var(--iv-font-serif)', fontStyle: 'italic', fontSize: '0.85rem', color: 'var(--iv-gold)', fontWeight: 700 }}>{d.roman}</span>
                 </div>
-                <span style={{ fontSize: '0.6rem', fontWeight: 900, color: 'var(--iv-gold)', letterSpacing: '0.25em', textTransform: 'uppercase' }}>
+                <span style={{ fontSize: '0.75rem', fontWeight: 900, color: 'var(--iv-gold)', letterSpacing: '0.25em', textTransform: 'uppercase' }}>
                   Domain {d.roman} · {d.short}
                 </span>
               </div>
@@ -144,7 +144,7 @@ export function VitaleResilienceMatrix() {
                   <span
                     key={tag}
                     style={{
-                      fontSize: '0.6rem', fontWeight: 800, letterSpacing: '0.15em',
+                      fontSize: '0.75rem', fontWeight: 800, letterSpacing: '0.15em',
                       textTransform: 'uppercase', color: 'rgba(253,250,245,0.35)',
                       border: `1px solid ${GOLD}0.12)`, borderRadius: 100,
                       padding: '4px 12px', background: `${GOLD}0.04)`,
@@ -177,7 +177,7 @@ export function VitaleResilienceMatrix() {
             href="/system"
             style={{
               display: 'inline-flex', alignItems: 'center', gap: 8,
-              fontSize: '0.65rem', fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase',
+              fontSize: '0.75rem', fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase',
               color: 'var(--iv-gold)', textDecoration: 'none',
             }}
           >

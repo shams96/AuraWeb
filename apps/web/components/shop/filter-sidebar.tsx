@@ -54,7 +54,7 @@ export function FilterSidebar() {
                 className={`w-full text-left px-4 py-2.5 rounded-lg border text-xs font-medium transition-all duration-200 ${
                   active
                     ? 'border-iv-gold/40 bg-iv-gold/8 text-iv-gold'
-                    : 'border-iv-white/5 hover:border-iv-white/10 text-iv-cream/40'
+                    : 'border-iv-white/5 hover:border-iv-white/10 text-iv-cream/65'
                 }`}
               >
                 {label}
@@ -77,7 +77,7 @@ export function FilterSidebar() {
                 className={`w-full text-left px-4 py-2.5 rounded-lg border text-xs font-medium transition-all duration-200 ${
                   active
                     ? 'border-iv-gold/40 bg-iv-gold/8 text-iv-gold'
-                    : 'border-iv-white/5 hover:border-iv-white/10 text-iv-cream/40'
+                    : 'border-iv-white/5 hover:border-iv-white/10 text-iv-cream/65'
                 }`}
               >
                 {label}
@@ -91,7 +91,7 @@ export function FilterSidebar() {
       {hasFilters && (
         <button
           onClick={() => router.push(pathname, { scroll: false })}
-          className="w-full text-center text-[10px] font-black uppercase tracking-widest text-iv-cream/30 hover:text-iv-gold transition-colors py-2"
+          className="w-full text-center text-[10px] font-black uppercase tracking-widest text-iv-cream/65 hover:text-iv-gold transition-colors py-2"
         >
           Clear Filters
         </button>

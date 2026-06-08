@@ -75,7 +75,7 @@ export default function SystemPage() {
             <h2 className="iv-type-h3 font-bold text-iv-white tracking-tighter mb-4" style={{ fontFamily: 'var(--iv-font-serif)' }}>
               Every protocol is built on<br /><em className="text-iv-gold">The Vitale Resilience Matrix™</em>
             </h2>
-            <p className="text-iv-cream/50 font-light max-w-2xl mx-auto leading-relaxed text-sm">
+            <p className="text-iv-cream/65 font-light max-w-2xl mx-auto leading-relaxed text-sm">
               Rather than targeting individual symptoms, the Vitale Resilience Matrix™ addresses the four biological domains that determine whether skin remains vital, adaptive, and structurally strong — regardless of age or environment.
             </p>
           </div>
@@ -89,7 +89,7 @@ export default function SystemPage() {
               <div key={d.roman} className="text-center p-6 rounded-2xl border border-iv-gold/10 bg-iv-deep-green/20 hover:border-iv-gold/30 transition-all">
                 <p className="text-iv-gold font-serif italic text-xl font-bold mb-2">{d.roman}</p>
                 <p className="text-[10px] font-black uppercase tracking-[0.15em] text-iv-white mb-1">{d.short}</p>
-                <p className="text-[10px] text-iv-cream/40 font-light leading-tight">{d.label}</p>
+                <p className="text-[10px] text-iv-cream/65 font-light leading-tight">{d.label}</p>
               </div>
             ))}
           </div>
@@ -117,7 +117,7 @@ export default function SystemPage() {
                     </p>
                     <div className="flex flex-wrap gap-4 pt-4">
                       {tier.tech.map((t, i) => (
-                        <span key={i} className="text-[10px] font-black text-iv-cream/40 uppercase tracking-widest border border-iv-white/5 px-4 py-2 rounded-full bg-iv-black/40">
+                        <span key={i} className="text-[10px] font-black text-iv-cream/65 uppercase tracking-widest border border-iv-white/5 px-4 py-2 rounded-full bg-iv-black/40">
                           {t}
                         </span>
                       ))}
@@ -153,12 +153,12 @@ export default function SystemPage() {
                 <div className="w-3 h-3 rounded-full mx-auto mb-4" style={{ background: p.color }} />
                 <p className="text-[10px] font-black text-iv-gold uppercase tracking-[0.2em] mb-2">Phase {p.phase}</p>
                 <p className="text-sm font-bold text-iv-white mb-2" style={{ fontFamily: 'var(--iv-font-serif)' }}>{p.name}</p>
-                <p className="text-[11px] text-iv-cream/45 leading-relaxed font-light">{p.state}</p>
+                <p className="text-[11px] text-iv-cream/70 leading-relaxed font-light">{p.state}</p>
               </div>
             ))}
           </div>
           <div className="text-center">
-            <p className="text-[11px] font-black uppercase tracking-[0.25em] text-iv-cream/30 mb-16">
+            <p className="text-[11px] font-black uppercase tracking-[0.25em] text-iv-cream/70 mb-16">
               Visible aging begins when adaptation capacity is exhausted — Isola Vitale exists to prevent that transition.
             </p>
             <div className="w-24 h-px bg-iv-gold/30 mx-auto mb-16" />

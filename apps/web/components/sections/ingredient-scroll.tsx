@@ -96,7 +96,7 @@ export function IngredientScroll() {
             <h2 className="iv-type-h2 font-bold text-iv-white tracking-tighter">
               Proprietary <span className="italic text-iv-gold">Actives</span>
             </h2>
-            <p className="text-iv-cream/50 mt-3 font-light max-w-md leading-relaxed">
+            <p className="text-iv-cream/65 mt-3 font-light max-w-md leading-relaxed">
               Six independently trialled molecules. Full concentration transparency. Swipe to explore.
             </p>
           </div>
@@ -185,7 +185,7 @@ export function IngredientScroll() {
                 {/* Clinical claim */}
                 <div className="mt-auto">
                   <p className="text-sm text-iv-gold font-semibold leading-snug mb-2">{ing.claim}</p>
-                  <p className="text-[11px] text-iv-cream/35 font-light uppercase tracking-[0.15em]">{ing.trialRef}</p>
+                  <p className="text-[11px] text-iv-cream/65 font-light uppercase tracking-[0.15em]">{ing.trialRef}</p>
                 </div>
               </div>
             </div>
@@ -193,7 +193,7 @@ export function IngredientScroll() {
         </div>
 
         {/* Mobile scroll hint */}
-        <p className="md:hidden text-center text-[11px] text-iv-cream/30 uppercase tracking-widest mt-6 font-light">
+        <p className="md:hidden text-center text-[11px] text-iv-cream/65 uppercase tracking-widest mt-6 font-light">
           Swipe to explore all 6 actives
         </p>
       </div>
