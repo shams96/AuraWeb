@@ -43,7 +43,11 @@ export default async function ShopPage({
   // Clinical tier products: always include in list so we can show teasers,
   // but flag them so the card renders gated for non-professional users
   const products = allProducts.filter(p => {
-    const matchesTier   = !tierFilter   || p.tier       === tierFilter
+    const matchesTier = !tierFilter || (
+      tierFilter === 'best-seller' ? p.isBestSeller === true :
+      tierFilter === 'consumer'   ? p.collection === 'daily' && !p.isBestSeller :
+      p.tier === tierFilter
+    )
     const matchesColl   = !collFilter   || p.collection === collFilter
     const matchesFormat = !formatFilter || p.format     === formatFilter
     // Hide clinical products from filter results unless user can see them
@@ -65,12 +69,12 @@ export default async function ShopPage({
   const titleTail  = titleWords[titleWords.length - 1]
 
   return (
-    <div className="min-h-screen bg-iv-black pb-32">
+    <div className="min-h-screen pb-32" style={{ background: '#FDFAF5' }}>
 
       {/* Hero header */}
-      <div className="iv-dark bg-iv-deep-green/20 border-b border-iv-gold/10 pt-32 pb-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-iv-gold/[0.02] pointer-events-none" />
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-iv-gold/[0.03] rounded-full blur-[120px] -mr-48 -mt-48 pointer-events-none" />
+      <div className="iv-dark border-b pt-32 pb-20 relative overflow-hidden" style={{ background: 'linear-gradient(160deg, #0F2419 0%, #1A1614 100%)', borderColor: 'rgba(184,151,47,0.10)' }}>
+        <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(circle at 70% 50%, rgba(184,151,47,0.04) 0%, transparent 60%)' }} />
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full blur-[120px] -mr-48 -mt-48 pointer-events-none" style={{ background: 'rgba(184,151,47,0.05)' }} />
 
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           <div className="inline-block border border-iv-gold/20 rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-8 bg-iv-black/40 backdrop-blur-md text-iv-gold">

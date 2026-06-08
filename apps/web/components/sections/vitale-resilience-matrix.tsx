@@ -41,7 +41,7 @@ const domains = [
 
 export function VitaleResilienceMatrix() {
   return (
-    <section className="py-32 bg-iv-black relative overflow-hidden">
+    <section className="iv-dark py-32 relative overflow-hidden" style={{ background: '#1A1614' }}>
 
       {/* Background texture */}
       <div style={{ position: 'absolute', inset: 0, background: `radial-gradient(ellipse at 80% 50%, ${GOLD}0.04) 0%, transparent 60%)`, pointerEvents: 'none' }} />
@@ -64,7 +64,7 @@ export function VitaleResilienceMatrix() {
           >
             The Vitale Resilience Matrix™
           </h2>
-          <p className="text-iv-cream/50 text-lg font-light max-w-2xl mx-auto leading-relaxed">
+          <p className="text-iv-cream/75 text-lg font-light max-w-2xl mx-auto leading-relaxed">
             Four biological domains. One integrated system. The architecture behind every Isola Vitale formulation.
           </p>
           <div style={{ width: 48, height: 1, background: `${GOLD}0.30)`, margin: '32px auto 0' }} />
@@ -134,7 +134,7 @@ export function VitaleResilienceMatrix() {
               </p>
 
               {/* Body */}
-              <p style={{ fontSize: '0.82rem', color: 'rgba(253,250,245,0.50)', lineHeight: 1.8, marginBottom: 20, fontWeight: 300 }}>
+              <p style={{ fontSize: '0.82rem', color: 'rgba(253,250,245,0.75)', lineHeight: 1.8, marginBottom: 20, fontWeight: 300 }}>
                 {d.body}
               </p>
 
