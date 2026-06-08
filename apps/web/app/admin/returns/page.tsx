@@ -82,7 +82,7 @@ export default function AdminReturnsPage() {
 
       <div className="rounded-2xl overflow-hidden" style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(145,56,50,0.14)' }}>
         <div
-          className="px-6 py-3 grid grid-cols-[130px_1fr_180px_120px_140px] gap-4 text-[10px] font-black uppercase tracking-widest text-iv-cream/30 border-b"
+          className="px-6 py-3 grid grid-cols-[130px_1fr_180px_120px_140px] gap-4 text-[10px] font-black uppercase tracking-widest text-iv-cream/55 border-b"
           style={{ borderColor: 'rgba(145,56,50,0.14)' }}
         >
           <span>Order #</span><span>Customer / Reason</span><span>Date</span><span className="text-center">Status</span><span />

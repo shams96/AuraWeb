@@ -42,21 +42,21 @@ export default function CareersPage() {
                 <Users className="w-6 h-6 text-iv-gold" />
              </div>
              <h3 className="text-[10px] font-black text-iv-white uppercase tracking-[0.3em]">Global Collaboration</h3>
-             <p className="text-iv-cream/40 text-xs leading-relaxed font-light">Bridge the gap between Texas innovation and Italian heritage.</p>
+             <p className="text-iv-cream/65 text-xs leading-relaxed font-light">Bridge the gap between Texas innovation and Italian heritage.</p>
           </div>
           <div className="text-center space-y-6">
              <div className="w-16 h-16 bg-iv-deep-green/20 border border-iv-gold/20 rounded-full flex items-center justify-center mx-auto shadow-2xl">
                 <Star className="w-6 h-6 text-iv-gold" />
              </div>
              <h3 className="text-[10px] font-black text-iv-white uppercase tracking-[0.3em]">Scientific Excellence</h3>
-             <p className="text-iv-cream/40 text-xs leading-relaxed font-light">Work with peer-reviewed formulations and breakthrough technologies.</p>
+             <p className="text-iv-cream/65 text-xs leading-relaxed font-light">Work with peer-reviewed formulations and breakthrough technologies.</p>
           </div>
           <div className="text-center space-y-6">
              <div className="w-16 h-16 bg-iv-deep-green/20 border border-iv-gold/20 rounded-full flex items-center justify-center mx-auto shadow-2xl">
                 <Briefcase className="w-6 h-6 text-iv-gold" />
              </div>
              <h3 className="text-[10px] font-black text-iv-white uppercase tracking-[0.3em]">Growth Trajectory</h3>
-             <p className="text-iv-cream/40 text-xs leading-relaxed font-light">Be part of 1HubSolutions' expansion into the global luxury market.</p>
+             <p className="text-iv-cream/65 text-xs leading-relaxed font-light">Be part of 1HubSolutions' expansion into the global luxury market.</p>
           </div>
         </div>
 
@@ -79,7 +79,7 @@ export default function CareersPage() {
 
       {/* Footer Support CTA */}
       <section className="mt-20 container mx-auto px-4 max-w-4xl text-center">
-        <p className="text-iv-cream/30 text-[10px] font-black uppercase tracking-[0.5em]">Spontaneous Application?</p>
+        <p className="text-iv-cream/65 text-[10px] font-black uppercase tracking-[0.5em]">Spontaneous Application?</p>
         <p className="text-iv-cream/60 mt-4 text-sm font-light">Send your portfolio to careers@isolavitale.com</p>
       </section>
     </div>

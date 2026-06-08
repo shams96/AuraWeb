@@ -266,7 +266,7 @@ export default function RegisterPage() {
                 width: '100%', padding: '14px 24px', marginTop: 8,
                 background: isPending ? 'rgba(145,56,50,0.5)' : 'var(--iv-gold)',
                 color: 'var(--iv-black)', border: 'none', borderRadius: 8,
-                fontSize: '0.72rem', fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase',
+                fontSize: '0.75rem', fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase',
                 cursor: isPending ? 'not-allowed' : 'pointer',
                 display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
                 transition: 'all 0.2s',

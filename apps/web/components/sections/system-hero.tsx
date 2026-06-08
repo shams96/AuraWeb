@@ -111,7 +111,7 @@ export function SystemHero() {
               href="/shop"
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: 8,
-                fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase',
+                fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase',
                 color: 'var(--iv-white)', padding: '16px 28px',
                 border: '1px solid rgba(26,22,20,0.22)', transition: 'all 0.2s ease',
               }}

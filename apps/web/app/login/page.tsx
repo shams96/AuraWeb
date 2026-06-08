@@ -129,7 +129,7 @@ function LoginForm() {
                 <label htmlFor="password" style={{ display: 'block', fontSize: '0.7rem', fontWeight: 700, color: 'var(--iv-text-muted)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
                   Password
                 </label>
-                <Link href="/forgot-password" style={{ fontSize: '0.72rem', color: 'var(--iv-gold)', textDecoration: 'none', fontWeight: 500 }}>
+                <Link href="/forgot-password" style={{ fontSize: '0.75rem', color: 'var(--iv-gold)', textDecoration: 'none', fontWeight: 500 }}>
                   Forgot password?
                 </Link>
               </div>
@@ -154,7 +154,7 @@ function LoginForm() {
                 width: '100%', padding: '14px 24px',
                 background: isPending ? 'rgba(145,56,50,0.5)' : 'var(--iv-gold)',
                 color: 'var(--iv-black)', border: 'none', borderRadius: 8,
-                fontSize: '0.72rem', fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase',
+                fontSize: '0.75rem', fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase',
                 cursor: isPending ? 'not-allowed' : 'pointer',
                 display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
                 transition: 'all 0.2s',
@@ -168,7 +168,7 @@ function LoginForm() {
 
           <div style={{ textAlign: 'center', paddingTop: 4 }}>
             <Link href="/professional"
-              style={{ fontSize: '0.72rem', color: 'var(--iv-text-muted)', textDecoration: 'none', borderBottom: '1px solid rgba(145,56,50,0.25)', paddingBottom: 2 }}>
+              style={{ fontSize: '0.75rem', color: 'var(--iv-text-muted)', textDecoration: 'none', borderBottom: '1px solid rgba(145,56,50,0.25)', paddingBottom: 2 }}>
               Professional / B2B login →
             </Link>
           </div>

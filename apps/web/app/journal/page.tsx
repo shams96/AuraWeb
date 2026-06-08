@@ -60,7 +60,7 @@ export default function JournalPage() {
                   <div className="flex items-center gap-4 text-[10px] font-black text-iv-gold uppercase tracking-[0.2em] mb-6">
                     <span>{post.category}</span>
                     <span className="w-1 h-1 bg-iv-gold/30 rounded-full" />
-                    <span className="text-iv-cream/40">{post.date}</span>
+                    <span className="text-iv-cream/65">{post.date}</span>
                   </div>
                   <h2 className="text-2xl font-bold text-iv-white mb-6 group-hover:text-iv-gold transition-colors line-clamp-2 italic serif leading-tight">
                     {post.title}
@@ -69,7 +69,7 @@ export default function JournalPage() {
                     {post.excerpt}
                   </p>
                   <div className="flex items-center justify-between pt-6 border-t border-iv-white/5">
-                    <div className="flex items-center gap-3 text-[10px] font-black text-iv-cream/30 uppercase tracking-widest">
+                    <div className="flex items-center gap-3 text-[10px] font-black text-iv-cream/65 uppercase tracking-widest">
                       <User className="w-3 h-3 text-iv-gold/40" />
                       {post.author}
                     </div>

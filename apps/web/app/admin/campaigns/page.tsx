@@ -47,7 +47,7 @@ export default function AdminCampaignsPage() {
 
         {/* Template selector */}
         <div className="space-y-3">
-          <p className="text-[10px] font-black uppercase tracking-widest text-iv-cream/30 mb-4">Template</p>
+          <p className="text-[10px] font-black uppercase tracking-widest text-iv-cream/55 mb-4">Template</p>
           {TEMPLATES.map(t => (
             <button
               key={t.id}
@@ -69,7 +69,7 @@ export default function AdminCampaignsPage() {
           className="rounded-2xl p-8"
           style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(145,56,50,0.14)' }}
         >
-          <p className="text-[10px] font-black uppercase tracking-widest text-iv-cream/30 mb-6">Compose</p>
+          <p className="text-[10px] font-black uppercase tracking-widest text-iv-cream/55 mb-6">Compose</p>
 
           <div className="space-y-5">
             {/* Recipients */}

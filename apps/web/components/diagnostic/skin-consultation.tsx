@@ -738,7 +738,7 @@ export function SkinConsultation() {
               </div>
               {answers.q4.length > 0 && (
                 <div className="mt-8 pt-6" style={{ borderTop: '1px solid rgba(145,56,50,0.15)' }}>
-                  <p className="text-[9px] uppercase tracking-widest font-black mb-3" style={{ color: 'rgba(253,250,245,0.25)' }}>
+                  <p className="text-[9px] uppercase tracking-widest font-black mb-3" style={{ color: 'rgba(253,250,245,0.65)' }}>
                     Concerns addressed
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -792,9 +792,9 @@ export function SkinConsultation() {
             <button
               onClick={restart}
               className="inline-flex items-center gap-2 text-[10px] uppercase tracking-widest font-black transition-colors"
-              style={{ color: 'rgba(253,250,245,0.25)' }}
+              style={{ color: 'rgba(253,250,245,0.65)' }}
               onMouseEnter={e => (e.currentTarget.style.color = 'rgba(253,250,245,0.55)')}
-              onMouseLeave={e => (e.currentTarget.style.color = 'rgba(253,250,245,0.25)')}
+              onMouseLeave={e => (e.currentTarget.style.color = 'rgba(253,250,245,0.65)')}
             >
               <RefreshCcw size={12} /> Retake consultation
             </button>

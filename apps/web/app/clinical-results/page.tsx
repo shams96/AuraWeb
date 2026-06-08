@@ -104,7 +104,7 @@ export default function ClinicalResultsPage() {
               <div key={label} className="bg-iv-black border border-iv-gold/10 rounded-2xl p-8 hover:border-iv-gold/30 transition-all">
                 <div className="text-4xl font-black text-iv-gold mb-3">{pct}</div>
                 <p className="text-[11px] text-iv-cream/60 leading-relaxed font-light">{label}</p>
-                <p className="text-[9px] text-iv-cream/20 mt-2 uppercase tracking-widest font-black">n={n.toLocaleString()}</p>
+                <p className="text-xs text-iv-cream/65 mt-2 uppercase tracking-widest font-black">n={n.toLocaleString()}</p>
               </div>
             ))}
           </div>
@@ -125,7 +125,7 @@ export default function ClinicalResultsPage() {
                 {/* Trial Header */}
                 <div className="flex flex-wrap items-start justify-between gap-6 mb-10 pb-8 border-b border-iv-white/5">
                   <div>
-                    <span className="text-[9px] font-black text-iv-gold/50 uppercase tracking-widest">{trial.id}</span>
+                    <span className="text-xs font-black text-iv-gold/50 uppercase tracking-widest">{trial.id}</span>
                     <h3 className="text-xl font-bold text-iv-white tracking-tight mt-1">{trial.title}</h3>
                   </div>
                   <span className="text-[10px] font-black uppercase tracking-widest text-iv-black bg-iv-gold px-4 py-1.5 rounded-full flex-shrink-0">{trial.significance}</span>
@@ -140,7 +140,7 @@ export default function ClinicalResultsPage() {
                     { icon: <CheckCircle2 className="w-4 h-4" />, label: 'Laboratory', value: trial.lab },
                   ].map(({ icon, label, value }) => (
                     <div key={label} className="bg-iv-black/40 rounded-xl p-5 border border-iv-white/5">
-                      <div className="flex items-center gap-2 text-iv-gold mb-2">{icon}<span className="text-[9px] font-black uppercase tracking-widest">{label}</span></div>
+                      <div className="flex items-center gap-2 text-iv-gold mb-2">{icon}<span className="text-xs font-black uppercase tracking-widest">{label}</span></div>
                       <p className="text-xs text-iv-cream/70 font-light leading-snug">{value}</p>
                     </div>
                   ))}
@@ -151,9 +151,9 @@ export default function ClinicalResultsPage() {
                   <table className="w-full border-collapse">
                     <thead>
                       <tr className="bg-iv-black/60 border-b border-iv-white/10">
-                        <th className="py-4 px-6 text-left text-[9px] font-black text-iv-white uppercase tracking-widest">Outcome Metric</th>
-                        <th className="py-4 px-6 text-left text-[9px] font-black text-iv-gold uppercase tracking-widest">Isola Vitale Result</th>
-                        <th className="py-4 px-6 text-left text-[9px] font-black text-iv-cream/30 uppercase tracking-widest">Control Arm</th>
+                        <th className="py-4 px-6 text-left text-xs font-black text-iv-white uppercase tracking-widest">Outcome Metric</th>
+                        <th className="py-4 px-6 text-left text-xs font-black text-iv-gold uppercase tracking-widest">Isola Vitale Result</th>
+                        <th className="py-4 px-6 text-left text-xs font-black text-iv-cream/65 uppercase tracking-widest">Control Arm</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-iv-white/5">
@@ -161,7 +161,7 @@ export default function ClinicalResultsPage() {
                         <tr key={metric} className="hover:bg-iv-gold/[0.03] transition-colors">
                           <td className="py-4 px-6 text-sm text-iv-cream/60 font-light">{metric}</td>
                           <td className="py-4 px-6 text-sm font-black text-iv-gold">{result}</td>
-                          <td className="py-4 px-6 text-sm text-iv-cream/30 font-light">{vs}</td>
+                          <td className="py-4 px-6 text-sm text-iv-cream/65 font-light">{vs}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -191,7 +191,7 @@ export default function ClinicalResultsPage() {
                   <a href="/contact" className="text-[10px] font-black text-iv-gold uppercase tracking-widest hover:underline underline-offset-4">
                     Request Full Study Data →
                   </a>
-                  <a href="/ingredients" className="text-[10px] font-black text-iv-cream/40 uppercase tracking-widest hover:text-iv-gold transition-colors hover:underline underline-offset-4">
+                  <a href="/ingredients" className="text-[10px] font-black text-iv-cream/65 uppercase tracking-widest hover:text-iv-gold transition-colors hover:underline underline-offset-4">
                     Ingredient Dossier →
                   </a>
                 </div>

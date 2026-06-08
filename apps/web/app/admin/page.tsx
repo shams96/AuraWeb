@@ -93,7 +93,7 @@ export default async function AdminDashboardPage() {
               >
                 <Icon size={18} style={{ color: 'var(--iv-gold)' }} />
               </div>
-              <span className="text-xs text-iv-cream/30 font-light">{note}</span>
+              <span className="text-xs text-iv-cream/55 font-light">{note}</span>
             </div>
             <p className="text-2xl font-bold text-iv-white mb-1">{value}</p>
             <p className="text-xs text-iv-cream/50 uppercase tracking-widest font-medium">{label}</p>
@@ -128,7 +128,7 @@ export default async function AdminDashboardPage() {
                   <p className="text-sm font-semibold text-iv-white">
                     ${Number(order.total).toLocaleString('en-US', { minimumFractionDigits: 2 })}
                   </p>
-                  <p className="text-xs text-iv-cream/30 mt-0.5">
+                  <p className="text-xs text-iv-cream/55 mt-0.5">
                     {new Date(order.createdAt).toLocaleDateString('en-US', { day: 'numeric', month: 'short' })}
                   </p>
                 </div>

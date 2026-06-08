@@ -45,7 +45,7 @@ export default function WishlistPage() {
               </svg>
             </div>
             <h3 className="text-2xl font-bold text-iv-white mb-4 uppercase tracking-widest">No Acquisitions Curated</h3>
-            <p className="text-iv-cream/40 mb-12 font-light max-w-md mx-auto">
+            <p className="text-iv-cream/65 mb-12 font-light max-w-md mx-auto">
               Your wishlist is currently empty. Explore our scientific formulations and build your ideal routine.
             </p>
             <Link href="/shop">

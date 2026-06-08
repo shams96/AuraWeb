@@ -96,7 +96,7 @@ export default function IngredientsPage() {
                   <tr key={item.name} className="hover:bg-iv-gold/[0.03] transition-colors group">
                     <td className="py-8 px-8 text-sm font-bold text-iv-gold uppercase tracking-widest">{item.name}</td>
                     <td className="py-8 px-8 text-sm text-iv-cream/60 font-light">{item.function}</td>
-                    <td className="py-8 px-8 text-[10px] text-iv-cream/30 italic font-black uppercase tracking-widest">{item.foundIn}</td>
+                    <td className="py-8 px-8 text-[10px] text-iv-cream/65 italic font-black uppercase tracking-widest">{item.foundIn}</td>
                   </tr>
                 ))}
               </tbody>
@@ -180,12 +180,12 @@ export default function IngredientsPage() {
                   <div className={`w-10 h-10 rounded-full bg-iv-black border border-iv-gold/20 flex items-center justify-center group-hover:scale-110 transition-transform`}>
                     <CheckCircle2 className={`w-5 h-5 ${color}`} />
                   </div>
-                  <span className="text-[9px] font-black uppercase tracking-widest text-iv-cream/20 border border-iv-white/5 px-3 py-1 rounded-full">
+                  <span className="text-xs font-black uppercase tracking-widest text-iv-cream/65 border border-iv-white/5 px-3 py-1 rounded-full">
                     {detail}
                   </span>
                 </div>
                 <h3 className={`text-base font-black uppercase tracking-widest mb-2 ${color}`}>{badge}</h3>
-                <p className="text-[10px] font-bold text-iv-cream/30 uppercase tracking-widest mb-4">{issuer}</p>
+                <p className="text-[10px] font-bold text-iv-cream/65 uppercase tracking-widest mb-4">{issuer}</p>
                 <p className="text-sm text-iv-cream/60 leading-relaxed font-light">{description}</p>
               </div>
             ))}
@@ -209,7 +209,7 @@ export default function IngredientsPage() {
                   ].map(([ingredient, origin]) => (
                     <div key={ingredient} className="flex items-center justify-between border-b border-iv-white/5 pb-3">
                       <span className="text-sm text-iv-gold font-bold uppercase tracking-widest">{ingredient}</span>
-                      <span className="text-xs text-iv-cream/40 font-black uppercase tracking-widest">{origin}</span>
+                      <span className="text-xs text-iv-cream/65 font-black uppercase tracking-widest">{origin}</span>
                     </div>
                   ))}
                 </div>
@@ -223,7 +223,7 @@ export default function IngredientsPage() {
                 ].map(({ stat, label }) => (
                   <div key={label} className="bg-iv-deep-green/20 border border-iv-gold/10 rounded-2xl p-6 text-center">
                     <div className="text-3xl font-black text-iv-gold mb-2">{stat}</div>
-                    <div className="text-[10px] font-black text-iv-cream/40 uppercase tracking-widest">{label}</div>
+                    <div className="text-[10px] font-black text-iv-cream/65 uppercase tracking-widest">{label}</div>
                   </div>
                 ))}
               </div>

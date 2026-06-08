@@ -203,12 +203,12 @@ export default function ProfessionalPage() {
                   </div>
                 )}
                 <h3 className="text-xl font-black text-iv-white uppercase tracking-widest mb-1">{name}</h3>
-                <p className="text-xs text-iv-cream/40 uppercase tracking-widest mb-8">{subtitle}</p>
+                <p className="text-xs text-iv-cream/65 uppercase tracking-widest mb-8">{subtitle}</p>
                 <div className="flex items-baseline gap-3 mb-2">
                   <span className="text-4xl font-black text-iv-gold">{discount}</span>
                   {discount !== 'Custom' && <span className="text-sm text-iv-cream/50 uppercase tracking-widest">off MSRP</span>}
                 </div>
-                <p className="text-xs text-iv-cream/30 uppercase tracking-widest mb-8">Min. order: {minOrder}</p>
+                <p className="text-xs text-iv-cream/65 uppercase tracking-widest mb-8">Min. order: {minOrder}</p>
                 <div className="space-y-4 mb-10">
                   {features.map(f => (
                     <div key={f} className="flex items-start gap-3">
@@ -319,7 +319,7 @@ export default function ProfessionalPage() {
                   "Isola Vitale has transformed our clinic's retail performance. The clinical documentation gave our dermatologists confidence, and our clients see measurable results within 6 weeks."
                 </blockquote>
                 <p className="text-xs font-black text-iv-white uppercase tracking-widest">Dr. K. Marchetti</p>
-                <p className="text-[10px] text-iv-cream/30 uppercase tracking-widest">Dermatology Clinic Milano — Clinical Partner since 2024</p>
+                <p className="text-[10px] text-iv-cream/65 uppercase tracking-widest">Dermatology Clinic Milano — Clinical Partner since 2024</p>
               </div>
             </div>
           </div>

@@ -189,7 +189,7 @@ export default function ContactPage() {
                     <div>
                       <p className="text-[10px] font-black text-iv-gold uppercase tracking-widest mb-1">Corporate HQ</p>
                       <p className="text-sm text-iv-white font-bold tracking-tight mb-2">1314 Waterdown Dr.</p>
-                      <p className="text-xs text-iv-cream/40 uppercase tracking-widest">Allen, Texas 75013, USA</p>
+                      <p className="text-xs text-iv-cream/65 uppercase tracking-widest">Allen, Texas 75013, USA</p>
                     </div>
                   </div>
                   <div className="flex gap-6 items-start">
@@ -199,7 +199,7 @@ export default function ContactPage() {
                     <div>
                       <p className="text-[10px] font-black text-iv-gold uppercase tracking-widest mb-1">Laboratory & Manufacturing</p>
                       <p className="text-sm text-iv-white font-bold tracking-tight mb-2">Natural You Srl</p>
-                      <p className="text-xs text-iv-cream/40 uppercase tracking-widest">Isola del Liri (FR), Italy</p>
+                      <p className="text-xs text-iv-cream/65 uppercase tracking-widest">Isola del Liri (FR), Italy</p>
                     </div>
                   </div>
                 </div>

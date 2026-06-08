@@ -28,7 +28,7 @@ export default function PrivacyPage() {
           </div>
 
           <div className="pt-16 border-t border-iv-white/5">
-             <p className="text-[10px] font-black text-iv-cream/30 uppercase tracking-widest italic"> Last Updated: May 2026 </p>
+             <p className="text-[10px] font-black text-iv-cream/65 uppercase tracking-widest italic"> Last Updated: May 2026 </p>
           </div>
         </div>
       </section>

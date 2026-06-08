@@ -73,7 +73,7 @@ export default function AdminOrdersPage() {
 
       <div className="rounded-2xl overflow-hidden" style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(145,56,50,0.14)' }}>
         <div
-          className="px-6 py-3 grid grid-cols-[140px_1fr_120px_100px_160px] gap-4 text-[10px] font-black uppercase tracking-widest text-iv-cream/30 border-b"
+          className="px-6 py-3 grid grid-cols-[140px_1fr_120px_100px_160px] gap-4 text-[10px] font-black uppercase tracking-widest text-iv-cream/55 border-b"
           style={{ borderColor: 'rgba(145,56,50,0.14)' }}
         >
           <span>Order #</span><span>Customer / Items</span><span className="text-right">Total</span><span className="text-right">Date</span><span className="text-center">Status</span>
@@ -95,7 +95,7 @@ export default function AdminOrdersPage() {
                   <p className="text-sm text-iv-white font-medium">
                     {o.user?.name ?? o.user?.email ?? 'Guest'}
                   </p>
-                  <p className="text-xs text-iv-cream/30 mt-0.5 truncate">
+                  <p className="text-xs text-iv-cream/55 mt-0.5 truncate">
                     {(o.items as { name: string; quantity: number }[]).map(i => `${i.name} ×${i.quantity}`).join(', ') || '—'}
                   </p>
                 </div>

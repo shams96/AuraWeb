@@ -41,7 +41,7 @@ export default function PressPage() {
                <div key={idx} className="group cursor-pointer border-b border-iv-white/5 pb-8 hover:border-iv-gold/30 transition-colors">
                  <div className="flex justify-between items-center mb-4">
                    <p className="text-iv-gold font-black uppercase tracking-widest text-[10px]">{item.outlet}</p>
-                   <p className="text-iv-cream/30 text-[10px] uppercase tracking-widest font-black">{item.date}</p>
+                   <p className="text-iv-cream/65 text-[10px] uppercase tracking-widest font-black">{item.date}</p>
                  </div>
                  <h3 className="text-2xl font-bold text-iv-white group-hover:text-iv-gold transition-colors italic serif leading-tight">{item.title}</h3>
                </div>

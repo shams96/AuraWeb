@@ -111,7 +111,7 @@ export default function ReturnsPage() {
             </div>
 
             <div className="space-y-4">
-              <p className="text-[10px] font-black uppercase tracking-widest text-iv-cream/40">The Process</p>
+              <p className="text-[10px] font-black uppercase tracking-widest text-iv-cream/65">The Process</p>
               {[
                 ['01', 'Submit the form with your order number and reason'],
                 ['02', 'We review and send a pre-paid returns label within 48 hrs'],
@@ -124,7 +124,7 @@ export default function ReturnsPage() {
               ))}
             </div>
 
-            <p className="text-xs text-iv-cream/25 font-light pt-4 border-t" style={{ borderColor: 'rgba(145,56,50,0.10)' }}>
+            <p className="text-xs text-iv-cream/65 font-light pt-4 border-t" style={{ borderColor: 'rgba(145,56,50,0.10)' }}>
               Clinical A-Series (B2B) products are subject to separate terms specified in your professional portal agreement.
             </p>
           </div>
@@ -143,7 +143,7 @@ export default function ReturnsPage() {
 
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
-                <label className="block text-[10px] font-black uppercase tracking-widest text-iv-cream/40 mb-1.5">
+                <label className="block text-[10px] font-black uppercase tracking-widest text-iv-cream/65 mb-1.5">
                   Order Number *
                 </label>
                 <input
@@ -158,7 +158,7 @@ export default function ReturnsPage() {
               </div>
 
               <div>
-                <label className="block text-[10px] font-black uppercase tracking-widest text-iv-cream/40 mb-1.5">
+                <label className="block text-[10px] font-black uppercase tracking-widest text-iv-cream/65 mb-1.5">
                   Reason *
                 </label>
                 <select
@@ -174,8 +174,8 @@ export default function ReturnsPage() {
               </div>
 
               <div>
-                <label className="block text-[10px] font-black uppercase tracking-widest text-iv-cream/40 mb-1.5">
-                  Details <span className="font-light normal-case tracking-normal text-iv-cream/25">(optional)</span>
+                <label className="block text-[10px] font-black uppercase tracking-widest text-iv-cream/65 mb-1.5">
+                  Details <span className="font-light normal-case tracking-normal text-iv-cream/65">(optional)</span>
                 </label>
                 <textarea
                   rows={3}

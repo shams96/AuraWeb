@@ -85,7 +85,7 @@ export default function SuccessPage() {
         </div>
 
         {/* Support */}
-        <p style={{ marginTop: 48, fontSize: '0.72rem', color: C.muted, fontWeight: 300 }}>
+        <p style={{ marginTop: 48, fontSize: '0.75rem', color: C.muted, fontWeight: 300 }}>
           Questions? Our concierge team is at{' '}
           <a href="mailto:ritual@isolavitale.com" style={{ color: C.gold, fontWeight: 600, textDecoration: 'none' }}>
             ritual@isolavitale.com

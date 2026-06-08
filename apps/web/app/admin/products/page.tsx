@@ -450,12 +450,12 @@ export default function AdminProductsPage() {
         </div>
 
         {loading ? (
-          <div className="py-20 flex flex-col items-center gap-3 text-iv-cream/30">
+          <div className="py-20 flex flex-col items-center gap-3 text-iv-cream/55">
             <Loader2 size={24} className="animate-spin" style={{ color: 'var(--iv-gold)' }} />
             <span className="text-xs uppercase tracking-widest font-black">Loading catalogue…</span>
           </div>
         ) : products.length === 0 ? (
-          <div className="py-20 text-center text-iv-cream/30 text-sm">
+          <div className="py-20 text-center text-iv-cream/55 text-sm">
             No products yet — click <strong className="text-iv-white">New Product</strong> to add your first.
           </div>
         ) : (
@@ -504,13 +504,13 @@ export default function AdminProductsPage() {
                   <button
                     onClick={() => setModal({ mode: 'edit', product: p })}
                     title="Edit"
-                    className="p-2 rounded-lg text-iv-cream/30 hover:text-iv-white transition-colors">
+                    className="p-2 rounded-lg text-iv-cream/55 hover:text-iv-white transition-colors">
                     <Pencil size={13} />
                   </button>
                   <button
                     onClick={() => setDelTarget(p)}
                     title="Delete"
-                    className="p-2 rounded-lg text-iv-cream/30 hover:text-red-400 transition-colors">
+                    className="p-2 rounded-lg text-iv-cream/55 hover:text-red-400 transition-colors">
                     <Trash2 size={13} />
                   </button>
                 </div>
@@ -520,7 +520,7 @@ export default function AdminProductsPage() {
         )}
       </div>
 
-      <p className="mt-4 text-[10px] font-black uppercase tracking-widest text-iv-cream/20 text-right">
+      <p className="mt-4 text-[10px] font-black uppercase tracking-widest text-iv-cream/55 text-right">
         {products.length} product{products.length !== 1 ? 's' : ''} in catalogue
       </p>
 
