@@ -76,7 +76,7 @@
     --iv-teal:        #005A5B;
     --iv-charcoal:    #1A1614;
     --iv-text:        #3D2B20;
-    --iv-text-muted:  #7A5C4E;
+    --iv-text-muted:  #5C4438;   /* was #7A5C4E (5.82:1 AA) → now 7.03:1 AAA on ivory */
 
     /* ── Typography — single source of truth ─────────────────── */
     --iv-font-serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
@@ -162,8 +162,8 @@
 
   header nav a {
     color: var(--iv-charcoal) !important;
-    opacity: 0.70;
-    font-size: 0.72rem;
+    opacity: 0.85;   /* was 0.70 (5.08:1) → now ~9:1 AAA */
+    font-size: 0.75rem;  /* was 0.72rem — raised above 12px */
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -255,7 +255,7 @@
     color: var(--iv-white);
     border-radius: 8px;
   }
-  input::placeholder { color: var(--iv-text-muted); opacity: 0.55; }
+  input::placeholder { color: var(--iv-text-muted); }  /* removed opacity:0.55 — was 2.09:1 FAIL → now 7.03:1 AAA */
   input:focus {
     outline: none;
     border-color: var(--iv-ochre) !important;
@@ -354,7 +354,7 @@
 
   footer .text-iv-white { color: #FAF7F0 !important; }
   footer .text-iv-cream { color: rgba(250, 247, 240, 0.65) !important; }
-  footer .text-iv-gold  { color: #B8972F !important; } /* gold stays gold in footer */
+  footer .text-iv-gold  { color: #D4B450 !important; } /* was #B8972F (3.31:1 FAIL) → #D4B450 (4.87:1 AA) */
 
   footer .text-gray-900, footer .text-gray-800,
   footer .text-gray-700, footer .text-gray-600 {

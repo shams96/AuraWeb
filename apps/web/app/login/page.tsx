@@ -64,13 +64,13 @@ function LoginForm() {
             ].map(({ v, l }) => (
               <div key={l} className="text-center">
                 <div style={{ fontSize: '1.4rem', fontWeight: 800, color: '#FAD6C9', fontFamily: 'var(--iv-font-serif)' }}>{v}</div>
-                <div style={{ fontSize: '0.55rem', color: 'rgba(253,250,245,0.6)', letterSpacing: '0.14em', textTransform: 'uppercase', marginTop: 4 }}>{l}</div>
+                <div style={{ fontSize: '0.75rem', color: 'rgba(253,250,245,0.75)', letterSpacing: '0.14em', textTransform: 'uppercase', marginTop: 4 }}>{l}</div>
               </div>
             ))}
           </div>
           <div style={{ paddingTop: 8, borderTop: '1px solid rgba(253,250,245,0.1)' }}>
-            <p style={{ fontSize: '0.6rem', color: 'rgba(253,250,245,0.3)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
-              A Shanill House Formulation
+            <p style={{ fontSize: '0.75rem', color: 'rgba(253,250,245,0.65)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
+              An Isola Vitale Formulation
             </p>
           </div>
         </div>
@@ -97,7 +97,7 @@ function LoginForm() {
           {justRegistered && (
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '12px 16px', borderRadius: 8, background: 'rgba(74,222,128,0.08)', border: '1px solid rgba(74,222,128,0.25)' }}>
               <CheckCircle2 size={16} style={{ color: '#4ade80', flexShrink: 0 }} />
-              <p style={{ fontSize: '0.82rem', color: '#86efac', fontWeight: 500 }}>
+              <p style={{ fontSize: '0.82rem', color: '#166534', fontWeight: 500 }}>
                 Account created! Sign in below.
               </p>
             </div>
@@ -105,7 +105,7 @@ function LoginForm() {
 
           {/* Error */}
           {error && (
-            <div style={{ padding: '12px 16px', borderRadius: 8, background: 'rgba(248,113,113,0.08)', border: '1px solid rgba(248,113,113,0.25)', fontSize: '0.82rem', color: '#fca5a5', fontWeight: 500 }}>
+            <div style={{ padding: '12px 16px', borderRadius: 8, background: 'rgba(248,113,113,0.08)', border: '1px solid rgba(248,113,113,0.25)', fontSize: '0.82rem', color: '#991B1B', fontWeight: 500 }}>
               {error}
             </div>
           )}

@@ -35,7 +35,7 @@ const INPUT: React.CSSProperties = {
 
 const LABEL: React.CSSProperties = {
   display: 'block',
-  fontSize: '0.625rem', fontWeight: 900, letterSpacing: '0.25em',
+  fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.25em',
   textTransform: 'uppercase', color: C.muted, marginBottom: 4,
 }
 
@@ -169,7 +169,7 @@ export default function CheckoutPage() {
             {/* Contact section */}
             <div>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24 }}>
-                <h2 style={{ fontSize: '0.65rem', fontWeight: 900, letterSpacing: '0.3em', textTransform: 'uppercase', color: C.charcoal, margin: 0 }}>Contact</h2>
+                <h2 style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: C.charcoal, margin: 0 }}>Contact</h2>
                 {guestMode && (
                   <Link href="/login?redirect=/checkout" style={{ fontSize: '0.6rem', fontWeight: 900, letterSpacing: '0.2em', textTransform: 'uppercase', color: C.gold, textDecoration: 'none' }}>
                     Sign in →
@@ -213,7 +213,7 @@ export default function CheckoutPage() {
 
             {/* Delivery note */}
             <div>
-              <h2 style={{ fontSize: '0.65rem', fontWeight: 900, letterSpacing: '0.3em', textTransform: 'uppercase', color: C.charcoal, margin: '0 0 10px' }}>Where your ritual will arrive</h2>
+              <h2 style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: C.charcoal, margin: '0 0 10px' }}>Where your ritual will arrive</h2>
               <p style={{ fontSize: '0.7rem', color: C.muted, margin: 0, fontWeight: 300, lineHeight: 1.7 }}>
                 Delivery address and shipping method are collected on the next step via Stripe's secure checkout — shipped worldwide from Isola del Liri, Italy.
               </p>
@@ -221,7 +221,7 @@ export default function CheckoutPage() {
 
             {/* Payment note */}
             <div>
-              <h2 style={{ fontSize: '0.65rem', fontWeight: 900, letterSpacing: '0.3em', textTransform: 'uppercase', color: C.charcoal, margin: '0 0 14px' }}>Payment</h2>
+              <h2 style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: C.charcoal, margin: '0 0 14px' }}>Payment</h2>
               <div style={{ borderRadius: 14, border: `1px solid ${C.border}`, padding: '18px 20px', background: C.parchment }}>
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
                   <ShieldCheck size={15} style={{ color: C.gold, flexShrink: 0, marginTop: 2 }} />
@@ -231,7 +231,7 @@ export default function CheckoutPage() {
                 </div>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 12 }}>
                   {['Visa', 'Mastercard', 'Amex', 'Apple Pay', 'Google Pay'].map(m => (
-                    <span key={m} style={{ fontSize: '0.55rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: C.muted, border: `1px solid ${C.border}`, borderRadius: 4, padding: '2px 7px', background: C.page }}>
+                    <span key={m} style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: C.muted, border: `1px solid ${C.border}`, borderRadius: 4, padding: '2px 7px', background: C.page }}>
                       {m}
                     </span>
                   ))}
@@ -271,7 +271,7 @@ export default function CheckoutPage() {
               ].map(({ icon: Icon, label }) => (
                 <div key={label} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, textAlign: 'center' }}>
                   <Icon size={14} style={{ color: C.gold, opacity: 0.7 }} />
-                  <span style={{ fontSize: '0.55rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: C.muted, lineHeight: 1.4, whiteSpace: 'pre-line' }}>{label}</span>
+                  <span style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: C.muted, lineHeight: 1.4, whiteSpace: 'pre-line' }}>{label}</span>
                 </div>
               ))}
             </div>

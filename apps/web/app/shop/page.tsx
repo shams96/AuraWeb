@@ -83,7 +83,7 @@ export default async function ShopPage({
           <p className="text-xl text-iv-cream/60 max-w-2xl leading-relaxed font-light mb-4">
             Eighteen formulations. Four protocols. One Italian philosophy.
           </p>
-          <p className="text-sm text-iv-cream/40 max-w-xl leading-relaxed font-light mb-10 italic">
+          <p className="text-sm text-iv-cream/70 max-w-xl leading-relaxed font-light mb-10 italic">
             Each formulation is assigned to a biological stage — not an age. Find yours.
           </p>
 
@@ -124,7 +124,7 @@ export default async function ShopPage({
           {/* Grid */}
           <div className="flex-1">
             <div className="flex flex-col md:flex-row justify-between items-center mb-16 gap-6">
-              <p className="text-[10px] font-black text-iv-cream/40 uppercase tracking-[0.2em]">
+              <p className="text-[10px] font-black text-iv-cream/70 uppercase tracking-[0.2em]">
                 <span className="text-iv-gold">{products.length}</span> formulation{products.length !== 1 ? 's' : ''} in this protocol
               </p>
               <SortDropdown />
@@ -149,7 +149,7 @@ export default async function ShopPage({
                     View All Formulations
                   </a>
                   <span className="text-iv-gold/20">·</span>
-                  <Link href="/#skin-scan" className="text-[10px] font-black uppercase tracking-widest text-iv-cream/40 hover:text-iv-gold transition-colors">
+                  <Link href="/#skin-scan" className="text-[10px] font-black uppercase tracking-widest text-iv-cream/70 hover:text-iv-gold transition-colors">
                     Discover Your Protocol
                   </Link>
                 </div>

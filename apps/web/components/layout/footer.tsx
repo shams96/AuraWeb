@@ -67,7 +67,7 @@ export function Footer() {
             <ul className="space-y-4">
               {footerLinks.collection.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-iv-cream text-opacity-40 hover:text-iv-gold transition-colors text-[11px] font-medium uppercase tracking-widest">
+                  <Link href={link.href} className="hover:text-iv-gold transition-colors text-[11px] font-medium uppercase tracking-widest" style={{ color: 'rgba(250,247,240,0.75)' }}>
                     {link.name}
                   </Link>
                 </li>
@@ -81,7 +81,7 @@ export function Footer() {
             <ul className="space-y-4">
               {footerLinks.science.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-iv-cream text-opacity-40 hover:text-iv-gold transition-colors text-[11px] font-medium uppercase tracking-widest">
+                  <Link href={link.href} className="hover:text-iv-gold transition-colors text-[11px] font-medium uppercase tracking-widest" style={{ color: 'rgba(250,247,240,0.75)' }}>
                     {link.name}
                   </Link>
                 </li>
@@ -95,7 +95,7 @@ export function Footer() {
             <ul className="space-y-4">
               {footerLinks.house.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-iv-cream text-opacity-40 hover:text-iv-gold transition-colors text-[11px] font-medium uppercase tracking-widest">
+                  <Link href={link.href} className="hover:text-iv-gold transition-colors text-[11px] font-medium uppercase tracking-widest" style={{ color: 'rgba(250,247,240,0.75)' }}>
                     {link.name}
                   </Link>
                 </li>
@@ -109,7 +109,7 @@ export function Footer() {
             <ul className="space-y-4">
               {footerLinks.concierge.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-iv-cream text-opacity-40 hover:text-iv-gold transition-colors text-[11px] font-medium uppercase tracking-widest">
+                  <Link href={link.href} className="hover:text-iv-gold transition-colors text-[11px] font-medium uppercase tracking-widest" style={{ color: 'rgba(250,247,240,0.75)' }}>
                     {link.name}
                   </Link>
                 </li>
@@ -120,7 +120,7 @@ export function Footer() {
 
         {/* Contact Info */}
         <div className="mt-8 pt-8 border-t border-iv-gold" style={{ borderColor: 'rgba(184, 151, 47, 0.1)' }}>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-[10px] font-black uppercase tracking-widest text-iv-cream text-opacity-40">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-[10px] font-black uppercase tracking-widest" style={{ color: 'rgba(250,247,240,0.75)' }}>
             <div className="flex items-center space-x-3">
               <Mail className="h-4 w-4" style={{ color: 'rgba(184, 151, 47, 0.6)' }} />
               <span>concierge@isolavitale.com</span>
@@ -141,11 +141,11 @@ export function Footer() {
           <div className="flex items-center gap-3">
             <span style={{ fontSize: '1.2rem' }}>🇺🇸</span>
             <div>
-              <p className="text-[9px] font-black uppercase tracking-[0.2em]" style={{ color: 'rgba(250,247,240,0.35)' }}>Shipping to</p>
+              <p className="text-[9px] font-black uppercase tracking-[0.2em]" style={{ color: 'rgba(250,247,240,0.75)' }}>Shipping to</p>
               <p className="text-[11px] font-bold" style={{ color: 'rgba(250,247,240,0.70)' }}>United States · USD ($)</p>
             </div>
             <select
-              style={{ background: 'transparent', border: '1px solid rgba(255,255,255,0.12)', color: 'rgba(250,247,240,0.5)', fontSize: '0.6rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '4px 8px', borderRadius: 4, cursor: 'pointer' }}
+              style={{ background: 'transparent', border: '1px solid rgba(255,255,255,0.12)', color: 'rgba(250,247,240,0.75)', fontSize: '0.6rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '4px 8px', borderRadius: 4, cursor: 'pointer' }}
               defaultValue="US"
             >
               <option value="US">United States (USD)</option>
@@ -158,17 +158,17 @@ export function Footer() {
             </select>
           </div>
           <div className="flex flex-wrap justify-center gap-6">
-            <Link href="/privacy" className="text-[10px] font-black uppercase tracking-widest hover:text-iv-gold transition-colors" style={{ color: 'rgba(250,247,240,0.30)' }}>
+            <Link href="/privacy" className="text-[10px] font-black uppercase tracking-widest hover:text-iv-gold transition-colors" style={{ color: 'rgba(250,247,240,0.65)' }}>
               Privacy
             </Link>
-            <Link href="/terms" className="text-[10px] font-black uppercase tracking-widest hover:text-iv-gold transition-colors" style={{ color: 'rgba(250,247,240,0.30)' }}>
+            <Link href="/terms" className="text-[10px] font-black uppercase tracking-widest hover:text-iv-gold transition-colors" style={{ color: 'rgba(250,247,240,0.65)' }}>
               Terms
             </Link>
-            <Link href="/accessibility" className="text-[10px] font-black uppercase tracking-widest hover:text-iv-gold transition-colors" style={{ color: 'rgba(250,247,240,0.30)' }}>
+            <Link href="/accessibility" className="text-[10px] font-black uppercase tracking-widest hover:text-iv-gold transition-colors" style={{ color: 'rgba(250,247,240,0.65)' }}>
               Accessibility
             </Link>
           </div>
-          <p className="text-[10px] font-black uppercase tracking-widest" style={{ color: 'rgba(250,247,240,0.25)' }}>
+          <p className="text-[10px] font-black uppercase tracking-widest" style={{ color: 'rgba(250,247,240,0.55)' }}>
             &copy; {new Date().getFullYear()} Isola Vitale · Allen, TX · Isola del Liri, Italy
           </p>
         </div>

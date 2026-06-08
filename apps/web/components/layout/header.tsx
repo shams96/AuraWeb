@@ -38,7 +38,7 @@ export function Header() {
             <Link href="/" className="flex items-center gap-2.5">
               <span style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.25rem', fontWeight: 600, color: 'var(--iv-white)', letterSpacing: '0.08em' }}>ISOLA VITALE</span>
               <span style={{ width: 1, height: 16, backgroundColor: 'rgba(145,56,50,0.28)', display: 'inline-block' }} />
-              <span style={{ fontSize: '0.55rem', fontWeight: 700, color: 'var(--iv-gold)', letterSpacing: '0.22em', textTransform: 'uppercase', opacity: 0.70 }}>Milano</span>
+              <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--iv-gold)', letterSpacing: '0.22em', textTransform: 'uppercase' }}>Milano</span>
             </Link>
           </div>
 

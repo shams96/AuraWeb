@@ -97,7 +97,7 @@ export default function LoyaltyPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-iv-black">
+    <div className="min-h-screen bg-iv-black iv-dark">
       {/* Hero */}
       <section className="bg-iv-black text-iv-white py-32 border-b border-iv-white/5 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-radial from-iv-gold/[0.04] to-transparent pointer-events-none" />
