@@ -114,3 +114,11 @@ meili_data
 
 # Prisma
 prisma/migrations/*/migration.sql
+
+# Dev data stores — contain hashed credentials and PII
+apps/web/data/users.json
+apps/web/data/products.json
+apps/web/data/reset-tokens.json
+apps/web/data/returns.json
+apps/web/data/consultations.json
+apps/web/data/referrals.json

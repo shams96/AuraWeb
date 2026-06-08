@@ -5,6 +5,7 @@ import bcrypt from 'bcryptjs'
 import { randomUUID } from 'crypto'
 import { resend, FROM_EMAIL } from '@/lib/resend'
 import { accountWelcomeEmail } from '@/lib/email-templates'
+import { attributeReferral } from '@/lib/referral-store'
 
 interface User {
   id: string
@@ -75,14 +76,9 @@ export async function POST(req: NextRequest) {
 
     console.log('[register] user created')
 
-    // Track referral server-side from httpOnly cookie (fire-and-forget)
+    // Track referral server-side from httpOnly cookie (direct call — no SSRF risk)
     if (ivRef && /^[a-f0-9]{8}$/.test(ivRef)) {
-      const baseUrl = process.env.NEXTAUTH_URL ?? 'http://localhost:5000'
-      fetch(`${baseUrl}/api/referral/track`, {
-        method:  'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ code: ivRef, refereeEmail: emailLower }),
-      }).catch(() => {})
+      try { attributeReferral(ivRef, emailLower) } catch { /* non-fatal */ }
     }
 
     // Send welcome email (non-blocking — failure doesn't affect registration)

@@ -33,13 +33,15 @@ interface ReturnRequest {
 
 export async function POST(req: NextRequest) {
   const session = await getServerSession(authOptions)
+  if (!session?.user) return NextResponse.json({ error: 'Unauthorised' }, { status: 401 })
+
   const { orderNumber, reason, details } = await req.json()
 
   if (!orderNumber || !reason) {
     return NextResponse.json({ error: 'Order number and reason are required' }, { status: 400 })
   }
 
-  const email = session?.user?.email ?? 'guest'
+  const email = session.user.email ?? ''
 
   const returnReq: ReturnRequest = {
     id: crypto.randomUUID(),

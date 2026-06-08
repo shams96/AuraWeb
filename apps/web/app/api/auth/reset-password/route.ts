@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createHash } from 'crypto'
+import { createHash, timingSafeEqual } from 'crypto'
 import fs from 'fs'
 import path from 'path'
 import bcrypt from 'bcryptjs'
@@ -47,8 +47,11 @@ export async function POST(req: NextRequest) {
     if (!password || password.length < 8) return NextResponse.json({ error: 'Password must be at least 8 characters.' }, { status: 400 })
 
     const tokenHash = createHash('sha256').update(token).digest('hex')
+    const tokenHashBuf = Buffer.from(tokenHash, 'hex')
     const tokens    = loadTokens()
-    const entry     = tokens.find(t => t.token === tokenHash)
+    const entry     = tokens.find(t => {
+      try { return timingSafeEqual(Buffer.from(t.token, 'hex'), tokenHashBuf) } catch { return false }
+    })
 
     if (!entry)                       return NextResponse.json({ error: 'Invalid or expired link.' }, { status: 400 })
     if (Date.now() > entry.expiresAt) return NextResponse.json({ error: 'This link has expired. Please request a new one.' }, { status: 400 })

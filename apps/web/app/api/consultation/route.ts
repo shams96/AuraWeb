@@ -64,10 +64,19 @@ export async function POST(req: NextRequest) {
 }
 
 export async function PATCH(req: NextRequest) {
+  const session = await getServerSession(authOptions)
   const { sessionId, addedToCart, purchased } = await req.json()
   const all = await readAll()
   const idx = all.findIndex(r => r.sessionId === sessionId)
   if (idx < 0) return NextResponse.json({ error: 'Not found' }, { status: 404 })
+
+  // Ownership check: record must belong to session user (or be anonymous with no userId)
+  const record = all[idx]
+  if (record.userId) {
+    if (!session?.user) return NextResponse.json({ error: 'Unauthorised' }, { status: 401 })
+    const sessionUserId = (session.user as { id?: string })?.id
+    if (record.userId !== sessionUserId) return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
+  }
 
   if (addedToCart !== undefined) all[idx].addedToCart = addedToCart
   if (purchased !== undefined) all[idx].purchased = purchased
