@@ -16,8 +16,8 @@ export default function FAQPage() {
           a: 'Metabolic skincare targets the cellular processes that govern skin health, volume, and repair. Unlike traditional skincare which focuses on topical symptoms, Isola Vitale formulations provide metabolic signals that optimize the cellular engine itself.'
         },
         {
-          q: 'How do the 4 Tiers work?',
-          a: 'Our system is divided into four age-specific tiers (Genesis, Foundation, Regeneration, Longevity) that align with the specific metabolic needs of skin at different life stages, from adolescent protection to advanced mature repair.'
+          q: 'How do the 4 Protocols work?',
+          a: 'Our Skin Intelligence Protocols™ are divided into four cellular stage tiers — Foundation, Correction, Regeneration, and Longevity — that align formulation potency with your skin\'s specific metabolic performance needs. No age categories. Protocol selection is based on cellular stage, not chronological age.'
         },
         {
           q: 'What are Senomorphic Peptides?',

@@ -326,7 +326,7 @@ export function SkinScan() {
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                   <div className="space-y-1">
                     <h3 className="text-3xl font-bold text-iv-white uppercase tracking-tighter italic">Diagnostic Report</h3>
-                    <p className="text-iv-gold text-[10px] font-black uppercase tracking-[0.4em]">Protocol Tier III: Regeneration</p>
+                    <p className="text-iv-gold text-[10px] font-black uppercase tracking-[0.4em]">T3 Regeneration Protocol</p>
                   </div>
                   <div className="bg-iv-gold/5 border border-iv-gold/20 px-4 py-2 rounded-full">
                     <p className="text-[9px] font-black text-iv-gold uppercase tracking-[0.2em]">Confidence Score: 98.4%</p>
@@ -391,7 +391,7 @@ export function SkinScan() {
                         High Oxidative Stress detected in the T-Zone, coupled with early dermal volume loss.
                       </p>
                       <p className="text-iv-cream/60 text-sm font-light leading-relaxed max-w-2xl">
-                        Your skin's metabolic biomarkers suggest accelerated senescence in the dermal layers. We propose the **Tier III Protocol**, specifically engineered with Senomorphic Peptides to "reset" zombie cells and L-Ornithine to restore facial volume.
+                        Your skin's metabolic biomarkers suggest accelerated senescence in the dermal layers. We propose the **T3 Regeneration Protocol**, specifically engineered with Senomorphic Peptides to reset senescent cells and L-Ornithine to restore facial volume.
                       </p>
                     </div>
 
