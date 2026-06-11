@@ -24,6 +24,7 @@ AuraWeb/
 │   └── api/              # Separate API server (not currently active)
 ├── packages/
 │   └── ui/               # Shared component library (@aurabiosphere/ui)
+├── BRAND-BIBLE.md        # Complete brand standard — voice, protocols, copy rules, visual language
 ├── prisma/               # Database schema (PostgreSQL + Prisma)
 ├── data/                 # JSON file store (products.json, users.json — dev)
 └── CLAUDE.md             # This file
