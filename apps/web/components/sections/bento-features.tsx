@@ -81,7 +81,7 @@ export function BentoFeatures() {
                 Four domains. One system. Matched to your biology — not your birthdate.
               </h3>
               <p className="text-sm text-iv-cream/65 font-light leading-relaxed">
-                Preservation · Refinement · Restoration · Longevity. Four protocols built around the four domains of adaptive skin science.
+                Preservation · Refinement · Regeneration · Longevity. Four protocols built around the four domains of adaptive skin science.
               </p>
             </div>
             <div className="flex gap-2 mt-6">

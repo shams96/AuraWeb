@@ -5,7 +5,7 @@ import { useRouter, useSearchParams, usePathname } from 'next/navigation'
 const PROTOCOLS = [
   { label: 'Preservation Protocol', value: 't1' },
   { label: 'Refinement Protocol',   value: 't2' },
-  { label: 'Restoration Protocol',  value: 't3' },
+  { label: 'Regeneration Protocol', value: 't3' },
   { label: 'Longevity Protocol',    value: 't4' },
   { label: 'Consumer Series',       value: 'consumer' },
   { label: 'Most Practised',        value: 'best-seller' },

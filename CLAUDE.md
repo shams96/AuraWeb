@@ -597,7 +597,7 @@ Products defined in `apps/web/lib/products.ts`. Live catalog served from `data/p
 |---|---|---|---|
 | `t1` | Preservation Protocol | Consumer — early prevention | Consumer |
 | `t2` | Refinement Protocol | Consumer — early correction | Consumer |
-| `t3` | Restoration Protocol | Consumer — active restoration | Consumer |
+| `t3` | Regeneration Protocol | Consumer — active regeneration | Consumer |
 | `t4` | Longevity Protocol | Consumer — maximum potency | Consumer |
 | `clinical` | A-Series | B2B / professional ONLY | B2B (role-gated, Phase 3) |
 | `consumer` | B-Series | General consumer | Consumer |

@@ -239,8 +239,8 @@ const PROTOCOLS: Record<Tier, Protocol> = {
     ],
   },
   t3: {
-    name: 'Restoration Protocol',
-    tagline: 'Deep cellular restoration & structural renewal',
+    name: 'Regeneration Protocol',
+    tagline: 'Deep cellular regeneration & structural renewal',
     tierSlug: 't3',
     description:
       'Your skin requires active regeneration at the cellular level. The Regeneration Protocol deploys OS-01 Senomorphic Peptides — shown to reduce zombie-cell accumulation by 30% — combined with L-Ornithine to restore dermal volume and firmness lost to time and cumulative stress. This is targeted biological intervention, not surface treatment.',

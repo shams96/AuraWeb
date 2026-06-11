@@ -4,7 +4,7 @@ import { Shield, Zap, Sparkles, Activity } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'The Ritual — Four Formulations. One Living Philosophy.',
-  description: 'Isola Vitale\'s four rituals are not defined by age — they are defined by what your skin needs now. Preservation · Refinement · Restoration · Longevity. Beauty as a way of life.',
+  description: 'Isola Vitale\'s four rituals are not defined by age — they are defined by what your skin needs now. Preservation · Refinement · Regeneration · Longevity. Beauty as a way of life.',
   openGraph: {
     title: 'The Ritual | Isola Vitale',
     description: 'Four formulations born from the Italian philosophy that beauty is a way of life, not a clinical outcome.',
@@ -30,10 +30,10 @@ export default function SystemPage() {
       icon: <Zap className="w-8 h-8 text-iv-gold" />,
     },
     {
-      id: 'restoration',
-      name: 'Restoration Protocol',
+      id: 'regeneration',
+      name: 'Regeneration Protocol',
       focus: 'Oxidative Defense · Structural Vitality',
-      description: 'Active biological restoration. DWAT Restoration Science addresses volume deflation at the cellular source. OS-01 Senomorphic Peptides reduce the accumulated senescent burden that impairs the skin\'s regenerative signalling — restoring resilience capacity, not merely correcting its visible consequences.',
+      description: 'Active biological regeneration. DWAT Restoration Science addresses volume deflation at the cellular source. OS-01 Senomorphic Peptides reduce the accumulated senescent burden that impairs the skin\'s regenerative signalling — restoring resilience capacity, not merely correcting its visible consequences.',
       tech: ['DWAT Restoration Science', 'OS-01 Senomorphic Peptides', 'NMN Cellular Support'],
       icon: <Activity className="w-8 h-8 text-iv-gold" />,
     },

@@ -6,7 +6,7 @@ import { Button } from '@aurabiosphere/ui'
 const PROTOCOL_NAMES: Record<string, string> = {
   T1: 'Preservation Protocol',
   T2: 'Refinement Protocol',
-  T3: 'Restoration Protocol',
+  T3: 'Regeneration Protocol',
   T4: 'Longevity Protocol',
 }
 
@@ -46,7 +46,7 @@ export function AgeAssessment() {
   }
 
   if (result) {
-    const name = PROTOCOL_NAMES[result] ?? 'Restoration Protocol'
+    const name = PROTOCOL_NAMES[result] ?? 'Regeneration Protocol'
     return (
       <div id="age-assessment" className="bg-iv-black py-16 text-iv-white">
         <div className="container mx-auto px-4 max-w-3xl text-center">
