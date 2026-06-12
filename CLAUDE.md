@@ -45,7 +45,7 @@ All development goes here. Never push to `main` without explicit instruction.
 ```bash
 git remote set-url origin https://<PAT>@github.com/shams96/AuraWeb.git
 git push -u origin claude/fix-client-components-audit-SwsMh
-git remote set-url origin http://local_proxy@127.0.0.1:40599/git/shams96/AuraWeb
+git remote set-url origin http://local_proxy@127.0.0.1:44151/git/shams96/AuraWeb
 ```
 
 The PAT is stored securely — ask the session owner. Do not commit the raw token to any file.
