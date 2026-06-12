@@ -77,9 +77,7 @@ Every great brand stands at the intersection of a desire and an obstacle. This i
 
 **What Isola Vitale does:** We answer what life demands. With Italian precision, with formulations calibrated to where her skin is now, and with a ritual that restores something to her rather than taking more.
 
-> *"Life asks everything of a woman. Isola Vitale ensures her skin gives everything back."*
-
-*(Owner: three options were proposed — A above, B: "Life is demanding. Your ritual is the one thing that should give back." C: "The demands of life are visible on the skin. Isola Vitale ensures they don't have to be." Confirm preferred version for finalisation.)*
+> *"Life asks everything of a woman. Isola Vitale is where she returns to herself."*
 
 ---
 
@@ -472,8 +470,8 @@ Isola Vitale makes the same promise — and backs it with pharmaceutical-grade c
 ## 19. Homepage
 
 ### Hero Headline Options
-- *"In Italy, beauty is a way of life."*
-- *"Life demands everything. Your skin gives it all back."*
+- *"In Italy, beauty is a way of life."* — the brand's master line
+- *"Life asks everything of a woman. Isola Vitale is where she returns to herself."* — the emotional tension line; can stand alone as hero
 - *"Eighteen formulations. Four protocols. One Italian philosophy."*
 - *"The science to look as vital as you feel."*
 
