@@ -25,7 +25,7 @@ export default function SystemPage() {
       id: 'refinement',
       name: 'Refinement Protocol',
       focus: 'Barrier Intelligence · Oxidative Defense',
-      description: 'The Refinement Protocol addresses the Adaptation Curve™ at its critical inflection — when barrier intelligence begins to decline and oxidative stress accumulates faster than the skin can neutralise it. GLP-1 protective complexes support structural integrity while the biological window for intervention remains widest.',
+      description: 'The Refinement Protocol meets your skin at its critical inflection — when the living barrier begins to soften and stress accumulates faster than the skin can neutralise it. GLP-1 protective complexes support firmness and structure while the window for intervention remains widest.',
       tech: ['GLP-1 Protection', 'Oxidative Defense Complex', 'Barrier Adaptive Support'],
       icon: <Zap className="w-8 h-8 text-iv-gold" />,
     },
@@ -41,7 +41,7 @@ export default function SystemPage() {
       id: 'longevity',
       name: 'Longevity Protocol',
       focus: 'Structural Vitality · Maximum Resilience',
-      description: 'The pinnacle of the Vitale Resilience Matrix™. When all four domains require maximum support, the Longevity Protocol operates at the level of the dermal matrix — L-Ornithine and advanced peptide complexes supporting the structural architecture from which all visible vitality ultimately derives.',
+      description: 'The summit of the ritual. When all four sources of vitality call for their fullest support, the Longevity Protocol works at the deepest layer — L-Ornithine and advanced peptide complexes tending the structure from which all visible vitality ultimately rises.',
       tech: ['L-Ornithine 1.50%', 'Deep Collagen Architecture', 'Structural Vitality Complex'],
       icon: <Sparkles className="w-8 h-8 text-iv-gold" />,
     },
@@ -73,18 +73,18 @@ export default function SystemPage() {
           <div className="text-center mb-14">
             <p className="text-[10px] font-black uppercase tracking-[0.3em] text-iv-gold mb-4">The Foundation</p>
             <h2 className="iv-type-h3 font-bold text-iv-white tracking-tighter mb-4" style={{ fontFamily: 'var(--iv-font-serif)' }}>
-              Every protocol is built on<br /><em className="text-iv-gold">The Vitale Resilience Matrix™</em>
+              Every protocol is built on<br /><em className="text-iv-gold">The Science of Skin Vitality</em>
             </h2>
             <p className="text-iv-cream/65 font-light max-w-2xl mx-auto leading-relaxed text-sm">
-              Rather than targeting individual symptoms, the Vitale Resilience Matrix™ addresses the four biological domains that determine whether skin remains vital, adaptive, and structurally strong — regardless of age or environment.
+              Rather than chasing individual symptoms, our science tends to the four sources of vitality that determine whether skin stays alive, adaptive, and strong — whatever your age or environment.
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { roman: 'I', label: 'Cellular Energy Reserve™', short: 'Energy' },
-              { roman: 'II', label: 'Barrier Intelligence Network™', short: 'Barrier' },
-              { roman: 'III', label: 'Oxidative Defense Architecture™', short: 'Defense' },
-              { roman: 'IV', label: 'Structural Vitality Framework™', short: 'Structure' },
+              { roman: 'I', label: 'The Energy to Renew', short: 'Energy' },
+              { roman: 'II', label: 'The Living Barrier', short: 'Barrier' },
+              { roman: 'III', label: 'The Power to Protect', short: 'Defence' },
+              { roman: 'IV', label: 'Firmness & Structure', short: 'Structure' },
             ].map(d => (
               <div key={d.roman} className="text-center p-6 rounded-2xl border border-iv-gold/10 bg-iv-deep-green/20 hover:border-iv-gold/30 transition-all">
                 <p className="text-iv-gold font-serif italic text-xl font-bold mb-2">{d.roman}</p>
@@ -139,7 +139,7 @@ export default function SystemPage() {
           <div className="text-center mb-16">
             <p className="text-[10px] font-black text-iv-gold uppercase tracking-[0.4em] mb-4">The Vitale Principle™</p>
             <h3 className="iv-type-h3 font-bold text-iv-white tracking-tighter" style={{ fontFamily: 'var(--iv-font-serif)' }}>
-              The <em className="text-iv-gold">Adaptation Curve™</em>
+              Your Skin's <em className="text-iv-gold">Biological Stage</em>
             </h3>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">

@@ -76,7 +76,7 @@ export function BentoFeatures() {
             }}
           >
             <div>
-              <p className="text-[11px] font-black uppercase tracking-[0.3em] mb-3" style={{ color: 'var(--iv-gold)' }}>Vitale Resilience Matrix™</p>
+              <p className="text-[11px] font-black uppercase tracking-[0.3em] mb-3" style={{ color: 'var(--iv-gold)' }}>The Science of Skin Vitality</p>
               <h3 className="iv-type-h3 font-bold text-iv-white mb-3" style={{ fontFamily: 'var(--iv-font-serif)' }}>
                 Four domains. One system. Matched to your biology — not your birthdate.
               </h3>

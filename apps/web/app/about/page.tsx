@@ -99,9 +99,9 @@ export default function AboutPage() {
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           <div className="text-center mb-20">
             <p className="text-[10px] font-black uppercase tracking-[0.3em] mb-4" style={{ color: 'var(--iv-gold)' }}>Adaptive Skin Science™ · The System</p>
-            <h2 className="iv-type-h2 font-bold text-iv-white tracking-tighter uppercase">The Vitale<br /><em className="text-iv-gold">Resilience Matrix™</em></h2>
+            <h2 className="iv-type-h2 font-bold text-iv-white tracking-tighter uppercase">The Science of<br /><em className="text-iv-gold">Skin Vitality</em></h2>
             <p className="text-iv-cream/65 text-sm font-light mt-6 max-w-xl mx-auto leading-relaxed">
-              Four biological domains. Every Isola Vitale formulation addresses all four — in sequence, with clinical precision.
+              Four biological systems. Every Isola Vitale formulation tends to all four — in sequence, with clinical precision.
             </p>
           </div>
 
@@ -110,25 +110,25 @@ export default function AboutPage() {
               {
                 icon: <Beaker className="w-8 h-8 text-iv-gold mx-auto mb-8 group-hover:scale-110 transition-transform" />,
                 roman: 'I',
-                title: 'Cellular Energy Reserve™',
+                title: 'The Energy to Renew',
                 body: 'Skin cannot repair what it cannot power. Mitochondrial support and ATP production come before any correction.',
               },
               {
                 icon: <Award className="w-8 h-8 text-iv-gold mx-auto mb-8 group-hover:scale-110 transition-transform" />,
                 roman: 'II',
-                title: 'Barrier Intelligence Network™',
+                title: 'The Living Barrier',
                 body: 'Healthy skin adapts to its environment. We rebuild the capacity to respond — not just the surface that shows it.',
               },
               {
                 icon: <MapPin className="w-8 h-8 text-iv-gold mx-auto mb-8 group-hover:scale-110 transition-transform" />,
                 roman: 'III',
-                title: 'Oxidative Defense Architecture™',
+                title: 'The Power to Protect',
                 body: 'Pollution, UV, and blue light create invisible wear before visible aging. We address this systematically — not as an afterthought.',
               },
               {
                 icon: <Heart className="w-8 h-8 text-iv-gold mx-auto mb-8 group-hover:scale-110 transition-transform" />,
                 roman: 'IV',
-                title: 'Structural Vitality Framework™',
+                title: 'Firmness & Structure',
                 body: 'The goal is not younger skin. The goal is stronger skin. Beauty is a visible consequence of structural integrity.',
               },
             ].map(({ icon, roman, title, body }) => (

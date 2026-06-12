@@ -8,8 +8,8 @@ export const metadata: Metadata = {
     default: 'Formulations | Isola Vitale',
     template: '%s | Isola Vitale'
   },
-  description: 'Isola Vitale formulations — built around the Vitale Resilience Matrix™. Adaptive Skin Science from Isola del Liri, Italy.',
-  keywords: ['Isola Vitale', 'luxury skincare', 'adaptive skin science', 'Vitale Resilience Matrix', 'Italian skincare', 'skin resilience'],
+  description: 'Isola Vitale formulations — the science of skin vitality, formulated at Isola del Liri, Italy.',
+  keywords: ['Isola Vitale', 'luxury skincare', 'skin vitality', 'Skin Intelligence', 'Italian skincare', 'skin resilience'],
   authors: [{ name: 'Isola Vitale' }],
   creator: 'Isola Vitale',
   publisher: 'Isola Vitale',
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:5000'),
   openGraph: {
     title: 'Formulations | Isola Vitale',
-    description: 'Adaptive Skin Science formulated at Isola del Liri, Italy. The Vitale Resilience Matrix™.',
+    description: 'The science of skin vitality, formulated at Isola del Liri, Italy.',
     url: '/',
     siteName: 'Isola Vitale',
     images: [

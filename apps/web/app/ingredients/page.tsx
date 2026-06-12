@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: 'Full transparency on every active. Explore the Breakthrough 6 proprietary technologies, complete INCI directory, concentrations, and EU/FDA validation behind every Isola Vitale formulation.',
   openGraph: {
     title: 'Ingredients & Science | Isola Vitale',
-    description: 'OS-01, DWAT, GLP-1, L-Ornithine, Bifida Ferment, Ectoin — the clinical science powering the Vitale Resilience Matrix™ and Isola Vitale\'s Adaptive Skin Science™ system.',
+    description: 'OS-01, DWAT, GLP-1, L-Ornithine, Bifida Ferment, Ectoin — the clinical science behind Isola Vitale\'s Adaptive Skin Science™ and the science of skin vitality.',
   },
 }
 

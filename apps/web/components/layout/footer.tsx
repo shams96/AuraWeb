@@ -11,7 +11,7 @@ export function Footer() {
     ],
     science: [
       { name: 'The Ritual System', href: '/system' },
-      { name: 'Vitale Resilience Matrix™', href: '/system#vrm' },
+      { name: 'The Science', href: '/system#science' },
       { name: 'Clinical Results', href: '/clinical-results' },
       { name: 'The Isola Journal', href: '/journal' },
     ],

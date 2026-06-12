@@ -12,7 +12,7 @@ const SECTION_BG = '#1A1614'
 const domains = [
   {
     roman: 'I',
-    name: 'Cellular Energy Reserve™',
+    name: 'The Energy to Renew',
     short: 'Energy',
     headline: 'Skin cannot repair what it cannot power.',
     body: 'Mitochondrial efficiency, ATP production, and repair signalling. Before any ingredient can work, the cell must have the energy to respond. This is where resilience begins.',
@@ -20,7 +20,7 @@ const domains = [
   },
   {
     roman: 'II',
-    name: 'Barrier Intelligence Network™',
+    name: 'The Living Barrier',
     short: 'Barrier',
     headline: 'Healthy skin adapts. Compromised skin reacts.',
     body: 'The skin\'s ability to continuously interpret and respond to environmental change — humidity shifts, temperature extremes, air conditioning, travel stress. Not barrier repair. Barrier intelligence.',
@@ -28,15 +28,15 @@ const domains = [
   },
   {
     roman: 'III',
-    name: 'Oxidative Defense Architecture™',
-    short: 'Defense',
+    name: 'The Power to Protect',
+    short: 'Defence',
     headline: 'Modern life creates invisible biological wear before visible aging appears.',
-    body: 'Daily pollution, UV, blue light, and urban stress place cumulative oxidative burden on skin. The Vitale system addresses this systematically — as architecture, not afterthought.',
-    tags: ['Pollution Defense', 'Free Radical Neutralisation', 'Environmental Shield'],
+    body: 'Daily pollution, UV, blue light, and urban stress place cumulative oxidative burden on skin. Isola Vitale addresses this systematically — as a biological priority, not an afterthought.',
+    tags: ['Pollution Defence', 'Free Radical Neutralisation', 'Environmental Shield'],
   },
   {
     roman: 'IV',
-    name: 'Structural Vitality Framework™',
+    name: 'Firmness & Structure',
     short: 'Structure',
     headline: 'The goal is not younger skin. The goal is stronger skin.',
     body: 'Elasticity, firmness, and extracellular matrix integrity. Beauty is a visible consequence of structural health. When the architecture holds, everything above it follows.',
@@ -67,10 +67,10 @@ export function VitaleResilienceMatrix() {
             className="iv-type-h2 font-bold tracking-tighter mb-6"
             style={{ fontFamily: 'var(--iv-font-serif)', fontStyle: 'italic', color: '#FDFAF5' }}
           >
-            The Vitale Resilience Matrix™
+            Vitality, Made Visible
           </h2>
           <p className="text-lg font-light max-w-2xl mx-auto leading-relaxed" style={{ color: `${CREAM}0.75)` }}>
-            Four biological domains. One integrated system. The architecture behind every Isola Vitale formulation.
+            Four ways your skin stays alive. One serum that tends to all of them — the thinking behind every Isola Vitale formulation.
           </p>
           <div style={{ width: 48, height: 1, background: `${G}0.35)`, margin: '32px auto 0' }} />
         </div>
@@ -176,7 +176,7 @@ export function VitaleResilienceMatrix() {
             fontSize: 'clamp(1.1rem, 2.5vw, 1.5rem)', color: `${CREAM}0.85)`,
             lineHeight: 1.5, marginBottom: 24, maxWidth: 680, marginLeft: 'auto', marginRight: 'auto',
           }}>
-            &ldquo;The Vitale Resilience Matrix™ is not a formula. It is a framework — the foundation from which every Isola Vitale formulation is derived.&rdquo;
+            &ldquo;This is not a formula. It is a philosophy — the quiet foundation from which every Isola Vitale formulation is born.&rdquo;
           </p>
           <Link
             href="/system"

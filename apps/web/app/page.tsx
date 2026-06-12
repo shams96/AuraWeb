@@ -22,7 +22,7 @@ export default function HomePage() {
     id: 'isola-vitale-concentrate',
     name: 'The Vitale Concentrate™',
     tagline: 'The first serum formulated for the biological reality of modern life',
-    description: 'A precision-concentrated adaptive serum built around the Vitale Resilience Matrix™ — addressing all four domains of skin resilience in a single daily ritual. Formulated at Natural You Srl, Isola del Liri, Italy.',
+    description: 'A precision-concentrated adaptive serum that tends to all four sources of your skin\'s vitality — the energy to renew, the living barrier, the power to protect, and structure that holds — in a single daily ritual. Formulated at Natural You Srl, Isola del Liri, Italy.',
     price: 295,
     currency: 'USD',
     image: '/images/products/isola_serum.png',
@@ -31,7 +31,7 @@ export default function HomePage() {
     desiredOutcome: 'Resilient, Vitally Strong Skin',
     format: 'Concentrated Serum',
     audience: 'All Skin Types',
-    scienceMechanism: 'Vitale Resilience Matrix™',
+    scienceMechanism: 'Skin Intelligence™',
     useCases: ['Apply 3–4 drops morning and evening', 'Press gently into face and neck', 'Builds cumulative resilience over time', 'Strengthens barrier intelligence'],
     rating: 4.9,
     reviewCount: 1850,
@@ -77,11 +77,11 @@ export default function HomePage() {
     },
     {
       question: 'Is The Vitale Concentrate™ suited to all skin types?',
-      answer: 'Yes. The Vitale Resilience Matrix™ framework addresses the four biological domains that govern skin health regardless of skin type. Formulated without common sensitisers, it is designed for daily use at all biological stages — including sensitive and reactive skin.'
+      answer: 'Yes. Our formulations work with the four sources of vitality that govern skin health, whatever your skin type. Made without common sensitisers, it is designed for daily use at every biological stage — including sensitive and reactive skin.'
     },
     {
       question: 'What sets this apart from other luxury serums?',
-      answer: 'Most serums target a single concern. The Vitale Concentrate™ is built around a complete four-domain resilience framework — cellular energy, barrier intelligence, oxidative defense, and structural vitality. It does not treat symptoms. It improves the conditions that determine how skin responds to everything else.'
+      answer: 'Most serums chase a single concern. The Vitale Concentrate tends to four at once — the energy your skin uses to renew, the living barrier that keeps it resilient, its ability to protect itself, and the firmness that holds it. It does not treat symptoms. It improves the conditions that determine how your skin responds to everything else.'
     },
     {
       question: 'How does it integrate with my current ritual?',
@@ -115,8 +115,8 @@ export default function HomePage() {
           'Conventional skincare addresses symptoms, not resilience'
         ]}
         solution={{
-          title: 'The Vitale Resilience Matrix™',
-          description: 'A four-domain biological framework that addresses the root causes of modern skin stress — not its surface manifestations. The Vitale Concentrate™ is built entirely around this system.',
+          title: 'The Science of Vitality',
+          description: 'Four biological systems that address the root causes of modern skin stress — not its surface manifestations. The Vitale Concentrate™ is built entirely around this thinking.',
           benefits: [
             'Rebuilds cellular energy reserves for repair',
             'Restores barrier intelligence — adaptive, not reactive',
@@ -238,7 +238,7 @@ export default function HomePage() {
           {
             period: 'Week 24',
             title: 'Cellular Transformation',
-            description: 'Full Vitale Resilience Matrix™ results achieved. NMN-supported cellular energy restores dermal metabolism. Senescence reduction measurable. Volume and firmness improvements are clinically significant.',
+            description: 'All four vitality systems at full response. NMN-supported cellular energy restores dermal metabolism. Senescence reduction measurable. Volume and firmness improvements are clinically significant.',
             icon: '🌟'
           }
         ]}

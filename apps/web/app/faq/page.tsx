@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'FAQ',
-  description: 'Answers to the most common questions about Isola Vitale\'s Vitale Resilience Matrix™, four adaptive protocols, shipping, returns, and the 90-day ritual guarantee.',
+  description: 'Answers to the most common questions about Isola Vitale\'s four adaptive protocols, the science of skin vitality, shipping, returns, and the 90-day ritual guarantee.',
 }
 
 export default function FAQPage() {

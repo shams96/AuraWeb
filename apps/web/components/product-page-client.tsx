@@ -215,7 +215,7 @@ export function ProductPageClient({ productId }: ProductPageClientProps) {
             desiredOutcome: localProduct.desiredOutcome || 'Metabolic Alignment',
             format: localProduct.format || 'Standard Volume',
             audience: localProduct.audience || 'Research-Driven Consumers',
-            scienceMechanism: localProduct.scienceMechanism || 'Vitale Resilience Matrix™',
+            scienceMechanism: localProduct.scienceMechanism || 'Skin Intelligence™',
             useCases: localProduct.useCases || ['Morning Protocol', 'Evening Protocol'],
             rating: localProduct.rating,
             reviewCount: localProduct.reviewCount,
@@ -376,8 +376,8 @@ export function ProductPageClient({ productId }: ProductPageClientProps) {
             keyIngredients={[
               {
                 name: 'Vitale Resilience Complex™',
-                description: 'Proprietary complex supporting all four domains of the Vitale Resilience Matrix™ — cellular energy, barrier intelligence, oxidative defence, and structural vitality.',
-                benefits: ['Rebuilds barrier intelligence', 'Oxidative defence', 'Structural vitality'],
+                description: 'Proprietary complex tending to all four sources of skin vitality — the energy to renew, the living barrier, the power to protect, and firmness and structure.',
+                benefits: ['Living barrier support', 'Oxidative defence', 'Structural vitality'],
                 concentration: '5%'
               },
               {
@@ -429,7 +429,7 @@ export function ProductPageClient({ productId }: ProductPageClientProps) {
               },
               {
                 question: 'Is this suitable for all skin types?',
-                answer: 'Yes. The Vitale Resilience Matrix™ framework addresses the four biological domains that govern skin health regardless of skin type, including sensitive and reactive skin.'
+                answer: 'Yes. Our formulations work with the four sources of vitality that govern skin health, whatever your skin type — including sensitive and reactive skin.'
               },
               {
                 question: 'Can I use this with other skincare products?',

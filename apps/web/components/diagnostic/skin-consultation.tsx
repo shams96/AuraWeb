@@ -482,7 +482,7 @@ export function SkinConsultation() {
             Compiling Your Skin Profile
           </h3>
           <p className="text-iv-cream/65 text-sm mb-10 font-light">
-            Mapping your responses to the Vitale Resilience Matrix™…
+            Mapping your skin's biology…
           </p>
           <div className="space-y-3 text-left max-w-xs mx-auto">
             {[

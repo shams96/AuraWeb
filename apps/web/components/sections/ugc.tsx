@@ -23,7 +23,7 @@ export function UGCSection({ testimonials }: UGCSectionProps) {
             The Ritual in Practice
           </h2>
           <p className="text-lg text-iv-cream/70 max-w-3xl mx-auto font-light">
-            How the Vitale Resilience Matrix™ has changed the relationship between real people and their skin
+            How a renewed sense of vitality has changed the relationship between real people and their skin
           </p>
         </div>
         

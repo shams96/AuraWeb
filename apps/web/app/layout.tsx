@@ -20,8 +20,8 @@ export const metadata: Metadata = {
     default: 'Isola Vitale — The Luxury House of Adaptive Skin Science',
     template: '%s | Isola Vitale'
   },
-  description: 'Isola Vitale is the world\'s first Adaptive Skin Science house. Formulated at Isola del Liri, Italy — the Vitale Resilience Matrix™ helps skin maintain vitality and strength in modern life.',
-  keywords: ['luxury skincare', 'adaptive skin science', 'Isola Vitale', 'skin resilience', 'Italian skincare', 'Vitale Resilience Matrix', 'clinical skincare', 'La Bella Figura'],
+  description: 'Isola Vitale is a luxury Italian skincare house. Formulated at Isola del Liri, Italy — the science of skin vitality, calibrated to your biology, not your age.',
+  keywords: ['luxury skincare', 'adaptive skin science', 'Isola Vitale', 'skin vitality', 'Italian skincare', 'Skin Intelligence', 'clinical skincare', 'La Bella Figura'],
   authors: [{ name: 'Isola Vitale' }],
   creator: 'Isola Vitale',
   publisher: 'Isola Vitale',
