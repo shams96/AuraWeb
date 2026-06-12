@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { ShoppingCart, Search, Menu, X, User, Heart } from 'lucide-react'
-import { Button } from '@aurabiosphere/ui'
+import { Button } from '@isolavitale/ui'
 import { useCart } from '@/lib/cart-context'
 import { useWishlist } from '@/lib/wishlist-context'
 import { useSession, signIn, signOut } from 'next-auth/react'

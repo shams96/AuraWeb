@@ -1,5 +1,5 @@
 import { MeiliSearch } from 'meilisearch';
-import { envSchema, prisma } from '@aurabiosphere/config';
+import { envSchema, prisma } from '@isolavitale/config';
 
 // Validate environment variables
 const env = envSchema.parse(process.env);
@@ -9,7 +9,7 @@ export const meilisearchClient = new MeiliSearch({
   apiKey: env.MEILISEARCH_MASTER_KEY,
 });
 
-export const indexPrefix = 'aurabiosphere_';
+export const indexPrefix = 'isolavitale_';
 
 // Create or get product index
 export async function getProductIndex() {

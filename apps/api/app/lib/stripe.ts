@@ -1,5 +1,5 @@
 import Stripe from 'stripe';
-import { envSchema, prisma } from '@aurabiosphere/config';
+import { envSchema, prisma } from '@isolavitale/config';
 
 // Validate environment variables
 const env = envSchema.parse(process.env);

@@ -48,14 +48,14 @@ export type Env = z.infer<typeof envSchema>;
 
 // App configuration
 export const appConfig = {
-  name: 'AuraBiosphere',
+  name: 'Isola Vitale',
   description: 'Luxury bio-adaptive skincare solutions',
   url: process.env.VERCEL_URL || 'http://localhost:3000',
   ogImage: '/og-image.jpg',
   links: {
-    twitter: 'https://twitter.com/aurabiosphere',
-    instagram: 'https://instagram.com/aurabiosphere',
-    facebook: 'https://facebook.com/aurabiosphere',
+    twitter: 'https://twitter.com/isolavitale',
+    instagram: 'https://instagram.com/isolavitale',
+    facebook: 'https://facebook.com/isolavitale',
   },
   features: {
     reviews: true,
@@ -99,13 +99,13 @@ export const auth = {
 
 // Email settings
 export const email = {
-  from: 'AuraBiosphere <noreply@aurabiosphere.com>',
-  support: 'support@aurabiosphere.com',
+  from: 'Isola Vitale <ritual@isolavitale.com>',
+  support: 'support@isolavitale.com',
 } as const;
 
 // Search settings
 export const search = {
-  indexPrefix: 'aurabiosphere_',
+  indexPrefix: 'isolavitale_',
   maxResults: 50,
   synonyms: {
     'vit c': ['vitamin c', 'ascorbic acid'],
@@ -166,7 +166,7 @@ export const image = {
 
 // SEO settings
 export const seo = {
-  titleTemplate: '%s | AuraBiosphere',
-  defaultTitle: 'AuraBiosphere - Luxury Bio-Adaptive Skincare',
-  defaultDescription: 'Experience the future of skincare with AuraBiosphere\'s bio-adaptive formulations that combine clinical efficacy with sensory indulgence.',
+  titleTemplate: '%s | Isola Vitale',
+  defaultTitle: 'Isola Vitale - Luxury Bio-Adaptive Skincare',
+  defaultDescription: 'Experience the future of skincare with Isola Vitale\'s bio-adaptive formulations that combine clinical efficacy with sensory indulgence.',
 } as const;

@@ -4,8 +4,8 @@ import { Inter } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'AuraBiosphere API',
-  description: 'Backend API for AuraBiosphere luxury cosmetics storefront',
+  title: 'Isola Vitale API',
+  description: 'Backend API for Isola Vitale luxury cosmetics storefront',
 };
 
 export default function RootLayout({

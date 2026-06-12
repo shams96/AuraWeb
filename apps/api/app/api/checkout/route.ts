@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { createCheckoutSession } from '@/lib/stripe';
-import { prisma } from '@aurabiosphere/config';
+import { prisma } from '@isolavitale/config';
 import { z } from 'zod';
 
 const checkoutSchema = z.object({

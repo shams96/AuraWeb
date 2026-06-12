@@ -83,7 +83,7 @@ The UI abandons the generic layout for a deep, luxury aesthetic.
 - **Micro-Animations**: Glassmorphism and smooth transition states to encourage user interaction.
 
 ## 🤝 Contribution Guidelines
-All updates MUST adhere to the Isola Vitale naming conventions. The legacy "AuraBiosphere" branding is officially deprecated. Ensure all clinical percentages added match the official Dec 2025 Research Dossier specifications.
+All updates MUST adhere to the Isola Vitale naming conventions. The legacy "Isola Vitale" branding is officially deprecated. Ensure all clinical percentages added match the official Dec 2025 Research Dossier specifications.
 
 ---
 *Formulated in partnership with Natural You Srl, Isola del Liri, Italy.*

@@ -1,5 +1,5 @@
 import { Resend } from 'resend';
-import { envSchema } from '@aurabiosphere/config';
+import { envSchema } from '@isolavitale/config';
 
 // Validate environment variables
 const env = envSchema.parse(process.env);
@@ -34,7 +34,7 @@ export const emailTemplates = {
       </table>
       <h3>Total: $${order.total.toFixed(2)}</h3>
       <p>We'll notify you once your order has shipped.</p>
-      <p>Thank you for shopping with AuraBiosphere!</p>
+      <p>Thank you for shopping with Isola Vitale!</p>
     `,
   }),
 
@@ -42,7 +42,7 @@ export const emailTemplates = {
     subject: 'Reset Your Password',
     html: `
       <h1>Reset Your Password</h1>
-      <p>You requested a password reset for your AuraBiosphere account.</p>
+      <p>You requested a password reset for your Isola Vitale account.</p>
       <p>Click the link below to reset your password:</p>
       <a href="${env.VERCEL_URL || 'http://localhost:5000'}/reset-password?token=${resetToken}">
         Reset Password
@@ -52,9 +52,9 @@ export const emailTemplates = {
   }),
 
   welcomeEmail: (user: any) => ({
-    subject: 'Welcome to AuraBiosphere!',
+    subject: 'Welcome to Isola Vitale!',
     html: `
-      <h1>Welcome to AuraBiosphere!</h1>
+      <h1>Welcome to Isola Vitale!</h1>
       <p>Thank you for joining our community of beauty enthusiasts.</p>
       <p>As a welcome gift, enjoy 15% off your first order with code: WELCOME15</p>
       <p>Start exploring our collection of luxury cosmetics and skincare products.</p>
@@ -72,7 +72,7 @@ export const emailTemplates = {
       <p><strong>Tracking Number:</strong> ${trackingNumber}</p>
       <p><strong>Estimated Delivery:</strong> 3-5 business days</p>
       <p>You can track your package using the tracking number above.</p>
-      <p>Thank you for shopping with AuraBiosphere!</p>
+      <p>Thank you for shopping with Isola Vitale!</p>
     `,
   }),
 
@@ -85,7 +85,7 @@ export const emailTemplates = {
       <a href="${env.VERCEL_URL || 'http://localhost:5000'}/products/${product.slug}/review">
         Write a Review
       </a>
-      <p>Thank you for being part of the AuraBiosphere community!</p>
+      <p>Thank you for being part of the Isola Vitale community!</p>
     `,
   }),
 };
@@ -98,7 +98,7 @@ export async function sendEmail(
 ) {
   try {
     const { data, error } = await resend.emails.send({
-      from: 'AuraBiosphere <noreply@aurabiosphere.com>',
+      from: 'Isola Vitale <ritual@isolavitale.com>',
       to,
       subject,
       html,

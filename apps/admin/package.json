@@ -1,5 +1,5 @@
 {
-  "name": "@aurabiosphere/admin",
+  "name": "@isolavitale/admin",
   "version": "0.1.0",
   "description": "AuraBiosphere Admin Dashboard",
   "private": true,
@@ -11,8 +11,8 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@aurabiosphere/config": "workspace:*",
-    "@aurabiosphere/ui": "workspace:*",
+    "@isolavitale/config": "workspace:*",
+    "@isolavitale/ui": "workspace:*",
     "@prisma/client": "^6.3.0",
     "@radix-ui/react-toast": "^1.2.11",
     "@tanstack/react-query": "^5.64.3",

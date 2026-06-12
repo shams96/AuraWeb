@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { Star } from 'lucide-react'
-import { Button } from '@aurabiosphere/ui'
+import { Button } from '@isolavitale/ui'
 import { useCart } from '@/lib/cart-context'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'

@@ -14,7 +14,7 @@ const securityHeaders = [
       "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com",
-      "img-src 'self' data: blob: https://images.unsplash.com https://images.pexels.com https://aurabiosphere.com https://isolavitale.com",
+      "img-src 'self' data: blob: https://images.unsplash.com https://images.pexels.com https://isolavitale.com",
       "connect-src 'self' https://api.stripe.com https://checkout.stripe.com",
       "frame-src https://js.stripe.com https://hooks.stripe.com",
       "object-src 'none'",
@@ -38,7 +38,6 @@ const nextConfig = {
     remotePatterns: [
       { protocol: 'https', hostname: 'images.unsplash.com' },
       { protocol: 'https', hostname: 'images.pexels.com' },
-      { protocol: 'https', hostname: 'aurabiosphere.com' },
       { protocol: 'https', hostname: 'isolavitale.com' },
       { protocol: 'http', hostname: 'localhost' },
     ],
@@ -50,7 +49,7 @@ const nextConfig = {
   env: {
     CUSTOM_KEY: process.env.CUSTOM_KEY,
   },
-  transpilePackages: ['@aurabiosphere/ui'],
+  transpilePackages: ['@isolavitale/ui'],
 }
 
 module.exports = nextConfig

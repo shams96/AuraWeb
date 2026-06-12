@@ -1,7 +1,7 @@
-# CLAUDE.md — Isola Vitale / AuraWeb
+# CLAUDE.md — Isola Vitale
 # Engineering Master Document — Single Source of Truth
 
-Last updated: 2026-05-30. Keep this file current after every significant change.
+Last updated: 2026-06-12. Keep this file current after every significant change.
 
 ---
 
@@ -18,12 +18,12 @@ Never silently remove or rename anything that another file imports.
 ## Repository Layout
 
 ```
-AuraWeb/
+IsolaVitale/
 ├── apps/
 │   ├── web/              # Next.js 14 storefront — primary working app
 │   └── api/              # Separate API server (not currently active)
 ├── packages/
-│   └── ui/               # Shared component library (@aurabiosphere/ui)
+│   └── ui/               # Shared component library (@isolavitale/ui)
 ├── BRAND-BIBLE.md        # Complete brand standard — voice, protocols, copy rules, visual language
 ├── prisma/               # Database schema (PostgreSQL + Prisma)
 ├── data/                 # JSON file store (products.json, users.json — dev)
@@ -67,7 +67,7 @@ Always restore the proxy URL after pushing.
 | Payments | Stripe — one-time (`mode: 'payment'`) + subscription (`mode: 'subscription'`) |
 | Email | Resend (transactional) — key in `.env.local` |
 | Icons | Lucide React |
-| UI primitives | `@aurabiosphere/ui` (packages/ui) |
+| UI primitives | `@isolavitale/ui` (packages/ui) |
 | Animations | Pure IntersectionObserver + CSS keyframes |
 
 ---

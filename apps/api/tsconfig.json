@@ -16,8 +16,8 @@
     "plugins": [{ "name": "next" }],
     "paths": {
       "@/*": ["./app/*"],
-      "@aurabiosphere/config": ["../../packages/config/src"],
-      "@aurabiosphere/ui": ["../../packages/ui/src"]
+      "@isolavitale/config": ["../../packages/config/src"],
+      "@isolavitale/ui": ["../../packages/ui/src"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

@@ -1,4 +1,4 @@
-import { Skeleton } from '@aurabiosphere/ui'
+import { Skeleton } from '@isolavitale/ui'
 
 export function ProductHeroSkeleton() {
   return (

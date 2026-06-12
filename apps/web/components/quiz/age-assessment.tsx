@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Button } from '@aurabiosphere/ui'
+import { Button } from '@isolavitale/ui'
 
 const PROTOCOL_NAMES: Record<string, string> = {
   T1: 'Preservation Protocol',

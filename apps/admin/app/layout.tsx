@@ -7,7 +7,7 @@ import { Toaster } from '@/components/ui/toaster'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'AuraBiosphere Admin Dashboard',
+  title: 'Isola Vitale Admin Dashboard',
   description: 'Manage your luxury skincare e-commerce platform',
 }
 

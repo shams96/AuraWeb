@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { prisma } from '@aurabiosphere/config';
+import { prisma } from '@isolavitale/config';
 
 export async function GET() {
   try {

@@ -1,8 +1,8 @@
-# AuraBiosphere Website Documentation
+# Isola Vitale Website Documentation
 
 ## Overview
 
-AuraBiosphere is a luxury skincare e-commerce platform built with Next.js 14, TypeScript, and Tailwind CSS. The website implements an inverted Product Detail Page (PDP) structure optimized for conversion and user experience.
+Isola Vitale is a luxury skincare e-commerce platform built with Next.js 14, TypeScript, and Tailwind CSS. The website implements an inverted Product Detail Page (PDP) structure optimized for conversion and user experience.
 
 ## Tech Stack
 

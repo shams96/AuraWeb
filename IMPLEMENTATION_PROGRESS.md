@@ -91,7 +91,7 @@ You need to set up your environment variables:
 3. **Edit `.env` with your database credentials**:
    ```env
    # Minimum required for migration
-   DATABASE_URL="postgresql://postgres:password@localhost:5432/aurabiosphere"
+   DATABASE_URL="postgresql://postgres:password@localhost:5432/isolavitale"
    NEXTAUTH_SECRET="dev-secret-change-in-production"
    NEXTAUTH_URL="http://localhost:3000"
 

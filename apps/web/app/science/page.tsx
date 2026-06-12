@@ -1,4 +1,4 @@
-import { Button } from '@aurabiosphere/ui'
+import { Button } from '@isolavitale/ui'
 import { Beaker, Shield, Zap, Sparkles, Activity, Globe } from 'lucide-react'
 import { CompetitorComparison } from '@/components/sections/competitor-comparison'
 import Link from 'next/link'

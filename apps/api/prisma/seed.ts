@@ -8,10 +8,10 @@ async function main() {
   const hashedPassword = await bcrypt.hash('admin123', 10);
   
   const admin = await prisma.user.upsert({
-    where: { email: 'admin@aurabiosphere.com' },
+    where: { email: 'admin@isolavitale.com' },
     update: {},
     create: {
-      email: 'admin@aurabiosphere.com',
+      email: 'admin@isolavitale.com',
       name: 'Admin User',
       password: hashedPassword,
       role: 'ADMIN',
@@ -192,11 +192,11 @@ async function main() {
       slug: 'about-us',
       content: `
         <h2>Our Story</h2>
-        <p>AuraBiosphere was born from a passion for luxury cosmetics that enhance natural beauty while respecting the environment.</p>
+        <p>Isola Vitale was born from a passion for luxury cosmetics that enhance natural beauty while respecting the environment.</p>
         <p>Our mission is to provide our customers with the highest quality products that are both effective and sustainable.</p>
       `,
       published: true,
-      metaTitle: 'About AuraBiosphere - Luxury Cosmetics',
+      metaTitle: 'About Isola Vitale - Luxury Cosmetics',
       metaDescription: 'Learn about our story, mission, and commitment to quality and sustainability in luxury cosmetics.',
     },
   });
@@ -208,13 +208,13 @@ async function main() {
       content: `
         <h2>Get in Touch</h2>
         <p>We'd love to hear from you! Please fill out the form below or contact us directly.</p>
-        <p>Email: info@aurabiosphere.com</p>
+        <p>Email: hello@isolavitale.com</p>
         <p>Phone: +1 (555) 123-4567</p>
         <p>Address: 123 Beauty Lane, Luxury City, LC 12345</p>
       `,
       published: true,
-      metaTitle: 'Contact AuraBiosphere - Luxury Cosmetics',
-      metaDescription: 'Contact AuraBiosphere for inquiries about our luxury cosmetics products and services.',
+      metaTitle: 'Contact Isola Vitale - Luxury Cosmetics',
+      metaDescription: 'Contact Isola Vitale for inquiries about our luxury cosmetics products and services.',
     },
   });
 

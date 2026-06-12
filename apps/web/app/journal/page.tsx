@@ -1,4 +1,4 @@
-import { Button } from '@aurabiosphere/ui'
+import { Button } from '@isolavitale/ui'
 import { Calendar, User, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 

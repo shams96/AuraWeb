@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Button } from '@aurabiosphere/ui'
+import { Button } from '@isolavitale/ui'
 import { Mail, Phone, MapPin } from 'lucide-react'
 
 const INQUIRY_TYPES = [

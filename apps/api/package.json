@@ -1,5 +1,5 @@
 {
-  "name": "@aurabiosphere/api",
+  "name": "@isolavitale/api",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -16,8 +16,8 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@aurabiosphere/config": "workspace:*",
-    "@aurabiosphere/ui": "workspace:*",
+    "@isolavitale/config": "workspace:*",
+    "@isolavitale/ui": "workspace:*",
     "@hookform/resolvers": "^3.3.1",
     "@prisma/client": "^6.3.0",
     "bcryptjs": "^2.4.3",

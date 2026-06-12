@@ -27,7 +27,7 @@ process.env.MEILISEARCH_URL = 'http://localhost:7700';
 process.env.MEILISEARCH_MASTER_KEY = 'test-master-key';
 
 // Mock Prisma
-jest.mock('@aurabiosphere/config', () => ({
+jest.mock('@isolavitale/config', () => ({
   prisma: {
     user: {
       findUnique: jest.fn(),
