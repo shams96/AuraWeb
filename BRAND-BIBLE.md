@@ -1,5 +1,5 @@
 # ISOLA VITALE — BRAND BIBLE
-## The Complete Brand Standard · Version 1.1 · June 2026
+## The Complete Brand Standard · Version 1.2 · June 2026
 
 > This is the single creative source of truth for Isola Vitale.
 > Every word written, every screen designed, every email sent must pass through this document.
@@ -17,9 +17,11 @@ Before the brand. Before the science. Before the ritual.
 
 There is a woman.
 
-She is 25 and beginning to understand that what she does now will matter later. She is 35 and noticing changes she didn't expect yet. She is 45 and carrying the full weight of a life lived at full intensity — career, family, relationships, ambitions — and she sees it accumulating on her face. She is 55 and has earned every year, and she refuses to look like she is declining.
+**She is a woman in the prime of her life who refuses to let her skin tell a smaller story than the one she is living.**
 
-She is not defined by her age. She is defined by her standards.
+She is most often in her late thirties, forties, or early fifties — professional, discerning, living at full intensity. She has arrived somewhere. She has standards commensurate with that arrival. She is not defined by her age. She is defined by what she expects from herself — and from the things she invests in.
+
+Women younger and older than this archetype will find Isola Vitale, and they are welcome. But she — the woman who carries a full life with intelligence and refuses to let her face fall behind who she actually is — is the muse every word here is written for.
 
 She is intelligent. She has tried things that didn't work and she knows the difference between marketing and efficacy. She does not respond to fear. She does not respond to shame. She responds to truth told beautifully — and to science that is equal to her expectations.
 
@@ -43,15 +45,13 @@ Not with war. Not with shame. With grace, with Italian precision, and with formu
 
 *La Bella Figura* is the Italian philosophy of living beautifully — not as performance, but as practice. It is the understanding that how you present yourself to the world is a form of self-respect. That caring for your appearance is not vanity; it is an expression of how you regard yourself, and how you regard the people around you.
 
-Italian women have always known this. For centuries, they have tended to their skin not in response to anxiety, not in pursuit of an impossible ideal, but as part of a daily ritual of self-regard. A few minutes in the morning, a few at night. Not frantic. Not obsessive. Intentional.
+Italian women have always known this. For centuries, they have tended to their skin not in response to anxiety, not in pursuit of an impossible ideal, but as part of a daily ritual of self-regard. A few minutes in the morning, a few at night. Not frantic. Not obsessive. Intentional. The Italian woman has been attending to her skin, with pleasure, since she was old enough to watch her mother do the same.
 
-This is not the Western wellness industry's version of self-care — anxious, optimised, quantified, and ultimately exhausting. La Bella Figura is quieter, older, and more powerful than that. It is the understanding that beauty, sustained over a lifetime, is the result of small, consistent acts of cultivation — not occasional, dramatic interventions.
-
-The Italian woman does not wake up one morning alarmed by her face. She has been attending to it, with pleasure, since she was old enough to watch her mother do the same.
+La Bella Figura is quieter, older, and more powerful than any trend. It is the understanding that beauty, sustained over a lifetime, is the result of small, consistent acts of cultivation — not occasional, dramatic interventions.
 
 **This is the practice Isola Vitale was built to serve.**
 
-The ritual is not separate from the result. It is the result. A woman who tends to her skin every morning and evening is not just maintaining an appearance — she is practising a form of self-knowledge. She knows what her skin needs. She knows when it is responding. She is present in a way that the wellness industry, with its frantic product cycles and miracle-claim marketing, has made almost impossible to be.
+The ritual is not separate from the result. It is the result. A woman who tends to her skin every morning and evening is not just maintaining an appearance — she is practising a form of self-knowledge. She knows what her skin needs. She knows when it is responding.
 
 Isola Vitale restores that relationship. The science enables it. La Bella Figura is why it matters.
 
@@ -60,6 +60,12 @@ Isola Vitale restores that relationship. The science enables it. La Bella Figura
 ## 2. What Isola Vitale Is
 
 Isola Vitale is a luxury Italian skincare house built on one belief: that a woman's skin can look as vital, radiant, and luminous as she feels — at every stage of her life.
+
+**The territory Isola Vitale owns: Vitality.**
+
+Not beauty. Not youth. Not the absence of aging. *Vitality* — the quality of looking as alive, radiant, and present as you are. One word. Everything the brand stands for flows from it.
+
+She wants her skin to look as vital as she feels. That desire is honourable. That desire is achievable. Isola Vitale exists to close that gap — with Italian grace and science serious enough to earn the promise.
 
 This belief is served by science. Skin Intelligence™ — the discipline of supporting skin's own biological capacity to renew, protect, and remain resilient — is how we make the promise real. But the science is in service of the woman. It is never the other way around.
 
@@ -636,6 +642,7 @@ Hardware: Champagne Gold `#C9A96E` across all collections — the unifying mater
 - [ ] Error states use brand voice
 - [ ] ™ marks on: Skin Intelligence™, DWAT Restoration Science
 - [ ] No framework terminology (Vitale Resilience Matrix™, Adaptation Curve™, Intelligence Stack™) in consumer-facing copy
+- [ ] Does this copy serve the Vitality territory? (Not beauty, not youth, not anti-aging — Vitality: she looks as alive as she is)
 
 ---
 
@@ -652,7 +659,7 @@ Isola Vitale copy must do both. If it only does one: rewrite.
 
 ---
 
-*Version 1.1 — June 2026*
+*Version 1.2 — June 2026*
 *Owner: Brand*
 *Engineering reference: CLAUDE.md*
 *Technical reference (internal): See Part IX below*
