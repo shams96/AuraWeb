@@ -22,9 +22,9 @@
     "ecommerce",
     "nextjs"
   ],
-  "author": "AuraBiosphere",
+  "author": "Isola Vitale",
   "license": "ISC",
-  "packageManager": "pnpm@10.18.2",
+  "packageManager": "pnpm@11.6.0",
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.5",
     "@eslint/js": "^10.0.1",
