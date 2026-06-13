@@ -11,8 +11,8 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@isolavitale/config": "workspace:*",
-    "@isolavitale/ui": "workspace:*",
+    "@isolavitale/config": "*",
+    "@isolavitale/ui": "*",
     "@prisma/client": "^6.3.0",
     "@radix-ui/react-toast": "^1.2.11",
     "@tanstack/react-query": "^5.64.3",
