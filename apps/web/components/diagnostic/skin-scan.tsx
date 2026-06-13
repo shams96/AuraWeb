@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { Button } from '@isolavitale/ui'
+import { Button } from '@/components/ui-lib'
 import { Camera, Shield, Zap, Sparkles, Activity, RefreshCw, Eye, User, CheckCircle2, AlertCircle, ScanLine, Info, TrendingUp, Droplets, Target } from 'lucide-react'
 
 type ScanState = 'idle' | 'initializing' | 'aligning' | 'counting' | 'capturing' | 'analyzing' | 'finalizing' | 'complete' | 'camera_denied'

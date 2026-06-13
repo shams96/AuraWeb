@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { Check, CreditCard, Truck, Shield, Loader2 } from 'lucide-react'
-import { Button } from '@isolavitale/ui'
+import { Button } from '@/components/ui-lib'
 
 interface BuyBoxProps {
   product: {

@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import { Play, Shield, Sparkles, RefreshCw, User } from 'lucide-react'
-import { Button } from '@isolavitale/ui'
+import { Button } from '@/components/ui-lib'
 
 interface ProductHeroProps {
   product: {

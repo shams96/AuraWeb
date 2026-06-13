@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Button } from '@isolavitale/ui'
+import { Button } from '@/components/ui-lib'
 
 const PROTOCOL_NAMES: Record<string, string> = {
   T1: 'Preservation Protocol',
