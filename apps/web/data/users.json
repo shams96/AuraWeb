@@ -1,0 +1,14 @@
+{
+  "users": [
+    {
+      "id": "admin-001",
+      "email": "admin@isolavitale.com",
+      "name": "Isola Vitale Admin",
+      "passwordHash": "$2a$12$I0nlLAu1G00VOW15/cpQZeBzWP40t9VckKHqa9G3ZRckrTUcB5lB6",
+      "role": "OWNER",
+      "accountType": "personal",
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "loyaltyPoints": 0
+    }
+  ]
+}
