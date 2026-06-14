@@ -1,13 +1,21 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useSession, signOut } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import {
   RefreshCcw, ShoppingBag, Star, LogOut,
-  ChevronRight, User, FlaskConical, Gift,
+  ChevronRight, User, FlaskConical, Gift, Sparkles,
 } from 'lucide-react'
+
+interface SkinJourneyData {
+  protocol: string
+  baumannLabel: string
+  completedAt: string
+  nextMode: 'discovery' | 'check-in' | 'evolution' | 'too-soon'
+  daysOnRitual: number
+}
 
 const C = {
   page:      '#FDFAF5',
@@ -28,13 +36,40 @@ const NAV_ITEMS = [
   { label: 'Profile',           href: '/account/profile',       icon: User,        desc: 'Email, password, preferences'        },
 ]
 
+const PROTOCOL_NAMES: Record<string, string> = {
+  t1: 'Preservation Protocol',
+  t2: 'Refinement Protocol',
+  t3: 'Regeneration Protocol',
+  t4: 'Longevity Protocol',
+}
+
 export default function AccountDashboardPage() {
   const { data: session, status } = useSession()
   const router = useRouter()
+  const [skinJourney, setSkinJourney] = useState<SkinJourneyData | null>(null)
 
   useEffect(() => {
     if (status === 'unauthenticated') router.push('/login?callbackUrl=/account')
   }, [status, router])
+
+  useEffect(() => {
+    if (status !== 'authenticated') return
+    fetch('/api/assessment')
+      .then(r => r.json())
+      .then(data => {
+        if (data.latest) {
+          const days = Math.floor((Date.now() - new Date(data.latest.completedAt).getTime()) / (1000 * 60 * 60 * 24))
+          setSkinJourney({
+            protocol:    PROTOCOL_NAMES[data.latest.protocol] ?? data.latest.protocol,
+            baumannLabel: data.latest.profile?.baumannLabel ?? '',
+            completedAt: data.latest.completedAt,
+            nextMode:    data.nextMode,
+            daysOnRitual: days,
+          })
+        }
+      })
+      .catch(() => {})
+  }, [status])
 
   if (status === 'loading') {
     return (
@@ -93,6 +128,68 @@ export default function AccountDashboardPage() {
               <Link href="/professional" style={{ fontSize: '0.75rem', color: C.muted, textDecoration: 'none', fontWeight: 400 }}>
                 View your professional portal →
               </Link>
+            </div>
+          </div>
+        )}
+
+        {/* Skin Journey card */}
+        {skinJourney ? (
+          <div style={{ borderRadius: 16, border: `1px solid ${C.border}`, background: C.parchment, padding: '20px 20px 18px', marginBottom: 20 }}>
+            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12 }}>
+              <div style={{ flex: 1 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 6 }}>
+                  <Sparkles size={12} style={{ color: C.gold }} />
+                  <span style={{ fontSize: '0.65rem', fontWeight: 900, letterSpacing: '0.3em', textTransform: 'uppercase', color: C.gold }}>
+                    Your Skin Journey
+                  </span>
+                </div>
+                <p style={{ fontSize: '0.95rem', fontWeight: 700, color: C.charcoal, margin: '0 0 2px', fontFamily: 'var(--iv-font-serif)' }}>
+                  {skinJourney.protocol}
+                </p>
+                <p style={{ fontSize: '0.75rem', color: C.muted, margin: '0 0 12px', fontWeight: 300 }}>
+                  Profile: {skinJourney.baumannLabel} · {skinJourney.daysOnRitual} days on this ritual
+                </p>
+                <Link
+                  href="/#skin-scan"
+                  style={{
+                    display: 'inline-flex', alignItems: 'center', gap: 6,
+                    fontSize: '0.7rem', fontWeight: 900, letterSpacing: '0.2em', textTransform: 'uppercase',
+                    color: C.gold, textDecoration: 'none',
+                    padding: '8px 14px', borderRadius: 8,
+                    border: `1px solid rgba(145,56,50,0.25)`,
+                    background: 'rgba(145,56,50,0.05)',
+                  }}
+                >
+                  {skinJourney.nextMode === 'too-soon' && 'View Protocol →'}
+                  {skinJourney.nextMode === 'check-in' && 'Begin Check-In →'}
+                  {skinJourney.nextMode === 'evolution' && 'Begin Evolution Assessment →'}
+                  {skinJourney.nextMode === 'discovery' && 'Retake Consultation →'}
+                </Link>
+              </div>
+              <div style={{ textAlign: 'right', flexShrink: 0 }}>
+                <div style={{ fontSize: '1.8rem', fontWeight: 700, color: C.gold, fontFamily: 'var(--iv-font-serif)', lineHeight: 1 }}>
+                  {skinJourney.daysOnRitual}
+                </div>
+                <div style={{ fontSize: '0.6rem', fontWeight: 900, letterSpacing: '0.2em', textTransform: 'uppercase', color: C.muted, marginTop: 2 }}>
+                  days
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div style={{ borderRadius: 16, border: `1px solid ${C.border}`, background: C.parchment, padding: '18px 20px', marginBottom: 20 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+              <Sparkles size={14} style={{ color: C.gold, flexShrink: 0 }} />
+              <div style={{ flex: 1 }}>
+                <p style={{ fontSize: '0.85rem', fontWeight: 700, color: C.charcoal, margin: '0 0 2px' }}>Discover Your Protocol</p>
+                <p style={{ fontSize: '0.7rem', color: C.muted, margin: '0 0 8px', fontWeight: 300 }}>
+                  Eight questions — a lifetime of personalised skin science.
+                </p>
+                <Link href="/#skin-scan"
+                  style={{ fontSize: '0.7rem', fontWeight: 900, letterSpacing: '0.2em', textTransform: 'uppercase', color: C.gold, textDecoration: 'none' }}>
+                  Begin Consultation →
+                </Link>
+              </div>
             </div>
           </div>
         )}
