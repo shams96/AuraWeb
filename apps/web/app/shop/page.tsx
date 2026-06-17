@@ -84,10 +84,10 @@ export default async function ShopPage({
             {titleHead && <span>{titleHead} </span>}
             <span className="text-iv-gold italic serif">{titleTail}</span>
           </h1>
-          <p className="text-xl text-iv-cream/60 max-w-2xl leading-relaxed font-light mb-4">
+          <p className="text-xl max-w-2xl leading-relaxed font-light mb-4" style={{ color: 'rgba(250,247,240,0.90)' }}>
             Eighteen formulations. Four protocols. One Italian philosophy.
           </p>
-          <p className="text-sm text-iv-cream/70 max-w-xl leading-relaxed font-light mb-10 italic">
+          <p className="text-sm max-w-xl leading-relaxed font-light mb-10 italic" style={{ color: 'rgba(250,247,240,0.75)' }}>
             Each formulation is assigned to a biological stage — not an age. Find yours.
           </p>
 
@@ -100,8 +100,9 @@ export default async function ShopPage({
                 className={`px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${
                   collFilter === key
                     ? 'bg-iv-gold text-iv-black'
-                    : 'border border-iv-gold/20 text-iv-cream/65 hover:border-iv-gold/50 hover:text-iv-cream'
+                    : 'border border-iv-gold/30 hover:border-iv-gold/60 hover:text-iv-cream'
                 }`}
+                style={collFilter !== key ? { color: 'rgba(250,247,240,0.82)' } : {}}
               >
                 {label}
               </a>
