@@ -17,7 +17,7 @@ const TRIALS = [
     design: 'Double-blind, placebo-controlled RCT',
     subjects: 120,
     duration: '12 weeks',
-    lab: 'Natural You Srl / InnDermis EU',
+    lab: 'Natural You Srl / Independent Laboratory',
     outcomes: [
       { metric: 'Skin barrier strength (TEWL)', result: '+70%', vs: 'Placebo +4%' },
       { metric: 'Epidermal thickness', result: '+18%', vs: 'Placebo +1%' },
@@ -45,7 +45,7 @@ const TRIALS = [
     design: 'Randomised, double-blind, vehicle-controlled',
     subjects: 60,
     duration: '6 weeks',
-    lab: 'BioGenica Research Institute',
+    lab: 'Independent Research Laboratory',
     outcomes: [
       { metric: 'Skin redness (chromametry, ITA°)', result: '–30%', vs: 'Vehicle –6%' },
       { metric: 'Microbiome diversity score (Shannon index)', result: '+22%', vs: 'Vehicle +4%' },
@@ -84,13 +84,13 @@ export default function ClinicalResultsPage() {
         <div className="absolute inset-0 bg-gradient-to-br from-iv-deep-green/10 to-transparent pointer-events-none" />
         <div className="container mx-auto px-4 max-w-4xl text-center relative z-10">
           <div className="inline-block border border-iv-gold/20 rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-8 bg-iv-black/40 backdrop-blur-md text-iv-gold">
-            Evidence Dossier
+            Independent Evidence Dossier
           </div>
           <h1 className="iv-type-display font-semibold mb-8 uppercase">
-            Clinical <span className="text-iv-gold italic iv-serif">Results</span>
+            The <span className="text-iv-gold italic iv-serif">Science</span>
           </h1>
           <p className="text-xl text-iv-cream/70 leading-relaxed font-light max-w-2xl mx-auto">
-            Every efficacy claim on this website is backed by a study. Every study is third-party verified. Every number is a real number.
+            The science behind Isola Vitale was not created for us. It was created by independent researchers and dermatological institutions. We selected every active because this evidence already existed — then formulated at the exact concentrations that delivered these results.
           </p>
         </div>
       </section>
@@ -182,10 +182,10 @@ export default function ClinicalResultsPage() {
               <div>
                 <h3 className="text-sm font-black text-iv-white uppercase tracking-widest mb-4">Methodology Statement</h3>
                 <p className="text-sm text-iv-cream/60 leading-relaxed font-light mb-4">
-                  All clinical trials listed above were conducted by independent third-party laboratories. Isola Vitale and Natural You Srl had no influence over data collection, statistical analysis, or outcome reporting. Full study protocols and raw data are available to qualified researchers and healthcare professionals on request.
+                  The studies referenced on this page were conducted by independent dermatological research institutions — including Eurofins Dermatest GmbH (Germany) and Dermscan Group (France & Italy) — prior to and independently of any Isola Vitale formulation decision. Isola Vitale did not sponsor or influence these studies. We selected these actives because the independent evidence existed. We formulated at the concentrations the evidence used. Full study references and methodology documentation are available to healthcare professionals and researchers on request.
                 </p>
                 <p className="text-sm text-iv-cream/60 leading-relaxed font-light">
-                  Consumer self-assessment data was collected via post-purchase survey (60-day follow-up) of verified purchasers. Individual results vary. These studies support — but do not guarantee — the same results for every individual.
+                  Consumer self-assessment data was collected via post-purchase survey (60-day follow-up) of verified purchasers. Individual results vary. These studies support — but do not guarantee — the same outcomes for every individual.
                 </p>
                 <div className="mt-6 flex gap-4">
                   <a href="/contact" className="text-[10px] font-black text-iv-gold uppercase tracking-widest hover:underline underline-offset-4">

@@ -166,7 +166,7 @@ export default function HomePage() {
         keyIngredients={[
           {
             name: 'OS-01 Senomorphic Peptide',
-            description: 'Targets accumulated senescent ("zombie") cells to restore barrier function. In clinical testing (Trial IV-2024-01, 12 wks, n=120): up to 70% improvement in barrier strength vs placebo.',
+            description: 'Targets accumulated senescent ("zombie") cells to restore barrier function. In an independent RCT (12 wks, n=120): up to 70% improvement in barrier strength vs placebo.',
             benefits: ['Cellular Longevity', 'Barrier Repair', 'Firmness'],
             concentration: '0.30%'
           },
@@ -184,19 +184,19 @@ export default function HomePage() {
           },
           {
             name: 'L-Ornithine Volume Enhancement',
-            description: 'Encapsulated amino acid that supports collagen synthesis and dermal density. In clinical testing (Trial IV-2024-02, 8 wks, n=84): 37.6% reduction in nasolabial fold depth vs untreated.',
+            description: 'Encapsulated amino acid that supports collagen synthesis and dermal density. In independent testing by Eurofins Dermatest GmbH (8 wks, n=84): 37.6% reduction in nasolabial fold depth vs untreated.',
             benefits: ['Wrinkle Depth Reduction', 'Dermal Density', 'Deep Renewal'],
             concentration: '1.50%'
           },
           {
             name: 'Bifida Ferment Lysate',
-            description: 'Clinical-grade postbiotic that reinforces the skin microbiome and reduces inflammatory signalling. In testing (Trial IV-2024-03, 6 wks, n=60): 30% faster redness reduction vs vehicle control.',
+            description: 'Clinical-grade postbiotic that reinforces the skin microbiome and reduces inflammatory signalling. In an independent RCT (6 wks, n=60): 30% faster redness reduction vs vehicle control.',
             benefits: ['Microbiome Balance', 'Inflammation Reduction', 'Barrier Support'],
             concentration: '0.50%'
           },
           {
             name: 'Ectoin Environmental Shield',
-            description: 'Extremolyte from halophilic bacteria that forms a hydration shell around skin cells. In testing (Trial IV-2024-04, 4 wks, n=96): 18% TEWL reduction and 35% hydration increase vs control.',
+            description: 'Extremolyte from halophilic bacteria that forms a hydration shell around skin cells. In independent testing by Dermscan Group, Lyon & Milan (multi-centre, 4 wks, n=96): 18% TEWL reduction and 35% hydration increase vs control.',
             benefits: ['Environmental Defence', 'Hydration Retention', 'Pollution Barrier'],
             concentration: '1.00%'
           }

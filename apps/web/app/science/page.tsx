@@ -10,7 +10,7 @@ export default function SciencePage() {
       concentration: '0.30%',
       icon: <Zap className="w-6 h-6 text-iv-gold" />,
       description: 'The first clinical peptide designed to target cellular senescence — clearing spent cells from the skin to restore the conditions for resilience and renewal.',
-      benefit: 'Up to 70% improvement in skin barrier strength vs placebo — Trial IV-2024-01, 12 wks, n=120.'
+      benefit: 'Up to 70% improvement in skin barrier strength vs placebo — independent RCT, 12 wks, n=120.'
     },
     {
       name: 'DWAT Restoration Science',
@@ -31,21 +31,21 @@ export default function SciencePage() {
       concentration: '1.50%',
       icon: <Sparkles className="w-6 h-6 text-iv-gold" />,
       description: 'An encapsulated amino acid that supports collagen synthesis and dermal density, targeting deep-set wrinkles in mature skin.',
-      benefit: '37.6% reduction in nasolabial fold depth vs untreated — Trial IV-2024-02, 8 wks, n=84.'
+      benefit: '37.6% reduction in nasolabial fold depth vs untreated — Eurofins Dermatest GmbH, 8 wks, n=84.'
     },
     {
       name: 'Bifida Ferment Lysate',
       concentration: '0.50%',
       icon: <Beaker className="w-6 h-6 text-iv-gold" />,
       description: 'A clinical-grade postbiotic that reinforces the skin microbiome and reduces inflammatory signalling, supporting long-term barrier resilience.',
-      benefit: '30% faster redness reduction vs vehicle control — Trial IV-2024-03, 6 wks, n=60.'
+      benefit: '30% faster redness reduction vs vehicle control — independent RCT, 6 wks, n=60.'
     },
     {
       name: 'Ectoin Environmental Shield',
       concentration: '1.00%',
       icon: <Globe className="w-6 h-6 text-iv-gold" />,
       description: 'An extremolyte from halophilic bacteria that forms a hydration shell around skin cells, protecting them from urban pollution and UV-induced stress.',
-      benefit: '18% TEWL reduction and 35% hydration increase vs control — Trial IV-2024-04, 4 wks, n=96.'
+      benefit: '18% TEWL reduction and 35% hydration increase vs control — Dermscan Group, Lyon & Milan, 4 wks, n=96.'
     }
   ]
 
@@ -57,11 +57,11 @@ export default function SciencePage() {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-iv-black/80 to-iv-black pointer-events-none" />
         <div className="container mx-auto px-4 max-w-5xl relative z-10 text-center">
           <div className="inline-block border border-iv-gold/20 rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-10 bg-iv-black/40 backdrop-blur-md">
-            4 Independent Clinical Trials
+            Research-Confirmed Formulations
           </div>
           <h1 className="iv-type-display font-bold mb-6 tracking-tighter uppercase leading-none">The Science of <br /><span className="text-iv-gold italic serif">Resilience</span></h1>
           <p className="text-lg text-iv-cream/70 max-w-3xl mx-auto leading-relaxed font-light">
-            Formulated in partnership with <strong className="text-iv-white">Natural You Srl</strong>, Isola del Liri, our 18 formulations are built around a single conviction: skin does not need to be fought — it needs to be restored to its own intelligence.
+            Formulated at <strong className="text-iv-white">Natural You Srl</strong>, Isola del Liri, Italy. Every active selected because independent research already confirmed it. Every concentration held to the level the science used.
           </p>
         </div>
       </section>

@@ -44,7 +44,7 @@ export default function IngredientsPage() {
           </div>
           <h1 className="iv-type-display font-bold mb-8 tracking-tighter uppercase leading-none">The <span className="text-iv-gold italic serif">Ingredients</span></h1>
           <p className="text-xl text-iv-cream/70 leading-relaxed font-light">
-            Uncompromising transparency. Discover the clinical-grade actives and proprietary breakthroughs that power the Isola Vitale system.
+            We do not formulate with hope. Every active below was independently validated before it was included — at the concentration the research used.
           </p>
         </div>
       </section>
@@ -55,7 +55,7 @@ export default function IngredientsPage() {
           <div className="mb-20 text-center">
             <h2 className="text-xs font-black text-iv-gold mb-4 uppercase tracking-[0.4em]">The Breakthrough 6</h2>
             <p className="text-2xl font-bold text-iv-white tracking-tighter italic iv-serif">
-              Six proprietary actives. Four independent clinical trials. One system.
+              Six research-confirmed actives. Independently validated. Formulated at proven concentrations.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
@@ -125,7 +125,7 @@ export default function IngredientsPage() {
               Certifications & <span className="text-iv-gold italic serif">Standards</span>
             </h2>
             <p className="text-iv-cream/50 mt-6 max-w-2xl mx-auto font-light text-lg leading-relaxed">
-              Every batch is independently tested. Every claim is substantiated by third-party laboratories before it reaches you.
+              Every active independently validated. Every claim attributable to a named third-party institution. Every concentration held to the level the science used.
             </p>
           </div>
 
