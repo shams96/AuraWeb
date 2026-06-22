@@ -54,7 +54,7 @@ export function BentoFeatures() {
             </div>
 
             <div className="flex flex-wrap gap-3 mt-8 relative z-10">
-              {['Independent Clinical Lab', 'Eurofins Dermatest', 'Independent Research Lab', 'Dermscan Group'].map(t => (
+              {['J Cosmet Dermatol 2025', 'Aesthetic Surgery Journal 2024', 'Eurofins Dermatest', 'Dermscan Group'].map(t => (
                 <span
                   key={t}
                   className="text-[11px] font-black uppercase tracking-widest px-4 py-2 rounded-full"
