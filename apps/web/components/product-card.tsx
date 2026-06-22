@@ -123,7 +123,7 @@ export function ProductCard({ product }: ProductCardProps) {
               className="w-full bg-iv-gold text-iv-black hover:bg-iv-gold-light rounded-none text-[10px] font-black uppercase tracking-[0.3em] py-8 shadow-2xl transition-all duration-500 scale-90 group-hover:scale-100"
               onClick={handleOneTimeAdd}
             >
-              Acquire Now
+              Begin Ritual
             </Button>
           )}
         </div>

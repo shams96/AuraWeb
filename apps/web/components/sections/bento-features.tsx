@@ -86,10 +86,10 @@ export function BentoFeatures() {
             </div>
             <div className="flex gap-2 mt-6">
               {[
-                { label: 'Preserve', sub: 'Energy · Barrier' },
-                { label: 'Refine', sub: 'Barrier · Defense' },
-                { label: 'Restore', sub: 'Defense · Structure' },
-                { label: 'Sustain', sub: 'Full Matrix' },
+                { label: 'Preservation', sub: 'Renewal & resilience' },
+                { label: 'Refinement', sub: 'Barrier & clarity' },
+                { label: 'Regeneration', sub: 'Protection & repair' },
+                { label: 'Longevity', sub: 'Structure & vitality' },
               ].map(({ label, sub }) => (
                 <div key={label} className="flex-1 rounded-xl p-3 text-center" style={{ background: `${GOLD}0.08)`, border: `1px solid ${GOLD}0.14)` }}>
                   <div className="text-[10px] font-black text-iv-gold uppercase tracking-widest">{label}</div>

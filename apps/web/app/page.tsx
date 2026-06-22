@@ -32,7 +32,7 @@ export default function HomePage() {
     format: 'Concentrated Serum',
     audience: 'All Skin Types',
     scienceMechanism: 'Skin Intelligence™',
-    useCases: ['Apply 3–4 drops morning and evening', 'Press gently into face and neck', 'Builds cumulative resilience over time', 'Strengthens barrier intelligence'],
+    useCases: ['Apply 3–4 drops morning and evening', 'Press gently into face and neck', 'Builds cumulative resilience over time', 'Your skin grows stronger with every application'],
     rating: 4.9,
     reviewCount: 1850,
     badges: ['Clinically Trialled', 'EU GMP Certified', 'Cruelty-Free']
@@ -118,10 +118,10 @@ export default function HomePage() {
           title: 'The Science of Vitality',
           description: 'Four biological systems that address the root causes of modern skin stress — not its surface manifestations. The Vitale Concentrate™ is built entirely around this thinking.',
           benefits: [
-            'Rebuilds cellular energy reserves for repair',
-            'Restores barrier intelligence — adaptive, not reactive',
-            'Systematic oxidative defence against environmental burden',
-            'Supports structural vitality from the dermal matrix up'
+            'Restores the energy your skin uses to renew and repair itself',
+            'Rebuilds a living barrier that adapts rather than reacts',
+            'Protects systematically against the daily environmental burden',
+            'Supports firmness and structure from the inside out'
           ]
         }}
       />
@@ -143,12 +143,12 @@ export default function HomePage() {
           },
           {
             title: 'Align',
-            description: 'Your profile is matched to the precise Vitale protocol — built around which domains of the Resilience Matrix need the most support',
+            description: 'Your profile is matched to the precise Vitale protocol — one of four rituals built around your skin\'s biological stage, not your age',
             icon: '⚡'
           },
           {
             title: 'Adapt',
-            description: 'Actives work in biological sequence — energy and barrier first, then oxidative defence, then structural renewal',
+            description: 'Actives work in biological sequence — renewing from within, strengthening your skin\'s natural resilience, season after season',
             icon: '🛡️'
           }
         ]}
