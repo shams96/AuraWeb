@@ -25,7 +25,6 @@ const securityHeaders = [
 ]
 
 const nextConfig = {
-  output: 'standalone',
   reactStrictMode: true,
   async headers() {
     return [
@@ -50,7 +49,7 @@ const nextConfig = {
   env: {
     CUSTOM_KEY: process.env.CUSTOM_KEY,
   },
-  transpilePackages: ['@isolavitale/ui'],
+  transpilePackages: [],
 }
 
 module.exports = nextConfig

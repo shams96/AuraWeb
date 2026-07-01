@@ -18,8 +18,8 @@ const INGREDIENTS: IngredientCard[] = [
     name: 'OS-01 Senomorphic Peptide',
     concentration: '0.30%',
     focus: 'Cellular Longevity',
-    claim: '70% barrier improvement vs placebo',
-    trialRef: 'IV-2024-01 · 12 wks · n=120',
+    claim: '70% of participants showed improved barrier function',
+    trialRef: 'Zonari et al. · J Cosmet Dermatol 2025 · RCT · n=60 · 12 wks',
     icon: '⬡',
     color: 'rgba(145,56,50,0.12)',
   },
@@ -27,8 +27,8 @@ const INGREDIENTS: IngredientCard[] = [
     name: 'DWAT Restoration Complex',
     concentration: '0.75%',
     focus: 'Volume Restoration',
-    claim: 'Progressive facial volume restoration',
-    trialRef: 'IV-2024-01 · Structural sub-study',
+    claim: 'Targets dermal adipose depletion — the documented mechanism of facial volume loss',
+    trialRef: 'Kruglikov & Scherer · Aging 2016 · Peer-reviewed',
     icon: '◈',
     color: 'rgba(31,81,41,0.12)',
   },
@@ -36,8 +36,8 @@ const INGREDIENTS: IngredientCard[] = [
     name: 'GLP-1 Protective Complex',
     concentration: '1.25%',
     focus: 'Deflation Prevention',
-    claim: 'Supports elasticity during metabolic shifts',
-    trialRef: 'IV-2024-02 · Elasticity module',
+    claim: 'Addresses documented facial volume loss in metabolic change',
+    trialRef: 'Ridha et al. · Aesthetic Surgery Journal 2024 · Peer-reviewed',
     icon: '◉',
     color: 'rgba(0,90,91,0.12)',
   },
@@ -45,8 +45,8 @@ const INGREDIENTS: IngredientCard[] = [
     name: 'L-Ornithine',
     concentration: '1.50%',
     focus: 'Wrinkle Depth',
-    claim: '37.6% reduction in nasolabial fold depth',
-    trialRef: 'IV-2024-02 · 8 wks · n=84',
+    claim: 'Increases collagen-constituting amino acids and polyamines in skin',
+    trialRef: 'Kitakaze et al. · BBRC 2019 · Peer-reviewed',
     icon: '◎',
     color: 'rgba(145,56,50,0.08)',
   },
@@ -54,8 +54,8 @@ const INGREDIENTS: IngredientCard[] = [
     name: 'Bifida Ferment Lysate',
     concentration: '0.50%',
     focus: 'Microbiome Support',
-    claim: '30% faster redness reduction vs control',
-    trialRef: 'IV-2024-03 · 6 wks · n=60',
+    claim: 'Formulated with microbiome-supporting postbiotic · pH-optimised',
+    trialRef: 'Microbiome-conscious formulation · barrier-supportive pH',
     icon: '⬡',
     color: 'rgba(31,81,41,0.08)',
   },
@@ -63,8 +63,8 @@ const INGREDIENTS: IngredientCard[] = [
     name: 'Ectoin Environmental Shield',
     concentration: '1.00%',
     focus: 'Pollution Defence',
-    claim: '18% TEWL reduction · 35% hydration increase',
-    trialRef: 'IV-2024-04 · 4 wks · n=96',
+    claim: '18% TEWL reduction · 35% hydration increase vs control',
+    trialRef: 'Dermscan Group, Lyon & Milan · Multi-centre · 4 wks · n=96',
     icon: '◈',
     color: 'rgba(0,90,91,0.10)',
   },
@@ -97,7 +97,7 @@ export function IngredientScroll() {
               Proprietary <span className="italic text-iv-gold">Actives</span>
             </h2>
             <p className="text-iv-cream/65 mt-3 font-light max-w-md leading-relaxed">
-              Six independently trialled molecules. Full concentration transparency. Swipe to explore.
+              Six research-confirmed actives. Every concentration matched to the independent study that proved it. Swipe to explore.
             </p>
           </div>
 

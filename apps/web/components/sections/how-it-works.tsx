@@ -43,7 +43,7 @@ export function HowItWorks({ steps, timeline }: HowItWorksProps) {
                   </div>
                   <h3 className="text-xl font-bold text-iv-white uppercase tracking-tight">{step.title}</h3>
                 </div>
-                <p className="text-iv-cream/60 leading-relaxed font-light">{step.description}</p>
+                <p className="leading-relaxed font-light" style={{ color: 'rgba(250,247,240,0.80)' }}>{step.description}</p>
               </div>
               
               {/* Connector */}

@@ -1,7 +1,7 @@
 # CLAUDE.md — Isola Vitale
 # Engineering Master Document — Single Source of Truth
 
-Last updated: 2026-06-12. Keep this file current after every significant change.
+Last updated: 2026-06-13. Keep this file current after every significant change.
 
 ---
 
@@ -849,3 +849,374 @@ RESEND_API_KEY=                     # add from resend.com
 | Account subscription | `app/account/subscription/page.tsx` |
 | Loyalty (iv Circle) | `app/loyalty/page.tsx` |
 | Globals CSS | `app/globals.css` |
+
+---
+
+## PERMANENT BUILD SPECIFICATION — Isola Vitale™ Digital Flagship
+
+> Added: 2026-06-13. This section is the canonical architectural constitution for all future development.
+
+---
+
+### Platform Vision
+
+This website is not a temporary marketing website. It is the digital flagship of ISOLA VITALE™ and must support:
+
+- Direct-to-Consumer (Launch)
+- Future B2B Platform
+- Future Clinic Portal
+- Future Mobile Applications
+- Future International Expansion
+- Future Professional Education Platform
+- Future APIs and Integrations
+
+**Build once. Scale progressively. Avoid premature complexity. Avoid rebuilding.**
+
+---
+
+### Implementation Principles
+
+#### Entity-First Architecture (CTO Directive)
+
+Build the database and CMS around **entities**, not pages.
+
+| Entity | Notes |
+|---|---|
+| Technologies | Skin Intelligence™ technology entries |
+| Protocols | T1–T4 + Clinical A-Series |
+| Products | Full catalog with variants |
+| Journal Articles | Editorial content |
+| FAQs | Structured Q&A |
+| Testimonials | Customer + clinical reviews |
+| Media Assets | Images, video, PDF, icons |
+| Assessments | Skin consultation questions + scoring rules |
+| Reports | My Vitale Report™ output |
+
+Pages render entities. Entities do not live inside pages.
+
+This single decision enables: mobile apps, clinic portal, B2B dashboard, multilingual sites, AI concierge — without expensive rewrites.
+
+---
+
+### Deployment Philosophy
+
+Optimize for: low cost at launch · high flexibility · incremental scalability · simplicity · performance · maintainability
+
+**Launch stack (do not deviate):**
+
+| Layer | Technology |
+|---|---|
+| Hosting | Hostinger VPS |
+| Source control | GitHub |
+| CI/CD | GitHub Actions |
+| Framework | Next.js 14 App Router |
+| Language | TypeScript |
+| Styling | Tailwind CSS |
+| ORM | Prisma |
+| Database | PostgreSQL |
+| CDN/DNS | Cloudflare Free |
+| Payments | Stripe |
+| Email | Resend |
+| Media | Cloudflare R2 or Hostinger storage |
+
+**Never introduce (without explicit founder instruction):**
+- AWS microservices
+- Kubernetes
+- Docker orchestration
+- Enterprise message queues
+- Overengineered abstractions
+
+Architect so components can migrate to enterprise infrastructure without major rewrites.
+
+---
+
+### Content Management System
+
+The website must be fully editable by non-technical users. No code changes required for normal content updates.
+
+**CMS must support editing of:**
+- Homepage sections
+- Collections and product information
+- Journal / blog articles
+- Protocol pages
+- Technology / science pages
+- FAQ entries
+- Testimonials
+- Navigation and footer
+- Legal pages (Privacy, Terms, Shipping, Returns)
+- SEO metadata (title, description, OG image) per page and per entity
+- Structured data / schema.org markup
+
+**CMS must include:**
+- Rich text editor (headings, bold, italic, links, lists, blockquote)
+- Image upload and selection from media library
+- Video embed and upload
+- PDF upload and link
+- Draft / Preview / Published states
+- Scheduled publishing
+- Version history with rollback
+- Slug management
+
+**CMS must NOT require:**
+- Developer to deploy a content change
+- Code review for text edits
+- Rebuild for editorial changes (use ISR or on-demand revalidation)
+
+---
+
+### SEO — Built In, Not Bolted On
+
+SEO is a first-class architectural concern, not a plugin.
+
+**Technical SEO requirements:**
+
+| Requirement | Implementation |
+|---|---|
+| Dynamic `<title>` and `<meta description>` | Per-page and per-entity, editable in CMS |
+| Open Graph tags | og:title, og:description, og:image per page |
+| Twitter/X card tags | summary_large_image on all content pages |
+| Canonical URLs | Automatic, no duplicate content |
+| Structured data | Product, Article, FAQ, BreadcrumbList, Organization schema.org |
+| XML sitemap | Auto-generated at `/sitemap.xml`, updated on publish |
+| Robots.txt | Served at `/robots.txt`, configurable per environment |
+| Hreflang tags | Required when i18n launches (US/GCC/EU) |
+| Core Web Vitals | LCP < 2.5s, CLS < 0.1, INP < 200ms |
+| Image optimization | Next.js Image component, WebP/AVIF, lazy load, explicit width/height |
+| Heading hierarchy | Single H1 per page, logical H2/H3 cascade |
+| Internal linking | Protocol pages link to products; journal links to protocols |
+| Breadcrumbs | On all product, protocol, and article pages |
+| 404 handling | On-brand 404 page, no broken internal links |
+| Redirect management | 301 redirects manageable without code deploy |
+
+**Content SEO rules:**
+- Every product has unique meta title, meta description, and OG image — editable in admin
+- Every journal article has slug, meta title, meta description, featured image — editable in CMS
+- Every protocol page has structured data (MedicalWebPage or equivalent)
+- FAQ pages use FAQPage schema.org markup
+- No thin pages — every page has meaningful unique content
+- Product pages include review schema when reviews exist
+
+**SEO fields required on every entity:**
+```
+seoTitle        String?   // Falls back to name if null
+seoDescription  String?   // Falls back to shortDescription if null
+ogImage         String?   // Falls back to primary image if null
+canonicalUrl    String?   // Override if needed (e.g. international variants)
+noIndex         Boolean   @default(false)  // For staging/private pages
+```
+
+**Sitemap architecture:**
+- `/sitemap.xml` — index sitemap
+- `/sitemap/pages.xml` — static pages
+- `/sitemap/products.xml` — all active products
+- `/sitemap/journal.xml` — all published articles
+- `/sitemap/protocols.xml` — all protocol pages
+- Revalidate on publish via webhook or on-demand ISR
+
+---
+
+### Media Management
+
+Centralized media library — not per-component uploads.
+
+**Support:** images · video · PDF · icons · documents · downloadable resources
+
+**Requirements:**
+- Upload from admin, auto-optimize on ingest
+- Auto-generate WebP and AVIF variants
+- Responsive srcset generation
+- Alt text required field (accessibility + SEO)
+- Asset tagging and search
+- Asset reuse across pages and products
+- Usage tracking (which pages reference an asset)
+
+---
+
+### Role-Based Access Control
+
+| Role | Permissions |
+|---|---|
+| Owner / Founder | Full access — all settings, all data, all permissions |
+| Administrator | All except destructive operations (delete all, reset DB) |
+| Marketing Manager | Edit pages, media, promotions, SEO. Cannot modify permissions or products |
+| Content Editor | Edit content (text, images, articles, FAQs). Cannot publish products or modify prices |
+| Customer Support | View orders, process refunds, view customer accounts. Cannot edit content |
+| Future B2B Manager | B2B module access only (future) |
+| Future Educator | Education module access only (future) |
+
+Permissions are granular. New roles can be added without code changes.
+
+---
+
+### Customer-Facing Features
+
+**Launch requirements (all built):**
+Homepage · Collections · Products · Journal · Science Center · Protocols · Skin Intelligence · Contact · FAQ · About
+
+**Customer accounts:**
+Registration · Login · Password Reset · Email Verification · Profile Management · Address Book · Order History · Wishlist · Saved Assessments · Saved Reports · Communication Preferences
+
+---
+
+### Vitale Skin Intelligence™ — Modular Architecture
+
+**Phase 1 (build now with clean foundations):**
+- Questionnaire Engine — questions, types, branching logic
+- Rule Engine — scoring rules per answer
+- Scoring Engine — weighted aggregate score
+- Protocol Assignment — score → T1/T2/T3/T4 mapping
+- Technology Recommendations — protocol → active technologies
+- Product Recommendations — protocol + skin concerns → product list
+- My Vitale Report™ — branded PDF/web output
+
+**Phase 2 (architect for, do not build):**
+- Longitudinal tracking — compare reports over time
+- Image analysis — selfie-based skin assessment
+
+**Phase 3 (do not architect yet):**
+- LLM integration
+- ML personalization
+
+Do not overengineer Phase 1. Build the data model so Phase 2 can extend it without migration.
+
+---
+
+### Internationalization
+
+Prepare for: United States · GCC (UAE, Saudi) · Europe (UK, DE, FR)
+
+**Architecture requirements:**
+- All user-facing strings via i18n keys — no hardcoded English in components
+- Currency: multi-currency support via locale context (USD, AED, GBP, EUR)
+- Locale routing: `/en`, `/ar`, `/en-gb`, `/de` — use Next.js i18n routing
+- RTL support: Arabic requires `dir="rtl"` — Tailwind has RTL utilities
+- Regional pricing: price overrides per locale stored in DB
+- Regional tax rules: configurable per country
+- Regional shipping: rules stored in DB, not hardcoded
+
+Do not hardcode: currency symbols · date formats · phone formats · address formats
+
+---
+
+### Analytics — Event Architecture
+
+Implement event tracking from day one. Schema must scale.
+
+**Core events to track:**
+
+| Event | Trigger |
+|---|---|
+| `page_view` | Every page load |
+| `scroll_depth` | 25%, 50%, 75%, 100% |
+| `cta_click` | Every CTA button |
+| `assessment_start` | Skin quiz opens |
+| `assessment_complete` | Quiz submitted |
+| `protocol_assigned` | Protocol result shown |
+| `product_view` | PDP viewed |
+| `add_to_cart` | Item added |
+| `checkout_start` | Checkout opened |
+| `purchase` | Order confirmed |
+| `email_signup` | Newsletter / waitlist |
+| `referral_click` | Referral link clicked |
+| `referral_convert` | Referee purchases |
+| `journal_read` | Article viewed > 30s |
+| `search_query` | Search performed |
+
+Events stored in DB for internal analytics. Also forward to GA4 or PostHog via server-side event sink (no client-side tracking bloat).
+
+---
+
+### Feature Flags
+
+Feature flags allow gradual rollout without code deploys.
+
+**Flags required:**
+
+| Flag | Controls |
+|---|---|
+| `feature_assessment` | Enable/disable skin quiz |
+| `feature_journal` | Enable/disable journal section |
+| `feature_community` | Enable/disable community features |
+| `feature_referrals` | Enable/disable referral program |
+| `feature_b2b` | Enable/disable B2B portal |
+| `feature_loyalty` | Enable/disable iv Circle |
+| `feature_reviews` | Enable/disable product reviews |
+| `feature_waitlist` | Show waitlist instead of buy button |
+
+Flags stored in DB. Editable in admin without code deploy. Support per-role overrides (e.g. `feature_b2b` on for PROFESSIONAL role even if globally off).
+
+---
+
+### Search
+
+**Launch:**
+- Site search across products, journal, FAQs, protocols
+- Filter by: type · protocol · tag
+
+**Architecture:**
+- Meilisearch (already in stack) — index all entities on publish
+- Search index updated via webhook on content change
+- Prepare schema for semantic/vector search upgrade (embedding field on entities)
+
+---
+
+### Future B2B Architecture
+
+Do not build B2B now. Architect so it does not require migration.
+
+**DB models must be extensible for:**
+- `Organization` model (clinic, practice, retailer)
+- `ProfessionalAccount` linking User → Organization
+- `WholesalePrice` — product price overrides per organization tier
+- `PurchaseOrder` — net-30 invoicing
+- `EducationCourse`, `Certification`, `TrainingModule`
+- `ClinicReport` — diagnostic reports tied to practitioner
+
+Current `User.role = PROFESSIONAL` is the seed. Do not collapse B2B into consumer flows.
+
+---
+
+### AI Safety Directive
+
+If information is missing:
+
+1. Search attached documents
+2. Search existing codebase
+3. Search configuration files
+4. Search content files
+
+If still unresolved — **DO NOT INVENT.**
+
+Flag the issue. Provide:
+- Option A (with pros, cons, trade-offs)
+- Option B (with pros, cons, trade-offs)
+- Option C (with pros, cons, trade-offs)
+
+**Never:**
+- Silently create new brand systems
+- Silently introduce new terminology
+- Silently reinterpret ISOLA VITALE™
+- Invent copy, product names, or brand claims
+- Add features not requested
+
+Responsibility: **implementation fidelity**, not creative reinvention.
+
+---
+
+### Final Deliverables Standard
+
+Before any major implementation phase, generate:
+- `CHANGELOG.md` — what changed and why
+- `ARCHITECTURE_AUDIT.md` — current state vs. spec gaps
+- `BRAND_COMPLIANCE_REPORT.md` — Langer doctrine compliance
+
+After implementation, generate:
+- `FINAL_AUDIT.md` with scores:
+  - Brand Fidelity Score
+  - Luxury Experience Score
+  - Conversion Score
+  - Performance Score
+  - Accessibility Score
+  - SEO Score
+  - Constitution Compliance Score
+  - Future Readiness Score

@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Button } from '@isolavitale/ui'
+import { Button } from '@/components/ui-lib'
 
 
 interface Product {

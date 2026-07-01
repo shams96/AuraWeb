@@ -19,11 +19,9 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
-      "@isolavitale/ui": ["../../packages/ui/src/index"],
       "@/components/*": ["./components/*"],
       "@/lib/*": ["./lib/*"],
-      "@/types/*": ["./types/*"],
-      "@/config/*": ["../../packages/config/src/index"]
+      "@/types/*": ["./types/*"]
     },
     "plugins": [
       {
@@ -39,6 +37,9 @@
   ],
   "exclude": [
     "node_modules",
-    "vitest.config.ts"
+    "vitest.config.ts",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "local_packages"
   ]
 }

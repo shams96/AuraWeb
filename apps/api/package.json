@@ -16,8 +16,8 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@isolavitale/config": "workspace:*",
-    "@isolavitale/ui": "workspace:*",
+    "@isolavitale/config": "*",
+    "@isolavitale/ui": "*",
     "@hookform/resolvers": "^3.3.1",
     "@prisma/client": "^6.3.0",
     "bcryptjs": "^2.4.3",

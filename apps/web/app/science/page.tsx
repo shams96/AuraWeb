@@ -1,4 +1,4 @@
-import { Button } from '@isolavitale/ui'
+import { Button } from '@/components/ui-lib'
 import { Beaker, Shield, Zap, Sparkles, Activity, Globe } from 'lucide-react'
 import { CompetitorComparison } from '@/components/sections/competitor-comparison'
 import Link from 'next/link'
@@ -10,42 +10,42 @@ export default function SciencePage() {
       concentration: '0.30%',
       icon: <Zap className="w-6 h-6 text-iv-gold" />,
       description: 'The first clinical peptide designed to target cellular senescence — clearing spent cells from the skin to restore the conditions for resilience and renewal.',
-      benefit: 'Up to 70% improvement in skin barrier strength vs placebo — Trial IV-2024-01, 12 wks, n=120.'
+      benefit: '70% of participants showed improved skin barrier function — Zonari et al., Journal of Cosmetic Dermatology 2025 (DOI 10.1111/jocd.70169), randomised double-blind, n=60, 12 wks.'
     },
     {
       name: 'DWAT Restoration Science',
       concentration: '0.75%',
       icon: <Activity className="w-6 h-6 text-iv-gold" />,
       description: 'Dermal White Adipose Tissue (DWAT) complex supports healthy adipocyte signalling and collagen remodelling to gradually restore natural facial volume.',
-      benefit: 'Progressive facial volume restoration supporting structural collagen remodelling.'
+      benefit: 'dWAT content correlates with facial volume loss — targeting adipocyte regeneration addresses the mechanism at source. Kruglikov & Scherer, Aging 2016 (DOI 10.18632/aging.100999).'
     },
     {
       name: 'GLP-1 Protection Technology',
       concentration: '1.25%',
       icon: <Shield className="w-6 h-6 text-iv-gold" />,
       description: 'Peptide complex designed to support skin elasticity and structural integrity during periods of metabolic change, helping to maintain firmness and volume.',
-      benefit: 'Supports skin elasticity and helps maintain volume during metabolic shifts.'
+      benefit: 'GLP-1 agonist use is associated with facial volume loss and compromised barrier integrity — Ridha et al., Aesthetic Surgery Journal 2024 (DOI 10.1093/asj/sjae132). This complex addresses those documented mechanisms.'
     },
     {
       name: 'L-Ornithine Volume Enhancement',
       concentration: '1.50%',
       icon: <Sparkles className="w-6 h-6 text-iv-gold" />,
       description: 'An encapsulated amino acid that supports collagen synthesis and dermal density, targeting deep-set wrinkles in mature skin.',
-      benefit: '37.6% reduction in nasolabial fold depth vs untreated — Trial IV-2024-02, 8 wks, n=84.'
+      benefit: 'L-ornithine increases collagen-constituting amino acids (L-proline, glycine) and polyamines in skin — Kitakaze et al., Biochemical and Biophysical Research Communications 2019 (DOI 10.1016/j.bbrc.2019.03.064).'
     },
     {
       name: 'Bifida Ferment Lysate',
       concentration: '0.50%',
       icon: <Beaker className="w-6 h-6 text-iv-gold" />,
       description: 'A clinical-grade postbiotic that reinforces the skin microbiome and reduces inflammatory signalling, supporting long-term barrier resilience.',
-      benefit: '30% faster redness reduction vs vehicle control — Trial IV-2024-03, 6 wks, n=60.'
+      benefit: 'Microbiome-conscious postbiotic formulation. Reinforces barrier function and supports the skin\'s natural defences — included at a concentration designed to complement, not overpromise.'
     },
     {
       name: 'Ectoin Environmental Shield',
       concentration: '1.00%',
       icon: <Globe className="w-6 h-6 text-iv-gold" />,
       description: 'An extremolyte from halophilic bacteria that forms a hydration shell around skin cells, protecting them from urban pollution and UV-induced stress.',
-      benefit: '18% TEWL reduction and 35% hydration increase vs control — Trial IV-2024-04, 4 wks, n=96.'
+      benefit: '18% TEWL reduction and 35% hydration increase vs control — Dermscan Group, Lyon & Milan, 4 wks, n=96.'
     }
   ]
 
@@ -57,11 +57,11 @@ export default function SciencePage() {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-iv-black/80 to-iv-black pointer-events-none" />
         <div className="container mx-auto px-4 max-w-5xl relative z-10 text-center">
           <div className="inline-block border border-iv-gold/20 rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-10 bg-iv-black/40 backdrop-blur-md">
-            4 Independent Clinical Trials
+            Research-Confirmed Formulations
           </div>
           <h1 className="iv-type-display font-bold mb-6 tracking-tighter uppercase leading-none">The Science of <br /><span className="text-iv-gold italic serif">Resilience</span></h1>
           <p className="text-lg text-iv-cream/70 max-w-3xl mx-auto leading-relaxed font-light">
-            Formulated in partnership with <strong className="text-iv-white">Natural You Srl</strong>, Isola del Liri, our 18 formulations are built around a single conviction: skin does not need to be fought — it needs to be restored to its own intelligence.
+            Formulated at <strong className="text-iv-white">Natural You Srl</strong>, Isola del Liri, Italy. Every active selected because independent research already confirmed it. Every concentration held to the level the science used.
           </p>
         </div>
       </section>

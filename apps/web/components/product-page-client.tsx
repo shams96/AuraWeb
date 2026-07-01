@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useCart } from '@/lib/cart-context'
 import { useWishlist } from '@/lib/wishlist-context'
-import { Button } from '@isolavitale/ui'
+import { Button } from '@/components/ui-lib'
 import { Heart, ShoppingCart } from 'lucide-react'
 import { ErrorBoundary } from '@/components/error-boundary'
 import { ProductHeroSkeleton, BuyBoxSkeleton, StickyFooterCTASkeleton } from '@/components/skeletons/product-skeleton'

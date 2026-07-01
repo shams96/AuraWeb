@@ -19,6 +19,15 @@ const FORMATS = [
   { label: 'Eye Pump',     value: 'eye-pump' },
 ]
 
+const C = {
+  border:       'rgba(145,56,50,0.14)',
+  borderActive: 'rgba(145,56,50,0.40)',
+  bgActive:     'rgba(145,56,50,0.07)',
+  text:         '#3D2B20',
+  textMuted:    '#7A5C4E',
+  gold:         '#913832',
+}
+
 export function FilterSidebar() {
   const router       = useRouter()
   const pathname     = usePathname()
@@ -29,33 +38,40 @@ export function FilterSidebar() {
 
   function setParam(key: string, value: string, current: string) {
     const params = new URLSearchParams(searchParams.toString())
-    if (current === value) {
-      params.delete(key)
-    } else {
-      params.set(key, value)
-    }
+    if (current === value) params.delete(key)
+    else params.set(key, value)
     router.push(`${pathname}?${params.toString()}`, { scroll: false })
   }
 
   const hasFilters = currentTier || currentFormat
 
   return (
-    <div className="space-y-10">
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+
       {/* Protocol filter */}
       <div>
-        <h3 className="text-[10px] font-black text-iv-gold uppercase tracking-[0.3em] mb-5">Refine by Protocol</h3>
-        <div className="space-y-2">
+        <h3 style={{ fontSize: '0.65rem', fontWeight: 900, color: C.gold, textTransform: 'uppercase', letterSpacing: '0.28em', marginBottom: '1rem' }}>
+          Refine by Protocol
+        </h3>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
           {PROTOCOLS.map(({ label, value }) => {
             const active = currentTier === value
             return (
               <button
                 key={value}
                 onClick={() => setParam('tier', value, currentTier)}
-                className={`w-full text-left px-4 py-2.5 rounded-lg border text-xs font-medium transition-all duration-200 ${
-                  active
-                    ? 'border-iv-gold/40 bg-iv-gold/8 text-iv-gold'
-                    : 'border-iv-white/5 hover:border-iv-white/10 text-iv-cream/65'
-                }`}
+                style={{
+                  width: '100%', textAlign: 'left',
+                  padding: '10px 14px', borderRadius: 8,
+                  border: `1px solid ${active ? C.borderActive : C.border}`,
+                  background: active ? C.bgActive : 'transparent',
+                  color: active ? C.gold : C.text,
+                  fontSize: '0.78rem', fontWeight: active ? 700 : 500,
+                  letterSpacing: '0.02em',
+                  cursor: 'pointer', transition: 'all 0.15s',
+                }}
+                onMouseEnter={e => { if (!active) { e.currentTarget.style.borderColor = C.borderActive; e.currentTarget.style.background = C.bgActive } }}
+                onMouseLeave={e => { if (!active) { e.currentTarget.style.borderColor = C.border; e.currentTarget.style.background = 'transparent' } }}
               >
                 {label}
               </button>
@@ -66,19 +82,27 @@ export function FilterSidebar() {
 
       {/* Format filter */}
       <div>
-        <h3 className="text-[10px] font-black text-iv-gold uppercase tracking-[0.3em] mb-5">Format</h3>
-        <div className="space-y-2">
+        <h3 style={{ fontSize: '0.65rem', fontWeight: 900, color: C.gold, textTransform: 'uppercase', letterSpacing: '0.28em', marginBottom: '1rem' }}>
+          Format
+        </h3>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
           {FORMATS.map(({ label, value }) => {
             const active = currentFormat === value
             return (
               <button
                 key={value}
                 onClick={() => setParam('format', value, currentFormat)}
-                className={`w-full text-left px-4 py-2.5 rounded-lg border text-xs font-medium transition-all duration-200 ${
-                  active
-                    ? 'border-iv-gold/40 bg-iv-gold/8 text-iv-gold'
-                    : 'border-iv-white/5 hover:border-iv-white/10 text-iv-cream/65'
-                }`}
+                style={{
+                  width: '100%', textAlign: 'left',
+                  padding: '10px 14px', borderRadius: 8,
+                  border: `1px solid ${active ? C.borderActive : C.border}`,
+                  background: active ? C.bgActive : 'transparent',
+                  color: active ? C.gold : C.text,
+                  fontSize: '0.78rem', fontWeight: active ? 700 : 500,
+                  cursor: 'pointer', transition: 'all 0.15s',
+                }}
+                onMouseEnter={e => { if (!active) { e.currentTarget.style.borderColor = C.borderActive; e.currentTarget.style.background = C.bgActive } }}
+                onMouseLeave={e => { if (!active) { e.currentTarget.style.borderColor = C.border; e.currentTarget.style.background = 'transparent' } }}
               >
                 {label}
               </button>
@@ -91,7 +115,14 @@ export function FilterSidebar() {
       {hasFilters && (
         <button
           onClick={() => router.push(pathname, { scroll: false })}
-          className="w-full text-center text-[10px] font-black uppercase tracking-widest text-iv-cream/65 hover:text-iv-gold transition-colors py-2"
+          style={{
+            width: '100%', textAlign: 'center', padding: '8px',
+            background: 'none', border: 'none', cursor: 'pointer',
+            fontSize: '0.65rem', fontWeight: 900, letterSpacing: '0.25em',
+            textTransform: 'uppercase', color: C.textMuted, transition: 'color 0.15s',
+          }}
+          onMouseEnter={e => (e.currentTarget.style.color = C.gold)}
+          onMouseLeave={e => (e.currentTarget.style.color = C.textMuted)}
         >
           Clear Filters
         </button>

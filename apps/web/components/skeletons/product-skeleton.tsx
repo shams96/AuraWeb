@@ -1,4 +1,4 @@
-import { Skeleton } from '@isolavitale/ui'
+import { Skeleton } from '@/components/ui-lib'
 
 export function ProductHeroSkeleton() {
   return (

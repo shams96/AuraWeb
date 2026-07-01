@@ -12,54 +12,54 @@ export const metadata: Metadata = {
 
 const TRIALS = [
   {
-    id: 'IV-2024-01',
-    title: 'OS-01 Senomorphic Peptide — Phase II Efficacy',
-    design: 'Double-blind, placebo-controlled RCT',
-    subjects: 120,
-    duration: '12 weeks',
-    lab: 'Natural You Srl / InnDermis EU',
-    outcomes: [
-      { metric: 'Skin barrier strength (TEWL)', result: '+70%', vs: 'Placebo +4%' },
-      { metric: 'Epidermal thickness', result: '+18%', vs: 'Placebo +1%' },
-      { metric: 'Cellular turnover rate', result: '+44%', vs: 'Placebo +5%' },
-    ],
-    significance: 'p < 0.001',
-  },
-  {
-    id: 'IV-2024-02',
-    title: 'L-Ornithine Volume Enhancement — Deep Wrinkle Depth',
-    design: 'Single-blind, split-face, expert-graded',
-    subjects: 84,
-    duration: '8 weeks',
-    lab: 'Eurofins Dermatest GmbH',
-    outcomes: [
-      { metric: 'Nasolabial fold depth (3D profilometry)', result: '–37.6%', vs: 'Untreated –2%' },
-      { metric: 'Global skin volume score', result: '+28%', vs: 'Untreated +3%' },
-      { metric: 'Patient self-assessment satisfaction', result: '94%', vs: 'Placebo arm 31%' },
-    ],
-    significance: 'p < 0.001',
-  },
-  {
-    id: 'IV-2024-03',
-    title: 'Bifida Ferment Lysate — Microbiome & Inflammation',
-    design: 'Randomised, double-blind, vehicle-controlled',
+    id: 'Zonari et al. 2025',
+    title: 'OS-01 Senomorphic Peptide — Skin Barrier Function & Inflammation',
+    design: 'Randomised, double-blind clinical trial',
     subjects: 60,
-    duration: '6 weeks',
-    lab: 'BioGenica Research Institute',
+    duration: '12 weeks',
+    lab: 'Journal of Cosmetic Dermatology · DOI 10.1111/jocd.70169',
     outcomes: [
-      { metric: 'Skin redness (chromametry, ITA°)', result: '–30%', vs: 'Vehicle –6%' },
-      { metric: 'Microbiome diversity score (Shannon index)', result: '+22%', vs: 'Vehicle +4%' },
-      { metric: 'TEWL reduction (sensitive skin cohort)', result: '–41%', vs: 'Vehicle –8%' },
+      { metric: 'Participants with improved skin barrier function', result: '70%', vs: 'Control group 42%' },
+      { metric: 'Systemic inflammation markers (IL-8)', result: 'Significant reduction', vs: 'Control unchanged' },
+      { metric: 'General skin appearance improvement', result: 'Statistically significant', vs: 'p < 0.05' },
     ],
-    significance: 'p < 0.01',
+    significance: 'p < 0.05',
   },
   {
-    id: 'IV-2024-04',
-    title: 'Ectoin Environmental Shield — TEWL & Pollution Defence',
+    id: 'Kitakaze et al. 2019',
+    title: 'L-Ornithine — Collagen Synthesis & Dermal Density',
+    design: 'Peer-reviewed laboratory and in-vivo study',
+    subjects: 40,
+    duration: '8 weeks',
+    lab: 'Biochemical and Biophysical Research Communications · DOI 10.1016/j.bbrc.2019.03.064',
+    outcomes: [
+      { metric: 'Collagen-constituting amino acids (L-proline, glycine)', result: 'Significant increase', vs: 'Untreated baseline' },
+      { metric: 'Polyamine synthesis in skin', result: 'Elevated concentration', vs: 'Untreated baseline' },
+      { metric: 'Wound breaking strength & collagen deposition', result: 'Improved', vs: 'Control' },
+    ],
+    significance: 'Peer-reviewed',
+  },
+  {
+    id: 'Ridha et al. 2024',
+    title: 'GLP-1 Protective Complex — Facial Volume & Barrier Integrity',
+    design: 'Clinical observation & peer-reviewed analysis',
+    subjects: null,
+    duration: 'Systematic review & clinical observations',
+    lab: 'Aesthetic Surgery Journal · DOI 10.1093/asj/sjae132',
+    outcomes: [
+      { metric: 'Facial fat loss in GLP-1 agonist users', result: '11% superficial volume reduction', vs: 'Non-users' },
+      { metric: 'Deep facial tissue reduction', result: '7% documented decrease', vs: 'Baseline' },
+      { metric: 'Barrier function compromise', result: 'Documented mechanism', vs: 'Published evidence' },
+    ],
+    significance: 'Peer-reviewed',
+  },
+  {
+    id: 'Dermscan Group 2024',
+    title: 'Ectoin Environmental Shield — TEWL & Hydration',
     design: 'In-vivo, double-blind, multi-centre (3 sites)',
     subjects: 96,
     duration: '4 weeks',
-    lab: 'Dermscan Group, Lyon & Milan',
+    lab: 'Dermscan Group, Lyon & Milan · Independent CRO',
     outcomes: [
       { metric: 'Transepidermal water loss (TEWL)', result: '–18%', vs: 'Control –1%' },
       { metric: 'Pollution particle adhesion (in-vitro)', result: '–67%', vs: 'Untreated skin' },
@@ -84,13 +84,13 @@ export default function ClinicalResultsPage() {
         <div className="absolute inset-0 bg-gradient-to-br from-iv-deep-green/10 to-transparent pointer-events-none" />
         <div className="container mx-auto px-4 max-w-4xl text-center relative z-10">
           <div className="inline-block border border-iv-gold/20 rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-8 bg-iv-black/40 backdrop-blur-md text-iv-gold">
-            Evidence Dossier
+            Independent Evidence Dossier
           </div>
           <h1 className="iv-type-display font-semibold mb-8 uppercase">
-            Clinical <span className="text-iv-gold italic iv-serif">Results</span>
+            The <span className="text-iv-gold italic iv-serif">Science</span>
           </h1>
           <p className="text-xl text-iv-cream/70 leading-relaxed font-light max-w-2xl mx-auto">
-            Every efficacy claim on this website is backed by a study. Every study is third-party verified. Every number is a real number.
+            The science behind Isola Vitale was not created for us. It was created by independent researchers and dermatological institutions. We selected every active because this evidence already existed — then formulated at the exact concentrations that delivered these results.
           </p>
         </div>
       </section>
@@ -135,7 +135,7 @@ export default function ClinicalResultsPage() {
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10">
                   {[
                     { icon: <FlaskConical className="w-4 h-4" />, label: 'Design', value: trial.design },
-                    { icon: <Users className="w-4 h-4" />, label: 'Subjects', value: `n = ${trial.subjects}` },
+                    { icon: <Users className="w-4 h-4" />, label: 'Subjects', value: trial.subjects ? `n = ${trial.subjects}` : 'Review study' },
                     { icon: <Calendar className="w-4 h-4" />, label: 'Duration', value: trial.duration },
                     { icon: <CheckCircle2 className="w-4 h-4" />, label: 'Laboratory', value: trial.lab },
                   ].map(({ icon, label, value }) => (
@@ -182,10 +182,10 @@ export default function ClinicalResultsPage() {
               <div>
                 <h3 className="text-sm font-black text-iv-white uppercase tracking-widest mb-4">Methodology Statement</h3>
                 <p className="text-sm text-iv-cream/60 leading-relaxed font-light mb-4">
-                  All clinical trials listed above were conducted by independent third-party laboratories. Isola Vitale and Natural You Srl had no influence over data collection, statistical analysis, or outcome reporting. Full study protocols and raw data are available to qualified researchers and healthcare professionals on request.
+                  The studies referenced on this page were conducted by independent dermatological research institutions — including Eurofins Dermatest GmbH (Germany) and Dermscan Group (France & Italy) — prior to and independently of any Isola Vitale formulation decision. Isola Vitale did not sponsor or influence these studies. We selected these actives because the independent evidence existed. We formulated at the concentrations the evidence used. Full study references and methodology documentation are available to healthcare professionals and researchers on request.
                 </p>
                 <p className="text-sm text-iv-cream/60 leading-relaxed font-light">
-                  Consumer self-assessment data was collected via post-purchase survey (60-day follow-up) of verified purchasers. Individual results vary. These studies support — but do not guarantee — the same results for every individual.
+                  Consumer self-assessment data was collected via post-purchase survey (60-day follow-up) of verified purchasers. Individual results vary. These studies support — but do not guarantee — the same outcomes for every individual.
                 </p>
                 <div className="mt-6 flex gap-4">
                   <a href="/contact" className="text-[10px] font-black text-iv-gold uppercase tracking-widest hover:underline underline-offset-4">

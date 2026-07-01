@@ -4,7 +4,7 @@ import { useWishlist } from '@/lib/wishlist-context'
 import { ProductCard } from '@/components/product-card'
 import { ALL_PRODUCTS } from '@/lib/products'
 import Link from 'next/link'
-import { Button } from '@isolavitale/ui'
+import { Button } from '@/components/ui-lib'
 
 export default function WishlistPage() {
   const { state: { items } } = useWishlist()

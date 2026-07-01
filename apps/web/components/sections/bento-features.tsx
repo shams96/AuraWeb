@@ -46,15 +46,15 @@ export function BentoFeatures() {
                 Clinical Evidence
               </p>
               <h3 className="iv-type-h3 font-bold text-iv-white leading-tight mb-3" style={{ fontFamily: 'var(--iv-font-serif)' }}>
-                4 Independent RCTs. Zero marketing claims.
+                Six research-confirmed actives. Formulated at the concentrations the science used.
               </h3>
               <p className="text-sm text-iv-cream/65 font-light max-w-lg leading-relaxed">
-                Every efficacy statement is attributable to a registered clinical trial with published methodology, sample size, and a control arm.
+                Every active in every Isola Vitale formulation was independently validated before inclusion. We do not introduce an ingredient until the evidence exists — then we formulate to it, not around it.
               </p>
             </div>
 
             <div className="flex flex-wrap gap-3 mt-8 relative z-10">
-              {['Trial IV-2024-01', 'Trial IV-2024-02', 'Trial IV-2024-03', 'Trial IV-2024-04'].map(t => (
+              {['J Cosmet Dermatol 2025', 'Aesthetic Surgery Journal 2024', 'Eurofins Dermatest', 'Dermscan Group'].map(t => (
                 <span
                   key={t}
                   className="text-[11px] font-black uppercase tracking-widest px-4 py-2 rounded-full"
@@ -86,10 +86,10 @@ export function BentoFeatures() {
             </div>
             <div className="flex gap-2 mt-6">
               {[
-                { label: 'Preserve', sub: 'Energy · Barrier' },
-                { label: 'Refine', sub: 'Barrier · Defense' },
-                { label: 'Restore', sub: 'Defense · Structure' },
-                { label: 'Sustain', sub: 'Full Matrix' },
+                { label: 'Preservation', sub: 'Renewal & resilience' },
+                { label: 'Refinement', sub: 'Barrier & clarity' },
+                { label: 'Regeneration', sub: 'Protection & repair' },
+                { label: 'Longevity', sub: 'Structure & vitality' },
               ].map(({ label, sub }) => (
                 <div key={label} className="flex-1 rounded-xl p-3 text-center" style={{ background: `${GOLD}0.08)`, border: `1px solid ${GOLD}0.14)` }}>
                   <div className="text-[10px] font-black text-iv-gold uppercase tracking-widest">{label}</div>

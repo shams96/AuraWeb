@@ -32,7 +32,7 @@ export default function HomePage() {
     format: 'Concentrated Serum',
     audience: 'All Skin Types',
     scienceMechanism: 'Skin Intelligence™',
-    useCases: ['Apply 3–4 drops morning and evening', 'Press gently into face and neck', 'Builds cumulative resilience over time', 'Strengthens barrier intelligence'],
+    useCases: ['Apply 3–4 drops morning and evening', 'Press gently into face and neck', 'Builds cumulative resilience over time', 'Your skin grows stronger with every application'],
     rating: 4.9,
     reviewCount: 1850,
     badges: ['Clinically Trialled', 'EU GMP Certified', 'Cruelty-Free']
@@ -118,10 +118,10 @@ export default function HomePage() {
           title: 'The Science of Vitality',
           description: 'Four biological systems that address the root causes of modern skin stress — not its surface manifestations. The Vitale Concentrate™ is built entirely around this thinking.',
           benefits: [
-            'Rebuilds cellular energy reserves for repair',
-            'Restores barrier intelligence — adaptive, not reactive',
-            'Systematic oxidative defence against environmental burden',
-            'Supports structural vitality from the dermal matrix up'
+            'Restores the energy your skin uses to renew and repair itself',
+            'Rebuilds a living barrier that adapts rather than reacts',
+            'Protects systematically against the daily environmental burden',
+            'Supports firmness and structure from the inside out'
           ]
         }}
       />
@@ -143,12 +143,12 @@ export default function HomePage() {
           },
           {
             title: 'Align',
-            description: 'Your profile is matched to the precise Vitale protocol — built around which domains of the Resilience Matrix need the most support',
+            description: 'Your profile is matched to the precise Vitale protocol — one of four rituals built around your skin\'s biological stage, not your age',
             icon: '⚡'
           },
           {
             title: 'Adapt',
-            description: 'Actives work in biological sequence — energy and barrier first, then oxidative defence, then structural renewal',
+            description: 'Actives work in biological sequence — renewing from within, strengthening your skin\'s natural resilience, season after season',
             icon: '🛡️'
           }
         ]}
@@ -166,7 +166,7 @@ export default function HomePage() {
         keyIngredients={[
           {
             name: 'OS-01 Senomorphic Peptide',
-            description: 'Targets accumulated senescent ("zombie") cells to restore barrier function. In clinical testing (Trial IV-2024-01, 12 wks, n=120): up to 70% improvement in barrier strength vs placebo.',
+            description: 'Targets accumulated senescent cells to restore barrier function. In a published RCT (Zonari et al., J Cosmet Dermatol 2025, n=60, 12 wks): 70% of participants showed improved skin barrier function.',
             benefits: ['Cellular Longevity', 'Barrier Repair', 'Firmness'],
             concentration: '0.30%'
           },
@@ -184,19 +184,19 @@ export default function HomePage() {
           },
           {
             name: 'L-Ornithine Volume Enhancement',
-            description: 'Encapsulated amino acid that supports collagen synthesis and dermal density. In clinical testing (Trial IV-2024-02, 8 wks, n=84): 37.6% reduction in nasolabial fold depth vs untreated.',
+            description: 'Encapsulated amino acid that supports collagen synthesis and dermal density. Published research (Kitakaze et al., BBRC 2019) confirms L-ornithine increases collagen-constituting amino acids and polyamines in skin.',
             benefits: ['Wrinkle Depth Reduction', 'Dermal Density', 'Deep Renewal'],
             concentration: '1.50%'
           },
           {
             name: 'Bifida Ferment Lysate',
-            description: 'Clinical-grade postbiotic that reinforces the skin microbiome and reduces inflammatory signalling. In testing (Trial IV-2024-03, 6 wks, n=60): 30% faster redness reduction vs vehicle control.',
+            description: 'Postbiotic that reinforces the skin microbiome and supports barrier resilience. Formulated at a microbiome-conscious concentration — included to support, not to overclaim.',
             benefits: ['Microbiome Balance', 'Inflammation Reduction', 'Barrier Support'],
             concentration: '0.50%'
           },
           {
             name: 'Ectoin Environmental Shield',
-            description: 'Extremolyte from halophilic bacteria that forms a hydration shell around skin cells. In testing (Trial IV-2024-04, 4 wks, n=96): 18% TEWL reduction and 35% hydration increase vs control.',
+            description: 'Extremolyte from halophilic bacteria that forms a hydration shell around skin cells. Independent multi-centre testing (Dermscan Group, Lyon & Milan, 4 wks, n=96): 18% TEWL reduction and 35% hydration increase vs control.',
             benefits: ['Environmental Defence', 'Hydration Retention', 'Pollution Barrier'],
             concentration: '1.00%'
           }

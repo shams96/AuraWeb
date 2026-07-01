@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { Star } from 'lucide-react'
-import { Button } from '@isolavitale/ui'
+import { Button } from '@/components/ui-lib'
 import { useCart } from '@/lib/cart-context'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
@@ -75,13 +75,14 @@ export function ProductCard({ product }: ProductCardProps) {
 
   return (
     <div
-      className="product-card iv-hover-lift group bg-iv-deep-green/10 rounded-2xl border border-iv-gold/10 overflow-hidden hover:border-iv-gold/30 transition-all duration-500 shadow-2xl relative"
+      className="product-card iv-hover-lift group rounded-2xl overflow-hidden transition-all duration-500 relative"
+      style={{ background: '#F4EAE2', border: '1px solid rgba(145,56,50,0.12)' }}
       data-reveal="iv-scale-in"
+      onMouseEnter={e => (e.currentTarget.style.borderColor = 'rgba(145,56,50,0.30)')}
+      onMouseLeave={e => (e.currentTarget.style.borderColor = 'rgba(145,56,50,0.12)')}
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-iv-gold/[0.03] to-transparent pointer-events-none" />
-
       {/* Product visual */}
-      <div className="relative aspect-[4/5] overflow-hidden bg-iv-black/40">
+      <div className="relative aspect-[4/5] overflow-hidden" style={{ background: '#EDE8E0' }}>
         {useCSSVisual ? (
           <PackagingVisual product={product} className="absolute inset-0" />
         ) : (
@@ -100,14 +101,14 @@ export function ProductCard({ product }: ProductCardProps) {
         )}
 
         {/* Grade label */}
-        <div className="absolute top-4 right-4 z-10 px-2 py-0.5 border border-iv-white/20 rounded-sm backdrop-blur-md">
-          <p className="text-[7px] font-black text-iv-white/60 uppercase tracking-[0.2em]">
+        <div className="absolute top-4 right-4 z-10 px-2 py-0.5 rounded-sm backdrop-blur-md" style={{ border: '1px solid rgba(145,56,50,0.25)', background: 'rgba(253,250,245,0.85)' }}>
+          <p className="text-[7px] font-black uppercase tracking-[0.2em]" style={{ color: '#7A5C4E' }}>
             {isClinical ? 'Clinical Grade' : 'Laboratory Grade'}
           </p>
         </div>
 
         {/* Quick-add overlay */}
-        <div className="absolute inset-0 bg-iv-black/60 opacity-0 group-hover:opacity-100 transition-all duration-700 flex items-center justify-center p-8 backdrop-blur-md z-20">
+        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-700 flex items-center justify-center p-8 backdrop-blur-md z-20" style={{ background: 'rgba(26,22,20,0.55)' }}>
           {isLockedB2B ? (
             <Button
               size="lg"
@@ -122,86 +123,91 @@ export function ProductCard({ product }: ProductCardProps) {
               className="w-full bg-iv-gold text-iv-black hover:bg-iv-gold-light rounded-none text-[10px] font-black uppercase tracking-[0.3em] py-8 shadow-2xl transition-all duration-500 scale-90 group-hover:scale-100"
               onClick={handleOneTimeAdd}
             >
-              Acquire Now
+              Begin Ritual
             </Button>
           )}
         </div>
       </div>
 
       {/* Info */}
-      <div className="p-8">
-        <div className="flex justify-between items-center mb-6">
-          <span className="text-[10px] font-black text-iv-gold uppercase tracking-[0.3em]">
+      <div className="p-6">
+        <div className="flex justify-between items-center mb-4">
+          <span style={{ fontSize: '0.65rem', fontWeight: 900, color: '#913832', textTransform: 'uppercase', letterSpacing: '0.28em' }}>
             {collectionLabel}
           </span>
           <div className="flex gap-2">
             {product.tags.slice(0, 1).map((tag) => (
-              <span key={tag} className="text-[9px] font-black text-iv-cream/65 uppercase tracking-widest border border-iv-white/5 px-2 py-0.5 rounded-sm">
+              <span key={tag} style={{ fontSize: '0.65rem', fontWeight: 700, color: '#7A5C4E', textTransform: 'uppercase', letterSpacing: '0.14em', border: '1px solid rgba(145,56,50,0.14)', padding: '1px 8px', borderRadius: 4 }}>
                 {tag}
               </span>
             ))}
           </div>
         </div>
 
-        <h3 className="text-xl font-bold text-iv-white mb-4 tracking-tighter leading-tight line-clamp-2 h-14">
-          <Link href={`/products/${product.id}`} className="hover:text-iv-gold transition-colors italic serif">
+        <h3 className="text-xl font-bold mb-3 tracking-tighter leading-tight line-clamp-2" style={{ color: '#1A1614', height: '3.5rem' }}>
+          <Link href={`/products/${product.id}`} className="hover:text-iv-gold transition-colors italic" style={{ fontFamily: 'var(--iv-font-serif)' }}>
             {product.name}
           </Link>
         </h3>
 
         {product.volume && (
-          <p className="text-[9px] font-black text-iv-cream/65 uppercase tracking-widest mb-4">{product.volume}</p>
+          <p style={{ fontSize: '0.65rem', fontWeight: 700, color: '#7A5C4E', textTransform: 'uppercase', letterSpacing: '0.2em', marginBottom: '0.75rem' }}>{product.volume}</p>
         )}
 
-        <div className="flex items-center gap-3 mb-8">
+        <div className="flex items-center gap-3 mb-6">
           <div className="flex items-center gap-0.5">
             {[...Array(5)].map((_, i) => (
               <Star
                 key={i}
-                className={`h-3 w-3 ${i < Math.floor(product.rating) ? 'text-iv-gold fill-current' : 'text-iv-white/10'}`}
+                className="h-3 w-3"
+                style={{ color: i < Math.floor(product.rating) ? '#913832' : 'rgba(145,56,50,0.18)', fill: i < Math.floor(product.rating) ? '#913832' : 'none' }}
               />
             ))}
           </div>
-          <span className="text-[10px] font-black text-iv-cream/65 uppercase tracking-widest">
+          <span style={{ fontSize: '0.65rem', fontWeight: 700, color: '#7A5C4E', textTransform: 'uppercase', letterSpacing: '0.18em' }}>
             {product.reviewCount} Verified
           </span>
         </div>
 
-        <div className="space-y-4">
+        <div>
           {isLockedB2B ? (
-            <div className="p-4 bg-iv-gold/5 rounded-lg border border-iv-gold/10 text-center">
-              <span className="text-[10px] font-black text-iv-gold uppercase tracking-widest">Professional Tier</span>
+            <div style={{ padding: '12px', background: 'rgba(145,56,50,0.06)', borderRadius: 8, border: '1px solid rgba(145,56,50,0.12)', textAlign: 'center' }}>
+              <span style={{ fontSize: '0.65rem', fontWeight: 900, color: '#913832', textTransform: 'uppercase', letterSpacing: '0.2em' }}>Professional Tier</span>
             </div>
           ) : (
-            <div className="flex flex-col gap-3">
-              <div className="flex justify-between items-center">
-                <span className="text-[10px] font-black text-iv-cream/65 uppercase tracking-widest">
-                  {discountPct > 0 ? (
-                    <span className="text-iv-gold">{discountPct}% off</span>
-                  ) : 'Acquisition'}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <span style={{ fontSize: '0.65rem', fontWeight: 700, color: discountPct > 0 ? '#913832' : '#7A5C4E', textTransform: 'uppercase', letterSpacing: '0.18em' }}>
+                  {discountPct > 0 ? `${discountPct}% off` : 'One-Time'}
                 </span>
-                <div className="flex items-center gap-2">
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                   {product.compareAtPrice && (
-                    <span className="text-sm text-iv-cream/65 line-through">${product.compareAtPrice}</span>
+                    <span style={{ fontSize: '0.85rem', color: '#7A5C4E', textDecoration: 'line-through' }}>${product.compareAtPrice}</span>
                   )}
-                  <span className="text-lg font-bold text-iv-white tracking-tighter">${product.price}</span>
+                  <span style={{ fontSize: '1.1rem', fontWeight: 700, color: '#1A1614' }}>${product.price}</span>
                 </div>
               </div>
 
               <button
-                className="w-full flex justify-between items-center p-4 bg-iv-gold/10 rounded-lg border border-iv-gold/20 hover:bg-iv-gold/20 transition-all group/sub"
+                style={{
+                  width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                  padding: '12px 14px', background: 'rgba(145,56,50,0.07)', borderRadius: 8,
+                  border: '1px solid rgba(145,56,50,0.18)', cursor: 'pointer', transition: 'all 0.15s',
+                }}
                 onClick={handleSubscribeAdd}
+                onMouseEnter={e => { e.currentTarget.style.background = 'rgba(145,56,50,0.13)' }}
+                onMouseLeave={e => { e.currentTarget.style.background = 'rgba(145,56,50,0.07)' }}
               >
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-iv-gold flex items-center justify-center text-iv-black text-xs font-black group-hover/sub:scale-110 transition-transform">
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                  <div style={{ width: 28, height: 28, borderRadius: '50%', background: '#913832', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '0.75rem', fontWeight: 900 }}>
                     ∞
                   </div>
-                  <div className="text-left">
-                    <p className="text-[10px] font-black text-iv-gold uppercase tracking-widest">Subscribe</p>
-                    <p className="text-[9px] text-iv-gold/60 uppercase tracking-widest font-black">Save 20%</p>
+                  <div style={{ textAlign: 'left' }}>
+                    <p style={{ fontSize: '0.65rem', fontWeight: 900, color: '#913832', textTransform: 'uppercase', letterSpacing: '0.2em' }}>Subscribe</p>
+                    <p style={{ fontSize: '0.6rem', fontWeight: 700, color: '#7A5C4E', textTransform: 'uppercase', letterSpacing: '0.18em' }}>Save 20%</p>
                   </div>
                 </div>
-                <span className="text-sm font-black text-iv-gold tracking-tighter">${Math.round(product.price * 0.8)}</span>
+                <span style={{ fontSize: '1rem', fontWeight: 700, color: '#913832' }}>${Math.round(product.price * 0.8)}</span>
               </button>
             </div>
           )}

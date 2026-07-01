@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import type { Metadata } from 'next'
 import { Shield, Beaker, Users, TrendingUp, CheckCircle, ArrowRight, Star, Lock, Globe, Award } from 'lucide-react'
-import { Button } from '@isolavitale/ui'
+import { Button } from '@/components/ui-lib'
 
 const TIERS = [
   {

@@ -1,4 +1,4 @@
-import { Button } from '@isolavitale/ui'
+import { Button } from '@/components/ui-lib'
 import { Calendar, User, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 

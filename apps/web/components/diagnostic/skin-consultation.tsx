@@ -1,8 +1,8 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
-import { ArrowRight, ChevronRight, CheckCircle2, ShoppingBag, Loader2, RefreshCcw } from 'lucide-react'
+import { ArrowRight, ChevronRight, CheckCircle2, ShoppingBag, Loader2, RefreshCcw, Clock, Sparkles } from 'lucide-react'
 import { useCart } from '@/lib/cart-context'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -10,6 +10,8 @@ import { useCart } from '@/lib/cart-context'
 type Tier = 't1' | 't2' | 't3' | 't4'
 type SkinHydration = 'dry' | 'normal' | 'combination' | 'oily'
 type SkinSensitivity = 'resistant' | 'balanced' | 'sensitive'
+type ConsultationMode = 'discovery' | 'check-in' | 'evolution' | 'too-soon'
+type Phase = 'loading' | 'intro' | 'too-soon' | 'quiz' | 'analyzing' | 'result'
 
 interface Answers {
   q1: string | null        // Goal (single)
@@ -17,20 +19,36 @@ interface Answers {
   q3: number | null        // Sensitivity index (single)
   q4: string[]             // Concerns (multi)
   q5: number | null        // Aging signs index (single)
-  q6: number | null        // Age range index (single)
-  q7: string[]             // Lifestyle (multi — optional)
+  q6: number | null        // Age range index (single — discovery only)
+  q7: string[]             // Lifestyle (multi — discovery only)
   q8: string | null        // Routine preference (single)
 }
 
+interface CheckInAnswers {
+  ci1: number | null   // Hydration change
+  ci2: number | null   // Sensitivity change
+  ci3: string | null   // Priority now
+}
+
 interface SkinProfile {
-  doScore: number          // 0 = dry → 10 = oily
-  srScore: number          // 0 = resistant → 10 = sensitive
-  wScore: number           // 0 = tight → 18 = wrinkle-prone
-  pScore: number           // 0 = non-pigmented → 10 = pigmented
+  doScore: number
+  srScore: number
+  wScore: number
+  pScore: number
   tier: Tier
   hydration: SkinHydration
   sensitivity: SkinSensitivity
   baumannLabel: string
+}
+
+interface PreviousAssessment {
+  id: string
+  mode: string
+  completedAt: string
+  profile: SkinProfile
+  protocol: Tier
+  concerns: string[]
+  improvementNarrative: string | null
 }
 
 // ─── Question data ────────────────────────────────────────────────────────────
@@ -61,9 +79,9 @@ const Q3 = {
   heading: 'How does your skin respond to new products or changes in your environment?',
   sub: 'Consider reactions to wind, cold, heat or unfamiliar ingredients.',
   options: [
-    { label: 'Rarely reacts — very resilient',           sub: 'Handles most things without issue',          srScore: 0  },
-    { label: 'Occasionally mildly reactive',             sub: 'Sometimes redness or tightness',             srScore: 3  },
-    { label: 'Frequently red, stinging or irritated',    sub: 'Reacts to many products and climates',       srScore: 7  },
+    { label: 'Rarely reacts — very resilient',           sub: 'Handles most things without issue',             srScore: 0  },
+    { label: 'Occasionally mildly reactive',             sub: 'Sometimes redness or tightness',                srScore: 3  },
+    { label: 'Frequently red, stinging or irritated',    sub: 'Reacts to many products and climates',          srScore: 7  },
     { label: 'I have a diagnosed skin condition',         sub: 'Rosacea, eczema, psoriasis or contact allergy', srScore: 10 },
   ],
 }
@@ -87,10 +105,10 @@ const Q5 = {
   heading: 'How would you describe the visible signs of ageing on your skin right now?',
   sub: 'Be honest — this is the most important question in your protocol match.',
   options: [
-    { label: 'Youthful and firm',                     sub: 'No visible signs of ageing yet',            wScore: 0  },
-    { label: 'Very early fine lines beginning',        sub: 'Just starting to notice',                   wScore: 3  },
-    { label: 'Fine lines and mild loss of firmness',   sub: 'Visible but not yet pronounced',            wScore: 6  },
-    { label: 'Established lines and volume loss',      sub: 'Deeper lines, sagging or hollowing',        wScore: 10 },
+    { label: 'Youthful and firm',                     sub: 'No visible signs of ageing yet',         wScore: 0  },
+    { label: 'Very early fine lines beginning',        sub: 'Just starting to notice',                wScore: 3  },
+    { label: 'Fine lines and mild loss of firmness',   sub: 'Visible but not yet pronounced',         wScore: 6  },
+    { label: 'Established lines and volume loss',      sub: 'Deeper lines, sagging or hollowing',     wScore: 10 },
   ],
 }
 
@@ -128,22 +146,54 @@ const Q8 = {
   ],
 }
 
+// ─── Check-in questions (3-4 weeks after discovery) ──────────────────────────
+
+const CI1 = {
+  heading: 'Since beginning your ritual, how has your skin\'s hydration felt?',
+  sub: 'Compare to how it felt before you started.',
+  options: [
+    { label: 'More hydrated and balanced',    sub: 'The ritual is visibly working',     doDelta: -1 },
+    { label: 'About the same',                sub: 'No noticeable change yet',           doDelta:  0 },
+    { label: 'Still feeling dry or tight',    sub: 'Needs more moisture support',        doDelta:  1 },
+    { label: 'More oily than expected',        sub: 'Ritual may need adjusting',          doDelta:  2 },
+  ],
+}
+
+const CI2 = {
+  heading: 'How sensitive or reactive has your skin been since your last consultation?',
+  sub: 'Consider redness, irritation, or unexpected breakouts.',
+  options: [
+    { label: 'Calmer and more resilient',      sub: 'Barrier is clearly strengthening',   srDelta: -2 },
+    { label: 'Slightly improved',              sub: 'Moving in the right direction',      srDelta: -1 },
+    { label: 'No noticeable change',           sub: 'Steady — keep going',                srDelta:  0 },
+    { label: 'More reactive than before',      sub: 'May need a gentler approach',        srDelta:  2 },
+  ],
+}
+
+const CI3 = {
+  heading: 'What would you most like your ritual to focus on right now?',
+  sub: 'Your skin\'s needs evolve — let\'s refine your priority.',
+  options: [
+    { label: 'Staying the course',             sub: 'Current results feel right',           value: 'maintain'  },
+    { label: 'Boosting radiance and glow',     sub: 'Skin looks a little dull lately',      value: 'radiance'  },
+    { label: 'Firming and lifting',            sub: 'Structure and definition',              value: 'firming'   },
+    { label: 'Calming and strengthening',      sub: 'Barrier and sensitivity focus',         value: 'barrier'   },
+  ],
+}
+
 // ─── Scoring engine ───────────────────────────────────────────────────────────
 
 function computeProfile(a: Answers): SkinProfile {
-  // Base scores from single-choice questions
   let doScore = a.q2 !== null ? Q2.options[a.q2].doScore : 5
   let srScore = a.q3 !== null ? Q3.options[a.q3].srScore : 3
   let wScore  = (a.q5 !== null ? Q5.options[a.q5].wScore : 0)
               + (a.q6 !== null ? Q6.options[a.q6].ageModifier : 0)
   let pScore  = 0
 
-  // Concern signals
   if (a.q4.includes('Dark spots or uneven tone')) pScore  += 4
   if (a.q4.includes('Fine lines or wrinkles'))    wScore  += 1
   if (a.q4.includes('Dryness and dehydration'))   doScore -= 1
 
-  // Lifestyle deltas
   a.q7.forEach(label => {
     const opt = Q7.options.find(o => o.label === label)
     if (!opt) return
@@ -153,23 +203,40 @@ function computeProfile(a: Answers): SkinProfile {
     if (opt.doDelta) doScore += opt.doDelta
   })
 
-  // Clamp
   doScore = Math.max(0, Math.min(10, doScore))
   srScore = Math.max(0, Math.min(10, srScore))
   wScore  = Math.max(0, Math.min(18, wScore))
   pScore  = Math.max(0, Math.min(10, pScore))
 
-  // Classify axes
+  return buildProfile(doScore, srScore, wScore, pScore, a.q4)
+}
+
+function applyCheckInDeltas(prev: SkinProfile, ci: CheckInAnswers): SkinProfile {
+  let doScore = prev.doScore + (ci.ci1 !== null ? CI1.options[ci.ci1].doDelta : 0)
+  let srScore = prev.srScore + (ci.ci2 !== null ? CI2.options[ci.ci2].srDelta : 0)
+  const wScore = prev.wScore
+  const pScore = prev.pScore
+
+  doScore = Math.max(0, Math.min(10, doScore))
+  srScore = Math.max(0, Math.min(10, srScore))
+
+  return buildProfile(doScore, srScore, wScore, pScore, [])
+}
+
+function buildProfile(
+  doScore: number,
+  srScore: number,
+  wScore: number,
+  pScore: number,
+  concerns: string[],
+): SkinProfile {
   const hydration: SkinHydration =
     doScore <= 2 ? 'dry' : doScore <= 4 ? 'normal' : doScore <= 7 ? 'combination' : 'oily'
   const sensitivity: SkinSensitivity =
     srScore <= 2 ? 'resistant' : srScore <= 6 ? 'balanced' : 'sensitive'
 
-  const hydrationLabel = hydration.charAt(0).toUpperCase() + hydration.slice(1)
-  const sensitivityLabel = sensitivity.charAt(0).toUpperCase() + sensitivity.slice(1)
-  const baumannLabel = `${hydrationLabel}-${sensitivityLabel}`
+  const baumannLabel = `${hydration.charAt(0).toUpperCase() + hydration.slice(1)}-${sensitivity.charAt(0).toUpperCase() + sensitivity.slice(1)}`
 
-  // Tier — driven primarily by combined age + aging-pattern W score
   const tier: Tier =
     wScore >= 13 ? 't4' : wScore >= 8 ? 't3' : wScore >= 4 ? 't2' : 't1'
 
@@ -286,19 +353,23 @@ const PROTOCOLS: Record<Tier, Protocol> = {
   },
 }
 
-// ─── Helpers ──────────────────────────────────────────────────────────────────
+// ─── Discovery quiz helpers ────────────────────────────────────────────────────
 
-const TOTAL = 8
+// Discovery uses 8 questions; Evolution uses 6 (skip Q6 age + Q7 lifestyle)
+function getActiveQuestions(mode: ConsultationMode): number[] {
+  if (mode === 'evolution') return [0, 1, 2, 3, 4, 7]  // Q1,Q2,Q3,Q4,Q5,Q8 (0-indexed)
+  return [0, 1, 2, 3, 4, 5, 6, 7]                       // all 8
+}
 
 function allOptions(qIdx: number): Array<{ label: string; sub: string; value: string }> {
-  if (qIdx === 0) return Q1.options.map(o => ({ label: o.label, sub: o.sub,           value: o.value      }))
-  if (qIdx === 1) return Q2.options.map((o, i) => ({ label: o.label, sub: o.sub,      value: String(i)    }))
-  if (qIdx === 2) return Q3.options.map((o, i) => ({ label: o.label, sub: o.sub,      value: String(i)    }))
-  if (qIdx === 3) return Q4.options.map(o  => ({ label: o, sub: '',                   value: o            }))
-  if (qIdx === 4) return Q5.options.map((o, i) => ({ label: o.label, sub: o.sub,      value: String(i)    }))
-  if (qIdx === 5) return Q6.options.map((o, i) => ({ label: o.label, sub: '',         value: String(i)    }))
-  if (qIdx === 6) return Q7.options.map(o  => ({ label: o.label, sub: '',             value: o.label      }))
-  if (qIdx === 7) return Q8.options.map(o  => ({ label: o.label, sub: o.sub,         value: o.value      }))
+  if (qIdx === 0) return Q1.options.map(o => ({ label: o.label, sub: o.sub,      value: o.value   }))
+  if (qIdx === 1) return Q2.options.map((o, i) => ({ label: o.label, sub: o.sub, value: String(i) }))
+  if (qIdx === 2) return Q3.options.map((o, i) => ({ label: o.label, sub: o.sub, value: String(i) }))
+  if (qIdx === 3) return Q4.options.map(o  => ({ label: o, sub: '',              value: o          }))
+  if (qIdx === 4) return Q5.options.map((o, i) => ({ label: o.label, sub: o.sub, value: String(i) }))
+  if (qIdx === 5) return Q6.options.map((o, i) => ({ label: o.label, sub: '',    value: String(i) }))
+  if (qIdx === 6) return Q7.options.map(o  => ({ label: o.label, sub: '',        value: o.label   }))
+  if (qIdx === 7) return Q8.options.map(o  => ({ label: o.label, sub: o.sub,     value: o.value   }))
   return []
 }
 
@@ -314,114 +385,314 @@ function questionMeta(qIdx: number): { heading: string; sub: string; multi: bool
   return { heading: '', sub: '', multi: false }
 }
 
+// ─── Shared section wrapper ───────────────────────────────────────────────────
+
+const sectionClass = 'py-24 bg-iv-black relative overflow-hidden'
+
 // ─── Main component ───────────────────────────────────────────────────────────
 
 export function SkinConsultation() {
   const { addItem, setCartOpen } = useCart()
-  const [phase, setPhase] = useState<'intro' | 'quiz' | 'analyzing' | 'result'>('intro')
-  const [qIdx, setQIdx] = useState(0)
+
+  // Memory state
+  const [consultMode, setConsultMode]     = useState<ConsultationMode>('discovery')
+  const [prevAssessment, setPrevAssessment] = useState<PreviousAssessment | null>(null)
+  const [daysUntilNext, setDaysUntilNext] = useState<number>(0)
+
+  // UI phase
+  const [phase, setPhase]     = useState<Phase>('loading')
+  const [qIdx, setQIdx]       = useState(0)    // index into activeQuestions array
+  const [ciIdx, setCiIdx]     = useState(0)    // check-in question index (0-2)
+
+  // Discovery / Evolution answers
   const [answers, setAnswers] = useState<Answers>({
     q1: null, q2: null, q3: null, q4: [],
     q5: null, q6: null, q7: [],  q8: null,
   })
-  const [profile, setProfile] = useState<SkinProfile | null>(null)
+
+  // Check-in answers
+  const [ciAnswers, setCiAnswers] = useState<CheckInAnswers>({ ci1: null, ci2: null, ci3: null })
+
+  // Result state
+  const [profile, setProfile]   = useState<SkinProfile | null>(null)
+  const [narrative, setNarrative] = useState<string | null>(null)
   const [subscribe, setSubscribe] = useState(true)
-  const [adding, setAdding] = useState(false)
-  const [added, setAdded] = useState(false)
+  const [adding, setAdding]     = useState(false)
+  const [added, setAdded]       = useState(false)
   const sessionId = useRef(crypto.randomUUID())
 
-  // Selection helpers
+  // ── Load previous assessment on mount ──────────────────────────────────────
+  useEffect(() => {
+    fetch('/api/assessment')
+      .then(r => r.json())
+      .then(data => {
+        const mode: ConsultationMode = data.nextMode ?? 'discovery'
+        setConsultMode(mode)
+
+        if (data.latest) {
+          setPrevAssessment(data.latest)
+          if (mode === 'too-soon') {
+            const weeksSince = (Date.now() - new Date(data.latest.completedAt).getTime()) / (1000 * 60 * 60 * 24 * 7)
+            const daysRemaining = Math.ceil((3 - weeksSince) * 7)
+            setDaysUntilNext(Math.max(1, daysRemaining))
+          }
+        }
+
+        setPhase(mode === 'too-soon' ? 'too-soon' : 'intro')
+      })
+      .catch(() => {
+        setConsultMode('discovery')
+        setPhase('intro')
+      })
+  }, [])
+
+  // ── Active question list (discovery = 8, evolution = 6) ───────────────────
+  const activeQuestions = getActiveQuestions(consultMode === 'check-in' ? 'discovery' : consultMode)
+  const TOTAL = activeQuestions.length
+
+  // ── Selection helpers (discovery / evolution quiz) ─────────────────────────
   function isSelected(value: string): boolean {
-    if (qIdx === 0) return answers.q1 === value
-    if (qIdx === 1) return answers.q2 !== null && String(answers.q2) === value
-    if (qIdx === 2) return answers.q3 !== null && String(answers.q3) === value
-    if (qIdx === 3) return answers.q4.includes(value)
-    if (qIdx === 4) return answers.q5 !== null && String(answers.q5) === value
-    if (qIdx === 5) return answers.q6 !== null && String(answers.q6) === value
-    if (qIdx === 6) return answers.q7.includes(value)
-    if (qIdx === 7) return answers.q8 === value
+    const qRealIdx = activeQuestions[qIdx]
+    if (qRealIdx === 0) return answers.q1 === value
+    if (qRealIdx === 1) return answers.q2 !== null && String(answers.q2) === value
+    if (qRealIdx === 2) return answers.q3 !== null && String(answers.q3) === value
+    if (qRealIdx === 3) return answers.q4.includes(value)
+    if (qRealIdx === 4) return answers.q5 !== null && String(answers.q5) === value
+    if (qRealIdx === 5) return answers.q6 !== null && String(answers.q6) === value
+    if (qRealIdx === 6) return answers.q7.includes(value)
+    if (qRealIdx === 7) return answers.q8 === value
     return false
   }
 
   function selectOption(value: string) {
-    const multi = questionMeta(qIdx).multi
+    const qRealIdx = activeQuestions[qIdx]
+    const multi = questionMeta(qRealIdx).multi
     setAnswers(a => {
-      if (qIdx === 0) return { ...a, q1: value }
-      if (qIdx === 1) return { ...a, q2: Number(value) }
-      if (qIdx === 2) return { ...a, q3: Number(value) }
-      if (qIdx === 3) {
+      if (qRealIdx === 0) return { ...a, q1: value }
+      if (qRealIdx === 1) return { ...a, q2: Number(value) }
+      if (qRealIdx === 2) return { ...a, q3: Number(value) }
+      if (qRealIdx === 3) {
         const next = multi
           ? a.q4.includes(value) ? a.q4.filter(x => x !== value) : [...a.q4, value]
           : [value]
         return { ...a, q4: next }
       }
-      if (qIdx === 4) return { ...a, q5: Number(value) }
-      if (qIdx === 5) return { ...a, q6: Number(value) }
-      if (qIdx === 6) {
+      if (qRealIdx === 4) return { ...a, q5: Number(value) }
+      if (qRealIdx === 5) return { ...a, q6: Number(value) }
+      if (qRealIdx === 6) {
         const next = a.q7.includes(value) ? a.q7.filter(x => x !== value) : [...a.q7, value]
         return { ...a, q7: next }
       }
-      if (qIdx === 7) return { ...a, q8: value }
+      if (qRealIdx === 7) return { ...a, q8: value }
       return a
     })
   }
 
   function canAdvance(): boolean {
-    if (qIdx === 0) return answers.q1 !== null
-    if (qIdx === 1) return answers.q2 !== null
-    if (qIdx === 2) return answers.q3 !== null
-    if (qIdx === 3) return answers.q4.length > 0
-    if (qIdx === 4) return answers.q5 !== null
-    if (qIdx === 5) return answers.q6 !== null
-    if (qIdx === 6) return true  // lifestyle is optional
-    if (qIdx === 7) return answers.q8 !== null
+    const qRealIdx = activeQuestions[qIdx]
+    if (qRealIdx === 0) return answers.q1 !== null
+    if (qRealIdx === 1) return answers.q2 !== null
+    if (qRealIdx === 2) return answers.q3 !== null
+    if (qRealIdx === 3) return answers.q4.length > 0
+    if (qRealIdx === 4) return answers.q5 !== null
+    if (qRealIdx === 5) return answers.q6 !== null
+    if (qRealIdx === 6) return true   // lifestyle optional
+    if (qRealIdx === 7) return answers.q8 !== null
     return false
   }
 
+  // ── Check-in helpers ───────────────────────────────────────────────────────
+  function ciIsSelected(value: string | number): boolean {
+    if (ciIdx === 0) return ciAnswers.ci1 !== null && ciAnswers.ci1 === value
+    if (ciIdx === 1) return ciAnswers.ci2 !== null && ciAnswers.ci2 === value
+    if (ciIdx === 2) return ciAnswers.ci3 === value
+    return false
+  }
+
+  function ciSelectOption(value: string | number) {
+    setCiAnswers(a => {
+      if (ciIdx === 0) return { ...a, ci1: Number(value) }
+      if (ciIdx === 1) return { ...a, ci2: Number(value) }
+      if (ciIdx === 2) return { ...a, ci3: String(value) }
+      return a
+    })
+  }
+
+  function ciCanAdvance(): boolean {
+    if (ciIdx === 0) return ciAnswers.ci1 !== null
+    if (ciIdx === 1) return ciAnswers.ci2 !== null
+    if (ciIdx === 2) return ciAnswers.ci3 !== null
+    return false
+  }
+
+  // ── Save to API + resolve profile ──────────────────────────────────────────
+  async function finalize(p: SkinProfile, rawAnswers: Record<string, unknown>, concerns: string[]) {
+    setProfile(p)
+    setPhase('analyzing')
+
+    try {
+      const res = await fetch('/api/assessment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          answers: rawAnswers,
+          profile: {
+            doScore: p.doScore,
+            srScore: p.srScore,
+            wScore:  p.wScore,
+            pScore:  p.pScore,
+            hydration:    p.hydration,
+            sensitivity:  p.sensitivity,
+            baumannLabel: p.baumannLabel,
+          },
+          protocol: p.tier,
+          concerns,
+        }),
+      })
+      if (res.ok) {
+        const saved = await res.json()
+        if (saved.assessment?.improvementNarrative) {
+          setNarrative(saved.assessment.improvementNarrative)
+        }
+      }
+    } catch {}
+
+    // Also persist to localStorage for offline result display
+    try {
+      localStorage.setItem('iv_skin_profile', JSON.stringify({
+        ...p, sessionId: sessionId.current, savedAt: new Date().toISOString(),
+      }))
+    } catch {}
+
+    setTimeout(() => setPhase('result'), 2400)
+  }
+
+  // ── Advance quiz question ──────────────────────────────────────────────────
   function advance() {
     if (qIdx < TOTAL - 1) {
       setQIdx(q => q + 1)
       return
     }
-    // Final question — compute and show result
-    const p = computeProfile(answers)
-    setProfile(p)
-    const proto = PROTOCOLS[p.tier]
-    const recs = [...proto.am, ...proto.pm]
-      .filter((v, i, a) => a.findIndex(x => x.id === v.id) === i)
-      .map(({ id, name, priceNum }) => ({ id, name, price: priceNum }))
-    try {
-      const saved = { ...p, sessionId: sessionId.current, savedAt: new Date().toISOString() }
-      localStorage.setItem('iv_skin_profile', JSON.stringify(saved))
-    } catch {}
-    fetch('/api/consultation', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        sessionId: sessionId.current,
-        tier: p.tier,
-        baumannLabel: p.baumannLabel,
-        scores: { doScore: p.doScore, srScore: p.srScore, wScore: p.wScore, pScore: p.pScore },
-        answers,
-        recommendedProducts: recs,
-      }),
-    }).catch(() => {})
-    setPhase('analyzing')
-    setTimeout(() => setPhase('result'), 2400)
+    // Evolution uses prev assessment's age/lifestyle scores if we skipped those Qs
+    const filledAnswers: Answers = { ...answers }
+    if (consultMode === 'evolution' && prevAssessment) {
+      // If we skipped Q6 (age) and Q7 (lifestyle), carry forward from previous
+      if (filledAnswers.q6 === null) filledAnswers.q6 = null  // age irrelevant to delta
+      // wScore will be recalculated from Q5 only, which is fine
+    }
+    const p = computeProfile(filledAnswers)
+    finalize(p, filledAnswers as unknown as Record<string, unknown>, filledAnswers.q4)
+  }
+
+  // ── Advance check-in question ──────────────────────────────────────────────
+  function advanceCheckIn() {
+    if (ciIdx < 2) {
+      setCiIdx(i => i + 1)
+      return
+    }
+    // All 3 check-in questions answered — compute delta profile
+    const base = prevAssessment?.profile ?? {
+      doScore: 5, srScore: 3, wScore: 3, pScore: 0,
+      tier: 't1' as Tier, hydration: 'normal' as SkinHydration,
+      sensitivity: 'balanced' as SkinSensitivity, baumannLabel: 'Normal-Balanced',
+    }
+    const p = applyCheckInDeltas(base, ciAnswers)
+    finalize(p, ciAnswers as unknown as Record<string, unknown>, prevAssessment?.concerns ?? [])
   }
 
   function restart() {
     setPhase('intro')
     setQIdx(0)
+    setCiIdx(0)
     setAnswers({ q1: null, q2: null, q3: null, q4: [], q5: null, q6: null, q7: [], q8: null })
+    setCiAnswers({ ci1: null, ci2: null, ci3: null })
     setProfile(null)
+    setNarrative(null)
+    setAdded(false)
+    // Force re-fetch mode so a re-run after saving shows correct mode
+    setConsultMode('discovery')
   }
 
-  // ── Shared section wrapper ───────────────────────────────────────────────
-  const sectionClass = 'py-24 bg-iv-black relative overflow-hidden'
+  // ─── LOADING ───────────────────────────────────────────────────────────────
+  if (phase === 'loading') {
+    return (
+      <section id="skin-scan" className={sectionClass}>
+        <div className="container mx-auto px-4 max-w-lg text-center">
+          <div className="w-12 h-12 rounded-full mx-auto"
+            style={{ border: '2px solid rgba(145,56,50,0.12)', borderTopColor: 'var(--iv-gold)', animation: 'spin 0.9s linear infinite' }} />
+        </div>
+      </section>
+    )
+  }
 
-  // ── Intro ────────────────────────────────────────────────────────────────
+  // ─── TOO SOON ──────────────────────────────────────────────────────────────
+  if (phase === 'too-soon' && prevAssessment) {
+    const proto = PROTOCOLS[prevAssessment.protocol]
+    return (
+      <section id="skin-scan" className={sectionClass}>
+        <div className="container mx-auto px-4 max-w-3xl">
+
+          <div className="text-center mb-10">
+            <div className="inline-block rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-8"
+              style={{ color: 'var(--iv-gold)', border: '1px solid rgba(145,56,50,0.20)', background: 'rgba(145,56,50,0.05)' }}>
+              Vitale Skin Assessment™
+            </div>
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <Clock size={16} style={{ color: 'var(--iv-gold)' }} />
+              <span className="text-[10px] font-black uppercase tracking-[0.3em]" style={{ color: 'var(--iv-gold)' }}>
+                Your Skin Is Still Adapting
+              </span>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold text-iv-white mb-4" style={{ fontFamily: 'var(--iv-font-serif)' }}>
+              Your ritual needs time{' '}
+              <span className="italic" style={{ color: 'var(--iv-gold)' }}>to speak.</span>
+            </h2>
+            <p className="text-iv-cream/65 text-base font-light max-w-xl mx-auto leading-relaxed">
+              Great skin transformations unfold over weeks, not days. Your next consultation is available in{' '}
+              <span className="font-semibold" style={{ color: 'var(--iv-gold)' }}>{daysUntilNext} days</span> — when your skin has had
+              enough time to show us what your ritual is doing.
+            </p>
+          </div>
+
+          {/* Current protocol reminder */}
+          <div className="rounded-3xl p-8 mb-8"
+            style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(145,56,50,0.18)' }}>
+            <p className="text-[10px] font-black uppercase tracking-[0.3em] mb-2" style={{ color: 'var(--iv-gold)' }}>
+              Your Active Protocol
+            </p>
+            <h3 className="text-2xl font-bold text-iv-white mb-1" style={{ fontFamily: 'var(--iv-font-serif)' }}>
+              {proto.name}
+            </h3>
+            <p className="text-iv-cream/65 text-sm font-light mb-6">{proto.tagline}</p>
+            <div className="grid grid-cols-2 gap-3">
+              <div className="rounded-xl p-4" style={{ background: 'rgba(0,0,0,0.18)' }}>
+                <div className="text-[9px] font-black uppercase tracking-widest mb-1" style={{ color: 'var(--iv-gold)' }}>Skin Profile</div>
+                <div className="text-sm font-bold text-iv-white">{prevAssessment.profile.baumannLabel}</div>
+              </div>
+              <div className="rounded-xl p-4" style={{ background: 'rgba(0,0,0,0.18)' }}>
+                <div className="text-[9px] font-black uppercase tracking-widest mb-1" style={{ color: 'var(--iv-gold)' }}>Next Check-In</div>
+                <div className="text-sm font-bold text-iv-white">In {daysUntilNext} days</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center">
+            <Link href="/shop" className="btn-luxury"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 10, padding: '16px 44px' }}>
+              Continue Your Ritual <ArrowRight size={14} />
+            </Link>
+          </div>
+
+        </div>
+      </section>
+    )
+  }
+
+  // ─── INTRO ─────────────────────────────────────────────────────────────────
   if (phase === 'intro') {
+    const isReturn = consultMode === 'check-in' || consultMode === 'evolution'
+    const prevProto = prevAssessment ? PROTOCOLS[prevAssessment.protocol] : null
+
     return (
       <section id="skin-scan" className={sectionClass}>
         <div className="container mx-auto px-4 max-w-4xl text-center">
@@ -431,21 +702,52 @@ export function SkinConsultation() {
             Vitale Skin Assessment™
           </div>
 
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-iv-white" style={{ fontFamily: 'var(--iv-font-serif)' }}>
-            Your Skin,{' '}
-            <span className="italic" style={{ color: 'var(--iv-gold)' }}>Decoded</span>
-          </h2>
-
-          <p className="text-lg text-iv-cream/60 max-w-2xl mx-auto leading-relaxed font-light mb-14">
-            Eight questions — the same parameters a clinical esthetician uses — mapped to a precisely tailored Isola Vitale protocol. No camera. No guesswork. Just science.
-          </p>
+          {isReturn && prevProto ? (
+            <>
+              <div className="flex items-center justify-center gap-2 mb-4">
+                <Sparkles size={14} style={{ color: 'var(--iv-gold)' }} />
+                <span className="text-[10px] font-black uppercase tracking-[0.3em]" style={{ color: 'var(--iv-gold)' }}>
+                  {consultMode === 'check-in' ? 'Your Check-In Is Ready' : 'Your Evolution Consultation'}
+                </span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-iv-white" style={{ fontFamily: 'var(--iv-font-serif)' }}>
+                Welcome back.{' '}
+                <span className="italic" style={{ color: 'var(--iv-gold)' }}>How is your skin?</span>
+              </h2>
+              <p className="text-lg text-iv-cream/60 max-w-2xl mx-auto leading-relaxed font-light mb-8">
+                {consultMode === 'check-in'
+                  ? `Three questions — and we'll refine your ${prevProto.name} based on how your skin has responded.`
+                  : `Your skin has had six weeks with your ritual. Time to reassess — six questions to see how you've evolved.`}
+              </p>
+              {/* Previous protocol context */}
+              <div className="inline-flex items-center gap-3 rounded-full px-6 py-3 mb-10 text-sm"
+                style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(145,56,50,0.18)' }}>
+                <span className="text-iv-cream/65 font-light">Current protocol:</span>
+                <span className="font-bold" style={{ color: 'var(--iv-gold)' }}>{prevProto.name}</span>
+              </div>
+            </>
+          ) : (
+            <>
+              <h2 className="text-4xl md:text-6xl font-bold mb-6 text-iv-white" style={{ fontFamily: 'var(--iv-font-serif)' }}>
+                Your Skin,{' '}
+                <span className="italic" style={{ color: 'var(--iv-gold)' }}>Decoded</span>
+              </h2>
+              <p className="text-lg text-iv-cream/60 max-w-2xl mx-auto leading-relaxed font-light mb-14">
+                Eight questions — the same parameters a clinical esthetician uses — mapped to a precisely tailored Isola Vitale protocol. No camera. No guesswork. Just science.
+              </p>
+            </>
+          )}
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-14 max-w-3xl mx-auto">
-            {[
-              { stat: '8',       label: 'Clinical questions',   note: 'Baumann-validated framework'          },
-              { stat: '~2 min',  label: 'To complete',          note: 'No account required'                  },
-              { stat: '4',       label: 'Precision tiers',       note: 'Matched to your skin\'s biology'     },
-            ].map(({ stat, label, note }) => (
+            {(isReturn ? [
+              { stat: consultMode === 'check-in' ? '3' : '6', label: consultMode === 'check-in' ? 'Check-in questions' : 'Evolution questions', note: 'Tailored to your previous results' },
+              { stat: '~1 min',  label: 'To complete',    note: 'Your answers are remembered'     },
+              { stat: '1',       label: 'Protocol update', note: 'Refined to your skin today'      },
+            ] : [
+              { stat: '8',       label: 'Clinical questions',  note: 'Baumann-validated framework'      },
+              { stat: '~2 min',  label: 'To complete',         note: 'No account required'              },
+              { stat: '4',       label: 'Precision tiers',      note: 'Matched to your skin\'s biology' },
+            ]).map(({ stat, label, note }) => (
               <div key={label} className="rounded-2xl p-7 text-center"
                 style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(145,56,50,0.14)' }}>
                 <div className="text-3xl font-bold mb-1" style={{ color: 'var(--iv-gold)', fontFamily: 'var(--iv-font-serif)' }}>{stat}</div>
@@ -460,37 +762,39 @@ export function SkinConsultation() {
             className="btn-luxury"
             style={{ padding: '18px 52px', display: 'inline-flex', alignItems: 'center', gap: 10 }}
           >
-            Begin Consultation <ArrowRight size={14} />
+            {isReturn ? (consultMode === 'check-in' ? 'Begin Check-In' : 'Begin Evolution Assessment') : 'Begin Consultation'}
+            <ArrowRight size={14} />
           </button>
 
-          <p className="text-[10px] text-iv-cream/65 mt-5 uppercase tracking-widest font-black">
-            Methodology validated by dermatology — Baumann Skin Type Institute
-          </p>
+          {!isReturn && (
+            <p className="text-[10px] text-iv-cream/65 mt-5 uppercase tracking-widest font-black">
+              Methodology validated by dermatology — Baumann Skin Type Institute
+            </p>
+          )}
         </div>
       </section>
     )
   }
 
-  // ── Analyzing ────────────────────────────────────────────────────────────
+  // ─── ANALYZING ─────────────────────────────────────────────────────────────
   if (phase === 'analyzing') {
+    const msgs = consultMode === 'check-in'
+      ? ['Reading your feedback…', 'Comparing to your baseline…', 'Refining your protocol…', 'Updating your skin profile…']
+      : ['Classifying hydration axis…', 'Evaluating sensitivity markers…', 'Mapping lifestyle stressors…', 'Selecting protocol tier…']
+
     return (
       <section id="skin-scan" className={sectionClass}>
         <div className="container mx-auto px-4 max-w-lg text-center">
           <div className="w-16 h-16 rounded-full mx-auto mb-10 animate-spin"
             style={{ border: '2px solid rgba(145,56,50,0.12)', borderTopColor: 'var(--iv-gold)' }} />
           <h3 className="text-2xl font-bold text-iv-white mb-3" style={{ fontFamily: 'var(--iv-font-serif)' }}>
-            Compiling Your Skin Profile
+            {consultMode === 'check-in' ? 'Updating Your Profile' : 'Compiling Your Skin Profile'}
           </h3>
           <p className="text-iv-cream/65 text-sm mb-10 font-light">
-            Mapping your skin's biology…
+            {consultMode === 'check-in' ? 'Incorporating your feedback…' : 'Mapping your skin\'s biology…'}
           </p>
           <div className="space-y-3 text-left max-w-xs mx-auto">
-            {[
-              'Classifying hydration axis…',
-              'Evaluating sensitivity markers…',
-              'Mapping lifestyle stressors…',
-              'Selecting protocol tier…',
-            ].map((msg, i) => (
+            {msgs.map((msg, i) => (
               <div key={i} className="flex items-center gap-3 text-[10px] font-mono" style={{ color: 'rgba(253,250,245,0.30)' }}>
                 <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--iv-gold)', opacity: 0.5 }} />
                 {msg}
@@ -502,20 +806,19 @@ export function SkinConsultation() {
     )
   }
 
-  // ── Result ───────────────────────────────────────────────────────────────
+  // ─── RESULT ────────────────────────────────────────────────────────────────
   if (phase === 'result' && profile) {
     const proto = PROTOCOLS[profile.tier]
     const tierNum = profile.tier.replace('t', '')
 
-    // Deduplicated product list (cleanser appears in both AM and PM — add once)
     const allProducts = [...proto.am, ...proto.pm].filter(
       (v, i, a) => a.findIndex(x => x.id === v.id) === i
     )
 
-    const retailTotal   = allProducts.reduce((s, p) => s + p.priceNum, 0)
-    const subTotal      = Math.round(retailTotal * 0.80)
-    const displayTotal  = subscribe ? subTotal : retailTotal
-    const saving        = retailTotal - subTotal
+    const retailTotal  = allProducts.reduce((s, p) => s + p.priceNum, 0)
+    const subTotal     = Math.round(retailTotal * 0.80)
+    const displayTotal = subscribe ? subTotal : retailTotal
+    const saving       = retailTotal - subTotal
 
     const handleStartProtocol = async () => {
       setAdding(true)
@@ -531,12 +834,6 @@ export function SkinConsultation() {
           isSubscription: subscribe,
         })
       })
-      // Mark as added-to-cart in server record
-      fetch('/api/consultation', {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ sessionId: sessionId.current, addedToCart: true }),
-      }).catch(() => {})
       setAdding(false)
       setAdded(true)
       setTimeout(() => setCartOpen(true), 120)
@@ -549,6 +846,11 @@ export function SkinConsultation() {
       { label: 'Protocol Tier',     value: `Tier ${tierNum} of IV` },
     ]
 
+    const isUpdated = consultMode === 'check-in' || consultMode === 'evolution'
+    const prevProto = prevAssessment && prevAssessment.protocol !== profile.tier
+      ? PROTOCOLS[prevAssessment.protocol]
+      : null
+
     return (
       <section id="skin-scan" className={sectionClass}>
         <div className="container mx-auto px-4 max-w-5xl">
@@ -557,7 +859,8 @@ export function SkinConsultation() {
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 rounded-full px-5 py-2 mb-6 text-[10px] font-black uppercase tracking-[0.3em]"
               style={{ color: 'var(--iv-gold)', border: '1px solid rgba(145,56,50,0.22)', background: 'rgba(145,56,50,0.06)' }}>
-              <CheckCircle2 size={12} /> Protocol Matched
+              <CheckCircle2 size={12} />
+              {isUpdated ? 'Protocol Updated' : 'Protocol Matched'}
             </div>
             <h2 className="text-3xl md:text-5xl font-bold text-iv-white mb-3" style={{ fontFamily: 'var(--iv-font-serif)' }}>
               {proto.name}
@@ -572,11 +875,35 @@ export function SkinConsultation() {
             </div>
           </div>
 
-          {/* ── Protocol Kit + CTA (main purchase block) ── */}
+          {/* Improvement narrative (returning clients) */}
+          {(narrative || (isUpdated && prevAssessment?.improvementNarrative)) && (
+            <div className="rounded-2xl p-6 mb-8 text-center"
+              style={{ background: 'rgba(145,56,50,0.06)', border: '1px solid rgba(145,56,50,0.18)' }}>
+              <Sparkles size={14} style={{ color: 'var(--iv-gold)', margin: '0 auto 8px' }} />
+              <p className="text-iv-cream/80 text-sm font-light leading-relaxed italic" style={{ fontFamily: 'var(--iv-font-serif)' }}>
+                "{narrative ?? prevAssessment?.improvementNarrative}"
+              </p>
+            </div>
+          )}
+
+          {/* Protocol advancement notice */}
+          {prevProto && (
+            <div className="rounded-2xl p-5 mb-8 flex items-center gap-4"
+              style={{ background: 'rgba(145,56,50,0.08)', border: '1px solid rgba(145,56,50,0.22)' }}>
+              <ArrowRight size={16} style={{ color: 'var(--iv-gold)', flexShrink: 0 }} />
+              <p className="text-iv-cream/75 text-sm font-light">
+                Your skin has advanced from{' '}
+                <span className="font-semibold" style={{ color: 'var(--iv-gold)' }}>{prevProto.name}</span>
+                {' '}to{' '}
+                <span className="font-semibold" style={{ color: 'var(--iv-gold)' }}>{proto.name}</span>.
+              </p>
+            </div>
+          )}
+
+          {/* ── Protocol Kit + CTA ── */}
           <div className="rounded-3xl overflow-hidden mb-8"
             style={{ border: '1px solid rgba(145,56,50,0.28)', background: 'var(--iv-deep-green)' }}>
 
-            {/* Kit header */}
             <div className="px-8 pt-8 pb-6 border-b" style={{ borderColor: 'rgba(145,56,50,0.14)' }}>
               <p className="text-[10px] font-black uppercase tracking-[0.3em] mb-1" style={{ color: 'var(--iv-gold)' }}>
                 Your Complete Protocol Kit
@@ -586,7 +913,6 @@ export function SkinConsultation() {
               </p>
             </div>
 
-            {/* Product list */}
             <div className="px-8 py-6 space-y-3">
               {allProducts.map(p => {
                 const finalPrice = subscribe ? Math.round(p.priceNum * 0.80) : p.priceNum
@@ -602,9 +928,7 @@ export function SkinConsultation() {
                       <div className="text-xs text-iv-cream/65 font-light mt-0.5">{p.role}</div>
                     </div>
                     <div className="text-right flex-shrink-0">
-                      <div className="text-sm font-bold" style={{ color: 'var(--iv-gold)' }}>
-                        ${finalPrice}
-                      </div>
+                      <div className="text-sm font-bold" style={{ color: 'var(--iv-gold)' }}>${finalPrice}</div>
                       {subscribe && (
                         <div className="text-xs text-iv-cream/65 line-through font-light">${p.priceNum}</div>
                       )}
@@ -614,7 +938,6 @@ export function SkinConsultation() {
               })}
             </div>
 
-            {/* Subscription toggle + pricing */}
             <div className="px-8 pb-8">
               {/* Toggle */}
               <div className="rounded-2xl p-1 flex mb-6"
@@ -641,7 +964,7 @@ export function SkinConsultation() {
                 </button>
               </div>
 
-              {/* Price anchor */}
+              {/* Price */}
               <div className="flex items-end justify-between mb-6">
                 <div>
                   <p className="text-xs text-iv-cream/65 font-light mb-1">
@@ -671,7 +994,7 @@ export function SkinConsultation() {
                 </div>
               </div>
 
-              {/* Primary CTA */}
+              {/* CTA */}
               <button
                 onClick={handleStartProtocol}
                 disabled={adding || added}
@@ -736,13 +1059,28 @@ export function SkinConsultation() {
                   </div>
                 ))}
               </div>
-              {answers.q4.length > 0 && (
+              {(consultMode === 'discovery' || consultMode === 'evolution') && answers.q4.length > 0 && (
                 <div className="mt-8 pt-6" style={{ borderTop: '1px solid rgba(145,56,50,0.15)' }}>
                   <p className="text-[9px] uppercase tracking-widest font-black mb-3" style={{ color: 'rgba(253,250,245,0.65)' }}>
                     Concerns addressed
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {answers.q4.map(c => (
+                      <span key={c} className="text-[9px] rounded-full px-3 py-1 font-black uppercase tracking-wide"
+                        style={{ background: 'rgba(145,56,50,0.10)', color: 'var(--iv-gold)', border: '1px solid rgba(145,56,50,0.18)' }}>
+                        {c}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+              {consultMode === 'check-in' && prevAssessment?.concerns && prevAssessment.concerns.length > 0 && (
+                <div className="mt-8 pt-6" style={{ borderTop: '1px solid rgba(145,56,50,0.15)' }}>
+                  <p className="text-[9px] uppercase tracking-widest font-black mb-3" style={{ color: 'rgba(253,250,245,0.65)' }}>
+                    Your focus areas
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {prevAssessment.concerns.map(c => (
                       <span key={c} className="text-[9px] rounded-full px-3 py-1 font-black uppercase tracking-wide"
                         style={{ background: 'rgba(145,56,50,0.10)', color: 'var(--iv-gold)', border: '1px solid rgba(145,56,50,0.18)' }}>
                         {c}
@@ -793,8 +1131,6 @@ export function SkinConsultation() {
               onClick={restart}
               className="inline-flex items-center gap-2 text-[10px] uppercase tracking-widest font-black transition-colors"
               style={{ color: 'rgba(253,250,245,0.65)' }}
-              onMouseEnter={e => (e.currentTarget.style.color = 'rgba(253,250,245,0.55)')}
-              onMouseLeave={e => (e.currentTarget.style.color = 'rgba(253,250,245,0.65)')}
             >
               <RefreshCcw size={12} /> Retake consultation
             </button>
@@ -805,9 +1141,121 @@ export function SkinConsultation() {
     )
   }
 
-  // ── Quiz question ─────────────────────────────────────────────────────────
-  const meta    = questionMeta(qIdx)
-  const options = allOptions(qIdx)
+  // ─── CHECK-IN QUIZ (3 questions) ───────────────────────────────────────────
+  if (phase === 'quiz' && consultMode === 'check-in') {
+    const ciQuestions = [
+      {
+        heading: CI1.heading, sub: CI1.sub,
+        options: CI1.options.map((o, i) => ({ label: o.label, sub: o.sub, value: String(i) })),
+      },
+      {
+        heading: CI2.heading, sub: CI2.sub,
+        options: CI2.options.map((o, i) => ({ label: o.label, sub: o.sub, value: String(i) })),
+      },
+      {
+        heading: CI3.heading, sub: CI3.sub,
+        options: CI3.options.map(o => ({ label: o.label, sub: o.sub, value: o.value })),
+      },
+    ]
+    const ciMeta = ciQuestions[ciIdx]
+    const ciProgress = ((ciIdx + 1) / 3) * 100
+    const prevProtoName = prevAssessment ? PROTOCOLS[prevAssessment.protocol].name : ''
+
+    return (
+      <section id="skin-scan" className={sectionClass}>
+        <div className="container mx-auto px-4 max-w-2xl">
+
+          {/* Progress */}
+          <div className="mb-12">
+            <div className="flex justify-between items-center mb-3">
+              <span className="text-[10px] font-black uppercase tracking-[0.3em]" style={{ color: 'rgba(253,250,245,0.35)' }}>
+                Check-in {ciIdx + 1} of 3
+              </span>
+              <span className="text-[10px] font-black uppercase tracking-[0.3em]" style={{ color: 'var(--iv-gold)' }}>
+                {prevProtoName}
+              </span>
+            </div>
+            <div className="h-[2px] rounded-full overflow-hidden" style={{ background: 'rgba(145,56,50,0.12)' }}>
+              <div className="h-full rounded-full transition-all duration-500" style={{ width: `${ciProgress}%`, background: 'var(--iv-gold)' }} />
+            </div>
+          </div>
+
+          {/* Question */}
+          <div className="mb-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-iv-white mb-3 leading-snug"
+              style={{ fontFamily: 'var(--iv-font-serif)' }}>
+              {ciMeta.heading}
+            </h2>
+            <p className="text-iv-cream/65 text-sm font-light">{ciMeta.sub}</p>
+          </div>
+
+          {/* Options */}
+          <div className="flex flex-col gap-3 mb-10">
+            {ciMeta.options.map(opt => {
+              const sel = ciIsSelected(opt.value)
+              return (
+                <button
+                  key={opt.value}
+                  onClick={() => ciSelectOption(opt.value)}
+                  className="text-left rounded-2xl p-5 transition-all duration-200 cursor-pointer w-full"
+                  style={{
+                    background: sel ? 'rgba(145,56,50,0.12)' : 'var(--iv-deep-green)',
+                    border: sel ? '1.5px solid var(--iv-gold)' : '1px solid rgba(145,56,50,0.14)',
+                  }}
+                >
+                  <div className="flex items-start gap-3">
+                    <div className="flex-shrink-0 mt-0.5 w-4 h-4 rounded-full border flex items-center justify-center transition-all"
+                      style={{
+                        borderColor: sel ? 'var(--iv-gold)' : 'rgba(145,56,50,0.28)',
+                        background:  sel ? 'var(--iv-gold)' : 'transparent',
+                      }}>
+                      {sel && <div className="w-1.5 h-1.5 rounded-full bg-iv-black" />}
+                    </div>
+                    <div>
+                      <div className="text-sm font-bold text-iv-white leading-snug">{opt.label}</div>
+                      {opt.sub && <div className="text-[11px] text-iv-cream/65 mt-0.5 font-light">{opt.sub}</div>}
+                    </div>
+                  </div>
+                </button>
+              )
+            })}
+          </div>
+
+          {/* Navigation */}
+          <div className="flex items-center justify-between">
+            {ciIdx > 0 ? (
+              <button
+                onClick={() => setCiIdx(i => i - 1)}
+                className="text-[11px] uppercase tracking-widest font-black transition-colors"
+                style={{ color: 'rgba(253,250,245,0.28)' }}
+              >
+                ← Back
+              </button>
+            ) : <div />}
+            <button
+              onClick={advanceCheckIn}
+              disabled={!ciCanAdvance()}
+              className="btn-luxury"
+              style={{
+                padding: '14px 40px',
+                opacity: ciCanAdvance() ? 1 : 0.32,
+                cursor: ciCanAdvance() ? 'pointer' : 'not-allowed',
+                display: 'inline-flex', alignItems: 'center', gap: 8,
+              }}
+            >
+              {ciIdx < 2 ? 'Continue' : 'Update My Protocol'} <ChevronRight size={14} />
+            </button>
+          </div>
+
+        </div>
+      </section>
+    )
+  }
+
+  // ─── DISCOVERY / EVOLUTION QUIZ (8 or 6 questions) ────────────────────────
+  const qRealIdx = activeQuestions[qIdx]
+  const meta    = questionMeta(qRealIdx)
+  const options = allOptions(qRealIdx)
   const progress = ((qIdx + 1) / TOTAL) * 100
   const useGrid = !meta.multi && options.length <= 3
 
@@ -901,7 +1349,7 @@ export function SkinConsultation() {
         </div>
 
         {/* Lifestyle skip hint */}
-        {qIdx === 6 && (
+        {qRealIdx === 6 && (
           <p className="text-center text-[10px] text-iv-cream/65 mt-5 font-light">
             This question is optional — tap Continue to skip.
           </p>
