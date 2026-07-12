@@ -76,12 +76,12 @@ export default function ReturnsPage() {
       {/* Hero */}
       <section
         className="border-b pt-32 pb-20 relative overflow-hidden"
-        style={{ background: 'var(--iv-deep-green)', borderColor: 'rgba(145,56,50,0.12)' }}
+        style={{ background: 'var(--iv-deep-green)', borderColor: 'rgba(155, 71, 34,0.12)' }}
       >
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           <div
             className="inline-block rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-8"
-            style={{ color: 'var(--iv-gold)', border: '1px solid rgba(145,56,50,0.20)', background: 'rgba(145,56,50,0.05)' }}
+            style={{ color: 'var(--iv-gold)', border: '1px solid rgba(155, 71, 34,0.20)', background: 'rgba(155, 71, 34,0.05)' }}
           >
             Satisfaction
           </div>
@@ -102,7 +102,7 @@ export default function ReturnsPage() {
           <div className="space-y-8">
             <div
               className="rounded-2xl p-8"
-              style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(145,56,50,0.14)' }}
+              style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(155, 71, 34,0.14)' }}
             >
               <p className="text-[10px] font-black uppercase tracking-widest mb-4" style={{ color: 'var(--iv-gold)' }}>30-Day Guarantee</p>
               <p className="text-iv-cream/60 leading-relaxed font-light text-sm">
@@ -124,7 +124,7 @@ export default function ReturnsPage() {
               ))}
             </div>
 
-            <p className="text-xs text-iv-cream/65 font-light pt-4 border-t" style={{ borderColor: 'rgba(145,56,50,0.10)' }}>
+            <p className="text-xs text-iv-cream/65 font-light pt-4 border-t" style={{ borderColor: 'rgba(155, 71, 34,0.10)' }}>
               Clinical A-Series (B2B) products are subject to separate terms specified in your professional portal agreement.
             </p>
           </div>
@@ -132,10 +132,10 @@ export default function ReturnsPage() {
           {/* Form */}
           <div
             className="rounded-2xl p-8 self-start"
-            style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(145,56,50,0.14)' }}
+            style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(155, 71, 34,0.14)' }}
           >
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ background: 'rgba(145,56,50,0.12)' }}>
+              <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ background: 'rgba(155, 71, 34,0.12)' }}>
                 <RotateCcw size={16} style={{ color: 'var(--iv-gold)' }} />
               </div>
               <p className="text-sm font-semibold text-iv-white">Initiate Return</p>
@@ -153,7 +153,7 @@ export default function ReturnsPage() {
                   value={form.orderNumber}
                   onChange={e => setForm(f => ({ ...f, orderNumber: e.target.value }))}
                   className="w-full rounded-xl px-4 py-3 text-sm text-iv-white placeholder-iv-cream/20 outline-none"
-                  style={{ background: 'rgba(145,56,50,0.07)', border: '1px solid rgba(145,56,50,0.18)' }}
+                  style={{ background: 'rgba(155, 71, 34,0.07)', border: '1px solid rgba(155, 71, 34,0.18)' }}
                 />
               </div>
 
@@ -166,7 +166,7 @@ export default function ReturnsPage() {
                   value={form.reason}
                   onChange={e => setForm(f => ({ ...f, reason: e.target.value }))}
                   className="w-full rounded-xl px-4 py-3 text-sm text-iv-white outline-none"
-                  style={{ background: 'rgba(145,56,50,0.07)', border: '1px solid rgba(145,56,50,0.18)' }}
+                  style={{ background: 'rgba(155, 71, 34,0.07)', border: '1px solid rgba(155, 71, 34,0.18)' }}
                 >
                   <option value="">Select a reason…</option>
                   {REASONS.map(r => <option key={r} value={r}>{r}</option>)}
@@ -183,12 +183,12 @@ export default function ReturnsPage() {
                   value={form.details}
                   onChange={e => setForm(f => ({ ...f, details: e.target.value }))}
                   className="w-full rounded-xl px-4 py-3 text-sm text-iv-white placeholder-iv-cream/20 outline-none resize-none"
-                  style={{ background: 'rgba(145,56,50,0.07)', border: '1px solid rgba(145,56,50,0.18)' }}
+                  style={{ background: 'rgba(155, 71, 34,0.07)', border: '1px solid rgba(155, 71, 34,0.18)' }}
                 />
               </div>
 
               {error && (
-                <div className="px-4 py-3 rounded-xl text-sm text-red-300" style={{ background: 'rgba(145,56,50,0.15)', border: '1px solid rgba(145,56,50,0.25)' }}>
+                <div className="px-4 py-3 rounded-xl text-sm text-red-300" style={{ background: 'rgba(155, 71, 34,0.15)', border: '1px solid rgba(155, 71, 34,0.25)' }}>
                   {error}
                 </div>
               )}

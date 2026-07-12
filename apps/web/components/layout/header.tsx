@@ -69,7 +69,7 @@ export function Header() {
       <header style={{
         position: 'sticky', top: 0, zIndex: 50, width: '100%',
         backgroundColor: 'rgba(253,250,245,0.97)',
-        borderBottom: '1px solid rgba(145,56,50,0.12)',
+        borderBottom: '1px solid rgba(155, 71, 34,0.12)',
         backdropFilter: 'blur(24px)',
         WebkitBackdropFilter: 'blur(24px)',
       }}>
@@ -82,7 +82,7 @@ export function Header() {
                 fontFamily: 'var(--iv-font-serif)', fontSize: '1.15rem', fontWeight: 600,
                 color: 'var(--iv-charcoal)', letterSpacing: '0.06em',
               }}>
-                ISOLA <em style={{ color: 'var(--iv-ochre)', fontStyle: 'italic' }}>VITALE</em>
+                LIRI <em style={{ color: 'var(--iv-ochre)', fontStyle: 'italic' }}>ROMA</em>
               </span>
             </Link>
 
@@ -110,15 +110,15 @@ export function Header() {
                     position: 'absolute', top: 'calc(100% + 8px)', left: 0,
                     minWidth: 240, zIndex: 100,
                     background: '#FDFAF5',
-                    border: '1px solid rgba(145,56,50,0.14)',
+                    border: '1px solid rgba(155, 71, 34,0.14)',
                     borderRadius: 10,
                     boxShadow: '0 16px 48px rgba(60,30,20,0.12)',
                     overflow: 'hidden',
                   }}>
                     {TIERS.map(tier => (
                       <Link key={tier.href} href={tier.href} onClick={() => setTierOpen(false)}
-                        style={{ display: 'block', padding: '11px 18px', textDecoration: 'none', borderBottom: '1px solid rgba(145,56,50,0.07)' }}
-                        onMouseEnter={e => (e.currentTarget.style.background = 'rgba(145,56,50,0.04)')}
+                        style={{ display: 'block', padding: '11px 18px', textDecoration: 'none', borderBottom: '1px solid rgba(155, 71, 34,0.07)' }}
+                        onMouseEnter={e => (e.currentTarget.style.background = 'rgba(155, 71, 34,0.04)')}
                         onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
                       >
                         <span style={{ display: 'block', fontSize: '0.78rem', fontWeight: 700, color: 'var(--iv-charcoal)', letterSpacing: '0.06em' }}>{tier.name}</span>
@@ -153,21 +153,21 @@ export function Header() {
                   display: 'none', alignItems: 'center',
                   fontSize: '0.62rem', fontWeight: 700, letterSpacing: '0.14em',
                   textTransform: 'uppercase', color: 'var(--iv-ochre)',
-                  background: 'rgba(145,56,50,0.07)',
-                  border: '1px solid rgba(145,56,50,0.22)',
+                  background: 'rgba(155, 71, 34,0.07)',
+                  border: '1px solid rgba(155, 71, 34,0.22)',
                   borderRadius: 100, padding: '4px 12px',
                   textDecoration: 'none', marginRight: 8,
                   transition: 'all 0.2s',
                 }}
                 onMouseEnter={e => { e.currentTarget.style.background = 'var(--iv-ochre)'; e.currentTarget.style.color = '#fff'; }}
-                onMouseLeave={e => { e.currentTarget.style.background = 'rgba(145,56,50,0.07)'; e.currentTarget.style.color = 'var(--iv-ochre)'; }}
+                onMouseLeave={e => { e.currentTarget.style.background = 'rgba(155, 71, 34,0.07)'; e.currentTarget.style.color = 'var(--iv-ochre)'; }}
               >
                 Professional
               </Link>
 
               {/* Wishlist */}
               <Link href="/wishlist" style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', width: 40, height: 40, borderRadius: 8, color: 'var(--iv-charcoal)', textDecoration: 'none' }}
-                onMouseEnter={e => (e.currentTarget.style.background = 'rgba(145,56,50,0.06)')}
+                onMouseEnter={e => (e.currentTarget.style.background = 'rgba(155, 71, 34,0.06)')}
                 onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
               >
                 <Heart size={18} />
@@ -181,7 +181,7 @@ export function Header() {
               {/* Cart */}
               <button onClick={() => setCartOpen(true)}
                 style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', width: 40, height: 40, borderRadius: 8, background: 'none', border: 'none', cursor: 'pointer', color: 'var(--iv-charcoal)' }}
-                onMouseEnter={e => (e.currentTarget.style.background = 'rgba(145,56,50,0.06)')}
+                onMouseEnter={e => (e.currentTarget.style.background = 'rgba(155, 71, 34,0.06)')}
                 onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
               >
                 <ShoppingCart size={18} />
@@ -196,7 +196,7 @@ export function Header() {
               <Link href={session ? '/account' : '/login'}
                 className="account-icon-link"
                 style={{ display: 'none', alignItems: 'center', justifyContent: 'center', width: 40, height: 40, borderRadius: 8, color: 'var(--iv-charcoal)', textDecoration: 'none' }}
-                onMouseEnter={e => (e.currentTarget.style.background = 'rgba(145,56,50,0.06)')}
+                onMouseEnter={e => (e.currentTarget.style.background = 'rgba(155, 71, 34,0.06)')}
                 onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
               >
                 <User size={18} />
@@ -240,11 +240,11 @@ export function Header() {
           <div style={{
             display: 'flex', alignItems: 'center', justifyContent: 'space-between',
             padding: '0 20px', height: 60, flexShrink: 0,
-            borderBottom: '1px solid rgba(145,56,50,0.10)',
+            borderBottom: '1px solid rgba(155, 71, 34,0.10)',
           }}>
             <Link href="/" style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.1rem', fontWeight: 600, color: 'var(--iv-charcoal)', letterSpacing: '0.06em', textDecoration: 'none' }}
               onClick={() => setMobileOpen(false)}>
-              ISOLA <em style={{ color: 'var(--iv-ochre)' }}>VITALE</em>
+              LIRI <em style={{ color: 'var(--iv-ochre)' }}>ROMA</em>
             </Link>
             <button onClick={() => setMobileOpen(false)}
               style={{ width: 40, height: 40, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'none', border: 'none', cursor: 'pointer', color: 'var(--iv-charcoal)', borderRadius: 8 }}>
@@ -257,7 +257,7 @@ export function Header() {
 
             {/* Greeting for logged-in users */}
             {session && firstName && (
-              <div style={{ padding: '16px 24px 12px', borderBottom: '1px solid rgba(145,56,50,0.08)' }}>
+              <div style={{ padding: '16px 24px 12px', borderBottom: '1px solid rgba(155, 71, 34,0.08)' }}>
                 <p style={{ fontSize: '0.7rem', fontWeight: 900, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--iv-ochre)', marginBottom: 2 }}>
                   {isB2B ? 'Professional Account' : 'Your Account'}
                 </p>
@@ -268,7 +268,7 @@ export function Header() {
             )}
 
             {/* Shop by Tier accordion */}
-            <div style={{ borderBottom: '1px solid rgba(145,56,50,0.08)' }}>
+            <div style={{ borderBottom: '1px solid rgba(155, 71, 34,0.08)' }}>
               <button
                 onClick={() => setMobileTierOpen(o => !o)}
                 style={{
@@ -282,7 +282,7 @@ export function Header() {
                 <ChevronDown size={16} style={{ transition: 'transform 0.2s', transform: mobileTierOpen ? 'rotate(180deg)' : 'none', color: 'var(--iv-ochre)' }} />
               </button>
               {mobileTierOpen && (
-                <div style={{ padding: '4px 0 12px', background: 'rgba(145,56,50,0.03)' }}>
+                <div style={{ padding: '4px 0 12px', background: 'rgba(155, 71, 34,0.03)' }}>
                   {TIERS.map(tier => (
                     <Link key={tier.href} href={tier.href} onClick={() => setMobileOpen(false)}
                       style={{ display: 'block', padding: '12px 32px', textDecoration: 'none' }}>
@@ -302,11 +302,11 @@ export function Header() {
                   padding: '18px 24px', textDecoration: 'none',
                   fontSize: '0.85rem', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase',
                   color: 'var(--iv-charcoal)',
-                  borderBottom: '1px solid rgba(145,56,50,0.06)',
+                  borderBottom: '1px solid rgba(155, 71, 34,0.06)',
                 }}
               >
                 {item.name}
-                <ArrowRight size={14} style={{ color: 'rgba(145,56,50,0.3)' }} />
+                <ArrowRight size={14} style={{ color: 'rgba(155, 71, 34,0.3)' }} />
               </Link>
             ))}
 
@@ -316,7 +316,7 @@ export function Header() {
                 style={{
                   display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
                   padding: '14px 20px', borderRadius: 10, textDecoration: 'none',
-                  background: 'rgba(145,56,50,0.06)', border: '1px solid rgba(145,56,50,0.18)',
+                  background: 'rgba(155, 71, 34,0.06)', border: '1px solid rgba(155, 71, 34,0.18)',
                   fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase',
                   color: 'var(--iv-ochre)',
                 }}
@@ -341,7 +341,7 @@ export function Header() {
                   </Link>
                   <button onClick={() => { signOut({ callbackUrl: '/' }); setMobileOpen(false) }}
                     style={{
-                      padding: '13px 16px', borderRadius: 10, border: '1px solid rgba(145,56,50,0.18)',
+                      padding: '13px 16px', borderRadius: 10, border: '1px solid rgba(155, 71, 34,0.18)',
                       background: 'transparent', cursor: 'pointer',
                       fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase',
                       color: 'var(--iv-text-muted)',
@@ -366,8 +366,8 @@ export function Header() {
           </div>
 
           {/* Bottom brand note */}
-          <div style={{ padding: '16px 24px', borderTop: '1px solid rgba(145,56,50,0.08)', textAlign: 'center' }}>
-            <p style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(145,56,50,0.4)' }}>
+          <div style={{ padding: '16px 24px', borderTop: '1px solid rgba(155, 71, 34,0.08)', textAlign: 'center' }}>
+            <p style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(155, 71, 34,0.4)' }}>
               Formulated at Isola del Liri · Italy
             </p>
           </div>

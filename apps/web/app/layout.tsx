@@ -12,19 +12,20 @@ import { ScrollRevealProvider } from '@/components/layout/scroll-reveal-provider
 import { ScrollProgressBar } from '@/components/layout/scroll-progress-bar'
 import { SmoothScrollProvider } from '@/components/layout/smooth-scroll-provider'
 import Script from 'next/script'
+import { OrganizationSchema, WebSiteSchema } from '@/components/seo/structured-data'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: {
-    default: 'Isola Vitale — The Luxury House of Adaptive Skin Science',
-    template: '%s | Isola Vitale'
+    default: 'LIRI ROMA — The House of Liri',
+    template: '%s | LIRI ROMA'
   },
-  description: 'Isola Vitale is a luxury Italian skincare house. Formulated at Isola del Liri, Italy — the science of skin vitality, calibrated to your biology, not your age.',
-  keywords: ['luxury skincare', 'adaptive skin science', 'Isola Vitale', 'skin vitality', 'Italian skincare', 'Skin Intelligence', 'clinical skincare', 'La Bella Figura'],
-  authors: [{ name: 'Isola Vitale' }],
-  creator: 'Isola Vitale',
-  publisher: 'Isola Vitale',
+  description: 'Your skin is a story worth honoring. An Italian skincare house formulated at Isola del Liri, Lazio — matched to your biology, and proven on your own skin within forty-eight hours.',
+  keywords: ['LIRI ROMA', 'Skin Intelligence', 'luxury skincare', 'Italian skincare', 'Isola del Liri', 'skin protocol', 'personalised skincare', 'House of Liri'],
+  authors: [{ name: 'LIRI ROMA' }],
+  creator: 'LIRI ROMA',
+  publisher: 'LIRI ROMA',
   formatDetection: {
     email: false,
     address: false,
@@ -32,27 +33,49 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:5000'),
   openGraph: {
-    title: 'Isola Vitale — Adaptive Skin Science™',
-    description: 'Isola Vitale — adaptive skin science formulated at Isola del Liri, Italy.',
+    title: 'LIRI ROMA — The House of Liri',
+    description: 'Your skin is a story worth honoring. Matched to your biology, proven on your own skin within forty-eight hours. Formulated at Isola del Liri, Lazio, Italy.',
     url: '/',
-    siteName: 'Isola Vitale',
+    siteName: 'LIRI ROMA',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Isola Vitale - Luxury Skincare',
+        alt: 'LIRI ROMA — Your skin is a story worth honoring',
+        type: 'image/jpeg',
+      },
+      {
+        // Square — Pinterest, Instagram, WhatsApp previews
+        url: '/og-square.jpg',
+        width: 1080,
+        height: 1080,
+        alt: 'LIRI ROMA — The House of Liri',
+        type: 'image/jpeg',
       },
     ],
     locale: 'en_US',
     type: 'website',
+    countryName: 'Italy',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Isola Vitale — Adaptive Skin Science™',
-    description: 'Isola Vitale — adaptive skin science formulated at Isola del Liri, Italy.',
+    title: 'LIRI ROMA — The House of Liri',
+    description: 'Your skin is a story worth honoring. Matched to your biology, proven within forty-eight hours.',
     images: ['/og-image.jpg'],
-    creator: '@isolavitale',
+    site: '@liriroma',
+    creator: '@liriroma',
+  },
+  other: {
+    // Pinterest Rich Pins
+    'pinterest-rich-pin': 'true',
+    'og:see_also': 'https://www.instagram.com/liriroma',
+    // WhatsApp / iMessage lean on OG; Telegram reads these
+    'telegram:channel': '@liriroma',
+    // Apple / iMessage rich link
+    'apple-mobile-web-app-title': 'LIRI ROMA',
+    // LinkedIn reads OG but respects author
+    'article:publisher': 'https://www.linkedin.com/company/liriroma',
   },
   robots: {
     index: true,
@@ -85,6 +108,8 @@ export default function RootLayout({
         <meta name="referrer" content="origin-when-cross-origin" />
       </head>
       <body className={inter.className}>
+        <OrganizationSchema />
+        <WebSiteSchema />
         <Script
           id="gtm-script"
           strategy="afterInteractive"

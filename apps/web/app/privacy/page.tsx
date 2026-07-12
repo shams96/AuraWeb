@@ -14,7 +14,7 @@ export default function PrivacyPage() {
         <div className="prose prose-invert max-w-none space-y-12">
           <div className="space-y-6">
             <h2 className="text-2xl font-bold text-iv-white uppercase tracking-widest italic">Data Acquisition</h2>
-            <p className="text-iv-cream/60 leading-relaxed font-light"> At Isola Vitale (A 1HubSolutions LLC Company), we collect information to personalize your metabolic skincare journey. This includes clinical assessment data, acquisition history, and digital interaction markers. </p>
+            <p className="text-iv-cream/60 leading-relaxed font-light"> At LIRI ROMA (A 1HubSolutions LLC Company), we collect information to personalize your metabolic skincare journey. This includes clinical assessment data, acquisition history, and digital interaction markers. </p>
           </div>
 
           <div className="space-y-6">

@@ -3,17 +3,17 @@ import { CheckCircle2, FlaskConical, Users, Calendar, TrendingUp } from 'lucide-
 
 export const metadata: Metadata = {
   title: 'Clinical Results',
-  description: 'Peer-reviewed efficacy data behind every Isola Vitale formulation — RCT outcomes, independent lab results, and 12-week photographic evidence.',
+  description: 'Peer-reviewed efficacy data behind every LIRI ROMA formulation — RCT outcomes, independent lab results, and 12-week photographic evidence.',
   openGraph: {
-    title: 'Clinical Results | Isola Vitale',
+    title: 'Clinical Results | LIRI ROMA',
     description: 'The numbers behind the science: 70% barrier improvement, 37.6% wrinkle reduction, 30% inflammation reduction — all third-party verified.',
   },
 }
 
-const TRIALS = [
+const PUBLISHED_SCIENCE = [
   {
     id: 'Zonari et al. 2025',
-    title: 'OS-01 Senomorphic Peptide — Skin Barrier Function & Inflammation',
+    title: 'Cellular Renewal Complex — Skin Barrier Function & Inflammation',
     design: 'Randomised, double-blind clinical trial',
     subjects: 60,
     duration: '12 weeks',
@@ -41,13 +41,13 @@ const TRIALS = [
   },
   {
     id: 'Ridha et al. 2024',
-    title: 'GLP-1 Protective Complex — Facial Volume & Barrier Integrity',
+    title: 'metabolic change Protective Complex — Facial Volume & Barrier Integrity',
     design: 'Clinical observation & peer-reviewed analysis',
     subjects: null,
     duration: 'Systematic review & clinical observations',
     lab: 'Aesthetic Surgery Journal · DOI 10.1093/asj/sjae132',
     outcomes: [
-      { metric: 'Facial fat loss in GLP-1 agonist users', result: '11% superficial volume reduction', vs: 'Non-users' },
+      { metric: 'Facial fat loss in rapid metabolic change users', result: '11% superficial volume reduction', vs: 'Non-users' },
       { metric: 'Deep facial tissue reduction', result: '7% documented decrease', vs: 'Baseline' },
       { metric: 'Barrier function compromise', result: 'Documented mechanism', vs: 'Published evidence' },
     ],
@@ -90,7 +90,7 @@ export default function ClinicalResultsPage() {
             The <span className="text-iv-gold italic iv-serif">Science</span>
           </h1>
           <p className="text-xl text-iv-cream/70 leading-relaxed font-light max-w-2xl mx-auto">
-            The science behind Isola Vitale was not created for us. It was created by independent researchers and dermatological institutions. We selected every active because this evidence already existed — then formulated at the exact concentrations that delivered these results.
+            The science behind LIRI ROMA was not created for us. It was created by independent researchers and dermatological institutions. We selected every active because this evidence already existed — then formulated at the exact concentrations that delivered these results.
           </p>
         </div>
       </section>
@@ -115,12 +115,17 @@ export default function ClinicalResultsPage() {
       <section className="py-32 bg-iv-black">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center mb-20">
-            <h2 className="text-xs font-black text-iv-gold uppercase tracking-[0.4em] mb-4">Randomised Controlled Trials</h2>
-            <h3 className="iv-type-h2 font-semibold text-iv-white uppercase tracking-tight">Independent Efficacy Data</h3>
+            <h2 className="text-xs font-black text-iv-gold uppercase tracking-[0.4em] mb-4">The Published Science</h2>
+            <p className="text-sm text-iv-text-muted max-w-3xl mt-4 leading-relaxed">
+              This is the peer-reviewed research the formulations are built upon — published by independent
+              investigators, cited here in full. It is the science, openly shown. LIRI ROMA&rsquo;s own
+              performance evidence is gathered from the people who use the protocols, and is reported separately.
+            </p>
+            <h3 className="iv-type-h2 font-semibold text-iv-white uppercase tracking-tight">Peer-Reviewed Research Behind the Formulations</h3>
           </div>
 
           <div className="space-y-12">
-            {TRIALS.map((trial) => (
+            {PUBLISHED_SCIENCE.map((trial) => (
               <div key={trial.id} className="bg-iv-deep-green/5 border border-iv-gold/10 rounded-3xl p-10 hover:border-iv-gold/20 transition-all">
                 {/* Trial Header */}
                 <div className="flex flex-wrap items-start justify-between gap-6 mb-10 pb-8 border-b border-iv-white/5">
@@ -152,8 +157,8 @@ export default function ClinicalResultsPage() {
                     <thead>
                       <tr className="bg-iv-black/60 border-b border-iv-white/10">
                         <th className="py-4 px-6 text-left text-xs font-black text-iv-white uppercase tracking-widest">Outcome Metric</th>
-                        <th className="py-4 px-6 text-left text-xs font-black text-iv-gold uppercase tracking-widest">Isola Vitale Result</th>
-                        <th className="py-4 px-6 text-left text-xs font-black text-iv-cream/65 uppercase tracking-widest">Control Arm</th>
+                        <th className="py-4 px-6 text-left text-xs font-black text-iv-gold uppercase tracking-widest">Published Result</th>
+                        <th className="py-4 px-6 text-left text-xs font-black text-iv-cream/65 uppercase tracking-widest">Comparison</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-iv-white/5">
@@ -182,7 +187,7 @@ export default function ClinicalResultsPage() {
               <div>
                 <h3 className="text-sm font-black text-iv-white uppercase tracking-widest mb-4">Methodology Statement</h3>
                 <p className="text-sm text-iv-cream/60 leading-relaxed font-light mb-4">
-                  The studies referenced on this page were conducted by independent dermatological research institutions — including Eurofins Dermatest GmbH (Germany) and Dermscan Group (France & Italy) — prior to and independently of any Isola Vitale formulation decision. Isola Vitale did not sponsor or influence these studies. We selected these actives because the independent evidence existed. We formulated at the concentrations the evidence used. Full study references and methodology documentation are available to healthcare professionals and researchers on request.
+                  The studies referenced on this page were conducted by independent dermatological research institutions — including Eurofins Dermatest GmbH (Germany) and Dermscan Group (France & Italy) — prior to and independently of any LIRI ROMA formulation decision. LIRI ROMA did not sponsor or influence these studies. We selected these actives because the independent evidence existed. We formulated at the concentrations the evidence used. Full study references and methodology documentation are available to healthcare professionals and researchers on request.
                 </p>
                 <p className="text-sm text-iv-cream/60 leading-relaxed font-light">
                   Consumer self-assessment data was collected via post-purchase survey (60-day follow-up) of verified purchasers. Individual results vary. These studies support — but do not guarantee — the same outcomes for every individual.

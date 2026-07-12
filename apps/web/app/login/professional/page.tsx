@@ -8,7 +8,7 @@ import { Eye, EyeOff, Loader2, FlaskConical } from 'lucide-react'
 
 const INPUT: React.CSSProperties = {
   display: 'block', width: '100%', padding: '12px 16px',
-  background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(145,56,50,0.22)',
+  background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(155, 71, 34,0.22)',
   borderRadius: 8, fontSize: '0.875rem', color: '#FDFAF5',
   outline: 'none', transition: 'border-color 0.2s', boxSizing: 'border-box',
 }
@@ -44,15 +44,15 @@ function ProfessionalLoginForm() {
       {/* Left authority panel */}
       <div
         className="hidden lg:flex lg:w-[55%] flex-col justify-between relative overflow-hidden"
-        style={{ background: 'linear-gradient(160deg, #0F2419 0%, #1F5129 60%, #0D2B20 100%)' }}
+        style={{ background: 'linear-gradient(160deg, #004B37 0%, #004B37 60%, #0D2B20 100%)' }}
       >
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 30% 70%, rgba(145,56,50,0.12) 0%, transparent 55%)' }} />
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 30% 70%, rgba(155, 71, 34,0.12) 0%, transparent 55%)' }} />
 
         {/* Top brand */}
         <div className="relative z-10 p-12">
           <Link href="/" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}>
             <span style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.1rem', fontWeight: 700, color: '#FDFAF5', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-              Isola Vitale
+              LIRI ROMA
             </span>
             <span style={{ width: 1, height: 16, background: 'rgba(250,214,201,0.3)', display: 'inline-block' }} />
             <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'rgba(250,214,201,0.6)', letterSpacing: '0.22em', textTransform: 'uppercase' }}>
@@ -63,9 +63,9 @@ function ProfessionalLoginForm() {
 
         {/* Centre content */}
         <div className="relative z-10 px-12 py-16 space-y-10">
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, border: '1px solid rgba(145,56,50,0.30)', borderRadius: 999, padding: '6px 16px', background: 'rgba(145,56,50,0.08)' }}>
-            <FlaskConical size={11} style={{ color: '#913832' }} />
-            <span style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.3em', textTransform: 'uppercase', color: '#913832' }}>Clinical Portal</span>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, border: '1px solid rgba(155, 71, 34,0.30)', borderRadius: 999, padding: '6px 16px', background: 'rgba(155, 71, 34,0.08)' }}>
+            <FlaskConical size={11} style={{ color: '#9B4722' }} />
+            <span style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.3em', textTransform: 'uppercase', color: '#9B4722' }}>Clinical Portal</span>
           </div>
 
           <blockquote style={{ fontFamily: 'var(--iv-font-serif)', fontSize: 'clamp(1.5rem,3vw,2.2rem)', fontStyle: 'italic', color: '#FDFAF5', lineHeight: 1.4, maxWidth: 400, margin: 0 }}>
@@ -106,19 +106,19 @@ function ProfessionalLoginForm() {
           {/* Mobile brand */}
           <div className="lg:hidden mb-10 text-center">
             <Link href="/" style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.3rem', fontWeight: 700, color: '#FDFAF5', letterSpacing: '0.12em', textTransform: 'uppercase', textDecoration: 'none' }}>
-              Isola Vitale
+              LIRI ROMA
             </Link>
           </div>
 
           <div style={{ marginBottom: 36 }}>
-            <p style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.35em', textTransform: 'uppercase', color: '#913832', marginBottom: 8 }}>Professional Access</p>
+            <p style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.35em', textTransform: 'uppercase', color: '#9B4722', marginBottom: 8 }}>Professional Access</p>
             <h1 style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.8rem', fontWeight: 600, color: '#FDFAF5', fontStyle: 'italic', margin: 0 }}>
               Sign in to your practice
             </h1>
           </div>
 
           {error && (
-            <div style={{ marginBottom: 20, padding: '12px 16px', background: 'rgba(145,56,50,0.12)', border: '1px solid rgba(145,56,50,0.30)', borderRadius: 10 }}>
+            <div style={{ marginBottom: 20, padding: '12px 16px', background: 'rgba(155, 71, 34,0.12)', border: '1px solid rgba(155, 71, 34,0.30)', borderRadius: 10 }}>
               <p style={{ color: '#FAD6C9', fontSize: '0.8rem', margin: 0 }}>{error}</p>
             </div>
           )}
@@ -134,8 +134,8 @@ function ProfessionalLoginForm() {
                 placeholder="dr.name@practice.com"
                 style={INPUT}
                 autoComplete="email"
-                onFocus={e => (e.currentTarget.style.borderColor = 'rgba(145,56,50,0.6)')}
-                onBlur={e => (e.currentTarget.style.borderColor = 'rgba(145,56,50,0.22)')}
+                onFocus={e => (e.currentTarget.style.borderColor = 'rgba(155, 71, 34,0.6)')}
+                onBlur={e => (e.currentTarget.style.borderColor = 'rgba(155, 71, 34,0.22)')}
               />
             </div>
             <div>
@@ -150,8 +150,8 @@ function ProfessionalLoginForm() {
                   placeholder="••••••••"
                   style={{ ...INPUT, paddingRight: 44 }}
                   autoComplete="current-password"
-                  onFocus={e => (e.currentTarget.style.borderColor = 'rgba(145,56,50,0.6)')}
-                  onBlur={e => (e.currentTarget.style.borderColor = 'rgba(145,56,50,0.22)')}
+                  onFocus={e => (e.currentTarget.style.borderColor = 'rgba(155, 71, 34,0.6)')}
+                  onBlur={e => (e.currentTarget.style.borderColor = 'rgba(155, 71, 34,0.22)')}
                 />
                 <button type="button" onClick={() => setShowPassword(v => !v)} style={{ position: 'absolute', right: 12, top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(253,250,245,0.35)', padding: 0 }}>
                   {showPassword ? <EyeOff size={15} /> : <Eye size={15} />}
@@ -160,7 +160,7 @@ function ProfessionalLoginForm() {
             </div>
 
             <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-              <Link href="/forgot-password" style={{ fontSize: '0.75rem', color: 'rgba(145,56,50,0.8)', textDecoration: 'none', fontWeight: 600 }}>
+              <Link href="/forgot-password" style={{ fontSize: '0.75rem', color: 'rgba(155, 71, 34,0.8)', textDecoration: 'none', fontWeight: 600 }}>
                 Forgot password?
               </Link>
             </div>
@@ -169,7 +169,7 @@ function ProfessionalLoginForm() {
               type="submit" disabled={isPending}
               style={{
                 width: '100%', padding: '14px', marginTop: 4,
-                background: isPending ? 'rgba(145,56,50,0.5)' : '#913832',
+                background: isPending ? 'rgba(155, 71, 34,0.5)' : '#9B4722',
                 color: '#FDFAF5', border: 'none', borderRadius: 10,
                 fontSize: '0.7rem', fontWeight: 900, letterSpacing: '0.22em',
                 textTransform: 'uppercase', cursor: isPending ? 'not-allowed' : 'pointer',
@@ -184,7 +184,7 @@ function ProfessionalLoginForm() {
           <div style={{ marginTop: 32, paddingTop: 24, borderTop: '1px solid rgba(255,255,255,0.06)', display: 'flex', flexDirection: 'column', gap: 14 }}>
             <p style={{ fontSize: '0.7rem', color: 'rgba(253,250,245,0.35)', textAlign: 'center', margin: 0 }}>
               Not a registered practitioner?{' '}
-              <Link href="/register/professional" style={{ color: '#913832', textDecoration: 'none', fontWeight: 700 }}>
+              <Link href="/register/professional" style={{ color: '#9B4722', textDecoration: 'none', fontWeight: 700 }}>
                 Apply for access
               </Link>
             </p>

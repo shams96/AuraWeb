@@ -5,7 +5,7 @@ import {
   saveAssessment,
   getAssessmentHistory,
   getLatestAssessment,
-  type BaumannProfile,
+  type SkinIntelligenceProfile,
   type Protocol,
 } from '@/lib/assessment-store'
 
@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
     const body = await req.json()
     const { answers, profile, protocol, concerns } = body as {
       answers: Record<string, unknown>
-      profile: BaumannProfile
+      profile: SkinIntelligenceProfile
       protocol: Protocol
       concerns: string[]
     }

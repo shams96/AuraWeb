@@ -169,7 +169,7 @@ export default function ContactPage() {
                   <div className="p-8 bg-iv-black border border-iv-white/5 rounded-2xl group hover:border-iv-gold/20 transition-all">
                     <Mail className="w-6 h-6 text-iv-gold mb-6 opacity-40 group-hover:opacity-100 transition-opacity" />
                     <p className="text-[10px] font-black text-iv-gold uppercase tracking-widest mb-2">Digital Correspondence</p>
-                    <p className="text-sm text-iv-white font-bold tracking-tight">concierge@isolavitale.com</p>
+                    <p className="text-sm text-iv-white font-bold tracking-tight">concierge@liriroma.com</p>
                   </div>
                   <div className="p-8 bg-iv-black border border-iv-white/5 rounded-2xl group hover:border-iv-gold/20 transition-all">
                     <Phone className="w-6 h-6 text-iv-gold mb-6 opacity-40 group-hover:opacity-100 transition-opacity" />

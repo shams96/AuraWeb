@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 
-const GOLD = 'rgba(145,56,50,'
+const GOLD = 'rgba(155, 71, 34,'
 
 export function BentoFeatures() {
   return (
@@ -30,7 +30,7 @@ export function BentoFeatures() {
           <div
             className="iv-scroll-card md:col-span-12 rounded-3xl p-8 md:p-10 flex flex-col justify-between relative overflow-hidden"
             style={{
-              background: `linear-gradient(135deg, var(--iv-deep-green) 0%, rgba(31,81,41,0.40) 100%)`,
+              background: `linear-gradient(135deg, var(--iv-deep-green) 0%, rgba(0, 75, 55,0.40) 100%)`,
               border: `1px solid ${GOLD}0.16)`,
               minHeight: 260,
             }}
@@ -49,7 +49,7 @@ export function BentoFeatures() {
                 Six research-confirmed actives. Formulated at the concentrations the science used.
               </h3>
               <p className="text-sm text-iv-cream/65 font-light max-w-lg leading-relaxed">
-                Every active in every Isola Vitale formulation was independently validated before inclusion. We do not introduce an ingredient until the evidence exists — then we formulate to it, not around it.
+                Every active in every LIRI ROMA formulation was independently validated before inclusion. We do not introduce an ingredient until the evidence exists — then we formulate to it, not around it.
               </p>
             </div>
 

@@ -18,10 +18,10 @@ const C = {
   charcoal:  '#1A1614',   // primary text
   espresso:  '#3D2B20',   // body text
   muted:     '#7A5C4E',   // muted text
-  gold:      '#913832',   // brand accent / CTA
-  goldLight: '#B04843',   // hover
-  border:    'rgba(145,56,50,0.14)',
-  borderFocus:'rgba(145,56,50,0.5)',
+  gold:      '#9B4722',   // brand accent / CTA
+  goldLight: '#B85834',   // hover
+  border:    'rgba(155, 71, 34,0.14)',
+  borderFocus:'rgba(155, 71, 34,0.5)',
 }
 
 const INPUT: React.CSSProperties = {
@@ -124,7 +124,7 @@ export default function CheckoutPage() {
           <ArrowLeft size={12} /> Back to Collections
         </Link>
         <span style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.1rem', fontWeight: 700, color: C.charcoal, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-          Isola <em style={{ color: C.gold }}>Vitale</em>
+          LIRI <em style={{ color: C.gold }}>ROMA</em>
         </span>
         <div style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: '0.75rem', fontWeight: 700, color: C.muted, letterSpacing: '0.15em', textTransform: 'uppercase' }}>
           <Shield size={11} style={{ color: C.gold }} /> Secure
@@ -153,7 +153,7 @@ export default function CheckoutPage() {
                 <div>
                   <p style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.25em', textTransform: 'uppercase', color: C.gold, margin: '0 0 2px' }}>Ritual Membership Active</p>
                   <p style={{ fontSize: '0.75rem', color: C.muted, margin: 0, fontWeight: 400 }}>
-                    Ships every 30 days · Cancel anytime · You save ${annualSavings.toFixed(0)}/year
+                    Arrives every 45 days · Pause anytime · You save ${annualSavings.toFixed(0)}
                   </p>
                 </div>
               </div>
@@ -250,7 +250,7 @@ export default function CheckoutPage() {
                 fontSize: '0.7rem', fontWeight: 900, letterSpacing: '0.25em',
                 textTransform: 'uppercase', cursor: processing ? 'not-allowed' : 'pointer',
                 display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
-                transition: 'background 0.2s', boxShadow: '0 8px 32px rgba(145,56,50,0.22)',
+                transition: 'background 0.2s', boxShadow: '0 8px 32px rgba(155, 71, 34,0.22)',
               }}
               onMouseEnter={e => { if (!processing) e.currentTarget.style.background = C.goldLight }}
               onMouseLeave={e => { if (!processing) e.currentTarget.style.background = C.gold }}
@@ -300,7 +300,7 @@ export default function CheckoutPage() {
                     <div style={{ flex: 1, minWidth: 0 }}>
                       <p style={{ fontSize: '0.8rem', fontWeight: 600, color: C.charcoal, margin: '0 0 2px', lineHeight: 1.3 }}>{item.name}</p>
                       {item.isSubscription && (
-                        <p style={{ fontSize: '0.75rem', fontWeight: 700, color: C.gold, textTransform: 'uppercase', letterSpacing: '0.1em', margin: '0 0 2px' }}>Monthly ritual</p>
+                        <p style={{ fontSize: '0.75rem', fontWeight: 700, color: C.gold, textTransform: 'uppercase', letterSpacing: '0.1em', margin: '0 0 2px' }}>Your ritual · every 45 days</p>
                       )}
                       <p style={{ fontSize: '0.7rem', color: C.muted, margin: 0 }}>× {item.quantity}</p>
                     </div>
@@ -321,7 +321,7 @@ export default function CheckoutPage() {
               {/* Totals */}
               <div style={{ padding: '16px 24px 24px', borderTop: `1px solid ${C.border}`, display: 'flex', flexDirection: 'column', gap: 10 }}>
                 {savings > 0 && (
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderRadius: 10, padding: '8px 14px', background: 'rgba(145,56,50,0.07)', border: `1px solid ${C.border}` }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderRadius: 10, padding: '8px 14px', background: 'rgba(155, 71, 34,0.07)', border: `1px solid ${C.border}` }}>
                     <span style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.2em', color: C.gold }}>Ritual savings</span>
                     <span style={{ fontSize: '0.85rem', fontWeight: 800, color: C.gold }}>−${savings.toFixed(2)}</span>
                   </div>
@@ -353,7 +353,7 @@ export default function CheckoutPage() {
                     <Award size={13} style={{ color: C.gold }} />
                   </div>
                   <div>
-                    <p style={{ fontSize: '0.75rem', fontWeight: 800, color: C.charcoal, margin: '0 0 3px' }}>Dr. Elena Vitali, MD</p>
+                    <p style={{ fontSize: '0.75rem', fontWeight: 800, color: C.charcoal, margin: '0 0 3px' }}>Formulated at Isola del Liri</p>
                     <p style={{ fontSize: '0.75rem', color: C.muted, fontStyle: 'italic', lineHeight: 1.5, margin: 0 }}>
                       "The most clinically rigorous non-prescription protocol I have reviewed."
                     </p>

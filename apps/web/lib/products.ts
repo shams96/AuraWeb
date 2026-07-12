@@ -41,7 +41,7 @@ export const HARDWARE_GOLD = '#C9A96E'
 
 // ─── Finish colours from PDF ───────────────────────────────────────────────
 export const FINISH = {
-  DEEP_EMERALD:    '#0F2419',
+  DEEP_EMERALD:    '#004B37',
   CLOUD_DANCER:    '#F5F2EC',
   SMOKY_CHARCOAL:  '#2A2A2A',
   PEACH_DUST:      '#FAD6C9',
@@ -62,11 +62,11 @@ export const LABORATORY_SERIES: Product[] = [
     hardware: 'Champagne Gold metal collar',
     decoration: 'Debossed IV monogram',
     image: '/images/products/isola_serum.png',
-    badge: 'OS-01 + GLP-1',
+    badge: 'Cellular Renewal Complex + metabolic change',
     rating: 5.0,
     reviewCount: 210,
     tags: ['Essence', 'Treatment'],
-    description: 'Professional-grade cellular essence combining OS-01 longevity peptide with GLP-1 pathway activation for maximum cellular renewal.',
+    description: 'Professional-grade cellular essence combining Cellular Renewal Complex longevity peptide with metabolic change pathway activation for maximum cellular renewal.',
     isBestSeller: true,
   },
   {
@@ -282,7 +282,7 @@ export const DAILY_PROTOCOL: Product[] = [
   },
 ]
 
-// ─── Chronos Collection — Age-defying / Longevity Heroes, 6 SKUs ──────────
+// ─── Chronos Collection — Longevity Heroes, 6 SKUs ────────────────────────
 export const CHRONOS_COLLECTION: Product[] = [
   {
     id: 'terra-radiance-cream',
@@ -307,7 +307,7 @@ export const CHRONOS_COLLECTION: Product[] = [
   },
   {
     id: 'obsidian-vitale-cream',
-    name: 'Obsidian Vitale Cream',
+    name: 'Obsidian Crème',
     price: 295,
     tier: 't3',
     collection: 'chronos',
@@ -319,11 +319,11 @@ export const CHRONOS_COLLECTION: Product[] = [
     decoration: 'Debossed IV monogram',
     refillable: true,
     image: '/images/products/isola_collection.png',
-    badge: 'Age-Defying',
+    badge: 'Longevity',
     rating: 5.0,
     reviewCount: 3100,
     tags: ['Cream', 'Refillable'],
-    description: 'Smoky Charcoal satin matte opaque glass airless jar for intensive age-defying precision.',
+    description: 'Smoky Charcoal satin matte opaque glass airless jar for intensive precision.',
     isBestSeller: true,
   },
   {
@@ -378,11 +378,11 @@ export const CHRONOS_COLLECTION: Product[] = [
     finish: 'Smoky Charcoal satin matte glass',
     hardware: 'Champagne Gold pump collar',
     image: '/images/products/isola_collection.png',
-    badge: 'OS-01 + DWAT',
+    badge: 'Cellular Renewal Complex + DWAT',
     rating: 4.9,
     reviewCount: 630,
     tags: ['Treatment', 'Age 39–49'],
-    description: 'Metabolically aligned active correction for 39–49. OS-01 longevity peptide with DWAT barrier support.',
+    description: 'Metabolically aligned active correction for 39–49. Cellular Renewal Complex longevity peptide with DWAT barrier support.',
   },
   {
     id: 't4-04',

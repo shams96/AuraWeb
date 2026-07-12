@@ -11,8 +11,8 @@ const C = {
   charcoal:  '#1A1614',
   espresso:  '#3D2B20',
   muted:     '#7A5C4E',
-  gold:      '#913832',
-  border:    'rgba(145,56,50,0.14)',
+  gold:      '#9B4722',
+  border:    'rgba(155, 71, 34,0.14)',
 }
 
 function ResetPasswordForm() {
@@ -96,7 +96,7 @@ function ResetPasswordForm() {
       </div>
 
       {error && (
-        <div style={{ marginBottom: 20, padding: '12px 16px', background: 'rgba(145,56,50,0.07)', border: `1px solid ${C.border}`, borderRadius: 10 }}>
+        <div style={{ marginBottom: 20, padding: '12px 16px', background: 'rgba(155, 71, 34,0.07)', border: `1px solid ${C.border}`, borderRadius: 10 }}>
           <p style={{ color: C.espresso, fontSize: '0.8rem', margin: 0 }}>{error}</p>
         </div>
       )}
@@ -120,7 +120,7 @@ function ResetPasswordForm() {
                 borderRadius: 8, fontSize: '0.875rem', color: C.charcoal,
                 outline: 'none', boxSizing: 'border-box',
               }}
-              onFocus={e => (e.currentTarget.style.borderColor = 'rgba(145,56,50,0.5)')}
+              onFocus={e => (e.currentTarget.style.borderColor = 'rgba(155, 71, 34,0.5)')}
               onBlur={e => (e.currentTarget.style.borderColor = C.border)}
             />
             <button
@@ -150,7 +150,7 @@ function ResetPasswordForm() {
               borderRadius: 8, fontSize: '0.875rem', color: C.charcoal,
               outline: 'none', boxSizing: 'border-box',
             }}
-            onFocus={e => (e.currentTarget.style.borderColor = 'rgba(145,56,50,0.5)')}
+            onFocus={e => (e.currentTarget.style.borderColor = 'rgba(155, 71, 34,0.5)')}
             onBlur={e => (e.currentTarget.style.borderColor = C.border)}
           />
         </div>
@@ -160,7 +160,7 @@ function ResetPasswordForm() {
           disabled={loading}
           style={{
             width: '100%', padding: '14px', marginTop: 4,
-            background: loading ? 'rgba(145,56,50,0.5)' : C.gold,
+            background: loading ? 'rgba(155, 71, 34,0.5)' : C.gold,
             color: '#FDFAF5', border: 'none', borderRadius: 10,
             fontSize: '0.7rem', fontWeight: 900, letterSpacing: '0.22em',
             textTransform: 'uppercase', cursor: loading ? 'not-allowed' : 'pointer',

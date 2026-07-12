@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { CheckCircle2 } from 'lucide-react'
 
-export const metadata: Metadata = { title: 'Ritual Confirmed — Isola Vitale' }
+export const metadata: Metadata = { title: 'Ritual Confirmed — LIRI ROMA' }
 
 const C = {
   page:      '#FDFAF5',
@@ -10,8 +10,8 @@ const C = {
   charcoal:  '#1A1614',
   espresso:  '#3D2B20',
   muted:     '#7A5C4E',
-  gold:      '#913832',
-  border:    'rgba(145,56,50,0.14)',
+  gold:      '#9B4722',
+  border:    'rgba(155, 71, 34,0.14)',
 }
 
 export default function CheckoutSuccessPage({
@@ -25,7 +25,7 @@ export default function CheckoutSuccessPage({
       <div style={{ width: '100%', maxWidth: 520, textAlign: 'center', padding: '48px 0' }}>
 
         {/* Icon */}
-        <div style={{ width: 72, height: 72, borderRadius: '50%', background: 'rgba(145,56,50,0.08)', border: `1px solid ${C.border}`, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 28px' }}>
+        <div style={{ width: 72, height: 72, borderRadius: '50%', background: 'rgba(155, 71, 34,0.08)', border: `1px solid ${C.border}`, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 28px' }}>
           <CheckCircle2 size={32} style={{ color: C.gold }} />
         </div>
 

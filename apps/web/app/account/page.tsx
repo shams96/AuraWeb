@@ -11,7 +11,7 @@ import {
 
 interface SkinJourneyData {
   protocol: string
-  baumannLabel: string
+  profileLabel: string
   completedAt: string
   nextMode: 'discovery' | 'check-in' | 'evolution' | 'too-soon'
   daysOnRitual: number
@@ -24,13 +24,13 @@ const C = {
   charcoal:  '#1A1614',
   espresso:  '#3D2B20',
   muted:     '#7A5C4E',
-  gold:      '#913832',
-  border:    'rgba(145,56,50,0.14)',
+  gold:      '#9B4722',
+  border:    'rgba(155, 71, 34,0.14)',
 }
 
 const NAV_ITEMS = [
   { label: 'My Orders',         href: '/account/orders',       icon: ShoppingBag, desc: 'View your order history'              },
-  { label: 'Ritual Membership', href: '/account/subscription',  icon: RefreshCcw,  desc: 'Manage your monthly ritual'          },
+  { label: 'Ritual Membership', href: '/account/subscription',  icon: RefreshCcw,  desc: 'Manage your ritual'          },
   { label: 'iv Circle',         href: '/loyalty',               icon: Star,        desc: 'Your loyalty points and rewards'     },
   { label: 'iv Ambassador',     href: '/account/referrals',     icon: Gift,        desc: 'Invite friends, earn rewards'        },
   { label: 'Profile',           href: '/account/profile',       icon: User,        desc: 'Email, password, preferences'        },
@@ -61,7 +61,7 @@ export default function AccountDashboardPage() {
           const days = Math.floor((Date.now() - new Date(data.latest.completedAt).getTime()) / (1000 * 60 * 60 * 24))
           setSkinJourney({
             protocol:    PROTOCOL_NAMES[data.latest.protocol] ?? data.latest.protocol,
-            baumannLabel: data.latest.profile?.baumannLabel ?? '',
+            profileLabel: data.latest.profile?.profileLabel ?? '',
             completedAt: data.latest.completedAt,
             nextMode:    data.nextMode,
             daysOnRitual: days,
@@ -91,7 +91,7 @@ export default function AccountDashboardPage() {
       {/* Header */}
       <div style={{ borderBottom: `1px solid ${C.border}`, padding: '20px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: C.page }}>
         <Link href="/" style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.1rem', fontWeight: 700, color: C.charcoal, letterSpacing: '0.1em', textTransform: 'uppercase', textDecoration: 'none' }}>
-          Isola <em style={{ color: C.gold }}>Vitale</em>
+          LIRI <em style={{ color: C.gold }}>ROMA</em>
         </Link>
         <button
           onClick={() => signOut({ callbackUrl: '/' })}
@@ -147,7 +147,7 @@ export default function AccountDashboardPage() {
                   {skinJourney.protocol}
                 </p>
                 <p style={{ fontSize: '0.75rem', color: C.muted, margin: '0 0 12px', fontWeight: 300 }}>
-                  Profile: {skinJourney.baumannLabel} · {skinJourney.daysOnRitual} days on this ritual
+                  Profile: {skinJourney.profileLabel} · {skinJourney.daysOnRitual} days on this ritual
                 </p>
                 <Link
                   href="/#skin-scan"
@@ -156,8 +156,8 @@ export default function AccountDashboardPage() {
                     fontSize: '0.7rem', fontWeight: 900, letterSpacing: '0.2em', textTransform: 'uppercase',
                     color: C.gold, textDecoration: 'none',
                     padding: '8px 14px', borderRadius: 8,
-                    border: `1px solid rgba(145,56,50,0.25)`,
-                    background: 'rgba(145,56,50,0.05)',
+                    border: `1px solid rgba(155, 71, 34,0.25)`,
+                    background: 'rgba(155, 71, 34,0.05)',
                   }}
                 >
                   {skinJourney.nextMode === 'too-soon' && 'View Protocol →'}
@@ -209,7 +209,7 @@ export default function AccountDashboardPage() {
               onMouseEnter={e => (e.currentTarget.style.background = C.card)}
               onMouseLeave={e => (e.currentTarget.style.background = C.parchment)}
             >
-              <div style={{ width: 40, height: 40, borderRadius: 10, background: `rgba(145,56,50,0.08)`, border: `1px solid ${C.border}`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <div style={{ width: 40, height: 40, borderRadius: 10, background: `rgba(155, 71, 34,0.08)`, border: `1px solid ${C.border}`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                 <Icon size={16} style={{ color: C.gold }} />
               </div>
               <div style={{ flex: 1 }}>

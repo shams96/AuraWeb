@@ -13,8 +13,8 @@ const C = {
   charcoal:  '#1A1614',
   espresso:  '#3D2B20',
   muted:     '#7A5C4E',
-  gold:      '#913832',
-  border:    'rgba(145,56,50,0.14)',
+  gold:      '#9B4722',
+  border:    'rgba(155, 71, 34,0.14)',
 }
 
 interface ReferralEntry {
@@ -63,7 +63,7 @@ export default function ReferralsPage() {
   }
 
   const shareUrl  = data?.url ?? ''
-  const shareText = encodeURIComponent('Discover Isola Vitale — Italian luxury skincare formulated in Isola del Liri. Use my link for 10% off your first order.')
+  const shareText = encodeURIComponent('Discover LIRI ROMA — Italian luxury skincare formulated in Isola del Liri. Use my link for 10% off your first order.')
   const whatsappUrl = `https://wa.me/?text=${shareText}%20${encodeURIComponent(shareUrl)}`
   const twitterUrl  = `https://twitter.com/intent/tweet?text=${shareText}&url=${encodeURIComponent(shareUrl)}`
 
@@ -185,7 +185,7 @@ export default function ReferralsPage() {
                   <p style={{ fontSize: '0.8rem', color: C.espresso, margin: 0 }}>
                     {r.refereeEmail ?? <span style={{ color: C.muted, fontStyle: 'italic' }}>Awaiting signup</span>}
                   </p>
-                  <span style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '3px 10px', borderRadius: 99, background: 'rgba(145,56,50,0.06)', border: `1px solid ${C.border}`, color: r.status === 'REWARDED' ? '#2D6A4F' : C.muted }}>
+                  <span style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '3px 10px', borderRadius: 99, background: 'rgba(155, 71, 34,0.06)', border: `1px solid ${C.border}`, color: r.status === 'REWARDED' ? '#2D6A4F' : C.muted }}>
                     {r.status === 'REWARDED' ? 'Rewarded' : r.status === 'ATTRIBUTED' ? 'Signed up' : 'Invited'}
                   </span>
                 </div>
@@ -199,12 +199,12 @@ export default function ReferralsPage() {
           <p style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.25em', textTransform: 'uppercase', color: C.gold, margin: '0 0 16px' }}>How it works</p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
             {[
-              ['Share your link', 'Copy and send your unique link to anyone you think would love Isola Vitale.'],
+              ['Share your link', 'Copy and send your unique link to anyone you think would love LIRI ROMA.'],
               ['They place their first order', 'When they complete their first purchase using your link, the reward triggers automatically.'],
               ['You both receive 10% off', 'Your discount code appears here and is emailed to you instantly. Theirs applies at checkout.'],
             ].map(([title, desc], i) => (
               <div key={i} style={{ display: 'flex', gap: 16 }}>
-                <div style={{ width: 22, height: 22, borderRadius: '50%', background: 'rgba(145,56,50,0.08)', border: `1px solid ${C.border}`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 1 }}>
+                <div style={{ width: 22, height: 22, borderRadius: '50%', background: 'rgba(155, 71, 34,0.08)', border: `1px solid ${C.border}`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 1 }}>
                   <span style={{ fontSize: '0.75rem', fontWeight: 900, color: C.gold }}>{i + 1}</span>
                 </div>
                 <div>

@@ -3,8 +3,8 @@ import Link from 'next/link'
 import { CheckCircle2, ArrowRight } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Ritual Confirmed — Isola Vitale',
-  description: 'Your Isola Vitale order is confirmed. Your ritual is on its way.',
+  title: 'Ritual Confirmed — LIRI ROMA',
+  description: 'Your LIRI ROMA order is confirmed. Your ritual is on its way.',
 }
 
 const C = {
@@ -13,8 +13,8 @@ const C = {
   card:    '#EDE8E0',
   charcoal:'#1A1614',
   muted:   '#7A5C4E',
-  gold:    '#913832',
-  border:  'rgba(145,56,50,0.14)',
+  gold:    '#9B4722',
+  border:  'rgba(155, 71, 34,0.14)',
 }
 
 export default function SuccessPage() {
@@ -23,13 +23,13 @@ export default function SuccessPage() {
       {/* Header */}
       <div style={{ borderBottom: `1px solid ${C.border}`, padding: '20px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <Link href="/" style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.1rem', fontWeight: 700, color: C.charcoal, letterSpacing: '0.1em', textTransform: 'uppercase', textDecoration: 'none' }}>
-          Isola <em style={{ color: C.gold }}>Vitale</em>
+          LIRI <em style={{ color: C.gold }}>ROMA</em>
         </Link>
       </div>
 
       <div style={{ maxWidth: 600, margin: '0 auto', padding: '80px 24px', textAlign: 'center' }}>
         {/* Icon */}
-        <div style={{ width: 72, height: 72, borderRadius: '50%', background: `rgba(145,56,50,0.08)`, border: `1px solid ${C.border}`, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 32px' }}>
+        <div style={{ width: 72, height: 72, borderRadius: '50%', background: `rgba(155, 71, 34,0.08)`, border: `1px solid ${C.border}`, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 32px' }}>
           <CheckCircle2 size={32} style={{ color: C.gold }} />
         </div>
 
@@ -57,7 +57,7 @@ export default function SuccessPage() {
             { n: '03', title: 'Ritual begins', body: 'Follow the enclosed protocol card — morning and evening, as intended.' },
           ].map(({ n, title, body }) => (
             <div key={n} style={{ display: 'flex', gap: 16, marginBottom: 20 }}>
-              <div style={{ width: 32, height: 32, borderRadius: '50%', background: `rgba(145,56,50,0.08)`, border: `1px solid ${C.border}`, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ width: 32, height: 32, borderRadius: '50%', background: `rgba(155, 71, 34,0.08)`, border: `1px solid ${C.border}`, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <span style={{ fontSize: '0.75rem', fontWeight: 900, color: C.gold }}>{n}</span>
               </div>
               <div>
@@ -87,8 +87,8 @@ export default function SuccessPage() {
         {/* Support */}
         <p style={{ marginTop: 48, fontSize: '0.75rem', color: C.muted, fontWeight: 300 }}>
           Questions? Our concierge team is at{' '}
-          <a href="mailto:ritual@isolavitale.com" style={{ color: C.gold, fontWeight: 600, textDecoration: 'none' }}>
-            ritual@isolavitale.com
+          <a href="mailto:ritual@liriroma.com" style={{ color: C.gold, fontWeight: 600, textDecoration: 'none' }}>
+            ritual@liriroma.com
           </a>
         </p>
       </div>

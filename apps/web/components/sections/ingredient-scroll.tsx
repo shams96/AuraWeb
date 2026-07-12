@@ -15,13 +15,13 @@ interface IngredientCard {
 
 const INGREDIENTS: IngredientCard[] = [
   {
-    name: 'OS-01 Senomorphic Peptide',
+    name: 'Cellular Renewal Complex',
     concentration: '0.30%',
     focus: 'Cellular Longevity',
-    claim: '70% of participants showed improved barrier function',
+    claim: 'Formulated to support the skin\'s own renewal pathways',
     trialRef: 'Zonari et al. · J Cosmet Dermatol 2025 · RCT · n=60 · 12 wks',
     icon: '⬡',
-    color: 'rgba(145,56,50,0.12)',
+    color: 'rgba(155, 71, 34,0.12)',
   },
   {
     name: 'DWAT Restoration Complex',
@@ -30,16 +30,16 @@ const INGREDIENTS: IngredientCard[] = [
     claim: 'Targets dermal adipose depletion — the documented mechanism of facial volume loss',
     trialRef: 'Kruglikov & Scherer · Aging 2016 · Peer-reviewed',
     icon: '◈',
-    color: 'rgba(31,81,41,0.12)',
+    color: 'rgba(0, 75, 55,0.12)',
   },
   {
-    name: 'GLP-1 Protective Complex',
+    name: 'metabolic change Protective Complex',
     concentration: '1.25%',
     focus: 'Deflation Prevention',
     claim: 'Addresses documented facial volume loss in metabolic change',
     trialRef: 'Ridha et al. · Aesthetic Surgery Journal 2024 · Peer-reviewed',
     icon: '◉',
-    color: 'rgba(0,90,91,0.12)',
+    color: 'rgba(12, 45, 56,0.12)',
   },
   {
     name: 'L-Ornithine',
@@ -48,7 +48,7 @@ const INGREDIENTS: IngredientCard[] = [
     claim: 'Increases collagen-constituting amino acids and polyamines in skin',
     trialRef: 'Kitakaze et al. · BBRC 2019 · Peer-reviewed',
     icon: '◎',
-    color: 'rgba(145,56,50,0.08)',
+    color: 'rgba(155, 71, 34,0.08)',
   },
   {
     name: 'Bifida Ferment Lysate',
@@ -57,7 +57,7 @@ const INGREDIENTS: IngredientCard[] = [
     claim: 'Formulated with microbiome-supporting postbiotic · pH-optimised',
     trialRef: 'Microbiome-conscious formulation · barrier-supportive pH',
     icon: '⬡',
-    color: 'rgba(31,81,41,0.08)',
+    color: 'rgba(0, 75, 55,0.08)',
   },
   {
     name: 'Ectoin Environmental Shield',
@@ -66,7 +66,7 @@ const INGREDIENTS: IngredientCard[] = [
     claim: '18% TEWL reduction · 35% hydration increase vs control',
     trialRef: 'Dermscan Group, Lyon & Milan · Multi-centre · 4 wks · n=96',
     icon: '◈',
-    color: 'rgba(0,90,91,0.10)',
+    color: 'rgba(12, 45, 56,0.10)',
   },
 ]
 
@@ -89,7 +89,7 @@ export function IngredientScroll() {
           <div className="iv-scroll-reveal">
             <div
               className="inline-block rounded-full px-6 py-2 text-[11px] font-black uppercase tracking-[0.3em] mb-4"
-              style={{ color: 'var(--iv-gold)', border: '1px solid rgba(145,56,50,0.20)', background: 'rgba(145,56,50,0.05)' }}
+              style={{ color: 'var(--iv-gold)', border: '1px solid rgba(155, 71, 34,0.20)', background: 'rgba(155, 71, 34,0.05)' }}
             >
               The Breakthrough 6
             </div>
@@ -107,7 +107,7 @@ export function IngredientScroll() {
               onClick={() => scroll('left')}
               aria-label="Scroll left"
               className="w-12 h-12 rounded-full flex items-center justify-center border transition-all duration-200"
-              style={{ border: '1px solid rgba(145,56,50,0.22)', color: 'var(--iv-gold)' }}
+              style={{ border: '1px solid rgba(155, 71, 34,0.22)', color: 'var(--iv-gold)' }}
               onMouseEnter={e => {
                 ;(e.currentTarget as HTMLElement).style.background = 'var(--iv-gold)'
                 ;(e.currentTarget as HTMLElement).style.color = '#fff'
@@ -147,23 +147,23 @@ export function IngredientScroll() {
                 className="h-full rounded-2xl p-8 flex flex-col gap-6 transition-all duration-300 group"
                 style={{
                   background: `linear-gradient(140deg, var(--iv-deep-green) 0%, ${ing.color} 100%)`,
-                  border: '1px solid rgba(145,56,50,0.14)',
+                  border: '1px solid rgba(155, 71, 34,0.14)',
                   minHeight: 280,
                 }}
-                onMouseEnter={e => (e.currentTarget as HTMLElement).style.borderColor = 'rgba(145,56,50,0.35)'}
-                onMouseLeave={e => (e.currentTarget as HTMLElement).style.borderColor = 'rgba(145,56,50,0.14)'}
+                onMouseEnter={e => (e.currentTarget as HTMLElement).style.borderColor = 'rgba(155, 71, 34,0.35)'}
+                onMouseLeave={e => (e.currentTarget as HTMLElement).style.borderColor = 'rgba(155, 71, 34,0.14)'}
               >
                 {/* Top row */}
                 <div className="flex items-start justify-between">
                   <span
                     className="w-11 h-11 rounded-full flex items-center justify-center text-xl flex-shrink-0"
-                    style={{ background: 'rgba(145,56,50,0.09)', border: '1px solid rgba(145,56,50,0.18)' }}
+                    style={{ background: 'rgba(155, 71, 34,0.09)', border: '1px solid rgba(155, 71, 34,0.18)' }}
                   >
                     {ing.icon}
                   </span>
                   <span
                     className="text-[11px] font-black uppercase tracking-widest px-3 py-1 rounded-full"
-                    style={{ background: 'rgba(145,56,50,0.10)', color: 'var(--iv-gold)', border: '1px solid rgba(145,56,50,0.18)' }}
+                    style={{ background: 'rgba(155, 71, 34,0.10)', color: 'var(--iv-gold)', border: '1px solid rgba(155, 71, 34,0.18)' }}
                   >
                     {ing.concentration}
                   </span>
@@ -180,7 +180,7 @@ export function IngredientScroll() {
                 </div>
 
                 {/* Divider */}
-                <div style={{ height: 1, background: 'rgba(145,56,50,0.12)' }} />
+                <div style={{ height: 1, background: 'rgba(155, 71, 34,0.12)' }} />
 
                 {/* Clinical claim */}
                 <div className="mt-auto">

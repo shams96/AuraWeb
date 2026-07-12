@@ -1,5 +1,11 @@
 import { Sun, Moon, CheckCircle2 } from 'lucide-react'
 
+export const metadata = {
+  title: 'Rituals',
+  description: 'Protocols matched to your biology. Each one built around the forty-eight hour standard.',
+}
+
+
 export default function RoutinesPage() {
   return (
     <div className="min-h-screen bg-iv-black">
@@ -11,7 +17,7 @@ export default function RoutinesPage() {
           </div>
           <h1 className="iv-type-display font-semibold mb-8 text-iv-white">The <em className="text-iv-gold" style={{ fontStyle: 'italic', fontFamily: 'var(--iv-font-serif)' }}>Protocols</em></h1>
           <p className="text-xl text-iv-cream/70 leading-relaxed font-light">
-            Laboratory-validated application sequences engineered to maximise the efficacy of your Isola Vitale system.
+            Laboratory-validated application sequences engineered to maximise the efficacy of your LIRI ROMA system.
           </p>
         </div>
       </section>
@@ -85,7 +91,7 @@ export default function RoutinesPage() {
                 <div className="relative pl-12 border-l border-iv-white/5">
                   <div className="absolute -left-[5px] top-0 w-2 h-2 rounded-full bg-iv-gold shadow-[0_0_10px_rgba(184,151,47,0.5)]" />
                   <h3 className="text-xs font-black text-iv-white mb-3 uppercase tracking-widest">Step 3: Intensive</h3>
-                  <p className="text-iv-cream/60 text-sm font-light leading-relaxed">Apply <strong className="text-iv-white">Obsidian Vitale Cream</strong> for deep chronological repair.</p>
+                  <p className="text-iv-cream/60 text-sm font-light leading-relaxed">Apply <strong className="text-iv-white">Obsidian Crème</strong> for deep chronological repair.</p>
                 </div>
                 <div className="relative pl-12 border-l border-iv-white/5">
                   <div className="absolute -left-[5px] top-0 w-2 h-2 rounded-full bg-iv-gold shadow-[0_0_10px_rgba(184,151,47,0.5)]" />

@@ -2,10 +2,10 @@ import type { Metadata } from 'next'
 import { MapPin, Award, Heart, Beaker } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'About Isola Vitale — La Bella Figura',
-  description: 'In Italy, beauty has never been a product. It has been a philosophy. Isola Vitale was born from La Bella Figura — the Italian practice of living beautifully. Formulated at Isola del Liri.',
+  title: 'About LIRI ROMA — La Bella Figura',
+  description: 'In Italy, beauty has never been a product. It has been a philosophy. LIRI ROMA was born from La Bella Figura — the Italian practice of living beautifully. Formulated at Isola del Liri.',
   openGraph: {
-    title: 'About Isola Vitale — La Bella Figura',
+    title: 'About LIRI ROMA — La Bella Figura',
     description: 'The Italian practice of living beautifully. Formulated at Isola del Liri.',
   },
 }
@@ -21,7 +21,7 @@ export default function AboutPage() {
           <div className="inline-block border border-iv-gold/20 rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-12 bg-iv-black/40 backdrop-blur-md text-iv-gold">
             La Bella Figura
           </div>
-          <h1 className="iv-type-display font-bold mb-8 tracking-tighter italic serif text-iv-gold">Isola Vitale</h1>
+          <h1 className="iv-type-display font-bold mb-8 tracking-tighter italic serif text-iv-gold">LIRI ROMA</h1>
           <h2 className="iv-type-h3 font-light text-iv-cream/70 mb-12 leading-relaxed">
             In Italy, beauty has never been a product.<br />
             <span className="text-iv-white font-semibold italic">It has been a philosophy.</span>
@@ -41,15 +41,15 @@ export default function AboutPage() {
                 <em>La Bella Figura</em> is Italy's unwritten code — the art of presenting yourself to the world with grace, dignity, and care. Not vanity. Not perfection. The quiet confidence of someone who lives beautifully from within.
               </p>
               <p className="text-iv-cream/60 text-lg leading-relaxed font-light">
-                Isola Vitale was born from that philosophy. Formulated in partnership with <strong className="text-iv-white">Natural You Srl</strong> at <strong className="text-iv-white">Isola del Liri, Italy</strong> — where Italian precision meets centuries of craft — our formulations exist not to fight aging, but to cultivate the kind of skin that reflects how well you live.
+                LIRI ROMA was born from that philosophy. Formulated in partnership with <strong className="text-iv-white">Natural You Srl</strong> at <strong className="text-iv-white">Isola del Liri, Italy</strong> — where Italian precision meets centuries of craft — our formulations exist not to fight aging, but to cultivate the kind of skin that reflects how well you live.
               </p>
               <p className="text-iv-cream/60 text-lg leading-relaxed font-light">
-                Italy gave the world Gucci, Prada, Armani, Santa Maria Novella. Not because Italians invented luxury — but because they lived it first. That is the inheritance Isola Vitale draws from.
+                Italy gave the world Gucci, Prada, Armani, Santa Maria Novella. Not because Italians invented luxury — but because they lived it first. That is the inheritance LIRI ROMA draws from.
               </p>
             </div>
             <div className="bg-iv-deep-green/20 border border-iv-gold/10 rounded-3xl aspect-[4/5] flex items-center justify-center text-iv-gold/20 italic iv-serif text-sm backdrop-blur-md relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-iv-gold/5 to-transparent" />
-              <p className="text-center px-8 leading-relaxed" style={{ color: 'rgba(145,56,50,0.35)', fontFamily: 'var(--iv-font-serif)', fontSize: '1rem' }}>
+              <p className="text-center px-8 leading-relaxed" style={{ color: 'rgba(155, 71, 34,0.35)', fontFamily: 'var(--iv-font-serif)', fontSize: '1rem' }}>
                 The Cascata Grande<br />Isola del Liri, Lazio
               </p>
             </div>
@@ -77,18 +77,18 @@ export default function AboutPage() {
                 { stress: 'Chronic cortisol', truth: 'Sustained stress suppresses collagen synthesis and impairs the barrier\'s adaptive response directly.' },
                 { stress: 'Urban pollution', truth: 'Particulate matter smaller than 2.5μm penetrates the stratum corneum and generates free radical cascades.' },
               ].map(({ stress, truth }) => (
-                <div key={stress} className="border-l-2 pl-5" style={{ borderColor: 'rgba(145,56,50,0.25)' }}>
+                <div key={stress} className="border-l-2 pl-5" style={{ borderColor: 'rgba(155, 71, 34,0.25)' }}>
                   <p className="text-[11px] font-black uppercase tracking-[0.2em] text-iv-gold mb-1">{stress}</p>
                   <p className="text-sm text-iv-cream/65 leading-relaxed font-light">{truth}</p>
                 </div>
               ))}
             </div>
           </div>
-          <div className="mt-20 p-12 rounded-3xl text-center" style={{ background: 'rgba(145,56,50,0.04)', border: '1px solid rgba(145,56,50,0.12)' }}>
+          <div className="mt-20 p-12 rounded-3xl text-center" style={{ background: 'rgba(155, 71, 34,0.04)', border: '1px solid rgba(155, 71, 34,0.12)' }}>
             <p className="text-2xl md:text-3xl text-iv-cream/80 italic iv-serif leading-relaxed max-w-3xl mx-auto">
               "Skin was not designed for modern life. Resilience is no longer inherited. It must be cultivated."
             </p>
-            <p className="text-[10px] font-black text-iv-gold uppercase tracking-[0.3em] mt-8">The Vitale Principle™</p>
+            <p className="text-[10px] font-black text-iv-gold uppercase tracking-[0.3em] mt-8">The Liri Principle™</p>
           </div>
         </div>
       </section>
@@ -101,7 +101,7 @@ export default function AboutPage() {
             <p className="text-[10px] font-black uppercase tracking-[0.3em] mb-4" style={{ color: 'var(--iv-gold)' }}>Adaptive Skin Science™ · The System</p>
             <h2 className="iv-type-h2 font-bold text-iv-white tracking-tighter uppercase">The Science of<br /><em className="text-iv-gold">Skin Vitality</em></h2>
             <p className="text-iv-cream/65 text-sm font-light mt-6 max-w-xl mx-auto leading-relaxed">
-              Four biological systems. Every Isola Vitale formulation tends to all four — in sequence, with clinical precision.
+              Four biological systems. Every LIRI ROMA formulation tends to all four — in sequence, with clinical precision.
             </p>
           </div>
 
@@ -150,11 +150,11 @@ export default function AboutPage() {
           <div className="w-12 h-px bg-iv-gold/40 mx-auto mb-16" />
           <h2 className="text-xs font-black text-iv-gold mb-10 uppercase tracking-[0.4em]">The Belief</h2>
           <p className="text-3xl md:text-5xl text-iv-cream/80 italic iv-serif leading-[1.2] tracking-tight">
-            "Vitality is the ultimate luxury. Not youth. Not perfection. Vitality — the living quality of skin that has been cared for, as the Italians always knew it should be."
+            "Skin that has been cared for carries a quality all its own — a living resilience the Italians have always understood. That is the ultimate luxury."
           </p>
           <div className="mt-16 flex items-center justify-center space-x-4">
             <div className="w-8 h-px bg-iv-white/10" />
-            <p className="font-bold text-iv-white uppercase tracking-widest text-[10px]">Shams Islam, Founder · Isola Vitale</p>
+            <p className="font-bold text-iv-white uppercase tracking-widest text-[10px]">Shams Islam, Founder · LIRI ROMA</p>
             <div className="w-8 h-px bg-iv-white/10" />
           </div>
         </div>

@@ -54,8 +54,8 @@ export default function AdminCampaignsPage() {
               onClick={() => setTemplate(t.id)}
               className="w-full text-left rounded-xl px-4 py-4 transition-all"
               style={{
-                background: template === t.id ? 'rgba(145,56,50,0.18)' : 'var(--iv-deep-green)',
-                border: `1px solid ${template === t.id ? 'rgba(145,56,50,0.40)' : 'rgba(145,56,50,0.14)'}`,
+                background: template === t.id ? 'rgba(155, 71, 34,0.18)' : 'var(--iv-deep-green)',
+                border: `1px solid ${template === t.id ? 'rgba(155, 71, 34,0.40)' : 'rgba(155, 71, 34,0.14)'}`,
               }}
             >
               <p className="text-sm font-semibold text-iv-white mb-1">{t.label}</p>
@@ -67,7 +67,7 @@ export default function AdminCampaignsPage() {
         {/* Compose */}
         <div
           className="rounded-2xl p-8"
-          style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(145,56,50,0.14)' }}
+          style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(155, 71, 34,0.14)' }}
         >
           <p className="text-[10px] font-black uppercase tracking-widest text-iv-cream/55 mb-6">Compose</p>
 
@@ -82,8 +82,8 @@ export default function AdminCampaignsPage() {
                     onClick={() => setRecipientType(rt)}
                     className="flex-1 py-2.5 rounded-xl text-xs font-black uppercase tracking-widest transition-all"
                     style={{
-                      background: recipientType === rt ? 'rgba(145,56,50,0.25)' : 'rgba(145,56,50,0.07)',
-                      border: `1px solid ${recipientType === rt ? 'rgba(145,56,50,0.40)' : 'rgba(145,56,50,0.15)'}`,
+                      background: recipientType === rt ? 'rgba(155, 71, 34,0.25)' : 'rgba(155, 71, 34,0.07)',
+                      border: `1px solid ${recipientType === rt ? 'rgba(155, 71, 34,0.40)' : 'rgba(155, 71, 34,0.15)'}`,
                       color: recipientType === rt ? 'var(--iv-cream)' : 'rgba(253,250,245,0.40)',
                     }}
                   >
@@ -102,7 +102,7 @@ export default function AdminCampaignsPage() {
                   onChange={e => setEmail(e.target.value)}
                   placeholder="customer@example.com"
                   className="w-full rounded-xl px-4 py-3 text-sm text-iv-white placeholder-iv-cream/20 outline-none"
-                  style={{ background: 'rgba(145,56,50,0.07)', border: '1px solid rgba(145,56,50,0.18)' }}
+                  style={{ background: 'rgba(155, 71, 34,0.07)', border: '1px solid rgba(155, 71, 34,0.18)' }}
                 />
               </div>
             )}
@@ -117,7 +117,7 @@ export default function AdminCampaignsPage() {
                     onChange={e => setSubject(e.target.value)}
                     placeholder="Your Protocol Results — Week 4 Update"
                     className="w-full rounded-xl px-4 py-3 text-sm text-iv-white placeholder-iv-cream/20 outline-none"
-                    style={{ background: 'rgba(145,56,50,0.07)', border: '1px solid rgba(145,56,50,0.18)' }}
+                    style={{ background: 'rgba(155, 71, 34,0.07)', border: '1px solid rgba(155, 71, 34,0.18)' }}
                   />
                 </div>
                 <div>
@@ -128,7 +128,7 @@ export default function AdminCampaignsPage() {
                     onChange={e => setBody(e.target.value)}
                     placeholder="<p>Dear customer,</p>..."
                     className="w-full rounded-xl px-4 py-3 text-sm text-iv-white placeholder-iv-cream/20 outline-none resize-none font-mono"
-                    style={{ background: 'rgba(145,56,50,0.07)', border: '1px solid rgba(145,56,50,0.18)' }}
+                    style={{ background: 'rgba(155, 71, 34,0.07)', border: '1px solid rgba(155, 71, 34,0.18)' }}
                   />
                 </div>
               </>
@@ -138,8 +138,8 @@ export default function AdminCampaignsPage() {
               <div
                 className="px-4 py-3 rounded-xl text-sm flex items-center gap-3"
                 style={{
-                  background: result.ok ? 'rgba(74,222,128,0.08)' : 'rgba(145,56,50,0.15)',
-                  border: `1px solid ${result.ok ? 'rgba(74,222,128,0.20)' : 'rgba(145,56,50,0.25)'}`,
+                  background: result.ok ? 'rgba(74,222,128,0.08)' : 'rgba(155, 71, 34,0.15)',
+                  border: `1px solid ${result.ok ? 'rgba(74,222,128,0.20)' : 'rgba(155, 71, 34,0.25)'}`,
                   color: result.ok ? '#4ade80' : '#fca5a5',
                 }}
               >

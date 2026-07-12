@@ -58,26 +58,26 @@ export async function POST(req: NextRequest) {
       await resend.emails.send({
         from:    FROM_EMAIL,
         to:      emailLower,
-        subject: 'Reset your Isola Vitale password',
+        subject: 'Reset your LIRI ROMA password',
         html: `
           <div style="font-family:Georgia,serif;max-width:560px;margin:0 auto;background:#FDFAF5;color:#1A1614;padding:48px 40px;">
-            <p style="color:#913832;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.3em;margin:0 0 24px;">Isola Vitale</p>
+            <p style="color:#9B4722;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.3em;margin:0 0 24px;">LIRI ROMA</p>
             <h1 style="font-size:22px;margin:0 0 16px;font-style:italic">Reset your password</h1>
             <p style="color:#7A5C4E;line-height:1.7;margin:0 0 28px;">
               We received a request to reset the password for your account.
               Click the button below — this link is valid for one hour.
             </p>
-            <a href="${resetUrl}" style="display:inline-block;background:#913832;color:#fff;padding:14px 32px;text-decoration:none;font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;border-radius:4px;">
+            <a href="${resetUrl}" style="display:inline-block;background:#9B4722;color:#fff;padding:14px 32px;text-decoration:none;font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;border-radius:4px;">
               Reset Password
             </a>
             <p style="color:#7A5C4E;font-size:12px;margin-top:28px;line-height:1.6;">
               If you did not request this, you can safely ignore this email.<br>
               Your password will not change.
             </p>
-            <hr style="border:none;border-top:1px solid rgba(145,56,50,0.1);margin:28px 0">
+            <hr style="border:none;border-top:1px solid rgba(155, 71, 34,0.1);margin:28px 0">
             <p style="color:#7A5C4E;font-size:11px;">
               Or paste this URL into your browser:<br>
-              <span style="color:#913832">${resetUrl}</span>
+              <span style="color:#9B4722">${resetUrl}</span>
             </p>
           </div>
         `,

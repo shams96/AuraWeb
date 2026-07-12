@@ -2,6 +2,12 @@ import { Button } from '@/components/ui-lib'
 import { Calendar, User, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 
+export const metadata = {
+  title: 'Journal',
+  description: 'Notes from the house on skin, science, and the craft of Isola del Liri.',
+}
+
+
 export default function JournalPage() {
   const articles = [
     {
@@ -9,21 +15,21 @@ export default function JournalPage() {
       title: 'The Rise of Metabolic Skincare: Why Acids Are Only the Beginning',
       excerpt: 'Traditional skincare treats the surface. Metabolic skincare treats the engine. Discover why aligning formulations with your cellular age is the only way to achieve true longevity.',
       date: 'May 1, 2026',
-      author: 'Dr. Shams Islam',
+      author: 'Shams Islam',
       category: 'Research'
     },
     {
       id: 'glp1-face',
-      title: 'Defending Against Facial Deflation in the GLP-1 Era',
-      excerpt: 'As metabolic medications redefine weight management, a new skin concern has emerged: "Ozempic Face." Learn how Isola Vitale’s GLP-1 Protective Complex shields your dermal adipose tissue.',
+      title: 'Defending Against Facial Deflation in the metabolic change Era',
+      excerpt: 'As metabolic medications redefine weight management, a new skin concern has emerged: "facial volume change." Learn how LIRI ROMA’s metabolic change Protective Complex shields your dermal adipose tissue.',
       date: 'April 15, 2026',
       author: 'Clinical Team',
       category: 'Innovation'
     },
     {
-      id: 'senomorphic-peptides',
-      title: 'Senomorphic Peptides: The New Frontier of Longevity Science',
-      excerpt: 'By targeting senescent cells that have ceased to contribute and begun to impair, senomorphic peptides like OS-01 are rewriting the science of skin resilience. Here is the data behind the 70% barrier improvement.',
+      id: 'cellular renewal-peptides',
+      title: 'Cellular Renewal Complexs: The New Frontier of Longevity Science',
+      excerpt: 'By targeting senescent cells that have ceased to contribute and begun to impair, cellular renewal complexs like Cellular Renewal Complex are rewriting the science of skin resilience. Here is the data behind the 70% barrier improvement.',
       date: 'March 28, 2026',
       author: 'Natural You Srl',
       category: 'Science'

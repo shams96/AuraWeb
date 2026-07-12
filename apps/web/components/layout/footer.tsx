@@ -5,7 +5,7 @@ export function Footer() {
   const footerLinks = {
     collection: [
       { name: 'The Collection', href: '/shop' },
-      { name: 'The Vitale Concentrate™', href: '/shop' },
+      { name: 'Liri Essence™', href: '/shop' },
       { name: 'Preservation Protocol', href: '/shop?tier=t1' },
       { name: 'Ritual Membership', href: '/account/subscription' },
     ],
@@ -42,7 +42,7 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2 space-y-8">
             <div className="space-y-1">
-              <span className="iv-type-h2 font-semibold text-iv-white uppercase tracking-tight">Isola <span className="text-iv-gold italic">Vitale</span></span>
+              <span className="iv-type-h2 font-semibold text-iv-white uppercase tracking-tight">LIRI <span className="text-iv-gold italic">ROMA</span></span>
             </div>
             <p className="text-iv-cream text-opacity-60 leading-relaxed font-light text-sm max-w-sm">
               The world's first Adaptive Skin Science™ house. La Bella Figura — the Italian practice of living beautifully — expressed through biological resilience. Formulated at Isola del Liri, Italy.
@@ -123,7 +123,7 @@ export function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-[10px] font-black uppercase tracking-widest" style={{ color: 'rgba(250,247,240,0.75)' }}>
             <div className="flex items-center space-x-3">
               <Mail className="h-4 w-4" style={{ color: 'rgba(184, 151, 47, 0.6)' }} />
-              <span>concierge@isolavitale.com</span>
+              <span>concierge@liriroma.com</span>
             </div>
             <div className="flex items-center space-x-3">
               <Phone className="h-4 w-4" style={{ color: 'rgba(184, 151, 47, 0.6)' }} />
@@ -136,7 +136,7 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Country / Currency selector — La Mer style */}
+        {/* Country / Currency selector */}
         <div className="mt-10 pt-8 border-t flex flex-col sm:flex-row items-center justify-between gap-4" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
           <div className="flex items-center gap-3">
             <span style={{ fontSize: '1.2rem' }}>🇺🇸</span>
@@ -169,7 +169,7 @@ export function Footer() {
             </Link>
           </div>
           <p className="text-[10px] font-black uppercase tracking-widest" style={{ color: 'rgba(250,247,240,0.55)' }}>
-            &copy; {new Date().getFullYear()} Isola Vitale · Allen, TX · Isola del Liri, Italy
+            &copy; {new Date().getFullYear()} LIRI ROMA · Allen, TX · Isola del Liri, Italy
           </p>
         </div>
       </div>

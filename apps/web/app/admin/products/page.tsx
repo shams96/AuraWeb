@@ -13,7 +13,7 @@ const FORMATS = ['jar', 'pump', 'dropper', 'mist', 'eye-pump'] as const
 function emptyProduct(): Omit<AdminProduct, 'id'> {
   return {
     name: '', price: 0, tier: 't1', collection: 'laboratory', format: 'dropper',
-    finishColor: '#0F2419', image: '', rating: 5, reviewCount: 0, tags: [],
+    finishColor: '#004B37', image: '', rating: 5, reviewCount: 0, tags: [],
     description: '', tagline: '', badge: '', volume: '',
     isNew: false, isBestSeller: false,
   }
@@ -38,7 +38,7 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
 }
 
 const inputCls = 'w-full rounded-xl px-4 py-3 text-sm text-iv-white outline-none transition-colors focus:ring-1 focus:ring-iv-gold/40'
-const inputStyle = { background: 'rgba(145,56,50,0.07)', border: '1px solid rgba(145,56,50,0.20)' }
+const inputStyle = { background: 'rgba(155, 71, 34,0.07)', border: '1px solid rgba(155, 71, 34,0.20)' }
 
 // ── Image uploader ────────────────────────────────────────────────────────
 
@@ -77,7 +77,7 @@ function ImageUploader({ value, onChange }: { value: string; onChange: (url: str
         onDragOver={e => e.preventDefault()}
         onClick={() => inputRef.current?.click()}
         className="relative rounded-xl overflow-hidden cursor-pointer transition-colors"
-        style={{ border: '1px dashed rgba(145,56,50,0.30)', background: 'rgba(145,56,50,0.05)', minHeight: 120 }}
+        style={{ border: '1px dashed rgba(155, 71, 34,0.30)', background: 'rgba(155, 71, 34,0.05)', minHeight: 120 }}
       >
         {value ? (
           /* eslint-disable-next-line @next/next/no-img-element */
@@ -112,7 +112,7 @@ function ImageUploader({ value, onChange }: { value: string; onChange: (url: str
             type="button"
             onClick={() => inputRef.current?.click()}
             className="px-3 rounded-xl text-xs font-black uppercase tracking-widest flex-shrink-0"
-            style={{ background: 'rgba(145,56,50,0.15)', border: '1px solid rgba(145,56,50,0.25)', color: 'var(--iv-cream)' }}
+            style={{ background: 'rgba(155, 71, 34,0.15)', border: '1px solid rgba(155, 71, 34,0.25)', color: 'var(--iv-cream)' }}
           >
             Replace
           </button>
@@ -169,11 +169,11 @@ function ProductModal({
     <div className="fixed inset-0 z-50 flex items-start justify-center p-4 pt-8 overflow-y-auto"
       style={{ background: 'rgba(26,22,20,0.88)', backdropFilter: 'blur(12px)' }}>
       <div className="w-full max-w-2xl rounded-2xl mb-8"
-        style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(145,56,50,0.25)' }}>
+        style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(155, 71, 34,0.25)' }}>
 
         {/* Header */}
         <div className="flex items-center justify-between px-8 pt-7 pb-6"
-          style={{ borderBottom: '1px solid rgba(145,56,50,0.14)' }}>
+          style={{ borderBottom: '1px solid rgba(155, 71, 34,0.14)' }}>
           <div>
             <p className="text-[10px] font-black uppercase tracking-[0.3em] mb-0.5" style={{ color: 'var(--iv-gold)' }}>
               {mode === 'add' ? 'New Product' : 'Edit Product'}
@@ -297,11 +297,11 @@ function ProductModal({
           <div className="flex items-center gap-4">
             <Field label="Finish Colour">
               <div className="flex items-center gap-3">
-                <input type="color" value={form.finishColor ?? '#0F2419'}
+                <input type="color" value={form.finishColor ?? '#004B37'}
                   onChange={e => set('finishColor', e.target.value)}
                   className="w-12 h-10 rounded-lg cursor-pointer border-0 p-0.5"
-                  style={{ background: 'rgba(145,56,50,0.07)', border: '1px solid rgba(145,56,50,0.20)' }} />
-                <input type="text" value={form.finishColor ?? '#0F2419'}
+                  style={{ background: 'rgba(155, 71, 34,0.07)', border: '1px solid rgba(155, 71, 34,0.20)' }} />
+                <input type="text" value={form.finishColor ?? '#004B37'}
                   onChange={e => set('finishColor', e.target.value)}
                   className={inputCls} style={{ ...inputStyle, fontFamily: 'monospace' }} />
               </div>
@@ -316,7 +316,7 @@ function ProductModal({
           <div className="flex gap-3 ml-auto">
             <button onClick={onClose}
               className="px-6 py-3 rounded-xl text-sm font-medium text-iv-cream/50 hover:text-iv-cream/80 transition-colors"
-              style={{ border: '1px solid rgba(145,56,50,0.18)' }}>
+              style={{ border: '1px solid rgba(155, 71, 34,0.18)' }}>
               Cancel
             </button>
             <button onClick={save} disabled={saving}
@@ -339,9 +339,9 @@ function DeleteModal({ name, onConfirm, onClose }: { name: string; onConfirm: ()
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4"
       style={{ background: 'rgba(26,22,20,0.88)', backdropFilter: 'blur(12px)' }}>
       <div className="w-full max-w-sm rounded-2xl p-8 text-center"
-        style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(145,56,50,0.30)' }}>
+        style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(155, 71, 34,0.30)' }}>
         <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4"
-          style={{ background: 'rgba(145,56,50,0.15)' }}>
+          style={{ background: 'rgba(155, 71, 34,0.15)' }}>
           <Trash2 size={20} style={{ color: 'var(--iv-gold)' }} />
         </div>
         <h3 className="text-base font-semibold text-iv-white mb-2" style={{ fontFamily: 'var(--iv-font-serif)' }}>Remove Product</h3>
@@ -350,12 +350,12 @@ function DeleteModal({ name, onConfirm, onClose }: { name: string; onConfirm: ()
         </p>
         <div className="flex gap-3">
           <button onClick={onClose} className="flex-1 py-3 rounded-xl text-sm font-medium text-iv-cream/60"
-            style={{ border: '1px solid rgba(145,56,50,0.18)' }}>
+            style={{ border: '1px solid rgba(155, 71, 34,0.18)' }}>
             Cancel
           </button>
           <button onClick={onConfirm}
             className="flex-1 py-3 rounded-xl text-sm font-black uppercase tracking-widest"
-            style={{ background: 'rgba(145,56,50,0.7)', color: 'var(--iv-white)' }}>
+            style={{ background: 'rgba(155, 71, 34,0.7)', color: 'var(--iv-white)' }}>
             Remove
           </button>
         </div>
@@ -430,16 +430,16 @@ export default function AdminProductsPage() {
 
       {error && (
         <div className="mb-5 px-4 py-3 rounded-xl text-sm text-red-300"
-          style={{ background: 'rgba(145,56,50,0.12)', border: '1px solid rgba(145,56,50,0.28)' }}>
+          style={{ background: 'rgba(155, 71, 34,0.12)', border: '1px solid rgba(155, 71, 34,0.28)' }}>
           {error}
         </div>
       )}
 
       {/* Table */}
-      <div className="rounded-2xl overflow-hidden" style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(145,56,50,0.14)' }}>
+      <div className="rounded-2xl overflow-hidden" style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(155, 71, 34,0.14)' }}>
         {/* Col headers */}
         <div className="px-6 py-3 grid items-center gap-4 text-[10px] font-black uppercase tracking-widest"
-          style={{ borderBottom: '1px solid rgba(145,56,50,0.14)', color: 'rgba(253,250,245,0.28)',
+          style={{ borderBottom: '1px solid rgba(155, 71, 34,0.14)', color: 'rgba(253,250,245,0.28)',
             gridTemplateColumns: '56px 1fr 90px 90px 80px 64px' }}>
           <span />
           <span>Product</span>
@@ -463,12 +463,12 @@ export default function AdminProductsPage() {
             {products.map((p) => (
               <div key={p.id}
                 className="px-6 py-4 grid items-center gap-4 transition-colors hover:bg-white/[0.02]"
-                style={{ borderBottom: '1px solid rgba(145,56,50,0.07)',
+                style={{ borderBottom: '1px solid rgba(155, 71, 34,0.07)',
                   gridTemplateColumns: '56px 1fr 90px 90px 80px 64px' }}>
 
                 {/* Thumbnail */}
                 <div className="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0 flex items-center justify-center"
-                  style={{ background: p.finishColor || '#0F2419', border: '1px solid rgba(145,56,50,0.14)' }}>
+                  style={{ background: p.finishColor || '#004B37', border: '1px solid rgba(155, 71, 34,0.14)' }}>
                   {p.image
                     /* eslint-disable-next-line @next/next/no-img-element */
                     ? <img src={p.image} alt={p.name} className="w-full h-full object-cover" />
@@ -485,7 +485,7 @@ export default function AdminProductsPage() {
                 {/* Tier badge */}
                 <div className="flex justify-center">
                   <span className="inline-flex items-center gap-1.5 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full"
-                    style={{ background: 'rgba(145,56,50,0.10)', color: 'var(--iv-cream)' }}>
+                    style={{ background: 'rgba(155, 71, 34,0.10)', color: 'var(--iv-cream)' }}>
                     <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: TIER_COLOUR[p.tier] ?? '#888' }} />
                     {p.tier}
                   </span>

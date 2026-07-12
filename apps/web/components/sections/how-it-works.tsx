@@ -80,11 +80,11 @@ export function HowItWorks({ steps, timeline }: HowItWorksProps) {
                     <div
                       className="border rounded-3xl p-8 transition-all duration-500"
                       style={{
-                        background: isWow ? 'linear-gradient(135deg, rgba(145,56,50,0.14) 0%, var(--iv-deep-green)/10% 100%)' : 'rgba(15,36,25,0.10)',
-                        borderColor: isWow ? 'rgba(145,56,50,0.40)' : 'rgba(255,255,255,0.05)',
+                        background: isWow ? 'linear-gradient(135deg, rgba(155, 71, 34,0.14) 0%, var(--iv-deep-green)/10% 100%)' : 'rgba(15,36,25,0.10)',
+                        borderColor: isWow ? 'rgba(155, 71, 34,0.40)' : 'rgba(255,255,255,0.05)',
                       }}
-                      onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = isWow ? 'linear-gradient(135deg, rgba(145,56,50,0.20) 0%, rgba(15,36,25,0.20) 100%)' : 'rgba(15,36,25,0.20)'}
-                      onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = isWow ? 'linear-gradient(135deg, rgba(145,56,50,0.14) 0%, rgba(15,36,25,0.10) 100%)' : 'rgba(15,36,25,0.10)'}
+                      onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = isWow ? 'linear-gradient(135deg, rgba(155, 71, 34,0.20) 0%, rgba(15,36,25,0.20) 100%)' : 'rgba(15,36,25,0.20)'}
+                      onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = isWow ? 'linear-gradient(135deg, rgba(155, 71, 34,0.14) 0%, rgba(15,36,25,0.10) 100%)' : 'rgba(15,36,25,0.10)'}
                     >
                       <div className="flex items-center justify-between mb-6">
                         <div>
@@ -97,7 +97,7 @@ export function HowItWorks({ steps, timeline }: HowItWorksProps) {
                           {isWow && (
                             <span
                               className="ml-3 text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full"
-                              style={{ background: 'rgba(145,56,50,0.15)', color: 'var(--iv-gold)', border: '1px solid rgba(145,56,50,0.30)' }}
+                              style={{ background: 'rgba(155, 71, 34,0.15)', color: 'var(--iv-gold)', border: '1px solid rgba(155, 71, 34,0.30)' }}
                             >
                               TTW
                             </span>

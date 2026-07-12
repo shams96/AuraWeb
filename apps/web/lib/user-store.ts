@@ -90,14 +90,14 @@ export function addLoyaltyPoints(email: string, points: number): void {
 
 /** Ensure a default admin account exists. Called at auth startup. */
 export function ensureAdminUser(): void {
-  const existing = findUserByEmail('admin@isolavitale.com')
+  const existing = findUserByEmail('admin@liriroma.com')
   if (existing) return
   const seedPassword = process.env.ADMIN_SEED_PASSWORD ?? 'IsolaAdmin2024!'
   const passwordHash = bcrypt.hashSync(seedPassword, 12)
   const users = read()
   users.push({
     id: randomUUID(),
-    email: 'admin@isolavitale.com',
+    email: 'admin@liriroma.com',
     name: 'Admin',
     passwordHash,
     role: 'OWNER',

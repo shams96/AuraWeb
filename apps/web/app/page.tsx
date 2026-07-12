@@ -1,8 +1,7 @@
-import { SystemHero } from '@/components/sections/system-hero'
+import { GrandDoor } from '@/components/sections/grand-door'
 import { SkinConsultation } from '@/components/diagnostic/skin-consultation'
-import { ProblemSolution } from '@/components/sections/problem-solution'
-import { ProblemEducationBlock } from '@/components/sections/problem-education'
-import { VitaleResilienceMatrix } from '@/components/sections/vitale-resilience-matrix'
+import { SkinIntelligenceSection } from '@/components/sections/skin-intelligence'
+import { LiriResilienceMatrix } from '@/components/sections/liri-resilience-matrix'
 import { HowItWorks } from '@/components/sections/how-it-works'
 import { BrandVideo } from '@/components/sections/brand-video'
 import { BentoFeatures } from '@/components/sections/bento-features'
@@ -20,7 +19,7 @@ export default function HomePage() {
   // Hero product data
   const product = {
     id: 'isola-vitale-concentrate',
-    name: 'The Vitale Concentrate™',
+    name: 'Liri Essence™',
     tagline: 'The first serum formulated for the biological reality of modern life',
     description: 'A precision-concentrated adaptive serum that tends to all four sources of your skin\'s vitality — the energy to renew, the living barrier, the power to protect, and structure that holds — in a single daily ritual. Formulated at Natural You Srl, Isola del Liri, Italy.',
     price: 295,
@@ -61,7 +60,7 @@ export default function HomePage() {
     {
       name: 'Isabelle M.',
       role: 'Paris',
-      content: 'I have used La Mer, I have used Augustinus Bader. This is different. It does not feel like luxury skincare. It feels like your skin simply deciding to be well again.',
+      content: 'I have tried a great many things over the years. This is the first that feels less like a product and more like my skin simply deciding to be well again.',
       image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&q=80',
       beforeImage: 'https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=400&q=80',
       afterImage: 'https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=400&q=80',
@@ -76,19 +75,19 @@ export default function HomePage() {
       answer: 'The humectant and barrier complex produces a measurable sensory change within 48 hours — skin feels different before it looks different. Surface texture visibly improves by week four, the first complete epidermal turnover cycle. Structural changes — firmness, resilience, tone — are clinically significant at 12 weeks of consistent morning and evening use.'
     },
     {
-      question: 'Is The Vitale Concentrate™ suited to all skin types?',
+      question: 'Is Liri Essence™ suited to all skin types?',
       answer: 'Yes. Our formulations work with the four sources of vitality that govern skin health, whatever your skin type. Made without common sensitisers, it is designed for daily use at every biological stage — including sensitive and reactive skin.'
     },
     {
       question: 'What sets this apart from other luxury serums?',
-      answer: 'Most serums chase a single concern. The Vitale Concentrate tends to four at once — the energy your skin uses to renew, the living barrier that keeps it resilient, its ability to protect itself, and the firmness that holds it. It does not treat symptoms. It improves the conditions that determine how your skin responds to everything else.'
+      answer: 'Most serums chase a single concern. Liri Essence tends to four at once — the energy your skin uses to renew, the living barrier that keeps it resilient, its ability to protect itself, and the firmness that holds it. It does not treat symptoms. It improves the conditions that determine how your skin responds to everything else.'
     },
     {
       question: 'How does it integrate with my current ritual?',
       answer: 'Apply 3–4 drops morning and evening after cleansing, before any moisturiser or SPF. It layers cleanly under all formulations. Over time, you may find your skin requires less correction from other products — which is the intended outcome.'
     },
     {
-      question: 'What is the Isola Vitale guarantee?',
+      question: 'What is the LIRI ROMA guarantee?',
       answer: 'We offer a 90-day ritual guarantee. If after three months of consistent use you do not experience a measurable improvement in skin resilience and vitality, we will arrange a full refund — no explanation required. We are confident in the science.'
     }
   ]
@@ -103,37 +102,9 @@ export default function HomePage() {
 
   return (
     <main>
-      <SystemHero />
+      <GrandDoor />
       <SkinConsultation />
-      <ProblemSolution
-        title="Modern Life Is Asking Too Much of Your Skin"
-        description="Skin evolved over millennia for natural environments. It was never designed for air conditioning, blue light, chronic stress, urban pollution, and transcontinental travel — all in the same week."
-        problems={[
-          'Climate-controlled interiors strip barrier moisture continuously',
-          'Blue light and urban pollution accelerate oxidative stress',
-          'Chronic stress disrupts circadian repair cycles',
-          'Conventional skincare addresses symptoms, not resilience'
-        ]}
-        solution={{
-          title: 'The Science of Vitality',
-          description: 'Four biological systems that address the root causes of modern skin stress — not its surface manifestations. The Vitale Concentrate™ is built entirely around this thinking.',
-          benefits: [
-            'Restores the energy your skin uses to renew and repair itself',
-            'Rebuilds a living barrier that adapts rather than reacts',
-            'Protects systematically against the daily environmental burden',
-            'Supports firmness and structure from the inside out'
-          ]
-        }}
-      />
-      <ProblemEducationBlock
-        problem="Skin Resilience"
-        context={[
-          'The average urban professional spends 90% of their day in climate-controlled environments — the single greatest modern stressor to barrier function',
-          'Blue light exposure from screens now rivals UV in cumulative oxidative burden on skin cells',
-          'Cortisol from chronic stress directly impairs the skin barrier and suppresses collagen synthesis',
-          'Most luxury skincare addresses visible symptoms while leaving the underlying resilience capacity untouched'
-        ]}
-      />
+      <SkinIntelligenceSection />
       <HowItWorks
         steps={[
           {
@@ -143,7 +114,7 @@ export default function HomePage() {
           },
           {
             title: 'Align',
-            description: 'Your profile is matched to the precise Vitale protocol — one of four rituals built around your skin\'s biological stage, not your age',
+            description: 'Your profile is matched to your precise Liri protocol — one of four rituals built around your skin\'s biological stage rather than your age',
             icon: '⚡'
           },
           {
@@ -158,15 +129,15 @@ export default function HomePage() {
           { week: 'Week 12', result: 'Peptide-driven structural change — clinically significant firmness, volume and tone improvement' }
         ]}
       />
-      <VitaleResilienceMatrix />
+      <LiriResilienceMatrix />
       <BentoFeatures />
       <BrandVideo />
       <IngredientScroll />
       <ScienceIngredients
         keyIngredients={[
           {
-            name: 'OS-01 Senomorphic Peptide',
-            description: 'Targets accumulated senescent cells to restore barrier function. In a published RCT (Zonari et al., J Cosmet Dermatol 2025, n=60, 12 wks): 70% of participants showed improved skin barrier function.',
+            name: 'Cellular Renewal Complex',
+            description: 'A peptide system formulated at Isola del Liri to support the skin\'s own renewal pathways — built on published senescence research, and proven in the house\'s own testing.',
             benefits: ['Cellular Longevity', 'Barrier Repair', 'Firmness'],
             concentration: '0.30%'
           },
@@ -177,7 +148,7 @@ export default function HomePage() {
             concentration: '0.75%'
           },
           {
-            name: 'GLP-1 Protection Technology',
+            name: 'Structural Support Complex',
             description: 'Peptide complex designed to support skin elasticity during periods of metabolic change, helping to maintain structural integrity and prevent volume deflation.',
             benefits: ['Elasticity Support', 'Metabolic Resilience', 'Volume Retention'],
             concentration: '1.25%'
@@ -201,7 +172,7 @@ export default function HomePage() {
             concentration: '1.00%'
           }
         ]}
-        mechanism="Formulated in partnership with Natural You Srl, Isola del Liri, our 18 enhanced formulations integrate DWAT Restoration Science and GLP-1 preventive protection technologies to outpace conventional luxury brands by 18-24 months."
+        mechanism="Formulated in partnership with Natural You Srl, Isola del Liri, our 18 enhanced formulations integrate DWAT Restoration Science and metabolic change preventive protection technologies to outpace conventional luxury brands by 18-24 months."
       />
       <ResultsTimeline
         timeline={[
@@ -226,13 +197,13 @@ export default function HomePage() {
           {
             period: 'Week 8',
             title: 'Visible Tone Correction',
-            description: 'GLP-1 Protection Complex and antioxidant actives produce measurable tone improvement after two complete turnover cycles. Dark spots begin fading. Radiance markedly increased.',
+            description: 'metabolic change Protection Complex and antioxidant actives produce measurable tone improvement after two complete turnover cycles. Dark spots begin fading. Radiance markedly increased.',
             icon: '✨'
           },
           {
             period: 'Week 12',
             title: 'Peptide-Driven Structural Change',
-            description: 'OS-01 Senomorphic Peptides show first clinical results at the three-month mark. Collagen synthesis stimulated by L-Ornithine produces a measurable early improvement in skin firmness and bounce.',
+            description: 'Cellular Renewal Complexs show first clinical results at the three-month mark. Collagen synthesis stimulated by L-Ornithine produces a measurable early improvement in skin firmness and bounce.',
             icon: '📈'
           },
           {

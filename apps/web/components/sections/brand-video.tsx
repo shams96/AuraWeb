@@ -29,7 +29,7 @@ export function BrandVideo() {
         {/* Label + headline */}
         <div className="text-center mb-12">
           <p className="text-[10px] font-black uppercase tracking-[0.3em] text-iv-gold mb-4">
-            The Isola Vitale Story
+            The LIRI ROMA Story
           </p>
           <h2 className="iv-type-h2 font-semibold text-iv-white uppercase tracking-tight">
             Science You Can <em className="text-iv-gold">See</em>
@@ -85,7 +85,7 @@ export function BrandVideo() {
 
         {/* Caption */}
         <p className="text-center text-xs text-iv-cream/65 mt-6 font-light tracking-widest uppercase">
-          Isola Vitale · Milano · Clinical Skincare
+          LIRI ROMA · Milano · Clinical Skincare
         </p>
 
       </div>

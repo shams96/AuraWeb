@@ -20,12 +20,12 @@ const FORMATS = [
 ]
 
 const C = {
-  border:       'rgba(145,56,50,0.14)',
-  borderActive: 'rgba(145,56,50,0.40)',
-  bgActive:     'rgba(145,56,50,0.07)',
+  border:       'rgba(155, 71, 34,0.14)',
+  borderActive: 'rgba(155, 71, 34,0.40)',
+  bgActive:     'rgba(155, 71, 34,0.07)',
   text:         '#3D2B20',
   textMuted:    '#7A5C4E',
-  gold:         '#913832',
+  gold:         '#9B4722',
 }
 
 export function FilterSidebar() {

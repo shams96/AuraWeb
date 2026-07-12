@@ -3,7 +3,7 @@ import { authOptions } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import { TrendingUp, ShoppingBag, Clock, Package } from 'lucide-react'
 
-export const metadata = { title: 'Admin Dashboard — Isola Vitale' }
+export const metadata = { title: 'Admin Dashboard — LIRI ROMA' }
 
 async function getStats() {
   try {
@@ -49,13 +49,13 @@ async function getRecentOrders() {
 }
 
 const STATUS_COLOURS: Record<string, string> = {
-  PENDING:    'rgba(145,56,50,0.25)',
-  CONFIRMED:  'rgba(31,81,41,0.35)',
+  PENDING:    'rgba(155, 71, 34,0.25)',
+  CONFIRMED:  'rgba(0, 75, 55,0.35)',
   PROCESSING: 'rgba(0,95,107,0.35)',
-  SHIPPED:    'rgba(31,81,41,0.55)',
-  DELIVERED:  'rgba(31,81,41,0.75)',
-  CANCELLED:  'rgba(145,56,50,0.45)',
-  REFUNDED:   'rgba(145,56,50,0.30)',
+  SHIPPED:    'rgba(0, 75, 55,0.55)',
+  DELIVERED:  'rgba(0, 75, 55,0.75)',
+  CANCELLED:  'rgba(155, 71, 34,0.45)',
+  REFUNDED:   'rgba(155, 71, 34,0.30)',
 }
 
 export default async function AdminDashboardPage() {
@@ -84,12 +84,12 @@ export default async function AdminDashboardPage() {
           <div
             key={label}
             className="rounded-2xl p-6"
-            style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(145,56,50,0.14)' }}
+            style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(155, 71, 34,0.14)' }}
           >
             <div className="flex items-start justify-between mb-4">
               <div
                 className="w-10 h-10 rounded-xl flex items-center justify-center"
-                style={{ background: 'rgba(145,56,50,0.12)' }}
+                style={{ background: 'rgba(155, 71, 34,0.12)' }}
               >
                 <Icon size={18} style={{ color: 'var(--iv-gold)' }} />
               </div>
@@ -104,9 +104,9 @@ export default async function AdminDashboardPage() {
       {/* Recent Orders */}
       <div
         className="rounded-2xl overflow-hidden"
-        style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(145,56,50,0.14)' }}
+        style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(155, 71, 34,0.14)' }}
       >
-        <div className="px-6 py-4 border-b flex items-center justify-between" style={{ borderColor: 'rgba(145,56,50,0.14)' }}>
+        <div className="px-6 py-4 border-b flex items-center justify-between" style={{ borderColor: 'rgba(155, 71, 34,0.14)' }}>
           <p className="text-sm font-semibold text-iv-white">Recent Orders</p>
           <a href="/admin/orders" className="text-xs uppercase tracking-widest font-black" style={{ color: 'var(--iv-gold)' }}>
             View All →
@@ -115,7 +115,7 @@ export default async function AdminDashboardPage() {
         {recentOrders.length === 0 ? (
           <div className="px-6 py-12 text-center text-iv-cream/40 text-sm">No orders yet</div>
         ) : (
-          <div className="divide-y" style={{ borderColor: 'rgba(145,56,50,0.08)' }}>
+          <div className="divide-y" style={{ borderColor: 'rgba(155, 71, 34,0.08)' }}>
             {recentOrders.map((order) => (
               <div key={order.id} className="px-6 py-4 flex items-center gap-4">
                 <div className="flex-1 min-w-0">
@@ -135,7 +135,7 @@ export default async function AdminDashboardPage() {
                 <span
                   className="text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full"
                   style={{
-                    background: STATUS_COLOURS[order.status] ?? 'rgba(145,56,50,0.15)',
+                    background: STATUS_COLOURS[order.status] ?? 'rgba(155, 71, 34,0.15)',
                     color: 'var(--iv-cream)',
                   }}
                 >

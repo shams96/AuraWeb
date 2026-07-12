@@ -12,7 +12,7 @@ interface ConsultationRecord {
   userId?: string
   email?: string
   tier: string
-  baumannLabel: string
+  profileLabel: string
   scores: { doScore: number; srScore: number; wScore: number; pScore: number }
   answers: Record<string, unknown>
   recommendedProducts: { id: string; name: string; price: number }[]
@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
     userId: (session?.user as { id?: string })?.id,
     email: session?.user?.email ?? body.email,
     tier: body.tier,
-    baumannLabel: body.baumannLabel,
+    profileLabel: body.profileLabel,
     scores: body.scores,
     answers: body.answers,
     recommendedProducts: body.recommendedProducts ?? [],

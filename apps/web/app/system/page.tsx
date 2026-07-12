@@ -4,9 +4,9 @@ import { Shield, Zap, Sparkles, Activity } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'The Ritual — Four Formulations. One Living Philosophy.',
-  description: 'Isola Vitale\'s four rituals are not defined by age — they are defined by what your skin needs now. Preservation · Refinement · Regeneration · Longevity. Beauty as a way of life.',
+  description: 'LIRI ROMA\'s four rituals are not defined by age — they are defined by what your skin needs now. Preservation · Refinement · Regeneration · Longevity. Beauty as a way of life.',
   openGraph: {
-    title: 'The Ritual | Isola Vitale',
+    title: 'The Ritual | LIRI ROMA',
     description: 'Four formulations born from the Italian philosophy that beauty is a way of life, not a clinical outcome.',
   },
 }
@@ -25,16 +25,16 @@ export default function SystemPage() {
       id: 'refinement',
       name: 'Refinement Protocol',
       focus: 'Barrier Intelligence · Oxidative Defense',
-      description: 'The Refinement Protocol meets your skin at its critical inflection — when the living barrier begins to soften and stress accumulates faster than the skin can neutralise it. GLP-1 protective complexes support firmness and structure while the window for intervention remains widest.',
-      tech: ['GLP-1 Protection', 'Oxidative Defense Complex', 'Barrier Adaptive Support'],
+      description: 'The Refinement Protocol meets your skin at its critical inflection — when the living barrier begins to soften and stress accumulates faster than the skin can neutralise it. metabolic change protective complexes support firmness and structure while the window for intervention remains widest.',
+      tech: ['metabolic change Protection', 'Oxidative Defense Complex', 'Barrier Adaptive Support'],
       icon: <Zap className="w-8 h-8 text-iv-gold" />,
     },
     {
       id: 'regeneration',
       name: 'Regeneration Protocol',
       focus: 'Oxidative Defense · Structural Vitality',
-      description: 'Active biological regeneration. DWAT Restoration Science addresses volume deflation at the cellular source. OS-01 Senomorphic Peptides reduce the accumulated senescent burden that impairs the skin\'s regenerative signalling — restoring resilience capacity, not merely correcting its visible consequences.',
-      tech: ['DWAT Restoration Science', 'OS-01 Senomorphic Peptides', 'NMN Cellular Support'],
+      description: 'Active biological regeneration. DWAT Restoration Science addresses volume deflation at the cellular source. Cellular Renewal Complexs reduce the accumulated senescent burden that impairs the skin\'s regenerative signalling — restoring resilience capacity, beyond merely correcting its visible consequences.',
+      tech: ['DWAT Restoration Science', 'Cellular Renewal Complexs', 'NMN Cellular Support'],
       icon: <Activity className="w-8 h-8 text-iv-gold" />,
     },
     {
@@ -55,7 +55,7 @@ export default function SystemPage() {
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           <div className="inline-flex items-center gap-3 border border-iv-gold/20 rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-8 bg-iv-black/40 backdrop-blur-md text-iv-gold">
             <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'var(--iv-gold)', display: 'inline-block' }} />
-            Adaptive Skin Science™ · Isola Vitale
+            Adaptive Skin Science™ · LIRI ROMA
           </div>
           <h1 className="iv-type-display font-semibold mb-8 uppercase text-iv-white">The <em className="text-iv-gold" style={{ fontStyle: 'italic', fontFamily: 'var(--iv-font-serif)' }}>Ritual</em></h1>
           <p className="text-xl text-iv-cream/70 max-w-3xl mx-auto leading-relaxed font-light mb-6">
@@ -137,17 +137,17 @@ export default function SystemPage() {
       <section className="py-24 bg-iv-black border-t border-iv-gold/10">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="text-center mb-16">
-            <p className="text-[10px] font-black text-iv-gold uppercase tracking-[0.4em] mb-4">The Vitale Principle™</p>
+            <p className="text-[10px] font-black text-iv-gold uppercase tracking-[0.4em] mb-4">The Liri Principle™</p>
             <h3 className="iv-type-h3 font-bold text-iv-white tracking-tighter" style={{ fontFamily: 'var(--iv-font-serif)' }}>
               Your Skin's <em className="text-iv-gold">Biological Stage</em>
             </h3>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
             {[
-              { phase: '01', name: 'Adaptive', state: 'Skin responds normally. Barrier intact. Recovery efficient.', color: 'rgba(145,56,50,0.80)' },
-              { phase: '02', name: 'Compensating', state: 'Recovery slows. Sensitivity appears. Barrier begins to struggle.', color: 'rgba(145,56,50,0.55)' },
-              { phase: '03', name: 'Fatigued', state: 'Barrier weakness. Dullness. Texture changes. Energy reserves depleted.', color: 'rgba(145,56,50,0.35)' },
-              { phase: '04', name: 'Depleted', state: 'Visible structural decline. Resilience capacity exhausted.', color: 'rgba(145,56,50,0.18)' },
+              { phase: '01', name: 'Adaptive', state: 'Skin responds normally. Barrier intact. Recovery efficient.', color: 'rgba(155, 71, 34,0.80)' },
+              { phase: '02', name: 'Compensating', state: 'Recovery slows. Sensitivity appears. Barrier begins to struggle.', color: 'rgba(155, 71, 34,0.55)' },
+              { phase: '03', name: 'Fatigued', state: 'Barrier weakness. Dullness. Texture changes. Energy reserves depleted.', color: 'rgba(155, 71, 34,0.35)' },
+              { phase: '04', name: 'Depleted', state: 'Visible structural decline. Resilience capacity exhausted.', color: 'rgba(155, 71, 34,0.18)' },
             ].map(p => (
               <div key={p.phase} className="p-6 rounded-2xl border border-iv-gold/10 bg-iv-deep-green/20 text-center">
                 <div className="w-3 h-3 rounded-full mx-auto mb-4" style={{ background: p.color }} />
@@ -159,7 +159,7 @@ export default function SystemPage() {
           </div>
           <div className="text-center">
             <p className="text-[11px] font-black uppercase tracking-[0.25em] text-iv-cream/70 mb-16">
-              Visible aging begins when adaptation capacity is exhausted — Isola Vitale exists to prevent that transition.
+              Visible aging begins when adaptation capacity is exhausted — LIRI ROMA exists to prevent that transition.
             </p>
             <div className="w-24 h-px bg-iv-gold/30 mx-auto mb-16" />
             <p className="text-3xl md:text-4xl text-iv-cream/80 italic iv-serif leading-[1.3] tracking-tight max-w-3xl mx-auto">

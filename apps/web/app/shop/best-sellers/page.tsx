@@ -13,7 +13,7 @@ export default function BestSellersPage() {
           </div>
           <h1 className="iv-type-display font-semibold mb-8 uppercase">Best <span className="text-iv-gold italic">Sellers</span></h1>
           <p className="text-xl text-iv-cream/70 max-w-3xl leading-relaxed font-light">
-            Discover our initial launch phase Hero SKUs. These five essential formulations represent the core of the Isola Vitale system—engineered for metabolic precision and luxury performance.
+            Discover our initial launch phase Hero SKUs. These five essential formulations represent the core of the LIRI ROMA system—engineered for metabolic precision and luxury performance.
           </p>
         </div>
       </div>
@@ -50,7 +50,7 @@ export default function BestSellersPage() {
               <p className="text-[10px] font-black text-iv-gold mb-6 uppercase tracking-[0.4em]">IV-PKG-RFQ-001 · April 2026</p>
               <h3 className="text-4xl font-bold mb-6 text-iv-white tracking-tighter uppercase tracking-[0.1em]">The Hero SKU <br />Packaging Project</h3>
               <p className="text-iv-cream/60 leading-relaxed font-light text-lg mb-8">
-                Isola Vitale expresses quiet, confident luxury. Every surface is intentional, tactile, and premium. Our 2026 Hero SKUs feature airless systems, rPET cartridges, and real Champagne Gold metal components.
+                LIRI ROMA expresses quiet, confident luxury. Every surface is intentional, tactile, and premium. Our 2026 Hero SKUs feature airless systems, rPET cartridges, and real Champagne Gold metal components.
               </p>
               <div className="flex flex-wrap gap-4">
                 <div className="flex items-center gap-2">
@@ -62,7 +62,7 @@ export default function BestSellersPage() {
                   <span className="text-[10px] font-black text-iv-cream/65 uppercase tracking-widest">Smoky Charcoal</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 rounded-full bg-iv-cloud-dancer shadow-[0_0_10px_rgba(240,238,233,0.5)]" />
+                  <div className="w-4 h-4 rounded-full bg-iv-cloud-dancer shadow-[0_0_10px_rgba(240, 242, 235,0.5)]" />
                   <span className="text-[10px] font-black text-iv-cream/65 uppercase tracking-widest">Cloud Dancer</span>
                 </div>
                 <div className="flex items-center gap-2">

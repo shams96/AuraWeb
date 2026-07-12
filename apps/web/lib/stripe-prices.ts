@@ -1,18 +1,18 @@
 /**
  * Stripe Price ID registry.
- * Maps product SKUs to Stripe one-time and recurring monthly Price IDs.
+ * Maps product SKUs to Stripe one-time and recurring Price IDs.
  *
  * In development with no Price IDs set, checkout falls back to ad-hoc
  * price_data — no pre-creation required. In production, set real Price IDs
  * from the Stripe dashboard to enable proper recurring billing and webhooks.
  *
  * To create prices in Stripe dashboard:
- *   Products → [product] → Add price → Recurring, monthly
+ *   Products → [product] → Add price → Recurring, custom: every 45 days (The Ritual) or 90 days (The Season). NEVER monthly.
  */
 
 export interface StripePriceEntry {
   oneTimeId?: string        // Stripe Price ID for one-time purchase
-  subscriptionId?: string   // Stripe Price ID for recurring monthly
+  subscriptionId?: string   // Stripe Price ID — recurring every 45 days (never monthly)
 }
 
 // Populated from env vars so they never appear in source

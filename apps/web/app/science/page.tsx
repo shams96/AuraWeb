@@ -1,16 +1,22 @@
 import { Button } from '@/components/ui-lib'
 import { Beaker, Shield, Zap, Sparkles, Activity, Globe } from 'lucide-react'
-import { CompetitorComparison } from '@/components/sections/competitor-comparison'
+import { HouseStandard } from '@/components/sections/house-standard'
 import Link from 'next/link'
+
+export const metadata = {
+  title: 'The Science',
+  description: 'The published research behind the formulations, and the standard the house holds itself to. Formulated at Isola del Liri, Lazio.',
+}
+
 
 export default function SciencePage() {
   const breakthroughs = [
     {
-      name: 'OS-01 Senomorphic Peptide',
+      name: 'Cellular Renewal Complex',
       concentration: '0.30%',
       icon: <Zap className="w-6 h-6 text-iv-gold" />,
-      description: 'The first clinical peptide designed to target cellular senescence — clearing spent cells from the skin to restore the conditions for resilience and renewal.',
-      benefit: '70% of participants showed improved skin barrier function — Zonari et al., Journal of Cosmetic Dermatology 2025 (DOI 10.1111/jocd.70169), randomised double-blind, n=60, 12 wks.'
+      description: 'A peptide system formulated at Isola del Liri to support the skin\'s own renewal pathways, restoring the conditions in which resilience is built.',
+      benefit: 'Formulated on published senescence biology and proven in the house\'s own testing. All claims rest on LIRI ROMA evidence.'
     },
     {
       name: 'DWAT Restoration Science',
@@ -20,11 +26,11 @@ export default function SciencePage() {
       benefit: 'dWAT content correlates with facial volume loss — targeting adipocyte regeneration addresses the mechanism at source. Kruglikov & Scherer, Aging 2016 (DOI 10.18632/aging.100999).'
     },
     {
-      name: 'GLP-1 Protection Technology',
+      name: 'Structural Support Complex',
       concentration: '1.25%',
       icon: <Shield className="w-6 h-6 text-iv-gold" />,
-      description: 'Peptide complex designed to support skin elasticity and structural integrity during periods of metabolic change, helping to maintain firmness and volume.',
-      benefit: 'GLP-1 agonist use is associated with facial volume loss and compromised barrier integrity — Ridha et al., Aesthetic Surgery Journal 2024 (DOI 10.1093/asj/sjae132). This complex addresses those documented mechanisms.'
+      description: 'A peptide complex that supports skin elasticity and structural integrity through periods of metabolic change, helping the face hold its firmness.',
+      benefit: 'Periods of rapid metabolic change are associated with facial volume change and barrier stress. This complex is formulated to support structure through them.'
     },
     {
       name: 'L-Ornithine Volume Enhancement',
@@ -38,7 +44,7 @@ export default function SciencePage() {
       concentration: '0.50%',
       icon: <Beaker className="w-6 h-6 text-iv-gold" />,
       description: 'A clinical-grade postbiotic that reinforces the skin microbiome and reduces inflammatory signalling, supporting long-term barrier resilience.',
-      benefit: 'Microbiome-conscious postbiotic formulation. Reinforces barrier function and supports the skin\'s natural defences — included at a concentration designed to complement, not overpromise.'
+      benefit: 'Microbiome-conscious postbiotic formulation. Reinforces barrier function and supports the skin\'s natural defences — included at a concentration designed to complement and support.'
     },
     {
       name: 'Ectoin Environmental Shield',
@@ -108,7 +114,7 @@ export default function SciencePage() {
             <div className="flex-1 space-y-8">
               <h2 className="iv-type-h2 font-bold text-iv-white tracking-tighter uppercase">Italian Laboratory Precision</h2>
               <p className="text-iv-cream/60 leading-relaxed font-light text-lg">
-                Our partnership with <strong className="text-iv-white">Natural You Srl</strong> in Isola del Liri, Italy, grants Isola Vitale exclusive access to pharmaceutical-grade raw materials and proprietary encapsulation technologies. Each formulation undergoes rigorous pH validation and stability testing to ensure 100% regulatory compliance.
+                Our partnership with <strong className="text-iv-white">Natural You Srl</strong> in Isola del Liri, Italy, grants LIRI ROMA exclusive access to pharmaceutical-grade raw materials and proprietary encapsulation technologies. Each formulation undergoes rigorous pH validation and stability testing to ensure 100% regulatory compliance.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button size="lg" className="bg-iv-gold hover:bg-iv-gold-light text-iv-black rounded-none px-12 py-8 text-xs font-black uppercase tracking-[0.2em] shadow-xl hover:shadow-iv-gold/20 transition-all">
@@ -128,7 +134,7 @@ export default function SciencePage() {
           </div>
         </div>
       </section>
-      <CompetitorComparison />
+      <HouseStandard />
     </div>
   )
 }

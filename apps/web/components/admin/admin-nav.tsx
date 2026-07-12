@@ -27,7 +27,7 @@ export function AdminNav() {
             className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all"
             style={{
               color:      active ? 'var(--iv-white)'    : 'rgba(253,250,245,0.55)',
-              background: active ? 'rgba(145,56,50,0.18)' : 'transparent',
+              background: active ? 'rgba(155, 71, 34,0.18)' : 'transparent',
               borderLeft: active ? '2px solid var(--iv-gold)' : '2px solid transparent',
             }}
           >

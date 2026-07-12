@@ -2,15 +2,15 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 
-export const metadata: Metadata = { title: 'Checkout Cancelled — Isola Vitale' }
+export const metadata: Metadata = { title: 'Checkout Cancelled — LIRI ROMA' }
 
 const C = {
   page:      '#FDFAF5',
   parchment: '#F4EAE2',
   charcoal:  '#1A1614',
   muted:     '#7A5C4E',
-  gold:      '#913832',
-  border:    'rgba(145,56,50,0.14)',
+  gold:      '#9B4722',
+  border:    'rgba(155, 71, 34,0.14)',
 }
 
 export default function CheckoutCancelPage() {
@@ -19,7 +19,7 @@ export default function CheckoutCancelPage() {
       <div style={{ width: '100%', maxWidth: 460, textAlign: 'center', padding: '48px 0' }}>
 
         {/* Icon */}
-        <div style={{ width: 64, height: 64, borderRadius: '50%', background: 'rgba(145,56,50,0.06)', border: `1px solid ${C.border}`, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 28px' }}>
+        <div style={{ width: 64, height: 64, borderRadius: '50%', background: 'rgba(155, 71, 34,0.06)', border: `1px solid ${C.border}`, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 28px' }}>
           <ArrowLeft size={24} style={{ color: C.gold, opacity: 0.7 }} />
         </div>
 

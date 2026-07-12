@@ -12,14 +12,14 @@ import { randomUUID } from 'crypto'
 export type AssessmentMode = 'discovery' | 'check-in' | 'evolution'
 export type Protocol = 't1' | 't2' | 't3' | 't4'
 
-export interface BaumannProfile {
+export interface SkinIntelligenceProfile {
   doScore: number   // 0=dry → 10=oily
   srScore: number   // 0=resistant → 10=sensitive
   wScore: number    // 0=tight → 18=wrinkle-prone
   pScore: number    // 0=non-pigmented → 10=pigmented
   hydration: 'dry' | 'normal' | 'combination' | 'oily'
   sensitivity: 'resistant' | 'balanced' | 'sensitive'
-  baumannLabel: string
+  profileLabel: string
 }
 
 export interface StoredAssessment {
@@ -29,7 +29,7 @@ export interface StoredAssessment {
   mode: AssessmentMode
   completedAt: string
   answers: Record<string, unknown>
-  profile: BaumannProfile
+  profile: SkinIntelligenceProfile
   protocol: Protocol
   concerns: string[]
   previousAssessmentId: string | null
@@ -91,7 +91,7 @@ export function migrateGuestAssessments(guestId: string, userId: string): number
   return count
 }
 
-function buildImprovementNarrative(prev: StoredAssessment, current: BaumannProfile): string {
+function buildImprovementNarrative(prev: StoredAssessment, current: SkinIntelligenceProfile): string {
   const lines: string[] = []
   const p = prev.profile
 
@@ -101,7 +101,7 @@ function buildImprovementNarrative(prev: StoredAssessment, current: BaumannProfi
 
   const wDelta = p.wScore - current.wScore
   if (wDelta >= 2) lines.push('Fine lines and firmness have improved since your last consultation.')
-  else if (wDelta <= -2) lines.push('Your skin is showing new signs of ageing — your protocol may need to advance.')
+  else if (wDelta <= -2) lines.push('Your skin\'s needs have shifted — your protocol is ready to advance with it.')
 
   const doDelta = Math.abs(p.doScore - current.doScore)
   if (doDelta >= 2) lines.push('Your hydration balance has shifted — your ritual is adapting your skin.')
@@ -117,7 +117,7 @@ export function saveAssessment(data: {
   userId: string | null
   guestId: string | null
   answers: Record<string, unknown>
-  profile: BaumannProfile
+  profile: SkinIntelligenceProfile
   protocol: Protocol
   concerns: string[]
 }): StoredAssessment {

@@ -9,7 +9,7 @@ import { ErrorBoundary } from '@/components/error-boundary'
 import { ProductHeroSkeleton, BuyBoxSkeleton, StickyFooterCTASkeleton } from '@/components/skeletons/product-skeleton'
 import { ProductHero } from '@/components/sections/product-hero'
 import { BuyBox } from '@/components/sections/buy-box'
-import { ProblemEducationBlock } from '@/components/sections/problem-education'
+import { SkinIntelligenceSection } from '@/components/sections/skin-intelligence'
 import { HowItWorks } from '@/components/sections/how-it-works'
 import { ScienceIngredients } from '@/components/sections/science-ingredients'
 import { UGCSection } from '@/components/sections/ugc'
@@ -182,6 +182,7 @@ interface ProductPageClientProps {
 }
 
 import { ALL_PRODUCTS } from '@/lib/products'
+import { ProductSchema } from '@/components/seo/structured-data'
 
 export function ProductPageClient({ productId }: ProductPageClientProps) {
   const [product, setProduct] = useState<Product | null>(null)
@@ -320,6 +321,14 @@ export function ProductPageClient({ productId }: ProductPageClientProps) {
 
   return (
     <ErrorBoundary>
+      <ProductSchema
+        name={product.name}
+        description={product.tagline ?? product.name}
+        image={product.image ?? '/og-image.jpg'}
+        price={product.price}
+        sku={product.sku}
+        url={`/products/${product.id}`}
+      />
       <div style={{ minHeight: '100vh', backgroundColor: '#060C09' }}>
         <main style={{ maxWidth: 1280, margin: '0 auto', padding: '2rem 1.5rem' }}>
           {/* Hero Section */}
@@ -334,16 +343,8 @@ export function ProductPageClient({ productId }: ProductPageClientProps) {
             />
           </div>
           
-          {/* Problem/Education Block */}
-          <ProblemEducationBlock 
-            problem={product.primaryProblem}
-            context={[
-              'Modern lifestyles expose skin to unprecedented stress',
-              'Environmental factors trigger sensitivity',
-              'Traditional solutions often over-treat',
-              'Skin needs adaptive, intelligent care'
-            ]}
-          />
+          {/* Skin Intelligence */}
+          <SkinIntelligenceSection />
           
           {/* How It Works */}
           <HowItWorks 
@@ -375,7 +376,7 @@ export function ProductPageClient({ productId }: ProductPageClientProps) {
           <ScienceIngredients 
             keyIngredients={[
               {
-                name: 'Vitale Resilience Complex™',
+                name: 'Liri Resilience Complex™',
                 description: 'Proprietary complex tending to all four sources of skin vitality — the energy to renew, the living barrier, the power to protect, and firmness and structure.',
                 benefits: ['Living barrier support', 'Oxidative defence', 'Structural vitality'],
                 concentration: '5%'

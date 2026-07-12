@@ -22,7 +22,7 @@ const STATUS_BG: Record<string, string> = {
   SHIPPED:    'rgba(74,222,128,0.20)',
   DELIVERED:  'rgba(74,222,128,0.30)',
   CANCELLED:  'rgba(248,113,113,0.15)',
-  REFUNDED:   'rgba(145,56,50,0.20)',
+  REFUNDED:   'rgba(155, 71, 34,0.20)',
 }
 
 export default function AdminOrdersPage() {
@@ -71,10 +71,10 @@ export default function AdminOrdersPage() {
         </h1>
       </div>
 
-      <div className="rounded-2xl overflow-hidden" style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(145,56,50,0.14)' }}>
+      <div className="rounded-2xl overflow-hidden" style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(155, 71, 34,0.14)' }}>
         <div
           className="px-6 py-3 grid grid-cols-[140px_1fr_120px_100px_160px] gap-4 text-[10px] font-black uppercase tracking-widest text-iv-cream/55 border-b"
-          style={{ borderColor: 'rgba(145,56,50,0.14)' }}
+          style={{ borderColor: 'rgba(155, 71, 34,0.14)' }}
         >
           <span>Order #</span><span>Customer / Items</span><span className="text-right">Total</span><span className="text-right">Date</span><span className="text-center">Status</span>
         </div>
@@ -87,7 +87,7 @@ export default function AdminOrdersPage() {
         ) : orders.length === 0 ? (
           <div className="px-6 py-16 text-center text-iv-cream/40 text-sm">No orders yet</div>
         ) : (
-          <div className="divide-y" style={{ borderColor: 'rgba(145,56,50,0.08)' }}>
+          <div className="divide-y" style={{ borderColor: 'rgba(155, 71, 34,0.08)' }}>
             {orders.map((o) => (
               <div key={o.id} className="px-6 py-4 grid grid-cols-[140px_1fr_120px_100px_160px] gap-4 items-center">
                 <p className="text-xs font-mono font-semibold text-iv-cream/70 truncate">{o.orderNumber}</p>
@@ -114,9 +114,9 @@ export default function AdminOrdersPage() {
                       onChange={e => updateStatus(o.id, e.target.value)}
                       className="text-[10px] font-black uppercase tracking-widest rounded-full px-3 py-1.5 outline-none cursor-pointer"
                       style={{
-                        background: STATUS_BG[o.status] ?? 'rgba(145,56,50,0.12)',
+                        background: STATUS_BG[o.status] ?? 'rgba(155, 71, 34,0.12)',
                         color: 'var(--iv-cream)',
-                        border: '1px solid rgba(145,56,50,0.18)',
+                        border: '1px solid rgba(155, 71, 34,0.18)',
                       }}
                     >
                       {STATUSES.map(s => <option key={s} value={s}>{s}</option>)}
@@ -130,7 +130,7 @@ export default function AdminOrdersPage() {
 
         {/* Pagination */}
         {pages > 1 && (
-          <div className="px-6 py-4 border-t flex items-center justify-between" style={{ borderColor: 'rgba(145,56,50,0.14)' }}>
+          <div className="px-6 py-4 border-t flex items-center justify-between" style={{ borderColor: 'rgba(155, 71, 34,0.14)' }}>
             <p className="text-xs text-iv-cream/40">Page {page} of {pages}</p>
             <div className="flex gap-2">
               <button

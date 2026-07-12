@@ -13,8 +13,8 @@ const C = {
   charcoal:  '#1A1614',
   espresso:  '#3D2B20',
   muted:     '#7A5C4E',
-  gold:      '#913832',
-  border:    'rgba(145,56,50,0.14)',
+  gold:      '#9B4722',
+  border:    'rgba(155, 71, 34,0.14)',
 }
 
 const INPUT: React.CSSProperties = {
@@ -125,7 +125,7 @@ export default function AccountProfilePage() {
             </div>
             <p style={{ fontSize: '0.7rem', color: C.muted, margin: 0, fontWeight: 300, lineHeight: 1.6 }}>
               To update your name or email address, contact our concierge team at{' '}
-              <a href="mailto:concierge@isolavitale.com" style={{ color: C.gold, textDecoration: 'none', fontWeight: 600 }}>concierge@isolavitale.com</a>
+              <a href="mailto:concierge@liriroma.com" style={{ color: C.gold, textDecoration: 'none', fontWeight: 600 }}>concierge@liriroma.com</a>
             </p>
           </div>
         </div>
@@ -146,7 +146,7 @@ export default function AccountProfilePage() {
             )}
 
             {pwError && (
-              <div style={{ padding: '12px 16px', background: 'rgba(145,56,50,0.07)', border: `1px solid ${C.border}`, borderRadius: 10, marginBottom: 20 }}>
+              <div style={{ padding: '12px 16px', background: 'rgba(155, 71, 34,0.07)', border: `1px solid ${C.border}`, borderRadius: 10, marginBottom: 20 }}>
                 <p style={{ fontSize: '0.8rem', color: C.espresso, margin: 0 }}>{pwError}</p>
               </div>
             )}
@@ -160,7 +160,7 @@ export default function AccountProfilePage() {
                   placeholder="Your current password"
                   autoComplete="current-password"
                   style={INPUT}
-                  onFocus={e => (e.currentTarget.style.borderColor = 'rgba(145,56,50,0.4)')}
+                  onFocus={e => (e.currentTarget.style.borderColor = 'rgba(155, 71, 34,0.4)')}
                   onBlur={e => (e.currentTarget.style.borderColor = C.border)}
                 />
               </div>
@@ -172,7 +172,7 @@ export default function AccountProfilePage() {
                   placeholder="Min. 8 characters"
                   autoComplete="new-password"
                   style={INPUT}
-                  onFocus={e => (e.currentTarget.style.borderColor = 'rgba(145,56,50,0.4)')}
+                  onFocus={e => (e.currentTarget.style.borderColor = 'rgba(155, 71, 34,0.4)')}
                   onBlur={e => (e.currentTarget.style.borderColor = C.border)}
                 />
               </div>
@@ -184,14 +184,14 @@ export default function AccountProfilePage() {
                   placeholder="Repeat new password"
                   autoComplete="new-password"
                   style={INPUT}
-                  onFocus={e => (e.currentTarget.style.borderColor = 'rgba(145,56,50,0.4)')}
+                  onFocus={e => (e.currentTarget.style.borderColor = 'rgba(155, 71, 34,0.4)')}
                   onBlur={e => (e.currentTarget.style.borderColor = C.border)}
                 />
               </div>
               <button
                 type="submit" disabled={pwLoading}
                 style={{
-                  padding: '13px 24px', background: pwLoading ? 'rgba(145,56,50,0.5)' : C.gold,
+                  padding: '13px 24px', background: pwLoading ? 'rgba(155, 71, 34,0.5)' : C.gold,
                   color: '#FDFAF5', border: 'none', borderRadius: 10,
                   fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.2em',
                   textTransform: 'uppercase', cursor: pwLoading ? 'not-allowed' : 'pointer',

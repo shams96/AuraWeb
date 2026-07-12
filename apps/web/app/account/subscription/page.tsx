@@ -13,8 +13,8 @@ const C = {
   charcoal:  '#1A1614',
   espresso:  '#3D2B20',
   muted:     '#7A5C4E',
-  gold:      '#913832',
-  border:    'rgba(145,56,50,0.14)',
+  gold:      '#9B4722',
+  border:    'rgba(155, 71, 34,0.14)',
 }
 
 export default function SubscriptionPage() {
@@ -45,7 +45,7 @@ export default function SubscriptionPage() {
         <div style={{ marginBottom: 36 }}>
           <p style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.35em', textTransform: 'uppercase', color: C.gold, marginBottom: 8 }}>Ritual Membership</p>
           <h1 style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '2rem', fontStyle: 'italic', fontWeight: 600, color: C.charcoal, margin: 0 }}>
-            Your monthly ritual
+            Your ritual
           </h1>
         </div>
 
@@ -102,7 +102,7 @@ export default function SubscriptionPage() {
                 Our concierge team is available at{' '}
                 <a href="tel:+12147143597" style={{ color: C.gold, textDecoration: 'none', fontWeight: 600 }}>+1 214-714-3597</a>
                 {' '}or{' '}
-                <a href="mailto:concierge@isolavitale.com" style={{ color: C.gold, textDecoration: 'none', fontWeight: 600 }}>concierge@isolavitale.com</a>
+                <a href="mailto:concierge@liriroma.com" style={{ color: C.gold, textDecoration: 'none', fontWeight: 600 }}>concierge@liriroma.com</a>
               </p>
             </div>
           </div>

@@ -26,7 +26,7 @@ export function FAQSection({ faqs }: FAQSectionProps) {
             Frequently Asked Questions
           </h2>
           <p className="text-lg text-iv-cream/70">
-            Everything you need to know about The Vitale Concentrate™ and the Isola Vitale ritual
+            Everything you need to know about Liri Essence™ and the LIRI ROMA ritual
           </p>
         </div>
 
@@ -84,8 +84,8 @@ export function FAQSection({ faqs }: FAQSectionProps) {
             </div>
             <h3 className="font-bold text-iv-white mb-2 uppercase tracking-widest text-xs">Email Support</h3>
             <p className="text-xs text-iv-cream/65 mb-4">Response within 24 hours</p>
-            <a href="mailto:support@isolavitale.it" className="text-iv-gold hover:text-iv-gold-light text-sm font-bold">
-              support@isolavitale.it
+            <a href="mailto:support@liriroma.it" className="text-iv-gold hover:text-iv-gold-light text-sm font-bold">
+              support@liriroma.it
             </a>
           </div>
 

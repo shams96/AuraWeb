@@ -14,7 +14,7 @@ const securityHeaders = [
       "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com",
-      "img-src 'self' data: blob: https://images.unsplash.com https://images.pexels.com https://isolavitale.com",
+      "img-src 'self' data: blob: https://images.unsplash.com https://images.pexels.com https://liriroma.com",
       "connect-src 'self' https://api.stripe.com https://checkout.stripe.com",
       "frame-src https://js.stripe.com https://hooks.stripe.com",
       "object-src 'none'",
@@ -38,7 +38,7 @@ const nextConfig = {
     remotePatterns: [
       { protocol: 'https', hostname: 'images.unsplash.com' },
       { protocol: 'https', hostname: 'images.pexels.com' },
-      { protocol: 'https', hostname: 'isolavitale.com' },
+      { protocol: 'https', hostname: 'liriroma.com' },
       { protocol: 'http', hostname: 'localhost' },
     ],
     formats: ['image/webp', 'image/avif'],

@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'FAQ',
-  description: 'Answers to the most common questions about Isola Vitale\'s four adaptive protocols, the science of skin vitality, shipping, returns, and the 90-day ritual guarantee.',
+  description: 'Answers to the most common questions about LIRI ROMA\'s four adaptive protocols, the science of skin vitality, shipping, returns, and the 90-day ritual guarantee.',
 }
 
 export default function FAQPage() {
@@ -13,15 +13,15 @@ export default function FAQPage() {
       items: [
         {
           q: 'What is Metabolic Skincare?',
-          a: 'Metabolic skincare targets the cellular processes that govern skin health, volume, and repair. Unlike traditional skincare which focuses on topical symptoms, Isola Vitale formulations provide metabolic signals that optimize the cellular engine itself.'
+          a: 'Metabolic skincare targets the cellular processes that govern skin health, volume, and repair. Unlike traditional skincare which focuses on topical symptoms, LIRI ROMA formulations provide metabolic signals that optimize the cellular engine itself.'
         },
         {
           q: 'How do the 4 Protocols work?',
           a: 'Our Skin Intelligence Protocols™ are divided into four cellular stage tiers — Foundation, Correction, Regeneration, and Longevity — that align formulation potency with your skin\'s specific metabolic performance needs. No age categories. Protocol selection is based on cellular stage, not chronological age.'
         },
         {
-          q: 'What are Senomorphic Peptides?',
-          a: 'Senomorphic peptides are molecules that target "zombie" cells (senescent cells) that remain in the skin and emit inflammatory markers. Our OS-01 technology helps clear these cells to restore barrier function.'
+          q: 'What are Cellular Renewal Complexs?',
+          a: 'Cellular Renewal peptides are molecules that target "zombie" cells (senescent cells) that remain in the skin and emit inflammatory markers. Our Cellular Renewal Complex technology helps clear these cells to restore barrier function.'
         }
       ]
     },

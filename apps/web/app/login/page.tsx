@@ -8,7 +8,7 @@ import { Eye, EyeOff, ArrowRight, Loader2, CheckCircle2 } from 'lucide-react'
 
 const INPUT: React.CSSProperties = {
   display: 'block', width: '100%', padding: '12px 16px',
-  background: 'var(--iv-deep-green)', border: '1px solid rgba(145,56,50,0.18)',
+  background: 'var(--iv-deep-green)', border: '1px solid rgba(155, 71, 34,0.18)',
   borderRadius: 8, fontSize: '0.9rem', color: 'var(--iv-white)',
   outline: 'none', transition: 'border-color 0.2s', boxSizing: 'border-box',
 }
@@ -50,7 +50,7 @@ function LoginForm() {
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 70% 30%, rgba(250,214,201,0.18) 0%, transparent 60%)' }} />
         <div className="relative z-10 text-center px-12 space-y-8">
           <Link href="/" className="inline-flex items-center gap-3">
-            <span style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.6rem', fontWeight: 700, color: '#FDFAF5', letterSpacing: '0.1em' }}>ISOLA VITALE</span>
+            <span style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.6rem', fontWeight: 700, color: '#FDFAF5', letterSpacing: '0.1em' }}>LIRI ROMA</span>
             <span style={{ width: 1, height: 20, background: 'rgba(250,214,201,0.35)', display: 'inline-block' }} />
             <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#FAD6C9', letterSpacing: '0.22em', textTransform: 'uppercase' }}>Milano</span>
           </Link>
@@ -70,7 +70,7 @@ function LoginForm() {
           </div>
           <div style={{ paddingTop: 8, borderTop: '1px solid rgba(253,250,245,0.1)' }}>
             <p style={{ fontSize: '0.75rem', color: 'rgba(253,250,245,0.65)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
-              An Isola Vitale Formulation
+              An LIRI ROMA Formulation
             </p>
           </div>
         </div>
@@ -79,7 +79,7 @@ function LoginForm() {
       {/* Right form panel */}
       <div className="flex-1 flex flex-col items-center justify-center px-6 py-16">
         <Link href="/" className="lg:hidden mb-10">
-          <span style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.3rem', fontWeight: 700, color: 'var(--iv-white)', letterSpacing: '0.1em' }}>ISOLA VITALE</span>
+          <span style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.3rem', fontWeight: 700, color: 'var(--iv-white)', letterSpacing: '0.1em' }}>LIRI ROMA</span>
         </Link>
 
         <div className="w-full max-w-md space-y-7">
@@ -120,7 +120,7 @@ function LoginForm() {
                 placeholder="you@example.com"
                 style={INPUT}
                 onFocus={e => (e.target.style.borderColor = 'var(--iv-gold)')}
-                onBlur={e  => (e.target.style.borderColor = 'rgba(145,56,50,0.18)')}
+                onBlur={e  => (e.target.style.borderColor = 'rgba(155, 71, 34,0.18)')}
               />
             </div>
 
@@ -140,7 +140,7 @@ function LoginForm() {
                   placeholder="••••••••"
                   style={{ ...INPUT, paddingRight: 44 }}
                   onFocus={e => (e.target.style.borderColor = 'var(--iv-gold)')}
-                  onBlur={e  => (e.target.style.borderColor = 'rgba(145,56,50,0.18)')}
+                  onBlur={e  => (e.target.style.borderColor = 'rgba(155, 71, 34,0.18)')}
                 />
                 <button type="button" onClick={() => setShowPassword(v => !v)}
                   style={{ position: 'absolute', right: 12, top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', cursor: 'pointer', color: 'var(--iv-text-muted)', padding: 0 }}>
@@ -152,7 +152,7 @@ function LoginForm() {
             <button type="submit" disabled={isPending}
               style={{
                 width: '100%', padding: '14px 24px',
-                background: isPending ? 'rgba(145,56,50,0.5)' : 'var(--iv-gold)',
+                background: isPending ? 'rgba(155, 71, 34,0.5)' : 'var(--iv-gold)',
                 color: 'var(--iv-black)', border: 'none', borderRadius: 8,
                 fontSize: '0.75rem', fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase',
                 cursor: isPending ? 'not-allowed' : 'pointer',
@@ -168,7 +168,7 @@ function LoginForm() {
 
           <div style={{ textAlign: 'center', paddingTop: 4 }}>
             <Link href="/professional"
-              style={{ fontSize: '0.75rem', color: 'var(--iv-text-muted)', textDecoration: 'none', borderBottom: '1px solid rgba(145,56,50,0.25)', paddingBottom: 2 }}>
+              style={{ fontSize: '0.75rem', color: 'var(--iv-text-muted)', textDecoration: 'none', borderBottom: '1px solid rgba(155, 71, 34,0.25)', paddingBottom: 2 }}>
               Professional / B2B login →
             </Link>
           </div>

@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 /* ============================================================
-   ISOLA VITALE — GLOBAL DESIGN TOKEN SYSTEM
+   LIRI ROMA — GLOBAL DESIGN TOKEN SYSTEM
    To change the theme: edit only the values in :root below.
    Classes like bg-iv-black / text-iv-white resolve to whatever
    the token points at — no page edits ever required.
@@ -51,17 +51,17 @@
     --iv-cream:       #3D2B20;   /* body text — warm espresso             */
 
     /* Accent tokens (used by text-iv-gold / border-iv-gold) */
-    --iv-gold:        #913832;   /* Red Ochre — primary CTA & accent      */
-    --iv-gold-light:  #B04843;   /* Red Ochre hover                       */
+    --iv-gold:        #9B4722;   /* Red Ochre — primary CTA & accent      */
+    --iv-gold-light:  #B85834;   /* Red Ochre hover                       */
     --iv-champagne:   #FAD6C9;   /* Peach Dust — decorative warm          */
-    --iv-champagne-gold: #D4B483;/* warm trim gold                        */
+    --iv-champagne-gold: #D6C5A0;/* warm trim gold                        */
 
     /* ── Product SKU palette (always fixed, never remapped) ──── */
-    --iv-red-ochre:       #913832;
-    --iv-formal-garden:   #1F5129;
+    --iv-red-ochre:       #9B4722;
+    --iv-formal-garden:   #004B37;
     --iv-peach-dust:      #FAD6C9;
-    --iv-deep-peacock:    #005A5B;
-    --iv-cloud-dancer:    #F0EEE9;
+    --iv-deep-peacock:    #0C2D38;
+    --iv-cloud-dancer:    #F0F2EB;
     --iv-smoky-charcoal:  #363636;
 
     /* ── Semantic aliases (used in new components) ────────────── */
@@ -69,11 +69,11 @@
     --iv-blush:       #FBF3EE;
     --iv-parchment:   #F4EAE2;
     --iv-peach:       #FAD6C9;
-    --iv-ochre:       #913832;
-    --iv-ochre-dark:  #6E2724;
-    --iv-ochre-light: #C05040;
-    --iv-garden:      #1F5129;
-    --iv-teal:        #005A5B;
+    --iv-ochre:       #9B4722;
+    --iv-ochre-dark:  #7A3319;
+    --iv-ochre-light: #C26039;
+    --iv-garden:      #004B37;
+    --iv-teal:        #0C2D38;
     --iv-charcoal:    #1A1614;
     --iv-text:        #3D2B20;
     --iv-text-muted:  #5C4438;   /* was #7A5C4E (5.82:1 AA) → now 7.03:1 AAA on ivory */
@@ -98,7 +98,7 @@
     --iv-gold:        #B8972F;
     --iv-gold-light:  #D4B450;
     --iv-champagne:   #F5E6C0;
-    --iv-champagne-gold: #D4B483;
+    --iv-champagne-gold: #D6C5A0;
     --background: 158 30% 5%;
     --foreground: 50 20% 95%;
     --border: 158 20% 18%;
@@ -155,7 +155,7 @@
 @layer components {
   header {
     background-color: rgba(253, 250, 245, 0.97) !important;
-    border-bottom: 1px solid rgba(145, 56, 50, 0.12) !important;
+    border-bottom: 1px solid rgba(155, 71, 34, 0.12) !important;
     backdrop-filter: blur(24px) !important;
     -webkit-backdrop-filter: blur(24px) !important;
   }
@@ -180,8 +180,8 @@
 
   /* Professional Portal badge */
   .professional-portal-badge {
-    background-color: rgba(145, 56, 50, 0.07);
-    border: 1px solid rgba(145, 56, 50, 0.22);
+    background-color: rgba(155, 71, 34, 0.07);
+    border: 1px solid rgba(155, 71, 34, 0.22);
     color: var(--iv-ochre);
     font-size: 0.65rem;
     font-weight: 700;
@@ -221,7 +221,7 @@
   .text-gray-400    { color: var(--iv-cream) !important; opacity: 0.45; }
 
   .border-gray-100, .border-gray-200, .border-gray-300 {
-    border-color: rgba(145, 56, 50, 0.10) !important;
+    border-color: rgba(155, 71, 34, 0.10) !important;
   }
 
   /* Shadows — warm luxury */
@@ -234,14 +234,14 @@
   /* Product card */
   .product-card {
     background: var(--iv-black);
-    border: 1px solid rgba(145, 56, 50, 0.10);
+    border: 1px solid rgba(155, 71, 34, 0.10);
     border-radius: 12px;
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   }
   .product-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 20px 60px rgba(60, 30, 20, 0.14);
-    border-color: rgba(145, 56, 50, 0.28);
+    border-color: rgba(155, 71, 34, 0.28);
   }
 
   /* Forms — light */
@@ -251,7 +251,7 @@
   select,
   textarea {
     background-color: #FFFFFF;
-    border: 1px solid rgba(145, 56, 50, 0.18);
+    border: 1px solid rgba(155, 71, 34, 0.18);
     color: var(--iv-white);
     border-radius: 8px;
   }
@@ -259,7 +259,7 @@
   input:focus {
     outline: none;
     border-color: var(--iv-ochre) !important;
-    box-shadow: 0 0 0 2px rgba(145, 56, 50, 0.10);
+    box-shadow: 0 0 0 2px rgba(155, 71, 34, 0.10);
   }
 
   /* Inside .iv-dark, forms go dark */
@@ -276,19 +276,19 @@
 
   /* Tables */
   table { color: var(--iv-cream); }
-  thead tr  { border-bottom: 1px solid rgba(145, 56, 50, 0.15) !important; }
-  tbody tr:hover { background-color: rgba(145, 56, 50, 0.03) !important; }
+  thead tr  { border-bottom: 1px solid rgba(155, 71, 34, 0.15) !important; }
+  tbody tr:hover { background-color: rgba(155, 71, 34, 0.03) !important; }
   .iv-dark thead tr  { border-bottom-color: rgba(184, 151, 47, 0.30) !important; }
   .iv-dark tbody tr:hover { background-color: rgba(13, 43, 32, 0.5) !important; }
 
   /* Emerald utilities — remap to brand teal */
   .bg-emerald-950 { background-color: var(--iv-garden) !important; }
   .bg-emerald-900 { background-color: var(--iv-teal) !important; }
-  .bg-emerald-50  { background-color: rgba(0, 90, 91, 0.06) !important; }
+  .bg-emerald-50  { background-color: rgba(12, 45, 56, 0.06) !important; }
   .text-emerald-700 { color: var(--iv-teal) !important; }
   .text-emerald-600 { color: var(--iv-teal) !important; }
   .text-emerald-400 { color: #1F8A8B !important; }
-  .border-emerald-100 { border-color: rgba(0, 90, 91, 0.15) !important; }
+  .border-emerald-100 { border-color: rgba(12, 45, 56, 0.15) !important; }
 
   /* .iv-dark cards (white-bg cards inside dark sections) */
   .iv-dark section .bg-white,
@@ -316,7 +316,7 @@
   }
   .btn-luxury:hover {
     background: var(--iv-gold-light);
-    box-shadow: 0 8px 30px rgba(145, 56, 50, 0.30);
+    box-shadow: 0 8px 30px rgba(155, 71, 34, 0.30);
     transform: translateY(-1px);
   }
 
@@ -325,12 +325,12 @@
   [class*="border-gray-100"].rounded-2xl {
     background-color: var(--iv-deep-green) !important;
     color: var(--iv-cream) !important;
-    border-color: rgba(145, 56, 50, 0.10) !important;
+    border-color: rgba(155, 71, 34, 0.10) !important;
   }
 
   /* Subscription badge */
   .text-emerald-700.bg-emerald-50 {
-    background-color: rgba(31, 81, 41, 0.08) !important;
+    background-color: rgba(0, 75, 55, 0.08) !important;
     color: var(--iv-garden) !important;
   }
 }
@@ -374,7 +374,7 @@
   .text-pretty  { text-wrap: pretty; }
 
   .animate-shimmer {
-    background-image: linear-gradient(90deg, transparent, rgba(145, 56, 50, 0.08), transparent);
+    background-image: linear-gradient(90deg, transparent, rgba(155, 71, 34, 0.08), transparent);
     background-size: 200% 100%;
     animation: shimmer 2s infinite;
   }
@@ -395,14 +395,14 @@
    ============================================================ */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: var(--iv-deep-green); }
-::-webkit-scrollbar-thumb { background: rgba(145, 56, 50, 0.22); border-radius: 6px; }
+::-webkit-scrollbar-thumb { background: rgba(155, 71, 34, 0.22); border-radius: 6px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--iv-ochre); }
 
 /* ============================================================
    SELECTION
    ============================================================ */
 ::selection {
-  background: rgba(145, 56, 50, 0.15);
+  background: rgba(155, 71, 34, 0.15);
   color: var(--iv-white);
 }
 
@@ -465,8 +465,8 @@ a, button, [role="button"] {
 
 /* ── Glow pulse on accent elements ───────────────────────── */
 @keyframes iv-glow-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(145, 56, 50, 0); }
-  50%       { box-shadow: 0 0 24px 4px rgba(145, 56, 50, 0.22); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(155, 71, 34, 0); }
+  50%       { box-shadow: 0 0 24px 4px rgba(155, 71, 34, 0.22); }
 }
 .iv-glow-pulse { animation: iv-glow-pulse 2.4s ease-in-out infinite; }
 
@@ -479,7 +479,7 @@ a, button, [role="button"] {
   background: linear-gradient(
     90deg,
     var(--iv-deep-green) 25%,
-    rgba(145, 56, 50, 0.07) 50%,
+    rgba(155, 71, 34, 0.07) 50%,
     var(--iv-deep-green) 75%
   );
   background-size: 200% 100%;
@@ -508,7 +508,7 @@ a, button, [role="button"] {
   background: rgba(253, 250, 245, 0.72);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(145, 56, 50, 0.12);
+  border: 1px solid rgba(155, 71, 34, 0.12);
   box-shadow: 0 8px 32px rgba(60, 30, 20, 0.08);
 }
 .iv-dark .iv-glass {
@@ -622,7 +622,7 @@ img[loading="lazy"].loaded {
 /* ── Luxury divider ───────────────────────────────────────── */
 .iv-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(145, 56, 50, 0.25), transparent);
+  background: linear-gradient(90deg, transparent, rgba(155, 71, 34, 0.25), transparent);
   border: none;
   margin: 3rem 0;
 }
@@ -958,7 +958,7 @@ html, body {
     z-index: 30;
     padding: 12px 16px;
     background: rgba(253,250,245,0.97);
-    border-top: 1px solid rgba(145,56,50,0.12);
+    border-top: 1px solid rgba(155, 71, 34,0.12);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
   }

@@ -9,10 +9,10 @@ import Link from 'next/link'
 import { FlaskConical } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'The Collections — Isola Vitale',
+  title: 'The Collections — LIRI ROMA',
   description: "Eighteen formulations. Four protocols. One Italian philosophy. Each formulation is assigned to a biological stage — not an age.",
   openGraph: {
-    title: 'The Collections | Isola Vitale',
+    title: 'The Collections | LIRI ROMA',
     description: 'Eighteen formulations born from the Italian practice of living beautifully. Find your protocol.',
   },
 }
@@ -72,7 +72,7 @@ export default async function ShopPage({
     <div className="min-h-screen pb-32" style={{ background: '#FDFAF5' }}>
 
       {/* Hero header */}
-      <div className="iv-dark border-b pt-32 pb-20 relative overflow-hidden" style={{ background: 'linear-gradient(160deg, #0F2419 0%, #1A1614 100%)', borderColor: 'rgba(184,151,47,0.10)' }}>
+      <div className="iv-dark border-b pt-32 pb-20 relative overflow-hidden" style={{ background: 'linear-gradient(160deg, #004B37 0%, #1A1614 100%)', borderColor: 'rgba(184,151,47,0.10)' }}>
         <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(circle at 70% 50%, rgba(184,151,47,0.04) 0%, transparent 60%)' }} />
         <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full blur-[120px] -mr-48 -mt-48 pointer-events-none" style={{ background: 'rgba(184,151,47,0.05)' }} />
 

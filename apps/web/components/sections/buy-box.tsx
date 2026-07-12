@@ -1,8 +1,24 @@
 'use client'
 
 import { useState } from 'react'
-import { Check, CreditCard, Truck, Shield, Loader2 } from 'lucide-react'
-import { Button } from '@/components/ui-lib'
+import { Loader2 } from 'lucide-react'
+
+/* ═══════════════════════════════════════════════════════════════════════
+   THE BUY BOX — LIRI ROMA · Phase 4, the commerce engine.
+
+   LAW applied here:
+   · 45-day cadence. NEVER called "monthly". The interval is explained,
+     never buried — it is a positioning statement, not a shipping detail.
+   · Subscriber price first and larger. One-time second, smaller, a quiet
+     text link with no button. Never punished, never shamed.
+   · Savings as a DOLLAR AMOUNT. Never a percentage. Never a struck price.
+   · FOMO is EXCLUSIVITY, never pressure. Founding allocation, the Circle,
+     what opens over time. No countdown timers. Ever.
+   · Value framed as one considered ritual — never as thrift.
+   · TTW™ stated as a standard the house is measured by, not a policy.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+type Mode = 'ritual' | 'season' | 'once'
 
 interface BuyBoxProps {
   product: {
@@ -11,373 +27,173 @@ interface BuyBoxProps {
     price: number
     currency: string
     sku: string
-    variants: Array<{
-      id: string
-      name: string
-      price: number
-      compareAtPrice?: number
-    }>
+    variants: Array<{ id: string; name: string; price: number; compareAtPrice?: number }>
   }
   selectedVariant?: string | null
-  buyBullets: string[]
+  buyBullets?: string[]
 }
 
-export function BuyBox({ product, selectedVariant: initialVariant, buyBullets }: BuyBoxProps) {
-  const [selectedVariantId, setSelectedVariantId] = useState(
-    initialVariant ?? product.variants[0]?.id ?? ''
-  )
-  const [purchaseType, setPurchaseType] = useState<'one-time' | 'subscribe'>('subscribe')
-  const [customQty, setCustomQty] = useState(1)
-  const [selectedBreakIndex, setSelectedBreakIndex] = useState(0)
-  const [checkoutLoading, setCheckoutLoading] = useState(false)
-  const [checkoutError, setCheckoutError] = useState('')
+const SUB_RATE = 0.8
 
-  async function handleCheckout() {
-    setCheckoutLoading(true)
-    setCheckoutError('')
+const CIRCLE = [
+  { at: 'With your first delivery', gift: 'The house ritual card, and your protocol, printed' },
+  { at: 'At your second',           gift: 'The Liri travel vessel, in champagne' },
+  { at: 'At your fourth',           gift: 'Early access to each release, before it opens' },
+  { at: 'At your sixth',            gift: 'The Founder\u2019s Circle — allocation held in your name' },
+]
+
+export function BuyBox({ product, selectedVariant: initialVariant }: BuyBoxProps) {
+  const [variantId, setVariantId] = useState(initialVariant ?? product.variants[0]?.id ?? '')
+  const [mode, setMode] = useState<Mode>('ritual')
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
+
+  const variant = product.variants.find((v) => v.id === variantId) ?? product.variants[0]
+  const list = variant?.price ?? product.price
+  const isSub = mode !== 'once'
+  const unit = isSub ? list * SUB_RATE : list
+
+  const money = (n: number) =>
+    new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: product.currency || 'USD',
+      minimumFractionDigits: 0,
+    }).format(n)
+
+  async function checkout() {
+    setLoading(true); setError('')
     try {
       const res = await fetch('/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           items: [{
-            id:             product.id,
-            name:           `${product.name}${currentVariant ? ` — ${currentVariant.name}` : ''}`,
-            price:          totalPrice / effectiveQty,
-            quantity:       effectiveQty,
-            variantId:      selectedVariantId,
-            isSubscription: purchaseType === 'subscribe',
+            id: product.id,
+            name: `${product.name}${variant ? ` — ${variant.name}` : ''}`,
+            price: unit,
+            quantity: 1,
+            variantId,
+            isSubscription: isSub,
+            intervalDays: mode === 'season' ? 90 : mode === 'ritual' ? 45 : null,
           }],
-          currency: 'usd',
         }),
       })
-
-      // Guard against non-JSON responses (e.g. HTML 500 pages)
-      const contentType = res.headers.get('content-type') ?? ''
-      if (!contentType.includes('application/json')) {
-        setCheckoutError('Checkout is temporarily unavailable. Please try again.')
-        return
-      }
-
-      const data: { url?: string; error?: string } = await res.json()
-      if (data.url) {
-        window.location.href = data.url
-      } else {
-        const msg = data.error ?? ''
-        setCheckoutError(
-          msg && !msg.startsWith('Unexpected')
-            ? msg
-            : 'Checkout is temporarily unavailable. Please try again.'
-        )
-      }
+      const data = await res.json()
+      if (data?.url) window.location.href = data.url
+      else setError('We could not open checkout. Please try once more.')
     } catch {
-      setCheckoutError('Checkout is temporarily unavailable. Please try again.')
-    } finally {
-      setCheckoutLoading(false)
-    }
+      setError('We could not open checkout. Please try once more.')
+    } finally { setLoading(false) }
   }
 
-  const currentVariant = product.variants.find(v => v.id === selectedVariantId) || product.variants[0]
-  const basePrice = purchaseType === 'subscribe' ? currentVariant.price * 0.80 : currentVariant.price
-
-  const quantityBreaks = [
-    { quantity: 1, price: basePrice, label: '1 jar', perUnit: basePrice },
-    { quantity: 2, price: basePrice * 1.8, label: '2 jars', perUnit: (basePrice * 1.8) / 2 },
-    { quantity: 3, price: basePrice * 2.4, label: '3 jars', perUnit: (basePrice * 2.4) / 3 },
-  ]
-
-  const bestValueIndex = quantityBreaks.reduce((bestIndex, current, index, array) =>
-    current.perUnit < array[bestIndex].perUnit ? index : bestIndex, 0
-  )
-
-  const formatPrice = (price: number) =>
-    `$${price.toFixed(2)}`
-
-  const activeBreak = quantityBreaks[selectedBreakIndex]
-  const effectiveQty = selectedBreakIndex === -1 ? customQty : activeBreak.quantity
-  const totalPrice = selectedBreakIndex === -1
-    ? basePrice * customQty
-    : activeBreak.price
-
-  function handleDecrement() {
-    setSelectedBreakIndex(-1)
-    setCustomQty(q => Math.max(1, q - 1))
-  }
-
-  function handleIncrement() {
-    setSelectedBreakIndex(-1)
-    setCustomQty(q => Math.min(10, q + 1))
-  }
-
-  function handleQtyInput(e: React.ChangeEvent<HTMLInputElement>) {
-    const val = Math.min(10, Math.max(1, parseInt(e.target.value) || 1))
-    setCustomQty(val)
-    setSelectedBreakIndex(-1)
-  }
+  const opt = (active: boolean): React.CSSProperties => ({
+    width: '100%', textAlign: 'left', padding: '1.15rem 1.3rem',
+    background: active ? 'rgba(155,71,34,.045)' : 'transparent',
+    border: `1px solid ${active ? 'var(--iv-ochre, #9B4722)' : 'rgba(92,68,56,.22)'}`,
+    cursor: 'pointer', display: 'flex', justifyContent: 'space-between',
+    alignItems: 'baseline', gap: '1rem',
+    transition: 'border-color 300ms ease, background 300ms ease',
+  })
+  const label: React.CSSProperties = { fontFamily: 'var(--iv-font-serif)', fontSize: '1.05rem', color: 'var(--iv-charcoal, #1A1614)' }
+  const meta: React.CSSProperties = { fontFamily: 'var(--iv-font-body)', fontSize: '0.74rem', lineHeight: 1.6, color: 'var(--iv-text-muted, #5C4438)', marginTop: '0.3rem', display: 'block' }
+  const price: React.CSSProperties = { fontFamily: 'var(--iv-font-serif)', fontSize: '1.5rem', color: 'var(--iv-charcoal, #1A1614)', display: 'block' }
 
   return (
-    <section id="buy-box" className="py-12 bg-iv-black">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-iv-deep-green/30 rounded-2xl p-6 md:p-10 shadow-2xl border border-iv-gold/10 backdrop-blur-md">
-            {/* Product Title and Rating */}
-            <div className="text-center mb-6">
-              <h2 className="text-2xl md:text-3xl font-bold text-iv-white mb-1">
-                {product.name}
-              </h2>
-              <div className="flex items-center justify-center space-x-1">
-                {[...Array(5)].map((_, i) => (
-                  <svg
-                    key={i}
-                    className={`w-4 h-4 ${i < 4 ? 'text-iv-gold' : 'text-iv-white/20'}`}
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-                <span className="text-xs font-medium text-iv-cream/60 ml-2">
-                  4.0 (127 reviews)
-                </span>
-              </div>
-            </div>
+    <div style={{ maxWidth: '460px' }}>
+      <p style={{ fontFamily: 'var(--iv-font-body)', fontSize: '9px', letterSpacing: '0.34em', textTransform: 'uppercase', color: 'var(--iv-ochre, #9B4722)', marginBottom: '1.1rem' }}>
+        Founding allocation · first release
+      </p>
 
-            {/* Purchase Type Toggle — subscription first (Langer: invite, never punish) */}
-            <div className="mb-6">
-              <div className="flex rounded-xl border border-iv-gold/20 bg-iv-black overflow-hidden">
-                {/* Subscribe — featured/default */}
-                <button
-                  onClick={() => setPurchaseType('subscribe')}
-                  className={`flex-1 px-4 py-3 text-sm font-bold uppercase tracking-widest transition-all flex flex-col items-center gap-0.5 ${
-                    purchaseType === 'subscribe'
-                      ? 'bg-iv-gold text-iv-black shadow-lg'
-                      : 'text-iv-cream/60 hover:text-iv-white'
-                  }`}
-                >
-                  <span>Monthly Ritual</span>
-                  <span className={`text-[10px] font-black ${purchaseType === 'subscribe' ? 'text-iv-black/70' : 'text-iv-gold/60'}`}>
-                    Save {formatPrice(currentVariant.price * 0.20)} per order
-                  </span>
-                </button>
-                {/* One-time — secondary, no shame language */}
-                <button
-                  onClick={() => setPurchaseType('one-time')}
-                  className={`flex-1 px-4 py-3 text-sm font-bold uppercase tracking-widest transition-all flex flex-col items-center gap-0.5 ${
-                    purchaseType === 'one-time'
-                      ? 'bg-iv-black text-white shadow-inner'
-                      : 'text-iv-cream/65 hover:text-iv-white'
-                  }`}
-                >
-                  <span>One-Time</span>
-                  <span className={`text-[10px] font-normal ${purchaseType === 'one-time' ? 'text-iv-cream/65' : 'text-iv-cream/65'}`}>
-                    Full price, once
-                  </span>
-                </button>
-              </div>
-
-              {/* Invitation when one-time is selected — no shame, no red */}
-              {purchaseType === 'one-time' && (
-                <div className="mt-3 rounded-xl border border-iv-gold/10 px-4 py-3 bg-iv-deep-green/30">
-                  <p className="text-[11px] text-iv-cream/60 leading-relaxed font-light italic">
-                    Ritual members receive this formulation for{' '}
-                    <span className="text-iv-gold font-black not-italic">{formatPrice(currentVariant.price * 0.20)} less</span>{' '}
-                    each month — and it arrives before they run out.
-                  </p>
-                  <button
-                    onClick={() => setPurchaseType('subscribe')}
-                    className="mt-2 text-[10px] font-black uppercase tracking-[0.2em] text-iv-gold hover:underline"
-                  >
-                    Begin your monthly ritual →
-                  </button>
-                </div>
-              )}
-
-              {/* Confirmation when subscribed */}
-              {purchaseType === 'subscribe' && (
-                <div className="mt-3 rounded-xl border border-iv-gold/15 px-4 py-3 bg-iv-deep-green/30">
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="text-[10px] font-black uppercase tracking-wider text-iv-gold">Ritual membership</span>
-                    <span className="text-sm font-black text-iv-gold">{formatPrice(currentVariant.price * 0.20 * 12)} saved / year</span>
-                  </div>
-                  <p className="text-[10px] text-iv-cream/65">Cancel anytime · Ships every 30 days · Free returns</p>
-                </div>
-              )}
-            </div>
-
-            {/* Quantity Breaks */}
-            <div className="mb-8">
-              <h3 className="text-xs font-bold text-iv-white mb-6 text-center uppercase tracking-widest">
-                Choose Your Quantity
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {quantityBreaks.map((breakItem, index) => (
-                  <button
-                    key={index}
-                    onClick={() => { setSelectedBreakIndex(index); setCustomQty(breakItem.quantity) }}
-                    className={`relative p-6 rounded-xl border transition-all duration-300 text-left ${
-                      selectedBreakIndex === index
-                        ? 'border-iv-gold bg-iv-gold/10 shadow-[0_0_20px_rgba(184,151,47,0.15)]'
-                        : 'border-iv-white/10 hover:border-iv-gold/40'
-                    }`}
-                  >
-                    {index === bestValueIndex && (
-                      <div className="absolute -top-2 left-1/2 transform -translate-x-1/2">
-                        <span className="bg-iv-gold text-iv-black text-[10px] font-black uppercase tracking-tighter px-3 py-1 rounded-full">
-                          Best Value
-                        </span>
-                      </div>
-                    )}
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-iv-white">
-                        {formatPrice(breakItem.price)}
-                      </div>
-                      <div className="text-sm text-iv-cream/70 mt-1">
-                        {breakItem.label}
-                      </div>
-                      <div className="text-xs text-iv-cream/65 mt-2 font-mono">
-                        {formatPrice(breakItem.perUnit)}/jar
-                      </div>
-                    </div>
-                  </button>
-                ))}
-              </div>
-
-              {/* Custom Quantity Input */}
-              <div className="mt-8 flex items-center justify-center space-x-6">
-                <span className="text-xs font-bold uppercase tracking-widest text-iv-cream/60">Custom Quantity</span>
-                <div className="flex items-center space-x-3">
-                  <button
-                    onClick={handleDecrement}
-                    className="w-10 h-10 rounded-full border border-iv-gold/20 flex items-center justify-center bg-iv-black hover:border-iv-gold transition-colors"
-                    aria-label="Decrease quantity"
-                  >
-                    <span className="text-iv-gold text-xl leading-none">-</span>
-                  </button>
-                  <input
-                    type="number"
-                    min="1"
-                    max="10"
-                    value={selectedBreakIndex === -1 ? customQty : quantityBreaks[selectedBreakIndex].quantity}
-                    onChange={handleQtyInput}
-                    onFocus={() => setSelectedBreakIndex(-1)}
-                    className="w-16 h-10 text-center border border-iv-gold/20 rounded-lg bg-iv-black text-iv-white font-bold"
-                    aria-label="Quantity"
-                  />
-                  <button
-                    onClick={handleIncrement}
-                    className="w-10 h-10 rounded-full border border-iv-gold/20 flex items-center justify-center bg-iv-black hover:border-iv-gold transition-colors"
-                    aria-label="Increase quantity"
-                  >
-                    <span className="text-iv-gold text-xl leading-none">+</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Variant Selector */}
-            <div className="mb-10">
-              <h3 className="text-xs font-bold text-iv-white mb-6 text-center uppercase tracking-widest">
-                Select Variant
-              </h3>
-              <div className="flex justify-center space-x-4">
-                {product.variants.map((variant) => (
-                  <button
-                    key={variant.id}
-                    onClick={() => setSelectedVariantId(variant.id)}
-                    className={`px-8 py-3 rounded-lg border cursor-pointer transition-all ${
-                      selectedVariantId === variant.id
-                        ? 'border-iv-gold bg-iv-gold/10 text-iv-white font-bold'
-                        : 'border-iv-white/10 text-iv-cream/60 hover:border-iv-gold/40'
-                    }`}
-                  >
-                    {variant.name}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Order Summary */}
-            <div className="mb-6 p-4 rounded-xl bg-iv-black/40 border border-iv-gold/10">
-              <div className="flex items-center justify-between">
-                <div className="text-xs text-iv-cream/65 uppercase tracking-widest font-bold">
-                  {effectiveQty} × {currentVariant.name}
-                </div>
-                <div className="text-right">
-                  {purchaseType === 'subscribe' && (
-                    <div className="text-[10px] text-iv-cream/65 line-through">{formatPrice(currentVariant.price * effectiveQty)}</div>
-                  )}
-                  <div className="text-xl font-bold text-iv-white">{formatPrice(totalPrice)}</div>
-                  {purchaseType === 'subscribe' && (
-                    <div className="text-[10px] font-black text-iv-gold">–{formatPrice(currentVariant.price * 0.20 * effectiveQty)} saved</div>
-                  )}
-                </div>
-              </div>
-            </div>
-
-            {/* Checkout Button */}
-            <div className="mb-10">
-              <Button
-                size="lg"
-                disabled={checkoutLoading}
-                onClick={handleCheckout}
-                className="w-full py-6 text-lg font-bold uppercase tracking-widest bg-iv-gold text-iv-black hover:bg-iv-gold-light shadow-xl hover:shadow-iv-gold/20 border-none rounded-md disabled:opacity-60 disabled:cursor-not-allowed"
-              >
-                <div className="flex items-center justify-center space-x-3">
-                  {checkoutLoading
-                    ? <><Loader2 className="w-5 h-5 animate-spin" /><span>Preparing Checkout…</span></>
-                    : <span>Checkout — {formatPrice(totalPrice)}</span>
-                  }
-                </div>
-              </Button>
-
-              {checkoutError && (
-                <div className="mt-3 text-center">
-                  <p className="text-[#913832] text-xs font-medium mb-1">{checkoutError}</p>
-                  <p className="text-xs text-iv-cream/65">
-                    Need help?{' '}
-                    <a href="tel:+12147143597" className="text-iv-gold underline font-bold">
-                      1-214-714-3597
-                    </a>
-                  </p>
-                </div>
-              )}
-
-              <div className="flex justify-center space-x-4 mt-6">
-                <Button variant="outline" size="lg" onClick={handleCheckout} className="flex-1 border-iv-white/10 text-iv-cream/60 bg-iv-black hover:border-iv-gold hover:text-iv-gold">
-                  <CreditCard className="w-4 h-4 mr-2" />
-                  Card / Apple Pay
-                </Button>
-              </div>
-            </div>
-
-            {/* Key Bullets */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 border-b border-iv-white/5 pb-10">
-              {buyBullets.map((bullet, index) => (
-                <div key={index} className="flex items-start space-x-3">
-                  <Check className="w-4 h-4 text-iv-gold mt-1 flex-shrink-0" />
-                  <span className="text-sm text-iv-cream/70 leading-relaxed">{bullet}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Trust Badges */}
-            <div className="flex flex-wrap justify-center gap-8 pt-2">
-              <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-widest text-iv-cream/65">
-                <Shield className="w-4 h-4 text-iv-gold/60" />
-                <span>90-Day Guarantee</span>
-              </div>
-              <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-widest text-iv-cream/65">
-                <Truck className="w-4 h-4 text-iv-gold/60" />
-                <span>Free Shipping</span>
-              </div>
-              <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-widest text-iv-cream/65">
-                <Shield className="w-4 h-4 text-iv-gold/60" />
-                <span>Secure Checkout</span>
-              </div>
-            </div>
-          </div>
+      {product.variants.length > 1 && (
+        <div style={{ display: 'flex', gap: '0.6rem', marginBottom: '1.6rem', flexWrap: 'wrap' }}>
+          {product.variants.map((v) => (
+            <button key={v.id} onClick={() => setVariantId(v.id)}
+              style={{ fontFamily: 'var(--iv-font-body)', fontSize: '0.76rem', letterSpacing: '0.08em', padding: '0.6rem 1.1rem', background: 'transparent',
+                border: `1px solid ${v.id === variantId ? 'var(--iv-ochre, #9B4722)' : 'rgba(92,68,56,.22)'}`,
+                color: v.id === variantId ? 'var(--iv-ochre, #9B4722)' : 'var(--iv-text, #3D2B20)', cursor: 'pointer' }}>
+              {v.name}
+            </button>
+          ))}
         </div>
+      )}
+
+      <div role="radiogroup" aria-label="Choose your cadence" style={{ display: 'grid', gap: '0.7rem' }}>
+        <button role="radio" aria-checked={mode === 'ritual'} onClick={() => setMode('ritual')} style={opt(mode === 'ritual')}>
+          <span>
+            <span style={label}>The Ritual</span>
+            <span style={meta}>Arrives every 45 days — the interval a jar actually lasts, so nothing is wasted and nothing runs out.</span>
+          </span>
+          <span style={{ textAlign: 'right', flexShrink: 0 }}>
+            <span style={price}>{money(list * SUB_RATE)}</span>
+            <span style={{ ...meta, marginTop: '0.15rem' }}>{money(list - list * SUB_RATE)} saved</span>
+          </span>
+        </button>
+
+        <button role="radio" aria-checked={mode === 'season'} onClick={() => setMode('season')} style={opt(mode === 'season')}>
+          <span>
+            <span style={label}>
+              The Season
+              <em style={{ fontFamily: 'var(--iv-font-body)', fontStyle: 'normal', fontSize: '8px', letterSpacing: '0.24em', textTransform: 'uppercase', color: 'var(--iv-ochre, #9B4722)', marginLeft: '0.5rem' }}>
+                Held in the house
+              </em>
+            </span>
+            <span style={meta}>A quarter at a time. The same standard, settled — and your allocation is held between deliveries.</span>
+          </span>
+          <span style={{ textAlign: 'right', flexShrink: 0 }}>
+            <span style={price}>{money(list * SUB_RATE)}</span>
+            <span style={{ ...meta, marginTop: '0.15rem' }}>{money(list - list * SUB_RATE)} saved</span>
+          </span>
+        </button>
       </div>
-    </section>
+
+      <p style={{ margin: '1rem 0 0', textAlign: 'center' }}>
+        <button onClick={() => setMode('once')} aria-pressed={mode === 'once'}
+          style={{ fontFamily: 'var(--iv-font-body)', fontSize: '0.76rem', background: 'none', border: 0, padding: '0.3rem', cursor: 'pointer',
+            color: mode === 'once' ? 'var(--iv-ochre, #9B4722)' : 'var(--iv-text-muted, #5C4438)',
+            borderBottom: mode === 'once' ? '1px solid var(--iv-ochre, #9B4722)' : '1px solid transparent' }}>
+          Or take it once — {money(list)}
+        </button>
+      </p>
+
+      <button onClick={checkout} disabled={loading}
+        style={{ width: '100%', marginTop: '1.6rem', padding: '1.15rem', fontFamily: 'var(--iv-font-body)', fontSize: '0.8rem', letterSpacing: '0.2em',
+          textTransform: 'uppercase', color: 'var(--iv-cloud-dancer, #F0F2EB)', background: 'var(--iv-ochre, #9B4722)', border: 0,
+          cursor: loading ? 'wait' : 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.6rem' }}>
+        {loading && <Loader2 className="w-4 h-4 animate-spin" aria-hidden />}
+        {isSub ? 'Begin your ritual' : 'Take it once'}
+      </button>
+
+      {error && (
+        <p role="alert" style={{ fontFamily: 'var(--iv-font-body)', fontSize: '0.78rem', color: 'var(--iv-ochre, #9B4722)', marginTop: '0.8rem', textAlign: 'center' }}>{error}</p>
+      )}
+
+      <div style={{ marginTop: '2rem', paddingTop: '1.6rem', borderTop: '1px solid rgba(214,197,160,.55)' }}>
+        <p style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.02rem', lineHeight: 1.7, color: 'var(--iv-charcoal, #1A1614)', margin: 0 }}>
+          <em>Within forty-eight hours, you will feel the difference.</em>
+        </p>
+        <p style={{ fontFamily: 'var(--iv-font-body)', fontSize: '0.79rem', lineHeight: 1.75, color: 'var(--iv-text-muted, #5C4438)', margin: '0.7rem 0 0' }}>
+          If it does not arrive, your next delivery is ours to send. One email to the house — no forms, and no review. This is the TTW™ standard, and it is the measure we hold ourselves to.
+        </p>
+      </div>
+
+      <div style={{ marginTop: '2rem' }}>
+        <p style={{ fontFamily: 'var(--iv-font-body)', fontSize: '9px', letterSpacing: '0.34em', textTransform: 'uppercase', color: 'var(--iv-ochre, #9B4722)', marginBottom: '1rem' }}>
+          What opens as you stay
+        </p>
+        <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'grid', gap: '0.75rem' }}>
+          {CIRCLE.map((c) => (
+            <li key={c.at} style={{ display: 'flex', gap: '0.9rem', alignItems: 'baseline' }}>
+              <span aria-hidden style={{ width: '14px', height: 1, background: 'var(--iv-champagne-gold, #D6C5A0)', flexShrink: 0, marginTop: '0.55rem' }} />
+              <span style={{ fontFamily: 'var(--iv-font-body)', fontSize: '0.79rem', lineHeight: 1.7, color: 'var(--iv-text, #3D2B20)' }}>
+                <strong style={{ fontWeight: 500 }}>{c.at}</strong> — {c.gift}
+              </span>
+            </li>
+          ))}
+        </ul>
+        <p style={{ fontFamily: 'var(--iv-font-body)', fontSize: '0.72rem', lineHeight: 1.7, color: 'var(--iv-text-muted, #5C4438)', marginTop: '1.1rem' }}>
+          Pause or close your ritual whenever you wish. The house keeps no one.
+        </p>
+      </div>
+    </div>
   )
 }

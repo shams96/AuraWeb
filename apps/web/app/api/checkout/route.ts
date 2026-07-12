@@ -15,6 +15,8 @@ export interface CheckoutItem {
   image?: string
   variantId?: string
   isSubscription?: boolean
+  /** 45 = The Ritual (default) · 90 = The Season. The house never bills monthly. */
+  intervalDays?: 45 | 90
 }
 
 const ALLOWED_COUNTRIES: Stripe.Checkout.SessionCreateParams.ShippingAddressCollection.AllowedCountry[] =
@@ -39,7 +41,9 @@ export async function POST(req: NextRequest) {
       const serverPrice = item.isSubscription
         ? Math.round(product.price * 0.80)  // 20% subscription discount
         : product.price
-      return { ...item, price: serverPrice }
+      // Cadence is validated server-side. Only 45 (Ritual) or 90 (Season).
+      const intervalDays: 45 | 90 = item.intervalDays === 90 ? 90 : 45
+      return { ...item, price: serverPrice, intervalDays }
     })
 
     const session  = await getServerSession(authOptions)
@@ -48,7 +52,8 @@ export async function POST(req: NextRequest) {
     const allSubscribed = verifiedItems.every(i => i.isSubscription)
 
     if (allSubscribed) {
-      // Subscription mode — recurring monthly billing
+      // Subscription mode — 45-day ritual (default) or 90-day season.
+      // The house NEVER bills monthly. Cadence comes from the client.
       const stripeSession = await stripe.checkout.sessions.create({
         mode: 'subscription',
         customer_email: session?.user?.email ?? undefined,
@@ -56,7 +61,10 @@ export async function POST(req: NextRequest) {
           price_data: {
             currency: safeCurrency,
             unit_amount: Math.round(item.price * 100),
-            recurring: { interval: 'month' },
+            recurring: {
+              interval: 'day',
+              interval_count: item.intervalDays === 90 ? 90 : 45,
+            },
             product_data: {
               name: item.name,
               images: item.image ? [`${baseUrl}${item.image}`] : [],

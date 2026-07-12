@@ -23,8 +23,8 @@ const C = {
   charcoal:  '#1A1614',
   espresso:  '#3D2B20',
   muted:     '#7A5C4E',
-  gold:      '#913832',
-  border:    'rgba(145,56,50,0.14)',
+  gold:      '#9B4722',
+  border:    'rgba(155, 71, 34,0.14)',
 }
 
 const STATUS_LABEL: Record<string, { label: string; color: string }> = {
@@ -84,7 +84,7 @@ export default function AccountOrdersPage() {
 
         {orders.length === 0 ? (
           <div style={{ borderRadius: 18, border: `1px solid ${C.border}`, background: C.parchment, padding: '56px 24px', textAlign: 'center' }}>
-            <div style={{ width: 56, height: 56, borderRadius: '50%', background: 'rgba(145,56,50,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px' }}>
+            <div style={{ width: 56, height: 56, borderRadius: '50%', background: 'rgba(155, 71, 34,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px' }}>
               <ShoppingBag size={22} style={{ color: C.gold }} />
             </div>
             <p style={{ fontSize: '0.95rem', fontWeight: 700, color: C.charcoal, marginBottom: 6 }}>No orders yet</p>
@@ -117,7 +117,7 @@ export default function AccountOrdersPage() {
                       <p style={{ fontSize: '0.9rem', fontWeight: 800, color: C.charcoal, margin: 0 }}>
                         ${Number(order.total).toLocaleString('en-US', { minimumFractionDigits: 2 })}
                       </p>
-                      <span style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.15em', textTransform: 'uppercase', color: st.color, padding: '4px 10px', borderRadius: 99, background: 'rgba(145,56,50,0.06)', border: `1px solid ${C.border}` }}>
+                      <span style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.15em', textTransform: 'uppercase', color: st.color, padding: '4px 10px', borderRadius: 99, background: 'rgba(155, 71, 34,0.06)', border: `1px solid ${C.border}` }}>
                         {st.label}
                       </span>
                     </div>

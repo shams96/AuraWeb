@@ -70,7 +70,7 @@ const BENEFITS = [
   {
     icon: <Users className="w-6 h-6 text-iv-gold" />,
     title: 'Training & Certification',
-    desc: 'Complimentary Vitale Resilience Matrix™ Protocol Certification for your clinical or retail team.',
+    desc: 'Complimentary Liri Resilience Matrix™ Protocol Certification for your clinical or retail team.',
   },
   {
     icon: <Globe className="w-6 h-6 text-iv-gold" />,
@@ -143,7 +143,7 @@ export default function ProfessionalPage() {
             Partner <span className="text-iv-gold italic serif">With Us</span>
           </h1>
           <p className="text-xl text-iv-cream/70 max-w-3xl leading-relaxed font-light mb-12">
-            Join the Isola Vitale professional network. Access clinical-grade formulations, industry-leading margins, and the science behind the world's first 4-tier metabolic skincare system.
+            Join the LIRI ROMA professional network. Access clinical-grade formulations, industry-leading margins, and the science behind the world's first 4-tier metabolic skincare system.
           </p>
           <div className="flex flex-wrap gap-6">
             <div className="flex items-center gap-3 text-iv-cream/60">
@@ -316,7 +316,7 @@ export default function ProfessionalPage() {
                   {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 text-iv-gold fill-current" />)}
                 </div>
                 <blockquote className="text-iv-cream/70 italic iv-serif text-lg leading-relaxed mb-6">
-                  "Isola Vitale has transformed our clinic's retail performance. The clinical documentation gave our dermatologists confidence, and our clients see measurable results within 6 weeks."
+                  "LIRI ROMA has transformed our clinic's retail performance. The clinical documentation gave our dermatologists confidence, and our clients see measurable results within 6 weeks."
                 </blockquote>
                 <p className="text-xs font-black text-iv-white uppercase tracking-widest">Dr. K. Marchetti</p>
                 <p className="text-[10px] text-iv-cream/65 uppercase tracking-widest">Dermatology Clinic Milano — Clinical Partner since 2024</p>

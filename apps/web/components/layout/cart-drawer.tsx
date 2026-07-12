@@ -20,9 +20,9 @@ const CROSS_SELL: Record<string, { id: string; name: string; price: number; role
   'gentle-cellular-cleanser': { id: 'terra-radiance-cream',     name: 'Terra Radiance Cream',     price: 245, role: 'Pairs as your moisture step',       image: '/images/products/terra_radiance.png' },
   'terra-radiance-cream':     { id: 'gentle-cellular-cleanser', name: 'Gentle Cellular Cleanser', price: 95,  role: 'Complete with a cleanser first',    image: '/images/products/gentle_cleanser.png' },
   'obsidian-vitale-cream':    { id: 'chrono-lift-serum',        name: 'Chrono-Lift Serum',        price: 345, role: 'Layer beneath for structural lift', image: '/images/products/chrono_lift.png' },
-  'chrono-lift-serum':        { id: 'obsidian-vitale-cream',    name: 'Obsidian Vitale Cream',    price: 295, role: 'Seal with age-defying cream',       image: '/images/products/obsidian_cream.png' },
+  'chrono-lift-serum':        { id: 'obsidian-vitale-cream',    name: 'Obsidian Crème',    price: 295, role: 'Seal with the night crème',       image: '/images/products/obsidian_cream.png' },
   '1b':                       { id: 'gentle-cellular-cleanser', name: 'Gentle Cellular Cleanser', price: 95,  role: 'Start your routine clean',          image: '/images/products/gentle_cleanser.png' },
-  't3-03':                    { id: 'obsidian-vitale-cream',    name: 'Obsidian Vitale Cream',    price: 295, role: 'Intensive night complement',         image: '/images/products/obsidian_cream.png' },
+  't3-03':                    { id: 'obsidian-vitale-cream',    name: 'Obsidian Crème',    price: 295, role: 'Intensive night complement',         image: '/images/products/obsidian_cream.png' },
   't4-04':                    { id: 'chrono-lift-serum',        name: 'Chrono-Lift Serum',        price: 345, role: 'Targeted lift for max potency',     image: '/images/products/chrono_lift.png' },
 }
 
@@ -43,19 +43,19 @@ function ShippingBar({ subtotal }: { subtotal: number }) {
     <div className="px-5 py-3 border-b border-[#EDE8E0]" style={{ background: '#F7F4EF' }}>
       <div className="flex items-center justify-between mb-2">
         <div className="flex items-center gap-1.5">
-          <Truck size={11} className={unlocked ? 'text-[#2A6B3A]' : 'text-[#913832]'} />
+          <Truck size={11} className={unlocked ? 'text-[#2A6B3A]' : 'text-[#9B4722]'} />
           <span className="text-[11px] font-bold text-[#1A1614]">
             {unlocked ? '🎉 Free shipping unlocked!' : `Add $${remaining.toFixed(0)} for FREE shipping`}
           </span>
         </div>
-        <span className="text-[10px] font-black text-[#913832]">${FREE_SHIPPING}</span>
+        <span className="text-[10px] font-black text-[#9B4722]">${FREE_SHIPPING}</span>
       </div>
       <div className="h-1.5 rounded-full bg-[#E8E2D9] overflow-hidden">
         <div
           className="h-full rounded-full transition-all duration-700"
           style={{
             width: `${pct}%`,
-            background: unlocked ? 'linear-gradient(90deg,#2A6B3A,#4CAF72)' : 'linear-gradient(90deg,#913832,#C9685F)',
+            background: unlocked ? 'linear-gradient(90deg,#2A6B3A,#4CAF72)' : 'linear-gradient(90deg,#9B4722,#C9685F)',
           }}
         />
       </div>
@@ -81,13 +81,13 @@ function SubscribeToggle({
   const annualSavings = penalty * 12
 
   return (
-    <div className="mx-4 mt-4 rounded-2xl overflow-hidden border-2" style={{ borderColor: allSubscribed ? '#913832' : '#EDE8E0' }}>
+    <div className="mx-4 mt-4 rounded-2xl overflow-hidden border-2" style={{ borderColor: allSubscribed ? '#9B4722' : '#EDE8E0' }}>
       {/* Toggle pills — Subscribe first (featured), One-Time second (penalty) */}
       <div className="flex">
         <button
           onClick={() => onSwitch(true)}
           className={`flex-1 py-3 text-[11px] font-black uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 ${
-            allSubscribed ? 'bg-[#913832] text-white' : 'bg-white text-[#888]'
+            allSubscribed ? 'bg-[#9B4722] text-white' : 'bg-white text-[#888]'
           }`}
         >
           <RefreshCcw size={10} />
@@ -111,30 +111,30 @@ function SubscribeToggle({
             <span className="text-[11px] text-[#888] line-through">${retailTotal.toFixed(2)}</span>
           </div>
           <div className="flex items-center justify-between">
-            <span className="text-[11px] font-black text-[#913832]">Your ritual price</span>
-            <span className="text-[15px] font-black text-[#913832]">${subTotal.toFixed(2)}<span className="text-[10px] font-normal text-[#888] ml-1">/mo</span></span>
+            <span className="text-[11px] font-black text-[#9B4722]">Your ritual price</span>
+            <span className="text-[15px] font-black text-[#9B4722]">${subTotal.toFixed(2)}<span className="text-[10px] font-normal text-[#888] ml-1">/mo</span></span>
           </div>
           <div className="flex items-center justify-between pt-1 border-t border-[#F0E8E5]">
-            <span className="text-[10px] text-[#2A6B3A] font-bold">Annual saving</span>
+            <span className="text-[10px] text-[#9B4722] font-bold">Your saving</span>
             <span className="text-[13px] font-black text-[#2A6B3A]">${annualSavings.toFixed(0)}/year</span>
           </div>
           <div className="flex items-center justify-between">
             <span className="text-[10px] text-[#555]">That's just</span>
             <span className="text-[12px] font-black text-[#2A6B3A]">${dailyCost} / day</span>
           </div>
-          <p className="text-[9px] text-[#AAA] pt-0.5">Cancel anytime · Ships every 30 days · Free returns</p>
+          <p className="text-[9px] text-[#AAA] pt-0.5">Pause anytime · Arrives every 45 days · Free returns</p>
         </div>
       ) : (
         <div className="px-4 py-3 space-y-2" style={{ background: '#F7F4EF' }}>
           <p className="text-[11px] text-[#555] leading-relaxed font-light italic">
-            Ritual members receive this for <span className="font-black text-[#913832] not-italic">${penalty.toFixed(2)} less</span> each month — and their formulation arrives before they run out.
+            Ritual members receive this for <span className="font-black text-[#9B4722] not-italic">${penalty.toFixed(2)} less</span> each month — and their formulation arrives before they run out.
           </p>
           <button
             onClick={() => onSwitch(true)}
             className="w-full py-2 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] text-white transition-all"
-            style={{ background: '#913832' }}
+            style={{ background: '#9B4722' }}
           >
-            Begin your monthly ritual
+            Begin your ritual
           </button>
           <p className="text-[9px] text-[#AAA] text-center">Cancel anytime · No commitment</p>
         </div>
@@ -169,15 +169,15 @@ function CartItem({
       <div className="flex-1 min-w-0">
         <div className="flex items-start justify-between gap-1">
           <p className="text-[12px] font-semibold text-[#1A1614] leading-snug line-clamp-2">{item.name}</p>
-          <button onClick={onRemove} className="text-[#BDBDBD] hover:text-[#913832] p-0.5 flex-shrink-0" aria-label="Remove">
+          <button onClick={onRemove} className="text-[#BDBDBD] hover:text-[#9B4722] p-0.5 flex-shrink-0" aria-label="Remove">
             <X size={12} />
           </button>
         </div>
 
         {item.isSubscription && (
           <div className="flex items-center gap-1 mt-0.5">
-            <RefreshCcw size={8} className="text-[#913832]" />
-            <span className="text-[9px] font-bold text-[#913832] uppercase tracking-wider">Monthly</span>
+            <RefreshCcw size={8} className="text-[#9B4722]" />
+            <span className="text-[9px] font-bold text-[#9B4722] uppercase tracking-wider">Every 45 days</span>
           </div>
         )}
 
@@ -216,7 +216,7 @@ function CartItem({
 function CrossSell({ s, onAdd }: { s: typeof CROSS_SELL[string]; onAdd: () => void }) {
   return (
     <div className="rounded-2xl border border-[#EDE8E0] bg-[#FFFDF9] p-3.5">
-      <p className="text-[9px] font-black uppercase tracking-[0.3em] text-[#913832] mb-2.5">Complete Your Ritual</p>
+      <p className="text-[9px] font-black uppercase tracking-[0.3em] text-[#9B4722] mb-2.5">Complete Your Ritual</p>
       <div className="flex gap-3 items-center">
         <div className="w-12 h-12 rounded-xl overflow-hidden flex-shrink-0 bg-[#F7F4EF]">
           <img src={s.image} alt={s.name} className="w-full h-full object-cover" />
@@ -226,13 +226,13 @@ function CrossSell({ s, onAdd }: { s: typeof CROSS_SELL[string]; onAdd: () => vo
           <p className="text-[10px] text-[#888] mt-0.5">{s.role}</p>
           <p className="text-xs font-black text-[#1A1614] mt-1">
             ${s.price} <span className="text-[10px] text-[#888] font-normal">or</span>{' '}
-            <span className="text-[#913832]">${Math.round(s.price * 0.8)}/mo</span>
+            <span className="text-[#9B4722]">${Math.round(s.price * 0.8)}/mo</span>
           </p>
         </div>
         <button
           onClick={onAdd}
           className="w-9 h-9 rounded-full flex items-center justify-center text-white flex-shrink-0 shadow"
-          style={{ background: '#913832' }}
+          style={{ background: '#9B4722' }}
           aria-label="Add"
         >
           <Plus size={15} />
@@ -245,11 +245,11 @@ function CrossSell({ s, onAdd }: { s: typeof CROSS_SELL[string]; onAdd: () => vo
 // ─── Welcome kit (real product images) ───────────────────────────────────────
 function WelcomeKit() {
   return (
-    <div className="rounded-2xl overflow-hidden border border-[#913832]/25" style={{ background: 'linear-gradient(135deg,#FDF5F4 0%,#FFFDF9 100%)' }}>
+    <div className="rounded-2xl overflow-hidden border border-[#9B4722]/25" style={{ background: 'linear-gradient(135deg,#FDF5F4 0%,#FFFDF9 100%)' }}>
       <div className="flex items-center gap-2 px-4 pt-3 pb-2.5 border-b border-[#F0E8E5]">
         <span className="text-base">🎁</span>
-        <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[#913832] flex-1">Subscription Welcome Kit</p>
-        <span className="text-[9px] font-black text-white bg-[#913832] px-2.5 py-0.5 rounded-full">FREE</span>
+        <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[#9B4722] flex-1">Subscription Welcome Kit</p>
+        <span className="text-[9px] font-black text-white bg-[#9B4722] px-2.5 py-0.5 rounded-full">FREE</span>
       </div>
       <div className="grid grid-cols-4 gap-2 p-3">
         {WELCOME_KIT.map(g => (
@@ -271,21 +271,21 @@ function ClinicianBlock() {
     <div className="rounded-2xl border border-[#EDE8E0] bg-white p-4">
       <div className="flex gap-3 items-start">
         {/* Avatar */}
-        <div className="w-11 h-11 rounded-full overflow-hidden flex-shrink-0 bg-[#F7F4EF] border-2 border-[#913832]/20 flex items-center justify-center">
-          <Award size={18} className="text-[#913832]/60" />
+        <div className="w-11 h-11 rounded-full overflow-hidden flex-shrink-0 bg-[#F7F4EF] border-2 border-[#9B4722]/20 flex items-center justify-center">
+          <Award size={18} className="text-[#9B4722]/60" />
         </div>
         <div className="flex-1 min-w-0">
-          <p className="text-[11px] font-black text-[#1A1614]">Dr. Elena Vitali, MD</p>
-          <p className="text-[9px] text-[#888] mb-1.5">Board-Certified Dermatologist · Rome</p>
+          <p className="text-[11px] font-black text-[#1A1614]">Formulated at Isola del Liri</p>
+          <p className="text-[9px] text-[#888] mb-1.5">Natural You Srl · Lazio, Italy</p>
           <p className="text-[10px] text-[#555] leading-relaxed italic">
-            "The OS-01 and GLP-1 pathway targeting in these formulations represents the most clinically rigorous non-prescription protocol I've reviewed."
+            "Every formulation is made in one laboratory, in one town, by a master pharmacist and cosmetic chemist — and nothing leaves it until it has earned its place."
           </p>
         </div>
       </div>
       <div className="flex items-center gap-1.5 mt-2.5 pt-2.5 border-t border-[#EDE8E0]">
         <div className="flex">
           {[...Array(5)].map((_, i) => (
-            <span key={i} className="text-[#913832] text-[10px]">★</span>
+            <span key={i} className="text-[#9B4722] text-[10px]">★</span>
           ))}
         </div>
         <span className="text-[9px] text-[#888]">Clinician-recommended protocol</span>
@@ -316,7 +316,7 @@ function EmptyState() {
       {/* Starter stack */}
       <div className="rounded-2xl border border-[#EDE8E0] bg-white overflow-hidden shadow-sm mb-5">
         <div className="px-4 py-3 border-b border-[#EDE8E0]">
-          <p className="text-[9px] font-black uppercase tracking-[0.3em] text-[#913832]">The Starter Stack</p>
+          <p className="text-[9px] font-black uppercase tracking-[0.3em] text-[#9B4722]">The Starter Stack</p>
         </div>
         <div className="divide-y divide-[#EDE8E0]">
           {STACK.map(p => (
@@ -331,12 +331,12 @@ function EmptyState() {
         </div>
         <div className="px-4 py-3 bg-[#F7F4EF] flex items-center justify-between">
           <div>
-            <p className="text-[10px] text-[#888]">Retail ${retailTotal} · Subscribe <span className="font-black text-[#913832]">${subTotal}/mo</span></p>
+            <p className="text-[10px] text-[#888]">Retail ${retailTotal} · Subscribe <span className="font-black text-[#9B4722]">${subTotal}/mo</span></p>
           </div>
           <button
             onClick={addStack}
             className="px-4 py-2 rounded-xl text-[11px] font-black uppercase tracking-wider text-white"
-            style={{ background: '#913832' }}
+            style={{ background: '#9B4722' }}
           >
             Add Stack
           </button>
@@ -346,7 +346,7 @@ function EmptyState() {
       <Link
         href="/shop"
         onClick={() => setCartOpen(false)}
-        className="flex items-center justify-center gap-1.5 text-[11px] font-bold text-[#913832] uppercase tracking-wider hover:underline"
+        className="flex items-center justify-center gap-1.5 text-[11px] font-bold text-[#9B4722] uppercase tracking-wider hover:underline"
       >
         Browse All Collections <ChevronRight size={12} />
       </Link>
@@ -429,7 +429,7 @@ export function CartDrawer() {
           <div className="flex items-center gap-2.5">
             <span className="text-sm font-black uppercase tracking-[0.25em] text-[#1A1614]">Your Cart</span>
             {itemCount > 0 && (
-              <span className="w-5 h-5 rounded-full text-[10px] font-black text-white flex items-center justify-center" style={{ background: '#913832' }}>
+              <span className="w-5 h-5 rounded-full text-[10px] font-black text-white flex items-center justify-center" style={{ background: '#9B4722' }}>
                 {itemCount}
               </span>
             )}
@@ -476,7 +476,7 @@ export function CartDrawer() {
                 <Link
                   href="/shop"
                   onClick={() => setCartOpen(false)}
-                  className="flex items-center justify-center gap-2 rounded-2xl py-3 text-[11px] font-black uppercase tracking-widest border-2 border-dashed border-[#EDE8E0] text-[#BDBDBD] hover:border-[#913832]/40 hover:text-[#913832] transition-colors"
+                  className="flex items-center justify-center gap-2 rounded-2xl py-3 text-[11px] font-black uppercase tracking-widest border-2 border-dashed border-[#EDE8E0] text-[#BDBDBD] hover:border-[#9B4722]/40 hover:text-[#9B4722] transition-colors"
                 >
                   <Plus size={11} /> Add More
                 </Link>
@@ -561,7 +561,7 @@ export function CartDrawer() {
               onClick={handleCheckout}
               disabled={checkingOut}
               className="w-full flex items-center justify-center gap-2 rounded-2xl py-4 text-[12px] font-black uppercase tracking-[0.2em] disabled:opacity-60 mb-3 shadow-lg"
-              style={{ background: '#913832', color: '#fff' }}
+              style={{ background: '#9B4722', color: '#fff' }}
             >
               {checkingOut
                 ? <><Loader2 size={14} className="animate-spin" /> Preparing…</>
@@ -571,22 +571,22 @@ export function CartDrawer() {
             {/* Trust row */}
             <div className="flex items-center justify-around pt-1">
               <div className="flex flex-col items-center gap-1">
-                <ShieldCheck size={15} className="text-[#913832]" />
-                <span className="text-[8px] text-[#AAA] text-center leading-tight font-semibold">90-Day<br/>Guarantee</span>
+                <ShieldCheck size={15} className="text-[#9B4722]" />
+                <span className="text-[8px] text-[#AAA] text-center leading-tight font-semibold">48-Hour<br/>TTW™ Standard</span>
               </div>
               <div className="w-px h-7 bg-[#EDE8E0]" />
               <div className="flex flex-col items-center gap-1">
-                <Award size={15} className="text-[#913832]" />
+                <Award size={15} className="text-[#9B4722]" />
                 <span className="text-[8px] text-[#AAA] text-center leading-tight font-semibold">Derm<br/>Tested</span>
               </div>
               <div className="w-px h-7 bg-[#EDE8E0]" />
               <div className="flex flex-col items-center gap-1">
-                <FlaskConical size={15} className="text-[#913832]" />
+                <FlaskConical size={15} className="text-[#9B4722]" />
                 <span className="text-[8px] text-[#AAA] text-center leading-tight font-semibold">Science<br/>Backed</span>
               </div>
               <div className="w-px h-7 bg-[#EDE8E0]" />
               <div className="flex flex-col items-center gap-1">
-                <RefreshCcw size={15} className="text-[#913832]" />
+                <RefreshCcw size={15} className="text-[#9B4722]" />
                 <span className="text-[8px] text-[#AAA] text-center leading-tight font-semibold">Cancel<br/>Anytime</span>
               </div>
             </div>

@@ -5,14 +5,14 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: {
-    default: 'Formulations | Isola Vitale',
-    template: '%s | Isola Vitale'
+    default: 'Formulations | LIRI ROMA',
+    template: '%s | LIRI ROMA'
   },
-  description: 'Isola Vitale formulations — the science of skin vitality, formulated at Isola del Liri, Italy.',
-  keywords: ['Isola Vitale', 'luxury skincare', 'skin vitality', 'Skin Intelligence', 'Italian skincare', 'skin resilience'],
-  authors: [{ name: 'Isola Vitale' }],
-  creator: 'Isola Vitale',
-  publisher: 'Isola Vitale',
+  description: 'LIRI ROMA formulations — the science of skin vitality, formulated at Isola del Liri, Italy.',
+  keywords: ['LIRI ROMA', 'luxury skincare', 'skin vitality', 'Skin Intelligence', 'Italian skincare', 'skin resilience'],
+  authors: [{ name: 'LIRI ROMA' }],
+  creator: 'LIRI ROMA',
+  publisher: 'LIRI ROMA',
   formatDetection: {
     email: false,
     address: false,
@@ -20,16 +20,16 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:5000'),
   openGraph: {
-    title: 'Formulations | Isola Vitale',
+    title: 'Formulations | LIRI ROMA',
     description: 'The science of skin vitality, formulated at Isola del Liri, Italy.',
     url: '/',
-    siteName: 'Isola Vitale',
+    siteName: 'LIRI ROMA',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Isola Vitale — Adaptive Skin Science, Isola del Liri, Italy',
+        alt: 'LIRI ROMA — Adaptive Skin Science, Isola del Liri, Italy',
       },
     ],
     locale: 'en_US',
@@ -37,10 +37,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Formulations | Isola Vitale',
+    title: 'Formulations | LIRI ROMA',
     description: 'Adaptive Skin Science formulated at Isola del Liri, Italy.',
     images: ['/og-image.jpg'],
-    creator: '@isolavitale',
+    creator: '@liriroma',
   },
   robots: {
     index: true,

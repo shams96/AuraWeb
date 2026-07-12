@@ -19,8 +19,9 @@ interface Answers {
   q3: number | null        // Sensitivity index (single)
   q4: string[]             // Concerns (multi)
   q5: number | null        // Aging signs index (single)
-  q6: number | null        // Age range index (single — discovery only)
+  q6: number | null        // Recovery capacity index (single — discovery only)
   q7: string[]             // Lifestyle (multi — discovery only)
+  qMedical: string[]       // Safety screen (multi — discovery only)
   q8: string | null        // Routine preference (single)
 }
 
@@ -38,7 +39,18 @@ interface SkinProfile {
   tier: Tier
   hydration: SkinHydration
   sensitivity: SkinSensitivity
-  baumannLabel: string
+  profileLabel: string
+  /* ── Safety layer ────────────────────────────────────────────────
+     The protocol is a cosmetic product. These gates ensure it never
+     pretends to be more than that. ─────────────────────────────── */
+  /** Pregnant or breastfeeding → retinoid-class actives suppressed. */
+  pregnancySafe: boolean
+  /** A reported condition that deserves a physician, not a product. */
+  referToPhysician: boolean
+  /** A changing mole or mark — surfaced first, above everything. */
+  urgentReferral: boolean
+  /** High sensitivity → acid and retinoid intensity is capped. */
+  capActives: boolean
 }
 
 interface PreviousAssessment {
@@ -60,7 +72,7 @@ const Q1 = {
     { label: 'Deeply hydrated and plump',     sub: 'Restored moisture, softness and barrier strength', value: 'hydration' },
     { label: 'Clear, balanced and refined',   sub: 'Reduced oiliness, congestion and visible pores',   value: 'clarity'   },
     { label: 'Bright, even and luminous',     sub: 'Corrected tone, faded spots and natural radiance', value: 'radiance'  },
-    { label: 'Firm, lifted and age-defying',  sub: 'Restored volume, definition and structural lift',  value: 'firming'   },
+    { label: 'Firm, lifted and resilient',    sub: 'Restored volume, definition and structural support', value: 'firming'   },
   ],
 }
 
@@ -102,25 +114,27 @@ const Q4 = {
 }
 
 const Q5 = {
-  heading: 'How would you describe the visible signs of ageing on your skin right now?',
+  heading: 'How would you describe your skin\'s structure and resilience right now?',
   sub: 'Be honest — this is the most important question in your protocol match.',
   options: [
-    { label: 'Youthful and firm',                     sub: 'No visible signs of ageing yet',         wScore: 0  },
+    { label: 'Resilient and firm',                    sub: 'Barrier performing at its best',         wScore: 0  },
     { label: 'Very early fine lines beginning',        sub: 'Just starting to notice',                wScore: 3  },
     { label: 'Fine lines and mild loss of firmness',   sub: 'Visible but not yet pronounced',         wScore: 6  },
     { label: 'Established lines and volume loss',      sub: 'Deeper lines, sagging or hollowing',     wScore: 10 },
   ],
 }
 
+/* Recovery capacity — the biological signal an age bracket was only ever
+   proxying. A resilient 55-year-old and a depleted 30-year-old now sort
+   correctly, which an age question could never do. Biology, not birthdate. */
 const Q6 = {
-  heading: 'Which age range applies to you?',
-  sub: 'Skin metabolism shifts fundamentally with each decade.',
+  heading: 'How does your skin recover — after a late night, strong sun, or a hard week?',
+  sub: 'Recovery capacity tells us more about your skin than any date could.',
   options: [
-    { label: 'Under 28',  ageModifier: 0 },
-    { label: '28 – 38',   ageModifier: 2 },
-    { label: '39 – 49',   ageModifier: 4 },
-    { label: '50 – 60',   ageModifier: 6 },
-    { label: '60+',       ageModifier: 8 },
+    { label: 'It bounces back within a day',      ageModifier: 0 },
+    { label: 'It takes a few days to settle',     ageModifier: 3 },
+    { label: 'It takes a week or more',           ageModifier: 6 },
+    { label: 'It does not fully return on its own', ageModifier: 8 },
   ],
 }
 
@@ -132,7 +146,27 @@ const Q7 = {
     { label: 'Fewer than 7 hours of sleep most nights',                        wDelta: 1             },
     { label: 'Urban environment with high pollution',             srDelta: 1,  doDelta: -1           },
     { label: 'Regular or prolonged sun exposure',                              pDelta: 2             },
-    { label: 'Hormonal changes (pregnancy, menopause or HRT)',    srDelta: 1,  pDelta: 1             },
+    { label: 'Menopause or HRT',                                  srDelta: 1,  pDelta: 1             },
+    { label: 'Pregnant or breastfeeding',                          srDelta: 1,  pDelta: 1, flag: 'pregnancy' as const },
+  ],
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   SAFETY SCREEN — the house yields to a physician.
+   A protocol is a cosmetic product. It is not a treatment, and it is
+   never a substitute for care. Anything flagged here routes the person
+   to a doctor rather than to a checkout. This is not a lost sale: it is
+   the strongest trust signal the house can send.
+   ═══════════════════════════════════════════════════════════════════ */
+const Q_MEDICAL = {
+  heading: 'Is your skin currently dealing with any of the following?',
+  sub: 'Select all that apply, or choose none. Some things deserve a physician rather than a product, and we would rather tell you.',
+  options: [
+    { label: 'Persistent, painful or cystic breakouts',        refer: true  },
+    { label: 'Diagnosed rosacea, eczema or psoriasis',         refer: true  },
+    { label: 'A mole or mark that is changing',                refer: true, urgent: true },
+    { label: 'A prescription skin treatment I am using now',   refer: true  },
+    { label: 'None of these',                                  refer: false },
   ],
 }
 
@@ -208,7 +242,24 @@ function computeProfile(a: Answers): SkinProfile {
   wScore  = Math.max(0, Math.min(18, wScore))
   pScore  = Math.max(0, Math.min(10, pScore))
 
-  return buildProfile(doScore, srScore, wScore, pScore, a.q4)
+  /* ── SAFETY GATES ──────────────────────────────────────────────── */
+  const pregnant = a.q7.includes('Pregnant or breastfeeding')
+
+  const medical  = a.qMedical ?? []
+  const refer    = medical.some(l => Q_MEDICAL.options.find(o => o.label === l)?.refer)
+  const urgent   = medical.some(l => Q_MEDICAL.options.find(o => o.label === l)?.urgent)
+
+  const profile = buildProfile(doScore, srScore, wScore, pScore, a.q4)
+
+  return {
+    ...profile,
+    pregnancySafe:    !pregnant,
+    referToPhysician: refer,
+    urgentReferral:   urgent,
+    /* Sensitivity of 7+ caps acid and retinoid intensity, regardless of
+       what the wrinkle axis would otherwise justify. Barrier first. */
+    capActives:       srScore >= 7 || pregnant,
+  }
 }
 
 function applyCheckInDeltas(prev: SkinProfile, ci: CheckInAnswers): SkinProfile {
@@ -220,7 +271,17 @@ function applyCheckInDeltas(prev: SkinProfile, ci: CheckInAnswers): SkinProfile 
   doScore = Math.max(0, Math.min(10, doScore))
   srScore = Math.max(0, Math.min(10, srScore))
 
-  return buildProfile(doScore, srScore, wScore, pScore, [])
+  const next = buildProfile(doScore, srScore, wScore, pScore, [])
+
+  /* A check-in never clears a safety flag. Pregnancy and physician
+     referrals persist until a full assessment says otherwise. */
+  return {
+    ...next,
+    pregnancySafe:    prev.pregnancySafe,
+    referToPhysician: prev.referToPhysician,
+    urgentReferral:   prev.urgentReferral,
+    capActives:       next.capActives || !prev.pregnancySafe,
+  }
 }
 
 function buildProfile(
@@ -235,12 +296,20 @@ function buildProfile(
   const sensitivity: SkinSensitivity =
     srScore <= 2 ? 'resistant' : srScore <= 6 ? 'balanced' : 'sensitive'
 
-  const baumannLabel = `${hydration.charAt(0).toUpperCase() + hydration.slice(1)}-${sensitivity.charAt(0).toUpperCase() + sensitivity.slice(1)}`
+  const profileLabel = `${hydration.charAt(0).toUpperCase() + hydration.slice(1)}-${sensitivity.charAt(0).toUpperCase() + sensitivity.slice(1)}`
 
   const tier: Tier =
     wScore >= 13 ? 't4' : wScore >= 8 ? 't3' : wScore >= 4 ? 't2' : 't1'
 
-  return { doScore, srScore, wScore, pScore, tier, hydration, sensitivity, baumannLabel }
+  return {
+    doScore, srScore, wScore, pScore, tier, hydration, sensitivity, profileLabel,
+    /* Safe defaults. computeProfile overrides these with the real gates;
+       check-ins inherit the prior assessment's flags. */
+    pregnancySafe:    true,
+    referToPhysician: false,
+    urgentReferral:   false,
+    capActives:       srScore >= 7,
+  }
 }
 
 // ─── Protocol definitions ─────────────────────────────────────────────────────
@@ -299,7 +368,7 @@ const PROTOCOLS: Record<Tier, Protocol> = {
       { id: '4b',                       name: '4B Consumer Night Repair',   role: 'Overnight cellular recovery',    price: '$195', priceNum: 195, image: IMG.col  },
     ],
     ingredients: [
-      'GLP-1 Skin Protection Complex (Metabolic alignment)',
+      'metabolic change Skin Protection Complex (Metabolic alignment)',
       'Bifida Ferment Lysate (Barrier reinforcement)',
       'Vitamin C — Ascorbyl Glucoside (Tone correction)',
       'SPF 30+ UV filters',
@@ -310,7 +379,7 @@ const PROTOCOLS: Record<Tier, Protocol> = {
     tagline: 'Deep cellular regeneration & structural renewal',
     tierSlug: 't3',
     description:
-      'Your skin requires active regeneration at the cellular level. The Regeneration Protocol deploys OS-01 Senomorphic Peptides — shown to reduce zombie-cell accumulation by 30% — combined with L-Ornithine to restore dermal volume and firmness lost to time and cumulative stress. This is targeted biological intervention, not surface treatment.',
+      'Your skin requires active regeneration at the cellular level. The Regeneration Protocol deploys Cellular Renewal Complexs — shown to reduce zombie-cell accumulation by 30% — combined with L-Ornithine to restore dermal volume and firmness lost to time and cumulative stress. This is targeted biological intervention, not surface treatment.',
     am: [
       { id: 'gentle-cellular-cleanser', name: 'Gentle Cellular Cleanser', role: 'Microbiome-preserving cleanse',       price: '$95',  priceNum: 95,  image: IMG.serum },
       { id: 'chrono-lift-serum',         name: 'Chrono-Lift Serum',         role: 'Targeted volume and structural lift', price: '$345', priceNum: 345, image: '/images/products/obsidian_cream.png' },
@@ -318,11 +387,11 @@ const PROTOCOLS: Record<Tier, Protocol> = {
     ],
     pm: [
       { id: 'gentle-cellular-cleanser', name: 'Gentle Cellular Cleanser',      role: 'Evening cellular reset',        price: '$95',  priceNum: 95,  image: IMG.serum },
-      { id: 't3-03',                    name: 'T3-03 Mature Intervention Gel', role: 'OS-01 + DWAT night treatment',  price: '$165', priceNum: 165, image: IMG.col  },
-      { id: 'obsidian-vitale-cream',     name: 'Obsidian Vitale Cream',         role: 'Age-defying night restoration', price: '$295', priceNum: 295, image: '/images/products/obsidian_cream.png' },
+      { id: 't3-03',                    name: 'T3-03 Mature Intervention Gel', role: 'Cellular Renewal Complex + DWAT night treatment',  price: '$165', priceNum: 165, image: IMG.col  },
+      { id: 'obsidian-vitale-cream',     name: 'Obsidian Crème',         role: 'Overnight restoration', price: '$295', priceNum: 295, image: '/images/products/obsidian_cream.png' },
     ],
     ingredients: [
-      'OS-01 Senomorphic Peptides (Senescence reduction −30%)',
+      'Cellular Renewal Complexs (Senescence reduction −30%)',
       'L-Ornithine (Dermal volume restoration)',
       'DWAT Complex (Deep structural support)',
       'Ectoin Shield SPF 50+',
@@ -333,21 +402,21 @@ const PROTOCOLS: Record<Tier, Protocol> = {
     tagline: 'Maximum-potency cellular longevity',
     tierSlug: 't4',
     description:
-      'Your skin calls for our most intensive intervention. The Longevity Protocol deploys clinical-grade NMN, GLP-1 complex, and OS-01 together in a comprehensive AM/PM system engineered to visibly transform skin at the metabolic level. This is the same formulation tier used in professional clinical settings — without the clinic appointment.',
+      'Your skin calls for our most intensive intervention. The Longevity Protocol deploys clinical-grade NMN, metabolic change complex, and Cellular Renewal Complex together in a comprehensive AM/PM system engineered to visibly transform skin at the metabolic level. This is the same formulation tier used in professional clinical settings — without the clinic appointment.',
     am: [
       { id: 'gentle-cellular-cleanser', name: 'Gentle Cellular Cleanser',    role: 'Microbiome-safe clinical cleanse',  price: '$95',  priceNum: 95,  image: IMG.serum },
-      { id: '1a',                        name: '1A Clinical Peptide Essence', role: 'OS-01 + GLP-1 cellular activation', price: '$390', priceNum: 390, image: IMG.serum },
+      { id: '1a',                        name: '1A Clinical Peptide Essence', role: 'Cellular Renewal Complex + metabolic change cellular activation', price: '$390', priceNum: 390, image: IMG.serum },
       { id: '3a',                         name: '3A Clinical SPF 50+',         role: 'Maximum UV protection with Ectoin', price: '$195', priceNum: 195, image: IMG.col  },
     ],
     pm: [
       { id: '6a',                    name: '6A Clinical Gentle Cleanser', role: 'Pharmaceutical-grade deep cleanse',   price: '$110', priceNum: 110, image: IMG.col  },
       { id: '4a',                    name: '4A Clinical Night Repair',     role: 'L-Ornithine + NMN overnight renewal', price: '$345', priceNum: 345, image: IMG.col  },
-      { id: 'obsidian-vitale-cream', name: 'Obsidian Vitale Cream',        role: 'Intensive cellular restoration',      price: '$295', priceNum: 295, image: '/images/products/obsidian_cream.png' },
+      { id: 'obsidian-vitale-cream', name: 'Obsidian Crème',        role: 'Intensive cellular restoration',      price: '$295', priceNum: 295, image: '/images/products/obsidian_cream.png' },
     ],
     ingredients: [
-      'OS-01 Senomorphic Peptides (Maximum senescence reversal)',
+      'Cellular Renewal Complexs (Maximum senescence reversal)',
       'NMN — NAD+ Precursor (Cellular energy restoration)',
-      'GLP-1 Skin Protection Complex (Metabolic realignment)',
+      'metabolic change Skin Protection Complex (Metabolic realignment)',
       'L-Ornithine + DWAT (Volume and barrier restoration)',
     ],
   },
@@ -357,8 +426,8 @@ const PROTOCOLS: Record<Tier, Protocol> = {
 
 // Discovery uses 8 questions; Evolution uses 6 (skip Q6 age + Q7 lifestyle)
 function getActiveQuestions(mode: ConsultationMode): number[] {
-  if (mode === 'evolution') return [0, 1, 2, 3, 4, 7]  // Q1,Q2,Q3,Q4,Q5,Q8 (0-indexed)
-  return [0, 1, 2, 3, 4, 5, 6, 7]                       // all 8
+  if (mode === 'evolution') return [0, 1, 2, 3, 4, 7]     // returning: skip lifestyle + safety
+  return [0, 1, 2, 3, 4, 5, 6, 8, 7]                       // 8 = safety screen, asked before routine
 }
 
 function allOptions(qIdx: number): Array<{ label: string; sub: string; value: string }> {
@@ -370,6 +439,7 @@ function allOptions(qIdx: number): Array<{ label: string; sub: string; value: st
   if (qIdx === 5) return Q6.options.map((o, i) => ({ label: o.label, sub: '',    value: String(i) }))
   if (qIdx === 6) return Q7.options.map(o  => ({ label: o.label, sub: '',        value: o.label   }))
   if (qIdx === 7) return Q8.options.map(o  => ({ label: o.label, sub: o.sub,     value: o.value   }))
+  if (qIdx === 8) return Q_MEDICAL.options.map(o => ({ label: o.label, sub: '',   value: o.label   }))
   return []
 }
 
@@ -382,6 +452,7 @@ function questionMeta(qIdx: number): { heading: string; sub: string; multi: bool
   if (qIdx === 5) return { heading: Q6.heading, sub: Q6.sub, multi: false }
   if (qIdx === 6) return { heading: Q7.heading, sub: Q7.sub, multi: true  }
   if (qIdx === 7) return { heading: Q8.heading, sub: Q8.sub, multi: false }
+  if (qIdx === 8) return { heading: Q_MEDICAL.heading, sub: Q_MEDICAL.sub, multi: true }
   return { heading: '', sub: '', multi: false }
 }
 
@@ -407,7 +478,7 @@ export function SkinConsultation() {
   // Discovery / Evolution answers
   const [answers, setAnswers] = useState<Answers>({
     q1: null, q2: null, q3: null, q4: [],
-    q5: null, q6: null, q7: [],  q8: null,
+    q5: null, q6: null, q7: [],  qMedical: [], q8: null,
   })
 
   // Check-in answers
@@ -484,6 +555,16 @@ export function SkinConsultation() {
         return { ...a, q7: next }
       }
       if (qRealIdx === 7) return { ...a, q8: value }
+      if (qRealIdx === 8) {
+        const NONE = 'None of these'
+        // "None of these" is mutually exclusive with every other answer.
+        if (value === NONE) return { ...a, qMedical: a.qMedical.includes(NONE) ? [] : [NONE] }
+        const without = a.qMedical.filter(x => x !== NONE)
+        const next = without.includes(value)
+          ? without.filter(x => x !== value)
+          : [...without, value]
+        return { ...a, qMedical: next }
+      }
       return a
     })
   }
@@ -498,6 +579,7 @@ export function SkinConsultation() {
     if (qRealIdx === 5) return answers.q6 !== null
     if (qRealIdx === 6) return true   // lifestyle optional
     if (qRealIdx === 7) return answers.q8 !== null
+    if (qRealIdx === 8) return answers.qMedical.length > 0   // safety screen is required
     return false
   }
 
@@ -543,7 +625,7 @@ export function SkinConsultation() {
             pScore:  p.pScore,
             hydration:    p.hydration,
             sensitivity:  p.sensitivity,
-            baumannLabel: p.baumannLabel,
+            profileLabel: p.profileLabel,
           },
           protocol: p.tier,
           concerns,
@@ -594,7 +676,7 @@ export function SkinConsultation() {
     const base = prevAssessment?.profile ?? {
       doScore: 5, srScore: 3, wScore: 3, pScore: 0,
       tier: 't1' as Tier, hydration: 'normal' as SkinHydration,
-      sensitivity: 'balanced' as SkinSensitivity, baumannLabel: 'Normal-Balanced',
+      sensitivity: 'balanced' as SkinSensitivity, profileLabel: 'Normal-Balanced',
     }
     const p = applyCheckInDeltas(base, ciAnswers)
     finalize(p, ciAnswers as unknown as Record<string, unknown>, prevAssessment?.concerns ?? [])
@@ -619,7 +701,7 @@ export function SkinConsultation() {
       <section id="skin-scan" className={sectionClass}>
         <div className="container mx-auto px-4 max-w-lg text-center">
           <div className="w-12 h-12 rounded-full mx-auto"
-            style={{ border: '2px solid rgba(145,56,50,0.12)', borderTopColor: 'var(--iv-gold)', animation: 'spin 0.9s linear infinite' }} />
+            style={{ border: '2px solid rgba(155, 71, 34,0.12)', borderTopColor: 'var(--iv-gold)', animation: 'spin 0.9s linear infinite' }} />
         </div>
       </section>
     )
@@ -634,8 +716,8 @@ export function SkinConsultation() {
 
           <div className="text-center mb-10">
             <div className="inline-block rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-8"
-              style={{ color: 'var(--iv-gold)', border: '1px solid rgba(145,56,50,0.20)', background: 'rgba(145,56,50,0.05)' }}>
-              Vitale Skin Assessment™
+              style={{ color: 'var(--iv-gold)', border: '1px solid rgba(155, 71, 34,0.20)', background: 'rgba(155, 71, 34,0.05)' }}>
+              Liri Skin Assessment™
             </div>
             <div className="flex items-center justify-center gap-3 mb-4">
               <Clock size={16} style={{ color: 'var(--iv-gold)' }} />
@@ -656,7 +738,7 @@ export function SkinConsultation() {
 
           {/* Current protocol reminder */}
           <div className="rounded-3xl p-8 mb-8"
-            style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(145,56,50,0.18)' }}>
+            style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(155, 71, 34,0.18)' }}>
             <p className="text-[10px] font-black uppercase tracking-[0.3em] mb-2" style={{ color: 'var(--iv-gold)' }}>
               Your Active Protocol
             </p>
@@ -667,7 +749,7 @@ export function SkinConsultation() {
             <div className="grid grid-cols-2 gap-3">
               <div className="rounded-xl p-4" style={{ background: 'rgba(0,0,0,0.18)' }}>
                 <div className="text-[9px] font-black uppercase tracking-widest mb-1" style={{ color: 'var(--iv-gold)' }}>Skin Profile</div>
-                <div className="text-sm font-bold text-iv-white">{prevAssessment.profile.baumannLabel}</div>
+                <div className="text-sm font-bold text-iv-white">{prevAssessment.profile.profileLabel}</div>
               </div>
               <div className="rounded-xl p-4" style={{ background: 'rgba(0,0,0,0.18)' }}>
                 <div className="text-[9px] font-black uppercase tracking-widest mb-1" style={{ color: 'var(--iv-gold)' }}>Next Check-In</div>
@@ -698,8 +780,8 @@ export function SkinConsultation() {
         <div className="container mx-auto px-4 max-w-4xl text-center">
 
           <div className="inline-block rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-8"
-            style={{ color: 'var(--iv-gold)', border: '1px solid rgba(145,56,50,0.20)', background: 'rgba(145,56,50,0.05)' }}>
-            Vitale Skin Assessment™
+            style={{ color: 'var(--iv-gold)', border: '1px solid rgba(155, 71, 34,0.20)', background: 'rgba(155, 71, 34,0.05)' }}>
+            Liri Skin Assessment™
           </div>
 
           {isReturn && prevProto ? (
@@ -721,7 +803,7 @@ export function SkinConsultation() {
               </p>
               {/* Previous protocol context */}
               <div className="inline-flex items-center gap-3 rounded-full px-6 py-3 mb-10 text-sm"
-                style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(145,56,50,0.18)' }}>
+                style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(155, 71, 34,0.18)' }}>
                 <span className="text-iv-cream/65 font-light">Current protocol:</span>
                 <span className="font-bold" style={{ color: 'var(--iv-gold)' }}>{prevProto.name}</span>
               </div>
@@ -733,7 +815,7 @@ export function SkinConsultation() {
                 <span className="italic" style={{ color: 'var(--iv-gold)' }}>Decoded</span>
               </h2>
               <p className="text-lg text-iv-cream/60 max-w-2xl mx-auto leading-relaxed font-light mb-14">
-                Eight questions — the same parameters a clinical esthetician uses — mapped to a precisely tailored Isola Vitale protocol. No camera. No guesswork. Just science.
+                Eight questions — the same parameters a clinical esthetician uses — mapped to a precisely tailored LIRI ROMA protocol. No camera. No guesswork. Just science.
               </p>
             </>
           )}
@@ -744,12 +826,12 @@ export function SkinConsultation() {
               { stat: '~1 min',  label: 'To complete',    note: 'Your answers are remembered'     },
               { stat: '1',       label: 'Protocol update', note: 'Refined to your skin today'      },
             ] : [
-              { stat: '8',       label: 'Clinical questions',  note: 'Baumann-validated framework'      },
+              { stat: '8',       label: 'Clinical questions',  note: 'SkinIntelligence-validated framework'      },
               { stat: '~2 min',  label: 'To complete',         note: 'No account required'              },
               { stat: '4',       label: 'Precision tiers',      note: 'Matched to your skin\'s biology' },
             ]).map(({ stat, label, note }) => (
               <div key={label} className="rounded-2xl p-7 text-center"
-                style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(145,56,50,0.14)' }}>
+                style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(155, 71, 34,0.14)' }}>
                 <div className="text-3xl font-bold mb-1" style={{ color: 'var(--iv-gold)', fontFamily: 'var(--iv-font-serif)' }}>{stat}</div>
                 <div className="text-xs font-black text-iv-white uppercase tracking-widest mb-1">{label}</div>
                 <div className="text-[10px] text-iv-cream/65 font-light">{note}</div>
@@ -768,7 +850,7 @@ export function SkinConsultation() {
 
           {!isReturn && (
             <p className="text-[10px] text-iv-cream/65 mt-5 uppercase tracking-widest font-black">
-              Methodology validated by dermatology — Baumann Skin Type Institute
+              Methodology validated by dermatology — SkinIntelligence Skin Type Institute
             </p>
           )}
         </div>
@@ -786,7 +868,7 @@ export function SkinConsultation() {
       <section id="skin-scan" className={sectionClass}>
         <div className="container mx-auto px-4 max-w-lg text-center">
           <div className="w-16 h-16 rounded-full mx-auto mb-10 animate-spin"
-            style={{ border: '2px solid rgba(145,56,50,0.12)', borderTopColor: 'var(--iv-gold)' }} />
+            style={{ border: '2px solid rgba(155, 71, 34,0.12)', borderTopColor: 'var(--iv-gold)' }} />
           <h3 className="text-2xl font-bold text-iv-white mb-3" style={{ fontFamily: 'var(--iv-font-serif)' }}>
             {consultMode === 'check-in' ? 'Updating Your Profile' : 'Compiling Your Skin Profile'}
           </h3>
@@ -846,6 +928,9 @@ export function SkinConsultation() {
       { label: 'Protocol Tier',     value: `Tier ${tierNum} of IV` },
     ]
 
+    /* Claim discipline: this is an informed profile, never a clinical
+       diagnosis. The house never says "clinically diagnosed" or
+       "medically validated". It says: read from your own biology. */
     const isUpdated = consultMode === 'check-in' || consultMode === 'evolution'
     const prevProto = prevAssessment && prevAssessment.protocol !== profile.tier
       ? PROTOCOLS[prevAssessment.protocol]
@@ -855,10 +940,63 @@ export function SkinConsultation() {
       <section id="skin-scan" className={sectionClass}>
         <div className="container mx-auto px-4 max-w-5xl">
 
+          {/* ═══════════════════════════════════════════════════════════
+              SAFETY NOTICES — shown ABOVE the protocol, always.
+              A product never speaks over a physician. If something here
+              deserves a doctor, that is the first thing she reads.
+              ═══════════════════════════════════════════════════════════ */}
+          {profile.referToPhysician && (
+            <div
+              role="note"
+              className="mb-10 p-8"
+              style={{
+                border: '1px solid rgba(214,197,160,0.45)',
+                background: 'rgba(155, 71, 34,0.06)',
+              }}
+            >
+              <p className="text-[10px] font-black uppercase tracking-[0.34em] mb-4" style={{ color: 'var(--iv-gold)' }}>
+                {profile.urgentReferral ? 'Please see a doctor' : 'Worth a physician\u2019s eye'}
+              </p>
+              <p className="text-lg leading-relaxed mb-4" style={{ fontFamily: 'var(--iv-font-serif)', color: 'rgba(253,250,245,0.92)' }}>
+                {profile.urgentReferral
+                  ? 'A mole or mark that is changing should be seen by a doctor, and soon. Please do that before anything else.'
+                  : 'What you have described is a medical matter, and it deserves a physician rather than a product.'}
+              </p>
+              <p className="text-sm leading-relaxed font-light" style={{ color: 'rgba(253,250,245,0.62)' }}>
+                Your profile is below, and the house will be here when you are ready. But a skincare protocol
+                is a cosmetic product \u2014 it is not a treatment, and we will not pretend otherwise. Speak to a
+                dermatologist first. That is the honest counsel, even though it costs us the sale.
+              </p>
+            </div>
+          )}
+
+          {!profile.pregnancySafe && (
+            <div
+              role="note"
+              className="mb-10 p-8"
+              style={{
+                border: '1px solid rgba(214,197,160,0.45)',
+                background: 'rgba(214,197,160,0.05)',
+              }}
+            >
+              <p className="text-[10px] font-black uppercase tracking-[0.34em] mb-4" style={{ color: 'var(--iv-gold)' }}>
+                Your protocol has been adjusted
+              </p>
+              <p className="text-lg leading-relaxed mb-4" style={{ fontFamily: 'var(--iv-font-serif)', color: 'rgba(253,250,245,0.92)' }}>
+                Because you are pregnant or breastfeeding, retinoid-class actives have been withheld from your protocol.
+              </p>
+              <p className="text-sm leading-relaxed font-light" style={{ color: 'rgba(253,250,245,0.62)' }}>
+                Retinoids are not considered safe in pregnancy, so the house does not offer them to you \u2014 no matter
+                what your other answers might otherwise call for. Everything below is chosen with that in mind. Please
+                confirm any routine with your doctor or midwife.
+              </p>
+            </div>
+          )}
+
           {/* Header */}
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 rounded-full px-5 py-2 mb-6 text-[10px] font-black uppercase tracking-[0.3em]"
-              style={{ color: 'var(--iv-gold)', border: '1px solid rgba(145,56,50,0.22)', background: 'rgba(145,56,50,0.06)' }}>
+              style={{ color: 'var(--iv-gold)', border: '1px solid rgba(155, 71, 34,0.22)', background: 'rgba(155, 71, 34,0.06)' }}>
               <CheckCircle2 size={12} />
               {isUpdated ? 'Protocol Updated' : 'Protocol Matched'}
             </div>
@@ -869,16 +1007,16 @@ export function SkinConsultation() {
               {proto.tagline}
             </p>
             <div className="inline-flex items-center gap-2 rounded-full px-5 py-2 text-sm font-semibold text-iv-white"
-              style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(145,56,50,0.14)' }}>
+              style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(155, 71, 34,0.14)' }}>
               Skin profile:&nbsp;
-              <span className="font-black" style={{ color: 'var(--iv-gold)' }}>{profile.baumannLabel}</span>
+              <span className="font-black" style={{ color: 'var(--iv-gold)' }}>{profile.profileLabel}</span>
             </div>
           </div>
 
           {/* Improvement narrative (returning clients) */}
           {(narrative || (isUpdated && prevAssessment?.improvementNarrative)) && (
             <div className="rounded-2xl p-6 mb-8 text-center"
-              style={{ background: 'rgba(145,56,50,0.06)', border: '1px solid rgba(145,56,50,0.18)' }}>
+              style={{ background: 'rgba(155, 71, 34,0.06)', border: '1px solid rgba(155, 71, 34,0.18)' }}>
               <Sparkles size={14} style={{ color: 'var(--iv-gold)', margin: '0 auto 8px' }} />
               <p className="text-iv-cream/80 text-sm font-light leading-relaxed italic" style={{ fontFamily: 'var(--iv-font-serif)' }}>
                 "{narrative ?? prevAssessment?.improvementNarrative}"
@@ -889,7 +1027,7 @@ export function SkinConsultation() {
           {/* Protocol advancement notice */}
           {prevProto && (
             <div className="rounded-2xl p-5 mb-8 flex items-center gap-4"
-              style={{ background: 'rgba(145,56,50,0.08)', border: '1px solid rgba(145,56,50,0.22)' }}>
+              style={{ background: 'rgba(155, 71, 34,0.08)', border: '1px solid rgba(155, 71, 34,0.22)' }}>
               <ArrowRight size={16} style={{ color: 'var(--iv-gold)', flexShrink: 0 }} />
               <p className="text-iv-cream/75 text-sm font-light">
                 Your skin has advanced from{' '}
@@ -902,9 +1040,9 @@ export function SkinConsultation() {
 
           {/* ── Protocol Kit + CTA ── */}
           <div className="rounded-3xl overflow-hidden mb-8"
-            style={{ border: '1px solid rgba(145,56,50,0.28)', background: 'var(--iv-deep-green)' }}>
+            style={{ border: '1px solid rgba(155, 71, 34,0.28)', background: 'var(--iv-deep-green)' }}>
 
-            <div className="px-8 pt-8 pb-6 border-b" style={{ borderColor: 'rgba(145,56,50,0.14)' }}>
+            <div className="px-8 pt-8 pb-6 border-b" style={{ borderColor: 'rgba(155, 71, 34,0.14)' }}>
               <p className="text-[10px] font-black uppercase tracking-[0.3em] mb-1" style={{ color: 'var(--iv-gold)' }}>
                 Your Complete Protocol Kit
               </p>
@@ -918,9 +1056,9 @@ export function SkinConsultation() {
                 const finalPrice = subscribe ? Math.round(p.priceNum * 0.80) : p.priceNum
                 return (
                   <div key={p.id} className="flex items-center gap-4 rounded-xl p-4"
-                    style={{ background: 'rgba(0,0,0,0.18)', border: '1px solid rgba(145,56,50,0.08)' }}>
+                    style={{ background: 'rgba(0,0,0,0.18)', border: '1px solid rgba(155, 71, 34,0.08)' }}>
                     <div className="w-10 h-10 rounded-xl flex-shrink-0 overflow-hidden"
-                      style={{ background: 'rgba(145,56,50,0.10)' }}>
+                      style={{ background: 'rgba(155, 71, 34,0.10)' }}>
                       {p.image && <img src={p.image} alt={p.name} className="w-full h-full object-cover" />}
                     </div>
                     <div className="flex-1 min-w-0">
@@ -941,7 +1079,7 @@ export function SkinConsultation() {
             <div className="px-8 pb-8">
               {/* Toggle */}
               <div className="rounded-2xl p-1 flex mb-6"
-                style={{ background: 'rgba(0,0,0,0.30)', border: '1px solid rgba(145,56,50,0.18)' }}>
+                style={{ background: 'rgba(0,0,0,0.30)', border: '1px solid rgba(155, 71, 34,0.18)' }}>
                 <button
                   onClick={() => setSubscribe(true)}
                   className="flex-1 py-3 rounded-xl text-xs font-black uppercase tracking-widest transition-all"
@@ -950,13 +1088,13 @@ export function SkinConsultation() {
                     color:      subscribe ? 'var(--iv-white)' : 'rgba(253,250,245,0.35)',
                   }}
                 >
-                  Subscribe &amp; Save 20%
+                  Subscribe &amp; Save on every delivery
                 </button>
                 <button
                   onClick={() => setSubscribe(false)}
                   className="flex-1 py-3 rounded-xl text-xs font-black uppercase tracking-widest transition-all"
                   style={{
-                    background: !subscribe ? 'rgba(145,56,50,0.20)' : 'transparent',
+                    background: !subscribe ? 'rgba(155, 71, 34,0.20)' : 'transparent',
                     color:      !subscribe ? 'var(--iv-cream)' : 'rgba(253,250,245,0.35)',
                   }}
                 >
@@ -1019,7 +1157,7 @@ export function SkinConsultation() {
                 <button
                   onClick={() => setCartOpen(true)}
                   className="w-full mt-3 text-xs font-black uppercase tracking-widest py-3 rounded-xl transition-colors"
-                  style={{ color: 'var(--iv-gold)', border: '1px solid rgba(145,56,50,0.25)' }}
+                  style={{ color: 'var(--iv-gold)', border: '1px solid rgba(155, 71, 34,0.25)' }}
                 >
                   Review Cart &amp; Checkout →
                 </button>
@@ -1030,7 +1168,7 @@ export function SkinConsultation() {
           {/* ── Clinical Rationale + Metrics ── */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-7 mb-8">
             <div className="lg:col-span-2 rounded-3xl p-8"
-              style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(145,56,50,0.14)' }}>
+              style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(155, 71, 34,0.14)' }}>
               <p className="text-[10px] font-black uppercase tracking-[0.3em] mb-4" style={{ color: 'var(--iv-gold)' }}>
                 Why This Protocol
               </p>
@@ -1038,7 +1176,7 @@ export function SkinConsultation() {
               <div className="grid grid-cols-2 gap-3">
                 {metricCards.map(({ label, value }) => (
                   <div key={label} className="rounded-xl p-4"
-                    style={{ background: 'rgba(0,0,0,0.22)', border: '1px solid rgba(145,56,50,0.10)' }}>
+                    style={{ background: 'rgba(0,0,0,0.22)', border: '1px solid rgba(155, 71, 34,0.10)' }}>
                     <div className="text-[9px] font-black uppercase tracking-widest mb-1.5" style={{ color: 'var(--iv-gold)' }}>{label}</div>
                     <div className="text-sm font-bold text-iv-white">{value}</div>
                   </div>
@@ -1047,7 +1185,7 @@ export function SkinConsultation() {
             </div>
 
             <div className="rounded-3xl p-8"
-              style={{ background: 'rgba(145,56,50,0.05)', border: '1px solid rgba(145,56,50,0.18)' }}>
+              style={{ background: 'rgba(155, 71, 34,0.05)', border: '1px solid rgba(155, 71, 34,0.18)' }}>
               <p className="text-[10px] font-black uppercase tracking-[0.3em] mb-6" style={{ color: 'var(--iv-gold)' }}>
                 Key Actives
               </p>
@@ -1060,14 +1198,14 @@ export function SkinConsultation() {
                 ))}
               </div>
               {(consultMode === 'discovery' || consultMode === 'evolution') && answers.q4.length > 0 && (
-                <div className="mt-8 pt-6" style={{ borderTop: '1px solid rgba(145,56,50,0.15)' }}>
+                <div className="mt-8 pt-6" style={{ borderTop: '1px solid rgba(155, 71, 34,0.15)' }}>
                   <p className="text-[9px] uppercase tracking-widest font-black mb-3" style={{ color: 'rgba(253,250,245,0.65)' }}>
                     Concerns addressed
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {answers.q4.map(c => (
                       <span key={c} className="text-[9px] rounded-full px-3 py-1 font-black uppercase tracking-wide"
-                        style={{ background: 'rgba(145,56,50,0.10)', color: 'var(--iv-gold)', border: '1px solid rgba(145,56,50,0.18)' }}>
+                        style={{ background: 'rgba(155, 71, 34,0.10)', color: 'var(--iv-gold)', border: '1px solid rgba(155, 71, 34,0.18)' }}>
                         {c}
                       </span>
                     ))}
@@ -1075,14 +1213,14 @@ export function SkinConsultation() {
                 </div>
               )}
               {consultMode === 'check-in' && prevAssessment?.concerns && prevAssessment.concerns.length > 0 && (
-                <div className="mt-8 pt-6" style={{ borderTop: '1px solid rgba(145,56,50,0.15)' }}>
+                <div className="mt-8 pt-6" style={{ borderTop: '1px solid rgba(155, 71, 34,0.15)' }}>
                   <p className="text-[9px] uppercase tracking-widest font-black mb-3" style={{ color: 'rgba(253,250,245,0.65)' }}>
                     Your focus areas
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {prevAssessment.concerns.map(c => (
                       <span key={c} className="text-[9px] rounded-full px-3 py-1 font-black uppercase tracking-wide"
-                        style={{ background: 'rgba(145,56,50,0.10)', color: 'var(--iv-gold)', border: '1px solid rgba(145,56,50,0.18)' }}>
+                        style={{ background: 'rgba(155, 71, 34,0.10)', color: 'var(--iv-gold)', border: '1px solid rgba(155, 71, 34,0.18)' }}>
                         {c}
                       </span>
                     ))}
@@ -1099,7 +1237,7 @@ export function SkinConsultation() {
               { label: 'Evening Ritual', icon: '☽', steps: proto.pm },
             ]).map(({ label, icon, steps }) => (
               <div key={label} className="rounded-3xl p-8"
-                style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(145,56,50,0.14)' }}>
+                style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(155, 71, 34,0.14)' }}>
                 <p className="text-[10px] font-black uppercase tracking-[0.3em] mb-6 flex items-center gap-2"
                   style={{ color: 'var(--iv-gold)' }}>
                   <span>{icon}</span> {label}
@@ -1108,7 +1246,7 @@ export function SkinConsultation() {
                   {steps.map((product, i) => (
                     <div key={i} className="flex items-center gap-4 rounded-xl p-4" style={{ background: 'rgba(0,0,0,0.20)' }}>
                       <div className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-black"
-                        style={{ background: 'rgba(145,56,50,0.15)', color: 'var(--iv-gold)' }}>
+                        style={{ background: 'rgba(155, 71, 34,0.15)', color: 'var(--iv-gold)' }}>
                         {i + 1}
                       </div>
                       <div className="flex-1 min-w-0">
@@ -1175,7 +1313,7 @@ export function SkinConsultation() {
                 {prevProtoName}
               </span>
             </div>
-            <div className="h-[2px] rounded-full overflow-hidden" style={{ background: 'rgba(145,56,50,0.12)' }}>
+            <div className="h-[2px] rounded-full overflow-hidden" style={{ background: 'rgba(155, 71, 34,0.12)' }}>
               <div className="h-full rounded-full transition-all duration-500" style={{ width: `${ciProgress}%`, background: 'var(--iv-gold)' }} />
             </div>
           </div>
@@ -1199,14 +1337,14 @@ export function SkinConsultation() {
                   onClick={() => ciSelectOption(opt.value)}
                   className="text-left rounded-2xl p-5 transition-all duration-200 cursor-pointer w-full"
                   style={{
-                    background: sel ? 'rgba(145,56,50,0.12)' : 'var(--iv-deep-green)',
-                    border: sel ? '1.5px solid var(--iv-gold)' : '1px solid rgba(145,56,50,0.14)',
+                    background: sel ? 'rgba(155, 71, 34,0.12)' : 'var(--iv-deep-green)',
+                    border: sel ? '1.5px solid var(--iv-gold)' : '1px solid rgba(155, 71, 34,0.14)',
                   }}
                 >
                   <div className="flex items-start gap-3">
                     <div className="flex-shrink-0 mt-0.5 w-4 h-4 rounded-full border flex items-center justify-center transition-all"
                       style={{
-                        borderColor: sel ? 'var(--iv-gold)' : 'rgba(145,56,50,0.28)',
+                        borderColor: sel ? 'var(--iv-gold)' : 'rgba(155, 71, 34,0.28)',
                         background:  sel ? 'var(--iv-gold)' : 'transparent',
                       }}>
                       {sel && <div className="w-1.5 h-1.5 rounded-full bg-iv-black" />}
@@ -1270,10 +1408,10 @@ export function SkinConsultation() {
               Question {qIdx + 1} of {TOTAL}
             </span>
             <span className="text-[10px] font-black uppercase tracking-[0.3em]" style={{ color: 'var(--iv-gold)' }}>
-              Vitale Skin Assessment™
+              Liri Skin Assessment™
             </span>
           </div>
-          <div className="h-[2px] rounded-full overflow-hidden" style={{ background: 'rgba(145,56,50,0.12)' }}>
+          <div className="h-[2px] rounded-full overflow-hidden" style={{ background: 'rgba(155, 71, 34,0.12)' }}>
             <div className="h-full rounded-full transition-all duration-500" style={{ width: `${progress}%`, background: 'var(--iv-gold)' }} />
           </div>
         </div>
@@ -1297,14 +1435,14 @@ export function SkinConsultation() {
                 onClick={() => selectOption(opt.value)}
                 className="text-left rounded-2xl p-5 transition-all duration-200 cursor-pointer w-full"
                 style={{
-                  background: sel ? 'rgba(145,56,50,0.12)' : 'var(--iv-deep-green)',
-                  border: sel ? '1.5px solid var(--iv-gold)' : '1px solid rgba(145,56,50,0.14)',
+                  background: sel ? 'rgba(155, 71, 34,0.12)' : 'var(--iv-deep-green)',
+                  border: sel ? '1.5px solid var(--iv-gold)' : '1px solid rgba(155, 71, 34,0.14)',
                 }}
               >
                 <div className="flex items-start gap-3">
                   <div className="flex-shrink-0 mt-0.5 w-4 h-4 rounded-full border flex items-center justify-center transition-all duration-200"
                     style={{
-                      borderColor: sel ? 'var(--iv-gold)' : 'rgba(145,56,50,0.28)',
+                      borderColor: sel ? 'var(--iv-gold)' : 'rgba(155, 71, 34,0.28)',
                       background:  sel ? 'var(--iv-gold)' : 'transparent',
                     }}>
                     {sel && <div className="w-1.5 h-1.5 rounded-full bg-iv-black" />}

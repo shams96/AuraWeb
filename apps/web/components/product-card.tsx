@@ -76,10 +76,10 @@ export function ProductCard({ product }: ProductCardProps) {
   return (
     <div
       className="product-card iv-hover-lift group rounded-2xl overflow-hidden transition-all duration-500 relative"
-      style={{ background: '#F4EAE2', border: '1px solid rgba(145,56,50,0.12)' }}
+      style={{ background: '#F4EAE2', border: '1px solid rgba(155, 71, 34,0.12)' }}
       data-reveal="iv-scale-in"
-      onMouseEnter={e => (e.currentTarget.style.borderColor = 'rgba(145,56,50,0.30)')}
-      onMouseLeave={e => (e.currentTarget.style.borderColor = 'rgba(145,56,50,0.12)')}
+      onMouseEnter={e => (e.currentTarget.style.borderColor = 'rgba(155, 71, 34,0.30)')}
+      onMouseLeave={e => (e.currentTarget.style.borderColor = 'rgba(155, 71, 34,0.12)')}
     >
       {/* Product visual */}
       <div className="relative aspect-[4/5] overflow-hidden" style={{ background: '#EDE8E0' }}>
@@ -101,7 +101,7 @@ export function ProductCard({ product }: ProductCardProps) {
         )}
 
         {/* Grade label */}
-        <div className="absolute top-4 right-4 z-10 px-2 py-0.5 rounded-sm backdrop-blur-md" style={{ border: '1px solid rgba(145,56,50,0.25)', background: 'rgba(253,250,245,0.85)' }}>
+        <div className="absolute top-4 right-4 z-10 px-2 py-0.5 rounded-sm backdrop-blur-md" style={{ border: '1px solid rgba(155, 71, 34,0.25)', background: 'rgba(253,250,245,0.85)' }}>
           <p className="text-[7px] font-black uppercase tracking-[0.2em]" style={{ color: '#7A5C4E' }}>
             {isClinical ? 'Clinical Grade' : 'Laboratory Grade'}
           </p>
@@ -132,12 +132,12 @@ export function ProductCard({ product }: ProductCardProps) {
       {/* Info */}
       <div className="p-6">
         <div className="flex justify-between items-center mb-4">
-          <span style={{ fontSize: '0.65rem', fontWeight: 900, color: '#913832', textTransform: 'uppercase', letterSpacing: '0.28em' }}>
+          <span style={{ fontSize: '0.65rem', fontWeight: 900, color: '#9B4722', textTransform: 'uppercase', letterSpacing: '0.28em' }}>
             {collectionLabel}
           </span>
           <div className="flex gap-2">
             {product.tags.slice(0, 1).map((tag) => (
-              <span key={tag} style={{ fontSize: '0.65rem', fontWeight: 700, color: '#7A5C4E', textTransform: 'uppercase', letterSpacing: '0.14em', border: '1px solid rgba(145,56,50,0.14)', padding: '1px 8px', borderRadius: 4 }}>
+              <span key={tag} style={{ fontSize: '0.65rem', fontWeight: 700, color: '#7A5C4E', textTransform: 'uppercase', letterSpacing: '0.14em', border: '1px solid rgba(155, 71, 34,0.14)', padding: '1px 8px', borderRadius: 4 }}>
                 {tag}
               </span>
             ))}
@@ -160,7 +160,7 @@ export function ProductCard({ product }: ProductCardProps) {
               <Star
                 key={i}
                 className="h-3 w-3"
-                style={{ color: i < Math.floor(product.rating) ? '#913832' : 'rgba(145,56,50,0.18)', fill: i < Math.floor(product.rating) ? '#913832' : 'none' }}
+                style={{ color: i < Math.floor(product.rating) ? '#9B4722' : 'rgba(155, 71, 34,0.18)', fill: i < Math.floor(product.rating) ? '#9B4722' : 'none' }}
               />
             ))}
           </div>
@@ -171,13 +171,13 @@ export function ProductCard({ product }: ProductCardProps) {
 
         <div>
           {isLockedB2B ? (
-            <div style={{ padding: '12px', background: 'rgba(145,56,50,0.06)', borderRadius: 8, border: '1px solid rgba(145,56,50,0.12)', textAlign: 'center' }}>
-              <span style={{ fontSize: '0.65rem', fontWeight: 900, color: '#913832', textTransform: 'uppercase', letterSpacing: '0.2em' }}>Professional Tier</span>
+            <div style={{ padding: '12px', background: 'rgba(155, 71, 34,0.06)', borderRadius: 8, border: '1px solid rgba(155, 71, 34,0.12)', textAlign: 'center' }}>
+              <span style={{ fontSize: '0.65rem', fontWeight: 900, color: '#9B4722', textTransform: 'uppercase', letterSpacing: '0.2em' }}>Professional Tier</span>
             </div>
           ) : (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ fontSize: '0.65rem', fontWeight: 700, color: discountPct > 0 ? '#913832' : '#7A5C4E', textTransform: 'uppercase', letterSpacing: '0.18em' }}>
+                <span style={{ fontSize: '0.65rem', fontWeight: 700, color: discountPct > 0 ? '#9B4722' : '#7A5C4E', textTransform: 'uppercase', letterSpacing: '0.18em' }}>
                   {discountPct > 0 ? `${discountPct}% off` : 'One-Time'}
                 </span>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -191,23 +191,23 @@ export function ProductCard({ product }: ProductCardProps) {
               <button
                 style={{
                   width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-                  padding: '12px 14px', background: 'rgba(145,56,50,0.07)', borderRadius: 8,
-                  border: '1px solid rgba(145,56,50,0.18)', cursor: 'pointer', transition: 'all 0.15s',
+                  padding: '12px 14px', background: 'rgba(155, 71, 34,0.07)', borderRadius: 8,
+                  border: '1px solid rgba(155, 71, 34,0.18)', cursor: 'pointer', transition: 'all 0.15s',
                 }}
                 onClick={handleSubscribeAdd}
-                onMouseEnter={e => { e.currentTarget.style.background = 'rgba(145,56,50,0.13)' }}
-                onMouseLeave={e => { e.currentTarget.style.background = 'rgba(145,56,50,0.07)' }}
+                onMouseEnter={e => { e.currentTarget.style.background = 'rgba(155, 71, 34,0.13)' }}
+                onMouseLeave={e => { e.currentTarget.style.background = 'rgba(155, 71, 34,0.07)' }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                  <div style={{ width: 28, height: 28, borderRadius: '50%', background: '#913832', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '0.75rem', fontWeight: 900 }}>
+                  <div style={{ width: 28, height: 28, borderRadius: '50%', background: '#9B4722', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '0.75rem', fontWeight: 900 }}>
                     ∞
                   </div>
                   <div style={{ textAlign: 'left' }}>
-                    <p style={{ fontSize: '0.65rem', fontWeight: 900, color: '#913832', textTransform: 'uppercase', letterSpacing: '0.2em' }}>Subscribe</p>
-                    <p style={{ fontSize: '0.6rem', fontWeight: 700, color: '#7A5C4E', textTransform: 'uppercase', letterSpacing: '0.18em' }}>Save 20%</p>
+                    <p style={{ fontSize: '0.65rem', fontWeight: 900, color: '#9B4722', textTransform: 'uppercase', letterSpacing: '0.2em' }}>Subscribe</p>
+                    <p style={{ fontSize: '0.6rem', fontWeight: 700, color: '#7A5C4E', textTransform: 'uppercase', letterSpacing: '0.18em' }}>Save ${Math.round(product.price * 0.2)}</p>
                   </div>
                 </div>
-                <span style={{ fontSize: '1rem', fontWeight: 700, color: '#913832' }}>${Math.round(product.price * 0.8)}</span>
+                <span style={{ fontSize: '1rem', fontWeight: 700, color: '#9B4722' }}>${Math.round(product.price * 0.8)}</span>
               </button>
             </div>
           )}

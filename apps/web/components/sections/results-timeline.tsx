@@ -22,7 +22,7 @@ export function ResultsTimeline({ timeline }: ResultsTimelineProps) {
           <div className="text-center mb-16">
             <div
               className="inline-block rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-6"
-              style={{ color: 'var(--iv-gold)', border: '1px solid rgba(145,56,50,0.20)', background: 'rgba(145,56,50,0.05)' }}
+              style={{ color: 'var(--iv-gold)', border: '1px solid rgba(155, 71, 34,0.20)', background: 'rgba(155, 71, 34,0.05)' }}
             >
               Clinical Timeline
             </div>
@@ -66,13 +66,13 @@ export function ResultsTimeline({ timeline }: ResultsTimelineProps) {
                           style={{
                             maxWidth: 380,
                             background: 'var(--iv-deep-green)',
-                            border: '1px solid rgba(145,56,50,0.14)',
+                            border: '1px solid rgba(155, 71, 34,0.14)',
                           }}
                         >
                           <div className="flex items-center gap-3 mb-3 flex-row-reverse">
                             <div
                               className="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0"
-                              style={{ background: 'rgba(145,56,50,0.09)', border: '1px solid rgba(145,56,50,0.18)' }}
+                              style={{ background: 'rgba(155, 71, 34,0.09)', border: '1px solid rgba(155, 71, 34,0.18)' }}
                             >
                               <span className="text-xl leading-none">{item.icon}</span>
                             </div>
@@ -92,7 +92,7 @@ export function ResultsTimeline({ timeline }: ResultsTimelineProps) {
                         className="w-4 h-4 rounded-full flex-shrink-0 z-10 relative"
                         style={{
                           background: 'var(--iv-gold)',
-                          boxShadow: '0 0 0 5px rgba(145,56,50,0.12), 0 0 20px rgba(145,56,50,0.25)',
+                          boxShadow: '0 0 0 5px rgba(155, 71, 34,0.12), 0 0 20px rgba(155, 71, 34,0.25)',
                         }}
                       />
                     </div>
@@ -105,13 +105,13 @@ export function ResultsTimeline({ timeline }: ResultsTimelineProps) {
                           style={{
                             maxWidth: 380,
                             background: 'var(--iv-deep-green)',
-                            border: '1px solid rgba(145,56,50,0.14)',
+                            border: '1px solid rgba(155, 71, 34,0.14)',
                           }}
                         >
                           <div className="flex items-center gap-3 mb-3">
                             <div
                               className="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0"
-                              style={{ background: 'rgba(145,56,50,0.09)', border: '1px solid rgba(145,56,50,0.18)' }}
+                              style={{ background: 'rgba(155, 71, 34,0.09)', border: '1px solid rgba(155, 71, 34,0.18)' }}
                             >
                               <span className="text-xl leading-none">{item.icon}</span>
                             </div>
@@ -149,7 +149,7 @@ export function ResultsTimeline({ timeline }: ResultsTimelineProps) {
                       className="absolute -left-8 top-4 w-4 h-4 rounded-full flex-shrink-0"
                       style={{
                         background: 'var(--iv-gold)',
-                        boxShadow: '0 0 0 4px rgba(145,56,50,0.12)',
+                        boxShadow: '0 0 0 4px rgba(155, 71, 34,0.12)',
                       }}
                     />
 
@@ -158,7 +158,7 @@ export function ResultsTimeline({ timeline }: ResultsTimelineProps) {
                       className="flex-1 rounded-2xl p-5"
                       style={{
                         background: 'var(--iv-deep-green)',
-                        border: '1px solid rgba(145,56,50,0.14)',
+                        border: '1px solid rgba(155, 71, 34,0.14)',
                       }}
                     >
                       <div className="flex items-start gap-3 mb-2">
@@ -183,14 +183,14 @@ export function ResultsTimeline({ timeline }: ResultsTimelineProps) {
               className="rounded-3xl p-10 max-w-2xl mx-auto"
               style={{
                 background: 'linear-gradient(135deg, var(--iv-formal-garden) 0%, #0D3A1E 100%)',
-                border: '1px solid rgba(145,56,50,0.18)',
+                border: '1px solid rgba(155, 71, 34,0.18)',
               }}
             >
               <h3 className="text-xl font-bold mb-2 text-iv-white" style={{ fontFamily: 'var(--iv-font-serif)' }}>
                 Ready for Transformed Skin?
               </h3>
               <p className="text-xs mb-7 font-light leading-relaxed" style={{ color: 'rgba(253,250,245,0.55)' }}>
-                Join thousands who have begun their Vitale Resilience ritual.
+                Join thousands who have begun their Liri ritual.
               </p>
               <div className="flex justify-center gap-3 flex-wrap">
                 <Link

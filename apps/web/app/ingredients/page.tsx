@@ -1,21 +1,21 @@
 import type { Metadata } from 'next'
 import { Beaker, Shield, Zap, Sparkles, Activity, Globe, CheckCircle2 } from 'lucide-react'
-import { CompetitorComparison } from '@/components/sections/competitor-comparison'
+import { HouseStandard } from '@/components/sections/house-standard'
 
 export const metadata: Metadata = {
   title: 'Ingredients & Science',
-  description: 'Full transparency on every active. Explore the Breakthrough 6 proprietary technologies, complete INCI directory, concentrations, and EU/FDA validation behind every Isola Vitale formulation.',
+  description: 'Full transparency on every active. Explore the Breakthrough 6 proprietary technologies, complete INCI directory, concentrations, and EU/FDA validation behind every LIRI ROMA formulation.',
   openGraph: {
-    title: 'Ingredients & Science | Isola Vitale',
-    description: 'OS-01, DWAT, GLP-1, L-Ornithine, Bifida Ferment, Ectoin — the clinical science behind Isola Vitale\'s Adaptive Skin Science™ and the science of skin vitality.',
+    title: 'Ingredients & Science | LIRI ROMA',
+    description: 'Cellular Renewal Complex, DWAT, metabolic change, L-Ornithine, Bifida Ferment, Ectoin — the clinical science behind LIRI ROMA\'s Adaptive Skin Science™ and the science of skin vitality.',
   },
 }
 
 export default function IngredientsPage() {
   const breakthroughs = [
-    { name: 'OS-01 Senomorphic Peptide', focus: 'Cellular Senescence', description: 'Targets the accumulation of aging cells to restore barrier function.' },
+    { name: 'Cellular Renewal Complex', focus: 'Cellular Senescence', description: 'Targets the accumulation of aging cells to restore barrier function.' },
     { name: 'DWAT Restoration Complex', focus: 'Volume Restoration', description: 'Restores dermal white adipose tissue for natural facial sculpting.' },
-    { name: 'GLP-1 Protective Complex', focus: 'Deflation Prevention', description: 'Shields skin against volume loss during metabolic shifts.' },
+    { name: 'metabolic change Protective Complex', focus: 'Deflation Prevention', description: 'Shields skin against volume loss during metabolic shifts.' },
     { name: 'L-Ornithine', focus: 'Wrinkle Depth', description: 'Encapsulated amino acid mimicking lipofilling effects.' },
     { name: 'Bifida Ferment Lysate', focus: 'Microbiome Support', description: 'Postbiotic standardized for rapid inflammation reduction.' },
     { name: 'Ectoin', focus: 'Environmental Defense', description: 'Extremolyte providing 18% TEWL improvement and pollution shield.' }
@@ -147,7 +147,7 @@ export default function IngredientsPage() {
                 color: 'text-iv-gold',
               },
               {
-                badge: 'Dermatologist Tested',
+                badge: 'Formulated at Isola del Liri',
                 issuer: 'Independent Clinical Assessment',
                 description: 'Every formulation has undergone dermatological tolerance testing on all Fitzpatrick skin types including sensitive skin.',
                 detail: '200+ subjects per product',
@@ -202,7 +202,7 @@ export default function IngredientsPage() {
                 </p>
                 <div className="space-y-4">
                   {[
-                    ['OS-01 Peptide', 'Synthesized — USA (GMP)'],
+                    ['Cellular Renewal Complex', 'Synthesized — USA (GMP)'],
                     ['Bifida Ferment Lysate', 'Fermented — South Korea (ISO)'],
                     ['Ectoin', 'Biosynthesis — Germany (EVO)'],
                     ['L-Ornithine', 'Pharmaceutical-grade — Japan'],
@@ -232,7 +232,7 @@ export default function IngredientsPage() {
         </div>
       </section>
 
-      <CompetitorComparison />
+      <HouseStandard />
     </div>
   )
 }

@@ -27,7 +27,7 @@ const RATING_BREAKDOWN = [
 
 const TRUST_BADGES = [
   { label: 'Verified Reviews', sub: 'Every review is authenticated to a confirmed purchase' },
-  { label: 'Dermatologist Tested', sub: 'Independent clinical assessment on all skin types' },
+  { label: 'Made in One Laboratory', sub: 'Natural You Srl \u00b7 Isola del Liri, Lazio, Italy' },
   { label: 'Cruelty-Free', sub: 'PETA certified — no animal testing, ever' },
   { label: 'GMP Certified', sub: 'Manufactured at Natural You Srl under EU GMP standards' },
 ]

@@ -23,7 +23,7 @@ export function SystemHero() {
       <div style={{
         position: 'absolute', bottom: '-8%', left: '-4%',
         width: '45%', height: '60%',
-        background: 'radial-gradient(ellipse at bottom left, rgba(31,81,41,0.07) 0%, transparent 70%)',
+        background: 'radial-gradient(ellipse at bottom left, rgba(0, 75, 55,0.07) 0%, transparent 70%)',
         pointerEvents: 'none',
       }} />
 
@@ -31,7 +31,7 @@ export function SystemHero() {
       <div className="absolute right-0 top-0 bottom-0 w-1/2 hidden lg:block pointer-events-none">
         <Image
           src="/images/products/isola_collection.png"
-          alt="Isola Vitale Hero Collection"
+          alt="LIRI ROMA Hero Collection"
           fill
           className="object-cover object-center iv-parallax"
           style={{ opacity: 0.88, mixBlendMode: 'multiply' }}
@@ -50,7 +50,7 @@ export function SystemHero() {
             data-reveal="iv-reveal-fade"
             style={{
               display: 'inline-flex', alignItems: 'center', gap: 10,
-              border: '1px solid rgba(145,56,50,0.18)', borderRadius: 100,
+              border: '1px solid rgba(155, 71, 34,0.18)', borderRadius: 100,
               padding: '6px 18px', marginBottom: 'clamp(1rem, 3vh, 2.25rem)',
               background: 'rgba(255,255,255,0.60)', backdropFilter: 'blur(12px)',
               opacity: 0,
@@ -92,7 +92,7 @@ export function SystemHero() {
               fontSize: 'clamp(0.78rem, 1.1vw, 0.92rem)', color: 'var(--iv-gold)', fontWeight: 500,
               lineHeight: 1.7, maxWidth: 440, marginBottom: 'clamp(1rem, 3.5vh, 2.5rem)', letterSpacing: '0.02em',
               fontStyle: 'italic', opacity: 0, animationDelay: '0.50s',
-              borderLeft: '2px solid rgba(145,56,50,0.35)', paddingLeft: 14,
+              borderLeft: '2px solid rgba(155, 71, 34,0.35)', paddingLeft: 14,
             }}
           >
             The world's first Adaptive Skin Science™ house — built for the biological reality of modern life.
@@ -155,21 +155,21 @@ export function SystemHero() {
           <div key={label} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}>
             <div style={{
               width: 20, height: 20, borderRadius: '50%', background: color,
-              border: border ? '2px solid rgba(145,56,50,0.30)' : 'none',
+              border: border ? '2px solid rgba(155, 71, 34,0.30)' : 'none',
               boxShadow: '0 2px 8px rgba(0,0,0,0.12)',
             }} />
             <span style={{ fontSize: '0.5rem', fontWeight: 700, color: 'var(--iv-cream)', letterSpacing: '0.1em', textTransform: 'uppercase', opacity: 0.50 }}>{label}</span>
           </div>
         ))}
-        <div style={{ width: 60, height: 1, background: 'rgba(145,56,50,0.20)', marginLeft: 4 }} />
+        <div style={{ width: 60, height: 1, background: 'rgba(155, 71, 34,0.20)', marginLeft: 4 }} />
         <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--iv-gold)', letterSpacing: '0.16em', textTransform: 'uppercase', opacity: 0.85 }}>2026 Collection</span>
       </div>
 
       {/* Vertical Milano mark */}
       <div style={{ position: 'absolute', right: 28, top: '50%', transform: 'translateY(-50%)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12, zIndex: 10 }} className="hidden lg:flex">
-        <div style={{ width: 1, height: 80, background: 'linear-gradient(to bottom, transparent, rgba(145,56,50,0.30))' }} />
+        <div style={{ width: 1, height: 80, background: 'linear-gradient(to bottom, transparent, rgba(155, 71, 34,0.30))' }} />
         <span style={{ fontSize: '0.5rem', fontWeight: 700, color: 'var(--iv-gold)', letterSpacing: '0.3em', textTransform: 'uppercase', writingMode: 'vertical-lr', opacity: 0.50 }}>Isola del Liri</span>
-        <div style={{ width: 1, height: 80, background: 'linear-gradient(to top, transparent, rgba(145,56,50,0.30))' }} />
+        <div style={{ width: 1, height: 80, background: 'linear-gradient(to top, transparent, rgba(155, 71, 34,0.30))' }} />
       </div>
     </section>
   )

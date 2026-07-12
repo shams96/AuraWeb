@@ -88,8 +88,8 @@ export default async function AdminAnalyticsPage() {
       {/* KPI row */}
       <div className="grid grid-cols-2 xl:grid-cols-4 gap-4 mb-10">
         {KPI.map(({ label, value, icon: Icon }) => (
-          <div key={label} className="rounded-2xl p-6" style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(145,56,50,0.14)' }}>
-            <div className="w-9 h-9 rounded-xl flex items-center justify-center mb-4" style={{ background: 'rgba(145,56,50,0.12)' }}>
+          <div key={label} className="rounded-2xl p-6" style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(155, 71, 34,0.14)' }}>
+            <div className="w-9 h-9 rounded-xl flex items-center justify-center mb-4" style={{ background: 'rgba(155, 71, 34,0.12)' }}>
               <Icon size={16} style={{ color: 'var(--iv-gold)' }} />
             </div>
             <p className="text-2xl font-bold text-iv-white mb-1">{value}</p>
@@ -101,7 +101,7 @@ export default async function AdminAnalyticsPage() {
       <div className="grid md:grid-cols-[1fr_320px] gap-8">
 
         {/* Revenue chart (CSS bar chart) */}
-        <div className="rounded-2xl p-8" style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(145,56,50,0.14)' }}>
+        <div className="rounded-2xl p-8" style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(155, 71, 34,0.14)' }}>
           <p className="text-[10px] font-black uppercase tracking-widest text-iv-cream/30 mb-6">Revenue — Last 7 Days</p>
           <div className="flex items-end gap-2 h-40">
             {Object.entries(dailyRevenue).map(([day, val]) => (
@@ -114,8 +114,8 @@ export default async function AdminAnalyticsPage() {
                   style={{
                     height: `${Math.max((val / maxDaily) * 120, val > 0 ? 4 : 2)}px`,
                     background: val > 0
-                      ? 'linear-gradient(to top, var(--iv-gold), rgba(145,56,50,0.5))'
-                      : 'rgba(145,56,50,0.10)',
+                      ? 'linear-gradient(to top, var(--iv-gold), rgba(155, 71, 34,0.5))'
+                      : 'rgba(155, 71, 34,0.10)',
                   }}
                 />
                 <p className="text-[9px] text-iv-cream/30 font-medium text-center leading-tight" style={{ fontSize: '10px' }}>
@@ -130,7 +130,7 @@ export default async function AdminAnalyticsPage() {
         <div className="space-y-6">
 
           {/* Orders by status */}
-          <div className="rounded-2xl p-6" style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(145,56,50,0.14)' }}>
+          <div className="rounded-2xl p-6" style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(155, 71, 34,0.14)' }}>
             <p className="text-[10px] font-black uppercase tracking-widest text-iv-cream/30 mb-4">Orders by Status</p>
             {(ordersByStatus as { status: string; _count: { id: number } }[]).length === 0 ? (
               <p className="text-xs text-iv-cream/30">No data yet</p>
@@ -141,7 +141,7 @@ export default async function AdminAnalyticsPage() {
                   return (
                     <div key={status} className="flex items-center gap-3">
                       <p className="text-xs font-medium text-iv-cream/60 w-24 flex-shrink-0">{status}</p>
-                      <div className="flex-1 h-1.5 rounded-full" style={{ background: 'rgba(145,56,50,0.12)' }}>
+                      <div className="flex-1 h-1.5 rounded-full" style={{ background: 'rgba(155, 71, 34,0.12)' }}>
                         <div
                           className="h-full rounded-full"
                           style={{ width: `${pct}%`, background: 'var(--iv-gold)' }}
@@ -156,7 +156,7 @@ export default async function AdminAnalyticsPage() {
           </div>
 
           {/* Top products */}
-          <div className="rounded-2xl p-6" style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(145,56,50,0.14)' }}>
+          <div className="rounded-2xl p-6" style={{ background: 'var(--iv-deep-green)', border: '1px solid rgba(155, 71, 34,0.14)' }}>
             <p className="text-[10px] font-black uppercase tracking-widest text-iv-cream/30 mb-4">Top Products</p>
             {topProducts.length === 0 ? (
               <p className="text-xs text-iv-cream/30">No data yet</p>

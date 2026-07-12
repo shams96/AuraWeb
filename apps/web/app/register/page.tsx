@@ -10,7 +10,7 @@ type AccountType = 'personal' | 'business'
 
 const INPUT: React.CSSProperties = {
   display: 'block', width: '100%', padding: '12px 16px',
-  background: 'var(--iv-deep-green)', border: '1px solid rgba(145,56,50,0.18)',
+  background: 'var(--iv-deep-green)', border: '1px solid rgba(155, 71, 34,0.18)',
   borderRadius: 8, fontSize: '0.9rem', color: 'var(--iv-white)',
   outline: 'none', transition: 'border-color 0.2s', boxSizing: 'border-box',
 }
@@ -89,7 +89,7 @@ export default function RegisterPage() {
       <div className="min-h-screen flex items-center justify-center" style={{ background: 'var(--iv-black)' }}>
         <div className="text-center space-y-6 px-8 max-w-sm">
           <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto"
-            style={{ background: 'rgba(145,56,50,0.12)', border: '1px solid rgba(145,56,50,0.25)' }}>
+            style={{ background: 'rgba(155, 71, 34,0.12)', border: '1px solid rgba(155, 71, 34,0.25)' }}>
             <CheckCircle2 size={30} style={{ color: 'var(--iv-gold)' }} />
           </div>
           <div>
@@ -97,7 +97,7 @@ export default function RegisterPage() {
               Account Created
             </h2>
             <p style={{ fontSize: '0.85rem', color: 'var(--iv-text-muted)', lineHeight: 1.6 }}>
-              Welcome to Isola Vitale, <strong style={{ color: 'var(--iv-white)' }}>{name}</strong>.
+              Welcome to LIRI ROMA, <strong style={{ color: 'var(--iv-white)' }}>{name}</strong>.
               Signing you in now…
             </p>
           </div>
@@ -119,7 +119,7 @@ export default function RegisterPage() {
         <div className="relative z-10 text-center px-12 space-y-10">
           <Link href="/" className="inline-block">
             <span style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.5rem', fontWeight: 700, color: '#FDFAF5', letterSpacing: '0.1em' }}>
-              ISOLA VITALE
+              LIRI ROMA
             </span>
           </Link>
           <div className="space-y-5">
@@ -146,7 +146,7 @@ export default function RegisterPage() {
       {/* Right form panel */}
       <div className="flex-1 flex flex-col items-center justify-center px-6 py-16 overflow-y-auto">
         <Link href="/" className="lg:hidden mb-10">
-          <span style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.3rem', fontWeight: 700, color: 'var(--iv-white)', letterSpacing: '0.1em' }}>ISOLA VITALE</span>
+          <span style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.3rem', fontWeight: 700, color: 'var(--iv-white)', letterSpacing: '0.1em' }}>LIRI ROMA</span>
         </Link>
 
         <div className="w-full max-w-md space-y-6">
@@ -169,8 +169,8 @@ export default function RegisterPage() {
               <button key={value} type="button" onClick={() => setAccountType(value)}
                 style={{
                   padding: '14px 16px', borderRadius: 10, textAlign: 'left', cursor: 'pointer',
-                  border: accountType === value ? '1.5px solid var(--iv-gold)' : '1.5px solid rgba(145,56,50,0.18)',
-                  background: accountType === value ? 'rgba(145,56,50,0.08)' : 'var(--iv-deep-green)',
+                  border: accountType === value ? '1.5px solid var(--iv-gold)' : '1.5px solid rgba(155, 71, 34,0.18)',
+                  background: accountType === value ? 'rgba(155, 71, 34,0.08)' : 'var(--iv-deep-green)',
                   transition: 'all 0.2s',
                 }}>
                 <div style={{ color: accountType === value ? 'var(--iv-gold)' : 'var(--iv-text-muted)', marginBottom: 4 }}>{icon}</div>
@@ -193,7 +193,7 @@ export default function RegisterPage() {
                 placeholder={accountType === 'business' ? 'Elysian Aesthetics Clinic' : 'Sofia Rossi'}
                 style={INPUT}
                 onFocus={e => (e.target.style.borderColor = 'var(--iv-gold)')}
-                onBlur={e  => (e.target.style.borderColor = 'rgba(145,56,50,0.18)')}
+                onBlur={e  => (e.target.style.borderColor = 'rgba(155, 71, 34,0.18)')}
               />
             </div>
 
@@ -203,7 +203,7 @@ export default function RegisterPage() {
                 placeholder="you@example.com"
                 style={INPUT}
                 onFocus={e => (e.target.style.borderColor = 'var(--iv-gold)')}
-                onBlur={e  => (e.target.style.borderColor = 'rgba(145,56,50,0.18)')}
+                onBlur={e  => (e.target.style.borderColor = 'rgba(155, 71, 34,0.18)')}
               />
             </div>
 
@@ -215,7 +215,7 @@ export default function RegisterPage() {
                   placeholder="Min. 8 characters"
                   style={{ ...INPUT, paddingRight: 44 }}
                   onFocus={e => (e.target.style.borderColor = 'var(--iv-gold)')}
-                  onBlur={e  => (e.target.style.borderColor = 'rgba(145,56,50,0.18)')}
+                  onBlur={e  => (e.target.style.borderColor = 'rgba(155, 71, 34,0.18)')}
                 />
                 <button type="button" onClick={() => setShowPassword(v => !v)}
                   style={{ position: 'absolute', right: 12, top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', cursor: 'pointer', color: 'var(--iv-text-muted)', padding: 0 }}>
@@ -225,7 +225,7 @@ export default function RegisterPage() {
               {/* Strength bar */}
               {password.length > 0 && (
                 <div style={{ marginTop: 8 }}>
-                  <div style={{ height: 3, borderRadius: 2, background: 'rgba(145,56,50,0.12)', overflow: 'hidden' }}>
+                  <div style={{ height: 3, borderRadius: 2, background: 'rgba(155, 71, 34,0.12)', overflow: 'hidden' }}>
                     <div style={{ height: '100%', width: strength.width, background: strength.color, transition: 'all 0.3s' }} />
                   </div>
                   <p style={{ fontSize: '0.75rem', color: strength.color, marginTop: 4, letterSpacing: '0.08em' }}>{strength.label}</p>
@@ -240,10 +240,10 @@ export default function RegisterPage() {
                 placeholder="••••••••"
                 style={{
                   ...INPUT,
-                  borderColor: confirmPassword && confirmPassword !== password ? '#f87171' : 'rgba(145,56,50,0.18)',
+                  borderColor: confirmPassword && confirmPassword !== password ? '#f87171' : 'rgba(155, 71, 34,0.18)',
                 }}
                 onFocus={e => (e.target.style.borderColor = confirmPassword !== password ? '#f87171' : 'var(--iv-gold)')}
-                onBlur={e  => (e.target.style.borderColor = confirmPassword !== password ? '#f87171' : 'rgba(145,56,50,0.18)')}
+                onBlur={e  => (e.target.style.borderColor = confirmPassword !== password ? '#f87171' : 'rgba(155, 71, 34,0.18)')}
               />
               {confirmPassword && confirmPassword !== password && (
                 <p style={{ fontSize: '0.75rem', color: '#991B1B', marginTop: 4 }}>Passwords don&apos;t match</p>
@@ -264,7 +264,7 @@ export default function RegisterPage() {
             <button type="submit" disabled={isPending}
               style={{
                 width: '100%', padding: '14px 24px', marginTop: 8,
-                background: isPending ? 'rgba(145,56,50,0.5)' : 'var(--iv-gold)',
+                background: isPending ? 'rgba(155, 71, 34,0.5)' : 'var(--iv-gold)',
                 color: 'var(--iv-black)', border: 'none', borderRadius: 8,
                 fontSize: '0.75rem', fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase',
                 cursor: isPending ? 'not-allowed' : 'pointer',
