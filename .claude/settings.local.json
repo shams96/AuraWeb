@@ -4,7 +4,9 @@
       "Bash(dir:*)",
       "Bash(pnpm db:migrate:*)",
       "Bash(mkdir -p /home/user/AuraWeb/apps/web/public/video)",
-      "Bash(cp /root/.claude/uploads/822096b8-5b11-4d07-ae43-cc987ef659e9/e43f43f4-Isola_Vitale_skin_care_2.mp4 /home/user/AuraWeb/apps/web/public/video/isola-vitale-brand.mp4)"
+      "Bash(cp /root/.claude/uploads/822096b8-5b11-4d07-ae43-cc987ef659e9/e43f43f4-Isola_Vitale_skin_care_2.mp4 /home/user/AuraWeb/apps/web/public/video/isola-vitale-brand.mp4)",
+      "Bash(git -C /c/Projects/isoliri/AuraWeb diff --stat)",
+      "Bash(git -C /c/Projects/isoliri/AuraWeb diff apps/web/components/sections/grand-door.tsx)"
     ],
     "deny": [],
     "ask": []
