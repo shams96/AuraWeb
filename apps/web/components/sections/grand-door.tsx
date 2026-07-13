@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState, useCallback } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 
 /* ═══════════════════════════════════════════════════════════════════════
    GRAND DOOR — LIRI ROMA
@@ -19,10 +18,10 @@ import Image from 'next/image'
    ═══════════════════════════════════════════════════════════════════════ */
 
 const SHELF = [
-  { name: 'Cellular Cleanser™',    role: 'Cleanse',              img: '/images/products/isola_collection.png' },
-  { name: 'Liri Essence™',          role: 'The Signature Serum',  img: '/images/products/isola_serum.png', hero: true },
-  { name: 'Terra Radiance Crème™',  role: 'Day',                  img: '/images/products/isola_collection.png' },
-  { name: 'Liri Eye Concentrate™',  role: 'Eye',                  img: '/images/products/isola_serum.png' },
+  { name: 'Cellular Cleanser™',    role: 'Cleanse',              kind: 'tube' as const },
+  { name: 'Liri Essence™',          role: 'The Signature Serum',  kind: 'bottle' as const, hero: true },
+  { name: 'Terra Radiance Crème™',  role: 'Day',                  kind: 'jar' as const },
+  { name: 'Liri Eye Concentrate™',  role: 'Eye',                  kind: 'small-bottle' as const },
 ]
 
 /* The hero product as an actual standing bottle, not a framed photo —
@@ -64,6 +63,98 @@ function HeroBottle() {
         <rect x="46" y="76" width="7" height="128" rx="3.5" fill="#FFFFFF" opacity="0.24" />
         {/* small brand mark */}
         <text x="60" y="150" textAnchor="middle" fontFamily="var(--iv-font-serif)" fontSize="13" fill="#F6E6B8" opacity="0.75">LR</text>
+      </g>
+    </svg>
+  )
+}
+
+/* Terra Radiance Crème™ — a squat ceramic jar with a gold lid, in the
+   brand's warm terracotta tone. */
+function ProductJar() {
+  return (
+    <svg viewBox="0 0 120 100" width="100%" height="100%" role="presentation" aria-hidden="true" style={{ overflow: 'visible' }}>
+      <defs>
+        <linearGradient id="gd-jar-body" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="#7A3319" />
+          <stop offset="20%" stopColor="#A2502A" />
+          <stop offset="50%" stopColor="#C2603C" />
+          <stop offset="80%" stopColor="#A2502A" />
+          <stop offset="100%" stopColor="#7A3319" />
+        </linearGradient>
+        <linearGradient id="gd-jar-lid" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#F6E6B8" />
+          <stop offset="50%" stopColor="#D6B15C" />
+          <stop offset="100%" stopColor="#93712E" />
+        </linearGradient>
+        <filter id="gd-jar-shadow" x="-40%" y="-20%" width="180%" height="150%">
+          <feDropShadow dx="0" dy="8" stdDeviation="8" floodColor="#000" floodOpacity="0.4" />
+        </filter>
+      </defs>
+      <g filter="url(#gd-jar-shadow)">
+        <rect x="12" y="34" width="96" height="58" rx="14" fill="url(#gd-jar-body)" />
+        <rect x="8" y="10" width="104" height="30" rx="10" fill="url(#gd-jar-lid)" />
+        <rect x="8" y="10" width="104" height="7" rx="3.5" fill="#FBF0D6" opacity="0.5" />
+        <text x="60" y="68" textAnchor="middle" fontFamily="var(--iv-font-serif)" fontSize="12" fill="#F6E6B8" opacity="0.7">LR</text>
+      </g>
+    </svg>
+  )
+}
+
+/* Cellular Cleanser™ — a squeeze tube, ivory body with a gold cap. */
+function ProductTube() {
+  return (
+    <svg viewBox="0 0 90 200" width="100%" height="100%" role="presentation" aria-hidden="true" style={{ overflow: 'visible' }}>
+      <defs>
+        <linearGradient id="gd-tube-body" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="#C9B892" />
+          <stop offset="18%" stopColor="#E7DBC0" />
+          <stop offset="50%" stopColor="#F8F1E3" />
+          <stop offset="82%" stopColor="#E7DBC0" />
+          <stop offset="100%" stopColor="#C9B892" />
+        </linearGradient>
+        <linearGradient id="gd-tube-cap" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#F6E6B8" />
+          <stop offset="45%" stopColor="#D6B15C" />
+          <stop offset="100%" stopColor="#93712E" />
+        </linearGradient>
+        <filter id="gd-tube-shadow" x="-60%" y="-20%" width="220%" height="150%">
+          <feDropShadow dx="0" dy="10" stdDeviation="9" floodColor="#000" floodOpacity="0.4" />
+        </filter>
+      </defs>
+      <g filter="url(#gd-tube-shadow)">
+        <path d="M32 8 L58 8 L58 26 L32 26 Z" fill="url(#gd-tube-cap)" />
+        <path d="M26 26 L64 26 L60 46 L30 46 Z" fill="url(#gd-tube-body)" />
+        <path d="M30 46 L60 46 L66 170 Q66 182 45 182 Q24 182 24 170 Z" fill="url(#gd-tube-body)" />
+        <rect x="35" y="60" width="5" height="100" rx="2.5" fill="#7A3319" opacity="0.14" />
+        <text x="45" y="120" textAnchor="middle" fontFamily="var(--iv-font-serif)" fontSize="11" fill="#7A3319" opacity="0.55">LR</text>
+      </g>
+    </svg>
+  )
+}
+
+/* Liri Eye Concentrate™ — a smaller dropper bottle, deep peacock glass. */
+function ProductSmallBottle() {
+  return (
+    <svg viewBox="0 0 90 170" width="100%" height="100%" role="presentation" aria-hidden="true" style={{ overflow: 'visible' }}>
+      <defs>
+        <linearGradient id="gd-small-glass" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="#04191D" />
+          <stop offset="18%" stopColor="#0C2D38" />
+          <stop offset="45%" stopColor="#1D5560" />
+          <stop offset="55%" stopColor="#1D5560" />
+          <stop offset="82%" stopColor="#0C2D38" />
+          <stop offset="100%" stopColor="#04191D" />
+        </linearGradient>
+        <filter id="gd-small-shadow" x="-60%" y="-20%" width="220%" height="160%">
+          <feDropShadow dx="0" dy="9" stdDeviation="9" floodColor="#000" floodOpacity="0.42" />
+        </filter>
+      </defs>
+      <g filter="url(#gd-small-shadow)">
+        <rect x="33" y="4" width="24" height="26" rx="5" fill="url(#gd-bottle-cap)" />
+        <rect x="38" y="28" width="14" height="12" fill="url(#gd-small-glass)" />
+        <path d="M28 40 L62 40 L68 60 L68 142 Q68 152 57 152 L33 152 Q22 152 22 142 L22 60 Z" fill="url(#gd-small-glass)" />
+        <rect x="34" y="56" width="5" height="90" rx="2.5" fill="#FFFFFF" opacity="0.2" />
+        <text x="45" y="105" textAnchor="middle" fontFamily="var(--iv-font-serif)" fontSize="10" fill="#F6E6B8" opacity="0.7">LR</text>
       </g>
     </svg>
   )
@@ -217,15 +308,10 @@ export function GrandDoor() {
                   transition: reduced ? 'none' : `opacity 800ms ${ease} ${delay}ms`,
                 }}
               >
-                <div style={{ position: 'relative', width: 'clamp(50px, 6vw, 78px)', height: 'clamp(76px, 9vw, 118px)' }}>
-                  <Image
-                    src={p.img}
-                    alt={`${p.name} — ${p.role}`}
-                    fill
-                    sizes="(max-width: 768px) 20vw, 8vw"
-                    style={{ objectFit: 'contain' }}
-                    priority
-                  />
+                <div style={{ position: 'relative', width: 'clamp(38px, 4.6vw, 60px)', height: 'clamp(72px, 8.6vw, 112px)' }}>
+                  {p.kind === 'jar' && <ProductJar />}
+                  {p.kind === 'tube' && <ProductTube />}
+                  {p.kind === 'small-bottle' && <ProductSmallBottle />}
                 </div>
                 {/* the back item peeks above the pedestal only as a hint of
                     what's waiting — its own visible name/role would collide
