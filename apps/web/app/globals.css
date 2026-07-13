@@ -984,3 +984,106 @@ html, body {
   background-repeat: repeat;
 }
 .iv-noise > * { position: relative; z-index: 1; }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   GRAND DOOR — Marble pedestal for the hero product
+   A stylized white marble plinth with soft terracotta veining, viewed at
+   a slight angle: an elliptical top surface + a tapered column beneath.
+   CSS-illustration only (no photo/3D asset) — reads convincingly at a
+   glance without holding up to close inspection.
+   ═══════════════════════════════════════════════════════════════════════ */
+/* Shared coordinate space: the plinth is bottom-anchored, the plaque is
+   bottom-anchored too but offset upward so it overlaps the ellipse surface
+   — precise placement via two independent "bottom" offsets, not guesswork
+   with margins on stacked flex siblings. */
+.gd-pedestal-group {
+  position: relative;
+  width: clamp(150px, 17vw, 230px);
+  height: clamp(150px, 18vw, 230px);
+  margin: 0 auto;
+}
+
+.gd-plinth {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 100%;
+  height: clamp(90px, 11vw, 140px);
+  transform: translateX(-50%);
+}
+
+/* the round top surface the plaque rests against */
+.gd-plinth::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100%;
+  height: 42%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background:
+    linear-gradient(115deg, transparent 42%, rgba(194,96,57,0.10) 46%, transparent 50%),
+    linear-gradient(72deg, transparent 58%, rgba(194,96,57,0.07) 61%, transparent 64%),
+    radial-gradient(closest-side, #FFFDF9 0%, #F6EFE3 62%, #EADCC6 100%);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.9) inset,
+    0 10px 20px -6px rgba(58,26,10,0.30);
+}
+
+/* the tapered marble column beneath */
+.gd-plinth::after {
+  content: '';
+  position: absolute;
+  top: 26%;
+  left: 50%;
+  width: 68%;
+  height: 74%;
+  transform: translateX(-50%);
+  clip-path: polygon(8% 0%, 92% 0%, 100% 100%, 0% 100%);
+  background:
+    linear-gradient(100deg, transparent 30%, rgba(194,96,57,0.08) 34%, transparent 38%),
+    linear-gradient(90deg, #F2EADC 0%, #E8DCC6 46%, #DACCAE 100%);
+}
+
+/* A small framed plaque displays the product photo, propped against the
+   plinth's top surface — the photo itself is a square, not a cutout, so
+   it's treated honestly as a framed picture, not a "floating jar". Bottom-
+   anchored in the same coordinate space as the plinth, offset up just
+   enough to sit into the ellipse rather than float disconnected above it. */
+.gd-plaque {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(58px, 7vw, 92px);
+  transform: translateX(-50%);
+  padding: 6px;
+  background: linear-gradient(155deg, #F3E4CE, var(--iv-champagne-gold, #D6C5A0) 55%, #C9AF80);
+  border-radius: 3px;
+  box-shadow:
+    0 14px 22px -8px rgba(58,26,10,0.38),
+    0 2px 0 rgba(255,255,255,0.4) inset;
+}
+.gd-plaque-inner {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1px;
+}
+/* the small stand/easel foot connecting the plaque down to the marble */
+.gd-plaque-foot {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(46px, 5.6vw, 74px);
+  transform: translateX(-50%);
+  width: clamp(22px, 2.6vw, 34px);
+  height: clamp(12px, 1.5vw, 20px);
+  background: linear-gradient(180deg, #C9AF80, #B8A170);
+  clip-path: polygon(15% 0%, 85% 0%, 100% 100%, 0% 100%);
+}
+
+.gd-plinth-shadow {
+  width: clamp(120px, 13vw, 180px);
+  height: clamp(14px, 1.6vw, 22px);
+  margin: -4px auto 0;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(58,26,10,0.28), transparent 72%);
+}

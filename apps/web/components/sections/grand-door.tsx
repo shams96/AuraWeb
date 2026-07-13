@@ -172,22 +172,44 @@ export function GrandDoor() {
                   : `opacity 1100ms cubic-bezier(.16,1,.3,1) ${1000 + i * 130}ms, transform 1100ms cubic-bezier(.16,1,.3,1) ${1000 + i * 130}ms`,
               }}
             >
-              <div
-                style={{
-                  position: 'relative',
-                  width: p.hero ? 'clamp(74px, 9vw, 116px)' : 'clamp(58px, 7vw, 92px)',
-                  height: p.hero ? 'clamp(112px, 13.5vw, 176px)' : 'clamp(88px, 10.5vw, 140px)',
-                }}
-              >
-                <Image
-                  src={p.img}
-                  alt={`${p.name} — ${p.role}`}
-                  fill
-                  sizes="(max-width: 768px) 25vw, 12vw"
-                  style={{ objectFit: 'contain' }}
-                  priority={i === 1}
-                />
-              </div>
+              {p.hero ? (
+                <div className="gd-pedestal-group">
+                  <div className="gd-plinth" aria-hidden="true" />
+                  <div className="gd-plaque">
+                    <div
+                      className="gd-plaque-inner"
+                      style={{ position: 'relative', width: 'clamp(64px, 7.6vw, 100px)', height: 'clamp(64px, 7.6vw, 100px)' }}
+                    >
+                      <Image
+                        src={p.img}
+                        alt={`${p.name} — ${p.role}`}
+                        fill
+                        sizes="(max-width: 768px) 22vw, 9vw"
+                        style={{ objectFit: 'cover' }}
+                        priority
+                      />
+                    </div>
+                  </div>
+                  <div className="gd-plaque-foot" aria-hidden="true" />
+                </div>
+              ) : (
+                <div
+                  style={{
+                    position: 'relative',
+                    width: 'clamp(58px, 7vw, 92px)',
+                    height: 'clamp(88px, 10.5vw, 140px)',
+                  }}
+                >
+                  <Image
+                    src={p.img}
+                    alt={`${p.name} — ${p.role}`}
+                    fill
+                    sizes="(max-width: 768px) 25vw, 12vw"
+                    style={{ objectFit: 'contain' }}
+                  />
+                </div>
+              )}
+              {p.hero && <div className="gd-plinth-shadow" aria-hidden="true" />}
 
               {/* the shelf line */}
               <span
