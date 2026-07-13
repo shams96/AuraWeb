@@ -1,0 +1,23 @@
+name: CI — Build & Type Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      NEXTAUTH_SECRET: ci-build-check-secret
+      NEXTAUTH_URL: http://localhost:5000
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run type-check --workspace=apps/web
+      - run: npm run build
