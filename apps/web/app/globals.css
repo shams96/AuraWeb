@@ -358,7 +358,7 @@
 
   footer .text-iv-white { color: #FAF7F0 !important; }
   footer .text-iv-cream { color: rgba(250, 247, 240, 0.65) !important; }
-  footer .text-iv-gold  { color: #D4B450 !important; } /* was #B8972F (3.31:1 FAIL) → #D4B450 (4.87:1 AA) */
+  footer .text-iv-gold  { color: #D4784F !important; } /* Red Ochre lifted for AA contrast on the dark footer */
 
   footer .text-gray-900, footer .text-gray-800,
   footer .text-gray-700, footer .text-gray-600 {

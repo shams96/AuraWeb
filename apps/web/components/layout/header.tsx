@@ -109,7 +109,7 @@ export function Header() {
                   <div style={{
                     position: 'absolute', top: 'calc(100% + 8px)', left: 0,
                     minWidth: 240, zIndex: 100,
-                    background: '#FDFAF5',
+                    background: 'var(--iv-black)',
                     border: '1px solid rgba(155, 71, 34,0.14)',
                     borderRadius: 10,
                     boxShadow: '0 16px 48px rgba(60,30,20,0.12)',
@@ -229,7 +229,7 @@ export function Header() {
           aria-label="Navigation menu"
           style={{
             position: 'fixed', inset: 0, zIndex: 49,
-            background: '#FDFAF5',
+            background: 'var(--iv-black)',
             display: 'flex', flexDirection: 'column',
             overflowY: 'auto',
             // Slide in from right

@@ -50,7 +50,7 @@ export default function ReturnsPage() {
             className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-8"
             style={{ background: 'rgba(74,222,128,0.08)', border: '1px solid rgba(74,222,128,0.20)' }}
           >
-            <Check className="w-10 h-10" style={{ color: '#4ade80' }} />
+            <Check className="w-10 h-10" style={{ color: 'var(--iv-garden)' }} />
           </div>
           <h1 className="text-3xl font-bold text-iv-white mb-4" style={{ fontFamily: 'var(--iv-font-serif)' }}>
             Return Request Submitted

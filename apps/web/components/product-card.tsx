@@ -144,7 +144,7 @@ export function ProductCard({ product }: ProductCardProps) {
           </div>
         </div>
 
-        <h3 className="text-xl font-bold mb-3 tracking-tighter leading-tight line-clamp-2" style={{ color: '#1A1614', height: '3.5rem' }}>
+        <h3 className="text-xl font-bold mb-3 tracking-tighter leading-tight line-clamp-2" style={{ color: 'var(--iv-charcoal)', height: '3.5rem' }}>
           <Link href={`/products/${product.id}`} className="hover:text-iv-gold transition-colors italic" style={{ fontFamily: 'var(--iv-font-serif)' }}>
             {product.name}
           </Link>
@@ -184,7 +184,7 @@ export function ProductCard({ product }: ProductCardProps) {
                   {product.compareAtPrice && (
                     <span style={{ fontSize: '0.85rem', color: '#7A5C4E', textDecoration: 'line-through' }}>${product.compareAtPrice}</span>
                   )}
-                  <span style={{ fontSize: '1.1rem', fontWeight: 700, color: '#1A1614' }}>${product.price}</span>
+                  <span style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--iv-charcoal)' }}>${product.price}</span>
                 </div>
               </div>
 

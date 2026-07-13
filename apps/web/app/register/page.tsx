@@ -36,10 +36,10 @@ export default function RegisterPage() {
 
   function passwordStrength(p: string): { label: string; color: string; width: string } {
     if (p.length === 0)  return { label: '',        color: 'transparent',          width: '0%'   }
-    if (p.length < 8)    return { label: 'Too short', color: '#f87171',            width: '20%'  }
-    if (p.length < 12)   return { label: 'Fair',      color: '#fbbf24',            width: '50%'  }
-    if (/[^a-zA-Z0-9]/.test(p)) return { label: 'Strong', color: '#4ade80',       width: '100%' }
-    return { label: 'Good', color: '#60a5fa', width: '75%' }
+    if (p.length < 8)    return { label: 'Too short', color: '#C26039',            width: '20%'  }
+    if (p.length < 12)   return { label: 'Fair',      color: '#B85834',            width: '50%'  }
+    if (/[^a-zA-Z0-9]/.test(p)) return { label: 'Strong', color: '#004B37',       width: '100%' }
+    return { label: 'Good', color: '#1F5F4B', width: '75%' }
   }
 
   const strength = passwordStrength(password)
@@ -137,7 +137,7 @@ export default function RegisterPage() {
           </div>
           <div style={{ paddingTop: 8, borderTop: '1px solid rgba(253,250,245,0.1)' }}>
             <p style={{ fontSize: '0.75rem', color: 'rgba(253,250,245,0.35)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
-              A Shanill House Formulation
+              Formulated at Isola del Liri, Italia
             </p>
           </div>
         </div>
@@ -181,7 +181,7 @@ export default function RegisterPage() {
           </div>
 
           {error && (
-            <div style={{ padding: '12px 16px', borderRadius: 8, background: 'rgba(248,113,113,0.08)', border: '1px solid rgba(248,113,113,0.25)', fontSize: '0.82rem', color: '#991B1B', fontWeight: 500 }}>
+            <div style={{ padding: '12px 16px', borderRadius: 8, background: 'rgba(155,71,34,0.07)', border: '1px solid rgba(155,71,34,0.25)', fontSize: '0.82rem', color: 'var(--iv-ochre-dark)', fontWeight: 500 }}>
               {error}
             </div>
           )}
@@ -240,13 +240,13 @@ export default function RegisterPage() {
                 placeholder="••••••••"
                 style={{
                   ...INPUT,
-                  borderColor: confirmPassword && confirmPassword !== password ? '#f87171' : 'rgba(155, 71, 34,0.18)',
+                  borderColor: confirmPassword && confirmPassword !== password ? 'var(--iv-ochre-light)' : 'rgba(155, 71, 34,0.18)',
                 }}
-                onFocus={e => (e.target.style.borderColor = confirmPassword !== password ? '#f87171' : 'var(--iv-gold)')}
-                onBlur={e  => (e.target.style.borderColor = confirmPassword !== password ? '#f87171' : 'rgba(155, 71, 34,0.18)')}
+                onFocus={e => (e.target.style.borderColor = confirmPassword !== password ? 'var(--iv-ochre-light)' : 'var(--iv-gold)')}
+                onBlur={e  => (e.target.style.borderColor = confirmPassword !== password ? 'var(--iv-ochre-light)' : 'rgba(155, 71, 34,0.18)')}
               />
               {confirmPassword && confirmPassword !== password && (
-                <p style={{ fontSize: '0.75rem', color: '#991B1B', marginTop: 4 }}>Passwords don&apos;t match</p>
+                <p style={{ fontSize: '0.75rem', color: 'var(--iv-ochre-dark)', marginTop: 4 }}>Passwords don&apos;t match</p>
               )}
             </div>
 

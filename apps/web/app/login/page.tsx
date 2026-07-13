@@ -95,17 +95,17 @@ function LoginForm() {
 
           {/* Post-registration banner */}
           {justRegistered && (
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '12px 16px', borderRadius: 8, background: 'rgba(74,222,128,0.08)', border: '1px solid rgba(74,222,128,0.25)' }}>
-              <CheckCircle2 size={16} style={{ color: '#4ade80', flexShrink: 0 }} />
-              <p style={{ fontSize: '0.82rem', color: '#166534', fontWeight: 500 }}>
-                Account created! Sign in below.
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '12px 16px', borderRadius: 8, background: 'rgba(0,75,55,0.06)', border: '1px solid rgba(0,75,55,0.22)' }}>
+              <CheckCircle2 size={16} style={{ color: 'var(--iv-garden)', flexShrink: 0 }} />
+              <p style={{ fontSize: '0.82rem', color: 'var(--iv-garden)', fontWeight: 500 }}>
+                Your account is ready. Sign in below.
               </p>
             </div>
           )}
 
           {/* Error */}
           {error && (
-            <div style={{ padding: '12px 16px', borderRadius: 8, background: 'rgba(248,113,113,0.08)', border: '1px solid rgba(248,113,113,0.25)', fontSize: '0.82rem', color: '#991B1B', fontWeight: 500 }}>
+            <div style={{ padding: '12px 16px', borderRadius: 8, background: 'rgba(155,71,34,0.07)', border: '1px solid rgba(155,71,34,0.25)', fontSize: '0.82rem', color: 'var(--iv-ochre-dark)', fontWeight: 500 }}>
               {error}
             </div>
           )}
