@@ -72,6 +72,7 @@ export function GrandDoor() {
     <section
       ref={sectionRef}
       aria-label="LIRI ROMA — enter the house"
+      className="gd-stage"
       style={{
         position: 'relative',
         minHeight: '100svh',
@@ -79,9 +80,12 @@ export function GrandDoor() {
         alignItems: 'center',
         justifyContent: 'center',
         overflow: 'hidden',
-        background: 'var(--iv-cloud-dancer, #F0F2EB)',
       }}
     >
+      {/* ── THE STAGE — spotlight + red carpet, always present, purely decorative ── */}
+      <div className="gd-spotlight" aria-hidden="true" />
+      <div className="gd-carpet" aria-hidden="true" />
+
       {/* ── THE INTERIOR — always in the DOM. SEO + a11y safe. ───────── */}
       <div
         style={{
@@ -108,7 +112,7 @@ export function GrandDoor() {
             fontSize: 'clamp(9px, 1vw, 11px)',
             letterSpacing: '0.42em',
             textTransform: 'uppercase',
-            color: 'var(--iv-ochre, #9B4722)',
+            color: 'var(--iv-champagne-gold, #D6C5A0)',
             marginBottom: '1.6rem',
           }}
         >
@@ -121,14 +125,14 @@ export function GrandDoor() {
             fontWeight: 300,
             fontSize: 'clamp(2.1rem, 5.4vw, 4.5rem)',
             lineHeight: 1.06,
-            color: 'var(--iv-charcoal, #1A1614)',
+            color: '#F7EFE2',
             margin: 0,
             maxWidth: '18ch',
           }}
         >
           Your skin is a story
           <br />
-          <em style={{ fontStyle: 'italic', color: 'var(--iv-ochre, #9B4722)' }}>worth honoring</em>
+          <em style={{ fontStyle: 'italic', color: 'var(--iv-ochre-light, #C26039)' }}>worth honoring</em>
         </h1>
 
         <p
@@ -136,7 +140,7 @@ export function GrandDoor() {
             fontFamily: 'var(--iv-font-body)',
             fontSize: 'clamp(0.9rem, 1.15vw, 1.0rem)',
             lineHeight: 1.75,
-            color: 'var(--iv-text, #3D2B20)',
+            color: 'rgba(247,239,226,0.72)',
             maxWidth: '46ch',
             margin: '1.8rem 0 0',
           }}
@@ -228,7 +232,7 @@ export function GrandDoor() {
                 style={{
                   fontFamily: 'var(--iv-font-serif)',
                   fontSize: 'clamp(0.72rem, 0.95vw, 0.9rem)',
-                  color: 'var(--iv-charcoal, #1A1614)',
+                  color: '#F7EFE2',
                   marginTop: '0.85rem',
                 }}
               >
@@ -240,7 +244,7 @@ export function GrandDoor() {
                   fontSize: 'clamp(8px, 0.72vw, 10px)',
                   letterSpacing: '0.22em',
                   textTransform: 'uppercase',
-                  color: 'var(--iv-text-muted, #5C4438)',
+                  color: 'rgba(214,197,160,0.7)',
                   marginTop: '0.3rem',
                 }}
               >
@@ -287,7 +291,7 @@ export function GrandDoor() {
               fontSize: '0.78rem',
               letterSpacing: '0.2em',
               textTransform: 'uppercase',
-              color: 'var(--iv-text, #3D2B20)',
+              color: '#F7EFE2',
               textDecoration: 'none',
               borderBottom: '1px solid var(--iv-champagne-gold, #D6C5A0)',
               paddingBottom: '3px',
