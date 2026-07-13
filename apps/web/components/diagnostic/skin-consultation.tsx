@@ -673,10 +673,11 @@ export function SkinConsultation() {
       return
     }
     // All 3 check-in questions answered — compute delta profile
-    const base = prevAssessment?.profile ?? {
+    const base: SkinProfile = prevAssessment?.profile ?? {
       doScore: 5, srScore: 3, wScore: 3, pScore: 0,
       tier: 't1' as Tier, hydration: 'normal' as SkinHydration,
       sensitivity: 'balanced' as SkinSensitivity, profileLabel: 'Normal-Balanced',
+      pregnancySafe: true, referToPhysician: false, urgentReferral: false, capActives: false,
     }
     const p = applyCheckInDeltas(base, ciAnswers)
     finalize(p, ciAnswers as unknown as Record<string, unknown>, prevAssessment?.concerns ?? [])
@@ -686,7 +687,7 @@ export function SkinConsultation() {
     setPhase('intro')
     setQIdx(0)
     setCiIdx(0)
-    setAnswers({ q1: null, q2: null, q3: null, q4: [], q5: null, q6: null, q7: [], q8: null })
+    setAnswers({ q1: null, q2: null, q3: null, q4: [], q5: null, q6: null, q7: [], qMedical: [], q8: null })
     setCiAnswers({ ci1: null, ci2: null, ci3: null })
     setProfile(null)
     setNarrative(null)
