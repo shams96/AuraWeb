@@ -1057,12 +1057,7 @@ html, body {
   left: 50%;
   bottom: clamp(58px, 7vw, 92px);
   transform: translateX(-50%);
-  padding: 6px;
-  background: linear-gradient(155deg, #F3E4CE, var(--iv-champagne-gold, #D6C5A0) 55%, #C9AF80);
-  border-radius: 3px;
-  box-shadow:
-    0 14px 22px -8px rgba(58,26,10,0.38),
-    0 2px 0 rgba(255,255,255,0.4) inset;
+  box-shadow: 0 14px 22px -8px rgba(58,26,10,0.38);
 }
 .gd-plaque-inner {
   position: relative;
