@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -41,7 +41,7 @@
        ══════════════════════════════════════════════════════════ */
 
     /* Core surface tokens (used by bg-iv-* classes) */
-    --iv-black:       #FDFAF5;   /* page background — warm ivory          */
+    --iv-black:       #F0F2EB;   /* page background — Cloud Dancer        */
     --iv-deep-green:  #F4EAE2;   /* alternate section bg — warm parchment */
     --iv-green:       #EDE8E0;   /* card surface                          */
     --iv-light-green: #E5DDD5;   /* card surface variant                  */
@@ -78,8 +78,12 @@
     --iv-text:        #3D2B20;
     --iv-text-muted:  #5C4438;   /* was #7A5C4E (5.82:1 AA) → now 7.03:1 AAA on ivory */
 
-    /* ── Typography — single source of truth ─────────────────── */
-    --iv-font-serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+    /* ── Typography — single source of truth ──────────────────
+       One family sitewide. --iv-font-serif is kept as a name only
+       (dozens of components reference it) but now resolves to the
+       same Inter stack — display type is differentiated by weight,
+       size and tracking, not by family. */
+    --iv-font-serif: 'Inter', ui-sans-serif, system-ui, sans-serif;
     --iv-font-body:  'Inter', ui-sans-serif, system-ui, sans-serif;
   }
 
@@ -95,9 +99,9 @@
     --iv-light-green: #2D6B4F;
     --iv-white:       #FFFFFF;
     --iv-cream:       #FAF7F0;
-    --iv-gold:        #B8972F;
-    --iv-gold-light:  #D4B450;
-    --iv-champagne:   #F5E6C0;
+    --iv-gold:        #C26039;   /* Red Ochre lifted for dark-ground contrast */
+    --iv-gold-light:  #D4784F;
+    --iv-champagne:   #F0F2EB;   /* Cloud Dancer as the warm light on dark    */
     --iv-champagne-gold: #D6C5A0;
     --background: 158 30% 5%;
     --foreground: 50 20% 95%;
@@ -135,8 +139,9 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
-    line-height: 1.2;
-    color: var(--iv-white); /* charcoal in light theme, white in .iv-dark */
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--iv-garden); /* Garden Green ink; .iv-dark restores white below */
   }
 
   /* Inside .iv-dark sections, restore proper contrast */
@@ -154,7 +159,7 @@
    ============================================================ */
 @layer components {
   header {
-    background-color: rgba(253, 250, 245, 0.97) !important;
+    background-color: rgba(240, 242, 235, 0.97) !important;
     border-bottom: 1px solid rgba(155, 71, 34, 0.12) !important;
     backdrop-filter: blur(24px) !important;
     -webkit-backdrop-filter: blur(24px) !important;
@@ -302,21 +307,20 @@
 
   /* CTA button */
   .btn-luxury {
-    background: var(--iv-gold);   /* Red Ochre */
+    background: var(--iv-garden);   /* Garden Green — quiet primary */
     color: #FFFFFF;
-    font-weight: 700;
+    font-weight: 600;
     font-size: 0.8rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    padding: 12px 32px;
+    padding: 13px 34px;
     border: none;
-    border-radius: 4px;
-    transition: all 0.3s ease;
+    border-radius: 2px;
+    transition: background 0.3s ease, transform 0.3s ease;
     cursor: pointer;
   }
   .btn-luxury:hover {
-    background: var(--iv-gold-light);
-    box-shadow: 0 8px 30px rgba(155, 71, 34, 0.30);
+    background: #003527;           /* deepened Garden Green */
     transform: translateY(-1px);
   }
 
@@ -688,17 +692,17 @@ img[loading="lazy"].loaded {
   /* Display / Hero — page-level titles */
   .iv-type-display {
     font-family: var(--iv-font-serif);
-    font-size: clamp(3rem, 7vw, 6rem);
-    font-weight: 500;
-    line-height: 1.05;
-    letter-spacing: -0.01em;
+    font-size: clamp(2.75rem, 6vw, 5.25rem);
+    font-weight: 600;
+    line-height: 1.04;
+    letter-spacing: -0.035em;
   }
 
   /* Section h2 headings */
   .iv-type-h2 {
-    font-size: clamp(1.75rem, 4vw, 3.5rem);
-    line-height: 1.15;
-    letter-spacing: -0.01em;
+    font-size: clamp(1.75rem, 3.6vw, 3.25rem);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
   }
 
   /* Card / subsection h3 headings */
@@ -1028,8 +1032,8 @@ html, body {
     radial-gradient(closest-side, #FFFDF9 0%, #F6EFE3 62%, #EADCC6 100%);
   box-shadow:
     0 1px 0 rgba(255,255,255,0.9) inset,
-    0 10px 20px -6px rgba(58,26,10,0.30),
-    0 0 34px 4px rgba(255,208,150,0.22);
+    0 10px 20px -6px rgba(2,15,10,0.35),
+    0 0 34px 4px rgba(240,242,235,0.16);
 }
 
 /* the tapered marble column beneath */
@@ -1084,7 +1088,7 @@ html, body {
   transform: translateX(-50%);
   width: clamp(90px, 15vmin, 210px);
   height: clamp(90px, 15vmin, 210px);
-  background: radial-gradient(closest-side, rgba(255,224,170,0.5), rgba(255,196,140,0.16) 55%, transparent 74%);
+  background: radial-gradient(closest-side, rgba(240,242,235,0.38), rgba(240,242,235,0.12) 55%, transparent 74%);
   mix-blend-mode: screen;
   pointer-events: none;
 }
@@ -1105,11 +1109,31 @@ html, body {
    ═══════════════════════════════════════════════════════════════════════ */
 .gd-product-stage {
   position: relative;
+  flex-shrink: 0; /* children are absolute (zero intrinsic height) — without
+                     this the stage collapses to 0 in short viewports and its
+                     pedestal paints over the headline */
   width: min(94vw, 760px);
   /* vmin (not vw) — a wide-but-short window must shrink this with the
      available HEIGHT, not grow it with the available width. */
-  height: clamp(230px, 46vmin, 480px);
+  /* the 270px floor is the full height of the hero slot's stack (pedestal +
+     bottle + labels) on a narrow phone — below it the bottle escapes upward
+     into the headline copy */
+  height: clamp(270px, 46vmin, 480px);
   margin: clamp(1rem, 3vh, 2.4rem) auto 0;
+}
+
+/* Short viewports: the stage yields to the words. The back bottle and the
+   footlight go first; the whole stage compresses so the headline, hero and
+   CTA never overlap. */
+@media (max-height: 640px) {
+  .gd-shelf-slot--back, .gd-footlight { display: none; }
+  .gd-product-stage { height: clamp(195px, 34vmin, 260px); }
+  .gd-pedestal-group { width: clamp(80px, 12vmin, 130px); height: clamp(80px, 12vmin, 130px); }
+  .gd-hero-slot { bottom: 20px; }
+  .gd-shelf-slot { bottom: 26px; }
+  .gd-hero-bottle { width: clamp(26px, 4.4vmin, 44px); height: clamp(65px, 11vmin, 110px); bottom: clamp(16px, 3vmin, 30px); }
+  .gd-hero-glow { width: clamp(70px, 11vmin, 130px); height: clamp(70px, 11vmin, 130px); bottom: clamp(24px, 4.5vmin, 52px); }
+  .gd-plinth { height: clamp(48px, 8vmin, 84px); }
 }
 
 /* the three supporting products, mirrored around the vertical centerline */
@@ -1149,7 +1173,7 @@ html, body {
   width: 62%;
   height: 30%;
   transform: translateX(-50%);
-  background: radial-gradient(closest-side, rgba(255,196,140,0.30), transparent 74%);
+  background: radial-gradient(closest-side, rgba(240,242,235,0.20), transparent 74%);
   mix-blend-mode: screen;
   pointer-events: none;
 }
@@ -1160,7 +1184,9 @@ html, body {
    rolled out toward the pedestal. CSS-illustration, static (no photo).
    ═══════════════════════════════════════════════════════════════════════ */
 .gd-stage {
-  background: radial-gradient(ellipse 90% 65% at 50% 18%, #2E1712 0%, #200F0B 42%, #140A07 72%, #0C0605 100%);
+  /* the interior of the house — deep Garden Green, lit from above,
+     like stepping into a maison at dusk */
+  background: radial-gradient(ellipse 90% 65% at 50% 18%, #0C382A 0%, #082A1F 42%, #041B12 72%, #020F0A 100%);
 }
 
 .gd-spotlight {
@@ -1168,8 +1194,8 @@ html, body {
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 46% 38% at 50% 8%, rgba(255,224,180,0.42), transparent 68%),
-    radial-gradient(ellipse 30% 50% at 50% 46%, rgba(255,201,140,0.16), transparent 72%);
+    radial-gradient(ellipse 46% 38% at 50% 8%, rgba(240,242,235,0.30), transparent 68%),
+    radial-gradient(ellipse 30% 50% at 50% 46%, rgba(240,242,235,0.10), transparent 72%);
 }
 
 /* two soft angled beams suggesting light falling from above */
@@ -1180,7 +1206,7 @@ html, body {
   top: -6%;
   width: 26%;
   height: 78%;
-  background: linear-gradient(180deg, rgba(255,220,170,0.16), transparent 82%);
+  background: linear-gradient(180deg, rgba(240,242,235,0.12), transparent 82%);
   filter: blur(4px);
 }
 .gd-spotlight::before { left: 34%; transform: skewX(-6deg); }
@@ -1206,10 +1232,10 @@ html, body {
     linear-gradient(0deg, rgba(0,0,0,0.22) 0%, transparent 20%),
     linear-gradient(
       90deg,
-      rgba(214,197,160,0.9) 0%, rgba(214,197,160,0.9) 1.6%,
-      #8E1B1E 1.6%, #8E1B1E 3%,
-      #9C2226 3%, #9C2226 97%,
-      #8E1B1E 97%, #8E1B1E 98.4%,
-      rgba(214,197,160,0.9) 98.4%, rgba(214,197,160,0.9) 100%
+      rgba(240,242,235,0.55) 0%, rgba(240,242,235,0.55) 1.6%,
+      #7A3319 1.6%, #7A3319 3%,
+      #8A3D1D 3%, #8A3D1D 97%,
+      #7A3319 97%, #7A3319 98.4%,
+      rgba(240,242,235,0.55) 98.4%, rgba(240,242,235,0.55) 100%
     );
 }

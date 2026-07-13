@@ -135,7 +135,7 @@ export function ProductHero({ product }: ProductHeroProps) {
                     src={product.image}
                     alt={product.name}
                     fill
-                    className="object-contain p-12 group-hover:scale-110 transition-all duration-[2000ms] ease-out z-0"
+                    className="object-contain p-12 group-hover:scale-110 transition-all [transition-duration:2000ms] ease-out z-0"
                     priority
                   />
                   

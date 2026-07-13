@@ -25,7 +25,7 @@ const SHELF = [
 ]
 
 /* The hero product as an actual standing bottle, not a framed photo —
-   a stylized faceted emerald-glass dropper bottle with a gold cap,
+   a stylized faceted Garden Green glass dropper bottle with a gold cap,
    matching the brand's real packaging colors — deepened glass tones,
    multi-angle facet highlights, and a mirrored reflection beneath it on
    the pedestal (both CSS/SVG-only; not a photo, but closer to the mood
@@ -44,7 +44,7 @@ function HeroBottle() {
         fill="url(#gd-bottle-glass)"
       />
       {/* facet division lines — suggest cut-glass panels meeting at angles */}
-      <path d="M52 58 L50 212" stroke="#031510" strokeOpacity="0.3" strokeWidth="1" />
+      <path d="M52 58 L50 212" stroke="#01110B" strokeOpacity="0.3" strokeWidth="1" />
       <path d="M68 58 L70 212" stroke="#F7FFE9" strokeOpacity="0.14" strokeWidth="1" />
       {/* multi-angle specular highlights, catching light differently per facet */}
       <path d="M40 82 L36 206" stroke="#FFFFFF" strokeOpacity="0.3" strokeWidth="6" strokeLinecap="round" />
@@ -55,15 +55,17 @@ function HeroBottle() {
   return (
     <svg viewBox="0 0 120 300" width="100%" height="100%" role="presentation" aria-hidden="true" style={{ overflow: 'visible' }}>
       <defs>
+        {/* Garden Green glass — brand #004B37 at the lit center, falling to
+            near-black green at the silhouette edges */}
         <linearGradient id="gd-bottle-glass" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#031510" />
-          <stop offset="14%" stopColor="#0D3B2C" />
-          <stop offset="30%" stopColor="#1E7052" />
-          <stop offset="46%" stopColor="#3FAE82" />
-          <stop offset="54%" stopColor="#3FAE82" />
-          <stop offset="70%" stopColor="#1E7052" />
-          <stop offset="86%" stopColor="#0D3B2C" />
-          <stop offset="100%" stopColor="#031510" />
+          <stop offset="0%" stopColor="#01110B" />
+          <stop offset="14%" stopColor="#023024" />
+          <stop offset="30%" stopColor="#004B37" />
+          <stop offset="46%" stopColor="#0E7255" />
+          <stop offset="54%" stopColor="#0E7255" />
+          <stop offset="70%" stopColor="#004B37" />
+          <stop offset="86%" stopColor="#023024" />
+          <stop offset="100%" stopColor="#01110B" />
         </linearGradient>
         <linearGradient id="gd-bottle-cap" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stopColor="#F6E6B8" />
@@ -259,8 +261,12 @@ export function GrandDoor() {
       {/* ── THE INTERIOR — always in the DOM. SEO + a11y safe. ───────── */}
       <div
         style={{
-          position: 'absolute',
-          inset: 0,
+          // In normal flow (not absolute) so a short viewport makes the
+          // section grow and scroll rather than letting the absolutely
+          // positioned stage children overlap the headline.
+          position: 'relative',
+          width: '100%',
+          minHeight: '100svh',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
@@ -295,7 +301,7 @@ export function GrandDoor() {
             fontWeight: 300,
             fontSize: 'clamp(1.8rem, 8vmin, 4.5rem)',
             lineHeight: 1.06,
-            color: '#F7EFE2',
+            color: 'var(--iv-cloud-dancer, #F0F2EB)',
             margin: 0,
             maxWidth: '18ch',
           }}
@@ -310,7 +316,7 @@ export function GrandDoor() {
             fontFamily: 'var(--iv-font-body)',
             fontSize: 'clamp(0.82rem, 1.8vmin, 1.0rem)',
             lineHeight: 1.75,
-            color: 'rgba(247,239,226,0.72)',
+            color: 'rgba(240,242,235,0.72)',
             maxWidth: '46ch',
             margin: '1.8rem 0 0',
           }}
@@ -353,7 +359,7 @@ export function GrandDoor() {
                 ) : (
                   <>
                     <span aria-hidden style={{ display: 'block', width: 'clamp(52px, 6.5vw, 84px)', height: 1, background: 'var(--iv-champagne-gold, #D6C5A0)', marginTop: '0.6rem' }} />
-                    <span style={{ fontFamily: 'var(--iv-font-serif)', fontSize: 'clamp(0.62rem, 0.8vw, 0.78rem)', color: '#F7EFE2', marginTop: '0.6rem' }}>{p.name}</span>
+                    <span style={{ fontFamily: 'var(--iv-font-serif)', fontSize: 'clamp(0.62rem, 0.8vw, 0.78rem)', color: 'var(--iv-cloud-dancer, #F0F2EB)', marginTop: '0.6rem' }}>{p.name}</span>
                     <span style={{ fontFamily: 'var(--iv-font-body)', fontSize: 'clamp(7px, 0.6vw, 9px)', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(214,197,160,0.7)', marginTop: '0.25rem' }}>{p.role}</span>
                   </>
                 )}
@@ -389,7 +395,7 @@ export function GrandDoor() {
             </div>
             <div className="gd-plinth-shadow" aria-hidden="true" />
             <span aria-hidden style={{ display: 'block', width: 'clamp(66px, 8.5vw, 112px)', height: 1, background: 'var(--iv-champagne-gold, #D6C5A0)', margin: '0.7rem auto 0' }} />
-            <span style={{ display: 'block', fontFamily: 'var(--iv-font-serif)', fontSize: 'clamp(0.72rem, 0.95vw, 0.9rem)', color: '#F7EFE2', marginTop: '0.85rem' }}>{hero.name}</span>
+            <span style={{ display: 'block', fontFamily: 'var(--iv-font-serif)', fontSize: 'clamp(0.72rem, 0.95vw, 0.9rem)', color: 'var(--iv-cloud-dancer, #F0F2EB)', marginTop: '0.85rem' }}>{hero.name}</span>
             <span style={{ display: 'block', fontFamily: 'var(--iv-font-body)', fontSize: 'clamp(8px, 0.72vw, 10px)', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(214,197,160,0.7)', marginTop: '0.3rem' }}>{hero.role}</span>
           </div>
         </div>
@@ -431,7 +437,7 @@ export function GrandDoor() {
               fontSize: '0.78rem',
               letterSpacing: '0.2em',
               textTransform: 'uppercase',
-              color: '#F7EFE2',
+              color: 'var(--iv-cloud-dancer, #F0F2EB)',
               textDecoration: 'none',
               borderBottom: '1px solid var(--iv-champagne-gold, #D6C5A0)',
               paddingBottom: '3px',
