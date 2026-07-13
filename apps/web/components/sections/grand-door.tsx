@@ -100,8 +100,18 @@ function HeroBottle() {
 }
 
 /* Terra Radiance Crème™ — a squat ceramic jar with a gold lid, in the
-   brand's warm terracotta tone. */
+   brand's warm terracotta tone. Mirrored reflection beneath, like the hero. */
 function ProductJar() {
+  const body = (
+    <>
+      <rect x="12" y="34" width="96" height="58" rx="14" fill="url(#gd-jar-body)" />
+      <rect x="8" y="10" width="104" height="30" rx="10" fill="url(#gd-jar-lid)" />
+      <rect x="8" y="10" width="104" height="7" rx="3.5" fill="#FBF0D6" opacity="0.5" />
+      {/* ceramic sheen */}
+      <path d="M26 42 L24 86" stroke="#FFFFFF" strokeOpacity="0.28" strokeWidth="5" strokeLinecap="round" />
+      <text x="60" y="68" textAnchor="middle" fontFamily="var(--iv-font-serif)" fontSize="12" fill="#F6E6B8" opacity="0.7">LR</text>
+    </>
+  )
   return (
     <svg viewBox="0 0 120 100" width="100%" height="100%" role="presentation" aria-hidden="true" style={{ overflow: 'visible' }}>
       <defs>
@@ -120,13 +130,20 @@ function ProductJar() {
         <filter id="gd-jar-shadow" x="-40%" y="-20%" width="180%" height="150%">
           <feDropShadow dx="0" dy="8" stdDeviation="8" floodColor="#000" floodOpacity="0.4" />
         </filter>
+        {/* mirrored group maps local y=92 (jar base) to the seam — visible
+            band is local 46–92, brightest right at the base */}
+        <linearGradient id="gd-jar-reflect-fade" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#fff" stopOpacity="0" />
+          <stop offset="100%" stopColor="#fff" stopOpacity="0.9" />
+        </linearGradient>
+        <mask id="gd-jar-reflect-mask">
+          <rect x="0" y="46" width="120" height="46" fill="url(#gd-jar-reflect-fade)" />
+        </mask>
       </defs>
-      <g filter="url(#gd-jar-shadow)">
-        <rect x="12" y="34" width="96" height="58" rx="14" fill="url(#gd-jar-body)" />
-        <rect x="8" y="10" width="104" height="30" rx="10" fill="url(#gd-jar-lid)" />
-        <rect x="8" y="10" width="104" height="7" rx="3.5" fill="#FBF0D6" opacity="0.5" />
-        <text x="60" y="68" textAnchor="middle" fontFamily="var(--iv-font-serif)" fontSize="12" fill="#F6E6B8" opacity="0.7">LR</text>
+      <g transform="translate(0,184) scale(1,-1)" opacity="0.45" mask="url(#gd-jar-reflect-mask)">
+        {body}
       </g>
+      <g filter="url(#gd-jar-shadow)">{body}</g>
     </svg>
   )
 }
@@ -151,12 +168,23 @@ function ProductTube() {
         <filter id="gd-tube-shadow" x="-60%" y="-20%" width="220%" height="150%">
           <feDropShadow dx="0" dy="10" stdDeviation="9" floodColor="#000" floodOpacity="0.4" />
         </filter>
+        <linearGradient id="gd-tube-reflect-fade" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#fff" stopOpacity="0" />
+          <stop offset="100%" stopColor="#fff" stopOpacity="0.9" />
+        </linearGradient>
+        <mask id="gd-tube-reflect-mask">
+          <rect x="0" y="128" width="90" height="54" fill="url(#gd-tube-reflect-fade)" />
+        </mask>
       </defs>
+      <g transform="translate(0,364) scale(1,-1)" opacity="0.4" mask="url(#gd-tube-reflect-mask)">
+        <path d="M30 46 L60 46 L66 170 Q66 182 45 182 Q24 182 24 170 Z" fill="url(#gd-tube-body)" />
+      </g>
       <g filter="url(#gd-tube-shadow)">
         <path d="M32 8 L58 8 L58 26 L32 26 Z" fill="url(#gd-tube-cap)" />
         <path d="M26 26 L64 26 L60 46 L30 46 Z" fill="url(#gd-tube-body)" />
         <path d="M30 46 L60 46 L66 170 Q66 182 45 182 Q24 182 24 170 Z" fill="url(#gd-tube-body)" />
         <rect x="35" y="60" width="5" height="100" rx="2.5" fill="#7A3319" opacity="0.14" />
+        <path d="M56 56 L60 164" stroke="#FFFFFF" strokeOpacity="0.30" strokeWidth="4" strokeLinecap="round" />
         <text x="45" y="120" textAnchor="middle" fontFamily="var(--iv-font-serif)" fontSize="11" fill="#7A3319" opacity="0.55">LR</text>
       </g>
     </svg>
@@ -179,12 +207,23 @@ function ProductSmallBottle() {
         <filter id="gd-small-shadow" x="-60%" y="-20%" width="220%" height="160%">
           <feDropShadow dx="0" dy="9" stdDeviation="9" floodColor="#000" floodOpacity="0.42" />
         </filter>
+        <linearGradient id="gd-small-reflect-fade" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#fff" stopOpacity="0" />
+          <stop offset="100%" stopColor="#fff" stopOpacity="0.9" />
+        </linearGradient>
+        <mask id="gd-small-reflect-mask">
+          <rect x="0" y="102" width="90" height="50" fill="url(#gd-small-reflect-fade)" />
+        </mask>
       </defs>
+      <g transform="translate(0,304) scale(1,-1)" opacity="0.42" mask="url(#gd-small-reflect-mask)">
+        <path d="M28 40 L62 40 L68 60 L68 142 Q68 152 57 152 L33 152 Q22 152 22 142 L22 60 Z" fill="url(#gd-small-glass)" />
+      </g>
       <g filter="url(#gd-small-shadow)">
         <rect x="33" y="4" width="24" height="26" rx="5" fill="url(#gd-bottle-cap)" />
         <rect x="38" y="28" width="14" height="12" fill="url(#gd-small-glass)" />
         <path d="M28 40 L62 40 L68 60 L68 142 Q68 152 57 152 L33 152 Q22 152 22 142 L22 60 Z" fill="url(#gd-small-glass)" />
         <rect x="34" y="56" width="5" height="90" rx="2.5" fill="#FFFFFF" opacity="0.2" />
+        <path d="M60 62 L62 140" stroke="#FFFFFF" strokeOpacity="0.22" strokeWidth="4" strokeLinecap="round" />
         <text x="45" y="105" textAnchor="middle" fontFamily="var(--iv-font-serif)" fontSize="10" fill="#F6E6B8" opacity="0.7">LR</text>
       </g>
     </svg>
@@ -343,7 +382,7 @@ export function GrandDoor() {
                   transition: reduced ? 'none' : `opacity 800ms ${ease} ${delay}ms`,
                 }}
               >
-                <div style={{ position: 'relative', width: 'clamp(38px, 4.6vw, 60px)', height: 'clamp(72px, 8.6vw, 112px)' }}>
+                <div className="gd-shelf-product" style={{ position: 'relative', width: 'clamp(46px, 5.4vw, 72px)', height: 'clamp(86px, 10vw, 132px)' }}>
                   {p.kind === 'jar' && <ProductJar />}
                   {p.kind === 'tube' && <ProductTube />}
                   {p.kind === 'small-bottle' && <ProductSmallBottle />}

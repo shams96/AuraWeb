@@ -1151,10 +1151,37 @@ html, body {
 .gd-shelf-slot--back {
   left: 50%;
   bottom: clamp(170px, 30vmin, 370px);
-  transform: translateX(-50%) scale(0.5);
-  opacity: 0.8;
+  transform: translateX(-50%) scale(0.6);
+  opacity: 0.85;
   z-index: -1;
 }
+
+/* each supporting product stands in its own lit niche: a soft pool of
+   light behind it and a marble ledge beneath it — the products are
+   displayed, not parked */
+.gd-shelf-product::before {
+  content: '';
+  position: absolute;
+  inset: -34% -60%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(240,242,235,0.13), transparent 72%);
+  pointer-events: none;
+}
+.gd-shelf-product::after {
+  content: '';
+  position: absolute;
+  left: -30%;
+  right: -30%;
+  bottom: -7px;
+  height: 9px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, #DACCAE 0%, #F2EADC 50%, #DACCAE 100%);
+  box-shadow:
+    0 6px 14px rgba(0,0,0,0.45),
+    0 1px 0 rgba(255,255,255,0.35) inset;
+}
+/* the back niche needs no ledge — it reads as a hint, not a display */
+.gd-shelf-slot--back .gd-shelf-product::after { display: none; }
 
 /* the hero, front and center, above everything on the arc */
 .gd-hero-slot {
