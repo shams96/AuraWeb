@@ -206,6 +206,7 @@ export function GrandDoor() {
                     fill
                     sizes="(max-width: 768px) 25vw, 12vw"
                     style={{ objectFit: 'contain' }}
+                    priority
                   />
                 </div>
               )}
