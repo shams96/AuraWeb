@@ -68,6 +68,12 @@ export function GrandDoor() {
     return () => window.removeEventListener('pointermove', onMove)
   }, [open, reduced])
 
+  // Hero sits at the true visual center; the trio is arranged symmetrically
+  // around it (left / right / back), not left-to-right in array order.
+  const hero = SHELF.find(p => p.hero) ?? SHELF[0]
+  const rest = SHELF.filter(p => p !== hero)
+  const ease = 'cubic-bezier(.16,1,.3,1)'
+
   return (
     <section
       ref={sectionRef}
@@ -149,110 +155,76 @@ export function GrandDoor() {
           proven on your own skin within forty-eight hours.
         </p>
 
-        {/* ── THE SHELF ─────────────────────────────────────────────── */}
-        <ul
-          style={{
-            listStyle: 'none',
-            display: 'flex',
-            alignItems: 'flex-end',
-            justifyContent: 'center',
-            gap: 'clamp(1rem, 3.2vw, 3.4rem)',
-            margin: 'clamp(2.4rem, 5vh, 4rem) 0 0',
-            padding: 0,
-            flexWrap: 'wrap',
-          }}
-        >
-          {SHELF.map((p, i) => (
-            <li
-              key={p.name}
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                opacity: open ? 1 : 0,
-                transform: open ? 'none' : 'translateY(22px)',
-                transition: reduced
-                  ? 'none'
-                  : `opacity 1100ms cubic-bezier(.16,1,.3,1) ${1000 + i * 130}ms, transform 1100ms cubic-bezier(.16,1,.3,1) ${1000 + i * 130}ms`,
-              }}
-            >
-              {p.hero ? (
-                <div className="gd-pedestal-group">
-                  <div className="gd-plinth" aria-hidden="true" />
-                  <div className="gd-plaque">
-                    <div
-                      className="gd-plaque-inner"
-                      style={{ position: 'relative', width: 'clamp(64px, 7.6vw, 100px)', height: 'clamp(64px, 7.6vw, 100px)' }}
-                    >
-                      <Image
-                        src={p.img}
-                        alt={`${p.name} — ${p.role}`}
-                        fill
-                        sizes="(max-width: 768px) 22vw, 9vw"
-                        style={{ objectFit: 'cover' }}
-                        priority
-                      />
-                    </div>
-                  </div>
-                  <div className="gd-plaque-foot" aria-hidden="true" />
-                </div>
-              ) : (
-                <div
-                  style={{
-                    position: 'relative',
-                    width: 'clamp(58px, 7vw, 92px)',
-                    height: 'clamp(88px, 10.5vw, 140px)',
-                  }}
-                >
+        {/* ── THE STAGE — hero centered on its pedestal, the trio arranged ──
+               symmetrically around it. ────────────────────────────────── */}
+        <div className="gd-product-stage">
+          <div className="gd-footlight" aria-hidden="true" />
+
+          {rest.map((p, i) => {
+            const slotClass = ['gd-shelf-slot--left', 'gd-shelf-slot--back', 'gd-shelf-slot--right'][i]
+            const isBack = slotClass === 'gd-shelf-slot--back'
+            const delay = 1600 + i * 160
+            return (
+              <div
+                key={p.name}
+                className={`gd-shelf-slot ${slotClass}`}
+                style={{
+                  opacity: open ? (isBack ? 0.8 : 1) : 0,
+                  transition: reduced ? 'none' : `opacity 800ms ${ease} ${delay}ms`,
+                }}
+              >
+                <div style={{ position: 'relative', width: 'clamp(50px, 6vw, 78px)', height: 'clamp(76px, 9vw, 118px)' }}>
                   <Image
                     src={p.img}
                     alt={`${p.name} — ${p.role}`}
                     fill
-                    sizes="(max-width: 768px) 25vw, 12vw"
+                    sizes="(max-width: 768px) 20vw, 8vw"
                     style={{ objectFit: 'contain' }}
                     priority
                   />
                 </div>
-              )}
-              {p.hero && <div className="gd-plinth-shadow" aria-hidden="true" />}
+                {/* the back item peeks above the pedestal only as a hint of
+                    what's waiting — its own visible name/role would collide
+                    with the hero's labels below, so the label stays in the
+                    DOM (SEO/a11y) but visually hidden here. */}
+                {isBack ? (
+                  <span style={{ position: 'absolute', width: 1, height: 1, overflow: 'hidden', clip: 'rect(0,0,0,0)' }}>
+                    {p.name} — {p.role}
+                  </span>
+                ) : (
+                  <>
+                    <span aria-hidden style={{ display: 'block', width: 'clamp(52px, 6.5vw, 84px)', height: 1, background: 'var(--iv-champagne-gold, #D6C5A0)', marginTop: '0.6rem' }} />
+                    <span style={{ fontFamily: 'var(--iv-font-serif)', fontSize: 'clamp(0.62rem, 0.8vw, 0.78rem)', color: '#F7EFE2', marginTop: '0.6rem' }}>{p.name}</span>
+                    <span style={{ fontFamily: 'var(--iv-font-body)', fontSize: 'clamp(7px, 0.6vw, 9px)', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(214,197,160,0.7)', marginTop: '0.25rem' }}>{p.role}</span>
+                  </>
+                )}
+              </div>
+            )
+          })}
 
-              {/* the shelf line */}
-              <span
-                aria-hidden
-                style={{
-                  display: 'block',
-                  width: 'clamp(66px, 8.5vw, 112px)',
-                  height: 1,
-                  background: 'var(--iv-champagne-gold, #D6C5A0)',
-                  marginTop: '0.7rem',
-                }}
-              />
-
-              <span
-                style={{
-                  fontFamily: 'var(--iv-font-serif)',
-                  fontSize: 'clamp(0.72rem, 0.95vw, 0.9rem)',
-                  color: '#F7EFE2',
-                  marginTop: '0.85rem',
-                }}
-              >
-                {p.name}
-              </span>
-              <span
-                style={{
-                  fontFamily: 'var(--iv-font-body)',
-                  fontSize: 'clamp(8px, 0.72vw, 10px)',
-                  letterSpacing: '0.22em',
-                  textTransform: 'uppercase',
-                  color: 'rgba(214,197,160,0.7)',
-                  marginTop: '0.3rem',
-                }}
-              >
-                {p.role}
-              </span>
-            </li>
-          ))}
-        </ul>
+          <div
+            className="gd-hero-slot"
+            style={{
+              opacity: open ? 1 : 0,
+              transform: open ? 'translateX(-50%) translateY(0)' : 'translateX(-50%) translateY(22px)',
+              transition: reduced ? 'none' : `opacity 1100ms ${ease} 1000ms, transform 1100ms ${ease} 1000ms`,
+            }}
+          >
+            <div className="gd-pedestal-group">
+              <div className="gd-plinth" aria-hidden="true" />
+              <div className="gd-plaque">
+                <div className="gd-plaque-inner" style={{ position: 'relative', width: 'clamp(64px, 7.6vw, 100px)', height: 'clamp(64px, 7.6vw, 100px)' }}>
+                  <Image src={hero.img} alt={`${hero.name} — ${hero.role}`} fill sizes="(max-width: 768px) 22vw, 9vw" style={{ objectFit: 'cover' }} priority />
+                </div>
+              </div>
+              <div className="gd-plaque-foot" aria-hidden="true" />
+            </div>
+            <div className="gd-plinth-shadow" aria-hidden="true" />
+            <span aria-hidden style={{ display: 'block', width: 'clamp(66px, 8.5vw, 112px)', height: 1, background: 'var(--iv-champagne-gold, #D6C5A0)', margin: '0.7rem auto 0' }} />
+            <span style={{ display: 'block', fontFamily: 'var(--iv-font-serif)', fontSize: 'clamp(0.72rem, 0.95vw, 0.9rem)', color: '#F7EFE2', marginTop: '0.85rem' }}>{hero.name}</span>
+            <span style={{ display: 'block', fontFamily: 'var(--iv-font-body)', fontSize: 'clamp(8px, 0.72vw, 10px)', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(214,197,160,0.7)', marginTop: '0.3rem' }}>{hero.role}</span>
+          </div>
+        </div>
 
         {/* ── ONE PRIMARY, ONE SECONDARY ────────────────────────────── */}
         <div

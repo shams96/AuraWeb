@@ -1028,7 +1028,8 @@ html, body {
     radial-gradient(closest-side, #FFFDF9 0%, #F6EFE3 62%, #EADCC6 100%);
   box-shadow:
     0 1px 0 rgba(255,255,255,0.9) inset,
-    0 10px 20px -6px rgba(58,26,10,0.30);
+    0 10px 20px -6px rgba(58,26,10,0.30),
+    0 0 34px 4px rgba(255,208,150,0.22);
 }
 
 /* the tapered marble column beneath */
@@ -1089,6 +1090,61 @@ html, body {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
+   GRAND DOOR — Product stage: hero true-centered, trio on a semicircular
+   shelf behind it in mirrored left/right/back positions (bilateral
+   symmetry, not array order). Percentage/clamp-based throughout so it
+   recenters correctly at every viewport width, not just one breakpoint.
+   ═══════════════════════════════════════════════════════════════════════ */
+.gd-product-stage {
+  position: relative;
+  width: min(94vw, 760px);
+  height: clamp(340px, 40vw, 480px);
+  margin: clamp(1.4rem, 3.2vh, 2.4rem) auto 0;
+}
+
+/* the three supporting products, mirrored around the vertical centerline */
+.gd-shelf-slot {
+  position: absolute;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  bottom: clamp(52px, 7vw, 88px);
+}
+.gd-shelf-slot--left  { left: 2%; }
+.gd-shelf-slot--right { right: 2%; }
+.gd-shelf-slot--back {
+  left: 50%;
+  bottom: clamp(250px, 30vw, 370px);
+  transform: translateX(-50%) scale(0.5);
+  opacity: 0.8;
+  z-index: -1;
+}
+
+/* the hero, front and center, above everything on the arc */
+.gd-hero-slot {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(52px, 7vw, 88px);
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+/* warm footlight rising from the carpet, like real event-carpet uplighting */
+.gd-footlight {
+  position: absolute;
+  left: 50%;
+  bottom: 18%;
+  width: 62%;
+  height: 30%;
+  transform: translateX(-50%);
+  background: radial-gradient(closest-side, rgba(255,196,140,0.30), transparent 74%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
    GRAND DOOR — Premiere-night stage
    A rich, dark backdrop with an overhead spotlight and a red carpet path
    rolled out toward the pedestal. CSS-illustration, static (no photo).
@@ -1126,10 +1182,13 @@ html, body {
    as straight verticals that wouldn't match the angled sides. */
 .gd-carpet {
   position: absolute;
-  bottom: 23%;
+  /* extends past the section's own bottom edge (clipped by the section's
+     overflow:hidden) so it reads as continuing beyond the screen, rather
+     than tapering to a visible stop */
+  bottom: -11%;
   left: 50%;
   width: min(56%, 500px);
-  height: 26%;
+  height: 60%;
   transform: translateX(-50%);
   pointer-events: none;
   clip-path: polygon(38% 0%, 62% 0%, 92% 100%, 8% 100%);
