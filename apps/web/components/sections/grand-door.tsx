@@ -264,7 +264,7 @@ export function GrandDoor() {
           style={{
             fontFamily: 'var(--iv-font-serif)',
             fontWeight: 300,
-            fontSize: 'clamp(2.1rem, 5.4vw, 4.5rem)',
+            fontSize: 'clamp(1.8rem, 8vmin, 4.5rem)',
             lineHeight: 1.06,
             color: '#F7EFE2',
             margin: 0,
@@ -279,7 +279,7 @@ export function GrandDoor() {
         <p
           style={{
             fontFamily: 'var(--iv-font-body)',
-            fontSize: 'clamp(0.9rem, 1.15vw, 1.0rem)',
+            fontSize: 'clamp(0.82rem, 1.8vmin, 1.0rem)',
             lineHeight: 1.75,
             color: 'rgba(247,239,226,0.72)',
             maxWidth: '46ch',

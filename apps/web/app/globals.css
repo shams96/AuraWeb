@@ -998,8 +998,8 @@ html, body {
    with margins on stacked flex siblings. */
 .gd-pedestal-group {
   position: relative;
-  width: clamp(150px, 17vw, 230px);
-  height: clamp(150px, 18vw, 230px);
+  width: clamp(120px, 17vmin, 230px);
+  height: clamp(120px, 18vmin, 230px);
   margin: 0 auto;
 }
 
@@ -1008,7 +1008,7 @@ html, body {
   bottom: 0;
   left: 50%;
   width: 100%;
-  height: clamp(90px, 11vw, 140px);
+  height: clamp(70px, 11vmin, 140px);
   transform: translateX(-50%);
 }
 
@@ -1058,20 +1058,20 @@ html, body {
 .gd-hero-bottle {
   position: absolute;
   left: 50%;
-  bottom: clamp(56px, 6.8vw, 90px);
+  bottom: clamp(40px, 6.8vmin, 90px);
   transform: translateX(-50%);
-  width: clamp(46px, 5.5vw, 74px);
-  height: clamp(92px, 11vw, 148px);
+  width: clamp(34px, 5.5vmin, 74px);
+  height: clamp(68px, 11vmin, 148px);
   z-index: 1;
 }
 
 .gd-hero-glow {
   position: absolute;
   left: 50%;
-  bottom: clamp(50px, 6vw, 82px);
+  bottom: clamp(36px, 6vmin, 82px);
   transform: translateX(-50%);
-  width: clamp(120px, 15vw, 210px);
-  height: clamp(120px, 15vw, 210px);
+  width: clamp(90px, 15vmin, 210px);
+  height: clamp(90px, 15vmin, 210px);
   background: radial-gradient(closest-side, rgba(255,224,170,0.5), rgba(255,196,140,0.16) 55%, transparent 74%);
   mix-blend-mode: screen;
   pointer-events: none;
@@ -1094,8 +1094,10 @@ html, body {
 .gd-product-stage {
   position: relative;
   width: min(94vw, 760px);
-  height: clamp(340px, 40vw, 480px);
-  margin: clamp(1.4rem, 3.2vh, 2.4rem) auto 0;
+  /* vmin (not vw) — a wide-but-short window must shrink this with the
+     available HEIGHT, not grow it with the available width. */
+  height: clamp(230px, 46vmin, 480px);
+  margin: clamp(1rem, 3vh, 2.4rem) auto 0;
 }
 
 /* the three supporting products, mirrored around the vertical centerline */
@@ -1106,13 +1108,13 @@ html, body {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  bottom: clamp(52px, 7vw, 88px);
+  bottom: clamp(50px, 7vmin, 88px);
 }
 .gd-shelf-slot--left  { left: 2%; }
 .gd-shelf-slot--right { right: 2%; }
 .gd-shelf-slot--back {
   left: 50%;
-  bottom: clamp(250px, 30vw, 370px);
+  bottom: clamp(170px, 30vmin, 370px);
   transform: translateX(-50%) scale(0.5);
   opacity: 0.8;
   z-index: -1;
