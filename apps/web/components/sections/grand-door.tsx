@@ -449,47 +449,37 @@ export function GrandDoor() {
       </div>
 
       {/* ── THE DOORS ─────────────────────────────────────────────────
-          Two Red Ochre leaves. Not rendered at all under reduced motion. */}
+          Two lacquered Red Ochre leaves with recessed panels, brass pulls,
+          and interior light escaping through the seam and beneath —
+          the house is lit, and someone is expected.
+          Not rendered at all under reduced motion. */}
       {!reduced && (
         <>
           {(['left', 'right'] as const).map((side) => (
             <div
               key={side}
               aria-hidden="true"
+              className={`gd-door gd-door--${side}`}
               style={{
-                position: 'absolute',
-                top: 0,
-                bottom: 0,
-                [side]: 0,
-                width: '50.5%',
-                background: 'var(--iv-ochre, #9B4722)',
                 transform: open
                   ? `translateX(${side === 'left' ? '-101%' : '101%'})`
                   : 'translateX(0)',
                 transition: 'transform 1900ms cubic-bezier(.62,.02,.16,1)',
                 willChange: 'transform',
                 pointerEvents: open ? 'none' : 'auto',
-                /* the inner edge catches light, like a real leaf */
-                boxShadow:
-                  side === 'left'
-                    ? 'inset -1px 0 0 rgba(214,197,160,.5)'
-                    : 'inset 1px 0 0 rgba(214,197,160,.5)',
               }}
             >
-              {/* a single recessed panel — restraint, not ornament */}
-              <span
-                aria-hidden
-                style={{
-                  position: 'absolute',
-                  top: '11%',
-                  bottom: '11%',
-                  [side === 'left' ? 'left' : 'right']: '13%',
-                  [side === 'left' ? 'right' : 'left']: '8%',
-                  border: '1px solid rgba(214,197,160,.24)',
-                }}
-              />
+              {/* two recessed panels, as on a real double door */}
+              <span aria-hidden className="gd-door-panel gd-door-panel--upper" />
+              <span aria-hidden className="gd-door-panel gd-door-panel--lower" />
+              {/* brass pull at the meeting rail */}
+              <span aria-hidden className="gd-door-pull" />
             </div>
           ))}
+
+          {/* interior light escaping at the seam and under the doors */}
+          <div aria-hidden className="gd-door-seam" style={{ opacity: open ? 0 : 1, transition: 'opacity 900ms ease' }} />
+          <div aria-hidden className="gd-door-underlight" style={{ opacity: open ? 0 : 1, transition: 'opacity 900ms ease' }} />
 
           {/* The mark on the meeting rail — and the way in. */}
           <button
@@ -500,7 +490,7 @@ export function GrandDoor() {
             aria-expanded={open}
             style={{
               position: 'absolute',
-              top: '50%',
+              top: '36%',
               left: '50%',
               transform: 'translate(-50%, -50%)',
               display: 'flex',
@@ -530,6 +520,7 @@ export function GrandDoor() {
               LR
             </span>
             <span
+              className="gd-enter-pulse"
               style={{
                 fontFamily: 'var(--iv-font-body)',
                 fontSize: 'clamp(8px, 0.8vw, 10px)',
