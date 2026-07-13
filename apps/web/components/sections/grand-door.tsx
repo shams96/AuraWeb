@@ -25,19 +25,45 @@ const SHELF = [
 ]
 
 /* The hero product as an actual standing bottle, not a framed photo —
-   a stylized emerald-glass dropper bottle with a gold cap, matching the
-   brand's real packaging colors. Asset-free inline SVG. */
+   a stylized faceted emerald-glass dropper bottle with a gold cap,
+   matching the brand's real packaging colors — deepened glass tones,
+   multi-angle facet highlights, and a mirrored reflection beneath it on
+   the pedestal (both CSS/SVG-only; not a photo, but closer to the mood
+   of a real product shot than a flat single-tone illustration). */
 function HeroBottle() {
+  const body = (
+    <>
+      {/* cap */}
+      <rect x="44" y="4" width="32" height="36" rx="7" fill="url(#gd-bottle-cap)" />
+      <rect x="44" y="4" width="32" height="8" rx="4" fill="#FBF0D6" opacity="0.55" />
+      {/* neck */}
+      <rect x="51" y="38" width="18" height="18" fill="url(#gd-bottle-glass)" />
+      {/* shoulder + body */}
+      <path
+        d="M38 56 L82 56 L91 82 L91 200 Q91 214 77 214 L43 214 Q29 214 29 200 L29 82 Z"
+        fill="url(#gd-bottle-glass)"
+      />
+      {/* facet division lines — suggest cut-glass panels meeting at angles */}
+      <path d="M52 58 L50 212" stroke="#031510" strokeOpacity="0.3" strokeWidth="1" />
+      <path d="M68 58 L70 212" stroke="#F7FFE9" strokeOpacity="0.14" strokeWidth="1" />
+      {/* multi-angle specular highlights, catching light differently per facet */}
+      <path d="M40 82 L36 206" stroke="#FFFFFF" strokeOpacity="0.3" strokeWidth="6" strokeLinecap="round" />
+      <path d="M58 70 L60 130" stroke="#FFFFFF" strokeOpacity="0.5" strokeWidth="4" strokeLinecap="round" />
+      <path d="M80 90 L78 170" stroke="#FFFFFF" strokeOpacity="0.16" strokeWidth="5" strokeLinecap="round" />
+    </>
+  )
   return (
-    <svg viewBox="0 0 120 240" width="100%" height="100%" role="presentation" aria-hidden="true" style={{ overflow: 'visible' }}>
+    <svg viewBox="0 0 120 300" width="100%" height="100%" role="presentation" aria-hidden="true" style={{ overflow: 'visible' }}>
       <defs>
         <linearGradient id="gd-bottle-glass" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#062A20" />
-          <stop offset="16%" stopColor="#134C39" />
-          <stop offset="42%" stopColor="#2F8F6B" />
-          <stop offset="58%" stopColor="#2F8F6B" />
-          <stop offset="84%" stopColor="#134C39" />
-          <stop offset="100%" stopColor="#062A20" />
+          <stop offset="0%" stopColor="#031510" />
+          <stop offset="14%" stopColor="#0D3B2C" />
+          <stop offset="30%" stopColor="#1E7052" />
+          <stop offset="46%" stopColor="#3FAE82" />
+          <stop offset="54%" stopColor="#3FAE82" />
+          <stop offset="70%" stopColor="#1E7052" />
+          <stop offset="86%" stopColor="#0D3B2C" />
+          <stop offset="100%" stopColor="#031510" />
         </linearGradient>
         <linearGradient id="gd-bottle-cap" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stopColor="#F6E6B8" />
@@ -47,20 +73,23 @@ function HeroBottle() {
         <filter id="gd-bottle-shadow" x="-60%" y="-20%" width="220%" height="160%">
           <feDropShadow dx="0" dy="12" stdDeviation="12" floodColor="#000" floodOpacity="0.45" />
         </filter>
+        <linearGradient id="gd-bottle-reflect-fade" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#fff" stopOpacity="1" />
+          <stop offset="60%" stopColor="#fff" stopOpacity="0.35" />
+          <stop offset="100%" stopColor="#fff" stopOpacity="0" />
+        </linearGradient>
+        <mask id="gd-bottle-reflect-mask">
+          <rect x="0" y="0" width="120" height="90" fill="url(#gd-bottle-reflect-fade)" />
+        </mask>
       </defs>
+
+      {/* mirrored reflection on the pedestal surface, anchored at the base and fading out */}
+      <g transform="translate(0,428) scale(1,-1)" opacity="0.65" mask="url(#gd-bottle-reflect-mask)">
+        {body}
+      </g>
+
       <g filter="url(#gd-bottle-shadow)">
-        {/* cap */}
-        <rect x="44" y="4" width="32" height="36" rx="7" fill="url(#gd-bottle-cap)" />
-        <rect x="44" y="4" width="32" height="8" rx="4" fill="#FBF0D6" opacity="0.55" />
-        {/* neck */}
-        <rect x="51" y="38" width="18" height="18" fill="url(#gd-bottle-glass)" />
-        {/* shoulder + body */}
-        <path
-          d="M38 56 L82 56 L91 82 L91 200 Q91 214 77 214 L43 214 Q29 214 29 200 L29 82 Z"
-          fill="url(#gd-bottle-glass)"
-        />
-        {/* glass specular highlight */}
-        <rect x="46" y="76" width="7" height="128" rx="3.5" fill="#FFFFFF" opacity="0.24" />
+        {body}
         {/* small brand mark */}
         <text x="60" y="150" textAnchor="middle" fontFamily="var(--iv-font-serif)" fontSize="13" fill="#F6E6B8" opacity="0.75">LR</text>
       </g>
@@ -344,7 +373,18 @@ export function GrandDoor() {
               <div className="gd-plinth" aria-hidden="true" />
               <div className="gd-hero-glow" aria-hidden="true" />
               <div className="gd-hero-bottle">
-                <HeroBottle />
+                <div
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    transformOrigin: 'bottom center',
+                    // "walking towards it" — once the reveal has settled, the
+                    // bottle keeps slowly growing closer, as though approached
+                    animation: open && !reduced ? 'gd-approach 3200ms ease-out 2100ms forwards' : 'none',
+                  }}
+                >
+                  <HeroBottle />
+                </div>
               </div>
             </div>
             <div className="gd-plinth-shadow" aria-hidden="true" />
