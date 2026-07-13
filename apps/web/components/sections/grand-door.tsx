@@ -96,6 +96,10 @@ export function GrandDoor() {
           opacity: open ? 1 : 0,
           transform: open ? 'none' : 'translateY(12px)',
           transition: reduced ? 'none' : 'opacity 1600ms cubic-bezier(.16,1,.3,1) 700ms, transform 1600ms cubic-bezier(.16,1,.3,1) 700ms',
+          // Invisible while closed, but still in normal layout flow — without
+          // this it silently intercepts clicks meant for the ENTER button,
+          // since opacity:0 does not remove an element from hit-testing.
+          pointerEvents: open ? 'auto' : 'none',
         }}
       >
         <p
