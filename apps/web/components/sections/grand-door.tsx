@@ -25,6 +25,50 @@ const SHELF = [
   { name: 'Liri Eye Concentrate™',  role: 'Eye',                  img: '/images/products/isola_serum.png' },
 ]
 
+/* The hero product as an actual standing bottle, not a framed photo —
+   a stylized emerald-glass dropper bottle with a gold cap, matching the
+   brand's real packaging colors. Asset-free inline SVG. */
+function HeroBottle() {
+  return (
+    <svg viewBox="0 0 120 240" width="100%" height="100%" role="presentation" aria-hidden="true" style={{ overflow: 'visible' }}>
+      <defs>
+        <linearGradient id="gd-bottle-glass" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="#062A20" />
+          <stop offset="16%" stopColor="#134C39" />
+          <stop offset="42%" stopColor="#2F8F6B" />
+          <stop offset="58%" stopColor="#2F8F6B" />
+          <stop offset="84%" stopColor="#134C39" />
+          <stop offset="100%" stopColor="#062A20" />
+        </linearGradient>
+        <linearGradient id="gd-bottle-cap" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#F6E6B8" />
+          <stop offset="45%" stopColor="#D6B15C" />
+          <stop offset="100%" stopColor="#93712E" />
+        </linearGradient>
+        <filter id="gd-bottle-shadow" x="-60%" y="-20%" width="220%" height="160%">
+          <feDropShadow dx="0" dy="12" stdDeviation="12" floodColor="#000" floodOpacity="0.45" />
+        </filter>
+      </defs>
+      <g filter="url(#gd-bottle-shadow)">
+        {/* cap */}
+        <rect x="44" y="4" width="32" height="36" rx="7" fill="url(#gd-bottle-cap)" />
+        <rect x="44" y="4" width="32" height="8" rx="4" fill="#FBF0D6" opacity="0.55" />
+        {/* neck */}
+        <rect x="51" y="38" width="18" height="18" fill="url(#gd-bottle-glass)" />
+        {/* shoulder + body */}
+        <path
+          d="M38 56 L82 56 L91 82 L91 200 Q91 214 77 214 L43 214 Q29 214 29 200 L29 82 Z"
+          fill="url(#gd-bottle-glass)"
+        />
+        {/* glass specular highlight */}
+        <rect x="46" y="76" width="7" height="128" rx="3.5" fill="#FFFFFF" opacity="0.24" />
+        {/* small brand mark */}
+        <text x="60" y="150" textAnchor="middle" fontFamily="var(--iv-font-serif)" fontSize="13" fill="#F6E6B8" opacity="0.75">LR</text>
+      </g>
+    </svg>
+  )
+}
+
 export function GrandDoor() {
   const [open, setOpen] = useState(false)
   const [reduced, setReduced] = useState(false)
@@ -212,12 +256,10 @@ export function GrandDoor() {
           >
             <div className="gd-pedestal-group">
               <div className="gd-plinth" aria-hidden="true" />
-              <div className="gd-plaque">
-                <div className="gd-plaque-inner" style={{ position: 'relative', width: 'clamp(64px, 7.6vw, 100px)', height: 'clamp(64px, 7.6vw, 100px)' }}>
-                  <Image src={hero.img} alt={`${hero.name} — ${hero.role}`} fill sizes="(max-width: 768px) 22vw, 9vw" style={{ objectFit: 'cover' }} priority />
-                </div>
+              <div className="gd-hero-glow" aria-hidden="true" />
+              <div className="gd-hero-bottle">
+                <HeroBottle />
               </div>
-              <div className="gd-plaque-foot" aria-hidden="true" />
             </div>
             <div className="gd-plinth-shadow" aria-hidden="true" />
             <span aria-hidden style={{ display: 'block', width: 'clamp(66px, 8.5vw, 112px)', height: 1, background: 'var(--iv-champagne-gold, #D6C5A0)', margin: '0.7rem auto 0' }} />
