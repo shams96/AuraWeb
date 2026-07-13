@@ -8,4 +8,4 @@ Disallow: /register
 Disallow: /wishlist
 Disallow: /success
 
-Sitemap: https://isolavitale.com/sitemap.xml
+Sitemap: https://liriroma.com/sitemap.xml

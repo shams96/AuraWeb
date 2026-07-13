@@ -18,7 +18,7 @@ import { StickyFooterCTA } from '@/components/sections/sticky-footer-cta'
 export default function HomePage() {
   // Hero product data
   const product = {
-    id: 'isola-vitale-concentrate',
+    id: 'liri-essence',
     name: 'Liri Essence™',
     tagline: 'The first serum formulated for the biological reality of modern life',
     description: 'A precision-concentrated adaptive serum that tends to all four sources of your skin\'s vitality — the energy to renew, the living barrier, the power to protect, and structure that holds — in a single daily ritual. Formulated at Natural You Srl, Isola del Liri, Italy.',
@@ -172,7 +172,7 @@ export default function HomePage() {
             concentration: '1.00%'
           }
         ]}
-        mechanism="Formulated in partnership with Natural You Srl, Isola del Liri, our 18 enhanced formulations integrate DWAT Restoration Science and metabolic change preventive protection technologies to outpace conventional luxury brands by 18-24 months."
+        mechanism="Formulated with Natural You Srl at Isola del Liri, each formulation integrates DWAT restoration science with protective actives selected from current dermatological research — and tested before anything is claimed."
       />
       <ResultsTimeline
         timeline={[
@@ -197,13 +197,13 @@ export default function HomePage() {
           {
             period: 'Week 8',
             title: 'Visible Tone Correction',
-            description: 'metabolic change Protection Complex and antioxidant actives produce measurable tone improvement after two complete turnover cycles. Dark spots begin fading. Radiance markedly increased.',
+            description: 'Antioxidant actives and the structural support complex produce measurable tone improvement after two complete turnover cycles. Dark spots begin fading. Radiance markedly increased.',
             icon: '✨'
           },
           {
             period: 'Week 12',
             title: 'Peptide-Driven Structural Change',
-            description: 'Cellular Renewal Complexs show first clinical results at the three-month mark. Collagen synthesis stimulated by L-Ornithine produces a measurable early improvement in skin firmness and bounce.',
+            description: 'The Cellular Renewal Complex shows its first clinical results at the three-month mark. Collagen synthesis stimulated by L-Ornithine produces a measurable early improvement in skin firmness and bounce.',
             icon: '📈'
           },
           {

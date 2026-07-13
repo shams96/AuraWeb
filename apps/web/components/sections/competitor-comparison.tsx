@@ -61,7 +61,7 @@ export function CompetitorComparison() {
               <tr className="border-b border-iv-white/10 bg-iv-black/60">
                 <th className="py-6 px-6 text-left text-[10px] font-black text-iv-white uppercase tracking-[0.2em] w-1/2">Feature</th>
                 <th className="py-6 px-6 text-center text-[10px] font-black text-iv-gold uppercase tracking-[0.2em] bg-iv-gold/5 border-l border-iv-gold/10">
-                  Isola Vitale
+                  LIRI ROMA
                 </th>
                 <th className="py-6 px-6 text-center text-[10px] font-black text-iv-cream/65 uppercase tracking-[0.2em]">La Mer</th>
                 <th className="py-6 px-6 text-center text-[10px] font-black text-iv-cream/65 uppercase tracking-[0.2em]">Aug. Bader</th>
