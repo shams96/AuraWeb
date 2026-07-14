@@ -110,17 +110,17 @@ export default function HomePage() {
           {
             title: 'Assess',
             description: '8 clinically grounded questions map your skin\'s biological stage and current resilience capacity in under 2 minutes',
-            icon: '🔍'
+            icon: 'assess'
           },
           {
             title: 'Align',
             description: 'Your profile is matched to your precise Liri protocol — one of four rituals built around your skin\'s biological stage rather than your age',
-            icon: '⚡'
+            icon: 'align'
           },
           {
             title: 'Adapt',
             description: 'Actives work in biological sequence — renewing from within, strengthening your skin\'s natural resilience, season after season',
-            icon: '🛡️'
+            icon: 'barrier'
           }
         ]}
         timeline={[
@@ -180,37 +180,37 @@ export default function HomePage() {
             period: 'Days 1 – 3',
             title: 'Immediate Sensory Response',
             description: 'Humectant complex draws moisture into the stratum corneum within 24–48 hours. Redness and reactivity visibly calm. Skin feels immediately more comfortable.',
-            icon: '💧'
+            icon: 'hydration'
           },
           {
             period: 'Week 2',
             title: 'Barrier Reinforcement',
             description: 'Bifida Ferment Lysate and Ectoin begin restoring microbiome balance. Transepidermal water loss (TEWL) measurably decreases. Skin holds moisture more efficiently between applications.',
-            icon: '🛡️'
+            icon: 'barrier'
           },
           {
             period: 'Week 4',
             title: 'First Full Skin Cycle',
             description: 'One complete epidermal turnover cycle (~28 days) achieved. Surface texture is visibly smoother. Pore appearance refined. Hydration normalises across all skin types.',
-            icon: '🔄'
+            icon: 'cycle'
           },
           {
             period: 'Week 8',
             title: 'Visible Tone Correction',
             description: 'Antioxidant actives and the structural support complex produce measurable tone improvement after two complete turnover cycles. Dark spots begin fading. Radiance markedly increased.',
-            icon: '✨'
+            icon: 'tone'
           },
           {
             period: 'Week 12',
             title: 'Peptide-Driven Structural Change',
             description: 'The Cellular Renewal Complex shows its first clinical results at the three-month mark. Collagen synthesis stimulated by L-Ornithine produces a measurable early improvement in skin firmness and bounce.',
-            icon: '📈'
+            icon: 'structure'
           },
           {
             period: 'Week 24',
             title: 'Cellular Transformation',
             description: 'All four vitality systems at full response. NMN-supported cellular energy restores dermal metabolism. Senescence reduction measurable. Volume and firmness improvements are clinically significant.',
-            icon: '🌟'
+            icon: 'transformation'
           }
         ]}
       />

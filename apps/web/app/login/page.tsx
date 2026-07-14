@@ -85,7 +85,7 @@ function LoginForm() {
 
         <div className="w-full max-w-md space-y-7">
           <div className="space-y-2">
-            <h1 style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '2rem', fontWeight: 700, color: 'var(--iv-white)', letterSpacing: '-0.01em' }}>
+            <h1 style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '2rem', fontWeight: 600, color: 'var(--iv-garden)', letterSpacing: '-0.02em' }}>
               Welcome back
             </h1>
             <p style={{ fontSize: '0.875rem', color: 'var(--iv-text-muted)' }}>

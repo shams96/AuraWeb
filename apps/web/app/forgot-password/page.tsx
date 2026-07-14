@@ -77,7 +77,7 @@ export default function ForgotPasswordPage() {
           <>
             <div style={{ marginBottom: 32 }}>
               <p style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.35em', textTransform: 'uppercase', color: C.gold, marginBottom: 8 }}>Forgot Password</p>
-              <h1 style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.8rem', fontStyle: 'italic', fontWeight: 600, color: C.charcoal, margin: '0 0 10px' }}>
+              <h1 style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.8rem', fontWeight: 600, letterSpacing: '-0.02em', color: 'var(--iv-garden)', margin: '0 0 10px' }}>
                 Reset your password
               </h1>
               <p style={{ fontSize: '0.8rem', color: C.muted, margin: 0, lineHeight: 1.6 }}>

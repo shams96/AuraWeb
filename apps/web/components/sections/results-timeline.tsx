@@ -1,11 +1,27 @@
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Droplets, Shield, RefreshCcw, Sun, TrendingUp, Sparkles, type LucideIcon } from 'lucide-react'
 
 interface TimelineItem {
   period: string
   title: string
   description: string
   icon: string
+}
+
+/* One iconography system sitewide: Lucide line icons at 1.5 stroke,
+   Red Ochre ink. Emoji are never rendered. */
+const TIMELINE_ICONS: Record<string, LucideIcon> = {
+  hydration: Droplets,
+  barrier: Shield,
+  cycle: RefreshCcw,
+  tone: Sun,
+  structure: TrendingUp,
+  transformation: Sparkles,
+}
+
+function TimelineIcon({ name, size = 18 }: { name: string; size?: number }) {
+  const Icon = TIMELINE_ICONS[name] ?? Sparkles
+  return <Icon size={size} strokeWidth={1.5} style={{ color: 'var(--iv-gold)' }} aria-hidden />
 }
 
 interface ResultsTimelineProps {
@@ -74,7 +90,7 @@ export function ResultsTimeline({ timeline }: ResultsTimelineProps) {
                               className="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0"
                               style={{ background: 'rgba(155, 71, 34,0.09)', border: '1px solid rgba(155, 71, 34,0.18)' }}
                             >
-                              <span className="text-xl leading-none">{item.icon}</span>
+                              <TimelineIcon name={item.icon} />
                             </div>
                             <div className="text-right flex-1">
                               <p className="text-[9px] font-black uppercase tracking-[0.25em] mb-0.5" style={{ color: 'var(--iv-gold)' }}>{item.period}</p>
@@ -113,7 +129,7 @@ export function ResultsTimeline({ timeline }: ResultsTimelineProps) {
                               className="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0"
                               style={{ background: 'rgba(155, 71, 34,0.09)', border: '1px solid rgba(155, 71, 34,0.18)' }}
                             >
-                              <span className="text-xl leading-none">{item.icon}</span>
+                              <TimelineIcon name={item.icon} />
                             </div>
                             <div>
                               <p className="text-[9px] font-black uppercase tracking-[0.25em] mb-0.5" style={{ color: 'var(--iv-gold)' }}>{item.period}</p>
@@ -162,7 +178,7 @@ export function ResultsTimeline({ timeline }: ResultsTimelineProps) {
                       }}
                     >
                       <div className="flex items-start gap-3 mb-2">
-                        <span className="text-lg leading-none flex-shrink-0">{item.icon}</span>
+                        <TimelineIcon name={item.icon} size={16} />
                         <div>
                           <p className="text-[9px] font-black uppercase tracking-[0.22em]" style={{ color: 'var(--iv-gold)' }}>{item.period}</p>
                           <h3 className="text-sm font-bold text-iv-white leading-snug" style={{ fontFamily: 'var(--iv-font-serif)' }}>{item.title}</h3>

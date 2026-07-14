@@ -150,7 +150,7 @@ export default function RegisterPage() {
 
         <div className="w-full max-w-md space-y-6">
           <div className="space-y-2">
-            <h1 style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.9rem', fontWeight: 700, color: 'var(--iv-white)', letterSpacing: '-0.01em' }}>
+            <h1 style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.9rem', fontWeight: 600, color: 'var(--iv-garden)', letterSpacing: '-0.02em' }}>
               Create your account
             </h1>
             <p style={{ fontSize: '0.875rem', color: 'var(--iv-text-muted)' }}>

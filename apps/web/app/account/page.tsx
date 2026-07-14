@@ -109,7 +109,7 @@ export default function AccountDashboardPage() {
           <p style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.35em', textTransform: 'uppercase', color: C.gold, marginBottom: 8 }}>
             {isB2B ? 'Professional Account' : 'Your Account'}
           </p>
-          <h1 style={{ fontFamily: 'var(--iv-font-serif)', fontSize: 'clamp(1.8rem,4vw,2.4rem)', fontStyle: 'italic', fontWeight: 600, color: C.charcoal, margin: 0 }}>
+          <h1 style={{ fontFamily: 'var(--iv-font-serif)', fontSize: 'clamp(1.8rem,4vw,2.4rem)', fontWeight: 600, letterSpacing: '-0.02em', color: 'var(--iv-garden)', margin: 0 }}>
             Welcome back, {firstName}.
           </h1>
           <p style={{ fontSize: '0.85rem', color: C.muted, marginTop: 4, fontWeight: 300, fontStyle: 'italic', fontFamily: 'var(--iv-font-serif)' }}>
