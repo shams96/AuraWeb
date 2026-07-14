@@ -13,14 +13,14 @@ import {
 
 // Light-theme palette — matches /login and /register
 const C = {
-  page:      '#FDFAF5',   // warm ivory
-  parchment: '#F4EAE2',   // warm parchment — card bg
-  card:      '#EDE8E0',   // card surface
-  charcoal:  '#1A1614',   // primary text
-  espresso:  '#3D2B20',   // body text
-  muted:     '#7A5C4E',   // muted text
-  gold:      '#9B4722',   // brand accent / CTA
-  goldLight: '#B85834',   // hover
+  page:      'var(--iv-black)',   // warm ivory
+  parchment: 'var(--iv-deep-green)',   // warm parchment — card bg
+  card:      'var(--iv-green)',   // card surface
+  charcoal:  'var(--iv-charcoal)',   // primary text
+  espresso:  'var(--iv-text)',   // body text
+  muted:     'var(--iv-text-muted)',   // muted text
+  gold:      'var(--iv-gold)',   // brand accent / CTA
+  goldLight: 'var(--iv-gold-light)',   // hover
   border:    'rgba(155, 71, 34,0.14)',
   borderFocus:'rgba(155, 71, 34,0.5)',
 }

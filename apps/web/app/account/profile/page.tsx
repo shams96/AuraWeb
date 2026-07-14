@@ -7,13 +7,13 @@ import Link from 'next/link'
 import { ArrowLeft, User, Lock, CheckCircle2, Loader2 } from 'lucide-react'
 
 const C = {
-  page:      '#FDFAF5',
-  parchment: '#F4EAE2',
-  card:      '#EDE8E0',
-  charcoal:  '#1A1614',
-  espresso:  '#3D2B20',
-  muted:     '#7A5C4E',
-  gold:      '#9B4722',
+  page:      'var(--iv-black)',
+  parchment: 'var(--iv-deep-green)',
+  card:      'var(--iv-green)',
+  charcoal:  'var(--iv-charcoal)',
+  espresso:  'var(--iv-text)',
+  muted:     'var(--iv-text-muted)',
+  gold:      'var(--iv-gold)',
   border:    'rgba(155, 71, 34,0.14)',
 }
 

@@ -5,11 +5,11 @@ import { ArrowLeft } from 'lucide-react'
 export const metadata: Metadata = { title: 'Checkout Cancelled — LIRI ROMA' }
 
 const C = {
-  page:      '#FDFAF5',
-  parchment: '#F4EAE2',
-  charcoal:  '#1A1614',
-  muted:     '#7A5C4E',
-  gold:      '#9B4722',
+  page:      'var(--iv-black)',
+  parchment: 'var(--iv-deep-green)',
+  charcoal:  'var(--iv-charcoal)',
+  muted:     'var(--iv-text-muted)',
+  gold:      'var(--iv-gold)',
   border:    'rgba(155, 71, 34,0.14)',
 }
 
