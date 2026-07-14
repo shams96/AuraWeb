@@ -267,7 +267,7 @@ export function GrandDoor() {
               padding: '2rem',
             }}
           >
-            {/* LR — the house mark */}
+            {/* RL — the house monogram */}
             <span
               style={{
                 fontFamily: 'var(--iv-font-serif)',
@@ -278,7 +278,7 @@ export function GrandDoor() {
                 lineHeight: 1,
               }}
             >
-              LR
+              RL
             </span>
             <span
               className="gd-enter-pulse"
