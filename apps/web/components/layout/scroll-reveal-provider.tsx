@@ -15,6 +15,12 @@ export function ScrollRevealProvider() {
   useEffect(() => {
     if (typeof window === 'undefined') return
 
+    // Progressive enhancement contract: [data-reveal] elements carry inline
+    // opacity:0, which globals.css force-overrides to visible until this
+    // class exists. Content is never invisible when JS is absent or
+    // hydration fails — the reveal is an enhancement, not a dependency.
+    document.documentElement.classList.add('iv-reveal-ready')
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -51,6 +57,7 @@ export function ScrollRevealProvider() {
     mutation.observe(document.body, { childList: true, subtree: true })
 
     return () => {
+      document.documentElement.classList.remove('iv-reveal-ready')
       clearTimeout(debounceTimer)
       observer.disconnect()
       mutation.disconnect()

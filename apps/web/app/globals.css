@@ -990,6 +990,36 @@ html, body {
 .iv-noise > * { position: relative; z-index: 1; }
 
 /* ═══════════════════════════════════════════════════════════════════════
+   REVEAL SAFETY NET — content is visible unless the reveal system is live.
+   [data-reveal] elements ship with inline opacity:0; ScrollRevealProvider
+   adds .iv-reveal-ready to <html> when its observer is running. If JS is
+   blocked, hydration dies, or the provider unmounts, everything shows.
+   Whole sections rendering as blank ground is never acceptable.
+   ═══════════════════════════════════════════════════════════════════════ */
+html:not(.iv-reveal-ready) [data-reveal] {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   SECTION RHYTHM — one vertical cadence, sitewide.
+   Homepage sections previously mixed py-16/20/24/32 and inline clamps,
+   stacking up to ~300px of empty ground at some boundaries. This rule
+   gives every top-level section the same breath. !important intentionally
+   outranks the per-section Tailwind classes and inline paddings — the
+   rhythm is a system decision, not a per-section one.
+   ═══════════════════════════════════════════════════════════════════════ */
+main > section {
+  padding-top: clamp(4rem, 9vh, 6.5rem) !important;
+  padding-bottom: clamp(4rem, 9vh, 6.5rem) !important;
+}
+/* full-bleed stages manage their own space */
+main > section.gd-stage {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
    GRAND DOOR — The room behind the doors
    Deep Garden Green interior with soft light from above. The composition
    is editorial: words on the left, the product photograph on the right,
