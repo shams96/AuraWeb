@@ -141,7 +141,7 @@ export default function AccountDashboardPage() {
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 6 }}>
                   <Sparkles size={12} style={{ color: C.gold }} />
                   <span style={{ fontSize: '0.65rem', fontWeight: 900, letterSpacing: '0.3em', textTransform: 'uppercase', color: C.gold }}>
-                    Your Skin Journey
+                    Your Skin Story
                   </span>
                 </div>
                 <p style={{ fontSize: '0.95rem', fontWeight: 700, color: C.charcoal, margin: '0 0 2px', fontFamily: 'var(--iv-font-serif)' }}>
