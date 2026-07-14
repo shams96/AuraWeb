@@ -1,5 +1,6 @@
 'use client'
 
+import { Wordmark } from '@/components/brand/wordmark'
 import { Suspense, useState, useTransition } from 'react'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
@@ -50,7 +51,7 @@ function LoginForm() {
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 70% 30%, rgba(250,214,201,0.18) 0%, transparent 60%)' }} />
         <div className="relative z-10 text-center px-12 space-y-8">
           <Link href="/" className="inline-flex items-center gap-3">
-            <span style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.6rem', fontWeight: 700, color: '#FDFAF5', letterSpacing: '0.1em' }}>LIRI ROMA</span>
+            <Wordmark size="1.6rem" color="#FDFAF5" />
             <span style={{ width: 1, height: 20, background: 'rgba(250,214,201,0.35)', display: 'inline-block' }} />
             <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#FAD6C9', letterSpacing: '0.22em', textTransform: 'uppercase' }}>Milano</span>
           </Link>
@@ -79,7 +80,7 @@ function LoginForm() {
       {/* Right form panel */}
       <div className="flex-1 flex flex-col items-center justify-center px-6 py-16">
         <Link href="/" className="lg:hidden mb-10">
-          <span style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.3rem', fontWeight: 700, color: 'var(--iv-white)', letterSpacing: '0.1em' }}>LIRI ROMA</span>
+          <Wordmark size="1.3rem" color="var(--iv-white)" />
         </Link>
 
         <div className="w-full max-w-md space-y-7">

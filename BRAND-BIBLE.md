@@ -7,7 +7,7 @@
 ## House
 
 - **House:** LIRI ROMA — The House of Liri™
-- **Wordmark lockup:** LIRI ROMA stacks on two lines — LIRI over ROMA — wherever the mark displays large (door, packaging, auth panels). Single line only in running text and compact headers.
+- **Wordmark lockup:** LIRI ROMA sets on ONE line, everywhere — header, footer, auth panels, emails, packaging web mocks. One uniform treatment across all placements (same casing, spacing, and styling); never stacked, never restyled per-page.
 - **Tagline (permanent):** Your skin is a story worth honoring.
 - **Campaign / social flex:** Your skin is a story worth telling.
 - **Mission:** Advancing Skin Intelligence™

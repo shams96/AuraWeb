@@ -1,5 +1,6 @@
 'use client'
 
+import { Wordmark } from '@/components/brand/wordmark'
 import { useState, useEffect } from 'react'
 import { useCart } from '@/lib/cart-context'
 import { useSession } from 'next-auth/react'
@@ -123,9 +124,7 @@ export default function CheckoutPage() {
         <Link href="/shop" style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.2em', textTransform: 'uppercase', color: C.muted, textDecoration: 'none' }}>
           <ArrowLeft size={12} /> Back to Collections
         </Link>
-        <span style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.1rem', fontWeight: 700, color: C.charcoal, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-          LIRI <em style={{ color: C.gold }}>ROMA</em>
-        </span>
+        <Wordmark size="1.1rem" />
         <div style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: '0.75rem', fontWeight: 700, color: C.muted, letterSpacing: '0.15em', textTransform: 'uppercase' }}>
           <Shield size={11} style={{ color: C.gold }} /> Secure
         </div>

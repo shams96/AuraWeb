@@ -1,5 +1,6 @@
 'use client'
 
+import { Wordmark } from '@/components/brand/wordmark'
 import { useState, useTransition } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -118,9 +119,7 @@ export default function RegisterPage() {
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 30% 70%, rgba(250,214,201,0.18) 0%, transparent 60%)' }} />
         <div className="relative z-10 text-center px-12 space-y-10">
           <Link href="/" className="inline-block">
-            <span style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.5rem', fontWeight: 700, color: '#FDFAF5', letterSpacing: '0.1em' }}>
-              LIRI ROMA
-            </span>
+            <Wordmark size="1.5rem" color="#FDFAF5" />
           </Link>
           <div className="space-y-5">
             {[
@@ -146,7 +145,7 @@ export default function RegisterPage() {
       {/* Right form panel */}
       <div className="flex-1 flex flex-col items-center justify-center px-6 py-16 overflow-y-auto">
         <Link href="/" className="lg:hidden mb-10">
-          <span style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.3rem', fontWeight: 700, color: 'var(--iv-white)', letterSpacing: '0.1em' }}>LIRI ROMA</span>
+          <Wordmark size="1.3rem" color="var(--iv-white)" />
         </Link>
 
         <div className="w-full max-w-md space-y-6">

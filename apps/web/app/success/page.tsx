@@ -1,3 +1,4 @@
+import { Wordmark } from '@/components/brand/wordmark'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { CheckCircle2, ArrowRight } from 'lucide-react'
@@ -22,8 +23,8 @@ export default function SuccessPage() {
     <div style={{ minHeight: '100vh', background: C.page }}>
       {/* Header */}
       <div style={{ borderBottom: `1px solid ${C.border}`, padding: '20px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <Link href="/" style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.1rem', fontWeight: 700, color: C.charcoal, letterSpacing: '0.1em', textTransform: 'uppercase', textDecoration: 'none' }}>
-          LIRI <em style={{ color: C.gold }}>ROMA</em>
+        <Link href="/" style={{ textDecoration: 'none' }}>
+          <Wordmark size="1.1rem" />
         </Link>
       </div>
 
