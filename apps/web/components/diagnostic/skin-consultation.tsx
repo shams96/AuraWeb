@@ -532,6 +532,7 @@ export function SkinConsultation() {
     if (qRealIdx === 5) return answers.q6 !== null && String(answers.q6) === value
     if (qRealIdx === 6) return answers.q7.includes(value)
     if (qRealIdx === 7) return answers.q8 === value
+    if (qRealIdx === 8) return answers.qMedical.includes(value)   // safety screen
     return false
   }
 

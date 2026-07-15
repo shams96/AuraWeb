@@ -164,9 +164,6 @@ export function Footer() {
             <Link href="/terms" className="text-[10px] font-black uppercase tracking-widest hover:text-iv-gold transition-colors" style={{ color: 'rgba(250,247,240,0.65)' }}>
               Terms
             </Link>
-            <Link href="/accessibility" className="text-[10px] font-black uppercase tracking-widest hover:text-iv-gold transition-colors" style={{ color: 'rgba(250,247,240,0.65)' }}>
-              Accessibility
-            </Link>
           </div>
           <p className="text-[10px] font-black uppercase tracking-widest" style={{ color: 'rgba(250,247,240,0.55)' }}>
             &copy; {new Date().getFullYear()} LIRI ROMA · Allen, TX · Isola del Liri, Italy

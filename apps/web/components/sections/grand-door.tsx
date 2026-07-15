@@ -408,7 +408,13 @@ export function GrandDoor() {
           }}
         >
           <Link
-            href="/assessment"
+            href="#skin-scan"
+            onClick={e => {
+              // /assessment does not exist as a route — the skin concierge
+              // (LIRI Skin Assessment™) lives on this same page below the door
+              e.preventDefault()
+              document.getElementById('skin-scan')?.scrollIntoView({ behavior: 'smooth' })
+            }}
             style={{
               fontFamily: 'var(--iv-font-body)',
               fontSize: '0.78rem',
