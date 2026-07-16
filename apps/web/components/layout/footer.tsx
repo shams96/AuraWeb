@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import { Facebook, Instagram, Twitter, Mail, Phone, MapPin, Heart } from 'lucide-react'
-import { Wordmark } from '@/components/brand/wordmark'
 
 export function Footer() {
   const footerLinks = {
@@ -43,7 +42,7 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2 space-y-8">
             <div className="space-y-1">
-              <Wordmark size="1.6rem" color="var(--iv-white)" />
+              <span className="iv-type-h2 font-semibold text-iv-white uppercase tracking-tight">LIRI <span className="text-iv-gold italic">ROMA</span></span>
             </div>
             <p className="text-iv-cream text-opacity-60 leading-relaxed font-light text-sm max-w-sm">
               The world's first Adaptive Skin Science™ house. La Bella Figura — the Italian practice of living beautifully — expressed through biological resilience. Formulated at Isola del Liri, Italy.
@@ -164,9 +163,6 @@ export function Footer() {
             </Link>
             <Link href="/terms" className="text-[10px] font-black uppercase tracking-widest hover:text-iv-gold transition-colors" style={{ color: 'rgba(250,247,240,0.65)' }}>
               Terms
-            </Link>
-            <Link href="/accessibility" className="text-[10px] font-black uppercase tracking-widest hover:text-iv-gold transition-colors" style={{ color: 'rgba(250,247,240,0.65)' }}>
-              Accessibility
             </Link>
           </div>
           <p className="text-[10px] font-black uppercase tracking-widest" style={{ color: 'rgba(250,247,240,0.55)' }}>

@@ -1,0 +1,45 @@
+{
+  "assessments": [
+    {
+      "id": "1c8546bc-91af-4e8b-8d03-8623b8aa5e41",
+      "userId": null,
+      "guestId": null,
+      "mode": "discovery",
+      "completedAt": "2026-07-15T20:13:06.785Z",
+      "answers": {
+        "q1": "hydration",
+        "q2": 3,
+        "q3": 2,
+        "q4": [
+          "Fine lines or wrinkles",
+          "Loss of firmness"
+        ],
+        "q5": 2,
+        "q6": 1,
+        "q7": [
+          "Urban environment with high pollution"
+        ],
+        "qMedical": [
+          "Persistent, painful or cystic breakouts"
+        ],
+        "q8": "balanced"
+      },
+      "profile": {
+        "doScore": 9,
+        "srScore": 8,
+        "wScore": 10,
+        "pScore": 0,
+        "hydration": "oily",
+        "sensitivity": "sensitive",
+        "profileLabel": "Oily-Sensitive"
+      },
+      "protocol": "t3",
+      "concerns": [
+        "Fine lines or wrinkles",
+        "Loss of firmness"
+      ],
+      "previousAssessmentId": null,
+      "improvementNarrative": null
+    }
+  ]
+}

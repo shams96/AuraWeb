@@ -532,6 +532,7 @@ export function SkinConsultation() {
     if (qRealIdx === 5) return answers.q6 !== null && String(answers.q6) === value
     if (qRealIdx === 6) return answers.q7.includes(value)
     if (qRealIdx === 7) return answers.q8 === value
+    if (qRealIdx === 8) return answers.qMedical.includes(value)   // safety screen
     return false
   }
 
@@ -1140,9 +1141,9 @@ export function SkinConsultation() {
                 className="w-full flex items-center justify-center gap-3 rounded-2xl transition-all"
                 style={{
                   padding: '18px 32px',
-                  background: added ? 'rgba(0,75,55,0.10)' : 'var(--iv-gold)',
-                  color: added ? 'var(--iv-garden)' : '#FFFFFF',
-                  border: added ? '1px solid rgba(0,75,55,0.28)' : 'none',
+                  background: added ? 'rgba(74,222,128,0.15)' : 'var(--iv-gold)',
+                  color: added ? '#4ade80' : 'var(--iv-white)',
+                  border: added ? '1px solid rgba(74,222,128,0.30)' : 'none',
                   fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.18em', textTransform: 'uppercase',
                 }}
               >
