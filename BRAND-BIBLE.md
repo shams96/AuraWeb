@@ -7,14 +7,15 @@
 ## House
 
 - **House:** LIRI ROMA — The House of Liri™
+- **Wordmark lockup:** LIRI ROMA sets on ONE line, everywhere — header, footer, auth panels, emails, packaging web mocks. One uniform treatment across all placements (same casing, spacing, and styling); never stacked, never restyled per-page.
 - **Tagline (permanent):** Your skin is a story worth honoring.
 - **Campaign / social flex:** Your skin is a story worth telling.
 - **Mission:** Advancing Skin Intelligence™
 - **Formulation Philosophy:** Liri Intelligence™
 - **Brand Enemy:** Modern Biological Stress™
-- **Monogram — Launch Cap Mark:** Interlocking "LR" (L+R merged via shared stem), flat matte champagne gold #D6C5A0, no ring. Tooling-simple, embossing-ready. Vector artist to refine R bowl + confirm flat gold.
-- **Monogram — Signature Cue (design brief):** To avoid a generic luxury-serif read, the vector artist explores ONE provenance cue unique to the House — the waterfalls of Isola del Liri (le cascate). A whisper, not a picture: a single fine line or three subtle descending strokes worked into the LR (crossbar, baseline, or R terminal as a river bend). Minimal, embossing-safe. This makes the mark unmistakably LIRI ROMA.
-- **Monogram — Provenance Seal (print only):** Emerald #1A5C3A double ring + gold "LR" center, arced "LIRI ROMA" / "ISOLA DEL LIRI · ITALIA". Box/insert/web only, never cap tooling. Text set by vector artist — no AI lettering ships.
+- **Monogram — Launch Cap Mark:** Interlocking "RL" (R+L merged via shared stem), flat matte champagne gold #D6C5A0, no ring. Tooling-simple, embossing-ready. Vector artist to refine R bowl + confirm flat gold.
+- **Monogram — Signature Cue (design brief):** To avoid a generic luxury-serif read, the vector artist explores ONE provenance cue unique to the House — the waterfalls of Isola del Liri (le cascate). A whisper, not a picture: a single fine line or three subtle descending strokes worked into the RL (crossbar, baseline, or R terminal as a river bend). Minimal, embossing-safe. This makes the mark unmistakably LIRI ROMA.
+- **Monogram — Provenance Seal (print only):** Emerald #1A5C3A double ring + gold "RL" center, arced "LIRI ROMA" / "ISOLA DEL LIRI · ITALIA". Box/insert/web only, never cap tooling. Text set by vector artist — no AI lettering ships.
 - **Positioning:** Biological need over chronological age. Matched to your biology, not your birthdate.
 
 ## Legacy names (retired — never use)

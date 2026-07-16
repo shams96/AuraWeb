@@ -1,5 +1,6 @@
 'use client'
 
+import { Wordmark } from '@/components/brand/wordmark'
 import { Suspense, useState, useTransition } from 'react'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
@@ -50,7 +51,7 @@ function LoginForm() {
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 70% 30%, rgba(250,214,201,0.18) 0%, transparent 60%)' }} />
         <div className="relative z-10 text-center px-12 space-y-8">
           <Link href="/" className="inline-flex items-center gap-3">
-            <span style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.6rem', fontWeight: 700, color: '#FDFAF5', letterSpacing: '0.1em' }}>LIRI ROMA</span>
+            <Wordmark size="1.6rem" color="#FDFAF5" />
             <span style={{ width: 1, height: 20, background: 'rgba(250,214,201,0.35)', display: 'inline-block' }} />
             <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#FAD6C9', letterSpacing: '0.22em', textTransform: 'uppercase' }}>Milano</span>
           </Link>
@@ -79,12 +80,12 @@ function LoginForm() {
       {/* Right form panel */}
       <div className="flex-1 flex flex-col items-center justify-center px-6 py-16">
         <Link href="/" className="lg:hidden mb-10">
-          <span style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.3rem', fontWeight: 700, color: 'var(--iv-white)', letterSpacing: '0.1em' }}>LIRI ROMA</span>
+          <Wordmark size="1.3rem" color="var(--iv-white)" />
         </Link>
 
         <div className="w-full max-w-md space-y-7">
           <div className="space-y-2">
-            <h1 style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '2rem', fontWeight: 700, color: 'var(--iv-white)', letterSpacing: '-0.01em' }}>
+            <h1 style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '2rem', fontWeight: 600, color: 'var(--iv-garden)', letterSpacing: '-0.02em' }}>
               Welcome back
             </h1>
             <p style={{ fontSize: '0.875rem', color: 'var(--iv-text-muted)' }}>
@@ -95,17 +96,17 @@ function LoginForm() {
 
           {/* Post-registration banner */}
           {justRegistered && (
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '12px 16px', borderRadius: 8, background: 'rgba(74,222,128,0.08)', border: '1px solid rgba(74,222,128,0.25)' }}>
-              <CheckCircle2 size={16} style={{ color: '#4ade80', flexShrink: 0 }} />
-              <p style={{ fontSize: '0.82rem', color: '#166534', fontWeight: 500 }}>
-                Account created! Sign in below.
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '12px 16px', borderRadius: 8, background: 'rgba(0,75,55,0.06)', border: '1px solid rgba(0,75,55,0.22)' }}>
+              <CheckCircle2 size={16} style={{ color: 'var(--iv-garden)', flexShrink: 0 }} />
+              <p style={{ fontSize: '0.82rem', color: 'var(--iv-garden)', fontWeight: 500 }}>
+                Your account is ready. Sign in below.
               </p>
             </div>
           )}
 
           {/* Error */}
           {error && (
-            <div style={{ padding: '12px 16px', borderRadius: 8, background: 'rgba(248,113,113,0.08)', border: '1px solid rgba(248,113,113,0.25)', fontSize: '0.82rem', color: '#991B1B', fontWeight: 500 }}>
+            <div style={{ padding: '12px 16px', borderRadius: 8, background: 'rgba(155,71,34,0.07)', border: '1px solid rgba(155,71,34,0.25)', fontSize: '0.82rem', color: 'var(--iv-ochre-dark)', fontWeight: 500 }}>
               {error}
             </div>
           )}

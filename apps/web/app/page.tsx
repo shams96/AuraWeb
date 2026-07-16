@@ -18,7 +18,7 @@ import { StickyFooterCTA } from '@/components/sections/sticky-footer-cta'
 export default function HomePage() {
   // Hero product data
   const product = {
-    id: 'isola-vitale-concentrate',
+    id: 'liri-essence',
     name: 'Liri Essence™',
     tagline: 'The first serum formulated for the biological reality of modern life',
     description: 'A precision-concentrated adaptive serum that tends to all four sources of your skin\'s vitality — the energy to renew, the living barrier, the power to protect, and structure that holds — in a single daily ritual. Formulated at Natural You Srl, Isola del Liri, Italy.',
@@ -110,17 +110,17 @@ export default function HomePage() {
           {
             title: 'Assess',
             description: '8 clinically grounded questions map your skin\'s biological stage and current resilience capacity in under 2 minutes',
-            icon: '🔍'
+            icon: 'assess'
           },
           {
             title: 'Align',
             description: 'Your profile is matched to your precise Liri protocol — one of four rituals built around your skin\'s biological stage rather than your age',
-            icon: '⚡'
+            icon: 'align'
           },
           {
             title: 'Adapt',
             description: 'Actives work in biological sequence — renewing from within, strengthening your skin\'s natural resilience, season after season',
-            icon: '🛡️'
+            icon: 'barrier'
           }
         ]}
         timeline={[
@@ -172,7 +172,7 @@ export default function HomePage() {
             concentration: '1.00%'
           }
         ]}
-        mechanism="Formulated in partnership with Natural You Srl, Isola del Liri, our 18 enhanced formulations integrate DWAT Restoration Science and metabolic change preventive protection technologies to outpace conventional luxury brands by 18-24 months."
+        mechanism="Formulated with Natural You Srl at Isola del Liri, each formulation integrates DWAT restoration science with protective actives selected from current dermatological research — and tested before anything is claimed."
       />
       <ResultsTimeline
         timeline={[
@@ -180,37 +180,37 @@ export default function HomePage() {
             period: 'Days 1 – 3',
             title: 'Immediate Sensory Response',
             description: 'Humectant complex draws moisture into the stratum corneum within 24–48 hours. Redness and reactivity visibly calm. Skin feels immediately more comfortable.',
-            icon: '💧'
+            icon: 'hydration'
           },
           {
             period: 'Week 2',
             title: 'Barrier Reinforcement',
             description: 'Bifida Ferment Lysate and Ectoin begin restoring microbiome balance. Transepidermal water loss (TEWL) measurably decreases. Skin holds moisture more efficiently between applications.',
-            icon: '🛡️'
+            icon: 'barrier'
           },
           {
             period: 'Week 4',
             title: 'First Full Skin Cycle',
             description: 'One complete epidermal turnover cycle (~28 days) achieved. Surface texture is visibly smoother. Pore appearance refined. Hydration normalises across all skin types.',
-            icon: '🔄'
+            icon: 'cycle'
           },
           {
             period: 'Week 8',
             title: 'Visible Tone Correction',
-            description: 'metabolic change Protection Complex and antioxidant actives produce measurable tone improvement after two complete turnover cycles. Dark spots begin fading. Radiance markedly increased.',
-            icon: '✨'
+            description: 'Antioxidant actives and the structural support complex produce measurable tone improvement after two complete turnover cycles. Dark spots begin fading. Radiance markedly increased.',
+            icon: 'tone'
           },
           {
             period: 'Week 12',
             title: 'Peptide-Driven Structural Change',
-            description: 'Cellular Renewal Complexs show first clinical results at the three-month mark. Collagen synthesis stimulated by L-Ornithine produces a measurable early improvement in skin firmness and bounce.',
-            icon: '📈'
+            description: 'The Cellular Renewal Complex shows its first clinical results at the three-month mark. Collagen synthesis stimulated by L-Ornithine produces a measurable early improvement in skin firmness and bounce.',
+            icon: 'structure'
           },
           {
             period: 'Week 24',
             title: 'Cellular Transformation',
             description: 'All four vitality systems at full response. NMN-supported cellular energy restores dermal metabolism. Senescence reduction measurable. Volume and firmness improvements are clinically significant.',
-            icon: '🌟'
+            icon: 'transformation'
           }
         ]}
       />

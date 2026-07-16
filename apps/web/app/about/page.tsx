@@ -1,3 +1,4 @@
+import { Wordmark } from '@/components/brand/wordmark'
 import type { Metadata } from 'next'
 import { MapPin, Award, Heart, Beaker } from 'lucide-react'
 
@@ -21,7 +22,7 @@ export default function AboutPage() {
           <div className="inline-block border border-iv-gold/20 rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-12 bg-iv-black/40 backdrop-blur-md text-iv-gold">
             La Bella Figura
           </div>
-          <h1 className="iv-type-display font-bold mb-8 tracking-tighter italic serif text-iv-gold">LIRI ROMA</h1>
+          <h1 className="iv-type-display mb-8"><Wordmark size="1em" color="var(--iv-white)" /></h1>
           <h2 className="iv-type-h3 font-light text-iv-cream/70 mb-12 leading-relaxed">
             In Italy, beauty has never been a product.<br />
             <span className="text-iv-white font-semibold italic">It has been a philosophy.</span>

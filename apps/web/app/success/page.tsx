@@ -1,3 +1,4 @@
+import { Wordmark } from '@/components/brand/wordmark'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { CheckCircle2, ArrowRight } from 'lucide-react'
@@ -8,12 +9,12 @@ export const metadata: Metadata = {
 }
 
 const C = {
-  page:    '#FDFAF5',
-  parch:   '#F4EAE2',
-  card:    '#EDE8E0',
-  charcoal:'#1A1614',
-  muted:   '#7A5C4E',
-  gold:    '#9B4722',
+  page:    'var(--iv-black)',
+  parch:   'var(--iv-deep-green)',
+  card:    'var(--iv-green)',
+  charcoal:'var(--iv-charcoal)',
+  muted:   'var(--iv-text-muted)',
+  gold:    'var(--iv-gold)',
   border:  'rgba(155, 71, 34,0.14)',
 }
 
@@ -22,8 +23,8 @@ export default function SuccessPage() {
     <div style={{ minHeight: '100vh', background: C.page }}>
       {/* Header */}
       <div style={{ borderBottom: `1px solid ${C.border}`, padding: '20px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <Link href="/" style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.1rem', fontWeight: 700, color: C.charcoal, letterSpacing: '0.1em', textTransform: 'uppercase', textDecoration: 'none' }}>
-          LIRI <em style={{ color: C.gold }}>ROMA</em>
+        <Link href="/" style={{ textDecoration: 'none' }}>
+          <Wordmark size="1.1rem" />
         </Link>
       </div>
 
@@ -39,7 +40,7 @@ export default function SuccessPage() {
         </p>
 
         {/* Heading */}
-        <h1 style={{ fontFamily: 'var(--iv-font-serif)', fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontStyle: 'italic', fontWeight: 600, color: C.charcoal, margin: '0 0 16px', lineHeight: 1.15 }}>
+        <h1 style={{ fontFamily: 'var(--iv-font-serif)', fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 600, letterSpacing: '-0.02em', color: 'var(--iv-garden)', margin: '0 0 16px', lineHeight: 1.15 }}>
           Your ritual is on its way.
         </h1>
         <p style={{ fontSize: '0.95rem', color: C.muted, lineHeight: 1.8, marginBottom: 40, fontWeight: 300, maxWidth: 480, margin: '0 auto 40px' }}>

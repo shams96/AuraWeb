@@ -1,3 +1,4 @@
+import { Wordmark } from '@/components/brand/wordmark'
 import { redirect } from 'next/navigation'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
@@ -15,7 +16,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
       {/* Sidebar */}
       <aside className="w-60 flex-shrink-0 border-r flex flex-col" style={{ borderColor: 'rgba(155, 71, 34,0.14)', background: 'var(--iv-deep-green)' }}>
         <div className="p-6 border-b" style={{ borderColor: 'rgba(155, 71, 34,0.14)' }}>
-          <p className="text-[11px] font-black uppercase tracking-[0.3em]" style={{ color: 'var(--iv-gold)' }}>LIRI ROMA</p>
+          <p><Wordmark size="0.95rem" /></p>
           <p className="text-xs text-iv-cream/40 mt-1 font-light">Admin Portal</p>
         </div>
         <AdminNav />

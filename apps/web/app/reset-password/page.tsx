@@ -6,12 +6,12 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { Eye, EyeOff, CheckCircle2, Loader2, AlertCircle } from 'lucide-react'
 
 const C = {
-  page:      '#FDFAF5',
-  parchment: '#F4EAE2',
-  charcoal:  '#1A1614',
-  espresso:  '#3D2B20',
-  muted:     '#7A5C4E',
-  gold:      '#9B4722',
+  page:      'var(--iv-black)',
+  parchment: 'var(--iv-deep-green)',
+  charcoal:  'var(--iv-charcoal)',
+  espresso:  'var(--iv-text)',
+  muted:     'var(--iv-text-muted)',
+  gold:      'var(--iv-gold)',
   border:    'rgba(155, 71, 34,0.14)',
 }
 
@@ -87,7 +87,7 @@ function ResetPasswordForm() {
     <>
       <div style={{ marginBottom: 32 }}>
         <p style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.35em', textTransform: 'uppercase', color: C.gold, marginBottom: 8 }}>Password Reset</p>
-        <h1 style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.8rem', fontStyle: 'italic', fontWeight: 600, color: C.charcoal, margin: '0 0 10px' }}>
+        <h1 style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.8rem', fontWeight: 600, letterSpacing: '-0.02em', color: 'var(--iv-garden)', margin: '0 0 10px' }}>
           Choose a new password
         </h1>
         <p style={{ fontSize: '0.8rem', color: C.muted, margin: 0, lineHeight: 1.6 }}>

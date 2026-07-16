@@ -1,5 +1,6 @@
 'use client'
 
+import { Wordmark } from '@/components/brand/wordmark'
 import { useEffect, useState } from 'react'
 import { useSession, signOut } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
@@ -18,13 +19,13 @@ interface SkinJourneyData {
 }
 
 const C = {
-  page:      '#FDFAF5',
-  parchment: '#F4EAE2',
-  card:      '#EDE8E0',
-  charcoal:  '#1A1614',
-  espresso:  '#3D2B20',
-  muted:     '#7A5C4E',
-  gold:      '#9B4722',
+  page:      'var(--iv-black)',
+  parchment: 'var(--iv-deep-green)',
+  card:      'var(--iv-green)',
+  charcoal:  'var(--iv-charcoal)',
+  espresso:  'var(--iv-text)',
+  muted:     'var(--iv-text-muted)',
+  gold:      'var(--iv-gold)',
   border:    'rgba(155, 71, 34,0.14)',
 }
 
@@ -90,8 +91,8 @@ export default function AccountDashboardPage() {
 
       {/* Header */}
       <div style={{ borderBottom: `1px solid ${C.border}`, padding: '20px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: C.page }}>
-        <Link href="/" style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.1rem', fontWeight: 700, color: C.charcoal, letterSpacing: '0.1em', textTransform: 'uppercase', textDecoration: 'none' }}>
-          LIRI <em style={{ color: C.gold }}>ROMA</em>
+        <Link href="/" style={{ textDecoration: 'none' }}>
+          <Wordmark size="1.1rem" />
         </Link>
         <button
           onClick={() => signOut({ callbackUrl: '/' })}
@@ -108,7 +109,7 @@ export default function AccountDashboardPage() {
           <p style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.35em', textTransform: 'uppercase', color: C.gold, marginBottom: 8 }}>
             {isB2B ? 'Professional Account' : 'Your Account'}
           </p>
-          <h1 style={{ fontFamily: 'var(--iv-font-serif)', fontSize: 'clamp(1.8rem,4vw,2.4rem)', fontStyle: 'italic', fontWeight: 600, color: C.charcoal, margin: 0 }}>
+          <h1 style={{ fontFamily: 'var(--iv-font-serif)', fontSize: 'clamp(1.8rem,4vw,2.4rem)', fontWeight: 600, letterSpacing: '-0.02em', color: 'var(--iv-garden)', margin: 0 }}>
             Welcome back, {firstName}.
           </h1>
           <p style={{ fontSize: '0.85rem', color: C.muted, marginTop: 4, fontWeight: 300, fontStyle: 'italic', fontFamily: 'var(--iv-font-serif)' }}>
@@ -140,7 +141,7 @@ export default function AccountDashboardPage() {
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 6 }}>
                   <Sparkles size={12} style={{ color: C.gold }} />
                   <span style={{ fontSize: '0.65rem', fontWeight: 900, letterSpacing: '0.3em', textTransform: 'uppercase', color: C.gold }}>
-                    Your Skin Journey
+                    Your Skin Story
                   </span>
                 </div>
                 <p style={{ fontSize: '0.95rem', fontWeight: 700, color: C.charcoal, margin: '0 0 2px', fontFamily: 'var(--iv-font-serif)' }}>

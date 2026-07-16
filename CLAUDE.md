@@ -74,9 +74,11 @@ Always restore the proxy URL after pushing.
 
 ## Brand Identity
 
-**Brand:** Isola Vitale
+**Brand:** LIRI ROMA — The House of Liri™ (renamed from Isola Vitale, 2026-07; the old name is retired — see BRAND-BIBLE.md "Legacy names")
+**Wordmark lockup:** LIRI ROMA sets on ONE line everywhere, with one uniform treatment across all placements — never stacked, never restyled per-page.
+**Monogram:** **RL** (not LR — owner-confirmed 2026-07-13). See BRAND-BIBLE.md for cap-mark and provenance-seal specs.
 **Philosophy:** La Bella Figura — the Italian practice of living beautifully
-**Positioning:** Italy owns luxury beauty (Gucci, Prada, Armani, Santa Maria Novella). Isola Vitale draws from that inheritance. Science is proof, not pitch. Ritual replaces protocol. Emotion leads, ingredients follow.
+**Positioning:** Italy owns luxury beauty (Gucci, Prada, Armani, Santa Maria Novella). LIRI ROMA draws from that inheritance. Science is proof, not pitch. Ritual replaces protocol. Emotion leads, ingredients follow.
 **Formulated:** Natural You Srl, Isola del Liri, Lazio, Italy
 **HQ:** Allen, Texas
 

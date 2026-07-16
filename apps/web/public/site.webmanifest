@@ -1,11 +1,11 @@
 {
-  "name": "Isola Vitale",
-  "short_name": "Isola Vitale",
-  "description": "The Luxury House of Adaptive Skin Science",
+  "name": "LIRI ROMA",
+  "short_name": "LIRI ROMA",
+  "description": "The House of Liri — luxury Italian skincare from Isola del Liri",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#FDFAF5",
-  "theme_color": "#913832",
+  "background_color": "#F0F2EB",
+  "theme_color": "#004B37",
   "icons": [
     {
       "src": "/favicon-16x16.png",

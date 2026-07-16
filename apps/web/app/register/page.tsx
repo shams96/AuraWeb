@@ -1,5 +1,6 @@
 'use client'
 
+import { Wordmark } from '@/components/brand/wordmark'
 import { useState, useTransition } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -36,10 +37,10 @@ export default function RegisterPage() {
 
   function passwordStrength(p: string): { label: string; color: string; width: string } {
     if (p.length === 0)  return { label: '',        color: 'transparent',          width: '0%'   }
-    if (p.length < 8)    return { label: 'Too short', color: '#f87171',            width: '20%'  }
-    if (p.length < 12)   return { label: 'Fair',      color: '#fbbf24',            width: '50%'  }
-    if (/[^a-zA-Z0-9]/.test(p)) return { label: 'Strong', color: '#4ade80',       width: '100%' }
-    return { label: 'Good', color: '#60a5fa', width: '75%' }
+    if (p.length < 8)    return { label: 'Too short', color: '#C26039',            width: '20%'  }
+    if (p.length < 12)   return { label: 'Fair',      color: '#B85834',            width: '50%'  }
+    if (/[^a-zA-Z0-9]/.test(p)) return { label: 'Strong', color: '#004B37',       width: '100%' }
+    return { label: 'Good', color: '#1F5F4B', width: '75%' }
   }
 
   const strength = passwordStrength(password)
@@ -118,9 +119,7 @@ export default function RegisterPage() {
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 30% 70%, rgba(250,214,201,0.18) 0%, transparent 60%)' }} />
         <div className="relative z-10 text-center px-12 space-y-10">
           <Link href="/" className="inline-block">
-            <span style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.5rem', fontWeight: 700, color: '#FDFAF5', letterSpacing: '0.1em' }}>
-              LIRI ROMA
-            </span>
+            <Wordmark size="1.5rem" color="#FDFAF5" />
           </Link>
           <div className="space-y-5">
             {[
@@ -137,7 +136,7 @@ export default function RegisterPage() {
           </div>
           <div style={{ paddingTop: 8, borderTop: '1px solid rgba(253,250,245,0.1)' }}>
             <p style={{ fontSize: '0.75rem', color: 'rgba(253,250,245,0.35)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
-              A Shanill House Formulation
+              Formulated at Isola del Liri, Italia
             </p>
           </div>
         </div>
@@ -146,12 +145,12 @@ export default function RegisterPage() {
       {/* Right form panel */}
       <div className="flex-1 flex flex-col items-center justify-center px-6 py-16 overflow-y-auto">
         <Link href="/" className="lg:hidden mb-10">
-          <span style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.3rem', fontWeight: 700, color: 'var(--iv-white)', letterSpacing: '0.1em' }}>LIRI ROMA</span>
+          <Wordmark size="1.3rem" color="var(--iv-white)" />
         </Link>
 
         <div className="w-full max-w-md space-y-6">
           <div className="space-y-2">
-            <h1 style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.9rem', fontWeight: 700, color: 'var(--iv-white)', letterSpacing: '-0.01em' }}>
+            <h1 style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.9rem', fontWeight: 600, color: 'var(--iv-garden)', letterSpacing: '-0.02em' }}>
               Create your account
             </h1>
             <p style={{ fontSize: '0.875rem', color: 'var(--iv-text-muted)' }}>
@@ -181,7 +180,7 @@ export default function RegisterPage() {
           </div>
 
           {error && (
-            <div style={{ padding: '12px 16px', borderRadius: 8, background: 'rgba(248,113,113,0.08)', border: '1px solid rgba(248,113,113,0.25)', fontSize: '0.82rem', color: '#991B1B', fontWeight: 500 }}>
+            <div style={{ padding: '12px 16px', borderRadius: 8, background: 'rgba(155,71,34,0.07)', border: '1px solid rgba(155,71,34,0.25)', fontSize: '0.82rem', color: 'var(--iv-ochre-dark)', fontWeight: 500 }}>
               {error}
             </div>
           )}
@@ -240,13 +239,13 @@ export default function RegisterPage() {
                 placeholder="••••••••"
                 style={{
                   ...INPUT,
-                  borderColor: confirmPassword && confirmPassword !== password ? '#f87171' : 'rgba(155, 71, 34,0.18)',
+                  borderColor: confirmPassword && confirmPassword !== password ? 'var(--iv-ochre-light)' : 'rgba(155, 71, 34,0.18)',
                 }}
-                onFocus={e => (e.target.style.borderColor = confirmPassword !== password ? '#f87171' : 'var(--iv-gold)')}
-                onBlur={e  => (e.target.style.borderColor = confirmPassword !== password ? '#f87171' : 'rgba(155, 71, 34,0.18)')}
+                onFocus={e => (e.target.style.borderColor = confirmPassword !== password ? 'var(--iv-ochre-light)' : 'var(--iv-gold)')}
+                onBlur={e  => (e.target.style.borderColor = confirmPassword !== password ? 'var(--iv-ochre-light)' : 'rgba(155, 71, 34,0.18)')}
               />
               {confirmPassword && confirmPassword !== password && (
-                <p style={{ fontSize: '0.75rem', color: '#991B1B', marginTop: 4 }}>Passwords don&apos;t match</p>
+                <p style={{ fontSize: '0.75rem', color: 'var(--iv-ochre-dark)', marginTop: 4 }}>Passwords don&apos;t match</p>
               )}
             </div>
 

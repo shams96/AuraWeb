@@ -52,7 +52,7 @@ const TIERS = [
       'Complimentary 30-min virtual skin consultation',
       'Invitation to Lab Days at Natural You Srl',
       'First access to unreleased formulas',
-      'Annual curated Oro Welcome Box',
+      'Annual Oro Welcome Box, assembled by the house',
       'Co-creation input on new products',
     ],
   },
@@ -61,7 +61,7 @@ const TIERS = [
 const HOW_IT_WORKS = [
   { step: '01', title: 'Create Account', body: 'Register for free. Your point balance starts immediately on your first order.' },
   { step: '02', title: 'Earn Points', body: 'Every purchase, review, and referral earns points. Subscription orders earn 2× points automatically.' },
-  { step: '03', title: 'Unlock Tiers', body: 'Progress through Acqua → Verde → Oro as your balance grows. Tier benefits activate instantly.' },
+  { step: '03', title: 'Rise Through the Tiers', body: 'Progress through Acqua → Verde → Oro as your balance grows. Tier benefits activate instantly.' },
   { step: '04', title: 'Redeem Rewards', body: 'Use points at checkout — 100 points = $1.00 off. Or save for exclusive milestone gifts.' },
 ]
 
@@ -235,7 +235,7 @@ export default function LoyaltyPage() {
             {[
               { pts: '500 pts', gift: 'Deluxe Discovery Set', desc: '4 × 5ml hero actives' },
               { pts: '1,000 pts', gift: 'Full-Size Product', desc: 'Your choice from T1–T2' },
-              { pts: '2,000 pts', gift: 'Oro Welcome Box', desc: 'Curated 6-piece ritual kit' },
+              { pts: '2,000 pts', gift: 'Oro Welcome Box', desc: 'Six-piece ritual kit, assembled by the house' },
               { pts: '5,000 pts', gift: 'Lab Day Invitation', desc: 'Isola del Liri, Italy' },
             ].map(({ pts, gift, desc }) => (
               <div key={pts} className="bg-iv-deep-green/10 border border-iv-gold/10 rounded-2xl p-8 text-center hover:border-iv-gold/30 transition-all">
@@ -281,7 +281,7 @@ export default function LoyaltyPage() {
           <Crown className="w-10 h-10 text-iv-gold mx-auto mb-8" />
           <h2 className="text-4xl font-bold text-iv-white tracking-tighter uppercase mb-6">Join the iv Circle</h2>
           <p className="text-iv-cream/60 mb-10 font-light text-lg leading-relaxed">
-            Create a free account today. Your first order earns your first points — and the journey to Obsidian begins.
+            Create a free account today. Your first order earns your first points — and Oro is closer than you think.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="/register" className="inline-flex items-center justify-center gap-2 bg-iv-gold text-iv-black text-xs font-black uppercase tracking-widest px-10 py-4 rounded-full hover:bg-iv-gold/90 transition-colors">

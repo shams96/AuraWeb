@@ -1,5 +1,6 @@
 'use client'
 
+import { Wordmark } from '@/components/brand/wordmark'
 import { Suspense, useState, useTransition } from 'react'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
@@ -51,9 +52,7 @@ function ProfessionalLoginForm() {
         {/* Top brand */}
         <div className="relative z-10 p-12">
           <Link href="/" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}>
-            <span style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.1rem', fontWeight: 700, color: '#FDFAF5', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-              LIRI ROMA
-            </span>
+            <Wordmark size="1.1rem" color="#FDFAF5" />
             <span style={{ width: 1, height: 16, background: 'rgba(250,214,201,0.3)', display: 'inline-block' }} />
             <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'rgba(250,214,201,0.6)', letterSpacing: '0.22em', textTransform: 'uppercase' }}>
               Professional
@@ -105,8 +104,8 @@ function ProfessionalLoginForm() {
 
           {/* Mobile brand */}
           <div className="lg:hidden mb-10 text-center">
-            <Link href="/" style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.3rem', fontWeight: 700, color: '#FDFAF5', letterSpacing: '0.12em', textTransform: 'uppercase', textDecoration: 'none' }}>
-              LIRI ROMA
+            <Link href="/" style={{ textDecoration: 'none' }}>
+              <Wordmark size="1.3rem" color="#FDFAF5" />
             </Link>
           </div>
 

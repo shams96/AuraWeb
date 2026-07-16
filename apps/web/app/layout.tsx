@@ -103,26 +103,29 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="manifest" href="/site.webmanifest" />
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#F0F2EB" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="referrer" content="origin-when-cross-origin" />
       </head>
       <body className={inter.className}>
         <OrganizationSchema />
         <WebSiteSchema />
-        <Script
-          id="gtm-script"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-              })(window,document,'script','dataLayer','GTM-XXXXXXX');
-            `,
-          }}
-        />
+        {/* GTM loads only when a real container id is configured — never a placeholder */}
+        {process.env.NEXT_PUBLIC_GTM_ID && (
+          <Script
+            id="gtm-script"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
+                (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                })(window,document,'script','dataLayer','${process.env.NEXT_PUBLIC_GTM_ID}');
+              `,
+            }}
+          />
+        )}
         <ScrollProgressBar />
         <div id="root">
           <Providers>
@@ -142,14 +145,16 @@ export default function RootLayout({
             </CartProvider>
           </Providers>
         </div>
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
-            height="0"
-            width="0"
-            style={{ display: 'none', visibility: 'hidden' }}
-          />
-        </noscript>
+        {process.env.NEXT_PUBLIC_GTM_ID && (
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GTM_ID}`}
+              height="0"
+              width="0"
+              style={{ display: 'none', visibility: 'hidden' }}
+            />
+          </noscript>
+        )}
       </body>
     </html>
   )

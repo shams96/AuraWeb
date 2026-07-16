@@ -1,5 +1,6 @@
 'use client'
 
+import { Wordmark } from '@/components/brand/wordmark'
 import { useState, useEffect } from 'react'
 import { useCart } from '@/lib/cart-context'
 import { useSession } from 'next-auth/react'
@@ -12,14 +13,14 @@ import {
 
 // Light-theme palette — matches /login and /register
 const C = {
-  page:      '#FDFAF5',   // warm ivory
-  parchment: '#F4EAE2',   // warm parchment — card bg
-  card:      '#EDE8E0',   // card surface
-  charcoal:  '#1A1614',   // primary text
-  espresso:  '#3D2B20',   // body text
-  muted:     '#7A5C4E',   // muted text
-  gold:      '#9B4722',   // brand accent / CTA
-  goldLight: '#B85834',   // hover
+  page:      'var(--iv-black)',   // warm ivory
+  parchment: 'var(--iv-deep-green)',   // warm parchment — card bg
+  card:      'var(--iv-green)',   // card surface
+  charcoal:  'var(--iv-charcoal)',   // primary text
+  espresso:  'var(--iv-text)',   // body text
+  muted:     'var(--iv-text-muted)',   // muted text
+  gold:      'var(--iv-gold)',   // brand accent / CTA
+  goldLight: 'var(--iv-gold-light)',   // hover
   border:    'rgba(155, 71, 34,0.14)',
   borderFocus:'rgba(155, 71, 34,0.5)',
 }
@@ -123,9 +124,7 @@ export default function CheckoutPage() {
         <Link href="/shop" style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.2em', textTransform: 'uppercase', color: C.muted, textDecoration: 'none' }}>
           <ArrowLeft size={12} /> Back to Collections
         </Link>
-        <span style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.1rem', fontWeight: 700, color: C.charcoal, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-          LIRI <em style={{ color: C.gold }}>ROMA</em>
-        </span>
+        <Wordmark size="1.1rem" />
         <div style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: '0.75rem', fontWeight: 700, color: C.muted, letterSpacing: '0.15em', textTransform: 'uppercase' }}>
           <Shield size={11} style={{ color: C.gold }} /> Secure
         </div>
@@ -141,7 +140,7 @@ export default function CheckoutPage() {
             {/* Heading */}
             <div>
               <p style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.35em', textTransform: 'uppercase', color: C.gold, marginBottom: 8 }}>La Bella Figura</p>
-              <h1 style={{ fontFamily: 'var(--iv-font-serif)', fontSize: 'clamp(1.8rem,4vw,2.6rem)', fontWeight: 600, color: C.charcoal, fontStyle: 'italic', margin: 0 }}>
+              <h1 style={{ fontFamily: 'var(--iv-font-serif)', fontSize: 'clamp(1.8rem,4vw,2.6rem)', fontWeight: 600, color: 'var(--iv-garden)', letterSpacing: '-0.02em', margin: 0 }}>
                 Complete Your Ritual
               </h1>
             </div>

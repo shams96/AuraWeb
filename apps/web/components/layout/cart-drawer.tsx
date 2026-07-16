@@ -44,7 +44,7 @@ function ShippingBar({ subtotal }: { subtotal: number }) {
       <div className="flex items-center justify-between mb-2">
         <div className="flex items-center gap-1.5">
           <Truck size={11} className={unlocked ? 'text-[#2A6B3A]' : 'text-[#9B4722]'} />
-          <span className="text-[11px] font-bold text-[#1A1614]">
+          <span className="text-[11px] font-bold text-iv-charcoal">
             {unlocked ? '🎉 Free shipping unlocked!' : `Add $${remaining.toFixed(0)} for FREE shipping`}
           </span>
         </div>
@@ -87,7 +87,7 @@ function SubscribeToggle({
         <button
           onClick={() => onSwitch(true)}
           className={`flex-1 py-3 text-[11px] font-black uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 ${
-            allSubscribed ? 'bg-[#9B4722] text-white' : 'bg-white text-[#888]'
+            allSubscribed ? 'bg-[#9B4722] text-white' : 'bg-white text-iv-text-muted'
           }`}
         >
           <RefreshCcw size={10} />
@@ -96,7 +96,7 @@ function SubscribeToggle({
         <button
           onClick={() => onSwitch(false)}
           className={`flex-1 py-3 text-[11px] font-black uppercase tracking-wider transition-all ${
-            !allSubscribed ? 'bg-[#1A1614] text-white' : 'bg-white text-[#888]'
+            !allSubscribed ? 'bg-[#1A1614] text-white' : 'bg-white text-iv-text-muted'
           }`}
         >
           One-Time
@@ -107,12 +107,12 @@ function SubscribeToggle({
       {allSubscribed ? (
         <div className="bg-[#FDF5F4] px-4 py-3 space-y-1.5">
           <div className="flex items-center justify-between">
-            <span className="text-[10px] text-[#888]">Without ritual membership</span>
-            <span className="text-[11px] text-[#888] line-through">${retailTotal.toFixed(2)}</span>
+            <span className="text-[10px] text-iv-text-muted">Without ritual membership</span>
+            <span className="text-[11px] text-iv-text-muted line-through">${retailTotal.toFixed(2)}</span>
           </div>
           <div className="flex items-center justify-between">
             <span className="text-[11px] font-black text-[#9B4722]">Your ritual price</span>
-            <span className="text-[15px] font-black text-[#9B4722]">${subTotal.toFixed(2)}<span className="text-[10px] font-normal text-[#888] ml-1">/mo</span></span>
+            <span className="text-[15px] font-black text-[#9B4722]">${subTotal.toFixed(2)}<span className="text-[10px] font-normal text-iv-text-muted ml-1">/mo</span></span>
           </div>
           <div className="flex items-center justify-between pt-1 border-t border-[#F0E8E5]">
             <span className="text-[10px] text-[#9B4722] font-bold">Your saving</span>
@@ -157,7 +157,7 @@ function CartItem({
   return (
     <div className="flex gap-3 bg-white rounded-2xl p-3.5 border border-[#EDE8E0] shadow-sm">
       {/* Thumb */}
-      <div className="w-[68px] h-[68px] rounded-xl overflow-hidden flex-shrink-0 bg-[#F7F4EF]">
+      <div className="w-[68px] h-[68px] rounded-xl overflow-hidden flex-shrink-0 bg-iv-blush">
         <img
           src={item.image ?? '/images/products/isola_collection.png'}
           alt={item.name}
@@ -168,7 +168,7 @@ function CartItem({
       {/* Info */}
       <div className="flex-1 min-w-0">
         <div className="flex items-start justify-between gap-1">
-          <p className="text-[12px] font-semibold text-[#1A1614] leading-snug line-clamp-2">{item.name}</p>
+          <p className="text-[12px] font-semibold text-iv-charcoal leading-snug line-clamp-2">{item.name}</p>
           <button onClick={onRemove} className="text-[#BDBDBD] hover:text-[#9B4722] p-0.5 flex-shrink-0" aria-label="Remove">
             <X size={12} />
           </button>
@@ -186,14 +186,14 @@ function CartItem({
           <div className="flex items-center rounded-lg border border-[#EDE8E0] overflow-hidden">
             <button
               onClick={() => onQty(Math.max(0, item.quantity - 1))}
-              className="px-2 py-1.5 text-[#888] hover:bg-[#F7F4EF] transition-colors"
+              className="px-2 py-1.5 text-iv-text-muted hover:bg-iv-blush transition-colors"
             >
               <Minus size={10} />
             </button>
-            <span className="px-2.5 text-xs font-bold text-[#1A1614]">{item.quantity}</span>
+            <span className="px-2.5 text-xs font-bold text-iv-charcoal">{item.quantity}</span>
             <button
               onClick={() => onQty(item.quantity + 1)}
-              className="px-2 py-1.5 text-[#888] hover:bg-[#F7F4EF] transition-colors"
+              className="px-2 py-1.5 text-iv-text-muted hover:bg-iv-blush transition-colors"
             >
               <Plus size={10} />
             </button>
@@ -201,7 +201,7 @@ function CartItem({
 
           {/* Price */}
           <div className="text-right">
-            <p className="text-sm font-black text-[#1A1614]">${(item.price * item.quantity).toFixed(2)}</p>
+            <p className="text-sm font-black text-iv-charcoal">${(item.price * item.quantity).toFixed(2)}</p>
             {item.isSubscription && (
               <p className="text-[9px] text-[#2A6B3A] font-bold">${perDay}/day</p>
             )}
@@ -218,14 +218,14 @@ function CrossSell({ s, onAdd }: { s: typeof CROSS_SELL[string]; onAdd: () => vo
     <div className="rounded-2xl border border-[#EDE8E0] bg-[#FFFDF9] p-3.5">
       <p className="text-[9px] font-black uppercase tracking-[0.3em] text-[#9B4722] mb-2.5">Complete Your Ritual</p>
       <div className="flex gap-3 items-center">
-        <div className="w-12 h-12 rounded-xl overflow-hidden flex-shrink-0 bg-[#F7F4EF]">
+        <div className="w-12 h-12 rounded-xl overflow-hidden flex-shrink-0 bg-iv-blush">
           <img src={s.image} alt={s.name} className="w-full h-full object-cover" />
         </div>
         <div className="flex-1 min-w-0">
-          <p className="text-[12px] font-semibold text-[#1A1614] leading-snug">{s.name}</p>
-          <p className="text-[10px] text-[#888] mt-0.5">{s.role}</p>
-          <p className="text-xs font-black text-[#1A1614] mt-1">
-            ${s.price} <span className="text-[10px] text-[#888] font-normal">or</span>{' '}
+          <p className="text-[12px] font-semibold text-iv-charcoal leading-snug">{s.name}</p>
+          <p className="text-[10px] text-iv-text-muted mt-0.5">{s.role}</p>
+          <p className="text-xs font-black text-iv-charcoal mt-1">
+            ${s.price} <span className="text-[10px] text-iv-text-muted font-normal">or</span>{' '}
             <span className="text-[#9B4722]">${Math.round(s.price * 0.8)}/mo</span>
           </p>
         </div>
@@ -254,7 +254,7 @@ function WelcomeKit() {
       <div className="grid grid-cols-4 gap-2 p-3">
         {WELCOME_KIT.map(g => (
           <div key={g.label} className="flex flex-col items-center gap-1.5">
-            <div className="w-full aspect-square rounded-xl overflow-hidden bg-[#F7F4EF] border border-[#EDE8E0]">
+            <div className="w-full aspect-square rounded-xl overflow-hidden bg-iv-blush border border-[#EDE8E0]">
               <img src={g.image} alt={g.label} className="w-full h-full object-cover" />
             </div>
             <p className="text-[8px] text-[#666] text-center leading-tight">{g.label}</p>
@@ -271,12 +271,12 @@ function ClinicianBlock() {
     <div className="rounded-2xl border border-[#EDE8E0] bg-white p-4">
       <div className="flex gap-3 items-start">
         {/* Avatar */}
-        <div className="w-11 h-11 rounded-full overflow-hidden flex-shrink-0 bg-[#F7F4EF] border-2 border-[#9B4722]/20 flex items-center justify-center">
+        <div className="w-11 h-11 rounded-full overflow-hidden flex-shrink-0 bg-iv-blush border-2 border-[#9B4722]/20 flex items-center justify-center">
           <Award size={18} className="text-[#9B4722]/60" />
         </div>
         <div className="flex-1 min-w-0">
-          <p className="text-[11px] font-black text-[#1A1614]">Formulated at Isola del Liri</p>
-          <p className="text-[9px] text-[#888] mb-1.5">Natural You Srl · Lazio, Italy</p>
+          <p className="text-[11px] font-black text-iv-charcoal">Formulated at Isola del Liri</p>
+          <p className="text-[9px] text-iv-text-muted mb-1.5">Natural You Srl · Lazio, Italy</p>
           <p className="text-[10px] text-[#555] leading-relaxed italic">
             "Every formulation is made in one laboratory, in one town, by a master pharmacist and cosmetic chemist — and nothing leaves it until it has earned its place."
           </p>
@@ -288,7 +288,7 @@ function ClinicianBlock() {
             <span key={i} className="text-[#9B4722] text-[10px]">★</span>
           ))}
         </div>
-        <span className="text-[9px] text-[#888]">Clinician-recommended protocol</span>
+        <span className="text-[9px] text-iv-text-muted">Clinician-recommended protocol</span>
       </div>
     </div>
   )
@@ -310,8 +310,8 @@ function EmptyState() {
 
   return (
     <div className="flex-1 flex flex-col px-5 py-8">
-      <p className="text-sm font-black text-[#1A1614] mb-1">Your cart is empty</p>
-      <p className="text-xs text-[#888] mb-6 font-light">Begin your skin-health protocol.</p>
+      <p className="text-sm font-black text-iv-charcoal mb-1">Your cart is empty</p>
+      <p className="text-xs text-iv-text-muted mb-6 font-light">Begin your skin-health protocol.</p>
 
       {/* Starter stack */}
       <div className="rounded-2xl border border-[#EDE8E0] bg-white overflow-hidden shadow-sm mb-5">
@@ -321,17 +321,17 @@ function EmptyState() {
         <div className="divide-y divide-[#EDE8E0]">
           {STACK.map(p => (
             <div key={p.id} className="flex items-center gap-3 px-4 py-3">
-              <div className="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 bg-[#F7F4EF]">
+              <div className="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 bg-iv-blush">
                 <img src={p.image} alt={p.name} className="w-full h-full object-cover" />
               </div>
-              <p className="flex-1 text-xs font-semibold text-[#1A1614]">{p.name}</p>
-              <span className="text-xs font-black text-[#1A1614]">${p.price}</span>
+              <p className="flex-1 text-xs font-semibold text-iv-charcoal">{p.name}</p>
+              <span className="text-xs font-black text-iv-charcoal">${p.price}</span>
             </div>
           ))}
         </div>
-        <div className="px-4 py-3 bg-[#F7F4EF] flex items-center justify-between">
+        <div className="px-4 py-3 bg-iv-blush flex items-center justify-between">
           <div>
-            <p className="text-[10px] text-[#888]">Retail ${retailTotal} · Subscribe <span className="font-black text-[#9B4722]">${subTotal}/mo</span></p>
+            <p className="text-[10px] text-iv-text-muted">Retail ${retailTotal} · Subscribe <span className="font-black text-[#9B4722]">${subTotal}/mo</span></p>
           </div>
           <button
             onClick={addStack}
@@ -427,7 +427,7 @@ export function CartDrawer() {
         {/* Header */}
         <div className="flex items-center justify-between px-5 py-4 bg-white border-b border-[#EDE8E0]">
           <div className="flex items-center gap-2.5">
-            <span className="text-sm font-black uppercase tracking-[0.25em] text-[#1A1614]">Your Cart</span>
+            <span className="text-sm font-black uppercase tracking-[0.25em] text-iv-charcoal">Your Cart</span>
             {itemCount > 0 && (
               <span className="w-5 h-5 rounded-full text-[10px] font-black text-white flex items-center justify-center" style={{ background: '#9B4722' }}>
                 {itemCount}
@@ -436,7 +436,7 @@ export function CartDrawer() {
           </div>
           <button
             onClick={() => setCartOpen(false)}
-            className="w-8 h-8 rounded-full bg-[#F7F4EF] flex items-center justify-center text-[#888] hover:text-[#1A1614]"
+            className="w-8 h-8 rounded-full bg-iv-blush flex items-center justify-center text-iv-text-muted hover:text-iv-charcoal"
           >
             <X size={15} />
           </button>
@@ -532,12 +532,12 @@ export function CartDrawer() {
 
             {/* Subtotal */}
             <div className="flex items-baseline justify-between mb-0.5">
-              <span className="text-[11px] font-bold uppercase tracking-widest text-[#888]">Subtotal</span>
+              <span className="text-[11px] font-bold uppercase tracking-widest text-iv-text-muted">Subtotal</span>
               <div className="text-right">
                 {totalSavings > 0 && (
                   <span className="text-xs text-[#BDBDBD] line-through mr-2">${retailTotal.toFixed(2)}</span>
                 )}
-                <span className="text-xl font-black text-[#1A1614]">${subtotal.toFixed(2)}</span>
+                <span className="text-xl font-black text-iv-charcoal">${subtotal.toFixed(2)}</span>
               </div>
             </div>
             {allSubscribed && (

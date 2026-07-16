@@ -1,5 +1,6 @@
 'use client'
 
+import { Wordmark } from '@/components/brand/wordmark'
 import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -102,7 +103,7 @@ export default function ProfessionalRegisterPage() {
 
         <div className="relative z-10 p-10">
           <Link href="/" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, textDecoration: 'none' }}>
-            <span style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1rem', fontWeight: 700, color: '#FDFAF5', letterSpacing: '0.12em', textTransform: 'uppercase' }}>LIRI ROMA</span>
+            <Wordmark size="1rem" color="#FDFAF5" />
             <span style={{ width: 1, height: 14, background: 'rgba(250,214,201,0.3)' }} />
             <span style={{ fontSize: '0.5rem', fontWeight: 700, color: 'rgba(250,214,201,0.55)', letterSpacing: '0.22em', textTransform: 'uppercase' }}>Professional</span>
           </Link>

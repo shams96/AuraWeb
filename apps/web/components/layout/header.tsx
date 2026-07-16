@@ -8,6 +8,7 @@ import { useWishlist } from '@/lib/wishlist-context'
 import { useSession, signOut } from 'next-auth/react'
 import { CartDrawer } from './cart-drawer'
 import { usePathname } from 'next/navigation'
+import { Wordmark } from '@/components/brand/wordmark'
 
 const NAV = [
   { name: 'Shop All',     href: '/shop'        },
@@ -78,12 +79,7 @@ export function Header() {
 
             {/* ── Logo ── */}
             <Link href="/" style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: 6, textDecoration: 'none' }}>
-              <span style={{
-                fontFamily: 'var(--iv-font-serif)', fontSize: '1.15rem', fontWeight: 600,
-                color: 'var(--iv-charcoal)', letterSpacing: '0.06em',
-              }}>
-                LIRI <em style={{ color: 'var(--iv-ochre)', fontStyle: 'italic' }}>ROMA</em>
-              </span>
+              <Wordmark size="1.15rem" />
             </Link>
 
             {/* ── Desktop nav (md+) ── */}
@@ -109,7 +105,7 @@ export function Header() {
                   <div style={{
                     position: 'absolute', top: 'calc(100% + 8px)', left: 0,
                     minWidth: 240, zIndex: 100,
-                    background: '#FDFAF5',
+                    background: 'var(--iv-black)',
                     border: '1px solid rgba(155, 71, 34,0.14)',
                     borderRadius: 10,
                     boxShadow: '0 16px 48px rgba(60,30,20,0.12)',
@@ -229,7 +225,7 @@ export function Header() {
           aria-label="Navigation menu"
           style={{
             position: 'fixed', inset: 0, zIndex: 49,
-            background: '#FDFAF5',
+            background: 'var(--iv-black)',
             display: 'flex', flexDirection: 'column',
             overflowY: 'auto',
             // Slide in from right
@@ -242,9 +238,9 @@ export function Header() {
             padding: '0 20px', height: 60, flexShrink: 0,
             borderBottom: '1px solid rgba(155, 71, 34,0.10)',
           }}>
-            <Link href="/" style={{ fontFamily: 'var(--iv-font-serif)', fontSize: '1.1rem', fontWeight: 600, color: 'var(--iv-charcoal)', letterSpacing: '0.06em', textDecoration: 'none' }}
+            <Link href="/" style={{ textDecoration: 'none' }}
               onClick={() => setMobileOpen(false)}>
-              LIRI <em style={{ color: 'var(--iv-ochre)' }}>ROMA</em>
+              <Wordmark size="1.1rem" />
             </Link>
             <button onClick={() => setMobileOpen(false)}
               style={{ width: 40, height: 40, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'none', border: 'none', cursor: 'pointer', color: 'var(--iv-charcoal)', borderRadius: 8 }}>

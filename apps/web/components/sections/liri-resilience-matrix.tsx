@@ -2,12 +2,12 @@
 
 import Link from 'next/link'
 
-// Dark-theme gold (#B8972F) — used throughout this always-dark section
-const G = 'rgba(184,151,47,'
-const GOLD_HEX = '#B8972F'
-const CREAM = 'rgba(253,250,245,'
+// Dark-ground accent (Red Ochre lifted) — used throughout this always-dark section
+const G = 'rgba(194,96,57,'
+const GOLD_HEX = '#C26039'
+const CREAM = 'rgba(240,242,235,'
 const CARD_BG = '#004B37'
-const SECTION_BG = '#1A1614'
+const SECTION_BG = '#07231A'
 
 const domains = [
   {
