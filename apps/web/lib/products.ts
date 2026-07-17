@@ -62,7 +62,7 @@ export const LABORATORY_SERIES: Product[] = [
     hardware: 'Champagne Gold metal collar',
     decoration: 'Debossed IV monogram',
     image: '/images/products/isola_serum.png',
-    badge: 'Cellular Renewal Complex + metabolic change',
+    badge: 'Cellular Renewal Complex + Metabolic Change Support',
     rating: 5.0,
     reviewCount: 210,
     tags: ['Essence', 'Treatment'],

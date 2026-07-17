@@ -38,7 +38,7 @@ export function orderConfirmationEmail(data: {
     : ''
 
   return base(`
-    <div class="logo">LIRI ROMA</div>
+    <div class="logo">Chiarelle</div>
     <h2 style="font-size:24px;margin:0 0 8px">${heading}</h2>
     <p class="muted">Thank you, ${data.customerName}. Order <strong class="gold">#${data.orderNumber}</strong> is being prepared at Natural You Srl, Isola del Liri, Italy.</p>
     ${subNote}
@@ -50,7 +50,7 @@ export function orderConfirmationEmail(data: {
     <div class="divider"></div>
     <p class="muted">Your 48-hour Time To Wow experience begins the moment your formulation arrives. Expect delivery within 3–5 working days.</p>
     <a class="btn" href="${process.env.NEXTAUTH_URL}/account/orders">View Order</a>
-    <p class="muted" style="margin-top:32px">Questions? Reply to this email or visit <a href="${process.env.NEXTAUTH_URL}/contact" style="color:#9B4722">liriroma.com/contact</a></p>
+    <p class="muted" style="margin-top:32px">Questions? Reply to this email or visit <a href="${process.env.NEXTAUTH_URL}/contact" style="color:#9B4722">chiarelle.com/contact</a></p>
   `)
 }
 
@@ -60,7 +60,7 @@ export function returnConfirmationEmail(data: {
   reason: string
 }) {
   return base(`
-    <div class="logo">LIRI ROMA</div>
+    <div class="logo">Chiarelle</div>
     <h2 style="font-size:24px;margin:0 0 8px">Return Request Received</h2>
     <p class="muted">Hi ${data.customerName}, we have received your return request for order <strong class="gold">#${data.orderNumber}</strong>.</p>
     <div class="divider"></div>
@@ -73,9 +73,9 @@ export function returnConfirmationEmail(data: {
 
 export function newsletterWelcomeEmail(data: { email: string }) {
   return base(`
-    <div class="logo">LIRI ROMA</div>
+    <div class="logo">Chiarelle</div>
     <h2 style="font-size:24px;margin:0 0 8px">Welcome to the Circle</h2>
-    <p class="muted">Thank you for joining the LIRI ROMA inner circle. You'll receive curated science briefings, early access to new protocols, and exclusive clinical insights — never promotional noise.</p>
+    <p class="muted">Thank you for joining the Chiarelle inner circle. You'll receive curated science briefings, early access to new protocols, and exclusive clinical insights — never promotional noise.</p>
     <div class="divider"></div>
     <a class="btn" href="${process.env.NEXTAUTH_URL}/shop">Discover Your Protocol</a>
   `)
@@ -87,7 +87,7 @@ export function accountWelcomeEmail(data: { name: string; accountType: 'personal
 
   const heading = isPro
     ? `Your professional access is confirmed, ${firstName}.`
-    : `Welcome to LIRI ROMA, ${firstName}.`
+    : `Welcome to Chiarelle, ${firstName}.`
 
   const body = isPro
     ? `Your professional account has been created. Once our team verifies your practice details (within 5 business days), you'll have full access to the Clinical A-Series, wholesale pricing, and IRB study data.`
@@ -100,7 +100,7 @@ export function accountWelcomeEmail(data: { name: string; accountType: 'personal
   const ctaLabel = isPro ? 'Visit Your Professional Portal' : 'Discover Your Protocol'
 
   return base(`
-    <div class="logo">LIRI ROMA</div>
+    <div class="logo">Chiarelle</div>
     <h2 style="font-size:24px;margin:0 0 8px;font-style:italic">${heading}</h2>
     <p class="muted" style="margin:0 0 24px">${body}</p>
     <div class="divider"></div>
@@ -116,7 +116,7 @@ export function accountWelcomeEmail(data: { name: string; accountType: 'personal
     <a class="btn" href="${ctaHref}">${ctaLabel}</a>
     <p class="muted" style="margin-top:32px;font-size:12px">
       Questions? Our concierge team is available at
-      <a href="mailto:concierge@liriroma.com" style="color:#9B4722">concierge@liriroma.com</a>
+      <a href="mailto:concierge@chiarelle.com" style="color:#9B4722">concierge@chiarelle.com</a>
     </p>
   `)
 }
@@ -129,7 +129,7 @@ export function subscriptionReminderEmail(data: {
 }) {
   const firstName = data.customerName.split(' ')[0]
   return base(`
-    <div class="logo">LIRI ROMA</div>
+    <div class="logo">Chiarelle</div>
     <h2 style="font-size:24px;margin:0 0 8px;font-style:italic">Your ritual renews in 3 days.</h2>
     <p class="muted">
       ${firstName}, your next formulation will be despatched on <strong class="gold">${data.renewalDate}</strong>
@@ -154,7 +154,7 @@ export function referralRewardEmail(data: {
 }) {
   const maskedEmail = data.refereeEmail.replace(/(.{2}).*(@.*)/, '$1…$2')
   return base(`
-    <div class="logo">LIRI ROMA</div>
+    <div class="logo">Chiarelle</div>
     <h2 style="font-size:24px;margin:0 0 8px;font-style:italic">Your invitation worked, ${data.referrerName}.</h2>
     <p class="muted" style="margin:0 0 24px">
       Someone you invited (<strong class="gold">${maskedEmail}</strong>) has just completed their first ritual order.
@@ -168,7 +168,7 @@ export function referralRewardEmail(data: {
     </div>
     <a class="btn" href="${process.env.NEXTAUTH_URL}/account/referrals">View Your Rewards</a>
     <p class="muted" style="margin-top:24px;font-size:12px">
-      Thank you for sharing LIRI ROMA with someone who matters to you.
+      Thank you for sharing Chiarelle with someone who matters to you.
       Every great ritual deserves a great beginning.
     </p>
   `)

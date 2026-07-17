@@ -23,12 +23,12 @@ export function HowItWorks({ steps, timeline }: HowItWorksProps) {
     <section className="py-24 bg-iv-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">
-          <div className="inline-block border border-iv-gold/20 rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-6 bg-iv-black/40 backdrop-blur-md text-iv-gold">La Bella Figura</div>
+          <div className="inline-block border border-iv-gold/20 rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-6 bg-iv-black/40 backdrop-blur-md text-iv-gold">Skin Intelligence™</div>
           <h2 className="iv-type-h2 font-bold text-iv-white mb-6 tracking-tighter uppercase">
             How the <span className="text-iv-gold italic serif lowercase">Ritual</span> Works
           </h2>
           <p className="iv-type-lead text-iv-cream/65 max-w-2xl mx-auto font-light leading-relaxed">
-            Italian beauty was never optimised. It was practised — morning and night, season after season. Three steps that make that practice yours.
+            Skin Intelligence™ was never a shortcut. It was practised — morning and night, season after season. Three steps that make that practice yours.
           </p>
         </div>
         

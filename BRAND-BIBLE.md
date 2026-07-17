@@ -1,68 +1,77 @@
-# LIRI ROMA — BRAND BIBLE
+# CHIARELLE — BRAND BIBLE
 
 > Single creative source of truth for the House. Supersedes all prior identities.
-> Authoritative master: `LIRI_ROMA_Master_Brand_Bible_V3.docx` (V3.0).
-> Voice reference: `brand-voice.md`. Legacy voice corpus preserved in `BRAND-BIBLE-LEGACY-isolavitale.md` (do not use for naming).
+> Authoritative source: `CHIARELLE_Brand_Clarity_Framework.docx`.
+> Voice reference: `brand-voice.md`. Legacy identities preserved in `BRAND-BIBLE-LEGACY-liriroma.md` and `BRAND-BIBLE-LEGACY-isolavitale.md` (do not use for naming).
 
 ## House
 
-- **House:** LIRI ROMA — The House of Liri™
-- **Wordmark lockup:** LIRI ROMA sets on ONE line, everywhere — header, footer, auth panels, emails, packaging web mocks. One uniform treatment across all placements (same casing, spacing, and styling); never stacked, never restyled per-page.
-- **Tagline (permanent):** Your skin is a story worth honoring.
-- **Campaign / social flex:** Your skin is a story worth telling.
-- **Mission:** Advancing Skin Intelligence™
-- **Formulation Philosophy:** Liri Intelligence™
+- **House:** Chiarelle™ — The House of Clarity™
+- **Wordmark lockup:** "Chiarelle" sets as a single word, one uniform treatment everywhere — header, footer, auth panels, emails, packaging web mocks. Never restyled per-page.
+- **Positioning statement:** "Matched to your biology, not your birthdate." Chiarelle makes no age-replacement claim — deliberately distinct from competitor "biological age" framing. The House's position is need-based, not age-based.
+- **Category:** Chiarelle is not a skincare brand, a beauty brand, or a longevity brand. It is a Skin Intelligence™ company — formulation guided by biology, not birthdate.
+- **Mission:** Advancing Cellular Clarity™
+- **Formulation Philosophy:** Chiarelle Intelligence™
 - **Brand Enemy:** Modern Biological Stress™
-- **Monogram — Launch Cap Mark:** Interlocking "RL" (R+L merged via shared stem), flat matte champagne gold #D6C5A0, no ring. Tooling-simple, embossing-ready. Vector artist to refine R bowl + confirm flat gold.
-- **Monogram — Signature Cue (design brief):** To avoid a generic luxury-serif read, the vector artist explores ONE provenance cue unique to the House — the waterfalls of Isola del Liri (le cascate). A whisper, not a picture: a single fine line or three subtle descending strokes worked into the RL (crossbar, baseline, or R terminal as a river bend). Minimal, embossing-safe. This makes the mark unmistakably LIRI ROMA.
-- **Monogram — Provenance Seal (print only):** Emerald #1A5C3A double ring + gold "RL" center, arced "LIRI ROMA" / "ISOLA DEL LIRI · ITALIA". Box/insert/web only, never cap tooling. Text set by vector artist — no AI lettering ships.
-- **Positioning:** Biological need over chronological age. Matched to your biology, not your birthdate.
+- **Monogram:** single "C" — debossed into cap tooling, single global mold.
 
 ## Legacy names (retired — never use)
 
-Isola Vitale · Chiarelle · IsoLiri · "House of Vitality" · "House of Clarity" · "IV" and "C" monograms. "Isola del Liri" remains valid ONLY as the manufacturing town.
+Isola Vitale · LIRI ROMA · "The House of Liri" · IsoLiri · "House of Vitality" · interlocking "RL" monogram · "IV" monogram. "Isola del Liri" remains valid ONLY as the manufacturing town — never as a house-name reference.
 
-## Category Architecture (four layers — never conflate)
+## Naming Doctrine
 
-| Layer | Name | Audience |
+House → Collection → Product Name → Scientific Descriptor. Never reversed.
+
+**Approved vocabulary:** Cellular · Chiarelle · Terra · Obsidian · Essence · Crème · Concentrate · Cleanser · Treatment · Mist · Masque · Recovery · Clarity · Radiance
+
+**Retired vocabulary:** Anti-Aging · Age Defying · Youth · Miracle · Lift · Wrinkle Repair · Plump · Glow · Balm · Milk · Vitale · Vitality (house-level only)
+
+Product names are function/outcome-based only — never ingredient-forward. Ingredient detail lives in formulation dossiers, never in consumer-facing product titles.
+
+## Color & Packaging System — one color, one job
+
+| Color | Hex | Assignment |
 |---|---|---|
-| Category | Skin Intelligence™ | Everywhere |
-| Scientific framework | Biological Skin Performance™ | Investor / retail / clinical only |
-| Performance contract | TTW™ — Time to WOW | All consumer touchpoints |
-| Data moat | Skin Intelligence Graph™ | Investor / competitive defense |
+| Cloud Dancer | #F0F2EB | Cleanse / Prep — Cleanser, Toner (120ml) |
+| Peach Dust | #FAD6C9 | Serums only — Chiarelle Essence, Eye Concentrate, Lip Concentrate |
+| Red Ochre | #9B4722 | Day Cream — Terra Radiance Crème (50g jar) |
+| Garden Green | #004B37 | Night Cream, Consumer Collection only — Recovery Masque (50g jar) |
+| Deep Ocean | #0C2D38 | Men's Collection, in full — Obsidian by Chiarelle (Phase 2+) |
 
-## Color System — one color, one job, no exceptions
+Glass: High Flint Grade A, zero-tint, satin-matte spray lacquer. No gloss, mirror, or dual-layer finish.
+Caps: zero-metal satin-finish UV polymer, matte champagne gold (PANTONE 14-1012 TCX / #D6C5A0), single global mold, debossed "C."
+Decoration: non-metallic pearlescent/mica gold screen print wordmark — avoids US Section 232 aluminum tariff exposure. No hot foil.
 
-| Color | Hex | Job |
-|---|---|---|
-| Cloud Dancer | #F0F2EB | Cleanse / Prep |
-| Red Ochre | #9B4722 | Day Cream |
-| Garden Green | #004B37 | Night Cream (Consumer only) |
-| Peach Dust | #FAD6C9 | Serums only |
-| Deep Ocean | #0C2D38 | Men's Collection, in full |
-
-Cap/hardware: matte champagne gold PANTONE 14-1012 TCX / #D6C5A0, zero-metal satin. Glass: high-flint, zero-tint, satin-matte. Decoration: mica/pearlescent gold screen print, never hot foil.
+These hex values are already the live site palette (`apps/web/app/globals.css`) — no CSS changes required, only this documentation.
 
 ## Consumer Collection™
 
-| # | Product | Color | Packaging Family | Note |
-|---|---|---|---|---|
-| 01 | Cellular Cleanser™ | Cloud Dancer #F0F2EB | Liri Cloud™ | Cleanse |
-| 02 | Cellular Essence™ | Cloud Dancer #F0F2EB | Liri Cloud™ | Toner |
-| 03 | Liri Essence™ | Peach Dust #FAD6C9 | Liri Rose™ | Signature Serum |
-| 04 | Terra Radiance Crème™ | Red Ochre #9B4722 | Liri Terra™ | Day · Permanent Icon |
-| 05 | Liri Eye Concentrate™ | Peach Dust #FAD6C9 | Liri Rose™ | Proven Hero |
-| 06 | Recovery Masque™ | Garden Green #004B37 | Liri Verde™ | Night Cream |
-| 07 | Liri Lip Concentrate™ | Peach Dust #FAD6C9 | Liri Rose™ | Standalone · Gen Z |
+| # | Product | Color | Note |
+|---|---|---|---|
+| 01 | Cellular Cleanser™ | Cloud Dancer #F0F2EB | Cleanse |
+| 02 | Cellular Essence™ | Cloud Dancer #F0F2EB | Toner |
+| 03 | Chiarelle Essence™ | Peach Dust #FAD6C9 | Signature Serum |
+| 04 | Terra Radiance Crème™ | Red Ochre #9B4722 | Day · Permanent Icon |
+| 05 | Chiarelle Eye Concentrate™ | Peach Dust #FAD6C9 | Proven Hero |
+| 06 | Recovery Masque™ | Garden Green #004B37 | Night Cream |
+| 07 | Chiarelle Lip Concentrate™ | Peach Dust #FAD6C9 | Standalone |
+
+## Tone of Voice
+
+Clinical confidence without coldness. Outcome-language, not promise-language — "supports," "optimizes," never "fixes," "repairs," "miracle." Restrained, not breathless.
+
+Every claim, name, and copy block is tested against: does this speak to biology as a fact, or age as a deficiency? If the latter, rewrite.
 
 ## Copy Law
 
-Outcome-language, not promise-language ("supports," "optimizes" — never "fixes," "repairs," "miracle"). No ingredient names in product titles. No age brackets in consumer copy. No "X-not-Y" contrast constructions. Always affirming. Provenance claim is always Isola del Liri, Lazio — never "Rome."
+No ingredient names in product titles. No age brackets in consumer copy. Always affirming. Provenance claim is always Isola del Liri, Lazio — never "Rome."
 
-## Product Hierarchy Law
+## Typography & Art Direction
 
-LIRI ROMA → The House of Liri™ → Skin Intelligence™ → Liri Intelligence™ → Ritual → Product → Scientific Descriptor
+Display/Wordmark: Libre Bodoni (adopted 2026-07). Functional/Body: Inter.
+Photography register: undecided — flagged for founder decision.
 
-## Naming Convention
+## Naming History — for reference, not active
 
-House = LIRI ROMA (full form: masthead, packaging base, legal). Products carry the short "Liri" prefix. "Roma" is never appended to product names.
+Full sequence: Isola Vitale → Chiarelle → LIRI ROMA (The House of Liri™, RL/IV monogram) → **Chiarelle (confirmed final)**. Any surviving "LIRI ROMA" or "IV"/"RL" monogram reference in vendor files, archived documents, or code is legacy and must be corrected to Chiarelle before use.

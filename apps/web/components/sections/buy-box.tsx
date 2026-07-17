@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { Loader2 } from 'lucide-react'
 
 /* ═══════════════════════════════════════════════════════════════════════
-   THE BUY BOX — LIRI ROMA · Phase 4, the commerce engine.
+   THE BUY BOX — Chiarelle · Phase 4, the commerce engine.
 
    LAW applied here:
    · 45-day cadence. NEVER called "monthly". The interval is explained,
@@ -37,7 +37,7 @@ const SUB_RATE = 0.8
 
 const CIRCLE = [
   { at: 'With your first delivery', gift: 'The house ritual card, and your protocol, printed' },
-  { at: 'At your second',           gift: 'The Liri travel vessel, in champagne' },
+  { at: 'At your second',           gift: 'The Chiarelle travel vessel, in champagne' },
   { at: 'At your fourth',           gift: 'Early access to each release, before it opens' },
   { at: 'At your sixth',            gift: 'The Founder\u2019s Circle — allocation held in your name' },
 ]

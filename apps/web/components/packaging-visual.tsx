@@ -9,7 +9,7 @@ interface PackagingVisualProps {
 }
 
 // Shared label text rendered on packaging
-function IVMonogram({ x, y, color }: { x: number; y: number; color: string }) {
+function Monogram({ x, y, color }: { x: number; y: number; color: string }) {
   return (
     <text
       x={x}
@@ -23,7 +23,7 @@ function IVMonogram({ x, y, color }: { x: number; y: number; color: string }) {
       fill={color}
       opacity="0.55"
     >
-      IV
+      C
     </text>
   )
 }
@@ -68,7 +68,7 @@ function JarShape({ body, hardware, textColor }: { body: string; hardware: strin
       <rect x="18" y="55" width="64" height="4" rx="1" fill={hardware} opacity="0.4" />
 
       {/* IV monogram */}
-      <IVMonogram x={50} y={82} color={textColor} />
+      <Monogram x={50} y={82} color={textColor} />
 
       {/* Thin base ring */}
       <rect x="20" y="101" width="60" height="3" rx="1.5" fill={hardware} opacity="0.3" />
@@ -117,7 +117,7 @@ function PumpShape({ body, hardware, textColor }: { body: string; hardware: stri
       <rect x="25" y="42" width="50" height="4" rx="3" fill={hardware} opacity="0.35" />
 
       {/* IV monogram */}
-      <IVMonogram x={50} y={86} color={textColor} />
+      <Monogram x={50} y={86} color={textColor} />
 
       {/* Base band */}
       <rect x="25" y="120" width="50" height="4" rx="2" fill={hardware} opacity="0.3" />
@@ -166,7 +166,7 @@ function DropperShape({ body, hardware, textColor }: { body: string; hardware: s
       <rect x="31" y="58" width="6" height="72" rx="3" fill={highlight} />
 
       {/* IV monogram */}
-      <IVMonogram x={50} y={96} color={textColor} />
+      <Monogram x={50} y={96} color={textColor} />
 
       {/* Base ring */}
       <rect x="30" y="130" width="40" height="4" rx="2" fill={hardware} opacity="0.28" />
@@ -221,7 +221,7 @@ function MistShape({ body, hardware, textColor }: { body: string; hardware: stri
       <rect x="29" y="45" width="7" height="84" rx="3" fill={highlight} />
 
       {/* IV monogram */}
-      <IVMonogram x={50} y={90} color={textColor} />
+      <Monogram x={50} y={90} color={textColor} />
 
       {/* Base */}
       <rect x="28" y="129" width="44" height="4" rx="2" fill={hardware} opacity="0.3" />
@@ -267,7 +267,7 @@ function EyePumpShape({ body, hardware, textColor }: { body: string; hardware: s
       <rect x="34" y="39" width="5" height="74" rx="2.5" fill={highlight} />
 
       {/* IV monogram */}
-      <IVMonogram x={50} y={78} color={textColor} />
+      <Monogram x={50} y={78} color={textColor} />
 
       {/* Base ring */}
       <rect x="33" y="113" width="34" height="4" rx="2" fill={hardware} opacity="0.3" />

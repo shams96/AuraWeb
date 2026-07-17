@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, useCallback } from 'react'
 import Link from 'next/link'
 
 /* ═══════════════════════════════════════════════════════════════════════
-   GRAND DOOR — LIRI ROMA
+   GRAND DOOR — Chiarelle
    The visitor does not open a website. They arrive at a house.
 
    A Red Ochre (#9B4722) door stands closed. It opens on scroll, click,
@@ -19,9 +19,9 @@ import Link from 'next/link'
 
 const SHELF = [
   { name: 'Cellular Cleanser™',    role: 'Cleanse',              kind: 'tube' as const },
-  { name: 'Liri Essence™',          role: 'The Signature Serum',  kind: 'bottle' as const, hero: true },
+  { name: 'Chiarelle Essence™',          role: 'The Signature Serum',  kind: 'bottle' as const, hero: true },
   { name: 'Terra Radiance Crème™',  role: 'Day',                  kind: 'jar' as const },
-  { name: 'Liri Eye Concentrate™',  role: 'Eye',                  kind: 'small-bottle' as const },
+  { name: 'Chiarelle Eye Concentrate™',  role: 'Eye',                  kind: 'small-bottle' as const },
 ]
 
 /* The hero product as an actual standing bottle, not a framed photo —
@@ -91,7 +91,7 @@ function HeroBottle() {
       <g filter="url(#gd-bottle-shadow)">
         {body}
         {/* small brand mark */}
-        <text x="60" y="150" textAnchor="middle" fontFamily="var(--iv-font-serif)" fontSize="13" fill="#F6E6B8" opacity="0.75">LR</text>
+        <text x="60" y="150" textAnchor="middle" fontFamily="var(--iv-font-serif)" fontSize="13" fill="#F6E6B8" opacity="0.75">C</text>
       </g>
     </svg>
   )
@@ -123,7 +123,7 @@ function ProductJar() {
         <rect x="12" y="34" width="96" height="58" rx="14" fill="url(#gd-jar-body)" />
         <rect x="8" y="10" width="104" height="30" rx="10" fill="url(#gd-jar-lid)" />
         <rect x="8" y="10" width="104" height="7" rx="3.5" fill="#FBF0D6" opacity="0.5" />
-        <text x="60" y="68" textAnchor="middle" fontFamily="var(--iv-font-serif)" fontSize="12" fill="#F6E6B8" opacity="0.7">LR</text>
+        <text x="60" y="68" textAnchor="middle" fontFamily="var(--iv-font-serif)" fontSize="12" fill="#F6E6B8" opacity="0.7">C</text>
       </g>
     </svg>
   )
@@ -155,13 +155,13 @@ function ProductTube() {
         <path d="M26 26 L64 26 L60 46 L30 46 Z" fill="url(#gd-tube-body)" />
         <path d="M30 46 L60 46 L66 170 Q66 182 45 182 Q24 182 24 170 Z" fill="url(#gd-tube-body)" />
         <rect x="35" y="60" width="5" height="100" rx="2.5" fill="#7A3319" opacity="0.14" />
-        <text x="45" y="120" textAnchor="middle" fontFamily="var(--iv-font-serif)" fontSize="11" fill="#7A3319" opacity="0.55">LR</text>
+        <text x="45" y="120" textAnchor="middle" fontFamily="var(--iv-font-serif)" fontSize="11" fill="#7A3319" opacity="0.55">C</text>
       </g>
     </svg>
   )
 }
 
-/* Liri Eye Concentrate™ — a smaller dropper bottle, deep peacock glass. */
+/* Chiarelle Eye Concentrate™ — a smaller dropper bottle, deep peacock glass. */
 function ProductSmallBottle() {
   return (
     <svg viewBox="0 0 90 170" width="100%" height="100%" role="presentation" aria-hidden="true" style={{ overflow: 'visible' }}>
@@ -183,7 +183,7 @@ function ProductSmallBottle() {
         <rect x="38" y="28" width="14" height="12" fill="url(#gd-small-glass)" />
         <path d="M28 40 L62 40 L68 60 L68 142 Q68 152 57 152 L33 152 Q22 152 22 142 L22 60 Z" fill="url(#gd-small-glass)" />
         <rect x="34" y="56" width="5" height="90" rx="2.5" fill="#FFFFFF" opacity="0.2" />
-        <text x="45" y="105" textAnchor="middle" fontFamily="var(--iv-font-serif)" fontSize="10" fill="#F6E6B8" opacity="0.7">LR</text>
+        <text x="45" y="105" textAnchor="middle" fontFamily="var(--iv-font-serif)" fontSize="10" fill="#F6E6B8" opacity="0.7">C</text>
       </g>
     </svg>
   )
@@ -241,7 +241,7 @@ export function GrandDoor() {
   return (
     <section
       ref={sectionRef}
-      aria-label="LIRI ROMA — enter the house"
+      aria-label="Chiarelle — enter the house"
       className="gd-stage"
       style={{
         position: 'relative',
@@ -411,7 +411,7 @@ export function GrandDoor() {
             href="#skin-scan"
             onClick={e => {
               // /assessment does not exist as a route — the skin concierge
-              // (LIRI Skin Assessment™) lives on this same page below the door
+              // (Chiarelle Skin Assessment™) lives on this same page below the door
               e.preventDefault()
               document.getElementById('skin-scan')?.scrollIntoView({ behavior: 'smooth' })
             }}
@@ -496,7 +496,7 @@ export function GrandDoor() {
             type="button"
             onClick={openDoor}
             onFocus={openDoor}
-            aria-label="Enter LIRI ROMA"
+            aria-label="Enter Chiarelle"
             aria-expanded={open}
             style={{
               position: 'absolute',
@@ -516,7 +516,7 @@ export function GrandDoor() {
               padding: '2rem',
             }}
           >
-            {/* LR — the house mark */}
+            {/* C — the house mark */}
             <span
               style={{
                 fontFamily: 'var(--iv-font-serif)',
@@ -527,7 +527,7 @@ export function GrandDoor() {
                 lineHeight: 1,
               }}
             >
-              LR
+              C
             </span>
             <span
               style={{

@@ -6,7 +6,7 @@ export default function TermsPage() {
       <section className="bg-iv-deep-green/20 border-b border-iv-gold/10 pt-32 pb-20 relative overflow-hidden">
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           <h1 className="iv-type-display font-semibold mb-8 uppercase text-iv-white">Terms of <span className="text-iv-gold italic">Agreement</span></h1>
-          <p className="text-xl text-iv-cream/70 max-w-3xl leading-relaxed font-light"> The legal framework governing your relationship with the House of LIRI ROMA. </p>
+          <p className="text-xl text-iv-cream/70 max-w-3xl leading-relaxed font-light"> The legal framework governing your relationship with The House of Clarity.</p>
         </div>
       </section>
 
@@ -14,7 +14,7 @@ export default function TermsPage() {
         <div className="prose prose-invert max-w-none space-y-12">
           <div className="space-y-6">
             <h2 className="text-2xl font-bold text-iv-white uppercase tracking-widest italic">1. Acceptance</h2>
-            <p className="text-iv-cream/60 leading-relaxed font-light"> By accessing liriroma.com, you agree to comply with these terms. The platform is operated by 1HubSolutions LLC. </p>
+            <p className="text-iv-cream/60 leading-relaxed font-light"> By accessing chiarelle.com, you agree to comply with these terms. The platform is operated by 1HubSolutions LLC. </p>
           </div>
 
           <div className="space-y-6">

@@ -55,8 +55,8 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
         from:    FROM_EMAIL,
         to:      customerEmail,
         subject: isSubscription
-          ? `Your ritual membership is confirmed — #${orderNumber} | LIRI ROMA`
-          : `Your ritual is on its way — #${orderNumber} | LIRI ROMA`,
+          ? `Your ritual membership is confirmed — #${orderNumber} | Chiarelle`
+          : `Your ritual is on its way — #${orderNumber} | Chiarelle`,
         html: orderConfirmationEmail({
           orderNumber,
           customerName,
@@ -141,17 +141,17 @@ async function handleInvoicePaid(invoice: Stripe.Invoice) {
       await resend.emails.send({
         from:    FROM_EMAIL,
         to:      customerEmail,
-        subject: 'Your ritual is on its way again | LIRI ROMA',
+        subject: 'Your ritual is on its way again | Chiarelle',
         html: `
           <div style="font-family:Georgia,serif;max-width:600px;margin:0 auto;background:#1A1614;color:#FDFAF5;padding:48px 40px;border-radius:16px;">
-            <p style="color:#9B4722;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.3em;margin:0 0 16px;">La Bella Figura</p>
+            <p style="color:#9B4722;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.3em;margin:0 0 16px;">Skin Intelligence™</p>
             <h1 style="font-size:28px;margin:0 0 16px;font-style:italic;">Your ritual is on its way again.</h1>
             <p style="color:rgba(253,250,245,0.6);line-height:1.8;margin:0 0 24px;">
               Your formulation has been despatched from Isola del Liri.
               It will arrive as it always has — before you run out.
             </p>
             <p style="color:rgba(253,250,245,0.35);font-size:11px;">
-              To manage your ritual membership, visit your account at liriroma.com/account
+              To manage your ritual membership, visit your account at chiarelle.com/account
             </p>
           </div>
         `,
@@ -178,7 +178,7 @@ async function handleInvoiceUpcoming(invoice: Stripe.Invoice) {
     await resend.emails.send({
       from:    FROM_EMAIL,
       to:      customerEmail,
-      subject: `Your ritual renews in 3 days | LIRI ROMA`,
+      subject: `Your ritual renews in 3 days | Chiarelle`,
       html: subscriptionReminderEmail({ customerName: name, renewalDate, total, currency }),
     })
     console.info(`[webhook] renewal reminder sent to ${customerEmail}`)

@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'FAQ',
-  description: 'Answers to the most common questions about LIRI ROMA\'s four adaptive protocols, the science of skin vitality, shipping, returns, and the 90-day ritual guarantee.',
+  description: 'Answers to the most common questions about Chiarelle\'s four adaptive protocols, the science of skin vitality, shipping, returns, and the 90-day ritual guarantee.',
 }
 
 export default function FAQPage() {
@@ -13,7 +13,7 @@ export default function FAQPage() {
       items: [
         {
           q: 'What is Metabolic Skincare?',
-          a: 'Metabolic skincare targets the cellular processes that govern skin health, volume, and repair. Unlike traditional skincare which focuses on topical symptoms, LIRI ROMA formulations provide metabolic signals that optimize the cellular engine itself.'
+          a: 'Metabolic skincare targets the cellular processes that govern skin health, volume, and repair. Unlike traditional skincare which focuses on topical symptoms, Chiarelle formulations provide metabolic signals that optimize the cellular engine itself.'
         },
         {
           q: 'How do the 4 Protocols work?',

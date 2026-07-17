@@ -1,9 +1,8 @@
 /* ═══════════════════════════════════════════════════════════════════════
-   THE LIRI ROMA WORDMARK — one treatment, everywhere.
-   BRAND-BIBLE: the wordmark sets on ONE line with one uniform styling
-   across all placements — never stacked, never restyled per-page.
-   LIRI takes the surrounding ink (pass `color` for dark grounds);
-   ROMA is always italic Red Ochre.
+   THE CHIARELLE WORDMARK — one treatment, everywhere.
+   BRAND-BIBLE: the wordmark sets as a single word with one uniform styling
+   across all placements — never restyled per-page.
+   Ink follows the surrounding ground (pass `color` for dark grounds).
    ═══════════════════════════════════════════════════════════════════════ */
 
 export function Wordmark({
@@ -12,7 +11,7 @@ export function Wordmark({
 }: {
   /** font-size of the mark (the only thing that may vary between placements) */
   size?: string
-  /** ink for "LIRI" — defaults to charcoal for light grounds */
+  /** ink for "Chiarelle" — defaults to charcoal for light grounds */
   color?: string
 }) {
   return (
@@ -26,7 +25,7 @@ export function Wordmark({
         whiteSpace: 'nowrap',
       }}
     >
-      LIRI <em style={{ color: 'var(--iv-ochre)', fontStyle: 'italic' }}>ROMA</em>
+      Chiarelle
     </span>
   )
 }

@@ -9,11 +9,11 @@ import Link from 'next/link'
 import { FlaskConical } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'The Collections — LIRI ROMA',
+  title: 'The Collections — Chiarelle',
   description: "Eighteen formulations. Four protocols. One Italian philosophy. Each formulation is assigned to a biological stage — not an age.",
   openGraph: {
-    title: 'The Collections | LIRI ROMA',
-    description: 'Eighteen formulations born from the Italian practice of living beautifully. Find your protocol.',
+    title: 'The Collections | Chiarelle',
+    description: 'Eighteen formulations matched to your biology, not your birthdate. Find your protocol.',
   },
 }
 
@@ -78,7 +78,7 @@ export default async function ShopPage({
 
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           <div className="inline-block border border-iv-gold/20 rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-8 bg-iv-black/40 backdrop-blur-md text-iv-gold">
-            La Bella Figura
+            Skin Intelligence™
           </div>
           <h1 className="iv-type-display font-bold mb-6 tracking-tighter uppercase leading-none text-iv-white">
             {titleHead && <span>{titleHead} </span>}

@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Libre+Bodoni:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* ============================================================
-   LIRI ROMA — GLOBAL DESIGN TOKEN SYSTEM
+   CHIARELLE — GLOBAL DESIGN TOKEN SYSTEM
    To change the theme: edit only the values in :root below.
    Classes like bg-iv-black / text-iv-white resolve to whatever
    the token points at — no page edits ever required.
@@ -56,7 +56,7 @@
     --iv-champagne:   #FAD6C9;   /* Peach Dust — decorative warm          */
     --iv-champagne-gold: #D6C5A0;/* warm trim gold                        */
 
-    /* ── Product SKU palette (always fixed, never remapped) ──── */
+    /* ── Chiarelle Product SKU palette (always fixed, never remapped) ──── */
     --iv-red-ochre:       #9B4722;
     --iv-formal-garden:   #004B37;
     --iv-peach-dust:      #FAD6C9;
@@ -79,7 +79,7 @@
     --iv-text-muted:  #5C4438;   /* was #7A5C4E (5.82:1 AA) → now 7.03:1 AAA on ivory */
 
     /* ── Typography — single source of truth ─────────────────── */
-    --iv-font-serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+    --iv-font-serif: 'Libre Bodoni', 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
     --iv-font-body:  'Inter', ui-sans-serif, system-ui, sans-serif;
   }
 

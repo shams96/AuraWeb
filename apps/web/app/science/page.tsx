@@ -16,7 +16,7 @@ export default function SciencePage() {
       concentration: '0.30%',
       icon: <Zap className="w-6 h-6 text-iv-gold" />,
       description: 'A peptide system formulated at Isola del Liri to support the skin\'s own renewal pathways, restoring the conditions in which resilience is built.',
-      benefit: 'Formulated on published senescence biology and proven in the house\'s own testing. All claims rest on LIRI ROMA evidence.'
+      benefit: 'Formulated on published senescence biology and proven in the house\'s own testing. All claims rest on Chiarelle evidence.'
     },
     {
       name: 'DWAT Restoration Science',
@@ -114,7 +114,7 @@ export default function SciencePage() {
             <div className="flex-1 space-y-8">
               <h2 className="iv-type-h2 font-bold text-iv-white tracking-tighter uppercase">Italian Laboratory Precision</h2>
               <p className="text-iv-cream/60 leading-relaxed font-light text-lg">
-                Our partnership with <strong className="text-iv-white">Natural You Srl</strong> in Isola del Liri, Italy, grants LIRI ROMA exclusive access to pharmaceutical-grade raw materials and proprietary encapsulation technologies. Each formulation undergoes rigorous pH validation and stability testing to ensure 100% regulatory compliance.
+                Our partnership with <strong className="text-iv-white">Natural You Srl</strong> in Isola del Liri, Italy, grants Chiarelle exclusive access to pharmaceutical-grade raw materials and proprietary encapsulation technologies. Each formulation undergoes rigorous pH validation and stability testing to ensure 100% regulatory compliance.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button size="lg" className="bg-iv-gold hover:bg-iv-gold-light text-iv-black rounded-none px-12 py-8 text-xs font-black uppercase tracking-[0.2em] shadow-xl hover:shadow-iv-gold/20 transition-all">

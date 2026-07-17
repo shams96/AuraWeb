@@ -139,7 +139,7 @@ export default function CheckoutPage() {
 
             {/* Heading */}
             <div>
-              <p style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.35em', textTransform: 'uppercase', color: C.gold, marginBottom: 8 }}>La Bella Figura</p>
+              <p style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.35em', textTransform: 'uppercase', color: C.gold, marginBottom: 8 }}>Skin Intelligence™</p>
               <h1 style={{ fontFamily: 'var(--iv-font-serif)', fontSize: 'clamp(1.8rem,4vw,2.6rem)', fontWeight: 600, color: 'var(--iv-garden)', letterSpacing: '-0.02em', margin: 0 }}>
                 Complete Your Ritual
               </h1>

@@ -31,7 +31,7 @@ const domains = [
     name: 'The Power to Protect',
     short: 'Defence',
     headline: 'Modern life creates invisible biological wear before visible aging appears.',
-    body: 'Daily pollution, UV, blue light, and urban stress place cumulative oxidative burden on skin. LIRI ROMA addresses this systematically — as a biological priority, not an afterthought.',
+    body: 'Daily pollution, UV, blue light, and urban stress place cumulative oxidative burden on skin. Chiarelle addresses this systematically — as a biological priority, not an afterthought.',
     tags: ['Pollution Defence', 'Free Radical Neutralisation', 'Environmental Shield'],
   },
   {
@@ -44,7 +44,7 @@ const domains = [
   },
 ]
 
-export function LiriResilienceMatrix() {
+export function ChiarelleResilienceMatrix() {
   return (
     <section className="py-32 relative overflow-hidden" style={{ background: SECTION_BG }}>
 
@@ -61,7 +61,7 @@ export function LiriResilienceMatrix() {
             style={{ color: GOLD_HEX, border: `1px solid ${G}0.25)`, background: `${G}0.08)` }}
           >
             <span style={{ width: 5, height: 5, borderRadius: '50%', background: GOLD_HEX, display: 'inline-block' }} />
-            Adaptive Skin Science™ · Proprietary System
+            Skin Intelligence™ · Proprietary System
           </div>
           <h2
             className="iv-type-h2 font-bold tracking-tighter mb-6"
@@ -70,7 +70,7 @@ export function LiriResilienceMatrix() {
             Vitality, Made Visible
           </h2>
           <p className="text-lg font-light max-w-2xl mx-auto leading-relaxed" style={{ color: `${CREAM}0.75)` }}>
-            Four ways your skin stays alive. One serum that tends to all of them — the thinking behind every LIRI ROMA formulation.
+            Four ways your skin stays alive. One serum that tends to all of them — the thinking behind every Chiarelle formulation.
           </p>
           <div style={{ width: 48, height: 1, background: `${G}0.35)`, margin: '32px auto 0' }} />
         </div>
@@ -176,7 +176,7 @@ export function LiriResilienceMatrix() {
             fontSize: 'clamp(1.1rem, 2.5vw, 1.5rem)', color: `${CREAM}0.85)`,
             lineHeight: 1.5, marginBottom: 24, maxWidth: 680, marginLeft: 'auto', marginRight: 'auto',
           }}>
-            &ldquo;This is not a formula. It is a philosophy — the quiet foundation from which every LIRI ROMA formulation is born.&rdquo;
+            &ldquo;This is not a formula. It is a philosophy — the quiet foundation from which every Chiarelle formulation is born.&rdquo;
           </p>
           <Link
             href="/system"

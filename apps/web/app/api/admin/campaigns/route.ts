@@ -10,17 +10,17 @@ function isAdmin(session: { user?: unknown } | null) {
 
 const TEMPLATES: Record<string, { subject: string; html: (to: string) => string }> = {
   newsletter: {
-    subject: 'Welcome to LIRI ROMA — Your Protocol Awaits',
+    subject: 'Welcome to Chiarelle — Your Protocol Awaits',
     html: (to: string) => newsletterWelcomeEmail({ email: to }),
   },
   reorder: {
-    subject: 'Time to Resupply Your LIRI ROMA Protocol',
+    subject: 'Time to Resupply Your Chiarelle Protocol',
     html: () => `
       <div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#1A1614;color:#FDFAF5;padding:40px 32px;border-radius:16px;">
         <p style="color:#9B4722;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.3em;">Your Protocol</p>
         <h1 style="font-family:'Georgia',serif;font-size:28px;margin:12px 0;">90 Days In — Time to Resupply</h1>
-        <p style="color:rgba(253,250,245,0.6);line-height:1.7;">Your LIRI ROMA protocol should be nearing completion. Maintain your results by reordering before your supply runs out.</p>
-        <a href="https://liriroma.com/shop" style="display:inline-block;margin-top:24px;padding:14px 28px;background:#9B4722;color:#FDFAF5;text-decoration:none;border-radius:8px;font-size:11px;font-weight:900;letter-spacing:0.2em;text-transform:uppercase;">Reorder Now →</a>
+        <p style="color:rgba(253,250,245,0.6);line-height:1.7;">Your Chiarelle protocol should be nearing completion. Maintain your results by reordering before your supply runs out.</p>
+        <a href="https://chiarelle.com/shop" style="display:inline-block;margin-top:24px;padding:14px 28px;background:#9B4722;color:#FDFAF5;text-decoration:none;border-radius:8px;font-size:11px;font-weight:900;letter-spacing:0.2em;text-transform:uppercase;">Reorder Now →</a>
       </div>
     `,
   },

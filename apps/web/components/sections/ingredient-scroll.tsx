@@ -33,10 +33,10 @@ const INGREDIENTS: IngredientCard[] = [
     color: 'rgba(0, 75, 55,0.12)',
   },
   {
-    name: 'metabolic change Protective Complex',
+    name: 'Metabolic Change Protective Complex',
     concentration: '1.25%',
     focus: 'Deflation Prevention',
-    claim: 'Addresses documented facial volume loss in metabolic change',
+    claim: 'Addresses documented facial volume loss during metabolic change',
     trialRef: 'Ridha et al. · Aesthetic Surgery Journal 2024 · Peer-reviewed',
     icon: '◉',
     color: 'rgba(12, 45, 56,0.12)',

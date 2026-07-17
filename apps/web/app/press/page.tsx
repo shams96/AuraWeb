@@ -6,12 +6,12 @@ export default function PressPage() {
   const news = [
     {
       outlet: 'Vogue Business',
-      title: 'LIRI ROMA: The New Frontier of Italian Haute Cosmeceuticals',
+      title: 'Chiarelle: The New Frontier of Italian Haute Cosmeceuticals',
       date: 'April 2026'
     },
     {
       outlet: 'WWD',
-      title: '1HubSolutions Unveils 2026 Hero SKU Collection for LIRI ROMA',
+      title: '1HubSolutions Unveils 2026 Hero SKU Collection for Chiarelle',
       date: 'March 2026'
     },
     {
@@ -72,7 +72,7 @@ export default function PressPage() {
              </div>
              <div className="mt-12 pt-12 border-t border-iv-white/5">
                 <p className="text-[10px] font-black text-iv-gold uppercase tracking-widest mb-2">Media Contact</p>
-                <p className="text-sm text-iv-white font-bold tracking-tight">press@liriroma.com</p>
+                <p className="text-sm text-iv-white font-bold tracking-tight">press@chiarelle.com</p>
              </div>
            </div>
         </div>

@@ -4,10 +4,10 @@ import { HouseStandard } from '@/components/sections/house-standard'
 
 export const metadata: Metadata = {
   title: 'Ingredients & Science',
-  description: 'Full transparency on every active. Explore the Breakthrough 6 proprietary technologies, complete INCI directory, concentrations, and EU/FDA validation behind every LIRI ROMA formulation.',
+  description: 'Full transparency on every active. Explore the Breakthrough 6 proprietary technologies, complete INCI directory, concentrations, and EU/FDA validation behind every Chiarelle formulation.',
   openGraph: {
-    title: 'Ingredients & Science | LIRI ROMA',
-    description: 'Cellular Renewal Complex, DWAT, metabolic change, L-Ornithine, Bifida Ferment, Ectoin — the clinical science behind LIRI ROMA\'s Adaptive Skin Science™ and the science of skin vitality.',
+    title: 'Ingredients & Science | Chiarelle',
+    description: 'Cellular Renewal Complex, DWAT, Metabolic Change, L-Ornithine, Bifida Ferment, Ectoin — the clinical science behind Chiarelle\'s Skin Intelligence™ and the science of skin vitality.',
   },
 }
 
@@ -15,7 +15,7 @@ export default function IngredientsPage() {
   const breakthroughs = [
     { name: 'Cellular Renewal Complex', focus: 'Cellular Senescence', description: 'Targets the accumulation of aging cells to restore barrier function.' },
     { name: 'DWAT Restoration Complex', focus: 'Volume Restoration', description: 'Restores dermal white adipose tissue for natural facial sculpting.' },
-    { name: 'metabolic change Protective Complex', focus: 'Deflation Prevention', description: 'Shields skin against volume loss during metabolic shifts.' },
+    { name: 'Metabolic Change Protective Complex', focus: 'Deflation Prevention', description: 'Shields skin against volume loss during metabolic shifts.' },
     { name: 'L-Ornithine', focus: 'Wrinkle Depth', description: 'Encapsulated amino acid mimicking lipofilling effects.' },
     { name: 'Bifida Ferment Lysate', focus: 'Microbiome Support', description: 'Postbiotic standardized for rapid inflammation reduction.' },
     { name: 'Ectoin', focus: 'Environmental Defense', description: 'Extremolyte providing 18% TEWL improvement and pollution shield.' }

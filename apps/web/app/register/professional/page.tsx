@@ -85,7 +85,7 @@ export default function ProfessionalRegisterPage() {
       await signIn('credentials', { email: form.email, password: form.password, redirect: false })
       setTimeout(() => router.push('/professional'), 1800)
     } catch {
-      setError('Something went wrong. Please try again or contact our concierge team at concierge@liriroma.com.')
+      setError('Something went wrong. Please try again or contact our concierge team at concierge@chiarelle.com.')
     } finally {
       setLoading(false)
     }

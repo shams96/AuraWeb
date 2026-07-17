@@ -8,4 +8,4 @@ Disallow: /register
 Disallow: /wishlist
 Disallow: /success
 
-Sitemap: https://liriroma.com/sitemap.xml
+Sitemap: https://chiarelle.com/sitemap.xml

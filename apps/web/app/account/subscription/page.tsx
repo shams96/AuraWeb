@@ -102,7 +102,7 @@ export default function SubscriptionPage() {
                 Our concierge team is available at{' '}
                 <a href="tel:+12147143597" style={{ color: C.gold, textDecoration: 'none', fontWeight: 600 }}>+1 214-714-3597</a>
                 {' '}or{' '}
-                <a href="mailto:concierge@liriroma.com" style={{ color: C.gold, textDecoration: 'none', fontWeight: 600 }}>concierge@liriroma.com</a>
+                <a href="mailto:concierge@chiarelle.com" style={{ color: C.gold, textDecoration: 'none', fontWeight: 600 }}>concierge@chiarelle.com</a>
               </p>
             </div>
           </div>

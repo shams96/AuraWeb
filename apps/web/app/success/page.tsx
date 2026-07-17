@@ -4,8 +4,8 @@ import Link from 'next/link'
 import { CheckCircle2, ArrowRight } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Ritual Confirmed — LIRI ROMA',
-  description: 'Your LIRI ROMA order is confirmed. Your ritual is on its way.',
+  title: 'Ritual Confirmed — Chiarelle',
+  description: 'Your Chiarelle order is confirmed. Your ritual is on its way.',
 }
 
 const C = {
@@ -36,7 +36,7 @@ export default function SuccessPage() {
 
         {/* Badge */}
         <p style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.35em', textTransform: 'uppercase', color: C.gold, marginBottom: 12 }}>
-          La Bella Figura
+          Skin Intelligence™
         </p>
 
         {/* Heading */}
@@ -88,8 +88,8 @@ export default function SuccessPage() {
         {/* Support */}
         <p style={{ marginTop: 48, fontSize: '0.75rem', color: C.muted, fontWeight: 300 }}>
           Questions? Our concierge team is at{' '}
-          <a href="mailto:ritual@liriroma.com" style={{ color: C.gold, fontWeight: 600, textDecoration: 'none' }}>
-            ritual@liriroma.com
+          <a href="mailto:ritual@chiarelle.com" style={{ color: C.gold, fontWeight: 600, textDecoration: 'none' }}>
+            ritual@chiarelle.com
           </a>
         </p>
       </div>

@@ -25,7 +25,7 @@ export async function GET() {
     rewards:   all.filter(r => r.rewardCode !== null).map(r => r.rewardCode!),
   }
 
-  const baseUrl = process.env.NEXTAUTH_URL ?? 'https://liriroma.com'
+  const baseUrl = process.env.NEXTAUTH_URL ?? 'https://chiarelle.com'
 
   return NextResponse.json({
     code:  referral.code,

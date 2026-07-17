@@ -18,14 +18,14 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: {
-    default: 'LIRI ROMA — The House of Liri',
-    template: '%s | LIRI ROMA'
+    default: 'Chiarelle — The House of Clarity',
+    template: '%s | Chiarelle'
   },
   description: 'Your skin is a story worth honoring. An Italian skincare house formulated at Isola del Liri, Lazio — matched to your biology, and proven on your own skin within forty-eight hours.',
-  keywords: ['LIRI ROMA', 'Skin Intelligence', 'luxury skincare', 'Italian skincare', 'Isola del Liri', 'skin protocol', 'personalised skincare', 'House of Liri'],
-  authors: [{ name: 'LIRI ROMA' }],
-  creator: 'LIRI ROMA',
-  publisher: 'LIRI ROMA',
+  keywords: ['Chiarelle', 'Skin Intelligence', 'luxury skincare', 'Italian skincare', 'Isola del Liri', 'skin protocol', 'personalised skincare', 'House of Clarity'],
+  authors: [{ name: 'Chiarelle' }],
+  creator: 'Chiarelle',
+  publisher: 'Chiarelle',
   formatDetection: {
     email: false,
     address: false,
@@ -33,16 +33,16 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:5000'),
   openGraph: {
-    title: 'LIRI ROMA — The House of Liri',
+    title: 'Chiarelle — The House of Clarity',
     description: 'Your skin is a story worth honoring. Matched to your biology, proven on your own skin within forty-eight hours. Formulated at Isola del Liri, Lazio, Italy.',
     url: '/',
-    siteName: 'LIRI ROMA',
+    siteName: 'Chiarelle',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'LIRI ROMA — Your skin is a story worth honoring',
+        alt: 'Chiarelle — Your skin is a story worth honoring',
         type: 'image/jpeg',
       },
       {
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
         url: '/og-square.jpg',
         width: 1080,
         height: 1080,
-        alt: 'LIRI ROMA — The House of Liri',
+        alt: 'Chiarelle — The House of Clarity',
         type: 'image/jpeg',
       },
     ],
@@ -60,22 +60,22 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'LIRI ROMA — The House of Liri',
+    title: 'Chiarelle — The House of Clarity',
     description: 'Your skin is a story worth honoring. Matched to your biology, proven within forty-eight hours.',
     images: ['/og-image.jpg'],
-    site: '@liriroma',
-    creator: '@liriroma',
+    site: '@chiarelle',
+    creator: '@chiarelle',
   },
   other: {
     // Pinterest Rich Pins
     'pinterest-rich-pin': 'true',
-    'og:see_also': 'https://www.instagram.com/liriroma',
+    'og:see_also': 'https://www.instagram.com/chiarelle',
     // WhatsApp / iMessage lean on OG; Telegram reads these
-    'telegram:channel': '@liriroma',
+    'telegram:channel': '@chiarelle',
     // Apple / iMessage rich link
-    'apple-mobile-web-app-title': 'LIRI ROMA',
+    'apple-mobile-web-app-title': 'Chiarelle',
     // LinkedIn reads OG but respects author
-    'article:publisher': 'https://www.linkedin.com/company/liriroma',
+    'article:publisher': 'https://www.linkedin.com/company/chiarelle',
   },
   robots: {
     index: true,

@@ -3,7 +3,7 @@ import { authOptions } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import { TrendingUp, ShoppingBag, Clock, Package } from 'lucide-react'
 
-export const metadata = { title: 'Admin Dashboard — LIRI ROMA' }
+export const metadata = { title: 'Admin Dashboard — Chiarelle' }
 
 async function getStats() {
   try {

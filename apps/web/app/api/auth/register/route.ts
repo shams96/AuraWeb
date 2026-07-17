@@ -88,8 +88,8 @@ export async function POST(req: NextRequest) {
         from:    FROM_EMAIL,
         to:      emailLower,
         subject: accountType === 'business'
-          ? 'Your LIRI ROMA professional application | Welcome'
-          : 'Welcome to LIRI ROMA — your ritual awaits',
+          ? 'Your Chiarelle professional application | Welcome'
+          : 'Welcome to Chiarelle — your ritual awaits',
         html: accountWelcomeEmail({ name: name.trim(), accountType: aType }),
       }).catch(err => console.error('[register] welcome email failed:', err))
     }

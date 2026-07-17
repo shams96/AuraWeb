@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
         await resend.emails.send({
           from: FROM_EMAIL,
           to: email,
-          subject: 'Welcome to LIRI ROMA — Your Protocol Awaits',
+          subject: 'Welcome to Chiarelle — Your Protocol Awaits',
           html: newsletterWelcomeEmail({ email }),
         })
       } catch (err) {

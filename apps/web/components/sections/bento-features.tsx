@@ -16,7 +16,7 @@ export function BentoFeatures() {
             className="inline-block rounded-full px-6 py-2 text-[11px] font-black uppercase tracking-[0.3em] mb-5"
             style={{ color: 'var(--iv-gold)', border: `1px solid ${GOLD}0.20)`, background: `${GOLD}0.05)` }}
           >
-            La Bella Figura
+            Skin Intelligence™
           </div>
           <h2 className="iv-type-h2 font-bold text-iv-white tracking-tighter">
             A Ritual, Not a <span className="italic text-iv-gold">Routine</span>
@@ -49,7 +49,7 @@ export function BentoFeatures() {
                 Six research-confirmed actives. Formulated at the concentrations the science used.
               </h3>
               <p className="text-sm text-iv-cream/65 font-light max-w-lg leading-relaxed">
-                Every active in every LIRI ROMA formulation was independently validated before inclusion. We do not introduce an ingredient until the evidence exists — then we formulate to it, not around it.
+                Every active in every Chiarelle formulation was independently validated before inclusion. We do not introduce an ingredient until the evidence exists — then we formulate to it, not around it.
               </p>
             </div>
 

@@ -71,7 +71,7 @@ function LoginForm() {
           </div>
           <div style={{ paddingTop: 8, borderTop: '1px solid rgba(253,250,245,0.1)' }}>
             <p style={{ fontSize: '0.75rem', color: 'rgba(253,250,245,0.65)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
-              An LIRI ROMA Formulation
+              A Chiarelle Formulation
             </p>
           </div>
         </div>
