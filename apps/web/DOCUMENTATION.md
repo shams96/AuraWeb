@@ -1,8 +1,8 @@
-# LIRI ROMA Website Documentation
+# Chiarelle Website Documentation
 
 ## Overview
 
-LIRI ROMA is a luxury skincare e-commerce platform built with Next.js 14, TypeScript, and Tailwind CSS. The website implements an inverted Product Detail Page (PDP) structure optimized for conversion and user experience.
+Chiarelle is a luxury skincare e-commerce platform built with Next.js 14, TypeScript, and Tailwind CSS. The website implements an inverted Product Detail Page (PDP) structure optimized for conversion and user experience.
 
 ## Tech Stack
 
