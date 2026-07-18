@@ -376,7 +376,7 @@ export function ProductPageClient({ productId }: ProductPageClientProps) {
           <ScienceIngredients 
             keyIngredients={[
               {
-                name: 'Chiarelle Resilience Complex™',
+                name: 'Chiarel Resilience Complex™',
                 description: 'Proprietary complex tending to all four sources of skin vitality — the energy to renew, the living barrier, the power to protect, and firmness and structure.',
                 benefits: ['Living barrier support', 'Oxidative defence', 'Structural vitality'],
                 concentration: '5%'

@@ -1,15 +1,15 @@
 # My Brand Voice — brand-voice.md
 
-<!-- HOW TO USE: An AI reading ONLY this file should be able to write a post that sounds like Shams / Chiarelle.
-     House name: Chiarelle — The House of Clarity™. The manufacturing claim is always Isola del Liri, Lazio, Italy (never "made in Rome"). All prior names — Isola Vitale, LIRI ROMA, IsoLiri — are legacy, never used.
+<!-- HOW TO USE: An AI reading ONLY this file should be able to write a post that sounds like Shams / Chiarel.
+     House name: Chiarel — The House of Clarity™. The manufacturing claim is always Isola del Liri, Lazio, Italy (never "made in Rome"). All prior names — Isola Vitale, LIRI ROMA, IsoLiri — are legacy, never used.
      Manufacturing town: Isola del Liri, Lazio, Italy (place name, always fine — unrelated to any prior house name). -->
 
 ## WHO I AM
 **Tagline (house — permanent, packaging, homepage): Your skin is a story worth honoring.**
 **Campaign/social line (sanctioned flex): Your skin is a story worth telling.**
 
-Shams — I built Chiarelle in my own house. My skin and my wife's were changing — barrier, structure, the things a mirror stops flattering. My daughter's skin was doing something completely different — her own concerns, her own lips, a biology all her own. Same roof, three different skins, and nothing on the shelf could read all three. So I went to a pharmacist's lab in Isola del Liri and built a system that reads your biology, not your birthdate.
-<!-- One-liner hook: "I built Chiarelle in my own house — three different skins under one roof, and a system that reads biology, not birthdate." -->
+Shams — I built Chiarel in my own house. My skin and my wife's were changing — barrier, structure, the things a mirror stops flattering. My daughter's skin was doing something completely different — her own concerns, her own lips, a biology all her own. Same roof, three different skins, and nothing on the shelf could read all three. So I went to a pharmacist's lab in Isola del Liri and built a system that reads your biology, not your birthdate.
+<!-- One-liner hook: "I built Chiarel in my own house — three different skins under one roof, and a system that reads biology, not birthdate." -->
 
 ## AUDIENCE
 People who already optimize the rest of their lives — sleep, training, bloodwork, the way they spend their time — and treat their skin as the last input they haven't systematized. Defined by mindset, far more than by age.

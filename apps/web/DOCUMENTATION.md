@@ -1,8 +1,8 @@
-# Chiarelle Website Documentation
+# Chiarel Website Documentation
 
 ## Overview
 
-Chiarelle is a luxury skincare e-commerce platform built with Next.js 14, TypeScript, and Tailwind CSS. The website implements an inverted Product Detail Page (PDP) structure optimized for conversion and user experience.
+Chiarel is a luxury skincare e-commerce platform built with Next.js 14, TypeScript, and Tailwind CSS. The website implements an inverted Product Detail Page (PDP) structure optimized for conversion and user experience.
 
 ## Tech Stack
 

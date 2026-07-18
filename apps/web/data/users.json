@@ -2,8 +2,8 @@
   "users": [
     {
       "id": "admin-001",
-      "email": "admin@chiarelle.com",
-      "name": "Chiarelle Admin",
+      "email": "admin@chiarel.com",
+      "name": "Chiarel Admin",
       "passwordHash": "$2a$12$I0nlLAu1G00VOW15/cpQZeBzWP40t9VckKHqa9G3ZRckrTUcB5lB6",
       "role": "OWNER",
       "accountType": "personal",

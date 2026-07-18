@@ -719,7 +719,7 @@ export function SkinConsultation() {
           <div className="text-center mb-10">
             <div className="inline-block rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-8"
               style={{ color: 'var(--iv-gold)', border: '1px solid rgba(155, 71, 34,0.20)', background: 'rgba(155, 71, 34,0.05)' }}>
-              Chiarelle Skin Assessment™
+              Chiarel Skin Assessment™
             </div>
             <div className="flex items-center justify-center gap-3 mb-4">
               <Clock size={16} style={{ color: 'var(--iv-gold)' }} />
@@ -783,7 +783,7 @@ export function SkinConsultation() {
 
           <div className="inline-block rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-8"
             style={{ color: 'var(--iv-gold)', border: '1px solid rgba(155, 71, 34,0.20)', background: 'rgba(155, 71, 34,0.05)' }}>
-            Chiarelle Skin Assessment™
+            Chiarel Skin Assessment™
           </div>
 
           {isReturn && prevProto ? (
@@ -817,7 +817,7 @@ export function SkinConsultation() {
                 <span className="italic" style={{ color: 'var(--iv-gold)' }}>Decoded</span>
               </h2>
               <p className="text-lg text-iv-cream/60 max-w-2xl mx-auto leading-relaxed font-light mb-14">
-                Eight questions — the same parameters a clinical esthetician uses — mapped to a precisely tailored Chiarelle protocol. No camera. No guesswork. Just science.
+                Eight questions — the same parameters a clinical esthetician uses — mapped to a precisely tailored Chiarel protocol. No camera. No guesswork. Just science.
               </p>
             </>
           )}
@@ -1410,7 +1410,7 @@ export function SkinConsultation() {
               Question {qIdx + 1} of {TOTAL}
             </span>
             <span className="text-[10px] font-black uppercase tracking-[0.3em]" style={{ color: 'var(--iv-gold)' }}>
-              Chiarelle Skin Assessment™
+              Chiarel Skin Assessment™
             </span>
           </div>
           <div className="h-[2px] rounded-full overflow-hidden" style={{ background: 'rgba(155, 71, 34,0.12)' }}>

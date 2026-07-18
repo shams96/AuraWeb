@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next'
 
-const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://chiarelle.com'
+const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://chiarel.com'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages = [

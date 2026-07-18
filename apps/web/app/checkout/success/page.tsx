@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { CheckCircle2 } from 'lucide-react'
 
-export const metadata: Metadata = { title: 'Ritual Confirmed — Chiarelle' }
+export const metadata: Metadata = { title: 'Ritual Confirmed — Chiarel' }
 
 const C = {
   page:      'var(--iv-black)',

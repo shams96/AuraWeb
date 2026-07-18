@@ -1,4 +1,4 @@
-# CLAUDE.md — Chiarelle
+# CLAUDE.md — Chiarel
 # Engineering Master Document — Single Source of Truth
 
 Last updated: 2026-07-17. Keep this file current after every significant change.
@@ -74,12 +74,12 @@ Always restore the proxy URL after pushing.
 
 ## Brand Identity
 
-**Brand:** Chiarelle™ — The House of Clarity™ (naming history: Isola Vitale → Chiarelle → LIRI ROMA → **Chiarelle, confirmed final, 2026-07-17**; all prior names are retired — see BRAND-BIBLE.md "Legacy names")
-**Wordmark lockup:** "Chiarelle" sets as a single word, one uniform treatment across all placements — never restyled per-page.
+**Brand:** Chiarel™ — The House of Clarity™ (naming history: Isola Vitale → Chiarel → LIRI ROMA → **Chiarel, confirmed final, 2026-07-17**; all prior names are retired — see BRAND-BIBLE.md "Legacy names")
+**Wordmark lockup:** "Chiarel" sets as a single word, one uniform treatment across all placements — never restyled per-page.
 **Monogram:** **C** (single letter — owner-confirmed 2026-07-17). See BRAND-BIBLE.md for cap-mark specs.
 **Mission:** Advancing Cellular Clarity™
-**Formulation Philosophy:** Chiarelle Intelligence™
-**Positioning:** Matched to your biology, not your birthdate. Need-based, not age-based — deliberately distinct from competitor "biological age" framing. Chiarelle is a Skin Intelligence™ company, not a skincare, beauty, or longevity brand.
+**Formulation Philosophy:** Chiarel Intelligence™
+**Positioning:** Matched to your biology, not your birthdate. Need-based, not age-based — deliberately distinct from competitor "biological age" framing. Chiarel is a Skin Intelligence™ company, not a skincare, beauty, or longevity brand.
 **Formulated:** Natural You Srl, Isola del Liri, Lazio, Italy
 **HQ:** Allen, Texas
 
@@ -93,7 +93,7 @@ Always restore the proxy URL after pushing.
 
 Daniel Langer (CEO Équité, Pepperdine Professor) defines luxury brands by Added Luxury Value (ALV):
 95%+ of perceived value is emotional. The remaining 5% is functional/ingredient proof.
-Chiarelle must be engineered to this standard at every single touchpoint.
+Chiarel must be engineered to this standard at every single touchpoint.
 
 ### The 4E Framework (required at every touchpoint)
 
@@ -853,7 +853,7 @@ RESEND_API_KEY=                     # add from resend.com
 
 ---
 
-## PERMANENT BUILD SPECIFICATION — Chiarelle™ Digital Flagship
+## PERMANENT BUILD SPECIFICATION — Chiarel™ Digital Flagship
 
 > Added: 2026-06-13. This section is the canonical architectural constitution for all future development.
 
@@ -861,7 +861,7 @@ RESEND_API_KEY=                     # add from resend.com
 
 ### Platform Vision
 
-This website is not a temporary marketing website. It is the digital flagship of CHIARELLE™ and must support:
+This website is not a temporary marketing website. It is the digital flagship of CHIAREL™ and must support:
 
 - Direct-to-Consumer (Launch)
 - Future B2B Platform
@@ -1196,7 +1196,7 @@ Flag the issue. Provide:
 **Never:**
 - Silently create new brand systems
 - Silently introduce new terminology
-- Silently reinterpret CHIARELLE™
+- Silently reinterpret CHIAREL™
 - Invent copy, product names, or brand claims
 - Add features not requested
 

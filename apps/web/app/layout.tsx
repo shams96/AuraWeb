@@ -18,14 +18,14 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: {
-    default: 'Chiarelle — The House of Clarity',
-    template: '%s | Chiarelle'
+    default: 'Chiarel — The House of Clarity',
+    template: '%s | Chiarel'
   },
   description: 'Your skin is a story worth honoring. An Italian skincare house formulated at Isola del Liri, Lazio — matched to your biology, and proven on your own skin within forty-eight hours.',
-  keywords: ['Chiarelle', 'Skin Intelligence', 'luxury skincare', 'Italian skincare', 'Isola del Liri', 'skin protocol', 'personalised skincare', 'House of Clarity'],
-  authors: [{ name: 'Chiarelle' }],
-  creator: 'Chiarelle',
-  publisher: 'Chiarelle',
+  keywords: ['Chiarel', 'Skin Intelligence', 'luxury skincare', 'Italian skincare', 'Isola del Liri', 'skin protocol', 'personalised skincare', 'House of Clarity'],
+  authors: [{ name: 'Chiarel' }],
+  creator: 'Chiarel',
+  publisher: 'Chiarel',
   formatDetection: {
     email: false,
     address: false,
@@ -33,16 +33,16 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:5000'),
   openGraph: {
-    title: 'Chiarelle — The House of Clarity',
+    title: 'Chiarel — The House of Clarity',
     description: 'Your skin is a story worth honoring. Matched to your biology, proven on your own skin within forty-eight hours. Formulated at Isola del Liri, Lazio, Italy.',
     url: '/',
-    siteName: 'Chiarelle',
+    siteName: 'Chiarel',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Chiarelle — Your skin is a story worth honoring',
+        alt: 'Chiarel — Your skin is a story worth honoring',
         type: 'image/jpeg',
       },
       {
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
         url: '/og-square.jpg',
         width: 1080,
         height: 1080,
-        alt: 'Chiarelle — The House of Clarity',
+        alt: 'Chiarel — The House of Clarity',
         type: 'image/jpeg',
       },
     ],
@@ -60,22 +60,22 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Chiarelle — The House of Clarity',
+    title: 'Chiarel — The House of Clarity',
     description: 'Your skin is a story worth honoring. Matched to your biology, proven within forty-eight hours.',
     images: ['/og-image.jpg'],
-    site: '@chiarelle',
-    creator: '@chiarelle',
+    site: '@chiarel',
+    creator: '@chiarel',
   },
   other: {
     // Pinterest Rich Pins
     'pinterest-rich-pin': 'true',
-    'og:see_also': 'https://www.instagram.com/chiarelle',
+    'og:see_also': 'https://www.instagram.com/chiarel',
     // WhatsApp / iMessage lean on OG; Telegram reads these
-    'telegram:channel': '@chiarelle',
+    'telegram:channel': '@chiarel',
     // Apple / iMessage rich link
-    'apple-mobile-web-app-title': 'Chiarelle',
+    'apple-mobile-web-app-title': 'Chiarel',
     // LinkedIn reads OG but respects author
-    'article:publisher': 'https://www.linkedin.com/company/chiarelle',
+    'article:publisher': 'https://www.linkedin.com/company/chiarel',
   },
   robots: {
     index: true,

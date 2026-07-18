@@ -49,7 +49,7 @@ export function BentoFeatures() {
                 Six research-confirmed actives. Formulated at the concentrations the science used.
               </h3>
               <p className="text-sm text-iv-cream/65 font-light max-w-lg leading-relaxed">
-                Every active in every Chiarelle formulation was independently validated before inclusion. We do not introduce an ingredient until the evidence exists — then we formulate to it, not around it.
+                Every active in every Chiarel formulation was independently validated before inclusion. We do not introduce an ingredient until the evidence exists — then we formulate to it, not around it.
               </p>
             </div>
 

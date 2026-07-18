@@ -1,7 +1,7 @@
 'use client'
 
 /* ═══════════════════════════════════════════════════════════════════════
-   WHAT YOUR SKIN IS ASKING FOR — Chiarelle
+   WHAT YOUR SKIN IS ASKING FOR — Chiarel
    Replaces: problem-education · problem-solution · competitor-comparison
 
    Brand law applied:

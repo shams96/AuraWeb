@@ -63,7 +63,7 @@ export default function ReferralsPage() {
   }
 
   const shareUrl  = data?.url ?? ''
-  const shareText = encodeURIComponent('Discover Chiarelle — Italian luxury skincare formulated in Isola del Liri. Use my link for 10% off your first order.')
+  const shareText = encodeURIComponent('Discover Chiarel — Italian luxury skincare formulated in Isola del Liri. Use my link for 10% off your first order.')
   const whatsappUrl = `https://wa.me/?text=${shareText}%20${encodeURIComponent(shareUrl)}`
   const twitterUrl  = `https://twitter.com/intent/tweet?text=${shareText}&url=${encodeURIComponent(shareUrl)}`
 
@@ -199,7 +199,7 @@ export default function ReferralsPage() {
           <p style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.25em', textTransform: 'uppercase', color: C.gold, margin: '0 0 16px' }}>How it works</p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
             {[
-              ['Share your link', 'Copy and send your unique link to anyone you think would love Chiarelle.'],
+              ['Share your link', 'Copy and send your unique link to anyone you think would love Chiarel.'],
               ['They place their first order', 'When they complete their first purchase using your link, the reward triggers automatically.'],
               ['You both receive 10% off', 'Your discount code appears here and is emailed to you instantly. Theirs applies at checkout.'],
             ].map(([title, desc], i) => (

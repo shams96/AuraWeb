@@ -55,8 +55,8 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
         from:    FROM_EMAIL,
         to:      customerEmail,
         subject: isSubscription
-          ? `Your ritual membership is confirmed — #${orderNumber} | Chiarelle`
-          : `Your ritual is on its way — #${orderNumber} | Chiarelle`,
+          ? `Your ritual membership is confirmed — #${orderNumber} | Chiarel`
+          : `Your ritual is on its way — #${orderNumber} | Chiarel`,
         html: orderConfirmationEmail({
           orderNumber,
           customerName,
@@ -141,7 +141,7 @@ async function handleInvoicePaid(invoice: Stripe.Invoice) {
       await resend.emails.send({
         from:    FROM_EMAIL,
         to:      customerEmail,
-        subject: 'Your ritual is on its way again | Chiarelle',
+        subject: 'Your ritual is on its way again | Chiarel',
         html: `
           <div style="font-family:Georgia,serif;max-width:600px;margin:0 auto;background:#1A1614;color:#FDFAF5;padding:48px 40px;border-radius:16px;">
             <p style="color:#9B4722;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.3em;margin:0 0 16px;">Skin Intelligence™</p>
@@ -151,7 +151,7 @@ async function handleInvoicePaid(invoice: Stripe.Invoice) {
               It will arrive as it always has — before you run out.
             </p>
             <p style="color:rgba(253,250,245,0.35);font-size:11px;">
-              To manage your ritual membership, visit your account at chiarelle.com/account
+              To manage your ritual membership, visit your account at chiarel.com/account
             </p>
           </div>
         `,
@@ -178,7 +178,7 @@ async function handleInvoiceUpcoming(invoice: Stripe.Invoice) {
     await resend.emails.send({
       from:    FROM_EMAIL,
       to:      customerEmail,
-      subject: `Your ritual renews in 3 days | Chiarelle`,
+      subject: `Your ritual renews in 3 days | Chiarel`,
       html: subscriptionReminderEmail({ customerName: name, renewalDate, total, currency }),
     })
     console.info(`[webhook] renewal reminder sent to ${customerEmail}`)

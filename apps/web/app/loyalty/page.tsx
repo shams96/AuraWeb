@@ -70,7 +70,7 @@ const EARN_ACTIONS = [
   { action: 'Write a Verified Review', points: '50 pts', note: 'With photo: +25 pts' },
   { action: 'Refer a Friend', points: '200 pts', note: 'After their first purchase' },
   { action: 'Subscribe to Ritual', points: '2× points', note: 'On every subscription order' },
-  { action: 'Complete Chiarelle Skin Assessment™', points: '75 pts', note: 'One-time' },
+  { action: 'Complete Chiarel Skin Assessment™', points: '75 pts', note: 'One-time' },
   { action: 'Birthday Month Purchase', points: '2× points', note: 'All of your birthday month' },
   { action: 'Share on Social', points: '25 pts', note: 'Per verified share' },
 ]
@@ -91,7 +91,7 @@ export default function LoyaltyPage() {
 
   const faqs = [
     { q: 'Do points expire?', a: 'Points remain active as long as you make at least one purchase every 18 months. iv Oro members never have points expire.' },
-    { q: 'Can I gift my points to someone else?', a: 'iv Verde and Oro members can transfer up to 500 points per calendar year to another Chiarelle account.' },
+    { q: 'Can I gift my points to someone else?', a: 'iv Verde and Oro members can transfer up to 500 points per calendar year to another Chiarel account.' },
     { q: 'What happens if I drop a tier?', a: 'Tier status is reviewed annually. If your points fall below the threshold, you retain your current tier benefits for a 90-day grace period.' },
     { q: 'How do subscription orders work with points?', a: 'Active subscriptions automatically earn 2× points on every renewal order — double your usual earn rate, for as long as your ritual continues.' },
   ]

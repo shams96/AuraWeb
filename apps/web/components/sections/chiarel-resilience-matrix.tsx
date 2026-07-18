@@ -31,7 +31,7 @@ const domains = [
     name: 'The Power to Protect',
     short: 'Defence',
     headline: 'Modern life creates invisible biological wear before visible aging appears.',
-    body: 'Daily pollution, UV, blue light, and urban stress place cumulative oxidative burden on skin. Chiarelle addresses this systematically — as a biological priority, not an afterthought.',
+    body: 'Daily pollution, UV, blue light, and urban stress place cumulative oxidative burden on skin. Chiarel addresses this systematically — as a biological priority, not an afterthought.',
     tags: ['Pollution Defence', 'Free Radical Neutralisation', 'Environmental Shield'],
   },
   {
@@ -44,7 +44,7 @@ const domains = [
   },
 ]
 
-export function ChiarelleResilienceMatrix() {
+export function ChiarelResilienceMatrix() {
   return (
     <section className="py-32 relative overflow-hidden" style={{ background: SECTION_BG }}>
 
@@ -70,7 +70,7 @@ export function ChiarelleResilienceMatrix() {
             Vitality, Made Visible
           </h2>
           <p className="text-lg font-light max-w-2xl mx-auto leading-relaxed" style={{ color: `${CREAM}0.75)` }}>
-            Four ways your skin stays alive. One serum that tends to all of them — the thinking behind every Chiarelle formulation.
+            Four ways your skin stays alive. One serum that tends to all of them — the thinking behind every Chiarel formulation.
           </p>
           <div style={{ width: 48, height: 1, background: `${G}0.35)`, margin: '32px auto 0' }} />
         </div>
@@ -176,7 +176,7 @@ export function ChiarelleResilienceMatrix() {
             fontSize: 'clamp(1.1rem, 2.5vw, 1.5rem)', color: `${CREAM}0.85)`,
             lineHeight: 1.5, marginBottom: 24, maxWidth: 680, marginLeft: 'auto', marginRight: 'auto',
           }}>
-            &ldquo;This is not a formula. It is a philosophy — the quiet foundation from which every Chiarelle formulation is born.&rdquo;
+            &ldquo;This is not a formula. It is a philosophy — the quiet foundation from which every Chiarel formulation is born.&rdquo;
           </p>
           <Link
             href="/system"

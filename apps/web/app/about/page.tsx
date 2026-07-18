@@ -3,10 +3,10 @@ import type { Metadata } from 'next'
 import { MapPin, Award, Heart, Beaker } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'About Chiarelle — The House of Clarity',
-  description: 'Chiarelle is a Skin Intelligence™ company — formulation guided by biology, not birthdate. Formulated at Isola del Liri.',
+  title: 'About Chiarel — The House of Clarity',
+  description: 'Chiarel is a Skin Intelligence™ company — formulation guided by biology, not birthdate. Formulated at Isola del Liri.',
   openGraph: {
-    title: 'About Chiarelle — The House of Clarity',
+    title: 'About Chiarel — The House of Clarity',
     description: 'Matched to your biology, not your birthdate. Formulated at Isola del Liri.',
   },
 }
@@ -24,7 +24,7 @@ export default function AboutPage() {
           </div>
           <h1 className="iv-type-display mb-8"><Wordmark size="1em" color="var(--iv-white)" /></h1>
           <h2 className="iv-type-h3 font-light text-iv-cream/70 mb-12 leading-relaxed">
-            Chiarelle is not a skincare brand.<br />
+            Chiarel is not a skincare brand.<br />
             <span className="text-iv-white font-semibold italic">It is a Skin Intelligence™ company.</span>
           </h2>
           <div className="w-24 h-px bg-iv-gold/30 mx-auto" />
@@ -39,13 +39,13 @@ export default function AboutPage() {
               <span className="text-iv-gold font-black uppercase tracking-[0.3em] text-[10px] block">The Origin</span>
               <h2 className="iv-type-h2 font-bold text-iv-white tracking-tighter leading-none">Born from<br /><em className="text-iv-gold">Skin Intelligence™</em></h2>
               <p className="text-iv-cream/60 text-lg leading-relaxed font-light">
-                <em>Skin Intelligence™</em> is Chiarelle's unwritten code — formulation guided by biology, not birthdate. Not an age bracket. Not a deficiency to fix. The quiet confidence of skin that is understood.
+                <em>Skin Intelligence™</em> is Chiarel's unwritten code — formulation guided by biology, not birthdate. Not an age bracket. Not a deficiency to fix. The quiet confidence of skin that is understood.
               </p>
               <p className="text-iv-cream/60 text-lg leading-relaxed font-light">
-                Chiarelle was born from that philosophy. Formulated in partnership with <strong className="text-iv-white">Natural You Srl</strong> at <strong className="text-iv-white">Isola del Liri, Italy</strong> — where Italian precision meets centuries of craft — our formulations exist not to fight aging, but to be matched to your biology, not your birthdate.
+                Chiarel was born from that philosophy. Formulated in partnership with <strong className="text-iv-white">Natural You Srl</strong> at <strong className="text-iv-white">Isola del Liri, Italy</strong> — where Italian precision meets centuries of craft — our formulations exist not to fight aging, but to be matched to your biology, not your birthdate.
               </p>
               <p className="text-iv-cream/60 text-lg leading-relaxed font-light">
-                Italy gave the world precision instruments and centuries of formulation craft — not because Italians invented skincare, but because they mastered the discipline first. That is the inheritance Chiarelle draws from.
+                Italy gave the world precision instruments and centuries of formulation craft — not because Italians invented skincare, but because they mastered the discipline first. That is the inheritance Chiarel draws from.
               </p>
             </div>
             <div className="bg-iv-deep-green/20 border border-iv-gold/10 rounded-3xl aspect-[4/5] flex items-center justify-center text-iv-gold/20 italic iv-serif text-sm backdrop-blur-md relative overflow-hidden">
@@ -89,7 +89,7 @@ export default function AboutPage() {
             <p className="text-2xl md:text-3xl text-iv-cream/80 italic iv-serif leading-relaxed max-w-3xl mx-auto">
               "Skin was not designed for modern life. Resilience is no longer inherited. It must be cultivated."
             </p>
-            <p className="text-[10px] font-black text-iv-gold uppercase tracking-[0.3em] mt-8">The Chiarelle Principle™</p>
+            <p className="text-[10px] font-black text-iv-gold uppercase tracking-[0.3em] mt-8">The Chiarel Principle™</p>
           </div>
         </div>
       </section>
@@ -102,7 +102,7 @@ export default function AboutPage() {
             <p className="text-[10px] font-black uppercase tracking-[0.3em] mb-4" style={{ color: 'var(--iv-gold)' }}>Adaptive Skin Science™ · The System</p>
             <h2 className="iv-type-h2 font-bold text-iv-white tracking-tighter uppercase">The Science of<br /><em className="text-iv-gold">Skin Vitality</em></h2>
             <p className="text-iv-cream/65 text-sm font-light mt-6 max-w-xl mx-auto leading-relaxed">
-              Four biological systems. Every Chiarelle formulation tends to all four — in sequence, with clinical precision.
+              Four biological systems. Every Chiarel formulation tends to all four — in sequence, with clinical precision.
             </p>
           </div>
 
@@ -155,7 +155,7 @@ export default function AboutPage() {
           </p>
           <div className="mt-16 flex items-center justify-center space-x-4">
             <div className="w-8 h-px bg-iv-white/10" />
-            <p className="font-bold text-iv-white uppercase tracking-widest text-[10px]">Shams Islam, Founder · Chiarelle</p>
+            <p className="font-bold text-iv-white uppercase tracking-widest text-[10px]">Shams Islam, Founder · Chiarel</p>
             <div className="w-8 h-px bg-iv-white/10" />
           </div>
         </div>

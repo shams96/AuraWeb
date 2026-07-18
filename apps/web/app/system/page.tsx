@@ -4,10 +4,10 @@ import { Shield, Zap, Sparkles, Activity } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'The Ritual — Four Formulations. One Living Philosophy.',
-  description: 'Chiarelle\'s four protocols are not defined by age — they are defined by what your skin needs now. Preservation · Refinement · Regeneration · Longevity. Matched to your biology, not your birthdate.',
+  description: 'Chiarel\'s four protocols are not defined by age — they are defined by what your skin needs now. Preservation · Refinement · Regeneration · Longevity. Matched to your biology, not your birthdate.',
   openGraph: {
-    title: 'The Ritual | Chiarelle',
-    description: 'Four protocols born from Chiarelle Intelligence™ — matched to your biology, not your birthdate.',
+    title: 'The Ritual | Chiarel',
+    description: 'Four protocols born from Chiarel Intelligence™ — matched to your biology, not your birthdate.',
   },
 }
 
@@ -55,7 +55,7 @@ export default function SystemPage() {
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           <div className="inline-flex items-center gap-3 border border-iv-gold/20 rounded-full px-6 py-2 text-[10px] font-black uppercase tracking-[0.3em] mb-8 bg-iv-black/40 backdrop-blur-md text-iv-gold">
             <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'var(--iv-gold)', display: 'inline-block' }} />
-            Skin Intelligence™ · Chiarelle
+            Skin Intelligence™ · Chiarel
           </div>
           <h1 className="iv-type-display font-semibold mb-8 uppercase text-iv-white">The <em className="text-iv-gold" style={{ fontStyle: 'italic', fontFamily: 'var(--iv-font-serif)' }}>Ritual</em></h1>
           <p className="text-xl text-iv-cream/70 max-w-3xl mx-auto leading-relaxed font-light mb-6">
@@ -137,7 +137,7 @@ export default function SystemPage() {
       <section className="py-24 bg-iv-black border-t border-iv-gold/10">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="text-center mb-16">
-            <p className="text-[10px] font-black text-iv-gold uppercase tracking-[0.4em] mb-4">The Chiarelle Principle™</p>
+            <p className="text-[10px] font-black text-iv-gold uppercase tracking-[0.4em] mb-4">The Chiarel Principle™</p>
             <h3 className="iv-type-h3 font-bold text-iv-white tracking-tighter" style={{ fontFamily: 'var(--iv-font-serif)' }}>
               Your Skin's <em className="text-iv-gold">Biological Stage</em>
             </h3>
@@ -159,7 +159,7 @@ export default function SystemPage() {
           </div>
           <div className="text-center">
             <p className="text-[11px] font-black uppercase tracking-[0.25em] text-iv-cream/70 mb-16">
-              Visible aging begins when adaptation capacity is exhausted — Chiarelle exists to prevent that transition.
+              Visible aging begins when adaptation capacity is exhausted — Chiarel exists to prevent that transition.
             </p>
             <div className="w-24 h-px bg-iv-gold/30 mx-auto mb-16" />
             <p className="text-3xl md:text-4xl text-iv-cream/80 italic iv-serif leading-[1.3] tracking-tight max-w-3xl mx-auto">

@@ -64,7 +64,7 @@ export async function POST(req: NextRequest) {
         await resend.emails.send({
           from:    FROM_EMAIL,
           to:      referral.referrerEmail,
-          subject: 'Your invitation worked — your Ambassador reward is ready | Chiarelle',
+          subject: 'Your invitation worked — your Ambassador reward is ready | Chiarel',
           html:    referralRewardEmail({
             referrerName: referrerUser.name.split(' ')[0],
             rewardCode,

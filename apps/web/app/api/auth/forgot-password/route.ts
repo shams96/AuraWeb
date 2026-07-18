@@ -58,10 +58,10 @@ export async function POST(req: NextRequest) {
       await resend.emails.send({
         from:    FROM_EMAIL,
         to:      emailLower,
-        subject: 'Reset your Chiarelle password',
+        subject: 'Reset your Chiarel password',
         html: `
           <div style="font-family:Georgia,serif;max-width:560px;margin:0 auto;background:#FDFAF5;color:#1A1614;padding:48px 40px;">
-            <p style="color:#9B4722;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.3em;margin:0 0 24px;">Chiarelle</p>
+            <p style="color:#9B4722;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.3em;margin:0 0 24px;">Chiarel</p>
             <h1 style="font-size:22px;margin:0 0 16px;font-style:italic">Reset your password</h1>
             <p style="color:#7A5C4E;line-height:1.7;margin:0 0 28px;">
               We received a request to reset the password for your account.

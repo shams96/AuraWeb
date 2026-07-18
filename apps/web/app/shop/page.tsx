@@ -9,10 +9,10 @@ import Link from 'next/link'
 import { FlaskConical } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'The Collections — Chiarelle',
+  title: 'The Collections — Chiarel',
   description: "Eighteen formulations. Four protocols. One Skin Intelligence™ system. Each formulation is assigned to a biological stage — not an age.",
   openGraph: {
-    title: 'The Collections | Chiarelle',
+    title: 'The Collections | Chiarel',
     description: 'Eighteen formulations matched to your biology, not your birthdate. Find your protocol.',
   },
 }

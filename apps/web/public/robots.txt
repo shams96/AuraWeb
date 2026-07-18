@@ -8,4 +8,4 @@ Disallow: /register
 Disallow: /wishlist
 Disallow: /success
 
-Sitemap: https://chiarelle.com/sitemap.xml
+Sitemap: https://chiarel.com/sitemap.xml

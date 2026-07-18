@@ -26,7 +26,7 @@ export function FAQSection({ faqs }: FAQSectionProps) {
             Frequently Asked Questions
           </h2>
           <p className="text-lg text-iv-cream/70">
-            Everything you need to know about Chiarelle Essence™ and the Chiarelle ritual
+            Everything you need to know about Chiarel Essence™ and the Chiarel ritual
           </p>
         </div>
 
@@ -84,8 +84,8 @@ export function FAQSection({ faqs }: FAQSectionProps) {
             </div>
             <h3 className="font-bold text-iv-white mb-2 uppercase tracking-widest text-xs">Email Support</h3>
             <p className="text-xs text-iv-cream/65 mb-4">Response within 24 hours</p>
-            <a href="mailto:support@chiarelle.it" className="text-iv-gold hover:text-iv-gold-light text-sm font-bold">
-              support@chiarelle.it
+            <a href="mailto:support@chiarel.it" className="text-iv-gold hover:text-iv-gold-light text-sm font-bold">
+              support@chiarel.it
             </a>
           </div>
 

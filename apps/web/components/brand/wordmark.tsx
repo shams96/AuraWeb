@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════════════
-   THE CHIARELLE WORDMARK — one treatment, everywhere.
+   THE CHIAREL WORDMARK — one treatment, everywhere.
    BRAND-BIBLE: the wordmark sets as a single word with one uniform styling
    across all placements — never restyled per-page.
    Ink follows the surrounding ground (pass `color` for dark grounds).
@@ -11,7 +11,7 @@ export function Wordmark({
 }: {
   /** font-size of the mark (the only thing that may vary between placements) */
   size?: string
-  /** ink for "Chiarelle" — defaults to charcoal for light grounds */
+  /** ink for "Chiarel" — defaults to charcoal for light grounds */
   color?: string
 }) {
   return (
@@ -26,7 +26,7 @@ export function Wordmark({
         whiteSpace: 'nowrap',
       }}
     >
-      Chiarelle
+      Chiarel
     </span>
   )
 }

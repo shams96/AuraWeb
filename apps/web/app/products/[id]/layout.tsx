@@ -5,14 +5,14 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: {
-    default: 'Formulations | Chiarelle',
-    template: '%s | Chiarelle'
+    default: 'Formulations | Chiarel',
+    template: '%s | Chiarel'
   },
-  description: 'Chiarelle formulations — the science of skin vitality, formulated at Isola del Liri, Italy.',
-  keywords: ['Chiarelle', 'luxury skincare', 'skin vitality', 'Skin Intelligence', 'Italian skincare', 'skin resilience'],
-  authors: [{ name: 'Chiarelle' }],
-  creator: 'Chiarelle',
-  publisher: 'Chiarelle',
+  description: 'Chiarel formulations — the science of skin vitality, formulated at Isola del Liri, Italy.',
+  keywords: ['Chiarel', 'luxury skincare', 'skin vitality', 'Skin Intelligence', 'Italian skincare', 'skin resilience'],
+  authors: [{ name: 'Chiarel' }],
+  creator: 'Chiarel',
+  publisher: 'Chiarel',
   formatDetection: {
     email: false,
     address: false,
@@ -20,16 +20,16 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:5000'),
   openGraph: {
-    title: 'Formulations | Chiarelle',
+    title: 'Formulations | Chiarel',
     description: 'The science of skin vitality, formulated at Isola del Liri, Italy.',
     url: '/',
-    siteName: 'Chiarelle',
+    siteName: 'Chiarel',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Chiarelle — Skin Intelligence™, Isola del Liri, Italy',
+        alt: 'Chiarel — Skin Intelligence™, Isola del Liri, Italy',
       },
     ],
     locale: 'en_US',
@@ -37,10 +37,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Formulations | Chiarelle',
+    title: 'Formulations | Chiarel',
     description: 'Skin Intelligence™ formulated at Isola del Liri, Italy.',
     images: ['/og-image.jpg'],
-    creator: '@chiarelle',
+    creator: '@chiarel',
   },
   robots: {
     index: true,

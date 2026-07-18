@@ -1,17 +1,17 @@
-# CHIARELLE — BRAND BIBLE
+# CHIAREL — BRAND BIBLE
 
 > Single creative source of truth for the House. Supersedes all prior identities.
-> Authoritative source: `CHIARELLE_Brand_Clarity_Framework.docx`.
+> Authoritative source: `CHIAREL_Brand_Clarity_Framework.docx`.
 > Voice reference: `brand-voice.md`. Legacy identities preserved in `BRAND-BIBLE-LEGACY-liriroma.md` and `BRAND-BIBLE-LEGACY-isolavitale.md` (do not use for naming).
 
 ## House
 
-- **House:** Chiarelle™ — The House of Clarity™
-- **Wordmark lockup:** "Chiarelle" sets as a single word, one uniform treatment everywhere — header, footer, auth panels, emails, packaging web mocks. Never restyled per-page.
-- **Positioning statement:** "Matched to your biology, not your birthdate." Chiarelle makes no age-replacement claim — deliberately distinct from competitor "biological age" framing. The House's position is need-based, not age-based.
-- **Category:** Chiarelle is not a skincare brand, a beauty brand, or a longevity brand. It is a Skin Intelligence™ company — formulation guided by biology, not birthdate.
+- **House:** Chiarel™ — The House of Clarity™
+- **Wordmark lockup:** "Chiarel" sets as a single word, one uniform treatment everywhere — header, footer, auth panels, emails, packaging web mocks. Never restyled per-page.
+- **Positioning statement:** "Matched to your biology, not your birthdate." Chiarel makes no age-replacement claim — deliberately distinct from competitor "biological age" framing. The House's position is need-based, not age-based.
+- **Category:** Chiarel is not a skincare brand, a beauty brand, or a longevity brand. It is a Skin Intelligence™ company — formulation guided by biology, not birthdate.
 - **Mission:** Advancing Cellular Clarity™
-- **Formulation Philosophy:** Chiarelle Intelligence™
+- **Formulation Philosophy:** Chiarel Intelligence™
 - **Brand Enemy:** Modern Biological Stress™
 - **Monogram:** single "C" — debossed into cap tooling, single global mold.
 
@@ -23,7 +23,7 @@ Isola Vitale · LIRI ROMA · "The House of Liri" · IsoLiri · "House of Vitalit
 
 House → Collection → Product Name → Scientific Descriptor. Never reversed.
 
-**Approved vocabulary:** Cellular · Chiarelle · Terra · Obsidian · Essence · Crème · Concentrate · Cleanser · Treatment · Mist · Masque · Recovery · Clarity · Radiance
+**Approved vocabulary:** Cellular · Chiarel · Terra · Obsidian · Essence · Crème · Concentrate · Cleanser · Treatment · Mist · Masque · Recovery · Clarity · Radiance
 
 **Retired vocabulary:** Anti-Aging · Age Defying · Youth · Miracle · Lift · Wrinkle Repair · Plump · Glow · Balm · Milk · Vitale · Vitality (house-level only)
 
@@ -34,10 +34,10 @@ Product names are function/outcome-based only — never ingredient-forward. Ingr
 | Color | Hex | Assignment |
 |---|---|---|
 | Cloud Dancer | #F0F2EB | Cleanse / Prep — Cleanser, Toner (120ml) |
-| Peach Dust | #FAD6C9 | Serums only — Chiarelle Essence, Eye Concentrate, Lip Concentrate |
+| Peach Dust | #FAD6C9 | Serums only — Chiarel Essence, Eye Concentrate, Lip Concentrate |
 | Red Ochre | #9B4722 | Day Cream — Terra Radiance Crème (50g jar) |
 | Garden Green | #004B37 | Night Cream, Consumer Collection only — Recovery Masque (50g jar) |
-| Deep Ocean | #0C2D38 | Men's Collection, in full — Obsidian by Chiarelle (Phase 2+) |
+| Deep Ocean | #0C2D38 | Men's Collection, in full — Obsidian by Chiarel (Phase 2+) |
 
 Glass: High Flint Grade A, zero-tint, satin-matte spray lacquer. No gloss, mirror, or dual-layer finish.
 Caps: zero-metal satin-finish UV polymer, matte champagne gold (PANTONE 14-1012 TCX / #D6C5A0), single global mold, debossed "C."
@@ -51,11 +51,11 @@ These hex values are already the live site palette (`apps/web/app/globals.css`) 
 |---|---|---|---|
 | 01 | Cellular Cleanser™ | Cloud Dancer #F0F2EB | Cleanse |
 | 02 | Cellular Essence™ | Cloud Dancer #F0F2EB | Toner |
-| 03 | Chiarelle Essence™ | Peach Dust #FAD6C9 | Signature Serum |
+| 03 | Chiarel Essence™ | Peach Dust #FAD6C9 | Signature Serum |
 | 04 | Terra Radiance Crème™ | Red Ochre #9B4722 | Day · Permanent Icon |
-| 05 | Chiarelle Eye Concentrate™ | Peach Dust #FAD6C9 | Proven Hero |
+| 05 | Chiarel Eye Concentrate™ | Peach Dust #FAD6C9 | Proven Hero |
 | 06 | Recovery Masque™ | Garden Green #004B37 | Night Cream |
-| 07 | Chiarelle Lip Concentrate™ | Peach Dust #FAD6C9 | Standalone |
+| 07 | Chiarel Lip Concentrate™ | Peach Dust #FAD6C9 | Standalone |
 
 ## Tone of Voice
 
@@ -74,4 +74,4 @@ Photography register: undecided — flagged for founder decision.
 
 ## Naming History — for reference, not active
 
-Full sequence: Isola Vitale → Chiarelle → LIRI ROMA (The House of Liri™, RL/IV monogram) → **Chiarelle (confirmed final)**. Any surviving "LIRI ROMA" or "IV"/"RL" monogram reference in vendor files, archived documents, or code is legacy and must be corrected to Chiarelle before use.
+Full sequence: Isola Vitale → Chiarel → LIRI ROMA (The House of Liri™, RL/IV monogram) → **Chiarel (confirmed final)**. Any surviving "LIRI ROMA" or "IV"/"RL" monogram reference in vendor files, archived documents, or code is legacy and must be corrected to Chiarel before use.

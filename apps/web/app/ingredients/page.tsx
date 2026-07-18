@@ -4,10 +4,10 @@ import { HouseStandard } from '@/components/sections/house-standard'
 
 export const metadata: Metadata = {
   title: 'Ingredients & Science',
-  description: 'Full transparency on every active. Explore the Breakthrough 6 proprietary technologies, complete INCI directory, concentrations, and EU/FDA validation behind every Chiarelle formulation.',
+  description: 'Full transparency on every active. Explore the Breakthrough 6 proprietary technologies, complete INCI directory, concentrations, and EU/FDA validation behind every Chiarel formulation.',
   openGraph: {
-    title: 'Ingredients & Science | Chiarelle',
-    description: 'Cellular Renewal Complex, DWAT, Metabolic Change, L-Ornithine, Bifida Ferment, Ectoin — the clinical science behind Chiarelle\'s Skin Intelligence™ and the science of skin vitality.',
+    title: 'Ingredients & Science | Chiarel',
+    description: 'Cellular Renewal Complex, DWAT, Metabolic Change, L-Ornithine, Bifida Ferment, Ectoin — the clinical science behind Chiarel\'s Skin Intelligence™ and the science of skin vitality.',
   },
 }
 

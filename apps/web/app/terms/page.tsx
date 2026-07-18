@@ -14,7 +14,7 @@ export default function TermsPage() {
         <div className="prose prose-invert max-w-none space-y-12">
           <div className="space-y-6">
             <h2 className="text-2xl font-bold text-iv-white uppercase tracking-widest italic">1. Acceptance</h2>
-            <p className="text-iv-cream/60 leading-relaxed font-light"> By accessing chiarelle.com, you agree to comply with these terms. The platform is operated by 1HubSolutions LLC. </p>
+            <p className="text-iv-cream/60 leading-relaxed font-light"> By accessing chiarel.com, you agree to comply with these terms. The platform is operated by 1HubSolutions LLC. </p>
           </div>
 
           <div className="space-y-6">

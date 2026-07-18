@@ -37,7 +37,7 @@ export default function ShippingPage() {
 
           <div className="pt-16 border-t border-iv-white/5 space-y-8">
              <h2 className="text-3xl font-bold text-iv-white uppercase tracking-tight italic">Clinical Integrity Policy</h2>
-             <p className="text-iv-cream/60 leading-relaxed font-light"> All Chiarelle products are stabilized and temperature-monitored during transit from our laboratories in Isola del Liri. We utilize premium, low-impact packaging to ensure 100% molecular stability upon arrival. </p>
+             <p className="text-iv-cream/60 leading-relaxed font-light"> All Chiarel products are stabilized and temperature-monitored during transit from our laboratories in Isola del Liri. We utilize premium, low-impact packaging to ensure 100% molecular stability upon arrival. </p>
           </div>
         </div>
       </section>

@@ -43,7 +43,7 @@ export function Newsletter() {
           {/* Section Header */}
           <div className="mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-iv-white mb-6 uppercase tracking-widest">
-              Join the Chiarelle Society
+              Join the Chiarel Society
             </h2>
             <p className="text-xl text-iv-cream/70 leading-relaxed max-w-2xl mx-auto">
               Subscribe for exclusive access to advanced formulations,

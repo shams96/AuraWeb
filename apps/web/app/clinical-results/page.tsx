@@ -3,9 +3,9 @@ import { CheckCircle2, FlaskConical, Users, Calendar, TrendingUp } from 'lucide-
 
 export const metadata: Metadata = {
   title: 'Clinical Results',
-  description: 'Peer-reviewed efficacy data behind every Chiarelle formulation — RCT outcomes, independent lab results, and 12-week photographic evidence.',
+  description: 'Peer-reviewed efficacy data behind every Chiarel formulation — RCT outcomes, independent lab results, and 12-week photographic evidence.',
   openGraph: {
-    title: 'Clinical Results | Chiarelle',
+    title: 'Clinical Results | Chiarel',
     description: 'The numbers behind the science: 70% barrier improvement, 37.6% wrinkle reduction, 30% inflammation reduction — all third-party verified.',
   },
 }
@@ -90,7 +90,7 @@ export default function ClinicalResultsPage() {
             The <span className="text-iv-gold italic iv-serif">Science</span>
           </h1>
           <p className="text-xl text-iv-cream/70 leading-relaxed font-light max-w-2xl mx-auto">
-            The science behind Chiarelle was not created for us. It was created by independent researchers and dermatological institutions. We selected every active because this evidence already existed — then formulated at the exact concentrations that delivered these results.
+            The science behind Chiarel was not created for us. It was created by independent researchers and dermatological institutions. We selected every active because this evidence already existed — then formulated at the exact concentrations that delivered these results.
           </p>
         </div>
       </section>
@@ -118,7 +118,7 @@ export default function ClinicalResultsPage() {
             <h2 className="text-xs font-black text-iv-gold uppercase tracking-[0.4em] mb-4">The Published Science</h2>
             <p className="text-sm text-iv-text-muted max-w-3xl mt-4 leading-relaxed">
               This is the peer-reviewed research the formulations are built upon — published by independent
-              investigators, cited here in full. It is the science, openly shown. Chiarelle&rsquo;s own
+              investigators, cited here in full. It is the science, openly shown. Chiarel&rsquo;s own
               performance evidence is gathered from the people who use the protocols, and is reported separately.
             </p>
             <h3 className="iv-type-h2 font-semibold text-iv-white uppercase tracking-tight">Peer-Reviewed Research Behind the Formulations</h3>
@@ -187,7 +187,7 @@ export default function ClinicalResultsPage() {
               <div>
                 <h3 className="text-sm font-black text-iv-white uppercase tracking-widest mb-4">Methodology Statement</h3>
                 <p className="text-sm text-iv-cream/60 leading-relaxed font-light mb-4">
-                  The studies referenced on this page were conducted by independent dermatological research institutions — including Eurofins Dermatest GmbH (Germany) and Dermscan Group (France & Italy) — prior to and independently of any Chiarelle formulation decision. Chiarelle did not sponsor or influence these studies. We selected these actives because the independent evidence existed. We formulated at the concentrations the evidence used. Full study references and methodology documentation are available to healthcare professionals and researchers on request.
+                  The studies referenced on this page were conducted by independent dermatological research institutions — including Eurofins Dermatest GmbH (Germany) and Dermscan Group (France & Italy) — prior to and independently of any Chiarel formulation decision. Chiarel did not sponsor or influence these studies. We selected these actives because the independent evidence existed. We formulated at the concentrations the evidence used. Full study references and methodology documentation are available to healthcare professionals and researchers on request.
                 </p>
                 <p className="text-sm text-iv-cream/60 leading-relaxed font-light">
                   Consumer self-assessment data was collected via post-purchase survey (60-day follow-up) of verified purchasers. Individual results vary. These studies support — but do not guarantee — the same outcomes for every individual.

@@ -17,7 +17,7 @@ export default function RoutinesPage() {
           </div>
           <h1 className="iv-type-display font-semibold mb-8 text-iv-white">The <em className="text-iv-gold" style={{ fontStyle: 'italic', fontFamily: 'var(--iv-font-serif)' }}>Protocols</em></h1>
           <p className="text-xl text-iv-cream/70 leading-relaxed font-light">
-            Laboratory-validated application sequences engineered to maximise the efficacy of your Chiarelle system.
+            Laboratory-validated application sequences engineered to maximise the efficacy of your Chiarel system.
           </p>
         </div>
       </section>

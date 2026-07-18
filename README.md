@@ -1,6 +1,6 @@
-# Chiarelle — The House of Clarity
+# Chiarel — The House of Clarity
 
-A modern, production-ready, ultra-luxury e-commerce platform built for **Chiarelle**, a Skin Intelligence™ company — formulation guided by biology, not birthdate. Engineered with Next.js 14, App Router, and TypeScript.
+A modern, production-ready, ultra-luxury e-commerce platform built for **Chiarel**, a Skin Intelligence™ company — formulation guided by biology, not birthdate. Engineered with Next.js 14, App Router, and TypeScript.
 
 Four protocols matched to biological stage rather than age bracket, with transparent clinical-grade concentration displays and a subscription-first architecture.
 
@@ -39,8 +39,8 @@ Four protocols matched to biological stage rather than age bracket, with transpa
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/shams96/chiarelle.git
-   cd chiarelle
+   git clone https://github.com/shams96/chiarel.git
+   cd chiarel
    ```
 
 2. **Install dependencies**
@@ -59,12 +59,12 @@ Four protocols matched to biological stage rather than age bracket, with transpa
    npm run dev
    ```
 
-   This will start the Chiarelle storefront at `http://localhost:5000`.
+   This will start the Chiarel storefront at `http://localhost:5000`.
 
 ## 📁 Project Structure
 
 ```
-Chiarelle/
+Chiarel/
 ├── apps/
 │   ├── web/              # Next.js storefront (Main D2C App)
 │   ├── admin/            # Administrative dashboard
@@ -82,7 +82,7 @@ The UI is built around a light-first ivory luxury palette with dark editorial se
 - **Micro-Animations**: Glassmorphism and smooth transition states to encourage user interaction.
 
 ## 🤝 Contribution Guidelines
-All updates MUST adhere to the Chiarelle naming conventions in `BRAND-BIBLE.md` and `brand-voice.md`. Legacy branding (Isola Vitale, LIRI ROMA) is retired — never use it. Ensure all clinical percentages added match the official Research Dossier specifications.
+All updates MUST adhere to the Chiarel naming conventions in `BRAND-BIBLE.md` and `brand-voice.md`. Legacy branding (Isola Vitale, LIRI ROMA) is retired — never use it. Ensure all clinical percentages added match the official Research Dossier specifications.
 
 ---
 *Formulated in partnership with Natural You Srl, Isola del Liri, Italy.*

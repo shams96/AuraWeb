@@ -6,7 +6,7 @@ export function Footer() {
   const footerLinks = {
     collection: [
       { name: 'The Collection', href: '/shop' },
-      { name: 'Chiarelle Essence™', href: '/shop' },
+      { name: 'Chiarel Essence™', href: '/shop' },
       { name: 'Preservation Protocol', href: '/shop?tier=t1' },
       { name: 'Ritual Membership', href: '/account/subscription' },
     ],
@@ -14,7 +14,7 @@ export function Footer() {
       { name: 'The Ritual System', href: '/system' },
       { name: 'The Science', href: '/system#science' },
       { name: 'Clinical Results', href: '/clinical-results' },
-      { name: 'The Chiarelle Journal', href: '/journal' },
+      { name: 'The Chiarel Journal', href: '/journal' },
     ],
     house: [
       { name: 'Our Story', href: '/about' },
@@ -124,7 +124,7 @@ export function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-[10px] font-black uppercase tracking-widest" style={{ color: 'rgba(250,247,240,0.75)' }}>
             <div className="flex items-center space-x-3">
               <Mail className="h-4 w-4" style={{ color: 'rgba(184, 151, 47, 0.6)' }} />
-              <span>concierge@chiarelle.com</span>
+              <span>concierge@chiarel.com</span>
             </div>
             <div className="flex items-center space-x-3">
               <Phone className="h-4 w-4" style={{ color: 'rgba(184, 151, 47, 0.6)' }} />
@@ -167,7 +167,7 @@ export function Footer() {
             </Link>
           </div>
           <p className="text-[10px] font-black uppercase tracking-widest" style={{ color: 'rgba(250,247,240,0.55)' }}>
-            &copy; {new Date().getFullYear()} Chiarelle · Allen, TX · Isola del Liri, Italy
+            &copy; {new Date().getFullYear()} Chiarel · Allen, TX · Isola del Liri, Italy
           </p>
         </div>
       </div>

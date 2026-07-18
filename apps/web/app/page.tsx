@@ -1,7 +1,7 @@
 import { GrandDoor } from '@/components/sections/grand-door'
 import { SkinConsultation } from '@/components/diagnostic/skin-consultation'
 import { SkinIntelligenceSection } from '@/components/sections/skin-intelligence'
-import { ChiarelleResilienceMatrix } from '@/components/sections/chiarelle-resilience-matrix'
+import { ChiarelResilienceMatrix } from '@/components/sections/chiarel-resilience-matrix'
 import { HowItWorks } from '@/components/sections/how-it-works'
 import { BrandVideo } from '@/components/sections/brand-video'
 import { BentoFeatures } from '@/components/sections/bento-features'
@@ -19,7 +19,7 @@ export default function HomePage() {
   // Hero product data
   const product = {
     id: 'liri-essence',
-    name: 'Chiarelle Essence™',
+    name: 'Chiarel Essence™',
     tagline: 'The first serum formulated for the biological reality of modern life',
     description: 'A precision-concentrated adaptive serum that tends to all four sources of your skin\'s vitality — the energy to renew, the living barrier, the power to protect, and structure that holds — in a single daily ritual. Formulated at Natural You Srl, Isola del Liri, Italy.',
     price: 295,
@@ -75,19 +75,19 @@ export default function HomePage() {
       answer: 'The humectant and barrier complex produces a measurable sensory change within 48 hours — skin feels different before it looks different. Surface texture visibly improves by week four, the first complete epidermal turnover cycle. Structural changes — firmness, resilience, tone — are clinically significant at 12 weeks of consistent morning and evening use.'
     },
     {
-      question: 'Is Chiarelle Essence™ suited to all skin types?',
+      question: 'Is Chiarel Essence™ suited to all skin types?',
       answer: 'Yes. Our formulations work with the four sources of vitality that govern skin health, whatever your skin type. Made without common sensitisers, it is designed for daily use at every biological stage — including sensitive and reactive skin.'
     },
     {
       question: 'What sets this apart from other luxury serums?',
-      answer: 'Most serums chase a single concern. Chiarelle Essence tends to four at once — the energy your skin uses to renew, the living barrier that keeps it resilient, its ability to protect itself, and the firmness that holds it. It does not treat symptoms. It improves the conditions that determine how your skin responds to everything else.'
+      answer: 'Most serums chase a single concern. Chiarel Essence tends to four at once — the energy your skin uses to renew, the living barrier that keeps it resilient, its ability to protect itself, and the firmness that holds it. It does not treat symptoms. It improves the conditions that determine how your skin responds to everything else.'
     },
     {
       question: 'How does it integrate with my current ritual?',
       answer: 'Apply 3–4 drops morning and evening after cleansing, before any moisturiser or SPF. It layers cleanly under all formulations. Over time, you may find your skin requires less correction from other products — which is the intended outcome.'
     },
     {
-      question: 'What is the Chiarelle guarantee?',
+      question: 'What is the Chiarel guarantee?',
       answer: 'We offer a 90-day ritual guarantee. If after three months of consistent use you do not experience a measurable improvement in skin resilience and vitality, we will arrange a full refund — no explanation required. We are confident in the science.'
     }
   ]
@@ -114,7 +114,7 @@ export default function HomePage() {
           },
           {
             title: 'Align',
-            description: 'Your profile is matched to your precise Chiarelle protocol — one of four rituals built around your skin\'s biological stage rather than your age',
+            description: 'Your profile is matched to your precise Chiarel protocol — one of four rituals built around your skin\'s biological stage rather than your age',
             icon: 'align'
           },
           {
@@ -129,7 +129,7 @@ export default function HomePage() {
           { week: 'Week 12', result: 'Peptide-driven structural change — clinically significant firmness, volume and tone improvement' }
         ]}
       />
-      <ChiarelleResilienceMatrix />
+      <ChiarelResilienceMatrix />
       <BentoFeatures />
       <BrandVideo />
       <IngredientScroll />

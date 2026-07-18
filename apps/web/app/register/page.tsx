@@ -98,7 +98,7 @@ export default function RegisterPage() {
               Account Created
             </h2>
             <p style={{ fontSize: '0.85rem', color: 'var(--iv-text-muted)', lineHeight: 1.6 }}>
-              Welcome to Chiarelle, <strong style={{ color: 'var(--iv-white)' }}>{name}</strong>.
+              Welcome to Chiarel, <strong style={{ color: 'var(--iv-white)' }}>{name}</strong>.
               Signing you in now…
             </p>
           </div>

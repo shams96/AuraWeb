@@ -21,7 +21,7 @@ export default function JournalPage() {
     {
       id: 'glp1-face',
       title: 'Defending Against Facial Deflation in the Metabolic Change Era',
-      excerpt: 'As metabolic medications redefine weight management, a new skin concern has emerged: "facial volume change." Learn how Chiarelle’s Metabolic Change Protective Complex shields your dermal adipose tissue.',
+      excerpt: 'As metabolic medications redefine weight management, a new skin concern has emerged: "facial volume change." Learn how Chiarel’s Metabolic Change Protective Complex shields your dermal adipose tissue.',
       date: 'April 15, 2026',
       author: 'Clinical Team',
       category: 'Innovation'

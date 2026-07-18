@@ -1,7 +1,7 @@
 'use client'
 
 /* ═══════════════════════════════════════════════════════════════════════
-   THE HOUSE STANDARD — Chiarelle
+   THE HOUSE STANDARD — Chiarel
    Replaces: competitor-comparison
 
    The retired component named La Mer, Augustinus Bader and L'Oréal in a

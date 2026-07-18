@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, useCallback } from 'react'
 import Link from 'next/link'
 
 /* ═══════════════════════════════════════════════════════════════════════
-   GRAND DOOR — Chiarelle
+   GRAND DOOR — Chiarel
    The visitor does not open a website. They arrive at a house.
 
    A Red Ochre (#9B4722) door stands closed. It opens on scroll, click,
@@ -19,9 +19,9 @@ import Link from 'next/link'
 
 const SHELF = [
   { name: 'Cellular Cleanser™',    role: 'Cleanse',              kind: 'tube' as const },
-  { name: 'Chiarelle Essence™',          role: 'The Signature Serum',  kind: 'bottle' as const, hero: true },
+  { name: 'Chiarel Essence™',          role: 'The Signature Serum',  kind: 'bottle' as const, hero: true },
   { name: 'Terra Radiance Crème™',  role: 'Day',                  kind: 'jar' as const },
-  { name: 'Chiarelle Eye Concentrate™',  role: 'Eye',                  kind: 'small-bottle' as const },
+  { name: 'Chiarel Eye Concentrate™',  role: 'Eye',                  kind: 'small-bottle' as const },
 ]
 
 /* The hero product as an actual standing bottle, not a framed photo —
@@ -161,7 +161,7 @@ function ProductTube() {
   )
 }
 
-/* Chiarelle Eye Concentrate™ — a smaller dropper bottle, deep peacock glass. */
+/* Chiarel Eye Concentrate™ — a smaller dropper bottle, deep peacock glass. */
 function ProductSmallBottle() {
   return (
     <svg viewBox="0 0 90 170" width="100%" height="100%" role="presentation" aria-hidden="true" style={{ overflow: 'visible' }}>
@@ -241,7 +241,7 @@ export function GrandDoor() {
   return (
     <section
       ref={sectionRef}
-      aria-label="Chiarelle — enter the house"
+      aria-label="Chiarel — enter the house"
       className="gd-stage"
       style={{
         position: 'relative',
@@ -411,7 +411,7 @@ export function GrandDoor() {
             href="#skin-scan"
             onClick={e => {
               // /assessment does not exist as a route — the skin concierge
-              // (Chiarelle Skin Assessment™) lives on this same page below the door
+              // (Chiarel Skin Assessment™) lives on this same page below the door
               e.preventDefault()
               document.getElementById('skin-scan')?.scrollIntoView({ behavior: 'smooth' })
             }}
@@ -496,7 +496,7 @@ export function GrandDoor() {
             type="button"
             onClick={openDoor}
             onFocus={openDoor}
-            aria-label="Enter Chiarelle"
+            aria-label="Enter Chiarel"
             aria-expanded={open}
             style={{
               position: 'absolute',

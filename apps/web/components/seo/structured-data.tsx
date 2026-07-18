@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════════════
-   STRUCTURED DATA — Chiarelle
+   STRUCTURED DATA — Chiarel
    JSON-LD for Google rich results, and for the crawlers behind social
    previews (Pinterest Rich Pins, LinkedIn, Google Knowledge Panel).
 
@@ -7,21 +7,21 @@
    the house is located at Isola del Liri, Lazio — never "Rome".
    ═══════════════════════════════════════════════════════════════════════ */
 
-const SITE = process.env.NEXT_PUBLIC_APP_URL || 'https://chiarelle.com'
+const SITE = process.env.NEXT_PUBLIC_APP_URL || 'https://chiarel.com'
 
 export function OrganizationSchema() {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     '@id': `${SITE}/#organization`,
-    name: 'Chiarelle',
+    name: 'Chiarel',
     alternateName: 'The House of Clarity',
     url: SITE,
     logo: `${SITE}/og-square.jpg`,
     image: `${SITE}/og-image.jpg`,
     slogan: 'Your skin is a story worth honoring.',
     description:
-      'Chiarelle is an Italian skincare house. Formulated at Isola del Liri, Lazio — matched to your biology, and proven on your own skin within forty-eight hours.',
+      'Chiarel is an Italian skincare house. Formulated at Isola del Liri, Lazio — matched to your biology, and proven on your own skin within forty-eight hours.',
     foundingLocation: {
       '@type': 'Place',
       name: 'Isola del Liri, Lazio, Italy',
@@ -33,13 +33,13 @@ export function OrganizationSchema() {
       addressCountry: 'IT',
     },
     sameAs: [
-      'https://www.instagram.com/chiarelle',
-      'https://www.tiktok.com/@chiarelle',
-      'https://www.pinterest.com/chiarelle',
-      'https://www.linkedin.com/company/chiarelle',
-      'https://www.youtube.com/@chiarelle',
-      'https://x.com/chiarelle',
-      'https://www.facebook.com/chiarelle',
+      'https://www.instagram.com/chiarel',
+      'https://www.tiktok.com/@chiarel',
+      'https://www.pinterest.com/chiarel',
+      'https://www.linkedin.com/company/chiarel',
+      'https://www.youtube.com/@chiarel',
+      'https://x.com/chiarel',
+      'https://www.facebook.com/chiarel',
     ],
   }
 
@@ -57,7 +57,7 @@ export function WebSiteSchema() {
     '@type': 'WebSite',
     '@id': `${SITE}/#website`,
     url: SITE,
-    name: 'Chiarelle',
+    name: 'Chiarel',
     publisher: { '@id': `${SITE}/#organization` },
     potentialAction: {
       '@type': 'SearchAction',
@@ -105,7 +105,7 @@ export function ProductSchema({
     sku,
     brand: {
       '@type': 'Brand',
-      name: 'Chiarelle',
+      name: 'Chiarel',
     },
     manufacturer: {
       '@type': 'Organization',

@@ -31,7 +31,7 @@ export function SystemHero() {
       <div className="absolute right-0 top-0 bottom-0 w-1/2 hidden lg:block pointer-events-none">
         <Image
           src="/images/products/isola_collection.png"
-          alt="Chiarelle Hero Collection"
+          alt="Chiarel Hero Collection"
           fill
           className="object-cover object-center iv-parallax"
           style={{ opacity: 0.88, mixBlendMode: 'multiply' }}
