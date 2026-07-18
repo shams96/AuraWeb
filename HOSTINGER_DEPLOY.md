@@ -1,18 +1,31 @@
-# Deploying Chiarel to Hostinger (Node.js hosting, manual upload)
+# Deploying Chiarel to Hostinger
 
-## Do not use hPanel's "Git" auto-deploy feature for this app
+Two supported ways to deploy. Pick one.
 
-Hostinger's Node.js hosting (including its Git-connected auto-deploy option) is a simple Passenger-style app runner, not a real CI/CD build pipeline like Vercel or Railway. It clones raw source and tries to run a startup file directly — it does not reliably run `next build` for you, and shared hosting's CPU/memory limits make a monorepo Next.js build likely to silently fail or time out even if it tries ("build logs are null/empty" is the typical symptom).
+## Option A — Git auto-deploy (hPanel → Node.js → Git)
 
-That's exactly why this project uses the **manual pre-built zip** approach below instead: the build happens locally (or in CI), and only the finished, ready-to-run output gets uploaded. If you already connected a GitHub repo via hPanel's Git feature, disconnect/delete that app and create a plain Node.js app instead, following the steps below.
+This now works, with two fixes applied to make it work:
 
-## What was prepared
+1. **Point Application Root at `apps/web`, not the repo root.** The repo is an npm-workspaces monorepo, and Hostinger's Node.js app runner doesn't understand workspaces — that's what caused the earlier "build logs are null" failure (it was trying to resolve a workspace build from the root and silently no-op'ing). `apps/web` is fully self-contained (its own `package.json`, all dependencies declared directly, zero dependency on the monorepo/workspaces), so pointing Hostinger directly at that subdirectory sidesteps the whole problem.
+2. **The build now happens automatically on `npm install`.** `apps/web/package.json`'s `postinstall` script runs `prisma generate && next build` — so whatever triggers `npm install` (Hostinger's own install step, or a git push if auto-install is on) also produces a fresh production build. There's no separate "build command" to configure.
+
+**hPanel settings:**
+- **Application root**: `apps/web` (the subdirectory, not the repo root)
+- **Application startup file**: `server.js` (a custom Next.js server committed at `apps/web/server.js` — Hostinger's Passenger-style runner needs a literal JS entry file, not an npm script)
+- **Node.js version**: 20.x
+- **Application URL**: `chiarel.com`
+- After connecting: run **NPM Install** (triggers the build via postinstall), then **Restart**.
+- Set the environment variables listed below.
+
+If it still fails: check the install/build log for the actual error (it should no longer be empty) — most likely cause at that point is a memory/timeout limit on shared hosting during `next build`, in which case fall back to Option B.
+
+## Option B — Manual pre-built zip upload (fallback, no build happens on their servers)
 
 `chiarel-hostinger-deploy.zip` (repo root, ~37MB) — a Next.js "standalone" production build. It's self-contained: includes a minimal `node_modules` (only what's actually used at runtime, not the full dev dependency tree), the compiled app, static assets, and the JSON data files. You do **not** need to run `npm install` on the server — it's already inside the zip.
 
-Entry point once unzipped: **`apps/web/server.js`**
+Entry point once unzipped: **`apps/web/server.js`** (the auto-generated standalone one, packaged inside the zip — separate from the hand-written `apps/web/server.js` used by Option A's Git deploy; both happen to share the same filename and role but are built differently).
 
-## Upload steps (hPanel)
+### Upload steps (hPanel)
 
 1. In hPanel, go to **Websites → [your site] → Advanced → Node.js**.
 2. Create a new Node.js application (or edit the existing one):
