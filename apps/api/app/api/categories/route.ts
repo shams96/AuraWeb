@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { prisma } from '@isolavitale/config';
+import { prisma } from '@chiarel/config';
 
 export async function GET() {
   try {

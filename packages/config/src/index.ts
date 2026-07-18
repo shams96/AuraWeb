@@ -48,14 +48,14 @@ export type Env = z.infer<typeof envSchema>;
 
 // App configuration
 export const appConfig = {
-  name: 'Isola Vitale',
+  name: 'Chiarel',
   description: 'Luxury bio-adaptive skincare solutions',
   url: process.env.VERCEL_URL || 'http://localhost:3000',
   ogImage: '/og-image.jpg',
   links: {
-    twitter: 'https://twitter.com/isolavitale',
-    instagram: 'https://instagram.com/isolavitale',
-    facebook: 'https://facebook.com/isolavitale',
+    twitter: 'https://twitter.com/chiarel',
+    instagram: 'https://instagram.com/chiarel',
+    facebook: 'https://facebook.com/chiarel',
   },
   features: {
     reviews: true,
@@ -99,13 +99,13 @@ export const auth = {
 
 // Email settings
 export const email = {
-  from: 'Isola Vitale <ritual@isolavitale.com>',
-  support: 'support@isolavitale.com',
+  from: 'Chiarel <ritual@chiarel.com>',
+  support: 'support@chiarel.com',
 } as const;
 
 // Search settings
 export const search = {
-  indexPrefix: 'isolavitale_',
+  indexPrefix: 'chiarel_',
   maxResults: 50,
   synonyms: {
     'vit c': ['vitamin c', 'ascorbic acid'],
@@ -166,7 +166,7 @@ export const image = {
 
 // SEO settings
 export const seo = {
-  titleTemplate: '%s | Isola Vitale',
-  defaultTitle: 'Isola Vitale - Luxury Bio-Adaptive Skincare',
-  defaultDescription: 'Experience the future of skincare with Isola Vitale\'s bio-adaptive formulations that combine clinical efficacy with sensory indulgence.',
+  titleTemplate: '%s | Chiarel',
+  defaultTitle: 'Chiarel - Luxury Bio-Adaptive Skincare',
+  defaultDescription: 'Experience the future of skincare with Chiarel\'s bio-adaptive formulations that combine clinical efficacy with sensory indulgence.',
 } as const;

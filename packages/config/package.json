@@ -1,5 +1,5 @@
 {
-  "name": "@isolavitale/config",
+  "name": "@chiarel/config",
   "version": "1.0.0",
   "description": "Configuration utilities for AuraBiosphere",
   "main": "index.ts",

@@ -16,8 +16,8 @@
     "plugins": [{ "name": "next" }],
     "paths": {
       "@/*": ["./app/*"],
-      "@isolavitale/config": ["../../packages/config/src"],
-      "@isolavitale/ui": ["../../packages/ui/src"]
+      "@chiarel/config": ["../../packages/config/src"],
+      "@chiarel/ui": ["../../packages/ui/src"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

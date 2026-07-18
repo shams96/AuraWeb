@@ -18,12 +18,12 @@ Never silently remove or rename anything that another file imports.
 ## Repository Layout
 
 ```
-IsolaVitale/
+Chiarel/
 ├── apps/
 │   ├── web/              # Next.js 14 storefront — primary working app
 │   └── api/              # Separate API server (not currently active)
 ├── packages/
-│   └── ui/               # Shared component library (@isolavitale/ui)
+│   └── ui/               # Shared component library (@chiarel/ui)
 ├── BRAND-BIBLE.md        # Complete brand standard — voice, protocols, copy rules, visual language
 ├── prisma/               # Database schema (PostgreSQL + Prisma)
 ├── data/                 # JSON file store (products.json, users.json — dev)
@@ -67,7 +67,7 @@ Always restore the proxy URL after pushing.
 | Payments | Stripe — one-time (`mode: 'payment'`) + subscription (`mode: 'subscription'`) |
 | Email | Resend (transactional) — key in `.env.local` |
 | Icons | Lucide React |
-| UI primitives | `@isolavitale/ui` (packages/ui) |
+| UI primitives | `@chiarel/ui` (packages/ui) |
 | Animations | Pure IntersectionObserver + CSS keyframes |
 
 ---
@@ -357,7 +357,7 @@ Work is sequenced by dependency and impact. No phase starts until the previous i
 1. **Welcome email** (on registration)
    - Subject: "Your ritual begins, [Name]"
    - Body: La Bella Figura welcome, link to skin consultation, link to shop
-   - From: `ritual@isolavitale.com`
+   - From: `ritual@chiarel.com`
 
 2. **Order confirmation** (on `checkout.session.completed`)
    - Subject: "Your ritual is on its way"
@@ -585,7 +585,7 @@ All phases 0–9 code complete. Awaiting go-live env var configuration (Stripe l
 
 ### Admin account (seeded)
 
-- Email: `admin@isolavitale.com`
+- Email: `admin@chiarel.com`
 - Password: `IsolaAdmin2024!`
 - Role: `OWNER`
 
@@ -766,7 +766,7 @@ All pages built and verified clean. Remaining items are env-var configuration on
 
 ### 🔴 ENV VARS REQUIRED FOR GO-LIVE
 
-- [ ] `NEXTAUTH_URL` — set to production domain (e.g. `https://isolavitale.com`)
+- [ ] `NEXTAUTH_URL` — set to production domain (e.g. `https://chiarel.com`)
 - [ ] `NEXTAUTH_SECRET` — rotate to a strong random secret
 - [ ] `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` — switch to Stripe live key
 - [ ] `STRIPE_SECRET_KEY` — switch to Stripe live key
@@ -837,7 +837,7 @@ RESEND_API_KEY=                     # add from resend.com
 | Product store | `lib/product-store.ts` |
 | Products seed | `lib/products.ts` |
 | Stripe price map | `lib/stripe-prices.ts` |
-| Email client + sender | `lib/resend.ts` (Resend client, FROM_EMAIL = `ritual@isolavitale.com`) |
+| Email client + sender | `lib/resend.ts` (Resend client, FROM_EMAIL = `ritual@chiarel.com`) |
 | Email templates | `lib/email-templates.ts` (welcome, order confirmation, renewal reminder, referral reward) |
 | Admin products | `app/admin/products/page.tsx` |
 | Admin layout | `app/admin/layout.tsx` |

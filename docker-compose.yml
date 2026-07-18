@@ -5,7 +5,7 @@ services:
   postgres:
     image: postgres:15-alpine
     environment:
-      POSTGRES_DB: isolavitale
+      POSTGRES_DB: chiarel
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
     volumes:
@@ -44,7 +44,7 @@ services:
       context: ./apps/api
       dockerfile: Dockerfile
     environment:
-      DATABASE_URL: postgresql://postgres:password@postgres:5432/isolavitale
+      DATABASE_URL: postgresql://postgres:password@postgres:5432/chiarel
       NEXTAUTH_URL: http://localhost:3000
       NEXTAUTH_SECRET: your-secret-key-here
       STRIPE_SECRET_KEY: sk_test_your_stripe_secret

@@ -8,10 +8,10 @@ async function main() {
   const hashedPassword = await bcrypt.hash('admin123', 10);
   
   const admin = await prisma.user.upsert({
-    where: { email: 'admin@isolavitale.com' },
+    where: { email: 'admin@chiarel.com' },
     update: {},
     create: {
-      email: 'admin@isolavitale.com',
+      email: 'admin@chiarel.com',
       name: 'Admin User',
       password: hashedPassword,
       role: 'ADMIN',
@@ -192,11 +192,11 @@ async function main() {
       slug: 'about-us',
       content: `
         <h2>Our Story</h2>
-        <p>Isola Vitale was born from a passion for luxury cosmetics that enhance natural beauty while respecting the environment.</p>
+        <p>Chiarel was born from a passion for luxury cosmetics that enhance natural beauty while respecting the environment.</p>
         <p>Our mission is to provide our customers with the highest quality products that are both effective and sustainable.</p>
       `,
       published: true,
-      metaTitle: 'About Isola Vitale - Luxury Cosmetics',
+      metaTitle: 'About Chiarel - Luxury Cosmetics',
       metaDescription: 'Learn about our story, mission, and commitment to quality and sustainability in luxury cosmetics.',
     },
   });
@@ -208,13 +208,13 @@ async function main() {
       content: `
         <h2>Get in Touch</h2>
         <p>We'd love to hear from you! Please fill out the form below or contact us directly.</p>
-        <p>Email: hello@isolavitale.com</p>
+        <p>Email: hello@chiarel.com</p>
         <p>Phone: +1 (555) 123-4567</p>
         <p>Address: 123 Beauty Lane, Luxury City, LC 12345</p>
       `,
       published: true,
-      metaTitle: 'Contact Isola Vitale - Luxury Cosmetics',
-      metaDescription: 'Contact Isola Vitale for inquiries about our luxury cosmetics products and services.',
+      metaTitle: 'Contact Chiarel - Luxury Cosmetics',
+      metaDescription: 'Contact Chiarel for inquiries about our luxury cosmetics products and services.',
     },
   });
 

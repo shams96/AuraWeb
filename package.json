@@ -1,7 +1,7 @@
 {
   "name": "chiarel",
   "version": "1.0.0",
-  "description": "Isola Vitale — Luxury Skincare Storefront",
+  "description": "Chiarel — Luxury Skincare Storefront",
   "private": true,
   "workspaces": [
     "apps/*",
@@ -15,7 +15,7 @@
     "format": "prettier --write ."
   },
   "keywords": ["luxury", "cosmetics", "skincare", "ecommerce", "nextjs"],
-  "author": "Isola Vitale",
+  "author": "Chiarel",
   "license": "ISC",
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.5",

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { prisma } from '@isolavitale/config';
+import { prisma } from '@chiarel/config';
 import { z } from 'zod';
 
 const faqSchema = z.object({
