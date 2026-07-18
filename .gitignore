@@ -122,3 +122,6 @@ apps/web/data/reset-tokens.json
 apps/web/data/returns.json
 apps/web/data/consultations.json
 apps/web/data/referrals.json
+
+# Build/deploy artifacts
+*.zip
