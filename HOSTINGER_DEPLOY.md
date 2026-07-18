@@ -1,5 +1,11 @@
 # Deploying Chiarel to Hostinger (Node.js hosting, manual upload)
 
+## Do not use hPanel's "Git" auto-deploy feature for this app
+
+Hostinger's Node.js hosting (including its Git-connected auto-deploy option) is a simple Passenger-style app runner, not a real CI/CD build pipeline like Vercel or Railway. It clones raw source and tries to run a startup file directly — it does not reliably run `next build` for you, and shared hosting's CPU/memory limits make a monorepo Next.js build likely to silently fail or time out even if it tries ("build logs are null/empty" is the typical symptom).
+
+That's exactly why this project uses the **manual pre-built zip** approach below instead: the build happens locally (or in CI), and only the finished, ready-to-run output gets uploaded. If you already connected a GitHub repo via hPanel's Git feature, disconnect/delete that app and create a plain Node.js app instead, following the steps below.
+
 ## What was prepared
 
 `chiarel-hostinger-deploy.zip` (repo root, ~37MB) — a Next.js "standalone" production build. It's self-contained: includes a minimal `node_modules` (only what's actually used at runtime, not the full dev dependency tree), the compiled app, static assets, and the JSON data files. You do **not** need to run `npm install` on the server — it's already inside the zip.
