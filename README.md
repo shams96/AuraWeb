@@ -82,7 +82,7 @@ The UI is built around a light-first ivory luxury palette with dark editorial se
 - **Micro-Animations**: Glassmorphism and smooth transition states to encourage user interaction.
 
 ## 🤝 Contribution Guidelines
-All updates MUST adhere to the Chiarel naming conventions in `BRAND-BIBLE.md` and `brand-voice.md`. Legacy branding (Isola Vitale, LIRI ROMA) is retired — never use it. Ensure all clinical percentages added match the official Research Dossier specifications.
+All updates MUST adhere to the Chiarel naming and voice conventions in `BRAND-BIBLE.md` (the single consolidated brand source of truth). Legacy branding (Isola Vitale, LIRI ROMA) is retired — never use it. Ensure all clinical percentages added match the official Research Dossier specifications.
 
 ---
 *Formulated in partnership with Natural You Srl, Isola del Liri, Italy.*

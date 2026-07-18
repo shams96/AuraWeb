@@ -83,7 +83,7 @@ Always restore the proxy URL after pushing.
 **Formulated:** Natural You Srl, Isola del Liri, Lazio, Italy
 **HQ:** Allen, Texas
 
-**Voice:** Clinical confidence without coldness. Outcome-language, not promise-language. Restrained, not breathless. See `brand-voice.md`.
+**Voice:** Clinical confidence without coldness. Outcome-language, not promise-language. Restrained, not breathless. See `BRAND-BIBLE.md` §6–14.
 
 **Enemy:** Modern Biological Stress™.
 
