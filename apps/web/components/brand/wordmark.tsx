@@ -21,7 +21,8 @@ export function Wordmark({
         fontSize: size,
         fontWeight: 600,
         color,
-        letterSpacing: '0.06em',
+        letterSpacing: '0.28em',
+        textTransform: 'uppercase',
         whiteSpace: 'nowrap',
       }}
     >

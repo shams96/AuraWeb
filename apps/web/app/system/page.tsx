@@ -4,10 +4,10 @@ import { Shield, Zap, Sparkles, Activity } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'The Ritual — Four Formulations. One Living Philosophy.',
-  description: 'Chiarelle\'s four rituals are not defined by age — they are defined by what your skin needs now. Preservation · Refinement · Regeneration · Longevity. Beauty as a way of life.',
+  description: 'Chiarelle\'s four protocols are not defined by age — they are defined by what your skin needs now. Preservation · Refinement · Regeneration · Longevity. Matched to your biology, not your birthdate.',
   openGraph: {
     title: 'The Ritual | Chiarelle',
-    description: 'Four formulations born from the Italian philosophy that beauty is a way of life, not a clinical outcome.',
+    description: 'Four protocols born from Chiarelle Intelligence™ — matched to your biology, not your birthdate.',
   },
 }
 
@@ -59,7 +59,7 @@ export default function SystemPage() {
           </div>
           <h1 className="iv-type-display font-semibold mb-8 uppercase text-iv-white">The <em className="text-iv-gold" style={{ fontStyle: 'italic', fontFamily: 'var(--iv-font-serif)' }}>Ritual</em></h1>
           <p className="text-xl text-iv-cream/70 max-w-3xl mx-auto leading-relaxed font-light mb-6">
-            Italy has always known something the modern world forgot — beauty is not corrected. It is cultivated. Four protocols. One Italian philosophy. The practice of biological resilience as a way of life.
+            Your skin was never a mystery — it has always been biology. Four protocols. One Skin Intelligence™ system. The practice of biological resilience as a way of life.
           </p>
           <p className="text-sm text-iv-gold/70 max-w-xl mx-auto font-light italic">
             Each protocol is assigned to your biological stage — not your age. Find yours in two minutes.

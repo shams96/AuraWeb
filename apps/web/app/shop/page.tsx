@@ -10,7 +10,7 @@ import { FlaskConical } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'The Collections — Chiarelle',
-  description: "Eighteen formulations. Four protocols. One Italian philosophy. Each formulation is assigned to a biological stage — not an age.",
+  description: "Eighteen formulations. Four protocols. One Skin Intelligence™ system. Each formulation is assigned to a biological stage — not an age.",
   openGraph: {
     title: 'The Collections | Chiarelle',
     description: 'Eighteen formulations matched to your biology, not your birthdate. Find your protocol.',
@@ -85,7 +85,7 @@ export default async function ShopPage({
             <span className="text-iv-gold italic serif">{titleTail}</span>
           </h1>
           <p className="text-xl max-w-2xl leading-relaxed font-light mb-4" style={{ color: 'rgba(250,247,240,0.90)' }}>
-            Eighteen formulations. Four protocols. One Italian philosophy.
+            Eighteen formulations. Four protocols. One Skin Intelligence™ system.
           </p>
           <p className="text-sm max-w-xl leading-relaxed font-light mb-10 italic" style={{ color: 'rgba(250,247,240,0.75)' }}>
             Each formulation is assigned to a biological stage — not an age. Find yours.
