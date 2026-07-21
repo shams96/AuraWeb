@@ -215,7 +215,7 @@ export function ProductPageClient({ productId }: ProductPageClientProps) {
             primaryProblem: localProduct.primaryProblem || 'Cellular Senescence',
             desiredOutcome: localProduct.desiredOutcome || 'Metabolic Alignment',
             format: localProduct.format || 'Standard Volume',
-            audience: localProduct.audience || 'Research-Driven Consumers',
+            audience: localProduct.audience || 'For Those Who Notice',
             scienceMechanism: localProduct.scienceMechanism || 'Skin Intelligence™',
             useCases: localProduct.useCases || ['Morning Protocol', 'Evening Protocol'],
             rating: localProduct.rating,

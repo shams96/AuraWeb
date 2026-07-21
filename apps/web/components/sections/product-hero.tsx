@@ -48,7 +48,7 @@ export function ProductHero({ product }: ProductHeroProps) {
             {/* Context Header */}
             <div className="space-y-6">
               <div className="inline-flex items-center space-x-4 border border-iv-gold/20 rounded-full px-6 py-2.5 text-[9px] font-black uppercase tracking-[0.3em] bg-iv-gold/5 backdrop-blur-xl">
-                <span className="text-iv-gold">Clinical Asset No. {product.sku || 'IV-2026'}</span>
+                <span className="text-iv-gold">Formulation No. {product.sku || 'IV-2026'}</span>
                 <span className="w-1 h-1 bg-iv-gold/40 rounded-full"></span>
                 <span className="text-iv-white/60">{product.audience}</span>
               </div>
@@ -99,7 +99,7 @@ export function ProductHero({ product }: ProductHeroProps) {
                 asChild
               >
                 <a href="#buy-box">
-                  Configure Acquisition
+                  Begin Your Ritual
                 </a>
               </Button>
               <div className="flex items-center gap-3 px-6 py-4">

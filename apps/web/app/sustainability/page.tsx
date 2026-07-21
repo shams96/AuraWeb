@@ -16,7 +16,7 @@ export default function SustainabilityPage() {
     {
       name: 'Refillable rPET Systems',
       icon: <Recycle className="w-8 h-8 text-iv-gold" />,
-      description: 'Our 2026 Hero SKUs utilize an advanced rPET cartridge system. This reduces plastic waste by 85% after the initial acquisition of the premium outer glass vessel.',
+      description: 'Our 2026 Hero SKUs utilize an advanced rPET cartridge system. This reduces plastic waste by 85% once you own the premium outer glass vessel.',
       detail: 'Infinite reuse of the obsidian and emerald outer housing.'
     },
     {

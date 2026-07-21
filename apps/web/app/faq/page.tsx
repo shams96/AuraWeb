@@ -26,7 +26,7 @@ export default function FAQPage() {
       ]
     },
     {
-      category: 'Shipping & Acquisition',
+      category: 'Shipping & Ordering',
       items: [
         {
           q: 'Do you ship internationally?',
@@ -51,7 +51,7 @@ export default function FAQPage() {
           </div>
           <h1 className="iv-type-display font-semibold mb-6 uppercase">Frequently <span className="text-iv-gold italic">Asked</span></h1>
           <p className="text-lg text-iv-cream/70 max-w-2xl leading-relaxed font-light">
-            Everything you need to know about our metabolic technology, acquisition process, and the 2026 Hero SKU launch.
+            Everything you need to know about our metabolic technology, ordering, and the 2026 Hero SKU launch.
           </p>
         </div>
       </section>
@@ -80,7 +80,7 @@ export default function FAQPage() {
       <section className="mt-20 container mx-auto px-4 max-w-4xl">
         <div className="p-12 bg-iv-gold/10 border border-iv-gold/20 rounded-3xl text-center backdrop-blur-md">
           <h3 className="text-xl font-bold text-iv-white mb-4 uppercase tracking-widest">Still Have Inquiries?</h3>
-          <p className="text-iv-cream/60 mb-8 font-light text-sm max-w-md mx-auto">Our professional concierge team is available for real-time metabolic consultations and acquisition assistance.</p>
+          <p className="text-iv-cream/60 mb-8 font-light text-sm max-w-md mx-auto">Our professional concierge team is available for real-time metabolic consultations and ordering assistance.</p>
           <a href="/contact" className="inline-block bg-iv-gold hover:bg-iv-gold-light text-iv-black font-black text-xs uppercase tracking-widest px-12 py-5 rounded-none transition-all shadow-xl">
             Contact Concierge
           </a>

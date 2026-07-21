@@ -25,7 +25,7 @@ export default function WishlistPage() {
           </div>
           <h1 className="iv-type-display font-semibold mb-8 uppercase">The <span className="text-iv-gold italic">Wishlist</span></h1>
           <p className="text-xl text-iv-cream/70 max-w-3xl leading-relaxed font-light">
-            Formulations curated for your metabolic profile. Ready for acquisition whenever you are.
+            Formulations curated for your metabolic profile. Waiting until you're ready to begin.
           </p>
         </div>
       </div>
@@ -44,7 +44,7 @@ export default function WishlistPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
               </svg>
             </div>
-            <h3 className="text-2xl font-bold text-iv-white mb-4 uppercase tracking-widest">No Acquisitions Curated</h3>
+            <h3 className="text-2xl font-bold text-iv-white mb-4 uppercase tracking-widest">Nothing Saved Yet</h3>
             <p className="text-iv-cream/65 mb-12 font-light max-w-md mx-auto">
               Your wishlist is currently empty. Explore our scientific formulations and build your ideal routine.
             </p>

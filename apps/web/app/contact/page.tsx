@@ -5,7 +5,7 @@ import { Button } from '@/components/ui-lib'
 import { Mail, Phone, MapPin } from 'lucide-react'
 
 const INQUIRY_TYPES = [
-  'ACQUISITION INQUIRY',
+  'PRODUCT INQUIRY',
   'B2B PROFESSIONAL PORTAL',
   'METABOLIC CONSULTATION',
   'PRESS & MEDIA',
@@ -70,7 +70,7 @@ export default function ContactPage() {
             Contact <span className="text-iv-gold italic">The House</span>
           </h1>
           <p className="text-xl text-iv-cream/70 max-w-3xl leading-relaxed font-light">
-            Whether you are a retail client or a B2B clinical partner, our concierge team is available to assist with metabolic consultations, acquisition inquiries, and professional onboarding.
+            Whether you are a retail client or a B2B clinical partner, our concierge team is available to assist with metabolic consultations, ordering questions, and professional onboarding.
           </p>
         </div>
       </section>

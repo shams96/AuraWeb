@@ -13,7 +13,7 @@ export default function PrivacyPage() {
       <section className="py-24 container mx-auto px-4 max-w-4xl">
         <div className="prose prose-invert max-w-none space-y-12">
           <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-iv-white uppercase tracking-widest italic">Data Acquisition</h2>
+            <h2 className="text-2xl font-bold text-iv-white uppercase tracking-widest italic">Data Collection</h2>
             <p className="text-iv-cream/60 leading-relaxed font-light"> At Chiarel (A 1HubSolutions LLC Company), we collect information to tailor your ritual and your recommendations. This includes skin assessment responses, order history, and how you use our site.</p>
           </div>
 
