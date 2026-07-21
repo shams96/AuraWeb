@@ -7,6 +7,7 @@ import { CartProvider } from '@/lib/cart-context'
 import { WishlistProvider } from '@/lib/wishlist-context'
 import { AuthProvider } from '@/lib/auth-context'
 import { Header } from '@/components/layout/header'
+import { ComingSoonBanner } from '@/components/layout/coming-soon-banner'
 import { Footer } from '@/components/layout/footer'
 import { ScrollRevealProvider } from '@/components/layout/scroll-reveal-provider'
 import { ScrollProgressBar } from '@/components/layout/scroll-progress-bar'
@@ -133,6 +134,7 @@ export default function RootLayout({
               <WishlistProvider>
                 <AuthProvider>
                   <div className="min-h-screen bg-background flex flex-col">
+                    <ComingSoonBanner />
                     <Header />
                     <main className="flex-1">{children}</main>
                     <Footer />

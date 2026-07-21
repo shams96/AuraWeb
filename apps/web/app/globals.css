@@ -1213,3 +1213,11 @@ html, body {
       rgba(214,197,160,0.9) 98.4%, rgba(214,197,160,0.9) 100%
     );
 }
+
+/* Coming-soon banner marquee — moves left to right; the 8 identical
+   repeats mean a -50%..0% translate loops seamlessly. Reduced-motion
+   is already handled by the global rule above. */
+@keyframes coming-soon-marquee {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0%); }
+}
