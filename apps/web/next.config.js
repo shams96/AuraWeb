@@ -25,7 +25,13 @@ const securityHeaders = [
 ]
 
 const nextConfig = {
-  output: 'standalone',
+  // NOTE: 'output: standalone' was removed. It is incompatible with the
+  // custom server.js (which uses next().getRequestHandler()): standalone
+  // relocates the client static chunks into .next/standalone, so the
+  // custom server serves the HTML but returns 404/timeout for
+  // /_next/static/chunks/* — surfacing as ChunkLoadError and a page that
+  // never hydrates (the Grand Door stuck on a spinner). A normal build
+  // keeps chunks under .next/static where the custom server serves them.
   reactStrictMode: true,
   async headers() {
     return [
